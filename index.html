@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailored Tools — AI visibility, dashboards, and automation for small businesses</title>
+    <meta name="description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Sussex.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 960px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        /* Nav */
+        nav {
+            background: var(--dark);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo img { height: 32px; width: auto; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Sections */
+        section { padding: 80px 24px; }
+        .container { max-width: var(--max-width); margin: 0 auto; }
+        h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--dark);
+            color: var(--white);
+            padding: 100px 24px 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero .subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 32px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+        .hero-cta:hover { opacity: 0.9; }
+
+        /* AO Section */
+        .ao-section { background: var(--light); }
+        .ao-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .ao-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .ao-card {
+            background: var(--white);
+            border: 1px solid #e0e4e8;
+            border-radius: 10px;
+            padding: 28px;
+        }
+        .ao-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .ao-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+        .ao-card .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(255,111,32,0.08);
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-top: 12px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .service-card {
+            border: 1px solid #e0e4e8;
+            border-radius: 10px;
+            padding: 28px;
+        }
+        .service-card h3 { font-size: 16px; }
+        .service-card p { font-size: 14px; color: var(--text-light); }
+
+        /* About */
+        .about-section { background: var(--light); }
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .about-content p { font-size: 15px; color: var(--text-light); margin-bottom: 16px; }
+        .about-facts {
+            background: var(--white);
+            border: 1px solid #e0e4e8;
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .about-facts li {
+            list-style: none;
+            font-size: 14px;
+            color: var(--text-light);
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .about-facts li:last-child { border-bottom: none; }
+        .about-facts li strong { color: var(--primary); }
+
+        /* Contact */
+        .contact-section { text-align: center; }
+        .contact-methods {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .contact-method {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 24px 32px;
+            min-width: 200px;
+        }
+        .contact-method .label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+        .contact-method a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .contact-method a:hover { color: var(--accent); }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        footer img.footer-logo { height: 28px; width: auto; margin-bottom: 12px; }
+        footer p { font-size: 13px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 30px; }
+            .hero .subtitle { font-size: 16px; }
+            .ao-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .about-content { grid-template-columns: 1fr; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 13px; }
+            section { padding: 60px 20px; }
+            .contact-methods { flex-direction: column; align-items: center; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <img src="tt-logo-dark.svg" alt="Tailored Tools">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#ao">AO</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>AI visibility. Dashboards.<br><span>Automation.</span></h1>
+        <p class="subtitle">Making the techy stuff simple for small businesses.</p>
+        <a href="#ao" class="hero-cta">Find out about AO</a>
+    </div>
+</section>
+
+<!-- AO Section -->
+<section class="ao-section" id="ao">
+    <div class="container">
+        <div class="ao-badge">AO — AGENT OPTIMISATION</div>
+        <h2>Is your business invisible to AI?</h2>
+        <p class="section-subtitle">AI agents are replacing search engines. When someone asks ChatGPT or Google's AI for a recommendation, can they find you? AO makes sure they can.</p>
+
+        <div class="ao-grid">
+            <div class="ao-card">
+                <h3>AO Audit</h3>
+                <p>We scan your website and online presence across six dimensions — structured data, service descriptions, pricing transparency, trust signals, availability, and AI visibility. You get a scored report with specific, prioritised recommendations.</p>
+                <div class="tag">Available now</div>
+            </div>
+            <div class="ao-card">
+                <h3>AO Implementation</h3>
+                <p>We add an invisible data layer to your website that AI agents can read — structured data, pricing logic, service parameters. Your customers see exactly what they see now. Agents see everything they need to recommend you.</p>
+                <div class="tag">From &pound;500</div>
+            </div>
+            <div class="ao-card">
+                <h3>AO Monitoring</h3>
+                <p>Monthly check-ins to track your AI visibility, catch regressions, and keep your structured data current as agent technology evolves. Stay ahead without having to think about it.</p>
+                <div class="tag">Coming soon</div>
+            </div>
+            <div class="ao-card">
+                <h3>AO Workshops</h3>
+                <p>"Is Your Business Invisible to AI?" — a hands-on session for business owners and teams. Learn what AI agents see (and don't see), with a live audit demonstration. Perfect for networking groups and business associations.</p>
+                <div class="tag">Coming soon</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Other Services -->
+<section id="services">
+    <div class="container">
+        <h2>Other services</h2>
+        <p class="section-subtitle">AO is our main focus, but we also help small businesses with the day-to-day tech that saves time and makes life easier.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Dashboards</h3>
+                <p>Custom dashboards that pull your business data into one place. See what matters at a glance — bookings, revenue, performance — without digging through spreadsheets.</p>
+            </div>
+            <div class="service-card">
+                <h3>Automation</h3>
+                <p>Repetitive tasks automated. Client onboarding, invoice reminders, booking confirmations, data entry — set it up once, let it run.</p>
+            </div>
+            <div class="service-card">
+                <h3>Integrations</h3>
+                <p>Connect the tools you already use. Square, Google Sheets, Outlook, Stripe, your website — we make them talk to each other so you don't have to copy-paste between them.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+    <div class="container">
+        <h2>About Tailored Tools</h2>
+        <div class="about-content">
+            <div>
+                <p>Tailored Tools is a Sussex-based consultancy that helps small service businesses get the most out of technology — without the jargon, the overwhelm, or the eye-watering agency fees.</p>
+                <p>We work with sole traders, small teams, and service businesses who know they should be doing more with tech but don't have the time or inclination to figure it out themselves. That's where we come in.</p>
+                <p>Our background is in accessibility technology and service businesses, which means we understand both the tech side and the reality of running a small operation. We build practical solutions that actually get used, not shiny things that gather dust.</p>
+            </div>
+            <div class="about-facts">
+                <ul>
+                    <li><strong>Based in</strong> Sussex, UK</li>
+                    <li><strong>Focus</strong> Small service businesses</li>
+                    <li><strong>Background</strong> Accessibility tech</li>
+                    <li><strong>Approach</strong> Practical, no jargon</li>
+                    <li><strong>Speciality</strong> Agent Optimisation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2>Get in touch</h2>
+        <p class="section-subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">Whether you want an AO audit, need help with a dashboard, or just want to chat about what AI means for your business — drop us a line.</p>
+
+        <div class="contact-methods">
+            <div class="contact-method">
+                <div class="label">Email</div>
+                <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a>
+            </div>
+            <div class="contact-method">
+                <div class="label">AO Enquiries</div>
+                <a href="mailto:ao@tailored-tools.com">ao@tailored-tools.com</a>
+            </div>
+            <div class="contact-method">
+                <div class="label">Instagram</div>
+                <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">@tailored.tools</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <img class="footer-logo" src="tt-logo-dark.svg" alt="Tailored Tools">
+    <p>&copy; 2026 Tailored Tools. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailored Tools — AI visibility, dashboards, and automation for small businesses</title>
     <meta name="description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/">
+    <meta property="og:title" content="Tailored Tools — AI visibility, dashboards, and automation for small businesses">
+    <meta property="og:description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tailored Tools — AI visibility, dashboards, and automation">
+    <meta name="twitter:description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -54,6 +72,26 @@
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--accent); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255,255,255,0.7);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* Sections */
         section { padding: 80px 24px; }
@@ -230,6 +268,8 @@
         }
         footer img.footer-logo { height: 28px; width: auto; margin-bottom: 12px; }
         footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -245,7 +285,21 @@
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 26px; }
-            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 16px 24px;
+                gap: 16px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-links.open { display: flex; }
+            nav { position: relative; }
         }
     </style>
 </head>
@@ -257,12 +311,15 @@
         <div class="nav-logo">
             <img src="tt-logo-dark.svg" alt="Tailored Tools">
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="#ao">AO</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
 
@@ -376,11 +433,196 @@
     </div>
 </section>
 
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tailored-tools.com/#organization",
+      "name": "Tailored Tools",
+      "url": "https://tailored-tools.com",
+      "logo": "https://tailored-tools.com/tt-logo-dark.svg",
+      "email": "hello@tailored-tools.com",
+      "sameAs": [
+        "https://instagram.com/tailored.tools"
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "United Kingdom"
+      },
+      "description": "Kent-based technology consultancy helping small service businesses with AI visibility, dashboards, automation, and integrations."
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tailored-tools.com/#business",
+      "name": "Tailored Tools",
+      "url": "https://tailored-tools.com",
+      "telephone": "",
+      "email": "hello@tailored-tools.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Kent",
+        "addressCountry": "GB"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United Kingdom"
+        }
+      ],
+      "priceRange": "$$",
+      "knowsAbout": [
+        "Agent Optimisation",
+        "Schema.org structured data",
+        "AI visibility for businesses",
+        "Business automation",
+        "Custom dashboards",
+        "Software integrations",
+        "Accessibility technology"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Agent Optimisation (AO)",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AO Audit",
+                  "description": "Comprehensive AI visibility audit across six dimensions: structured data, service descriptions, pricing transparency, trust signals, availability, and AI visibility. Produces a scored report with prioritised recommendations.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "AI Visibility Audit",
+                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AO Implementation",
+                  "description": "Adding an invisible structured data layer to your website that AI agents can read — including schema.org markup, computable pricing logic, and service parameters. No visible changes to your website.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "Structured Data Implementation",
+                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
+                },
+                "priceCurrency": "GBP",
+                "price": "500",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "500",
+                  "priceCurrency": "GBP",
+                  "unitText": "per project",
+                  "description": "Starting price; varies by scope and complexity"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AO Monitoring",
+                  "description": "Monthly AI visibility monitoring, regression detection, and structured data maintenance as agent technology evolves.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "AI Visibility Monitoring",
+                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
+                },
+                "availability": "https://schema.org/PreOrder"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AO Workshops",
+                  "description": "'Is Your Business Invisible to AI?' — a hands-on workshop for business owners and teams with live audit demonstration. Suitable for networking groups and business associations. 90-120 minute format.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "Business Workshop",
+                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
+                },
+                "availability": "https://schema.org/PreOrder"
+              }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Business Technology Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom Dashboards",
+                  "description": "Single-login dashboards that consolidate data from multiple business tools into one view — bookings, revenue, performance metrics — without juggling separate logins and spreadsheets.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "Dashboard Development"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Business Automation",
+                  "description": "Automation of repetitive business tasks including client onboarding, invoice reminders, booking confirmations, and data entry workflows.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "Business Process Automation"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Software Integrations",
+                  "description": "Connecting existing business tools — Square, Google Sheets, Outlook, Stripe, websites — so they share data automatically without manual copy-pasting.",
+                  "provider": {"@id": "https://tailored-tools.com/#organization"},
+                  "serviceType": "Systems Integration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tailored-tools.com/#website",
+      "url": "https://tailored-tools.com",
+      "name": "Tailored Tools",
+      "publisher": {"@id": "https://tailored-tools.com/#organization"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tailored-tools.com/",
+      "url": "https://tailored-tools.com/",
+      "name": "Tailored Tools — AI visibility, dashboards, and automation for small businesses",
+      "description": "Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.",
+      "isPartOf": {"@id": "https://tailored-tools.com/#website"},
+      "about": {"@id": "https://tailored-tools.com/#business"}
+    }
+  ]
+}
+</script>
+
 <!-- Footer -->
 <footer>
     <img class="footer-logo" src="tt-logo-dark.svg" alt="Tailored Tools">
-    <p>&copy; 2026 Tailored Tools. All rights reserved. · <a href="/privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">Privacy Policy</a></p>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. · <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+</script>
 </body>
 </html>

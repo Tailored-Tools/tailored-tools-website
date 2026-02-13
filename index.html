@@ -342,7 +342,16 @@
         <div class="ao-grid">
             <div class="ao-card">
                 <h3>AO Audit</h3>
-                <p>We scan your website and online presence across six dimensions — structured data, service descriptions, pricing transparency, trust signals, availability, and AI visibility. You get a scored report with specific, prioritised recommendations.</p>
+                <p>We scan your website and online presence across six dimensions:</p>
+                <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
+                    <li>- Structured data and schema markup</li>
+                    <li>- Service descriptions and parameters</li>
+                    <li>- Pricing transparency and computability</li>
+                    <li>- Trust signals and credentials</li>
+                    <li>- Availability and booking readiness</li>
+                    <li>- AI agent visibility and mentions</li>
+                </ul>
+                <p style="font-size: 14px; color: var(--text-light);">You get a scored report with specific, prioritised recommendations. Typical turnaround: within 5 working days.</p>
                 <div class="tag">Available now</div>
             </div>
             <div class="ao-card">
@@ -357,7 +366,7 @@
             </div>
             <div class="ao-card">
                 <h3>AO Workshops</h3>
-                <p>"Is Your Business Invisible to AI?" — a hands-on session for business owners and teams. Learn what AI agents see (and don't see), with a live audit demonstration. Perfect for networking groups and business associations.</p>
+                <p>"Is Your Business Invisible to AI?" — a 90–120 minute hands-on session for business owners and teams of up to 30 people. Learn what AI agents see (and don't see), with a live audit demonstration. Priced per session. Perfect for networking groups and business associations.</p>
                 <div class="tag">Coming soon</div>
             </div>
         </div>
@@ -393,7 +402,7 @@
         <h2>About Tailored Tools</h2>
         <div class="about-content">
             <div>
-                <p>Tailored Tools is a Kent-based consultancy that helps small service businesses get the most out of technology — without the jargon, the overwhelm, or the eye-watering agency fees.</p>
+                <p>Tailored Tools is a Kent-based specialist consultancy that helps small service businesses get the most out of technology — without the jargon, the overwhelm, or the eye-watering agency fees.</p>
                 <p>We work with sole traders, small teams, and service businesses who know they should be doing more with tech but don't have the time or inclination to figure it out themselves. That's where we come in.</p>
                 <p>Our background is in accessibility technology and service businesses, which means we understand both the tech side and the reality of running a small operation. We build practical solutions that actually get used, not shiny things that gather dust.</p>
             </div>
@@ -404,6 +413,7 @@
                     <li><strong>Background</strong> Accessibility tech</li>
                     <li><strong>Approach</strong> Practical, no jargon</li>
                     <li><strong>Speciality</strong> Agent Optimisation</li>
+                    <li><strong>Hours</strong> Monday–Friday, 9am–5pm</li>
                 </ul>
             </div>
         </div>
@@ -414,7 +424,7 @@
 <section class="contact-section" id="contact">
     <div class="container">
         <h2>Get in touch</h2>
-        <p class="section-subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">Whether you want an AO audit, need help with a dashboard, or just want to chat about what AI means for your business — drop us a line.</p>
+        <p class="section-subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">Whether you want an AO audit, need help with a dashboard, or want to explore pricing options — drop us a line or get a quote.</p>
 
         <div class="contact-methods">
             <div class="contact-method">
@@ -439,6 +449,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@context": "https://schema.org",
       "@type": "Organization",
       "@id": "https://tailored-tools.com/#organization",
       "name": "Tailored Tools",
@@ -455,16 +466,29 @@
       "description": "Kent-based technology consultancy helping small service businesses with AI visibility, dashboards, automation, and integrations."
     },
     {
-      "@type": "ProfessionalService",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": "https://tailored-tools.com/#business",
       "name": "Tailored Tools",
+      "description": "Specialist technology consultancy helping small service businesses with AI visibility (Agent Optimisation), custom dashboards, business automation, and software integrations. Based in Maidstone, Kent.",
       "url": "https://tailored-tools.com",
       "telephone": "",
       "email": "hello@tailored-tools.com",
+      "image": "https://tailored-tools.com/og-image.png",
+      "logo": "https://tailored-tools.com/tt-logo-dark.svg",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://instagram.com/tailored.tools"
+      ],
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Maidstone",
         "addressRegion": "Kent",
         "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.2724,
+        "longitude": 0.5209
       },
       "areaServed": [
         {
@@ -472,118 +496,121 @@
           "name": "United Kingdom"
         }
       ],
-      "priceRange": "$$",
-      "knowsAbout": [
-        "Agent Optimisation",
-        "Schema.org structured data",
-        "AI visibility for businesses",
-        "Business automation",
-        "Custom dashboards",
-        "Software integrations",
-        "Accessibility technology"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services",
-        "itemListElement": [
-          {
-            "@type": "OfferCatalog",
-            "name": "Agent Optimisation (AO)",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AO Audit",
-                  "description": "Comprehensive AI visibility audit across six dimensions: structured data, service descriptions, pricing transparency, trust signals, availability, and AI visibility. Produces a scored report with prioritised recommendations.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "AI Visibility Audit",
-                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AO Implementation",
-                  "description": "Adding an invisible structured data layer to your website that AI agents can read — including schema.org markup, computable pricing logic, and service parameters. No visible changes to your website.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "Structured Data Implementation",
-                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
-                },
-                "priceCurrency": "GBP",
-                "price": "500",
-                "priceSpecification": {
-                  "@type": "UnitPriceSpecification",
-                  "price": "500",
-                  "priceCurrency": "GBP",
-                  "unitText": "per project",
-                  "description": "Starting price; varies by scope and complexity"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AO Monitoring",
-                  "description": "Monthly AI visibility monitoring, regression detection, and structured data maintenance as agent technology evolves.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "AI Visibility Monitoring",
-                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
-                },
-                "availability": "https://schema.org/PreOrder"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AO Workshops",
-                  "description": "'Is Your Business Invisible to AI?' — a hands-on workshop for business owners and teams with live audit demonstration. Suitable for networking groups and business associations. 90-120 minute format.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "Business Workshop",
-                  "areaServed": {"@type": "Country", "name": "United Kingdom"}
-                },
-                "availability": "https://schema.org/PreOrder"
-              }
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Business Technology Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Custom Dashboards",
-                  "description": "Single-login dashboards that consolidate data from multiple business tools into one view — bookings, revenue, performance metrics — without juggling separate logins and spreadsheets.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "Dashboard Development"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Business Automation",
-                  "description": "Automation of repetitive business tasks including client onboarding, invoice reminders, booking confirmations, and data entry workflows.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "Business Process Automation"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Software Integrations",
-                  "description": "Connecting existing business tools — Square, Google Sheets, Outlook, Stripe, websites — so they share data automatically without manual copy-pasting.",
-                  "provider": {"@id": "https://tailored-tools.com/#organization"},
-                  "serviceType": "Systems Integration"
-                }
-              }
-            ]
-          }
-        ]
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#ao-audit",
+      "name": "AO Audit",
+      "description": "Comprehensive AI visibility audit across six dimensions: structured data, service descriptions, pricing transparency, trust signals, availability, and AI visibility. Produces a scored report with prioritised recommendations. Typical turnaround within 5 working days.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "AI Visibility Audit",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "AO Audit",
+        "description": "Full AI visibility audit with scored report and action plan",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#ao-implementation",
+      "name": "AO Implementation",
+      "description": "Adding an invisible structured data layer to your website that AI agents can read — including schema.org markup, computable pricing logic, and service parameters. No visible changes to your website.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "Structured Data Implementation",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "AO Implementation",
+        "description": "Structured data implementation for AI agent visibility, from £500 per project",
+        "price": "500",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#ao-monitoring",
+      "name": "AO Monitoring",
+      "description": "Monthly AI visibility monitoring, regression detection, and structured data maintenance as agent technology evolves.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "AI Visibility Monitoring",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "AO Monitoring",
+        "description": "Monthly monitoring subscription for AI visibility",
+        "availability": "https://schema.org/PreOrder"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#ao-workshops",
+      "name": "AO Workshops",
+      "description": "Is Your Business Invisible to AI? — a 90–120 minute hands-on workshop for business owners and teams of up to 30 people with live audit demonstration. Priced per session.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "Business Workshop",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "AO Workshop Session",
+        "description": "90–120 minute workshop with live audit demonstration, priced per session",
+        "availability": "https://schema.org/PreOrder"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#dashboards",
+      "name": "Custom Dashboards",
+      "description": "Single-login dashboards that consolidate data from multiple business tools into one view — bookings, revenue, performance metrics — without juggling separate logins and spreadsheets.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "Dashboard Development",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "Custom Dashboard",
+        "description": "Bespoke dashboard consolidating your business data into a single view",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#automation",
+      "name": "Business Automation",
+      "description": "Automation of repetitive business tasks including client onboarding, invoice reminders, booking confirmations, and data entry workflows.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "Business Process Automation",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "Business Automation",
+        "description": "Custom automation workflows for repetitive business tasks",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tailored-tools.com/#integrations",
+      "name": "Software Integrations",
+      "description": "Connecting existing business tools — Square, Google Sheets, Outlook, Stripe, websites — so they share data automatically without manual copy-pasting.",
+      "provider": {"@id": "https://tailored-tools.com/#organization"},
+      "serviceType": "Systems Integration",
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "offers": {
+        "@type": "Offer",
+        "name": "Software Integration",
+        "description": "Connect your business tools so they share data automatically",
+        "availability": "https://schema.org/InStock"
       }
     },
     {

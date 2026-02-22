@@ -177,6 +177,19 @@
         }
         .ao-card h3 { font-size: 16px; margin-bottom: 8px; }
         .ao-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+        .ao-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 16px;
+            transition: opacity 0.2s;
+        }
+        .ao-cta:hover { opacity: 0.9; }
         .ao-card .tag {
             display: inline-block;
             font-size: 11px;
@@ -326,9 +339,9 @@
 <!-- Hero -->
 <section class="hero">
     <div class="container">
-        <h1>AI visibility. Dashboards.<br><span>Automation.</span></h1>
-        <p class="subtitle">Making the techy stuff simple for small businesses.</p>
-        <a href="#ao" class="hero-cta">Find out about AO</a>
+        <h1>When someone asks AI to find a plumber, therapist, or interpreter —<br><span>does your name come up?</span></h1>
+        <p class="subtitle">Most small service businesses are completely invisible to AI agents. I help you fix that — without rebuilding your website or learning anything technical.</p>
+        <a href="#ao" class="hero-cta">Find out your AO score &rarr;</a>
     </div>
 </section>
 
@@ -337,22 +350,24 @@
     <div class="container">
         <div class="ao-badge">AO — AGENT OPTIMISATION</div>
         <h2>Is your business invisible to AI?</h2>
-        <p class="section-subtitle">AI agents are replacing search engines. When someone asks ChatGPT or Google's AI for a recommendation, can they find you? AO makes sure they can.</p>
+        <p class="section-subtitle">Think about the last time you asked ChatGPT for a recommendation. It gave you names — but not every business in that category. The ones it recommended had something in common: they were readable by machines. Most small service businesses aren't. That's what AO fixes.</p>
 
         <div class="ao-grid">
             <div class="ao-card">
                 <h3>AO Audit</h3>
-                <p>We scan your website and online presence across six dimensions:</p>
+                <p>We assess your business across six dimensions and give you a score out of 100:</p>
                 <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
                     <li>- Structured data and schema markup</li>
                     <li>- Service descriptions and parameters</li>
-                    <li>- Pricing transparency and computability</li>
+                    <li>- Pricing signals and computability</li>
                     <li>- Trust signals and credentials</li>
                     <li>- Availability and booking readiness</li>
                     <li>- AI agent visibility and mentions</li>
                 </ul>
-                <p style="font-size: 14px; color: var(--text-light);">You get a scored report with specific, prioritised recommendations. Typical turnaround: within 5 working days.</p>
-                <div class="tag">Available now</div>
+                <p style="font-size: 14px; color: var(--text-light);">You get a scored PDF report with specific, prioritised recommendations — and a 20-minute call to walk through it together. Delivered within 5 working days.</p>
+                <div class="tag">&pound;247</div>
+                <br>
+                <a href="STRIPE_PLACEHOLDER" class="ao-cta">Get your AO Audit &rarr;</a>
             </div>
             <div class="ao-card">
                 <h3>AO Implementation</h3>
@@ -399,21 +414,20 @@
 <!-- About -->
 <section class="about-section" id="about">
     <div class="container">
-        <h2>About Tailored Tools</h2>
+        <h2>I'm James. This is why I do this.</h2>
         <div class="about-content">
             <div>
-                <p>Tailored Tools is a Kent-based specialist consultancy that helps small service businesses get the most out of technology — without the jargon, the overwhelm, or the eye-watering agency fees.</p>
-                <p>We work with sole traders, small teams, and service businesses who know they should be doing more with tech but don't have the time or inclination to figure it out themselves. That's where we come in.</p>
-                <p>Our background is in accessibility technology and service businesses, which means we understand both the tech side and the reality of running a small operation. We build practical solutions that actually get used, not shiny things that gather dust.</p>
+                <p>I'm based in Maidstone, Kent. I've spent years building technology for service businesses — first in accessibility, now in AI visibility.</p>
+                <p>I started doing this because I run my own service businesses and kept seeing the same problem: good people doing excellent work, completely invisible to the tools more and more people use to find them. A therapist with 10 years of experience. A plumber who turns up on time and charges fairly. An interpreter who's brilliant at what they do. None of them showing up when it matters.</p>
+                <p>It seemed fixable. It is fixable. That's what Tailored Tools does.</p>
+                <p>I work directly with each client. No account managers, no outsourcing. If you email me, I reply.</p>
             </div>
             <div class="about-facts">
                 <ul>
-                    <li><strong>Based in</strong> Kent, UK</li>
-                    <li><strong>Focus</strong> Small service businesses</li>
-                    <li><strong>Background</strong> Accessibility tech</li>
-                    <li><strong>Approach</strong> Practical, no jargon</li>
-                    <li><strong>Speciality</strong> Agent Optimisation</li>
-                    <li><strong>Hours</strong> Monday–Friday, 9am–5pm</li>
+                    <li><strong>Based in</strong> Maidstone, Kent</li>
+                    <li><strong>I work with</strong> Sole traders and small service businesses</li>
+                    <li><strong>I don't do</strong> Jargon, bloated proposals, or shiny things that gather dust</li>
+                    <li><strong>Reach me</strong> Monday–Friday, hello@tailored-tools.com</li>
                 </ul>
             </div>
         </div>
@@ -424,7 +438,7 @@
 <section class="contact-section" id="contact">
     <div class="container">
         <h2>Get in touch</h2>
-        <p class="section-subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">Whether you want an AO audit, need help with a dashboard, or want to explore pricing options — drop us a line or get a quote.</p>
+        <p class="section-subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">I'm easy to reach. Drop me an email and I'll get back to you the same day — usually faster. No forms, no chatbots, no waiting a week for a call.</p>
 
         <div class="contact-methods">
             <div class="contact-method">
@@ -516,7 +530,9 @@
       "offers": {
         "@type": "Offer",
         "name": "AO Audit",
-        "description": "Full AI visibility audit with scored report and action plan",
+        "description": "Full AI visibility audit with scored PDF report, prioritised recommendations, and 20-minute debrief call. Delivered within 5 working days.",
+        "price": "247",
+        "priceCurrency": "GBP",
         "availability": "https://schema.org/InStock"
       }
     },

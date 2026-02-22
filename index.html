@@ -150,6 +150,80 @@
         }
         .hero-cta:hover { opacity: 0.9; }
 
+        /* Shift Section */
+        .shift-section { background: var(--white); }
+        .shift-section h2 { margin-bottom: 12px; }
+        .shift-intro {
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 640px;
+            margin-bottom: 48px;
+            line-height: 1.8;
+        }
+        .shift-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e0e4e8;
+            margin-bottom: 40px;
+        }
+        .shift-col {
+            padding: 36px 32px;
+        }
+        .shift-col.then { background: #f4f5f7; }
+        .shift-col.now { background: var(--dark); color: var(--white); }
+        .shift-col .shift-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--text-light);
+        }
+        .shift-col.now .shift-label { color: rgba(255,255,255,0.5); }
+        .shift-col h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .shift-col.now h3 { color: var(--white); }
+        .shift-steps { list-style: none; padding: 0; margin: 0; }
+        .shift-steps li {
+            font-size: 14px;
+            color: var(--text-light);
+            padding: 6px 0 6px 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .shift-col.now .shift-steps li { color: rgba(255,255,255,0.7); }
+        .shift-steps li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c0c8d0;
+        }
+        .shift-col.now .shift-steps li::before { background: var(--accent); }
+        .shift-punchline {
+            background: rgba(255,111,32,0.06);
+            border-left: 3px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            font-size: 16px;
+            color: var(--primary);
+            font-weight: 500;
+            max-width: 640px;
+            line-height: 1.7;
+        }
+        @media (max-width: 640px) {
+            .shift-comparison { grid-template-columns: 1fr; }
+        }
+
         /* AO Section */
         .ao-section { background: var(--light); }
         .ao-badge {
@@ -342,6 +416,41 @@
         <h1>When someone asks AI to find a local service business,<br><span>does yours come up?</span></h1>
         <p class="subtitle">Most small service businesses are completely invisible to AI agents. I help you fix that. No rebuilding your website, no learning anything technical.</p>
         <a href="#ao" class="hero-cta">Find out your AO score &rarr;</a>
+    </div>
+</section>
+
+<!-- The Shift -->
+<section class="shift-section">
+    <div class="container">
+        <h2>The way people find businesses has changed</h2>
+        <p class="shift-intro">Not long ago, finding a local service meant a Google search, opening a few websites, comparing, maybe calling two or three people. You did the legwork. Increasingly, that's not how it works.</p>
+
+        <div class="shift-comparison">
+            <div class="shift-col then">
+                <div class="shift-label">Before</div>
+                <h3>The human does the searching</h3>
+                <ul class="shift-steps">
+                    <li>Types "electrician near me" into Google</li>
+                    <li>Clicks through four or five websites</li>
+                    <li>Reads each one, checks reviews, compares prices</li>
+                    <li>Calls a couple to check availability</li>
+                    <li>Picks one and books</li>
+                </ul>
+            </div>
+            <div class="shift-col now">
+                <div class="shift-label">Now</div>
+                <h3>The AI does the searching</h3>
+                <ul class="shift-steps">
+                    <li>Person asks their AI assistant: "find me a reliable electrician available this week, who charges a fair call-out fee"</li>
+                    <li>AI scans for businesses that match those criteria</li>
+                    <li>Filters by location, availability, pricing signals, reviews</li>
+                    <li>Presents 2 or 3 options to the person</li>
+                    <li>Person picks one, often without visiting a website at all</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="shift-punchline">If the AI can't read the information about your business, it won't recommend you. Not because you're a bad choice. Because as far as it's concerned, you're not a choice at all.</p>
     </div>
 </section>
 

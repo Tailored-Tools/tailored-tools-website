@@ -417,32 +417,14 @@
         .quiz-btn.no:hover, .quiz-btn.no.selected { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
         .quiz-result { display: none; }
         .quiz-result.visible { display: block; }
-        .quiz-score-row {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        .quiz-score-circle {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            border: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--white);
-            flex-shrink: 0;
-        }
-        .quiz-score-label {
+        .quiz-verdict-heading {
             font-size: 20px;
             font-weight: 700;
             color: var(--white);
+            margin-bottom: 12px;
             line-height: 1.4;
         }
-        .quiz-score-label span { color: var(--accent); }
+        .quiz-verdict-heading span { color: var(--accent); }
         .quiz-verdict {
             font-size: 15px;
             color: rgba(255,255,255,0.7);
@@ -691,11 +673,8 @@
             </div>
 
             <div class="quiz-result" id="quizResult">
-                <div class="quiz-score-row">
-                    <div class="quiz-score-circle" id="quizScoreCircle"></div>
-                    <div class="quiz-score-label" id="quizScoreLabel"></div>
-                </div>
-                <p class="quiz-verdict" id="quizVerdict"></p>
+                <div class="quiz-verdict-heading">Based on your answers, <span>AO is relevant for your business.</span></div>
+                <p class="quiz-verdict">Here's why, specifically:</p>
                 <ul class="quiz-gaps" id="quizGaps"></ul>
                 <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="quiz-cta">Get your AO Audit &rarr;</a>
                 <button class="quiz-restart" onclick="quizRestart()">Start again</button>
@@ -1064,35 +1043,39 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
 <script>
 const quizData = [
     {
-        q: "Does your website show a price for your services?",
-        ctx: "Even a rough starting price counts. 'From £X' is enough.",
-        gap: "No pricing visible — AI can't include you in budget-filtered searches"
+        q: "Do new clients currently find your business through Google or online searches?",
+        ctx: "Even occasionally counts.",
+        yes: "Online search is already a channel for you. AI is changing how that works, and without AO, your visibility there will quietly shrink.",
+        no: "Online search is the fastest-growing way people find local services. AI is leading that shift, and AO is how you show up in it."
     },
     {
-        q: "Is your Google Business Profile fully filled in?",
-        ctx: "Services, description, opening hours, Q&A — all of it, not just the basics.",
-        gap: "Incomplete Google Business Profile — one of the first places AI looks"
+        q: "Is your pricing listed anywhere on your website?",
+        ctx: "Even a starting price or rough range.",
+        yes: "Good. But pricing on a website and pricing that AI can actually read and filter by are two different things. The audit checks whether yours is set up correctly.",
+        no: "AI filters recommendations by budget. Without a visible price, it skips your business entirely, even if you're the best option. This is one of the simplest gaps to fix."
     },
     {
-        q: "Have you ever searched for your own business on ChatGPT or another AI and seen it come up?",
-        ctx: "Try it now if you're not sure. Search for your service type and location.",
-        gap: "Not appearing in AI search results for your service type"
+        q: "Do you have active competitors who show up when you Google your service type?",
+        ctx: "Type your service and location into Google now if you're unsure.",
+        yes: "When AI recommends your service type locally, it'll pick from the businesses it can read. Right now, those competitors are more likely to be in that list than you are.",
+        no: "Being first in a space where competitors aren't yet AI-visible is a real advantage. AO helps you lock that in before they catch up."
     },
     {
-        q: "Do you have reviews on at least two different platforms?",
-        ctx: "Google, Trustpilot, Facebook, Yell — any combination counts.",
-        gap: "Thin review presence across platforms — AI uses this to assess credibility"
+        q: "Do most of your new clients come from word of mouth or repeat business rather than online?",
+        ctx: "Be honest, there's no wrong answer here.",
+        yes: "Referrals are great but unpredictable. AI visibility gives you a channel that works independently of who your clients happen to mention you to.",
+        no: "You're already dependent on online channels working well. AO makes sure AI, the fastest-growing part of online search, is one of them."
     },
     {
-        q: "Does your website clearly describe what you do, where you work, and who you work with?",
-        ctx: "Not just a tagline. Specific enough that a stranger would know exactly what you offer.",
-        gap: "Service descriptions too vague for AI to match you to a specific search"
+        q: "Would getting found by 2 or 3 more new clients per month from online make a real difference to your business?",
+        ctx: "Think about what that's worth annually.",
+        yes: "That's exactly the gap AO is designed to close. The audit tells you precisely what's stopping it from happening right now.",
+        no: "If online growth isn't the priority, the audit will still tell you where you stand, so you can make that call with the full picture."
     }
 ];
 
 let current = 0;
-let yesCount = 0;
-const gaps = [];
+const insights = [];
 
 function quizRender() {
     const d = quizData[current];
@@ -1107,7 +1090,7 @@ function quizRender() {
 function quizAnswer(yes) {
     const btn = document.querySelector('.quiz-btn.' + (yes ? 'yes' : 'no'));
     btn.classList.add('selected');
-    if (yes) { yesCount++; } else { gaps.push(quizData[current].gap); }
+    insights.push(yes ? quizData[current].yes : quizData[current].no);
     document.getElementById('pip' + current).classList.add('done');
     current++;
     setTimeout(() => {
@@ -1118,39 +1101,18 @@ function quizAnswer(yes) {
 
 function quizShow() {
     document.getElementById('quizQuestions').style.display = 'none';
-    const result = document.getElementById('quizResult');
-    result.classList.add('visible');
-
-    document.getElementById('quizScoreCircle').textContent = yesCount + '/5';
-
-    let label, verdict;
-    if (yesCount === 5) {
-        label = 'Strong foundation. <span>Gaps likely still exist.</span>';
-        verdict = 'You\'ve done the basics well. But most businesses with a clean surface score still have invisible gaps in their structured data that AI can\'t work with. An audit will show exactly what\'s missing.';
-    } else if (yesCount >= 3) {
-        label = 'Partial visibility. <span>AI is missing key information.</span>';
-        verdict = 'You\'re ahead of most, but there are real gaps that will cost you recommendations. The good news: they\'re fixable without touching your website design.';
-    } else {
-        label = 'Largely invisible. <span>AI can\'t recommend you.</span>';
-        verdict = 'Right now, when someone asks an AI to find a service like yours, your business almost certainly won\'t come up. That\'s not a reflection of the quality of your work, just the information available to AI. It\'s fixable.';
-    }
-
-    document.getElementById('quizScoreLabel').innerHTML = label;
-    document.getElementById('quizVerdict').textContent = verdict;
-
-    const gapsList = document.getElementById('quizGaps');
-    gapsList.innerHTML = '';
-    if (gaps.length > 0) {
-        gaps.forEach(g => {
-            const li = document.createElement('li');
-            li.textContent = g;
-            gapsList.appendChild(li);
-        });
-    }
+    document.getElementById('quizResult').classList.add('visible');
+    const list = document.getElementById('quizGaps');
+    list.innerHTML = '';
+    insights.forEach(ins => {
+        const li = document.createElement('li');
+        li.textContent = ins;
+        list.appendChild(li);
+    });
 }
 
 function quizRestart() {
-    current = 0; yesCount = 0; gaps.length = 0;
+    current = 0; insights.length = 0;
     document.getElementById('quizQuestions').style.display = 'block';
     document.getElementById('quizResult').classList.remove('visible');
     quizRender();

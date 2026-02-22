@@ -539,6 +539,82 @@
             .partners-grid { grid-template-columns: 1fr; }
         }
 
+        /* Founding Clients */
+        .founding-section {
+            background: var(--white);
+            border-top: 3px solid var(--accent);
+        }
+        .founding-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .founding-section h2 { font-size: 2rem; }
+        .founding-section .section-subtitle { max-width: 620px; }
+        .founding-what {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
+        }
+        .founding-item {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .founding-item h3 { font-size: 15px; margin-bottom: 8px; }
+        .founding-item p { font-size: 14px; color: var(--mid); line-height: 1.7; margin: 0; }
+        .founding-honest {
+            background: #fff8f3;
+            border: 1px solid rgba(255,111,32,0.2);
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin: 0 0 32px;
+        }
+        .founding-honest p {
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.8;
+            margin: 0;
+        }
+        .founding-honest strong { color: var(--dark); }
+        .founding-cta-block {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .founding-price {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1;
+        }
+        .founding-price span {
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--mid);
+            margin-top: 4px;
+        }
+        .founding-spots {
+            font-size: 14px;
+            color: var(--mid);
+            border-left: 2px solid var(--accent);
+            padding-left: 16px;
+        }
+        .founding-spots strong { color: var(--dark); display: block; font-size: 16px; }
+        @media (max-width: 640px) {
+            .founding-what { grid-template-columns: 1fr; }
+            .founding-cta-block { flex-direction: column; align-items: flex-start; }
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -549,7 +625,7 @@
         .footer-logo-wrap {
             width: 210px;
             height: 72px;
-            background: url('tt-logo-light.svg') 58% 50% / 270px auto no-repeat;
+            background: url('tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
             margin: 0 auto 16px;
         }
         footer p { font-size: 13px; }
@@ -735,6 +811,46 @@
                 <br>
                 <a href="mailto:hello@tailored-tools.com?subject=AO%20Workshop%20Enquiry" class="ao-cta">Enquire about a workshop &rarr;</a>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Founding Clients -->
+<section class="founding-section" id="founding-clients">
+    <div class="container">
+        <div class="founding-badge">FOUNDING CLIENTS</div>
+        <h2>10 spots. £97.</h2>
+        <p class="section-subtitle">I'm opening a small number of founding client spots at a significantly reduced rate. You get the full audit, the full report, and a proper debrief. I get a real case study I can point to. Everyone wins.</p>
+
+        <div class="founding-what">
+            <div class="founding-item">
+                <h3>Full AO Audit</h3>
+                <p>Six-dimension analysis covering AI visibility, pricing transparency, reviews, service clarity, local presence, and trust signals. Every gap identified and scored.</p>
+            </div>
+            <div class="founding-item">
+                <h3>Written report</h3>
+                <p>A clear, plain-English report with your scores, a prioritised action list, and specific recommendations. Nothing vague, nothing generic.</p>
+            </div>
+            <div class="founding-item">
+                <h3>20-minute debrief</h3>
+                <p>A call to walk through the findings, answer your questions, and agree what to tackle first. You leave knowing exactly what to do next.</p>
+            </div>
+        </div>
+
+        <div class="founding-honest">
+            <p><strong>Honest framing:</strong> The standard audit will be priced higher when it launches publicly. Founding client rate is £97 because I'm building real case studies, not because it's a lesser service. The audit and report are identical. The only difference is the price and the expectation that I can reference your business anonymously in future marketing. You can say no to that and I'll still honour the rate.</p>
+        </div>
+
+        <div class="founding-cta-block">
+            <div class="founding-price">
+                £97
+                <span>one-off, no ongoing commitment</span>
+            </div>
+            <div class="founding-spots">
+                <strong>10 spots available</strong>
+                Email with subject line "Founding Client" and I'll reply the same day.
+            </div>
+            <a href="mailto:hello@tailored-tools.com?subject=Founding%20Client" class="cta-primary">Claim your spot &rarr;</a>
         </div>
     </div>
 </section>

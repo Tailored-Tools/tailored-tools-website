@@ -346,6 +346,69 @@
         }
         .contact-method a:hover { color: var(--accent); }
 
+        /* Partners Section */
+        .partners-section {
+            background: var(--dark);
+            color: var(--white);
+        }
+        .partners-section h2 { color: var(--white); }
+        .partners-section .section-subtitle { color: rgba(255,255,255,0.6); }
+        .partners-badge {
+            display: inline-block;
+            background: rgba(255,111,32,0.2);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .partners-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 28px;
+        }
+        .partners-card h3 { color: var(--white); font-size: 16px; margin-bottom: 10px; }
+        .partners-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+        .partners-card .partners-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 16px;
+            transition: opacity 0.2s;
+        }
+        .partners-card .partners-cta:hover { opacity: 0.9; }
+        .partners-tech-note {
+            margin-top: 40px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 24px 28px;
+        }
+        .partners-tech-note p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.8;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .partners-tech-note span { color: rgba(255,111,32,0.8); }
+        @media (max-width: 640px) {
+            .partners-grid { grid-template-columns: 1fr; }
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -401,6 +464,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#ao">AO</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#partners">Partners</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -521,6 +585,32 @@
                 <h3>Integrations</h3>
                 <p>Connect the tools you already use. Square, Google Sheets, Outlook, Stripe, your website. We make them talk to each other so you don't have to copy-paste between them.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partners -->
+<section class="partners-section" id="partners">
+    <div class="container">
+        <div class="partners-badge">FOR IT CONSULTANTS / MSPS</div>
+        <h2>You probably already have the clients.</h2>
+        <p class="section-subtitle">If a client forwarded you one of our posts, you're already in the right place. AO is a defined, implementable service — and there are two ways to work with us.</p>
+
+        <div class="partners-grid">
+            <div class="partners-card">
+                <h3>Refer and earn</h3>
+                <p>Send clients our way for an AO Audit or Implementation. We do the work, you get a referral fee on every introduction that converts. No admin, no delivery, no learning curve. Just a conversation you were probably going to have anyway.</p>
+                <a href="mailto:hello@tailored-tools.com?subject=Partner%20Enquiry%20%E2%80%94%20Referrals" class="partners-cta">Talk to us about referrals &rarr;</a>
+            </div>
+            <div class="partners-card">
+                <h3>Add it to your offering</h3>
+                <p>We train you on the methodology and provide white-label audit reports you can deliver under your own brand. Your clients, your relationships, your invoice. AO becomes a new line item you own — without building the tooling yourself.</p>
+                <a href="mailto:hello@tailored-tools.com?subject=Partner%20Enquiry%20%E2%80%94%20White%20Label" class="partners-cta">Talk to us about white-labelling &rarr;</a>
+            </div>
+        </div>
+
+        <div class="partners-tech-note">
+            <p>Under the hood: AO implementation is <span>schema.org JSON-LD</span> — structured data added to a business's website that makes their services, pricing, availability, and trust signals readable by AI agents. Typical implementation scope is 2–4 hours per site depending on complexity. Audit report is generated programmatically from a six-dimension scoring model. Happy to share the technical spec.</p>
         </div>
     </div>
 </section>

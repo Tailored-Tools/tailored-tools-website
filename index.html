@@ -283,10 +283,11 @@
             border-radius: 14px;
             background: #333;
             flex-shrink: 0;
+            overflow: hidden;
             box-shadow: 0 6px 20px rgba(0,0,0,0.45);
         }
-        .cycle-badge img { display: block; pointer-events: none; user-select: none; }
-        .cycle-name { color: #fff; }
+        .cycle-badge img { display: block; pointer-events: none; user-select: none; flex-shrink: 0; }
+        .cycle-name { color: #fff; font-style: italic; font-weight: 700; }
         .hero-recommends { color: var(--accent); display: block; }
         .hero .subtitle {
             font-size: 18px;
@@ -1960,14 +1961,14 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
 (function() {
     const CDN = 'https://cdn.simpleicons.org/';
     const platforms = [
-        { name: 'ChatGPT',    bg: '#10a37f', slug: 'openai',            color: 'white' },
-        { name: 'Perplexity', bg: '#191919', slug: 'perplexity',        color: 'white' },
-        { name: 'Gemini',     bg: '#1a1a2a', slug: 'googlegemini',      color: 'white' },
-        { name: 'Google',     bg: '#fff',    src: 'https://www.google.com/s2/favicons?domain=google.com&sz=64' },
-        { name: 'Claude',     bg: '#D97757', slug: 'claude',            color: 'white' },
-        { name: 'Grok',       bg: '#000000', slug: 'xai',               color: 'white' },
-        { name: 'Meta AI',    bg: '#0866FF', slug: 'meta',              color: 'white' },
-        { name: 'Copilot',    bg: '#0078d4', slug: 'microsoftcopilot',  color: 'white' },
+        { name: 'ChatGPT',    bg: '#10a37f', slug: 'openai',           color: 'white',  size: 30 },
+        { name: 'Perplexity', bg: '#191919', slug: 'perplexity',       color: 'white',  size: 30 },
+        { name: 'Gemini',     bg: '#1A73E8', slug: 'googlegemini',     color: 'white',  size: 30 },
+        { name: 'Google',     bg: '#fff',    src: 'https://www.google.com/s2/favicons?domain=google.com&sz=64', size: 44 },
+        { name: 'Claude',     bg: '#D97757', slug: 'claude',           color: 'white',  size: 30 },
+        { name: 'Grok',       bg: '#111',    slug: 'grok',             color: 'white',  size: 30 },
+        { name: 'Meta AI',    bg: '#0866FF', slug: 'meta',             color: 'white',  size: 30 },
+        { name: 'Copilot',    bg: '#0078d4', slug: 'copilot',          color: 'white',  size: 30 },
     ];
 
     let i = 0;
@@ -1982,7 +1983,8 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
         badge.style.background = p.bg;
         badge.style.transform = `rotate(${rot}deg)`;
         const imgSrc = p.src || `${CDN}${p.slug}/${p.color}`;
-        badge.innerHTML = `<img src="${imgSrc}" width="30" height="30" alt="${p.name}" draggable="false" onerror="this.style.opacity=0">`;
+        const s = p.size || 30;
+        badge.innerHTML = `<img src="${imgSrc}" width="${s}" height="${s}" alt="" draggable="false" style="display:block;width:${s}px;height:${s}px;flex-shrink:0" onerror="this.style.opacity=0">`;
         nameEl.textContent = p.name;
     }
 

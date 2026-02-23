@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles on AI visibility for small businesses | Tailored Tools</title>
+    <meta name="description" content="Plain-English articles on AI visibility, Agent Optimisation, and getting your small business found by ChatGPT, Perplexity, and Google AI.">
+    <meta property="og:title" content="Articles | Tailored Tools">
+    <meta property="og:description" content="Plain-English articles on AI visibility and Agent Optimisation for small businesses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/blog/">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --mid: #5a6a7a;
+            --max-width: 960px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.7; background: var(--white); }
+
+        nav {
+            background: var(--dark);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo img { height: 32px; width: auto; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
+
+        .blog-header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 64px 24px 48px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .blog-header-inner { max-width: var(--max-width); margin: 0 auto; }
+        .blog-header h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+        .blog-header p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 520px; }
+
+        .blog-list { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px; }
+
+        .article-card {
+            display: block;
+            text-decoration: none;
+            border-bottom: 1px solid #e8ecf0;
+            padding: 32px 0;
+            transition: none;
+        }
+        .article-card:first-child { padding-top: 0; }
+        .article-card:last-child { border-bottom: none; }
+        .article-card:hover .article-card-title { color: var(--accent); }
+        .article-card-meta { font-size: 12px; color: var(--mid); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+        .article-card-title { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; transition: color 0.2s; }
+        .article-card-excerpt { font-size: 15px; color: var(--mid); line-height: 1.7; max-width: 640px; }
+        .article-card-read { font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 12px; }
+
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
+        .footer-logo-wrap { width: 210px; height: 72px; background: url('../tt-logo-light.svg') 62% 50% / 255px auto no-repeat; margin: 0 auto 16px; }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 480px) {
+            .blog-header { padding: 48px 20px 32px; }
+            .blog-header h1 { font-size: 26px; }
+            .blog-list { padding: 32px 20px; }
+            .article-card-title { font-size: 18px; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 16px 24px;
+                gap: 16px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 99;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo"><img src="../tt-logo-dark.svg" alt="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../#ao">AO</a></li>
+            <li><a href="../#founding-clients">Services</a></li>
+            <li><a href="../#it-consultants">IT Consultants</a></li>
+            <li><a href="/blog/" class="active">Blog</a></li>
+            <li><a href="../#about">About</a></li>
+            <li><a href="../#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="blog-header">
+    <div class="blog-header-inner">
+        <h1>Articles</h1>
+        <p>Plain-English writing on AI visibility, Agent Optimisation, and what the shift to AI search means for small businesses.</p>
+    </div>
+</div>
+
+<div class="blog-list">
+
+    <a href="/blog/why-isnt-my-business-on-chatgpt.html" class="article-card">
+        <div class="article-card-meta">February 2026 &middot; 4 min read</div>
+        <div class="article-card-title">Why isn't my business showing up on ChatGPT?</div>
+        <div class="article-card-excerpt">You search for your own business, or for your service in your town, and nothing comes back. Here are the three most common reasons — and what you can do about each one.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/blog/how-to-get-recommended-by-ai.html" class="article-card">
+        <div class="article-card-meta">February 2026 &middot; 5 min read</div>
+        <div class="article-card-title">How to get your business recommended by AI assistants</div>
+        <div class="article-card-excerpt">People are asking ChatGPT and Perplexity to find services near them. Here is what determines whether your business makes the shortlist or gets skipped entirely.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/blog/what-is-agent-optimisation.html" class="article-card">
+        <div class="article-card-meta">February 2026 &middot; 4 min read</div>
+        <div class="article-card-title">What is Agent Optimisation?</div>
+        <div class="article-card-excerpt">SEO helped you appear in Google results. Agent Optimisation helps you appear in AI recommendations. Here is what it actually involves and why the distinction matters.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/blog/google-business-profile-ai-search.html" class="article-card">
+        <div class="article-card-meta">February 2026 &middot; 3 min read</div>
+        <div class="article-card-title">Does your Google Business Profile affect ChatGPT results?</div>
+        <div class="article-card-excerpt">Yes, more than most people realise. Here is exactly how your Google Business Profile influences what AI assistants recommend for local service searches.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/blog/schema-markup-for-small-business.html" class="article-card">
+        <div class="article-card-meta">February 2026 &middot; 4 min read</div>
+        <div class="article-card-title">What is schema markup, and why does AI care about it?</div>
+        <div class="article-card-excerpt">Schema markup is invisible code that labels the information on your website so AI can read it directly. Here is what it is, how it works, and why it has become important in 2026.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/blog/why-ai-customers-convert-better.html" class="article-card">
+        <div class="article-card-meta">February 2026 &middot; 3 min read</div>
+        <div class="article-card-title">Why customers who find you through AI are different</div>
+        <div class="article-card-excerpt">AI-referred customers convert at 15.9% versus 1.76% for Google organic. Here is why the numbers are so different, and what it means for how you think about AI visibility.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+    }
+</script>
+
+</body>
+</html>

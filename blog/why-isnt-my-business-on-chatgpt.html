@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why isn't my business showing up on ChatGPT? | Tailored Tools</title>
+    <meta name="description" content="If you've searched for your own business on ChatGPT and found nothing, here's why, and what you can do about it.">
+    <meta property="og:title" content="Why isn't my business showing up on ChatGPT? | Tailored Tools">
+    <meta property="og:description" content="If you've searched for your own business on ChatGPT and found nothing, here's why, and what you can do about it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/blog/why-isnt-my-business-on-chatgpt.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 960px;
+            --mid: #5a6a7a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--dark);
+            border-bottom: 2px solid var(--accent);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .nav-logo img { display: block; }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ARTICLE HEADER */
+        .article-header {
+            padding: 60px 24px 40px;
+            background: #f4f5f7;
+            border-bottom: 3px solid #ff6f20;
+        }
+        .article-header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .article-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+            margin-top: 8px;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #5a6a7a;
+            margin-top: 12px;
+        }
+
+        /* BACK LINK */
+        .back-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #5a6a7a;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+        .back-link:hover { color: #ff6f20; }
+
+        /* ARTICLE BODY */
+        .article-body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #203a4c;
+            margin: 40px 0 16px;
+        }
+        .article-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 20px;
+        }
+        .article-body ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .article-body li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 8px;
+        }
+
+        /* CTA */
+        .article-cta {
+            background: #f4f5f7;
+            border-left: 4px solid #ff6f20;
+            padding: 28px 32px;
+            margin: 48px 0 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .article-cta h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .article-cta p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #5a6a7a;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #ff6f20;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: #e55e10; }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 48px 24px 36px;
+            font-size: 13px;
+            margin-top: 80px;
+        }
+        .footer-logo-wrap {
+            background: url('../tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            width: 210px;
+            height: 72px;
+            margin: 0 auto 16px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Why isn't my business showing up on ChatGPT?",
+      "description": "If you've searched for your own business on ChatGPT and found nothing, here's why, and what you can do about it.",
+      "author": {
+        "@type": "Person",
+        "name": "James Edwards",
+        "url": "https://tailored-tools.com/#about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "logo": "https://tailored-tools.com/tt-logo-dark.svg"
+      },
+      "datePublished": "2026-02-01",
+      "url": "https://tailored-tools.com/blog/why-isnt-my-business-on-chatgpt.html",
+      "mainEntityOfPage": "https://tailored-tools.com/blog/why-isnt-my-business-on-chatgpt.html"
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo"><img src="../tt-logo-dark.svg" alt="Tailored Tools" height="32"></a>
+        <ul class="nav-links">
+            <li><a href="../#ao">AO</a></li>
+            <li><a href="../#founding-clients">Services</a></li>
+            <li><a href="../#it-consultants">IT Consultants</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="../#about">About</a></li>
+            <li><a href="../#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/blog/" class="back-link">&#8592; All articles</a>
+        <h1>Why isn't my business showing up on ChatGPT?</h1>
+        <div class="article-meta">February 2026 &middot; 4 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>Many business owners have tried this. You type your own business name into ChatGPT, or you search for "best [your service] in [your town]," and nothing comes back. Or worse: your competitor shows up and you don't. It's a frustrating experience, and the reason isn't always obvious.</p>
+
+    <h2>ChatGPT isn't a search engine</h2>
+    <p>ChatGPT doesn't crawl the web in real time the way Google does. It was trained on a large body of text, and it also pulls in live data through Bing when doing web searches. The result is that it tends to recommend businesses that are well-represented across multiple sources: Google Business Profile, directories, review sites, and websites with clear, structured information.</p>
+    <p>If you've focused all your effort on one channel and neglected others, or if your website is light on detail, you're likely to be invisible to AI even if you rank reasonably well on Google.</p>
+
+    <h2>The three most common reasons you're invisible</h2>
+    <ul>
+        <li>Your website doesn't tell AI what it needs to know. No pricing signal, no clear service area, no structured data that AI can read directly.</li>
+        <li>Your Google Business Profile is incomplete or inconsistent with what's on your website.</li>
+        <li>You don't have enough reviews, or the ones you have are too old.</li>
+    </ul>
+
+    <h2>The frustrating part</h2>
+    <p>It's not necessarily that you've done anything wrong. It's that the web wasn't built for AI to read easily. Most small business websites were built for humans, and AI needs something slightly different. A human can scan a page and understand "this is a therapist who charges around £70 a session and works in Bristol." AI needs that information to be either clearly stated or marked up in a format it can parse reliably.</p>
+    <p>The gap between a website that reads well to humans and one that reads well to AI is often small, but it matters.</p>
+
+    <h2>What actually helps</h2>
+    <ul>
+        <li>A complete Google Business Profile: hours, services, description, Q&amp;A section answered</li>
+        <li>Consistent name, address, and phone number across all listings and directories</li>
+        <li>At least a rough pricing signal somewhere on your site (even "from £X" is enough)</li>
+        <li>Structured data on your website (invisible to visitors, readable by AI)</li>
+        <li>Recent reviews on Google and other relevant platforms</li>
+    </ul>
+
+    <h2>This is fixable</h2>
+    <p>Unlike some SEO problems that take 12 months to show results, the structural fixes for AI visibility can be implemented in days. The harder part is knowing exactly what's missing. You can spend an afternoon ticking boxes and still miss the thing that's actually holding you back. That's what an audit tells you: not just what to do, but what matters most for your specific situation.</p>
+
+    <div class="article-cta">
+        <h3>Find out where AI stands on your business</h3>
+        <p>An AO Audit scores your AI visibility across six dimensions and tells you exactly what to fix first. Written report and a 20-minute debrief call included.</p>
+        <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="cta-btn">Get your AO Audit &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

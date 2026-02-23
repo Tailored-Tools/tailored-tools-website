@@ -62,7 +62,13 @@
             justify-content: space-between;
             align-items: center;
         }
-        .nav-logo img { height: 36px; width: auto; }
+        .nav-logo {
+            display: block;
+            width: 175px;
+            height: 48px;
+            background: url('tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
+            flex-shrink: 0;
+        }
         .nav-links { display: flex; gap: 24px; list-style: none; }
         .nav-links a {
             color: rgba(255,255,255,0.7);
@@ -1212,9 +1218,7 @@
 <!-- Nav -->
 <nav>
     <div class="nav-inner">
-        <div class="nav-logo">
-            <img src="favicon.svg" alt="Tailored Tools">
-        </div>
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#ao">AO</a></li>
             <li><a href="#founding-clients">Services</a></li>

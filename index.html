@@ -72,6 +72,166 @@
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--accent); }
+        .nav-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        .nav-cta:hover { opacity: 0.88; color: var(--white) !important; }
+
+        /* Marquee strip */
+        .marquee-strip {
+            background: #0a1520;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 14px 0;
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 0;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 36px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.35);
+            white-space: nowrap;
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+        .marquee-item .mi-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+            flex-shrink: 0;
+        }
+
+        /* ChatGPT demo mockup */
+        .chatgpt-demo {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .chat-window {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .chat-titlebar {
+            background: #2a2a2a;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .chat-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .chat-titlebar-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        .chat-status-badge {
+            margin-left: auto;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-before { background: rgba(255,80,80,0.15); color: #ff6060; }
+        .badge-after  { background: rgba(63,168,106,0.2); color: #3fa86a; }
+        .chat-body { padding: 16px; }
+        .chat-msg {
+            margin-bottom: 14px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .chat-msg.user {
+            background: #2a2a2a;
+            border-radius: 10px 10px 2px 10px;
+            padding: 10px 14px;
+            color: rgba(255,255,255,0.85);
+            margin-left: 24px;
+        }
+        .chat-msg.ai {
+            color: rgba(255,255,255,0.7);
+            padding: 2px 4px;
+        }
+        .chat-msg.ai strong { color: rgba(255,255,255,0.9); display: block; margin-bottom: 8px; }
+        .chat-result {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        .chat-result.found {
+            border-color: rgba(63,168,106,0.3);
+            background: rgba(63,168,106,0.06);
+        }
+        .chat-result-name {
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 4px;
+        }
+        .chat-result-name.found-name { color: #3fa86a; }
+        .chat-result-detail {
+            color: rgba(255,255,255,0.45);
+            line-height: 1.5;
+        }
+        .chat-result-detail .chip {
+            display: inline-block;
+            background: rgba(63,168,106,0.15);
+            color: #3fa86a;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .chat-not-found {
+            color: rgba(255,255,255,0.3);
+            font-style: italic;
+            font-size: 12px;
+            padding: 6px 0;
+        }
+        .chat-demo-label {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .chat-demo-label.before { color: rgba(255,80,80,0.7); }
+        .chat-demo-label.after  { color: #3fa86a; }
+        @media (max-width: 680px) {
+            .chatgpt-demo { grid-template-columns: 1fr; }
+        }
 
         /* Hamburger */
         .hamburger {
@@ -837,6 +997,7 @@
             .stat-item { padding: 0; }
         }
         @media (max-width: 768px) {
+            .nav-cta { display: none; }
             .hero { padding: 56px 20px 48px; }
             .hero h1 { font-size: 36px; letter-spacing: -0.5px; }
             .hero .subtitle { font-size: 16px; }
@@ -879,12 +1040,39 @@
             <li><a href="/blog/">Blog</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta">Get AO Audit &rarr;</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
     </div>
 </nav>
+
+<!-- Marquee Strip -->
+<div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+        <!-- set 1 -->
+        <span class="marquee-item"><span class="mi-dot"></span>ChatGPT</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Perplexity AI</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Google AI Overview</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Microsoft Copilot</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Claude</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Meta AI</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Gemini</span>
+        <span class="marquee-item"><span class="mi-dot"></span>You.com</span>
+        <span class="marquee-item"><span class="mi-dot"></span>SearchGPT</span>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <span class="marquee-item"><span class="mi-dot"></span>ChatGPT</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Perplexity AI</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Google AI Overview</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Microsoft Copilot</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Claude</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Meta AI</span>
+        <span class="marquee-item"><span class="mi-dot"></span>Gemini</span>
+        <span class="marquee-item"><span class="mi-dot"></span>You.com</span>
+        <span class="marquee-item"><span class="mi-dot"></span>SearchGPT</span>
+    </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -1082,6 +1270,71 @@
                 <a href="mailto:hello@tailored-tools.com?subject=AO%20Workshop%20Enquiry" class="ao-cta">Enquire about a workshop &rarr;</a>
             </div>
         </div>
+
+        <div class="chatgpt-demo">
+            <div>
+                <div class="chat-demo-label before">Without AO</div>
+                <div class="chat-window">
+                    <div class="chat-titlebar">
+                        <span class="chat-dot" style="background:#ff5f57"></span>
+                        <span class="chat-dot" style="background:#febc2e"></span>
+                        <span class="chat-dot" style="background:#28c840"></span>
+                        <span class="chat-titlebar-label">ChatGPT</span>
+                        <span class="chat-status-badge badge-before">Not found</span>
+                    </div>
+                    <div class="chat-body">
+                        <div class="chat-msg user">"Find me a reliable plumber in Maidstone who does emergency callouts and is upfront about pricing."</div>
+                        <div class="chat-msg ai">
+                            <strong>Here are a few options in Maidstone:</strong>
+                            <div class="chat-result">
+                                <div class="chat-result-name">FastFlow Plumbing</div>
+                                <div class="chat-result-detail">Emergency callouts, pricing from £65. 4.8★ on Google (142 reviews)</div>
+                            </div>
+                            <div class="chat-result">
+                                <div class="chat-result-name">Kent Plumbing Solutions</div>
+                                <div class="chat-result-detail">Available same day. Clear callout rates listed on site.</div>
+                            </div>
+                            <div class="chat-not-found">Your business doesn't appear — AI has no data to recommend it.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="chat-demo-label after">With AO</div>
+                <div class="chat-window">
+                    <div class="chat-titlebar">
+                        <span class="chat-dot" style="background:#ff5f57"></span>
+                        <span class="chat-dot" style="background:#febc2e"></span>
+                        <span class="chat-dot" style="background:#28c840"></span>
+                        <span class="chat-titlebar-label">ChatGPT</span>
+                        <span class="chat-status-badge badge-after">Recommended</span>
+                    </div>
+                    <div class="chat-body">
+                        <div class="chat-msg user">"Find me a reliable plumber in Maidstone who does emergency callouts and is upfront about pricing."</div>
+                        <div class="chat-msg ai">
+                            <strong>Here are a few options in Maidstone:</strong>
+                            <div class="chat-result">
+                                <div class="chat-result-name">FastFlow Plumbing</div>
+                                <div class="chat-result-detail">Emergency callouts, pricing from £65. 4.8★ on Google (142 reviews)</div>
+                            </div>
+                            <div class="chat-result found">
+                                <div class="chat-result-name found-name">Your Business Name ✓</div>
+                                <div class="chat-result-detail">
+                                    <span class="chip">Callouts from £55</span>
+                                    <span class="chip">Same day</span>
+                                    Emergency plumbing, Maidstone &amp; surrounding areas. 4.9★ (89 reviews). Fully qualified, Gas Safe registered.
+                                </div>
+                            </div>
+                            <div class="chat-result">
+                                <div class="chat-result-name">Kent Plumbing Solutions</div>
+                                <div class="chat-result-detail">Available same day. Clear callout rates listed on site.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center; font-size:13px; color:var(--text-light); margin-top:20px;">The difference between these two results is structured data — an invisible layer we add to your website.</p>
     </div>
 </section>
 

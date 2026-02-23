@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does your Google Business Profile affect ChatGPT results? | Tailored Tools</title>
+    <meta name="description" content="Yes, more than most people realise. Here's exactly how your Google Business Profile influences what ChatGPT and other AI assistants recommend.">
+    <meta property="og:title" content="Does your Google Business Profile affect ChatGPT results? | Tailored Tools">
+    <meta property="og:description" content="Yes, more than most people realise. Here's exactly how your Google Business Profile influences what ChatGPT and other AI assistants recommend.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/blog/google-business-profile-ai-search.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 960px;
+            --mid: #5a6a7a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--dark);
+            border-bottom: 2px solid var(--accent);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .nav-logo img { display: block; }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .article-header {
+            padding: 60px 24px 40px;
+            background: #f4f5f7;
+            border-bottom: 3px solid #ff6f20;
+        }
+        .article-header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .article-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+            margin-top: 8px;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #5a6a7a;
+            margin-top: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #5a6a7a;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+        .back-link:hover { color: #ff6f20; }
+
+        .article-body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #203a4c;
+            margin: 40px 0 16px;
+        }
+        .article-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 20px;
+        }
+        .article-body ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .article-body li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 8px;
+        }
+
+        .article-cta {
+            background: #f4f5f7;
+            border-left: 4px solid #ff6f20;
+            padding: 28px 32px;
+            margin: 48px 0 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .article-cta h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .article-cta p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #5a6a7a;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #ff6f20;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: #e55e10; }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 48px 24px 36px;
+            font-size: 13px;
+            margin-top: 80px;
+        }
+        .footer-logo-wrap {
+            background: url('../tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            width: 210px;
+            height: 72px;
+            margin: 0 auto 16px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Does your Google Business Profile affect ChatGPT results?",
+      "description": "Yes, more than most people realise. Here's exactly how your Google Business Profile influences what ChatGPT and other AI assistants recommend.",
+      "author": {
+        "@type": "Person",
+        "name": "James Edwards",
+        "url": "https://tailored-tools.com/#about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "logo": "https://tailored-tools.com/tt-logo-dark.svg"
+      },
+      "datePublished": "2026-02-01",
+      "url": "https://tailored-tools.com/blog/google-business-profile-ai-search.html",
+      "mainEntityOfPage": "https://tailored-tools.com/blog/google-business-profile-ai-search.html"
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo"><img src="../tt-logo-dark.svg" alt="Tailored Tools" height="32"></a>
+        <ul class="nav-links">
+            <li><a href="../#ao">AO</a></li>
+            <li><a href="../#founding-clients">Services</a></li>
+            <li><a href="../#it-consultants">IT Consultants</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="../#about">About</a></li>
+            <li><a href="../#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/blog/" class="back-link">&#8592; All articles</a>
+        <h1>Does your Google Business Profile affect ChatGPT results?</h1>
+        <div class="article-meta">February 2026 &middot; 3 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>Short answer: yes. Longer answer: it depends which AI system and what kind of search. But your Google Business Profile is one of the most important signals for local AI recommendations, and most small businesses have incomplete ones. Here's what's actually happening under the hood.</p>
+
+    <h2>How ChatGPT uses location data</h2>
+    <p>ChatGPT's browsing capability uses Bing, which pulls location data from Bing Maps and Microsoft's index. Bing Maps syncs with Google Maps data. So a complete, accurate Google Business Profile flows through to ChatGPT recommendations for local searches. If your profile is missing your service area, has no opening hours, or has a sparse description, AI has less to work with and is more likely to recommend a competitor whose profile gives clearer signals.</p>
+
+    <h2>Google AI Overviews pull directly from GBP</h2>
+    <p>Google's own AI Overviews, the AI summary that appears above search results, pull heavily from Google Business Profile for local service queries. This is the most direct connection: a complete GBP gets you into AI Overviews, which now appear in over 60% of searches. If you're not in AI Overviews for your core service terms, your GBP is almost certainly missing something.</p>
+
+    <h2>What "complete" actually means</h2>
+    <p>Most businesses tick the basics: name, address, phone number, website. But truly complete means going further:</p>
+    <ul>
+        <li>All relevant service categories listed, not just the primary one</li>
+        <li>A detailed business description using all the characters available</li>
+        <li>Opening hours including special hours and holiday closures</li>
+        <li>The Q&amp;A section filled in (more on this below)</li>
+        <li>Photos updated in the last six months</li>
+        <li>At least 20 reviews, with recent ones in the last three months</li>
+    </ul>
+
+    <h2>The Q&amp;A section is underused</h2>
+    <p>Almost no small businesses use the Q&amp;A section on their Google Business Profile. This is a significant missed opportunity. You can write your own questions and answer them, and these feed directly into AI-generated answers about your business. Think about what an AI assistant would want to know: "Do you take new clients?" "What areas do you cover?" "Do you offer home visits?" "What qualifications do you hold?" Written naturally in the Q&amp;A section, these become machine-readable signals that AI can pull from directly.</p>
+
+    <h2>Reviews still matter</h2>
+    <p>Both the number and the recency of reviews affect AI recommendations. A business with four reviews from 2021 will consistently lose out to one with 15 reviews from the last six months, all else being equal. If you haven't actively asked for reviews recently, this is probably the lowest-effort, highest-impact thing you can do today. A simple follow-up message to recent customers asking for a Google review takes minutes to send.</p>
+
+    <h2>This is the free version</h2>
+    <p>Updating your Google Business Profile costs nothing except time. It's the single highest-ROI thing you can do for AI visibility without spending any money. An AO Audit will tell you exactly what's missing from yours, and from everything else AI looks at, so you know precisely where to focus your effort rather than guessing.</p>
+
+    <div class="article-cta">
+        <h3>Find out where AI stands on your business</h3>
+        <p>An AO Audit scores your AI visibility across six dimensions and tells you exactly what to fix first. Written report and a 20-minute debrief call included.</p>
+        <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="cta-btn">Get your AO Audit &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

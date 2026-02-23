@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Agent Optimisation? | Tailored Tools</title>
+    <meta name="description" content="Agent Optimisation (AO) is what helps your business show up when someone asks an AI assistant to find a service like yours. Here's what it actually involves.">
+    <meta property="og:title" content="What is Agent Optimisation? | Tailored Tools">
+    <meta property="og:description" content="Agent Optimisation (AO) is what helps your business show up when someone asks an AI assistant to find a service like yours. Here's what it actually involves.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/blog/what-is-agent-optimisation.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 960px;
+            --mid: #5a6a7a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--dark);
+            border-bottom: 2px solid var(--accent);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .nav-logo img { display: block; }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .article-header {
+            padding: 60px 24px 40px;
+            background: #f4f5f7;
+            border-bottom: 3px solid #ff6f20;
+        }
+        .article-header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .article-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+            margin-top: 8px;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #5a6a7a;
+            margin-top: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #5a6a7a;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+        .back-link:hover { color: #ff6f20; }
+
+        .article-body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #203a4c;
+            margin: 40px 0 16px;
+        }
+        .article-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 20px;
+        }
+        .article-body ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .article-body li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 8px;
+        }
+
+        .article-cta {
+            background: #f4f5f7;
+            border-left: 4px solid #ff6f20;
+            padding: 28px 32px;
+            margin: 48px 0 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .article-cta h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .article-cta p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #5a6a7a;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #ff6f20;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: #e55e10; }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 48px 24px 36px;
+            font-size: 13px;
+            margin-top: 80px;
+        }
+        .footer-logo-wrap {
+            background: url('../tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            width: 210px;
+            height: 72px;
+            margin: 0 auto 16px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What is Agent Optimisation?",
+      "description": "Agent Optimisation (AO) is what helps your business show up when someone asks an AI assistant to find a service like yours. Here's what it actually involves.",
+      "author": {
+        "@type": "Person",
+        "name": "James Edwards",
+        "url": "https://tailored-tools.com/#about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "logo": "https://tailored-tools.com/tt-logo-dark.svg"
+      },
+      "datePublished": "2026-02-01",
+      "url": "https://tailored-tools.com/blog/what-is-agent-optimisation.html",
+      "mainEntityOfPage": "https://tailored-tools.com/blog/what-is-agent-optimisation.html"
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo"><img src="../tt-logo-dark.svg" alt="Tailored Tools" height="32"></a>
+        <ul class="nav-links">
+            <li><a href="../#ao">AO</a></li>
+            <li><a href="../#founding-clients">Services</a></li>
+            <li><a href="../#it-consultants">IT Consultants</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="../#about">About</a></li>
+            <li><a href="../#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/blog/" class="back-link">&#8592; All articles</a>
+        <h1>What is Agent Optimisation?</h1>
+        <div class="article-meta">February 2026 &middot; 4 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>If you've heard the term "Agent Optimisation" and wondered what it actually means, here's the plain version. No jargon, no buzzword soup. Just what it is and why it matters for a small business in 2026.</p>
+
+    <h2>Start with what an AI agent does</h2>
+    <p>When someone asks ChatGPT to "find a reliable electrician in Leeds," ChatGPT doesn't browse the web the way a person would. It uses training data, real-time search results, and structured information to compile an answer. An AI agent is any system doing that kind of task: searching, comparing, and recommending on someone's behalf. The key word is "behalf." The human has delegated the search. The AI is acting as their agent.</p>
+
+    <h2>So what is Agent Optimisation?</h2>
+    <p>AO is the process of making your business readable, evaluable, and recommendable by those systems. It has two parts:</p>
+    <ul>
+        <li>Structuring the information you already have, so AI can find it and understand it accurately.</li>
+        <li>Filling the genuine gaps, like pricing signals, service area, and credentials, that AI needs in order to include you in its recommendations.</li>
+    </ul>
+    <p>It's not about tricking an algorithm. It's about ensuring that when an AI is trying to find a business like yours, yours is presented in a way it can work with.</p>
+
+    <h2>How is it different from SEO?</h2>
+    <p>SEO optimises for Google's search algorithm. AO optimises for AI systems. They're related: a well-optimised Google presence helps with both. But they're not the same thing, and treating them as identical will leave gaps.</p>
+    <p>SEO helped you appear in a list of results. AO helps you appear in a single recommended answer. The stakes are higher because there are far fewer spots. When someone asks an AI for a recommendation, they typically get two or three options. The rest of the market doesn't exist in that moment.</p>
+
+    <h2>What does it actually involve?</h2>
+    <p>At the technical level, AO involves adding structured data (schema.org JSON-LD) to your website. This is invisible code that tells AI systems: here is the business name, here is what they do, here is the service area, here is a pricing signal, here are the qualifications. Machines can read it directly without having to interpret it from context.</p>
+    <p>Beyond that: consistent listings across directories, a complete and active Google Business Profile, recent and credible reviews, and clear service descriptions written in plain language. None of this is exotic. Most of it is things you probably know you should have done already.</p>
+
+    <h2>Who coined the term?</h2>
+    <p>The broader field has various names: GEO (Generative Engine Optimisation), AEO (Answer Engine Optimisation), AI SEO. Agent Optimisation specifically refers to optimising for AI agents, which are autonomous systems acting on behalf of users, rather than just AI-assisted search. The distinction matters as AI becomes more transactional. In 2026, we're already seeing AI that can not just recommend a service but book it. That's a different level of stakes than appearing in a search result.</p>
+
+    <h2>Is this something small businesses need to think about now?</h2>
+    <p>Yes. AI-referred web sessions grew 527% between January and May 2025. Google AI Overviews now appear in over 60% of searches. Customers who arrive via AI convert at around 15.9%, compared to 1.76% for standard Google organic traffic. The audience is smaller than Google's, but it converts significantly better, and it's growing fast. The businesses getting visible now are establishing a foothold before this channel becomes as competitive as Google organic already is.</p>
+
+    <div class="article-cta">
+        <h3>Find out where AI stands on your business</h3>
+        <p>An AO Audit scores your AI visibility across six dimensions and tells you exactly what to fix first. Written report and a 20-minute debrief call included.</p>
+        <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="cta-btn">Get your AO Audit &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

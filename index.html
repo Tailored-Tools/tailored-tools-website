@@ -893,6 +893,227 @@
             .partners-grid { grid-template-columns: 1fr; }
         }
 
+        /* Report preview section */
+        .report-preview-section { background: var(--light); }
+        .report-scene {
+            margin-top: 48px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 24px;
+        }
+        .report-page-shadow {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(1.5deg);
+            width: 540px;
+            max-width: calc(100vw - 48px);
+            background: #dde2e8;
+            border-radius: 4px;
+            height: 100%;
+        }
+        .report-page {
+            position: relative;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+            width: 540px;
+            max-width: calc(100vw - 48px);
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .rp-header {
+            background: var(--dark);
+            padding: 20px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rp-header-left {}
+        .rp-brand {
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+        .rp-doc-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+        .rp-score-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(#ff6f20 0% 34%, rgba(255,255,255,0.1) 34% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .rp-score-circle::after {
+            content: '';
+            position: absolute;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--dark);
+        }
+        .rp-score-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            line-height: 1;
+        }
+        .rp-score-num {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+        .rp-score-denom {
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
+            font-weight: 500;
+        }
+        .rp-meta {
+            background: #f8f9fa;
+            padding: 14px 28px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .rp-biz-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .rp-biz-detail {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        .rp-date {
+            font-size: 11px;
+            color: var(--text-light);
+            text-align: right;
+        }
+        .rp-body { padding: 24px 28px; }
+        .rp-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+        .rp-dim-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .rp-dim-name {
+            font-size: 12px;
+            color: var(--text);
+            width: 150px;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+        .rp-dim-track {
+            flex: 1;
+            height: 7px;
+            background: #eef0f3;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .rp-dim-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        .rp-fill-crit { background: #d94f4f; }
+        .rp-fill-mid  { background: #e09030; }
+        .rp-fill-good { background: #3fa86a; }
+        .rp-dim-score {
+            font-size: 12px;
+            font-weight: 700;
+            width: 34px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .rp-dim-score.crit { color: #d94f4f; }
+        .rp-dim-score.mid  { color: #e09030; }
+        .rp-dim-score.good { color: #3fa86a; }
+        .rp-divider { height: 1px; background: #eef0f3; margin: 20px 0; }
+        .rp-actions {}
+        .rp-action-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #f4f5f7;
+        }
+        .rp-action-row:last-child { border-bottom: none; }
+        .rp-priority-tag {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 3px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .tag-critical  { background: rgba(217,79,79,0.1);  color: #d94f4f; }
+        .tag-important { background: rgba(224,144,48,0.12); color: #c07a20; }
+        .tag-quickwin  { background: rgba(63,168,106,0.12); color: #2d8a56; }
+        .rp-action-text {
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .rp-action-text span {
+            display: block;
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        .rp-footer {
+            background: #f8f9fa;
+            border-top: 1px solid #eef0f3;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rp-footer-note {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        .rp-footer-page {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        .report-caption {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 28px;
+        }
+        .report-caption a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .report-caption a:hover { text-decoration: underline; }
+
         /* Founding Clients */
         .founding-section {
             background: var(--white);
@@ -1335,6 +1556,121 @@
             </div>
         </div>
         <p style="text-align:center; font-size:13px; color:var(--text-light); margin-top:20px;">The difference between these two results is structured data — an invisible layer we add to your website.</p>
+    </div>
+</section>
+
+<!-- Report Preview -->
+<section class="report-preview-section">
+    <div class="container">
+        <h2>What your report looks like</h2>
+        <p class="section-subtitle">You receive a scored PDF like this, plus a 20-minute call to walk through it. Every gap identified, every fix ranked by impact. Delivered within 5 working days.</p>
+
+        <div class="report-scene">
+            <div class="report-page-shadow"></div>
+            <div class="report-page">
+
+                <div class="rp-header">
+                    <div class="rp-header-left">
+                        <div class="rp-brand">Tailored Tools &mdash; Agent Optimisation</div>
+                        <div class="rp-doc-title">AO Audit Report</div>
+                    </div>
+                    <div class="rp-score-circle">
+                        <div class="rp-score-inner">
+                            <span class="rp-score-num">34</span>
+                            <span class="rp-score-denom">/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rp-meta">
+                    <div>
+                        <div class="rp-biz-name">Hargreaves Electrical Ltd</div>
+                        <div class="rp-biz-detail">Electrician &middot; Maidstone, Kent &middot; tailored-tools.com/sample</div>
+                    </div>
+                    <div class="rp-date">Prepared: 17 Feb 2026<br>Ref: TT-AO-0042</div>
+                </div>
+
+                <div class="rp-body">
+                    <div class="rp-section-label">Dimension Scores</div>
+
+                    <div class="rp-dim-row">
+                        <span class="rp-dim-name">Structured data</span>
+                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-crit" style="width:20%"></div></div>
+                        <span class="rp-dim-score crit">2/10</span>
+                    </div>
+                    <div class="rp-dim-row">
+                        <span class="rp-dim-name">Pricing signals</span>
+                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-crit" style="width:20%"></div></div>
+                        <span class="rp-dim-score crit">2/10</span>
+                    </div>
+                    <div class="rp-dim-row">
+                        <span class="rp-dim-name">Service clarity</span>
+                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-mid" style="width:40%"></div></div>
+                        <span class="rp-dim-score mid">4/10</span>
+                    </div>
+                    <div class="rp-dim-row">
+                        <span class="rp-dim-name">Trust &amp; reviews</span>
+                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-mid" style="width:50%"></div></div>
+                        <span class="rp-dim-score mid">5/10</span>
+                    </div>
+                    <div class="rp-dim-row">
+                        <span class="rp-dim-name">Local presence</span>
+                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-mid" style="width:60%"></div></div>
+                        <span class="rp-dim-score mid">6/10</span>
+                    </div>
+                    <div class="rp-dim-row">
+                        <span class="rp-dim-name">AI agent visibility</span>
+                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-crit" style="width:30%"></div></div>
+                        <span class="rp-dim-score crit">3/10</span>
+                    </div>
+
+                    <div class="rp-divider"></div>
+                    <div class="rp-section-label">Priority Actions</div>
+
+                    <div class="rp-actions">
+                        <div class="rp-action-row">
+                            <span class="rp-priority-tag tag-critical">Critical</span>
+                            <div class="rp-action-text">
+                                Add schema.org JSON-LD structured data to website
+                                <span>No machine-readable business data found. AI agents cannot identify your services, location, or credentials.</span>
+                            </div>
+                        </div>
+                        <div class="rp-action-row">
+                            <span class="rp-priority-tag tag-critical">Critical</span>
+                            <div class="rp-action-text">
+                                Add a visible starting price for callout / first-hour rate
+                                <span>AI filters by budget. Without a price signal, your business is excluded from filtered recommendations entirely.</span>
+                            </div>
+                        </div>
+                        <div class="rp-action-row">
+                            <span class="rp-priority-tag tag-important">Important</span>
+                            <div class="rp-action-text">
+                                Complete all Google Business Profile service categories
+                                <span>3 service types missing. GBP is a primary AI data source for local businesses — gaps here reduce recommendation likelihood.</span>
+                            </div>
+                        </div>
+                        <div class="rp-action-row">
+                            <span class="rp-priority-tag tag-quickwin">Quick win</span>
+                            <div class="rp-action-text">
+                                Add NICEIC / qualification credentials to website copy
+                                <span>Trust signals are present in your GBP but not on your website. AI cross-references both sources.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rp-footer">
+                    <span class="rp-footer-note">Confidential &mdash; prepared for Hargreaves Electrical Ltd by Tailored Tools</span>
+                    <span class="rp-footer-page">Page 1 of 4</span>
+                </div>
+
+            </div>
+        </div>
+
+        <p class="report-caption">
+            This is a representative sample. Your report covers your actual business, services, and gaps. &nbsp;
+            <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01">Get yours for £247 &rarr;</a>
+        </p>
     </div>
 </section>
 

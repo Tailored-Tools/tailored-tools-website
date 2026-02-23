@@ -62,7 +62,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        .nav-logo img { height: 32px; width: auto; }
+        .nav-logo img { height: 36px; width: auto; }
         .nav-links { display: flex; gap: 24px; list-style: none; }
         .nav-links a {
             color: rgba(255,255,255,0.7);
@@ -256,6 +256,7 @@
             letter-spacing: -1px;
         }
         .hero h1 span { color: var(--accent); }
+        .hero h1 .cycle-name { color: #fff; }
         .cycle-row {
             display: inline-flex;
             align-items: center;
@@ -1212,7 +1213,7 @@
 <nav>
     <div class="nav-inner">
         <div class="nav-logo">
-            <img src="tt-logo-dark.svg" alt="Tailored Tools">
+            <img src="favicon.svg" alt="Tailored Tools">
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#ao">AO</a></li>
@@ -1233,7 +1234,7 @@
 <!-- Hero -->
 <section class="hero">
     <div class="container">
-        <h1>Be the business<br><span class="cycle-row" id="cycleRow"><span class="cycle-badge" id="cycleBadge"></span><span class="cycle-name" id="cycleName"></span></span><br><span class="hero-recommends">recommends.</span></h1>
+        <h1>Be the business<br><span class="cycle-row" id="cycleRow"><span class="cycle-badge" id="cycleBadge"></span><span class="cycle-name" id="cycleName"></span></span><br><span class="hero-recommends">recommends</span></h1>
         <p class="subtitle">When someone asks an AI assistant to find a local plumber, therapist, or electrician, it recommends specific businesses. We make sure yours is one of them — without touching your website design or asking you to learn anything technical.</p>
         <div class="hero-ctas">
             <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="hero-cta-primary">Get your AO Audit &mdash; &pound;247 &rarr;</a>
@@ -1955,14 +1956,14 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
 (function() {
     const CDN = 'https://cdn.simpleicons.org/';
     const platforms = [
-        { name: 'ChatGPT',    bg: '#10a37f', slug: 'openai',       color: 'white', rot: -3 },
-        { name: 'Perplexity', bg: '#191919', slug: 'perplexity',   color: 'white', rot:  4 },
-        { name: 'Gemini',     bg: '#1a1a2a', slug: 'googlegemini', color: 'white', rot: -5 },
-        { name: 'Google',     bg: '#4285F4', src: 'https://www.google.com/s2/favicons?domain=google.com&sz=64', rot: 2 },
-        { name: 'Claude',     bg: '#D97757', slug: 'claude',       color: 'white', rot:  6 },
-        { name: 'Grok',       bg: '#000000', slug: 'xai',          color: 'white', rot: -4 },
-        { name: 'Meta AI',    bg: '#0866FF', slug: 'meta',         color: 'white', rot:  3 },
-        { name: 'Copilot',    bg: '#0078d4', slug: 'microsoftcopilot', color: 'white', rot: -2 },
+        { name: 'ChatGPT',    bg: '#10a37f', slug: 'openai',            color: 'white' },
+        { name: 'Perplexity', bg: '#191919', slug: 'perplexity',        color: 'white' },
+        { name: 'Gemini',     bg: '#1a1a2a', slug: 'googlegemini',      color: 'white' },
+        { name: 'Google',     bg: '#fff',    src: 'https://www.google.com/s2/favicons?domain=google.com&sz=64' },
+        { name: 'Claude',     bg: '#D97757', slug: 'claude',            color: 'white' },
+        { name: 'Grok',       bg: '#000000', slug: 'xai',               color: 'white' },
+        { name: 'Meta AI',    bg: '#0866FF', slug: 'meta',              color: 'white' },
+        { name: 'Copilot',    bg: '#0078d4', slug: 'microsoftcopilot',  color: 'white' },
     ];
 
     let i = 0;
@@ -1973,8 +1974,9 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
 
     function render() {
         const p = platforms[i];
+        const rot = i % 2 === 0 ? -7 : 7;
         badge.style.background = p.bg;
-        badge.style.transform = `rotate(${p.rot}deg)`;
+        badge.style.transform = `rotate(${rot}deg)`;
         const imgSrc = p.src || `${CDN}${p.slug}/${p.color}`;
         badge.innerHTML = `<img src="${imgSrc}" width="30" height="30" alt="${p.name}" draggable="false" onerror="this.style.opacity=0">`;
         nameEl.textContent = p.name;

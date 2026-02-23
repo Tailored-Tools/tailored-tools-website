@@ -321,6 +321,14 @@
             letter-spacing: -1px;
         }
         .hero h1 span { color: var(--accent); }
+        .cycle-span {
+            display: inline-block;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .cycle-span.fade-out {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
         .hero .subtitle {
             font-size: 18px;
             color: rgba(255,255,255,0.65);
@@ -1303,7 +1311,7 @@
             <span class="platform-pill">Perplexity</span>
             <span class="platform-pill">Google AI</span>
         </div>
-        <h1>Be the business<br><span>AI recommends.</span></h1>
+        <h1>Be the business<br><span id="cycleTarget" class="cycle-span">AI recommends.</span></h1>
         <p class="subtitle">When someone asks an AI assistant to find a local plumber, therapist, or electrician, it recommends specific businesses. We make sure yours is one of them — without touching your website design or asking you to learn anything technical.</p>
         <div class="hero-ctas">
             <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="hero-cta-primary">Get your AO Audit &mdash; &pound;247 &rarr;</a>
@@ -2021,6 +2029,22 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
 </script>
 
 <script>
+// Cycling headline
+(function() {
+    const platforms = ['ChatGPT recommends.', 'Perplexity recommends.', 'Google AI recommends.', 'Copilot recommends.', 'Meta AI recommends.', 'AI recommends.'];
+    let i = 0;
+    const el = document.getElementById('cycleTarget');
+    if (!el) return;
+    setInterval(function() {
+        el.classList.add('fade-out');
+        setTimeout(function() {
+            i = (i + 1) % platforms.length;
+            el.textContent = platforms[i];
+            el.classList.remove('fade-out');
+        }, 260);
+    }, 2400);
+})();
+
 const quizData = [
     {
         q: "Do new clients currently find your business through Google or online searches?",

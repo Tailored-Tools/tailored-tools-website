@@ -739,7 +739,7 @@
 <!-- Quiz -->
 <section class="quiz-section" id="quiz">
     <div class="container">
-        <div class="quiz-badge">60-SECOND CHECK</div>
+        <div class="quiz-badge">30-SECOND CHECK</div>
         <h2>Should you care about AO?</h2>
         <p class="section-subtitle">Five quick questions about your business. We'll tell you whether this is worth your time, and why.</p>
 
@@ -1222,9 +1222,10 @@ function quizAnswer(yes) {
     document.getElementById('pip' + current).classList.add('done');
     current++;
     setTimeout(() => {
+        document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('selected'));
         if (current < quizData.length) { quizRender(); }
         else { quizShow(); }
-    }, 280);
+    }, 200);
 }
 
 function quizShow() {

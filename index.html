@@ -324,18 +324,26 @@
         .cycle-span {
             display: inline-flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
             color: var(--accent);
-            transition: opacity 0.28s ease, transform 0.28s ease;
             vertical-align: middle;
         }
-        .cycle-span.fade-out {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-        .cycle-badge svg {
-            display: block;
+        .cycle-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
             border-radius: 14px;
+            background: #333;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+            transition: opacity 0.26s ease, transform 0.26s ease;
+        }
+        .cycle-badge img { display: block; pointer-events: none; user-select: none; }
+        .cycle-badge.fading {
+            opacity: 0;
+            transform: rotate(var(--badge-rot,0deg)) scale(0.8) translateY(-6px);
         }
         .hero .subtitle {
             font-size: 18px;
@@ -2037,77 +2045,39 @@ document.querySelectorAll('#navLinks a').forEach(function(link) {
 </script>
 
 <script>
-// Cycling headline — logo badge + name
+// Cycling headline — app-icon badges via Simple Icons CDN
 (function() {
-    const SIZE = 56;
-    const R = 14;
-    function rect(fill) { return `<rect width="${SIZE}" height="${SIZE}" rx="${R}" fill="${fill}"/>`; }
-
+    const CDN = 'https://cdn.simpleicons.org/';
     const platforms = [
-        {
-            name: 'ChatGPT',
-            svg: `<svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}"><title>ChatGPT</title>${rect('#10a37f')}
-                <line x1="28" y1="11" x2="28" y2="45" stroke="white" stroke-width="3.8" stroke-linecap="round"/>
-                <line x1="12.6" y1="20" x2="43.4" y2="36" stroke="white" stroke-width="3.8" stroke-linecap="round"/>
-                <line x1="43.4" y1="20" x2="12.6" y2="36" stroke="white" stroke-width="3.8" stroke-linecap="round"/>
-            </svg>`
-        },
-        {
-            name: 'Perplexity',
-            svg: `<svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}"><title>Perplexity</title>${rect('#1a1a2e')}
-                <polygon points="28,10 32,22 44,22 34.5,29.5 38,42 28,35 18,42 21.5,29.5 12,22 24,22" fill="white"/>
-            </svg>`
-        },
-        {
-            name: 'Google AI',
-            svg: `<svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}"><title>Google AI</title>${rect('#ffffff')}
-                <line x1="28" y1="9" x2="28" y2="47" stroke="#4285f4" stroke-width="3.5" stroke-linecap="round"/>
-                <line x1="9" y1="28" x2="47" y2="28" stroke="#ea4335" stroke-width="3.5" stroke-linecap="round"/>
-                <line x1="13" y1="13" x2="43" y2="43" stroke="#fbbc04" stroke-width="3.5" stroke-linecap="round"/>
-                <line x1="43" y1="13" x2="13" y2="43" stroke="#34a853" stroke-width="3.5" stroke-linecap="round"/>
-            </svg>`
-        },
-        {
-            name: 'Claude',
-            svg: `<svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}"><title>Claude</title>${rect('#CC785C')}
-                <ellipse cx="28" cy="21" rx="9" ry="9" fill="white" opacity="0.95"/>
-                <rect x="16" y="32" width="24" height="13" rx="6" fill="white" opacity="0.95"/>
-            </svg>`
-        },
-        {
-            name: 'Copilot',
-            svg: `<svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}"><title>Copilot</title>${rect('#0078d4')}
-                <circle cx="28" cy="22" r="8" stroke="white" stroke-width="3" fill="none"/>
-                <path d="M14 38 Q16 28 28 30 Q40 28 42 38" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
-                <line x1="28" y1="30" x2="28" y2="38" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            </svg>`
-        },
-        {
-            name: 'Meta AI',
-            svg: `<svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}"><title>Meta AI</title>${rect('#0866FF')}
-                <path d="M10 28 C10 21 14.5 16 19.5 16 C23.5 16 26 19.5 28 23.5 C30 19.5 32.5 16 36.5 16 C41.5 16 46 21 46 28 C46 35 41.5 40 36.5 40 C32.5 40 30 36.5 28 32.5 C26 36.5 23.5 40 19.5 40 C14.5 40 10 35 10 28 Z" fill="white"/>
-            </svg>`
-        }
+        { name: 'ChatGPT',    bg: '#10a37f', slug: 'openai',           color: 'white', rot: -3  },
+        { name: 'Perplexity', bg: '#191919', slug: 'perplexity',       color: 'white', rot:  4  },
+        { name: 'Gemini',     bg: '#1a1a2a', slug: 'googlegemini',     color: 'white', rot: -5  },
+        { name: 'Claude',     bg: '#D97757', slug: 'anthropic',        color: 'white', rot:  6  },
+        { name: 'Copilot',    bg: '#0078d4', slug: 'microsoftcopilot', color: 'white', rot: -2  },
+        { name: 'Meta AI',    bg: '#0866FF', slug: 'meta',             color: 'white', rot:  3  },
     ];
 
     let i = 0;
-    const target = document.getElementById('cycleTarget');
-    const badge  = document.getElementById('cycleBadge');
-    if (!target || !badge) return;
+    const badge = document.getElementById('cycleBadge');
+    if (!badge) return;
 
     function render() {
-        badge.innerHTML = platforms[i].svg;
+        const p = platforms[i];
+        badge.style.background = p.bg;
+        badge.style.setProperty('--badge-rot', p.rot + 'deg');
+        badge.style.transform = `rotate(${p.rot}deg)`;
+        badge.innerHTML = `<img src="${CDN}${p.slug}/${p.color}" width="30" height="30" alt="${p.name}" draggable="false" onerror="this.style.opacity=0">`;
     }
 
     render();
 
     setInterval(function() {
-        target.classList.add('fade-out');
+        badge.classList.add('fading');
         setTimeout(function() {
             i = (i + 1) % platforms.length;
             render();
-            target.classList.remove('fade-out');
-        }, 290);
+            badge.classList.remove('fading');
+        }, 270);
     }, 2600);
 })();
 

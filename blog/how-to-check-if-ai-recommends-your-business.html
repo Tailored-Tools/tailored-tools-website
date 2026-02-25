@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to check if AI recommends your business (and what to do if it doesn't) | Tailored Tools</title>
+    <meta name="description" content="A step-by-step guide to testing whether ChatGPT, Perplexity, and Google AI recommend your business, and what to fix first if they don't.">
+    <meta property="og:title" content="How to check if AI recommends your business | Tailored Tools">
+    <meta property="og:description" content="A step-by-step guide to testing whether ChatGPT, Perplexity, and Google AI recommend your business, and what to fix first if they don't.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/blog/how-to-check-if-ai-recommends-your-business.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to check if AI recommends your business | Tailored Tools">
+    <meta name="twitter:description" content="A step-by-step guide to testing whether ChatGPT, Perplexity, and Google AI recommend your business, and what to fix first if they don't.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="canonical" href="https://tailored-tools.com/blog/how-to-check-if-ai-recommends-your-business.html">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 960px;
+            --mid: #5a6a7a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--dark);
+            border-bottom: 2px solid var(--accent);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('../tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .article-header {
+            padding: 60px 24px 40px;
+            background: #f4f5f7;
+            border-bottom: 3px solid #ff6f20;
+        }
+        .article-header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .article-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+            margin-top: 8px;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #5a6a7a;
+            margin-top: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #5a6a7a;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+        .back-link:hover { color: #ff6f20; }
+
+        .article-body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #203a4c;
+            margin: 40px 0 16px;
+        }
+        .article-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 20px;
+        }
+        .article-body ul, .article-body ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .article-body li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 8px;
+        }
+        .article-body a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .article-body a:hover {
+            text-decoration: underline;
+        }
+        .article-body code {
+            background: #f4f5f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .prompt-box {
+            background: #f4f5f7;
+            border-left: 3px solid var(--primary);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 6px 6px 0;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--primary);
+        }
+
+        .article-cta {
+            background: #f4f5f7;
+            border-left: 4px solid #ff6f20;
+            padding: 28px 32px;
+            margin: 48px 0 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .article-cta h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .article-cta p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #5a6a7a;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #ff6f20;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: #e55e10; }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 48px 24px 36px;
+            font-size: 13px;
+            margin-top: 80px;
+        }
+        .footer-logo-wrap {
+            background: url('../tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            width: 210px;
+            height: 72px;
+            margin: 0 auto 16px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to check if AI recommends your business (and what to do if it doesn't)",
+      "description": "A step-by-step guide to testing whether ChatGPT, Perplexity, and Google AI recommend your business, and what to fix first if they don't.",
+      "author": {
+        "@type": "Person",
+        "name": "James Edwards",
+        "url": "https://tailored-tools.com/#about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "logo": "https://tailored-tools.com/tt-logo-dark.svg"
+      },
+      "datePublished": "2026-02-25",
+      "url": "https://tailored-tools.com/blog/how-to-check-if-ai-recommends-your-business.html",
+      "mainEntityOfPage": "https://tailored-tools.com/blog/how-to-check-if-ai-recommends-your-business.html"
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links">
+            <li><a href="../#ao">AO</a></li>
+            <li><a href="../#ao">Services</a></li>
+            <li><a href="../#it-consultants">IT Consultants</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="../#about">About</a></li>
+            <li><a href="../#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/blog/" class="back-link">&#8592; All articles</a>
+        <h1>How to check if AI recommends your business (and what to do if it doesn't)</h1>
+        <div class="article-meta">25 February 2026 &middot; 5 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>You can test this right now. It takes five minutes and three browser tabs. Most business owners who try it do not like what they find.</p>
+
+    <h2>The test: three queries, three platforms</h2>
+    <p>Open ChatGPT, Perplexity, and Google (look for the AI Overview at the top of results). Type the same three prompts into each one, replacing the bracketed parts with your actual service and location:</p>
+
+    <div class="prompt-box">
+        <strong>Prompt 1:</strong> "Recommend a [your service] in [your town]"<br>
+        <strong>Prompt 2:</strong> "Who is the best [your service] near [your area]?"<br>
+        <strong>Prompt 3:</strong> "Find me a [your service] in [your area], budget around &pound;[typical price]"
+    </div>
+
+    <p>For example, if you are a plumber in Canterbury, you would type: "Recommend a plumber in Canterbury", "Who is the best plumber near Canterbury?", and "Find me a plumber in Canterbury, budget around &pound;150."</p>
+    <p>Do this across all three platforms. Write down what comes back. You are looking for whether your business appears at all, how it is described, and what information the AI uses to justify its recommendation.</p>
+
+    <h2>What good looks like</h2>
+    <p>If AI recommends your business, you will typically see:</p>
+    <ul>
+        <li>Your business name mentioned by name, not just as part of a generic list.</li>
+        <li>Accurate information: correct services, correct location, correct contact details.</li>
+        <li>A reason for the recommendation, like review scores, years of experience, or specific qualifications.</li>
+        <li>Links to your website or Google Business Profile.</li>
+    </ul>
+    <p>This means AI has found enough structured, consistent information about your business to confidently recommend you. That is the goal.</p>
+
+    <h2>What bad looks like</h2>
+    <p>There are several failure modes, and each one tells you something different:</p>
+    <ul>
+        <li><strong>You are not mentioned at all.</strong> AI could not find enough information about your business to include you. You are invisible to this channel entirely.</li>
+        <li><strong>A competitor is recommended instead.</strong> They have better structured data, more reviews, or a more complete online presence. The AI had to pick someone, and it was not you.</li>
+        <li><strong>You are mentioned with wrong information.</strong> Wrong address, outdated services, incorrect phone number. This is often caused by inconsistent listings across directories.</li>
+        <li><strong>You appear in a generic list with no detail.</strong> AI found your name but not enough information to say anything specific. You are filler, not a recommendation.</li>
+    </ul>
+
+    <h2>The five most common gaps</h2>
+    <p>After running hundreds of these tests across small UK businesses, the same five problems come up repeatedly:</p>
+
+    <p><strong>1. No structured data on your website.</strong> Your website might look great to humans, but AI cannot easily parse a nicely designed page. Without schema.org markup, AI has to guess what your business does, where you operate, and what you charge. It often guesses wrong or gives up. Learn more about <a href="/blog/schema-markup-for-small-business.html">what schema markup is and why AI cares about it</a>.</p>
+
+    <p><strong>2. Incomplete Google Business Profile.</strong> A half-filled GBP is one of the most common reasons AI skips a business. Missing categories, no service descriptions, no photos, no business hours. AI treats completeness as a credibility signal. Read about <a href="/blog/google-business-profile-ai-search.html">how your Google Business Profile affects AI results</a>.</p>
+
+    <p><strong>3. No pricing signal anywhere.</strong> When someone asks AI to "find a therapist in Leeds, budget around &pound;60," AI needs to know your prices to include you. If your pricing is not on your website, not in your schema, and not on any directory, you are excluded from every price-filtered query.</p>
+
+    <p><strong>4. Inconsistent NAP across listings.</strong> NAP stands for Name, Address, Phone number. If your website says "Smith's Plumbing" but Google says "Smiths Plumbing Ltd" and Yell says "Smith Plumbing Services," AI sees three different businesses, not one strong one. Consistency is a trust signal.</p>
+
+    <p><strong>5. No recent reviews.</strong> A business with fifty five-star reviews from 2022 looks different to AI than a business with twelve reviews from the last three months. Recency matters. Specificity matters. A review that says "They replumbed our bathroom in two days, very clean work" gives AI something to cite. "Great service 5 stars" does not.</p>
+
+    <h2>What to fix first</h2>
+    <p>If you are starting from scratch, here is the priority order:</p>
+    <ol>
+        <li><strong>Google Business Profile.</strong> Free. Highest impact. Fill every field, add photos, write proper service descriptions, set your service area. This is the single most influential thing you can do for local AI recommendations.</li>
+        <li><strong>NAP consistency.</strong> Free but tedious. Go through Google, Yell, Yelp, Thomson Local, your industry directories, and your own website. Make sure your business name, address, and phone number are identical everywhere.</li>
+        <li><strong>Schema markup.</strong> High impact but requires some technical knowledge. Add JSON-LD structured data to your website that describes your business type, services, location, and pricing. This is the invisible layer AI reads directly.</li>
+        <li><strong>Reviews.</strong> Free but takes time. Ask happy customers for reviews. Be specific about where (Google is most impactful). Respond to existing reviews, including negative ones.</li>
+        <li><strong>Pricing transparency.</strong> Add at least "from" prices or typical ranges to your website. If you cannot publish exact prices, a starting point is better than nothing.</li>
+    </ol>
+    <p>You do not need to do all five at once. Start with your Google Business Profile this week. It is free, it takes an hour, and it will have the biggest effect on whether AI can find and recommend you.</p>
+    <p>For a deeper look at how GEO, AEO, and AO all approach this problem, read our comparison of <a href="/blog/geo-aeo-ao-whats-the-difference.html">GEO, AEO, and AO and which one matters</a>.</p>
+
+    <div class="article-cta">
+        <h3>Want someone to do this analysis properly?</h3>
+        <p>An AO Audit tests your visibility across AI platforms, scores your credibility across six dimensions, and gives you a prioritised list of what to fix. Written report and a 20-minute debrief call included.</p>
+        <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="cta-btn">Get your AO Audit &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

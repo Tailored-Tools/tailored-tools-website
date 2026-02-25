@@ -1,15 +1,15 @@
 # Tailored Tools
 
-> Kent-based technology consultancy helping small service businesses get found by AI assistants.
+> Kent-based technology consultancy helping small service businesses get recommended by AI assistants.
 
 ## What we do
 
-Tailored Tools makes small businesses visible to AI. When someone asks ChatGPT, Perplexity, or Google AI for a local service recommendation, the businesses that show up are the ones with properly structured information. We help you become one of them.
+Tailored Tools builds AI credibility for small businesses. When someone asks ChatGPT, Perplexity, or Google AI for a local service recommendation, the businesses that get recommended are the ones with properly structured information. We help you become one of them.
 
 ## Services
 
 ### AO Audit (Agent Optimisation Audit) — £247
-A scored AI visibility audit across six dimensions: structured data, service descriptions, pricing signals, trust signals, availability, and AI discoverability. Delivered as a PDF report with prioritised recommendations and a 20-minute debrief call. Turnaround: 5 working days.
+A scored AO Audit across six dimensions: structured data, service descriptions, pricing signals, trust signals, availability, and AI credibility. Delivered as a PDF report with prioritised recommendations and a 20-minute debrief call. Turnaround: 5 working days.
 
 ### AO Implementation — from £497
 We add an invisible structured data layer to your website that AI agents can read directly — schema.org markup, computable pricing logic, and service parameters. No visible changes to your site.
@@ -18,10 +18,10 @@ We add an invisible structured data layer to your website that AI agents can rea
 Full audit followed by complete implementation of all recommendations. Save £47 vs booking separately.
 
 ### AO Monitoring — coming soon
-Monthly AI visibility monitoring, regression detection, and structured data maintenance as AI technology evolves.
+Monthly AI credibility monitoring, regression detection, and structured data maintenance as AI technology evolves.
 
 ### AO Workshops — available on request
-"Is Your Business Invisible to AI?" — a 90-120 minute hands-on workshop with live audit demonstration for up to 30 people. Available in-person or remotely.
+"Can AI Confidently Recommend Your Business?" — a 90-120 minute hands-on workshop with live audit demonstration for up to 30 people. Available in-person or remotely.
 
 ### Custom Dashboards
 Single-login dashboards consolidating bookings, revenue, and performance metrics from multiple business tools.
@@ -46,5 +46,5 @@ Founded in 2025 by James Edwards. Based in Maidstone, Kent, UK. Serving business
 
 ## Blog
 
-We publish plain-English articles on AI visibility and Agent Optimisation:
+We publish plain-English articles on AI credibility and Agent Optimisation:
 - https://tailored-tools.com/blog/

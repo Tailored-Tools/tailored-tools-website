@@ -702,12 +702,12 @@
             color: var(--text-light);
         }
         .contact-links a {
-            color: var(--primary);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
             font-size: 15px;
         }
-        .contact-links a:hover { color: var(--accent); }
+        .contact-links a:hover { opacity: 0.8; }
 
         /* Quiz Section */
         .quiz-section { background: var(--dark); color: var(--white); }
@@ -1186,7 +1186,7 @@
             .ao-card { position: relative; padding: 20px; padding-bottom: 16px; }
             .ao-card-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
             .ao-card.expanded .ao-card-body { max-height: 600px; }
-            .ao-card-summary { display: block; font-size: 14px; color: var(--text-light); margin: 4px 0 0; }
+            .ao-card-summary { display: block; font-size: 14px; color: var(--text-light); margin: 4px 0 0; cursor: pointer; }
             .ao-card.expanded .ao-card-summary { display: none; }
             .ao-card-head .tag { display: inline-block; margin-top: 0; }
             .ao-card-toggle {
@@ -1202,7 +1202,7 @@
             }
             .ao-card.expanded .ao-card-toggle::after { content: 'Show less'; }
             .ao-card:not(.expanded) .ao-card-toggle::after { content: 'Show more'; }
-            .ao-card-head { display: flex; justify-content: space-between; align-items: center; }
+            .ao-card-head { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
             .ao-card-head .tag { margin-top: 0; }
         }
     </style>
@@ -1728,7 +1728,7 @@
                 </li>
                 <li>
                     <span class="link-label">LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/jamesredwards/" target="_blank" rel="noopener">James Edwards</a>
+                    <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">James Edwards</a>
                 </li>
             </ul>
         </div>
@@ -1750,7 +1750,7 @@
       "email": "hello@tailored-tools.com",
       "sameAs": [
         "https://instagram.com/tailored.tools",
-        "https://www.linkedin.com/in/jamesredwards/"
+        "https://www.linkedin.com/in/jamesedwards7"
       ],
       "areaServed": {
         "@type": "Country",
@@ -1761,7 +1761,7 @@
       "founder": {
         "@type": "Person",
         "name": "James Edwards",
-        "url": "https://www.linkedin.com/in/jamesredwards/",
+        "url": "https://www.linkedin.com/in/jamesedwards7",
         "knowsAbout": ["Agent Optimisation", "AI credibility", "schema.org structured data", "business automation", "software integration"],
         "hasCredential": {
           "@type": "EducationalOccupationalCredential",
@@ -1783,7 +1783,7 @@
       "priceRange": "$$",
       "sameAs": [
         "https://instagram.com/tailored.tools",
-        "https://www.linkedin.com/in/jamesredwards/"
+        "https://www.linkedin.com/in/jamesedwards7"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -2112,6 +2112,13 @@ function quizRestart() {
 }
 
 quizRender();
+
+document.querySelectorAll('.ao-card').forEach(function(card) {
+    var head = card.querySelector('.ao-card-head');
+    var summary = card.querySelector('.ao-card-summary');
+    if (head) head.addEventListener('click', function() { card.classList.toggle('expanded'); });
+    if (summary) summary.addEventListener('click', function() { card.classList.toggle('expanded'); });
+});
 </script>
 </body>
 </html>

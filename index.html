@@ -573,7 +573,8 @@
             border-radius: 10px;
             padding: 28px;
         }
-        .ao-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .ao-card h3 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .ao-icon { width: 22px; height: 22px; flex-shrink: 0; }
         .ao-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
         .ao-card.ao-card-full { grid-column: 1 / -1; padding: 20px 28px; }
         .ao-cta {
@@ -589,6 +590,10 @@
             transition: opacity 0.2s;
         }
         .ao-cta:hover { opacity: 0.9; }
+        .ao-card-toggle { display: none; }
+        .ao-card-summary { display: none; }
+        .ao-card-head .tag { display: none; }
+        .ao-card-body { max-height: none; overflow: visible; }
         .ao-card .tag {
             display: inline-block;
             font-size: 11px;
@@ -1143,14 +1148,24 @@
         }
         @media (max-width: 768px) {
             .nav-cta { display: none; }
-            .hero { padding: 24px 20px 40px; }
+            .hero { padding: 24px 20px 32px; }
             .hero h1 { font-size: 36px; letter-spacing: -0.5px; }
-            .hero .subtitle { font-size: 16px; }
-            .audit-preview-wrap { margin-top: 36px; }
+            .hero .subtitle { font-size: 15px; margin-bottom: 24px; }
+            .hero-ctas { margin-bottom: 36px; }
+            .audit-preview-wrap { margin-top: 28px; }
+            .shift-intro { font-size: 15px; margin-bottom: 32px; }
+            .section-subtitle { margin-bottom: 24px; }
             .ao-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; gap: 12px; }
+            .service-card { padding: 20px; }
+            .service-card p { font-size: 13px; }
             .about-content { grid-template-columns: 1fr; }
-            section { padding: 60px 20px; }
+            .about-content p { font-size: 14px; }
+            .partners-card { padding: 20px; }
+            .partners-card p { font-size: 13px; }
+            .partners-tech-note { padding: 16px 20px; margin-top: 24px; }
+            .partners-tech-note p { font-size: 12px; }
+            section { padding: 40px 20px; }
             .contact-split { grid-template-columns: 1fr; }
             .hamburger { display: block; }
             .nav-links {
@@ -1167,6 +1182,28 @@
                 z-index: 99;
             }
             .nav-links.open { display: flex; }
+            /* Collapsible AO cards */
+            .ao-card { position: relative; padding: 20px; padding-bottom: 16px; }
+            .ao-card-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+            .ao-card.expanded .ao-card-body { max-height: 600px; }
+            .ao-card-summary { display: block; font-size: 14px; color: var(--text-light); margin: 4px 0 0; }
+            .ao-card.expanded .ao-card-summary { display: none; }
+            .ao-card-head .tag { display: inline-block; margin-top: 0; }
+            .ao-card-toggle {
+                display: inline-block;
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--accent);
+                cursor: pointer;
+                margin-top: 8px;
+                border: none;
+                background: none;
+                padding: 0;
+            }
+            .ao-card.expanded .ao-card-toggle::after { content: 'Show less'; }
+            .ao-card:not(.expanded) .ao-card-toggle::after { content: 'Show more'; }
+            .ao-card-head { display: flex; justify-content: space-between; align-items: center; }
+            .ao-card-head .tag { margin-top: 0; }
         }
     </style>
 </head>
@@ -1269,7 +1306,7 @@
 <section class="shift-section">
     <div class="container">
         <h2>The way people find businesses has changed</h2>
-        <p class="shift-intro">Not long ago, finding a local service meant a Google search, opening a few websites, comparing, maybe calling two or three people. You did the legwork. Increasingly, that's not how it works.</p>
+        <p class="shift-intro">Finding a local service used to mean Google, a few websites, maybe a couple of phone calls. Increasingly, that's not how it works.</p>
 
         <div class="shift-comparison">
             <div class="shift-col then">
@@ -1340,13 +1377,15 @@
     <div class="container">
         <div class="ao-badge">AO / AGENT OPTIMISATION</div>
         <h2>Can AI confidently recommend your business?</h2>
-        <p class="section-subtitle">Think about the last time you asked ChatGPT for a recommendation. It gave you names. But not every business in that category. The ones it recommended had something in common: they were readable by machines. Most small service businesses aren't. That's what AO fixes.</p>
-        <p class="section-subtitle" style="margin-top: -24px; font-style: italic;">If you've already invested in SEO, good. That work still matters and AO builds directly on top of it. SEO makes you findable. AO makes you recommendable. Same foundation, next layer.</p>
+        <p class="section-subtitle">When AI recommends a business, it's because that business is readable by machines. Most small service businesses aren't. That's what AO fixes.</p>
+        <p class="section-subtitle" style="margin-top: -12px; font-style: italic;">Already invested in SEO? Good. AO builds directly on top of it. SEO makes you findable. AO makes you recommendable.</p>
 
         <div class="ao-grid">
             <div class="ao-card">
-                <h3 id="ao-audit">AO Audit</h3>
-                <p>We assess your business across six dimensions and give you a score out of 100:</p>
+                <div class="ao-card-head"><h3 id="ao-audit"><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>AO Audit</h3><div class="tag">&pound;247</div></div>
+                <p class="ao-card-summary">Six-dimension audit with scored PDF report and 20-minute debrief call.</p>
+                <div class="ao-card-body">
+                <p>We assess your business across six dimensions and give you a score out of 100. You get a scored PDF with prioritised recommendations, plus a 20-minute call to walk through it. Delivered within 5 working days.</p>
                 <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
                     <li>- Structured data and schema markup</li>
                     <li>- Service descriptions and parameters</li>
@@ -1355,53 +1394,58 @@
                     <li>- Availability and booking readiness</li>
                     <li>- AI credibility and mentions</li>
                 </ul>
-                <p style="font-size: 14px; color: var(--text-light);">You get a scored PDF report with specific, prioritised recommendations. Plus a 20-minute call to walk through it together. Delivered within 5 working days.</p>
-                <div class="tag">&pound;247</div>
-                <br>
                 <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="ao-cta" target="_blank" rel="noopener">Get your AO Audit &rarr;</a>
+                </div>
+                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
             </div>
             <div class="ao-card">
-                <h3>AO Implementation</h3>
-                <p>We add an invisible data layer to your website that AI agents can read: your services, pricing, availability, and credentials. Your customers see exactly what they see now. Agents see everything they need to recommend you.</p>
+                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>AO Implementation</h3><div class="tag">&pound;497</div></div>
+                <p class="ao-card-summary">We add an invisible data layer to your site so AI agents can recommend you.</p>
+                <div class="ao-card-body">
+                <p>We add structured data to your website that AI agents can read: services, pricing, availability, credentials. Your customers see nothing different. Agents see everything they need.</p>
                 <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
                     <li>- Schema.org structured data for your business</li>
                     <li>- Services, pricing, and availability marked up</li>
                     <li>- Trust signals and credentials added</li>
                     <li>- Tested and validated before going live</li>
                 </ul>
-                <p style="font-size: 14px; color: var(--text-light);">We handle everything. You fill in a short form about your business, we do the rest. No technical knowledge needed, no disruption to your website.</p>
-                <div class="tag">&pound;497</div>
-                <br>
+                <p style="font-size: 14px; color: var(--text-light);">You fill in a short form, we do the rest. No technical knowledge needed.</p>
                 <a href="https://buy.stripe.com/dRm8wRdxz8CE63J1Wj2go03" class="ao-cta" target="_blank" rel="noopener">Get AO Implementation &rarr;</a>
+                </div>
+                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
             </div>
             <div class="ao-card" style="border: 2px solid var(--accent);">
-                <h3>AO Audit + Implementation Bundle</h3>
-                <p>The full package: we audit your AI credibility, then implement everything from the report. Structured data, pricing logic, service parameters — all done for you.</p>
+                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>AO Audit + Implementation Bundle</h3><div class="tag">&pound;697</div></div>
+                <p class="ao-card-summary">Full audit and implementation in one package. Save &pound;47.</p>
+                <div class="ao-card-body">
+                <p>We audit your AI credibility, then implement everything from the report. One payment, end to end.</p>
                 <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
                     <li>- Full six-dimension AO Audit with scored report</li>
                     <li>- 20-minute debrief call to walk through findings</li>
                     <li>- Complete structured data implementation</li>
                     <li>- Save &pound;47 compared to booking separately</li>
                 </ul>
-                <p style="font-size: 14px; color: var(--text-light);">The most straightforward path from unknown to confidently recommended. One payment, we handle everything end to end.</p>
-                <div class="tag">&pound;697</div>
-                <br>
                 <a href="https://buy.stripe.com/9B67sNalnf1263J58v2go04" class="ao-cta" target="_blank" rel="noopener">Get the Bundle &rarr;</a>
+                </div>
+                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
             </div>
             <div class="ao-card">
-                <h3>AO Monitoring</h3>
-                <p>Monthly check-ins to track your AI credibility, catch regressions, and keep your structured data current as agent technology evolves. Stay ahead without having to think about it.</p>
-                <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">AI is moving fast. The businesses that stay recommended are the ones that don't treat this as a one-time fix. Audit. Implement. Monitor.</p>
-                <div class="tag" style="margin-top: 12px;">The journey starts with an Audit</div>
-                <br>
+                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>AO Monitoring</h3><div class="tag">Starts with an Audit</div></div>
+                <p class="ao-card-summary">Monthly check-ins to keep your AI credibility current as agents evolve.</p>
+                <div class="ao-card-body">
+                <p>Monthly check-ins to track your AI credibility, catch regressions, and keep structured data current. The businesses that stay recommended don't treat this as a one-time fix.</p>
                 <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="ao-cta" target="_blank" rel="noopener">Get your AO Audit &rarr;</a>
+                </div>
+                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
             </div>
             <div class="ao-card ao-card-full">
-                <h3>AO Workshops</h3>
-                <p>"Can AI Confidently Recommend Your Business?" — a 90-120 minute hands-on session for business owners and teams of up to 30 people. Learn what AI agents see (and don't see), with a live audit demonstration. <strong>Available in-person or delivered remotely.</strong> Priced per session. Perfect for networking groups, chambers of commerce, and business associations.</p>
-                <div class="tag">Priced per session</div>
-                <br>
+                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>AO Workshops</h3><div class="tag">Per session</div></div>
+                <p class="ao-card-summary">90-120 min hands-on session with live audit demo. In-person or remote.</p>
+                <div class="ao-card-body">
+                <p>"Can AI Confidently Recommend Your Business?" - a hands-on session for business owners and teams of up to 30. Live audit demonstration. <strong>Available in-person or remotely.</strong> Perfect for networking groups, chambers of commerce, and business associations.</p>
                 <a href="mailto:hello@tailored-tools.com?subject=AO%20Workshop%20Enquiry" class="ao-cta">Enquire about a workshop &rarr;</a>
+                </div>
+                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
             </div>
         </div>
 
@@ -1596,15 +1640,15 @@
         <div class="services-grid">
             <div class="service-card">
                 <h3>Dashboards</h3>
-                <p>One screen, one login. We pull data from the tools you already use into a single dashboard. No more juggling five tabs and three passwords just to see how the week's going.</p>
+                <p>One screen, one login. All your tools in a single view. No more juggling five tabs and three passwords.</p>
             </div>
             <div class="service-card">
                 <h3>Automation</h3>
-                <p>Repetitive tasks automated. Client onboarding, invoice reminders, booking confirmations, data entry. Set it up once, let it run.</p>
+                <p>Client onboarding, invoice reminders, booking confirmations. Set it up once, let it run.</p>
             </div>
             <div class="service-card">
                 <h3>Integrations</h3>
-                <p>Connect the tools you already use. Square, Google Sheets, Outlook, Stripe, your website. We make them talk to each other so you don't have to copy-paste between them.</p>
+                <p>Square, Google Sheets, Outlook, Stripe, your website. We make them talk to each other.</p>
             </div>
         </div>
     </div>
@@ -1615,18 +1659,17 @@
     <div class="container">
         <div class="partners-badge">FOR IT CONSULTANTS / MSPS</div>
         <h2>You probably already have the clients.</h2>
-        <p class="section-subtitle">If a client forwarded you one of our posts, you're already in the right place. AO is a defined, implementable service, and there are two ways to work with us.</p>
-        <p class="section-subtitle" style="margin-top: -24px;">If you've been recommending SEO to clients, AO is the logical next step, not a replacement. The principles are the same: be findable, be credible, be complete. The audience has just expanded to include AI.</p>
+        <p class="section-subtitle">AO is a defined, implementable service. Two ways to work with us. If you've been recommending SEO, this is the logical next step - same principles, audience now includes AI.</p>
 
         <div class="partners-grid">
             <div class="partners-card">
                 <h3>Refer and earn</h3>
-                <p>Send clients our way for an AO Audit or Implementation. We do the work, you get a referral fee on every introduction that converts. No admin, no delivery, no learning curve. Just a conversation you were probably going to have anyway.</p>
+                <p>Send clients our way. We do the work, you get a referral fee on every introduction that converts. No admin, no delivery.</p>
                 <a href="mailto:hello@tailored-tools.com?subject=Partner%20Enquiry%20%E2%80%94%20Referrals" class="partners-cta">Talk to us about referrals &rarr;</a>
             </div>
             <div class="partners-card">
                 <h3>Add it to your offering</h3>
-                <p>We train you on the methodology and provide white-label audit reports you can deliver under your own brand. Your clients, your relationships, your invoice. AO becomes a new line item you own, without building the tooling yourself.</p>
+                <p>We train you on the methodology and provide white-label audit reports under your brand. Your clients, your invoice. A new line item without building the tooling.</p>
                 <a href="mailto:hello@tailored-tools.com?subject=Partner%20Enquiry%20%E2%80%94%20White%20Label" class="partners-cta">Talk to us about white-labelling &rarr;</a>
             </div>
         </div>
@@ -1645,9 +1688,8 @@
             <div>
                 <img src="/james.jpg" alt="James Edwards, founder of Tailored Tools" class="about-photo">
                 <p>I'm based in Maidstone, Kent. I've spent years building technology for service businesses. Started in accessibility, now focused on AI credibility.</p>
-                <p>I started doing this because I run my own service businesses and kept seeing the same problem: good people doing excellent work, but AI couldn't confidently recommend them. A therapist with 10 years of experience. A plumber who turns up on time and charges fairly. A photographer who does genuinely excellent work. None of them showing up when it matters.</p>
-                <p>It seemed fixable. It is fixable. That's what Tailored Tools does.</p>
-                <p>I work directly with each client. No account managers, no outsourcing. If you email me, I reply.</p>
+                <p>I run my own service businesses and kept seeing the same problem: good people doing excellent work, but AI couldn't recommend them. A therapist with 10 years of experience. A plumber who turns up on time. None of them showing up when it matters.</p>
+                <p>It's fixable. I work directly with each client. No account managers, no outsourcing. If you email me, I reply.</p>
             </div>
             <div class="about-facts">
                 <ul>

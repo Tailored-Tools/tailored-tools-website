@@ -1185,7 +1185,7 @@
             /* Collapsible AO cards */
             .ao-card { position: relative; padding: 20px; padding-bottom: 16px; }
             .ao-card-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-            .ao-card.expanded .ao-card-body { max-height: 600px; }
+            .ao-card.expanded .ao-card-body { max-height: 600px; cursor: pointer; }
             .ao-card-summary { display: block; font-size: 14px; color: var(--text-light); margin: 4px 0 0; cursor: pointer; }
             .ao-card.expanded .ao-card-summary { display: none; }
             .ao-card-head .tag { display: inline-block; margin-top: 0; }
@@ -1724,11 +1724,11 @@
                 </li>
                 <li>
                     <span class="link-label">Instagram</span>
-                    <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">@tailored.tools</a>
+                    <a href="https://instagram.com/tailored.tools" rel="noopener">@tailored.tools</a>
                 </li>
                 <li>
                     <span class="link-label">LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">James Edwards</a>
+                    <a href="https://www.linkedin.com/in/jamesedwards7" rel="noopener">James Edwards</a>
                 </li>
             </ul>
         </div>
@@ -2116,8 +2116,12 @@ quizRender();
 document.querySelectorAll('.ao-card').forEach(function(card) {
     var head = card.querySelector('.ao-card-head');
     var summary = card.querySelector('.ao-card-summary');
+    var body = card.querySelector('.ao-card-body');
     if (head) head.addEventListener('click', function() { card.classList.toggle('expanded'); });
     if (summary) summary.addEventListener('click', function() { card.classList.toggle('expanded'); });
+    if (body) body.addEventListener('click', function(e) {
+        if (!e.target.closest('a, button')) card.classList.toggle('expanded');
+    });
 });
 </script>
 </body>

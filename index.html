@@ -861,55 +861,22 @@
             margin-bottom: 16px;
             letter-spacing: 1px;
         }
-        .free-score-form {
-            max-width: 480px;
-            margin-top: 32px;
+        .tally-embed-wrapper {
+            position: relative;
         }
-        .free-score-form .form-group {
-            margin-bottom: 16px;
-        }
-        .free-score-form label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-        .free-score-form input {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.06);
-            color: var(--white);
-            font-size: 15px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .free-score-form input::placeholder { color: rgba(255,255,255,0.25); }
-        .free-score-form input:focus { border-color: var(--accent); }
-        .free-score-form button {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent);
-            color: var(--white);
+        .tally-embed-wrapper iframe {
             border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            font-family: inherit;
-            margin-top: 8px;
         }
-        .free-score-form button:hover { opacity: 0.9; }
-        .free-score-note {
-            font-size: 13px;
-            color: rgba(255,255,255,0.35);
-            margin-top: 12px;
-            line-height: 1.6;
+        .tally-embed-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 65%;
+            height: 70px;
+            background: var(--dark);
+            pointer-events: none;
+            z-index: 1;
         }
         .free-score-steps {
             margin-top: 48px;
@@ -1492,25 +1459,9 @@
         <h2>Get your AO score</h2>
         <p class="section-subtitle">We'll audit your website and send you your score out of 100, your band (Invisible, Fragmented, Visible, Ready, or Optimised), and a one-line summary of your biggest gap. Free, no obligation.</p>
 
-        <form class="free-score-form" action="https://formsubmit.co/ao@tailored-tools.com" method="POST">
-            <input type="hidden" name="_subject" value="Free AO Score Request">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://tailored-tools.com/score-requested">
-            <div class="form-group">
-                <label for="fs-url">Your website URL</label>
-                <input type="url" name="website" id="fs-url" placeholder="e.g. yourbusiness.co.uk" required>
-            </div>
-            <div class="form-group">
-                <label for="fs-name">Business name</label>
-                <input type="text" name="business_name" id="fs-name" placeholder="e.g. Smith's Plumbing" required>
-            </div>
-            <div class="form-group">
-                <label for="fs-email">Your email (so we can send the score)</label>
-                <input type="email" name="email" id="fs-email" placeholder="you@yourbusiness.co.uk" required>
-            </div>
-            <button type="submit">Get my free AO score &rarr;</button>
-        </form>
-        <p class="free-score-note">We'll send your score within 2 working days. No spam, no phone calls, just your number.</p>
+        <div class="tally-embed-wrapper" style="max-width: 600px; margin-top: 32px;">
+            <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
+        </div>
 
         <div class="free-score-steps">
             <div class="free-score-step">
@@ -2290,5 +2241,6 @@ document.querySelectorAll('.ao-card').forEach(function(card) {
     });
 });
 </script>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
 </body>
 </html>

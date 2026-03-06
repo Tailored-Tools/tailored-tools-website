@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AO Audit Methodology - How We Score Your AI Credibility | Tailored Tools</title>
+    <meta name="description" content="Exactly how the AO Audit scores your business across six dimensions. Open methodology, transparent weights, verifiable outputs. No black boxes.">
+
+    <link rel="canonical" href="https://tailored-tools.com/methodology">
+
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/methodology">
+    <meta property="og:title" content="AO Audit Methodology - How We Score Your AI Credibility">
+    <meta property="og:description" content="Exactly how the AO Audit scores your business across six dimensions. Open methodology, transparent weights, verifiable outputs.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 720px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        /* Nav */
+        nav {
+            background: var(--dark);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: block;
+            width: 175px;
+            height: 48px;
+            background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
+            flex-shrink: 0;
+        }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        .nav-cta:hover { opacity: 0.88; color: var(--white) !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255,255,255,0.7);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Page header */
+        .page-header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 48px 24px 56px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .page-header .container { max-width: var(--max-width); margin: 0 auto; }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .page-header h1 span { color: var(--accent); }
+        .page-header p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        /* Content */
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        .content h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 48px 0 12px;
+            color: var(--primary);
+        }
+        .content h2:first-child { margin-top: 0; }
+        .content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 32px 0 8px;
+            color: var(--primary);
+        }
+        .content p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .content strong { color: var(--text); }
+        .content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+        }
+        .content ul li {
+            font-size: 14px;
+            color: var(--text-light);
+            padding: 5px 0 5px 20px;
+            position: relative;
+            line-height: 1.7;
+        }
+        .content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* Dimension card */
+        .dim-card {
+            background: var(--light);
+            border: 1px solid #e0e4e8;
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin: 24px 0;
+        }
+        .dim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .dim-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .dim-weight {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(255,111,32,0.08);
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        .dim-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        .dim-card p:last-child { margin-bottom: 0; }
+        .dim-checks {
+            font-size: 13px;
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .dim-checks li {
+            padding: 3px 0 3px 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .dim-checks li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #c0c8d0;
+        }
+
+        /* Band table */
+        .band-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+        .band-table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            padding: 10px 12px;
+            border-bottom: 2px solid #e0e4e8;
+        }
+        .band-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eef0f3;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        .band-table td:first-child { font-weight: 700; white-space: nowrap; }
+        .band-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        /* Principles */
+        .principle {
+            display: flex;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .principle-num {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .principle-text { flex: 1; }
+        .principle-text strong {
+            display: block;
+            font-size: 15px;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+        .principle-text span {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA box */
+        .cta-box {
+            background: rgba(255,111,32,0.06);
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            padding: 32px;
+            text-align: center;
+            margin: 48px 0 0;
+        }
+        .cta-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px;
+        }
+        .cta-box p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+        .cta-btn:hover { opacity: 0.9; }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer-logo-wrap {
+            width: 210px;
+            height: 72px;
+            background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            margin: 0 auto 16px;
+        }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-cta { display: none; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 16px 24px;
+                gap: 16px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 99;
+            }
+            .nav-links.open { display: flex; }
+            .page-header { padding: 32px 20px 40px; }
+            .page-header h1 { font-size: 28px; }
+            .content { padding: 32px 20px 60px; }
+            .dim-card { padding: 20px; }
+            .dim-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#ao">AO</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#it-consultants">IT Consultants</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta" target="_blank" rel="noopener">Get AO Audit &rarr;</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>How we score your <span>AI credibility</span></h1>
+        <p>The AO Audit measures six dimensions of how readable your business is to AI agents. This page explains exactly what we check, how we weight it, and why. No black boxes.</p>
+    </div>
+</section>
+
+<!-- Content -->
+<div class="content">
+
+    <h2>The question we're answering</h2>
+    <p>When someone asks ChatGPT, Perplexity, Gemini, or any AI assistant to recommend a business like yours, can it? Does it have enough structured, verifiable information to confidently include you in the answer?</p>
+    <p>The AO score measures how close your business is to being consistently recommendable by AI agents. A higher score means more data, better structured, with fewer gaps for an agent to stumble on.</p>
+
+    <h2>Six dimensions, weighted by impact</h2>
+    <p>Each dimension measures a distinct aspect of AI readability. The weights reflect how much each dimension affects whether an AI agent can actually recommend you. These weights are based on how current AI systems (as of early 2026) retrieve, evaluate, and present local service businesses.</p>
+
+    <div class="dim-card">
+        <div class="dim-header">
+            <span class="dim-name">1. Structured Data</span>
+            <span class="dim-weight">25% of score</span>
+        </div>
+        <p><strong>What it measures:</strong> Whether your website has machine-readable data that AI agents can parse directly, rather than having to guess from your page text.</p>
+        <p>This is the single most impactful dimension. Without structured data (schema.org JSON-LD), AI agents are working from scraped text alone. With it, they get clean, unambiguous facts: what you do, where you are, what you charge, what credentials you hold.</p>
+        <ul class="dim-checks">
+            <li>Presence and completeness of JSON-LD structured data</li>
+            <li>Correct schema types for your business category (LocalBusiness, Service, etc.)</li>
+            <li>Key properties populated: name, description, address, telephone, services, offers</li>
+            <li>Proper linking between entities (@id references)</li>
+        </ul>
+    </div>
+
+    <div class="dim-card">
+        <div class="dim-header">
+            <span class="dim-name">2. Service Descriptions</span>
+            <span class="dim-weight">20% of score</span>
+        </div>
+        <p><strong>What it measures:</strong> Whether AI agents can extract a clear, specific list of what you actually do.</p>
+        <p>A vague "we offer a range of services" is invisible to an agent filtering by specific service type. This dimension checks whether your services are individually named, described, and structured so an agent can match them to what someone is looking for.</p>
+        <ul class="dim-checks">
+            <li>Service schema markup with individual service entries</li>
+            <li>Service names that match how people actually search ("boiler repair" not "heating solutions")</li>
+            <li>Service descriptions with enough detail to differentiate from competitors</li>
+            <li>Coverage of expected services for your industry profile</li>
+        </ul>
+    </div>
+
+    <div class="dim-card">
+        <div class="dim-header">
+            <span class="dim-name">3. Pricing Transparency</span>
+            <span class="dim-weight">20% of score</span>
+        </div>
+        <p><strong>What it measures:</strong> Whether an AI agent can answer the question "how much does this cost?" without guessing.</p>
+        <p>AI agents increasingly filter by budget. If someone asks for "a plumber under 100 for a callout", businesses without any pricing signal are excluded entirely. You don't need to list every price. A starting rate, a price range, or structured Offer data is enough to stay in the conversation.</p>
+        <ul class="dim-checks">
+            <li>Offer schema with price, currency, and service name in JSON-LD</li>
+            <li>Visible pricing on the website (starting rates, price ranges, rate cards)</li>
+            <li>Whether pricing is "contact for quote" only (reduces score significantly)</li>
+            <li>Consistency between structured data prices and visible page content</li>
+        </ul>
+    </div>
+
+    <div class="dim-card">
+        <div class="dim-header">
+            <span class="dim-name">4. Trust Signals</span>
+            <span class="dim-weight">15% of score</span>
+        </div>
+        <p><strong>What it measures:</strong> Whether there's enough verifiable evidence for an AI agent to recommend you with confidence.</p>
+        <p>AI agents cross-reference multiple sources. They look for consistency (does the name, address, and phone match across your website and Google?), evidence of quality (reviews, accreditations), and whether your site actively allows AI crawlers to index it.</p>
+        <ul class="dim-checks">
+            <li>NAP consistency (Name, Address, Phone across website and structured data)</li>
+            <li>robots.txt and AI crawler access (GPTBot, ClaudeBot, PerplexityBot)</li>
+            <li>sameAs links connecting your website to social profiles and directories</li>
+            <li>Accreditations and qualifications mentioned on-site</li>
+            <li>Review signals and aggregate ratings</li>
+        </ul>
+    </div>
+
+    <div class="dim-card">
+        <div class="dim-header">
+            <span class="dim-name">5. Availability Readiness</span>
+            <span class="dim-weight">10% of score</span>
+        </div>
+        <p><strong>What it measures:</strong> Whether an AI agent can determine where you operate, when you're available, and how to book.</p>
+        <p>An agent that knows you exist but can't tell if you serve a given area, what your hours are, or how to book is unlikely to recommend you over a competitor with clearer data. This dimension checks the practical "can I actually use this business?" signals.</p>
+        <ul class="dim-checks">
+            <li>Machine-readable location: PostalAddress and GeoCoordinates in schema</li>
+            <li>Service area defined (areaServed)</li>
+            <li>Opening hours in structured data</li>
+            <li>Booking or contact action (potentialAction in schema)</li>
+        </ul>
+    </div>
+
+    <div class="dim-card">
+        <div class="dim-header">
+            <span class="dim-name">6. AI Visibility</span>
+            <span class="dim-weight">10% of score</span>
+        </div>
+        <p><strong>What it measures:</strong> What AI systems currently know about your business when asked directly.</p>
+        <p>We query major AI models with natural-language questions about your business and compare their responses to your actual details. This is the reality check: regardless of what data exists on your site, does the AI actually know who you are?</p>
+        <ul class="dim-checks">
+            <li>Does ChatGPT/GPT-4 know your business name, location, and services?</li>
+            <li>Accuracy of AI-generated descriptions vs. your actual offerings</li>
+            <li>Whether the AI confuses you with competitors or generates incorrect details</li>
+            <li>This module is optional and noted in the report if skipped</li>
+        </ul>
+    </div>
+
+    <h2>How the score works</h2>
+    <p>Each dimension is scored 0-100 individually, then multiplied by its weight. The six weighted scores are summed to give your overall AO score out of 100.</p>
+    <p>Your score places you in one of five bands:</p>
+
+    <table class="band-table">
+        <thead>
+            <tr>
+                <th>Band</th>
+                <th>Score</th>
+                <th>What it means</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="band-dot" style="background:#DC2626"></span>Invisible</td>
+                <td>0 - 25</td>
+                <td>AI agents cannot confidently evaluate or recommend your business</td>
+            </tr>
+            <tr>
+                <td><span class="band-dot" style="background:#EA580C"></span>Fragmented</td>
+                <td>26 - 50</td>
+                <td>Some signals present but major gaps remain</td>
+            </tr>
+            <tr>
+                <td><span class="band-dot" style="background:#D97706"></span>Visible</td>
+                <td>51 - 75</td>
+                <td>AI agents have some data but can't confidently recommend your services</td>
+            </tr>
+            <tr>
+                <td><span class="band-dot" style="background:#65A30D"></span>Ready</td>
+                <td>76 - 90</td>
+                <td>Well-positioned for confident AI agent recommendation</td>
+            </tr>
+            <tr>
+                <td><span class="band-dot" style="background:#16A34A"></span>Optimised</td>
+                <td>91 - 100</td>
+                <td>Fully agent-ready across all dimensions</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Why these dimensions?</h2>
+    <p>These aren't arbitrary categories. They map to the actual process an AI agent follows when deciding whether to recommend a business:</p>
+
+    <div class="principle">
+        <span class="principle-num">1</span>
+        <div class="principle-text">
+            <strong>Can I read this business's data?</strong>
+            <span>Structured Data dimension. Without machine-readable data, the agent is guessing from scraped text.</span>
+        </div>
+    </div>
+    <div class="principle">
+        <span class="principle-num">2</span>
+        <div class="principle-text">
+            <strong>Does this business offer what the person needs?</strong>
+            <span>Service Descriptions dimension. The agent needs to match specific services to specific queries.</span>
+        </div>
+    </div>
+    <div class="principle">
+        <span class="principle-num">3</span>
+        <div class="principle-text">
+            <strong>Can I give a price estimate?</strong>
+            <span>Pricing Transparency dimension. Budget filtering is increasingly common in AI queries.</span>
+        </div>
+    </div>
+    <div class="principle">
+        <span class="principle-num">4</span>
+        <div class="principle-text">
+            <strong>Can I trust this recommendation?</strong>
+            <span>Trust Signals dimension. AI agents need verifiable, consistent evidence before recommending.</span>
+        </div>
+    </div>
+    <div class="principle">
+        <span class="principle-num">5</span>
+        <div class="principle-text">
+            <strong>Can this person actually use this business?</strong>
+            <span>Availability Readiness dimension. Location, hours, and booking capability.</span>
+        </div>
+    </div>
+    <div class="principle">
+        <span class="principle-num">6</span>
+        <div class="principle-text">
+            <strong>Do I already know this business?</strong>
+            <span>AI Visibility dimension. The reality check against what AI systems currently know.</span>
+        </div>
+    </div>
+
+    <h2>What we don't score</h2>
+    <p>The AO Audit is specifically about AI agent readability. It does not measure:</p>
+    <ul>
+        <li>Website design or visual quality</li>
+        <li>SEO rankings or keyword performance</li>
+        <li>Social media following or engagement</li>
+        <li>Business quality or customer satisfaction</li>
+    </ul>
+    <p>A beautiful website with no structured data will score poorly. An ugly website with excellent structured data will score well. That's by design: we're measuring what machines can read, not what humans see.</p>
+
+    <h2>Verifiable outputs</h2>
+    <p>When we implement AO recommendations, every change produces verifiable output. The schema.org structured data we add to your website can be tested using <strong>Google's Rich Results Test</strong> and the <strong>Schema Markup Validator</strong>. You can paste your URL into either tool and see exactly what structured data exists, whether it's valid, and what information it contains.</p>
+    <p>This isn't a trust-me deliverable. It's testable, standards-based, and visible to anyone who checks.</p>
+
+    <h2>Industry profiles</h2>
+    <p>Not all businesses need the same things. A therapist's ideal schema looks different from a plumber's. The audit uses industry-specific profiles that adjust expectations: which schema types matter most, which accreditations are relevant, which services a business of your type would typically offer.</p>
+    <p>Current profiles: therapist/wellness, interpreter/language services, and a generic profile that works for most local service businesses. We're building more as we audit more industries.</p>
+
+    <h2>Limitations and honesty</h2>
+    <p>This methodology is version 1. Here's what you should know:</p>
+    <ul>
+        <li>The weights are our best assessment of current AI agent behaviour, not a universal standard</li>
+        <li>AI agent technology is evolving rapidly - what matters most may shift as systems change</li>
+        <li>The AI Visibility module queries GPT-4 specifically; other models may have different knowledge</li>
+        <li>We cannot guarantee that improving your score will result in AI recommendations - we can only ensure you have the data that makes recommendations possible</li>
+        <li>We update the methodology as we learn more from real audits and as AI systems evolve</li>
+    </ul>
+    <p>We'd rather be transparent about the edges than pretend they don't exist.</p>
+
+    <div class="cta-box">
+        <h3>See where your business stands</h3>
+        <p>Get your AO score across all six dimensions, with prioritised recommendations and a 20-minute debrief call.</p>
+        <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="cta-btn" target="_blank" rel="noopener">Get your AO Audit - &pound;247 &rarr;</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+</script>
+
+</body>
+</html>

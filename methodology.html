@@ -414,16 +414,16 @@
 
     <div class="dim-card">
         <div class="dim-header">
-            <span class="dim-name">1. Structured Data</span>
+            <span class="dim-name">1. Data Readability</span>
             <span class="dim-weight">25% of score</span>
         </div>
-        <p><strong>What it measures:</strong> Whether your website has machine-readable data that AI agents can parse directly, rather than having to guess from your page text.</p>
-        <p>This is the single most impactful dimension. Without structured data (schema.org JSON-LD), AI agents are working from scraped text alone. With it, they get clean, unambiguous facts: what you do, where you are, what you charge, what credentials you hold.</p>
+        <p><strong>What it measures:</strong> Whether AI agents can read your business information directly, or whether they're guessing from your page text.</p>
+        <p>This is the single most impactful dimension. When your business data is properly structured, AI agents get clean, unambiguous facts: what you do, where you are, what you charge, what credentials you hold. Without it, they're scraping text and hoping for the best. This is the foundation of algorithmic trust.</p>
         <ul class="dim-checks">
-            <li>Presence and completeness of JSON-LD structured data</li>
-            <li>Correct schema types for your business category (LocalBusiness, Service, etc.)</li>
-            <li>Key properties populated: name, description, address, telephone, services, offers</li>
-            <li>Proper linking between entities (@id references)</li>
+            <li>Can AI agents parse your business information directly?</li>
+            <li>Are your business type, services, and location clearly defined for machines?</li>
+            <li>Are key details present: name, description, address, phone, services, pricing?</li>
+            <li>Is your data properly connected so agents understand how your services relate to your business?</li>
         </ul>
     </div>
 
@@ -435,7 +435,7 @@
         <p><strong>What it measures:</strong> Whether AI agents can extract a clear, specific list of what you actually do.</p>
         <p>A vague "we offer a range of services" is invisible to an agent filtering by specific service type. This dimension checks whether your services are individually named, described, and structured so an agent can match them to what someone is looking for.</p>
         <ul class="dim-checks">
-            <li>Service schema markup with individual service entries</li>
+            <li>Each service individually listed and described for AI agents</li>
             <li>Service names that match how people actually search ("boiler repair" not "heating solutions")</li>
             <li>Service descriptions with enough detail to differentiate from competitors</li>
             <li>Coverage of expected services for your industry profile</li>
@@ -450,10 +450,10 @@
         <p><strong>What it measures:</strong> Whether an AI agent can answer the question "how much does this cost?" without guessing.</p>
         <p>AI agents increasingly filter by budget. If someone asks for "a plumber under 100 for a callout", businesses without any pricing signal are excluded entirely. You don't need to list every price. A starting rate, a price range, or structured Offer data is enough to stay in the conversation.</p>
         <ul class="dim-checks">
-            <li>Offer schema with price, currency, and service name in JSON-LD</li>
+            <li>Pricing data that AI agents can read and compare (not just text on a page)</li>
             <li>Visible pricing on the website (starting rates, price ranges, rate cards)</li>
             <li>Whether pricing is "contact for quote" only (reduces score significantly)</li>
-            <li>Consistency between structured data prices and visible page content</li>
+            <li>Consistency between AI-readable prices and what's visible on your page</li>
         </ul>
     </div>
 
@@ -465,11 +465,11 @@
         <p><strong>What it measures:</strong> Whether there's enough verifiable evidence for an AI agent to recommend you with confidence.</p>
         <p>AI agents cross-reference multiple sources. They look for consistency (does the name, address, and phone match across your website and Google?), evidence of quality (reviews, accreditations), and whether your site actively allows AI crawlers to index it.</p>
         <ul class="dim-checks">
-            <li>NAP consistency (Name, Address, Phone across website and structured data)</li>
-            <li>robots.txt and AI crawler access (GPTBot, ClaudeBot, PerplexityBot)</li>
-            <li>sameAs links connecting your website to social profiles and directories</li>
+            <li>Consistency: does your name, address, and phone match everywhere AI looks?</li>
+            <li>AI crawler access: can ChatGPT, Claude, and Perplexity actually visit your site?</li>
+            <li>Online presence: are your social profiles and directories connected to your website?</li>
             <li>Accreditations and qualifications mentioned on-site</li>
-            <li>Review signals and aggregate ratings</li>
+            <li>Review signals and what customers are saying about you</li>
         </ul>
     </div>
 
@@ -481,10 +481,10 @@
         <p><strong>What it measures:</strong> Whether an AI agent can determine where you operate, when you're available, and how to book.</p>
         <p>An agent that knows you exist but can't tell if you serve a given area, what your hours are, or how to book is unlikely to recommend you over a competitor with clearer data. This dimension checks the practical "can I actually use this business?" signals.</p>
         <ul class="dim-checks">
-            <li>Machine-readable location: PostalAddress and GeoCoordinates in schema</li>
-            <li>Service area defined (areaServed)</li>
-            <li>Opening hours in structured data</li>
-            <li>Booking or contact action (potentialAction in schema)</li>
+            <li>Can AI agents determine exactly where you operate?</li>
+            <li>Is your service area clearly defined?</li>
+            <li>Are your opening hours readable by AI, not just visible on the page?</li>
+            <li>Can an AI agent figure out how to book or contact you?</li>
         </ul>
     </div>
 
@@ -551,7 +551,7 @@
         <span class="principle-num">1</span>
         <div class="principle-text">
             <strong>Can I read this business's data?</strong>
-            <span>Structured Data dimension. Without machine-readable data, the agent is guessing from scraped text.</span>
+            <span>Data Readability dimension. Without properly structured information, the agent is guessing from scraped text.</span>
         </div>
     </div>
     <div class="principle">
@@ -598,14 +598,14 @@
         <li>Social media following or engagement</li>
         <li>Business quality or customer satisfaction</li>
     </ul>
-    <p>A beautiful website with no structured data will score poorly. An ugly website with excellent structured data will score well. That's by design: we're measuring what machines can read, not what humans see.</p>
+    <p>A beautiful website with no AI-readable data will score poorly. An ugly website with excellent algorithmic trust signals will score well. That's by design: we're measuring what machines can read, not what humans see.</p>
 
     <h2>Verifiable outputs</h2>
-    <p>When we implement AO recommendations, every change produces verifiable output. The schema.org structured data we add to your website can be tested using <strong>Google's Rich Results Test</strong> and the <strong>Schema Markup Validator</strong>. You can paste your URL into either tool and see exactly what structured data exists, whether it's valid, and what information it contains.</p>
+    <p>When we implement AO recommendations, every change produces verifiable output. The data we add to your website can be tested using <strong>Google's Rich Results Test</strong> and the <strong>Schema Markup Validator</strong>. You can paste your URL into either tool and see exactly what AI-readable information exists, whether it's valid, and what it contains.</p>
     <p>This isn't a trust-me deliverable. It's testable, standards-based, and visible to anyone who checks.</p>
 
     <h2>Industry profiles</h2>
-    <p>Not all businesses need the same things. A therapist's ideal schema looks different from a plumber's. The audit uses industry-specific profiles that adjust expectations: which schema types matter most, which accreditations are relevant, which services a business of your type would typically offer.</p>
+    <p>Not all businesses need the same data. A therapist's ideal profile looks different from a plumber's. The audit uses industry-specific profiles that adjust expectations: which data points matter most, which accreditations are relevant, which services a business of your type would typically offer.</p>
     <p>Current profiles: therapist/wellness, interpreter/language services, and a generic profile that works for most local service businesses. We're building more as we audit more industries.</p>
 
     <h2>Limitations and honesty</h2>

@@ -980,6 +980,50 @@
             .partners-grid { grid-template-columns: 1fr; }
         }
 
+        /* FAQ Section */
+        .faq-section { background: var(--white); }
+        .faq-list { max-width: 720px; margin-top: 32px; }
+        .faq-item {
+            border-bottom: 1px solid #e0e4e8;
+            padding: 20px 0;
+        }
+        .faq-item:first-child { border-top: 1px solid #e0e4e8; }
+        .faq-q {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .faq-q::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--accent);
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+        .faq-item.open .faq-q::after {
+            content: '-';
+        }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.open .faq-a {
+            max-height: 300px;
+        }
+        .faq-a p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            padding-top: 12px;
+        }
+
         /* Report preview section */
         .report-preview-section { background: var(--light); padding-top: 16px; }
         .report-scene {
@@ -1778,6 +1822,49 @@
     </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+    <div class="container">
+        <h2>Common questions</h2>
+        <p class="section-subtitle">Straight answers, no jargon.</p>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the difference between AO and SEO?</div>
+                <div class="faq-a"><p>SEO helps you rank on Google. AO helps you get recommended by AI assistants like ChatGPT, Perplexity, and Gemini. They share some foundations (good content, consistent listings), but AI agents need specific signals that Google doesn't require in the same way. Think of it as: SEO puts you on the list. AO gets you recommended.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you change my website design?</div>
+                <div class="faq-a"><p>No. Everything we add is invisible to your visitors. Your website looks exactly the same. We add a layer of data behind the scenes that AI agents can read directly. Your customers see nothing different. Agents see everything they need.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does it take?</div>
+                <div class="faq-a"><p>The free score takes 2 working days. The full AO Audit takes 5 working days and includes a 20-minute call to walk through your results. Implementation time depends on complexity, but most local businesses are done within a week.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this a one-time thing or ongoing?</div>
+                <div class="faq-a"><p>The audit and implementation are one-off. Once your data is in place, it stays. But AI agents update their knowledge constantly, so we offer monthly monitoring (£97/month) to track what they say about you, catch inaccuracies, and flag regressions. It's optional but recommended.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I'm already on Google Maps. Isn't that enough?</div>
+                <div class="faq-a"><p>Google Business Profile helps, and it's one of several sources AI agents check. But AI also reads your website, review sites, directories, and social media. If those sources disagree, or your website has no AI-readable data, the agent can't confidently recommend you. GBP is a piece of the puzzle, not the whole picture.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this guarantee AI recommends me?</div>
+                <div class="faq-a"><p>No. We won't promise that because it would be dishonest. What we guarantee is that your business will have the data that makes recommendations possible. Without it, you're excluded. With it, you're a candidate. The rest depends on your services, reviews, and competition.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I know if AI is even mentioning my business?</div>
+                <div class="faq-a"><p>Ask it. Open ChatGPT, Perplexity, or Gemini and type "Tell me about [your business name] in [your town]." Compare what it says to reality. Most business owners have never done this and are surprised by what they find. The biggest referrer to your business might never show up in your analytics.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the free AO score?</div>
+                <div class="faq-a"><p>We audit your website and send you three things: a score out of 100, the band you fall in (Invisible, Fragmented, Visible, Ready, or Optimised), and a one-line summary of your biggest gap. No sales call, no obligation. If you want the full report and debrief, that's the paid audit.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Partners -->
 <section class="partners-section" id="it-consultants">
     <div class="container">
@@ -2090,6 +2177,78 @@
       "description": "Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.",
       "isPartOf": {"@id": "https://tailored-tools.com/#website"},
       "about": {"@id": "https://tailored-tools.com/#business"}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between AO and SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO helps you rank on Google. AO helps you get recommended by AI assistants like ChatGPT, Perplexity, and Gemini. They share some foundations but AI agents need specific signals that Google doesn't require. SEO puts you on the list. AO gets you recommended."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you change my website design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Everything we add is invisible to your visitors. Your website looks exactly the same. We add a layer of data behind the scenes that AI agents can read directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does an AO Audit take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The free score takes 2 working days. The full AO Audit takes 5 working days and includes a 20-minute call to walk through your results. Implementation time depends on complexity but most local businesses are done within a week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AO a one-time thing or ongoing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The audit and implementation are one-off. Once your data is in place, it stays. We offer optional monthly monitoring at £97/month to track what AI agents say about you, catch inaccuracies, and flag regressions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm already on Google Maps. Isn't that enough for AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Business Profile helps, but AI agents also read your website, review sites, directories, and social media. If those sources disagree or your website has no AI-readable data, the agent can't confidently recommend you. GBP is a piece of the puzzle, not the whole picture."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AO guarantee AI recommends my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. What we guarantee is that your business will have the data that makes recommendations possible. Without it, you're excluded. With it, you're a candidate. The rest depends on your services, reviews, and competition."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if AI is mentioning my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ask it. Open ChatGPT, Perplexity, or Gemini and type 'Tell me about [your business name] in [your town].' Compare what it says to reality. Most business owners have never done this and are surprised by what they find."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the free AO score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We audit your website and send you three things: a score out of 100, the band you fall in (Invisible, Fragmented, Visible, Ready, or Optimised), and a one-line summary of your biggest gap. No sales call, no obligation."
+      }
     }
   ]
 }

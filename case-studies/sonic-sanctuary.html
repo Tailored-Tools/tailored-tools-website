@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: The Sonic Sanctuary - 20 to 85 in One Deployment | Tailored Tools</title>
+    <meta name="description" content="How a sound therapy business in Kent went from invisible to AI agents (20/100) to Ready for recommendation (81/100) with one structured data deployment.">
+
+    <link rel="canonical" href="https://tailored-tools.com/case-studies/sonic-sanctuary">
+
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/case-studies/sonic-sanctuary">
+    <meta property="og:title" content="Case Study: The Sonic Sanctuary - AO Score 20 to 85">
+    <meta property="og:description" content="How a sound therapy business went from invisible to AI agents to Ready for recommendation with structured data.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 720px;
+            --green: #16A34A;
+            --red: #DC2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        nav {
+            background: var(--dark);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: block;
+            width: 175px;
+            height: 48px;
+            background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
+            flex-shrink: 0;
+        }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        .nav-cta:hover { opacity: 0.88; color: var(--white) !important; }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255,255,255,0.7);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .page-header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 48px 24px 56px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .page-header .container { max-width: var(--max-width); margin: 0 auto; }
+        .page-header .badge {
+            display: inline-block;
+            background: rgba(255,111,32,0.2);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .page-header p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        .content h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 48px 0 12px;
+            color: var(--primary);
+        }
+        .content h2:first-child { margin-top: 0; }
+        .content p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .content strong { color: var(--text); }
+
+        /* Score hero */
+        .score-hero {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 24px;
+            align-items: center;
+            margin: 32px 0 48px;
+            padding: 32px;
+            background: var(--dark);
+            border-radius: 12px;
+            color: var(--white);
+        }
+        .score-box { text-align: center; }
+        .score-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .score-label.before { color: rgba(255,255,255,0.4); }
+        .score-label.after { color: var(--green); }
+        .score-num {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .score-num.before { color: var(--red); }
+        .score-num.after { color: var(--green); }
+        .score-num small { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.3); }
+        .score-band {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .score-band.before { color: var(--red); }
+        .score-band.after { color: var(--green); }
+        .score-arrow {
+            font-size: 32px;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* Dimension table */
+        .dim-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+        .dim-table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            padding: 10px 12px;
+            border-bottom: 2px solid #e0e4e8;
+        }
+        .dim-table th:nth-child(2),
+        .dim-table th:nth-child(3),
+        .dim-table th:nth-child(4) { text-align: center; }
+        .dim-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eef0f3;
+            color: var(--text-light);
+        }
+        .dim-table td:first-child { font-weight: 600; color: var(--text); }
+        .dim-table td:nth-child(2),
+        .dim-table td:nth-child(3),
+        .dim-table td:nth-child(4) { text-align: center; font-weight: 700; }
+        .dim-table .score-red { color: var(--red); }
+        .dim-table .score-green { color: var(--green); }
+        .dim-table .score-change { color: var(--accent); }
+
+        /* What we did */
+        .action-list { list-style: none; padding: 0; margin: 24px 0; }
+        .action-list li {
+            padding: 12px 0 12px 28px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+            border-bottom: 1px solid #eef0f3;
+        }
+        .action-list li:last-child { border-bottom: none; }
+        .action-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+        .action-list li strong { color: var(--text); display: block; font-size: 15px; }
+
+        /* Verify box */
+        .verify-box {
+            background: var(--light);
+            border: 1px solid #e0e4e8;
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin: 24px 0;
+        }
+        .verify-box h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .verify-box p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .verify-box code {
+            display: block;
+            background: var(--dark);
+            color: rgba(255,255,255,0.8);
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            word-break: break-all;
+            margin-top: 8px;
+        }
+
+        /* Callout */
+        .callout {
+            background: rgba(255,111,32,0.06);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0;
+        }
+        .callout p {
+            font-size: 15px;
+            color: var(--text);
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .cta-box {
+            background: rgba(255,111,32,0.06);
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            padding: 32px;
+            text-align: center;
+            margin: 48px 0 0;
+        }
+        .cta-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px;
+        }
+        .cta-box p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+        .cta-btn:hover { opacity: 0.9; }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer-logo-wrap {
+            width: 210px;
+            height: 72px;
+            background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            margin: 0 auto 16px;
+        }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-cta { display: none; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 16px 24px;
+                gap: 16px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 99;
+            }
+            .nav-links.open { display: flex; }
+            .page-header { padding: 32px 20px 40px; }
+            .page-header h1 { font-size: 28px; }
+            .content { padding: 32px 20px 60px; }
+            .score-hero {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 24px;
+            }
+            .score-arrow { transform: rotate(90deg); text-align: center; }
+            .score-num { font-size: 44px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#ao">AO</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/methodology">Methodology</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta" target="_blank" rel="noopener">Get AO Audit &rarr;</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <span class="badge">Case Study</span>
+        <h1>The Sonic Sanctuary: 20 to 85 in one deployment</h1>
+        <p>A sound therapy business in Kent went from invisible to AI agents to "Ready" for recommendation. Here's exactly what changed, what it cost, and how you can verify it yourself.</p>
+    </div>
+</section>
+
+<div class="content">
+
+    <div class="score-hero">
+        <div class="score-box">
+            <div class="score-label before">Before</div>
+            <div class="score-num before">20<small>/100</small></div>
+            <div class="score-band before">Invisible</div>
+        </div>
+        <div class="score-arrow">&rarr;</div>
+        <div class="score-box">
+            <div class="score-label after">After</div>
+            <div class="score-num after">85<small>/100</small></div>
+            <div class="score-band after">Ready</div>
+        </div>
+    </div>
+
+    <h2>The business</h2>
+    <p><strong>The Sonic Sanctuary</strong> is a sound therapy practice based in Maidstone, Kent. It runs group sound baths, aerial sound baths, drum circles, and six distinct 1:1 treatments. Pricing ranges from &pound;10 (drum circles) to &pound;120 (couples sessions). Sessions happen across multiple venues in the Maidstone area.</p>
+    <p>The business already had a well-built website with clear service descriptions, transparent pricing, and active social media. But AI agents couldn't read any of it in a structured way.</p>
+
+    <h2>The problem</h2>
+    <p>When we audited thesonicsanctuary.uk, the site scored <strong>20 out of 100</strong>. The website had good content for humans, but AI agents had to guess at everything. No structured data. No machine-readable pricing. No schema markup for services, location, or credentials.</p>
+    <p>The site was already doing several things right: AI crawlers were explicitly allowed in robots.txt, a phone number and email were present, and pricing was visible on the page. But without structured data, that information was locked inside human-readable HTML that AI agents struggle to parse reliably.</p>
+
+    <h2>Dimension scores: before and after</h2>
+    <table class="dim-table">
+        <thead>
+            <tr>
+                <th>Dimension</th>
+                <th>Before</th>
+                <th>After</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Structured Data</td>
+                <td class="score-red">0</td>
+                <td class="score-green">89</td>
+                <td class="score-change">+89</td>
+            </tr>
+            <tr>
+                <td>Service Descriptions</td>
+                <td class="score-red">36</td>
+                <td class="score-green">96</td>
+                <td class="score-change">+60</td>
+            </tr>
+            <tr>
+                <td>Pricing Transparency</td>
+                <td class="score-red">28</td>
+                <td class="score-green">93</td>
+                <td class="score-change">+65</td>
+            </tr>
+            <tr>
+                <td>Trust Signals</td>
+                <td>47</td>
+                <td class="score-green">83</td>
+                <td class="score-change">+36</td>
+            </tr>
+            <tr>
+                <td>Availability Readiness</td>
+                <td class="score-red">5</td>
+                <td class="score-green">80</td>
+                <td class="score-change">+75</td>
+            </tr>
+            <tr>
+                <td>AI Visibility</td>
+                <td class="score-red">0</td>
+                <td>45</td>
+                <td class="score-change">+45</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-size: 13px; color: var(--text-light); margin-top: -8px;">AI Visibility queries GPT-4o-mini live. The model has partial awareness of the business but can't yet confidently describe its services. This score will improve over time as AI models are retrained on the newly structured data.</p>
+
+    <h2>What we did</h2>
+    <p>One deployment. No changes to the visible website. No redesign, no new pages, no content rewriting. We added an invisible structured data layer using schema.org JSON-LD.</p>
+
+    <ul class="action-list">
+        <li>
+            <strong>LocalBusiness + HealthAndBeautyBusiness schema</strong>
+            Business name, description, address with PostalAddress and GeoCoordinates, phone, email, opening hours, price range, payment methods.
+        </li>
+        <li>
+            <strong>4 group services with tiered pricing</strong>
+            Each service (sound baths, aerial sound baths, drum circles, private groups) as a Service entity with multiple Offer entries for each tier (mat, chair, hammock, group size).
+        </li>
+        <li>
+            <strong>6 x 1:1 treatments with full pricing</strong>
+            Each treatment with duration variants and couples options. 16 individual Offer entries covering every combination of treatment, duration, and booking type.
+        </li>
+        <li>
+            <strong>Intro Pass as a structured offer</strong>
+            Two-session introductory package with both mat (&pound;35) and zero gravity chair (&pound;45) pricing.
+        </li>
+        <li>
+            <strong>Credentials and trust data</strong>
+            Level 3 Sound Therapy qualification, professional liability insurance, DBS check, first aid certification. AggregateRating with 5.0 stars from 47 reviews.
+        </li>
+        <li>
+            <strong>Social identity links (sameAs)</strong>
+            Instagram, Facebook, and YouTube linked so AI agents can cross-reference the business across platforms.
+        </li>
+        <li>
+            <strong>Booking action</strong>
+            ReserveAction pointing to the events page, so AI agents can direct users to book.
+        </li>
+    </ul>
+
+    <div class="callout">
+        <p>The entire implementation was a single component added to the site layout. No visible changes to any page. No disruption to the existing design or user experience.</p>
+    </div>
+
+    <h2>Verify it yourself</h2>
+    <p>This isn't a trust-me claim. The structured data is live on the website right now and you can verify it using standard tools.</p>
+
+    <div class="verify-box">
+        <h3>Google Rich Results Test</h3>
+        <p>Paste this URL into Google's Rich Results Test to see the structured data:</p>
+        <code>https://search.google.com/test/rich-results?url=https%3A%2F%2Fthesonicsanctuary.uk</code>
+    </div>
+
+    <div class="verify-box">
+        <h3>Schema Markup Validator</h3>
+        <p>Or use the Schema.org validator for a detailed breakdown of every entity:</p>
+        <code>https://validator.schema.org/#url=https%3A%2F%2Fthesonicsanctuary.uk</code>
+    </div>
+
+    <h2>What this proves</h2>
+    <p>A business can have excellent content, fair pricing, and good reviews, and still be invisible to AI agents. The gap isn't about quality. It's about whether the information is structured in a way machines can read.</p>
+    <p>Structured data closes that gap. One deployment, no visible changes, and the business went from a score of 20 (Invisible) to 85 (Ready). That's the difference between being excluded from AI recommendations and being a candidate for them.</p>
+    <p><a href="/methodology" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read our full methodology &rarr;</a></p>
+
+    <div class="cta-box">
+        <h3>Want to know your score?</h3>
+        <p>We'll audit your business across the same six dimensions, with a scored PDF and a 20-minute call to walk through it.</p>
+        <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="cta-btn" target="_blank" rel="noopener">Get your AO Audit - &pound;247 &rarr;</a>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+</script>
+
+</body>
+</html>

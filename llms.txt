@@ -9,16 +9,16 @@ Tailored Tools builds AI credibility for small businesses. When someone asks Cha
 ## Services
 
 ### AO Audit (Agent Optimisation Audit) — £247
-A scored AO Audit across six dimensions: structured data, service descriptions, pricing signals, trust signals, availability, and AI credibility. Delivered as a PDF report with prioritised recommendations and a 20-minute debrief call. Turnaround: 5 working days.
+A scored AO Audit across six dimensions: data readability, service descriptions, pricing signals, trust signals, availability, and AI visibility. Delivered as a PDF report with prioritised recommendations and a 20-minute debrief call. Turnaround: 5 working days.
 
 ### AO Implementation — from £497
-We add an invisible structured data layer to your website that AI agents can read directly — schema.org markup, computable pricing logic, and service parameters. No visible changes to your site.
+Making your business fully AI-readable — services, pricing, credentials, and availability structured so AI agents can confidently recommend you. No visible changes to your website.
 
 ### AO Audit + Implementation Bundle — £697
 Full audit followed by complete implementation of all recommendations. Save £47 vs booking separately.
 
-### AO Monitoring — coming soon
-Monthly AI credibility monitoring, regression detection, and structured data maintenance as AI technology evolves.
+### AO Monitoring — £97/month
+Monthly AI credibility monitoring — tracking what AI agents say about your business across ChatGPT, Perplexity, Gemini, and Claude. Includes accuracy checks, narrative protection, competitor tracking, and regression alerts. Annual option: £970/year (save £194). Requires an initial AO Audit.
 
 ### AO Workshops — available on request
 "Can AI Confidently Recommend Your Business?" — a 90-120 minute hands-on workshop with live audit demonstration for up to 30 people. Available in-person or remotely.
@@ -48,6 +48,8 @@ Founded in 2025 by James Edwards. Based in Maidstone, Kent, UK. Serving business
 
 We publish plain-English articles on AI credibility and Agent Optimisation:
 - https://tailored-tools.com/blog/
+- https://tailored-tools.com/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html
+- https://tailored-tools.com/blog/is-ai-saying-the-wrong-things-about-your-business.html
 - https://tailored-tools.com/blog/how-much-does-ai-optimisation-cost.html
 - https://tailored-tools.com/blog/geo-aeo-ao-whats-the-difference.html
 - https://tailored-tools.com/blog/how-to-check-if-ai-recommends-your-business.html

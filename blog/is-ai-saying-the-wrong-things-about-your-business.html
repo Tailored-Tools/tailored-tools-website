@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is AI saying the wrong things about your business? | Tailored Tools</title>
+    <meta name="description" content="AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers.">
+    <meta property="og:title" content="Is AI saying the wrong things about your business? | Tailored Tools">
+    <meta property="og:description" content="AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/blog/is-ai-saying-the-wrong-things-about-your-business.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Is AI saying the wrong things about your business? | Tailored Tools">
+    <meta name="twitter:description" content="AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="canonical" href="https://tailored-tools.com/blog/is-ai-saying-the-wrong-things-about-your-business.html">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 960px;
+            --mid: #5a6a7a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--dark);
+            border-bottom: 2px solid var(--accent);
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('../tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .article-header {
+            padding: 60px 24px 40px;
+            background: #f4f5f7;
+            border-bottom: 3px solid #ff6f20;
+        }
+        .article-header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .article-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+            margin-top: 8px;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #5a6a7a;
+            margin-top: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #5a6a7a;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+        .back-link:hover { color: #ff6f20; }
+
+        .article-body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #203a4c;
+            margin: 40px 0 16px;
+        }
+        .article-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 20px;
+        }
+        .article-body ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .article-body li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #203a4c;
+            margin-bottom: 8px;
+        }
+
+        .article-cta {
+            background: #f4f5f7;
+            border-left: 4px solid #ff6f20;
+            padding: 28px 32px;
+            margin: 48px 0 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .article-cta h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .article-cta p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #5a6a7a;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #ff6f20;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: #e55e10; }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 48px 24px 36px;
+            font-size: 13px;
+            margin-top: 80px;
+        }
+        .footer-logo-wrap {
+            background: url('../tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            width: 210px;
+            height: 72px;
+            margin: 0 auto 16px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Is AI saying the wrong things about your business?",
+      "description": "AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers.",
+      "author": {
+        "@type": "Person",
+        "name": "James Edwards",
+        "url": "https://tailored-tools.com/#about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "logo": "https://tailored-tools.com/tt-logo-dark.svg"
+      },
+      "datePublished": "2026-03-03",
+      "url": "https://tailored-tools.com/blog/is-ai-saying-the-wrong-things-about-your-business.html",
+      "mainEntityOfPage": "https://tailored-tools.com/blog/is-ai-saying-the-wrong-things-about-your-business.html"
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links">
+            <li><a href="/#ao">AO</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/blog/" class="back-link">&#8592; All articles</a>
+        <h1>Is AI saying the wrong things about your business?</h1>
+        <div class="article-meta">3 March 2026 &middot; 5 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>Most business owners are focused on whether AI recommends them at all. That's a valid concern. But there's a second problem that gets far less attention: what happens when AI <em>does</em> mention your business, and gets it wrong.</p>
+
+    <h2>AI doesn't just recommend. It describes.</h2>
+    <p>When someone asks ChatGPT, Perplexity, or Google Gemini about your business, they don't just get a name and a link. They get a description. Services you offer. Prices you charge. Where you're based. What makes you different from competitors.</p>
+    <p>And if AI doesn't have reliable data to draw from, it fills in the gaps. Sometimes it guesses. Sometimes it pulls from outdated sources. Sometimes it confuses you with another business entirely.</p>
+
+    <h2>What "wrong" looks like in practice</h2>
+    <p>Here are real scenarios we've seen when auditing local businesses:</p>
+    <ul>
+        <li><strong>Wrong prices.</strong> A therapist's rates had increased six months ago, but AI was still quoting the old prices. Customers arrived expecting to pay less.</li>
+        <li><strong>Wrong services.</strong> An electrician was described as offering "emergency plumbing" because a directory listing had been scraped incorrectly.</li>
+        <li><strong>Competitor confusion.</strong> A sound therapy business was being mixed up with a music therapy clinic in the same town. Different service, different business, same AI answer.</li>
+        <li><strong>Outdated hours.</strong> A business that had moved to appointment-only was still being described as a walk-in service.</li>
+        <li><strong>Missing entirely.</strong> AI knew the business existed but couldn't describe what it actually did, so it either said nothing useful or recommended a competitor instead.</li>
+    </ul>
+
+    <h2>Why this happens</h2>
+    <p>AI agents pull information from multiple sources: your website, Google Business Profile, review sites, directories, social media, forums. If those sources disagree, or if the information isn't structured in a way AI can parse reliably, it makes its best guess.</p>
+    <p>The problem is that "best guess" still sounds confident to the person reading it. AI doesn't say "I'm not sure about this business." It presents its answer as if it's fact.</p>
+
+    <h2>The cost of wrong information</h2>
+    <p>Wrong information doesn't just confuse potential customers. It actively sends them elsewhere. If AI tells someone your callout fee is higher than it actually is, they pick a competitor. If it says you don't offer a service that you do, they never enquire. If it confuses you with another business, you've lost the opportunity before you even knew it existed.</p>
+    <p>And unlike a bad Google listing that you can check by searching yourself, most people don't think to ask ChatGPT about their own business. The problem is invisible until you look for it.</p>
+
+    <h2>How to check what AI says about you</h2>
+    <p>This takes about ten minutes. Open each of these and ask the same question: "Tell me about [your business name] in [your town]."</p>
+    <ul>
+        <li><strong>ChatGPT</strong> (chat.openai.com) - the most widely used</li>
+        <li><strong>Perplexity</strong> (perplexity.ai) - popular for research queries</li>
+        <li><strong>Google Gemini</strong> (gemini.google.com) - increasingly used via Google search</li>
+        <li><strong>Claude</strong> (claude.ai) - growing fast, especially for detailed queries</li>
+    </ul>
+    <p>Compare what each one says against reality. Are the services right? The prices? The location? The description of what you do? You might be surprised.</p>
+
+    <h2>Offensive and defensive AO</h2>
+    <p>Most of what you hear about AI optimisation is offensive: how to get recommended, how to show up, how to be included. That matters. But defensive AO matters just as much.</p>
+    <p>Defensive AO means ensuring that what AI says about your business is accurate, current, and consistent across platforms. It means monitoring for inaccuracies and correcting them at the source, so the next time an AI agent is asked about you, it gets it right.</p>
+    <p>The businesses that take this seriously will have an advantage. Not because they gamed an algorithm, but because they made sure the information out there about them is actually true.</p>
+
+    <h2>What you can do about it</h2>
+    <p>Start with the ten-minute check above. If what AI says matches reality, you're in better shape than most. If it doesn't, there are two things to address:</p>
+    <ul>
+        <li><strong>Make your data AI-readable.</strong> Ensure your website has structured information that AI agents can parse directly, rather than guessing from page text. This is what an AO implementation does.</li>
+        <li><strong>Monitor it over time.</strong> AI models update their knowledge regularly. What's correct today might drift tomorrow. Monthly monitoring catches this before your customers do.</li>
+    </ul>
+
+    <div class="article-cta">
+        <h3>Find out what AI really says about your business</h3>
+        <p>We'll audit your website, check what major AI platforms say about you, and send your AO score within 2 working days. Free, no obligation.</p>
+        <a href="/#free-score" class="cta-btn">Get your free AO score &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>

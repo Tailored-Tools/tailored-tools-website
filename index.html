@@ -217,15 +217,116 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Tailored Tools",
-        "url": "https://tailored-tools.com",
-        "email": "hello@tailored-tools.com",
-        "description": "AI integration for small businesses. Business automation, agent optimisation, and workshops.",
-        "founder": {
-            "@type": "Person",
-            "name": "James Edwards"
-        }
+        "@graph": [
+            {
+                "@type": ["LocalBusiness", "ProfessionalService"],
+                "@id": "https://tailored-tools.com/#organization",
+                "name": "Tailored Tools",
+                "url": "https://tailored-tools.com",
+                "email": "hello@tailored-tools.com",
+                "telephone": "+447481789098",
+                "description": "AI integration for small businesses. Business automation, agent optimisation, and workshops. Making your business one AI agents confidently recommend.",
+                "image": "https://tailored-tools.com/img/tt-logo-dark.svg",
+                "logo": "https://tailored-tools.com/img/tt-logo-dark.svg",
+                "priceRange": "££",
+                "founder": {
+                    "@type": "Person",
+                    "name": "James Edwards"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Maidstone",
+                    "addressRegion": "Kent",
+                    "addressCountry": "GB"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 51.2720,
+                    "longitude": 0.5290
+                },
+                "areaServed": [
+                    {"@type": "Country", "name": "United Kingdom"},
+                    {"@type": "AdministrativeArea", "name": "Kent"}
+                ],
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                        "opens": "09:00",
+                        "closes": "17:00"
+                    }
+                ],
+                "sameAs": [
+                    "https://www.linkedin.com/company/tailored-tools",
+                    "https://www.instagram.com/tailored.tools"
+                ],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Tailored Tools Services",
+                    "itemListElement": [
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Agent Optimisation",
+                            "itemListElement": [
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "AO Audit",
+                                        "description": "Comprehensive assessment across six dimensions: data readability, service descriptions, pricing transparency, trust signals, availability, and AI visibility. Scored PDF report with prioritised recommendations.",
+                                        "serviceType": "Agent Optimisation Audit"
+                                    },
+                                    "price": "247",
+                                    "priceCurrency": "GBP",
+                                    "url": "https://tailored-tools.com/ao/",
+                                    "availability": "https://schema.org/InStock"
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "AO Implementation",
+                                        "description": "Making your business fully AI-readable with structured data, pricing signals, and trust signals so AI agents confidently recommend you.",
+                                        "serviceType": "AI Readability Implementation"
+                                    },
+                                    "price": "497",
+                                    "priceCurrency": "GBP",
+                                    "availability": "https://schema.org/InStock"
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "AO Monitoring",
+                                        "description": "Monthly tracking of what AI agents say about your business across ChatGPT, Perplexity, Gemini, and Claude. Accuracy checks, narrative protection, and regression alerts.",
+                                        "serviceType": "AI Credibility Monitoring"
+                                    },
+                                    "price": "97",
+                                    "priceCurrency": "GBP",
+                                    "availability": "https://schema.org/InStock"
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Business Automation",
+                            "itemListElement": [
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Business Automation",
+                                        "description": "Custom platforms that automate bookings, comms, and operations. Built with AI.",
+                                        "serviceType": "Business Process Automation"
+                                    },
+                                    "availability": "https://schema.org/InStock"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
     }
     </script>
 </head>

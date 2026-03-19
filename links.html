@@ -92,6 +92,11 @@
       padding: 13px 16px;
       background: rgba(255, 111, 32, 0.15);
       border: 1px solid #ff6f20;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 111, 32, 0.4); }
+      50% { box-shadow: 0 0 16px 4px rgba(255, 111, 32, 0.25); }
     }
     .link-card--featured .card-heading {
       font-size: 13px;

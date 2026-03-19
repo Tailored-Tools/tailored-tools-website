@@ -54,13 +54,13 @@
 
         /* ── Project section ─────────────────────────────────────── */
         .project-section {
-            padding: 80px 24px;
+            padding: 96px 24px;
         }
         .project-section:nth-child(even) {
             background: var(--light);
         }
         .project-header {
-            margin-bottom: 48px;
+            margin-bottom: 64px;
         }
         .project-label {
             font-size: 12px;
@@ -83,7 +83,7 @@
 
         /* ── Before / After toggle ───────────────────────────────── */
         .ba-toggle-wrap {
-            margin-bottom: 56px;
+            margin-bottom: 72px;
         }
         .ba-controls {
             display: flex;
@@ -113,7 +113,7 @@
 
         .ba-view {
             position: relative;
-            min-height: 320px;
+            min-height: 360px;
         }
         .ba-state {
             opacity: 0;
@@ -135,7 +135,7 @@
         /* Before state — chaotic scattered pills */
         .before-grid {
             position: relative;
-            min-height: 280px;
+            min-height: 320px;
             margin: 16px 0;
         }
         .before-pill {
@@ -270,7 +270,7 @@
 
         /* ── Architecture flow — connected pipeline ──────────────── */
         .arch-section {
-            margin-bottom: 56px;
+            margin-bottom: 72px;
         }
         .arch-section h3 {
             font-size: 20px;
@@ -281,7 +281,14 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 6px 0;
-            padding: 12px 0;
+            background: rgba(0,0,0,0.035);
+            border: 1px solid rgba(0,0,0,0.07);
+            border-radius: 12px;
+            padding: 24px 20px;
+        }
+        .project-section:nth-child(even) .arch-flow {
+            background: rgba(255,255,255,0.7);
+            border-color: rgba(0,0,0,0.06);
         }
         .arch-step {
             background: var(--white);
@@ -317,15 +324,15 @@
             display: flex;
             flex-direction: column;
             gap: 0;
-            margin-bottom: 56px;
+            margin-bottom: 40px;
             max-width: 620px;
-            border: 1px solid #e0e4e8;
+            border: 1px solid #eaecef;
             border-radius: 10px;
             overflow: hidden;
         }
         .feature-card {
             background: var(--white);
-            border-bottom: 1px solid #e0e4e8;
+            border-bottom: 1px solid #eaecef;
             overflow: hidden;
             transition: background 0.2s;
         }
@@ -339,7 +346,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 20px 24px;
             cursor: pointer;
             user-select: none;
         }
@@ -379,6 +386,7 @@
             background: var(--dark);
             border-radius: 12px;
             padding: 32px 24px;
+            margin-top: 48px;
         }
         .project-stats .stats-row {
             max-width: 100%;
@@ -407,20 +415,31 @@
             margin-right: auto;
         }
 
+        /* ── Scroll reveal animations ────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ── Mobile responsive ───────────────────────────────────── */
         @media (max-width: 768px) {
             .page-hero { padding: 40px 20px 36px; }
             .page-hero h1 { font-size: 30px; }
             .page-hero .subtitle { font-size: 15px; }
 
-            .project-section { padding: 48px 20px; }
+            .project-section { padding: 64px 20px; }
             .project-header h2 { font-size: 26px; }
 
             .hub-row { gap: 8px; }
 
-            .arch-flow { gap: 0; }
+            .arch-flow { gap: 0; padding: 16px; }
 
-            .project-stats { border-radius: 0; margin: 0 -20px; padding: 28px 20px; }
+            .project-stats { border-radius: 0; margin: 48px -20px 0; padding: 28px 20px; }
         }
 
         @media (max-width: 640px) {
@@ -432,6 +451,7 @@
             .arch-flow {
                 flex-direction: column;
                 align-items: stretch;
+                padding: 16px;
             }
             .arch-step {
                 white-space: normal;
@@ -494,14 +514,14 @@
     <div class="container">
 
         <!-- Header -->
-        <div class="project-header">
+        <div class="project-header reveal">
             <div class="project-label">Client Project</div>
             <h2>The Sonic Sanctuary</h2>
             <p>A sound therapy practice running sound baths and drum circles in Kent. We replaced six disconnected tools with one unified operating system.</p>
         </div>
 
         <!-- Before / After -->
-        <div class="ba-toggle-wrap" data-ba="ss">
+        <div class="ba-toggle-wrap reveal" data-ba="ss">
             <div class="ba-controls">
                 <button class="ba-btn active" data-show="before">Before</button>
                 <button class="ba-btn" data-show="after">After</button>
@@ -543,7 +563,7 @@
         </div>
 
         <!-- Architecture flow -->
-        <div class="arch-section">
+        <div class="arch-section reveal">
             <h3>How it works</h3>
             <div class="arch-flow">
                 <div class="arch-step">Customer books</div>
@@ -559,7 +579,7 @@
         </div>
 
         <!-- Feature cards -->
-        <div class="feature-cards">
+        <div class="feature-cards reveal">
             <div class="feature-card">
                 <div class="feature-card-header">
                     <h4>Event Management</h4>
@@ -632,7 +652,7 @@
         </div>
 
         <!-- Stats -->
-        <div class="project-stats">
+        <div class="project-stats reveal">
             <div class="stats-row">
                 <div class="stat-item">
                     <div class="stat-num">200+</div>
@@ -661,14 +681,14 @@
     <div class="container">
 
         <!-- Header -->
-        <div class="project-header">
+        <div class="project-header reveal">
             <div class="project-label">Client Project</div>
             <h2>Performance Interpreting</h2>
             <p>A BSL interpretation agency managing bookings, interpreters, and staff across the UK and Ireland. We replaced spreadsheets and email chains with a custom operating system.</p>
         </div>
 
         <!-- Before / After -->
-        <div class="ba-toggle-wrap" data-ba="pi">
+        <div class="ba-toggle-wrap reveal" data-ba="pi">
             <div class="ba-controls">
                 <button class="ba-btn active" data-show="before">Before</button>
                 <button class="ba-btn" data-show="after">After</button>
@@ -709,7 +729,7 @@
         </div>
 
         <!-- Architecture flow -->
-        <div class="arch-section">
+        <div class="arch-section reveal">
             <h3>How it works</h3>
             <div class="arch-flow">
                 <div class="arch-step">Client enquiry</div>
@@ -725,7 +745,7 @@
         </div>
 
         <!-- Feature cards -->
-        <div class="feature-cards">
+        <div class="feature-cards reveal">
             <div class="feature-card">
                 <div class="feature-card-header">
                     <h4>Booking Management</h4>
@@ -788,7 +808,7 @@
         </div>
 
         <!-- Stats -->
-        <div class="project-stats">
+        <div class="project-stats reveal">
             <div class="stats-row">
                 <div class="stat-item">
                     <div class="stat-num">379</div>
@@ -871,6 +891,25 @@ document.querySelectorAll('.feature-cards').forEach(function(group) {
         });
     });
 });
+
+/* Scroll reveal — fade in on scroll */
+(function() {
+    var revealEls = document.querySelectorAll('.reveal');
+    if (!revealEls.length) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function(el) {
+        observer.observe(el);
+    });
+})();
 </script>
 
 </body>

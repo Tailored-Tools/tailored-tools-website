@@ -6,7 +6,7 @@
     <title>Tailored Tools: AI credibility, dashboards and automation for small businesses</title>
     <meta name="description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.">
 
-    <link rel="canonical" href="https://tailored-tools.com/">
+    <link rel="canonical" href="https://tailored-tools.com/ao/">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png?v=3" type="image/png">
@@ -14,7 +14,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tailored-tools.com/">
+    <meta property="og:url" content="https://tailored-tools.com/ao/">
     <meta property="og:title" content="Tailored Tools: AI credibility, dashboards and automation for small businesses">
     <meta property="og:description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations.">
     <meta property="og:image" content="https://tailored-tools.com/og-image.png">
@@ -29,6 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <style>
         :root {
             --primary: #203a4c;
@@ -69,10 +70,10 @@
             display: block;
             width: 175px;
             height: 48px;
-            background: url('tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
+            background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
             flex-shrink: 0;
         }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
         .nav-links a {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
@@ -1255,7 +1256,7 @@
         .footer-logo-wrap {
             width: 210px;
             height: 72px;
-            background: url('tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+            background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
             margin: 0 auto 16px;
         }
         footer p { font-size: 13px; }
@@ -1331,22 +1332,20 @@
 </head>
 <body>
 
-<!-- Nav -->
 <nav>
     <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#ao">AO</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="/case-studies/sonic-sanctuary">Case Study</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta" target="_blank" rel="noopener">Get AO Audit &rarr;</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <button class="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/" class="active">AO</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta">Get AO Audit</a></li>
+        </ul>
     </div>
 </nav>
 
@@ -1680,7 +1679,7 @@
                 </div>
             </div>
         </div>
-        <p style="text-align:center; font-size:13px; color:var(--text-light); margin-top:20px;">The difference between these two results is algorithmic trust — making your business information readable and verifiable by AI.<br><a href="/methodology" style="color:var(--accent); font-weight:600; text-decoration:none;">See exactly how we score your business &rarr;</a></p>
+        <p style="text-align:center; font-size:13px; color:var(--text-light); margin-top:20px;">The difference between these two results is algorithmic trust — making your business information readable and verifiable by AI.<br><a href="/ao/methodology.html" style="color:var(--accent); font-weight:600; text-decoration:none;">See exactly how we score your business &rarr;</a></p>
     </div>
 </section>
 
@@ -1946,92 +1945,11 @@
     </div>
 </section>
 
-<!-- Structured Data -->
+<!-- Structured Data (AO page — Service schemas + FAQPage) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://tailored-tools.com/#organization",
-      "name": "Tailored Tools",
-      "url": "https://tailored-tools.com",
-      "logo": "https://tailored-tools.com/tt-logo-dark.svg",
-      "telephone": "+447481789098",
-      "email": "hello@tailored-tools.com",
-      "sameAs": [
-        "https://instagram.com/tailored.tools",
-        "https://www.linkedin.com/in/jamesedwards7"
-      ],
-      "areaServed": {
-        "@type": "Country",
-        "name": "United Kingdom"
-      },
-      "description": "Kent-based technology consultancy helping small service businesses with AI credibility, dashboards, automation, and integrations.",
-      "foundingDate": "2025",
-      "founder": {
-        "@type": "Person",
-        "name": "James Edwards",
-        "url": "https://www.linkedin.com/in/jamesedwards7",
-        "knowsAbout": ["Agent Optimisation", "AI credibility", "schema.org structured data", "business automation", "software integration"],
-        "hasCredential": {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional Experience",
-          "name": "Technology Consultant — AI Credibility and Business Systems"
-        }
-      }
-    },
-    {
-      "@type": ["LocalBusiness", "ProfessionalService"],
-      "@id": "https://tailored-tools.com/#business",
-      "name": "Tailored Tools",
-      "description": "Specialist technology consultancy helping small service businesses with AI credibility (Agent Optimisation), custom dashboards, business automation, and software integrations. Based in Maidstone, Kent.",
-      "url": "https://tailored-tools.com",
-      "telephone": "+447481789098",
-      "email": "hello@tailored-tools.com",
-      "image": "https://tailored-tools.com/og-image.png",
-      "logo": "https://tailored-tools.com/tt-logo-dark.svg",
-      "priceRange": "$$",
-      "sameAs": [
-        "https://instagram.com/tailored.tools",
-        "https://www.linkedin.com/in/jamesedwards7"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Maidstone",
-        "addressRegion": "Kent",
-        "addressCountry": "GB"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 51.2724,
-        "longitude": 0.5209
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        }
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "17:00"
-        }
-      ],
-      "potentialAction": {
-        "@type": "OrderAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01",
-          "actionPlatform": "https://schema.org/DesktopWebPlatform"
-        },
-        "name": "Book an AO Audit",
-        "description": "Order an AO Audit — scored report and 20-minute debrief call"
-      }
-    },
     {
       "@type": "Service",
       "@id": "https://tailored-tools.com/#ao-audit",
@@ -2161,22 +2079,6 @@
         "description": "Connect your business tools so they share data automatically",
         "availability": "https://schema.org/InStock"
       }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://tailored-tools.com/#website",
-      "url": "https://tailored-tools.com",
-      "name": "Tailored Tools",
-      "publisher": {"@id": "https://tailored-tools.com/#organization"}
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://tailored-tools.com/",
-      "url": "https://tailored-tools.com/",
-      "name": "Tailored Tools: AI credibility, dashboards and automation for small businesses",
-      "description": "Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.",
-      "isPartOf": {"@id": "https://tailored-tools.com/#website"},
-      "about": {"@id": "https://tailored-tools.com/#business"}
     }
   ]
 }
@@ -2254,24 +2156,12 @@
 }
 </script>
 
-<!-- Footer -->
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
-    <p>&copy; 2026 Tailored Tools. All rights reserved. · <a href="/privacy.html">Privacy Policy</a></p>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
-<script>
-document.getElementById('hamburger').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('#navLinks a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('navLinks').classList.remove('open');
-    });
-});
-</script>
+
 
 <script>
 // Cycling headline — icon + name fades between platforms
@@ -2410,5 +2300,17 @@ document.querySelectorAll('.ao-card').forEach(function(card) {
 });
 </script>
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+<script>
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('open');
+    });
+});
+</script>
 </body>
 </html>

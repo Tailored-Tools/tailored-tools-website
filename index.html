@@ -33,10 +33,27 @@
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
         .hero {
-            background: linear-gradient(135deg, #0D1B2A 0%, #1a2d42 100%);
+            background: linear-gradient(-45deg, #0D1B2A, #1a2d42, #0D1B2A, #162438);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
             color: var(--white);
             padding: 100px 24px 112px;
             overflow: hidden;
+            position: relative;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Cursor glow overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,111,32,0.08), transparent 60%);
+            pointer-events: none;
+            z-index: 1;
         }
         .hero-inner {
             max-width: var(--max-width);
@@ -44,6 +61,8 @@
             display: flex;
             align-items: center;
             gap: 48px;
+            position: relative;
+            z-index: 2;
         }
         .hero-content {
             flex: 1;
@@ -65,6 +84,19 @@
             color: var(--white);
             margin-bottom: 20px;
             max-width: 560px;
+        }
+        /* Word-by-word headline animation */
+        .hero-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: wordIn 0.4s ease forwards;
+        }
+        @keyframes wordIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .hero-subtitle {
             font-size: 18px;
@@ -202,6 +234,17 @@
         /* ── What TT Does ───────────────────────────────────────────── */
         .what-tt {
             background: var(--light);
+            position: relative;
+        }
+        .what-tt::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--light));
+            pointer-events: none;
         }
         .what-tt h2 {
             margin-bottom: 8px;
@@ -213,10 +256,18 @@
             margin-top: 40px;
         }
         .service-card {
-            background: var(--white);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.3);
             border-radius: 10px;
             padding: 32px 28px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
         .service-icon {
             font-size: 28px;
@@ -235,6 +286,17 @@
         /* ── Live Projects ──────────────────────────────────────────── */
         .live-projects {
             background: var(--white);
+            position: relative;
+        }
+        .live-projects::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--white));
+            pointer-events: none;
         }
         .projects-grid {
             display: grid;
@@ -246,10 +308,11 @@
             border: 1px solid rgba(0,0,0,0.08);
             border-radius: 10px;
             padding: 32px 28px;
-            transition: box-shadow 0.2s, border-color 0.2s;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
         }
         .project-card:hover {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
             border-color: rgba(0,0,0,0.14);
         }
         .project-label {
@@ -284,6 +347,17 @@
             background: var(--white);
             border-top: 1px solid rgba(0,0,0,0.06);
             text-align: center;
+            position: relative;
+        }
+        .brief-about::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--white));
+            pointer-events: none;
         }
         .about-photo {
             width: 80px;
@@ -316,7 +390,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.visible {
             opacity: 1;
@@ -496,7 +570,7 @@
     <div class="hero-inner">
         <div class="hero-content">
             <span class="hero-label">AI Integration for Small Businesses</span>
-            <h1>I build AI systems that actually run businesses</h1>
+            <h1><span class="hero-word" style="animation-delay:0s">I</span> <span class="hero-word" style="animation-delay:0.08s">build</span> <span class="hero-word" style="animation-delay:0.16s">AI</span> <span class="hero-word" style="animation-delay:0.24s">systems</span> <span class="hero-word" style="animation-delay:0.32s">that</span> <span class="hero-word" style="animation-delay:0.4s">actually</span> <span class="hero-word" style="animation-delay:0.48s">run</span> <span class="hero-word" style="animation-delay:0.56s">businesses</span></h1>
             <p class="hero-subtitle">Real systems running real businesses. No jargon, no hype - just tools that save time and make money.</p>
             <div class="hero-ctas">
                 <a href="/projects" class="btn-accent">See My Work</a>
@@ -669,6 +743,70 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     document.querySelectorAll('.reveal').forEach(function(el) {
         revealObserver.observe(el);
     });
+})();
+
+// Cursor glow on hero — only on non-touch devices
+(function() {
+    var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
+    var hero = document.querySelector('.hero');
+    hero.addEventListener('mousemove', function(e) {
+        var rect = hero.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        hero.style.setProperty('--mouse-x', x + 'px');
+        hero.style.setProperty('--mouse-y', y + 'px');
+    });
+})();
+
+// Counter animation on stats — count up when scrolled into view
+(function() {
+    function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+    }
+
+    function animateCounter(el, target, suffix, duration) {
+        var start = performance.now();
+        function tick(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = easeOutQuart(progress);
+            var current = Math.round(eased * target);
+            el.textContent = current + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            }
+        }
+        requestAnimationFrame(tick);
+    }
+
+    var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var statNums = entry.target.querySelectorAll('.stat-num');
+                statNums.forEach(function(el) {
+                    var text = el.textContent.trim();
+                    var suffix = '';
+                    if (text.indexOf('+') !== -1) {
+                        suffix = '+';
+                        text = text.replace('+', '');
+                    }
+                    var target = parseInt(text, 10);
+                    if (!isNaN(target)) {
+                        el.textContent = '0' + suffix;
+                        animateCounter(el, target, suffix, 1500);
+                    }
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    var statsStrip = document.querySelector('.stats-strip');
+    if (statsStrip) {
+        statsObserver.observe(statsStrip);
+    }
 })();
 </script>
 

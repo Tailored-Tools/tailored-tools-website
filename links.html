@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>James Edwards</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: #0D1B2A;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      min-height: 100dvh;
+    }
+    .card {
+      width: 100%;
+      max-width: 360px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 18px;
+    }
+    .avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2.5px solid #ff6f20;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 3px;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: #ff6f20;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 7px;
+    }
+
+    /* Spacing between sections */
+    .section + .section {
+      margin-top: 14px;
+    }
+
+    /* Link cards — base */
+    .link-card {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      transition: filter 0.15s;
+    }
+    .link-card:active {
+      filter: brightness(1.15);
+    }
+
+    /* Featured card (Free AI Score) */
+    .link-card--featured {
+      padding: 13px 16px;
+      background: rgba(255, 111, 32, 0.15);
+      border: 1px solid #ff6f20;
+    }
+    .link-card--featured .card-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ff6f20;
+    }
+    .link-card--featured .card-sub {
+      font-size: 11px;
+      color: #ddd;
+      margin-top: 3px;
+    }
+
+    /* Standard dark card */
+    .link-card--dark {
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .link-card--dark .card-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .link-card--dark .card-sub {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 3px;
+    }
+
+    /* Side-by-side WhatsApp cards */
+    .wa-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .link-card--wa {
+      flex: 1;
+      min-height: 72px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      text-decoration: none;
+      color: #fff;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px 10px 9px;
+      transition: filter 0.15s;
+    }
+    .link-card--wa:active {
+      filter: brightness(1.2);
+    }
+
+    /* Sound bath gradient: deep indigo/purple — calm, meditative */
+    .link-card--soundbath {
+      background:
+        linear-gradient(
+          to top,
+          rgba(13, 27, 42, 0.88) 0%,
+          rgba(13, 27, 42, 0.45) 60%,
+          rgba(13, 27, 42, 0.1) 100%
+        ),
+        linear-gradient(135deg, #1a0533 0%, #2d1b69 40%, #0d2a4a 100%);
+    }
+
+    /* Drum circle gradient: warm amber/terracotta — rhythm, energy */
+    .link-card--drumcircle {
+      background:
+        linear-gradient(
+          to top,
+          rgba(13, 27, 42, 0.88) 0%,
+          rgba(13, 27, 42, 0.45) 60%,
+          rgba(13, 27, 42, 0.1) 100%
+        ),
+        linear-gradient(135deg, #3d1a00 0%, #7a3800 45%, #4a2010 100%);
+    }
+
+    .wa-heading {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .wa-sub {
+      font-size: 10px;
+      color: #ccc;
+      margin-top: 2px;
+    }
+    .wa-note {
+      font-size: 9px;
+      color: #aaa;
+      margin-top: 1px;
+    }
+
+    /* Inline events card + SS link */
+    .events-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      transition: filter 0.15s;
+    }
+    .events-row:active {
+      filter: brightness(1.15);
+    }
+    .events-row .card-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .events-row .card-sub {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+    .events-arrow {
+      font-size: 14px;
+      color: #ff6f20;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+    .footer a {
+      font-size: 11px;
+      color: #777;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- Header -->
+    <div class="header">
+      <img src="/james.jpg" alt="James Edwards" class="avatar">
+      <div class="name">James Edwards</div>
+      <div class="subtitle">Tailored Tools &middot; The Sonic Sanctuary</div>
+    </div>
+
+    <!-- For Your Business -->
+    <div class="section">
+      <div class="section-label">For Your Business</div>
+      <a href="/ao/#free-score" class="link-card link-card--featured">
+        <div class="card-heading">Free AI Score</div>
+        <div class="card-sub">Is AI recommending your business?</div>
+      </a>
+    </div>
+
+    <!-- The Sonic Sanctuary -->
+    <div class="section">
+      <div class="section-label">The Sonic Sanctuary</div>
+
+      <a href="https://thesonicsanctuary.uk" class="events-row" target="_blank" rel="noopener">
+        <div>
+          <div class="card-heading">Upcoming Events</div>
+          <div class="card-sub">Sound baths &middot; Maidstone, Kent</div>
+        </div>
+        <span class="events-arrow">&#8599;</span>
+      </a>
+
+      <div class="wa-row">
+        <a href="#" class="link-card--wa link-card--soundbath" aria-label="Join the Sound Baths WhatsApp group">
+          <div class="wa-heading">Sound Baths</div>
+          <div class="wa-sub">WhatsApp &middot; 140+</div>
+          <div class="wa-note">Announcements only</div>
+        </a>
+        <a href="#" class="link-card--wa link-card--drumcircle" aria-label="Join the Drum Circle WhatsApp group">
+          <div class="wa-heading">Drum Circle</div>
+          <div class="wa-sub">WhatsApp &middot; 50+</div>
+          <div class="wa-note">Announcements only</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="/">tailored-tools.com &rarr;</a>
+    </div>
+
+  </div>
+</body>
+</html>

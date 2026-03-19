@@ -35,8 +35,19 @@
         .hero {
             background: linear-gradient(135deg, #0D1B2A 0%, #1a2d42 100%);
             color: var(--white);
-            padding: 80px 24px 96px;
-            text-align: center;
+            padding: 100px 24px 112px;
+            overflow: hidden;
+        }
+        .hero-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 0;
         }
         .hero-label {
             display: inline-block;
@@ -53,21 +64,18 @@
             line-height: 1.15;
             color: var(--white);
             margin-bottom: 20px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 560px;
         }
         .hero-subtitle {
             font-size: 18px;
             color: rgba(255,255,255,0.65);
-            max-width: 520px;
-            margin: 0 auto 36px;
+            max-width: 480px;
+            margin: 0 0 36px;
             line-height: 1.6;
         }
         .hero-ctas {
             display: flex;
             gap: 16px;
-            justify-content: center;
             flex-wrap: wrap;
         }
         .btn-outline {
@@ -86,6 +94,111 @@
             color: var(--white);
         }
 
+        /* ── Hero illustration (CSS-only nodes) ─────────────────────── */
+        .hero-graphic {
+            flex-shrink: 0;
+            width: 280px;
+            height: 260px;
+            position: relative;
+        }
+        .hero-graphic svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        /* Node pulse animation */
+        @keyframes nodePulse {
+            0%, 100% { opacity: 0.9; r: 6; }
+            50%       { opacity: 1;   r: 8; }
+        }
+        @keyframes nodePulseSm {
+            0%, 100% { opacity: 0.5; r: 4; }
+            50%       { opacity: 0.8; r: 5.5; }
+        }
+        @keyframes lineFlow {
+            0%   { stroke-dashoffset: 24; }
+            100% { stroke-dashoffset: 0;  }
+        }
+        .node-lg {
+            animation: nodePulse 3s ease-in-out infinite;
+        }
+        .node-sm {
+            animation: nodePulseSm 3.5s ease-in-out infinite;
+        }
+        .node-2 { animation-delay: 0.6s; }
+        .node-3 { animation-delay: 1.2s; }
+        .node-4 { animation-delay: 0.3s; }
+        .node-5 { animation-delay: 0.9s; }
+        .node-6 { animation-delay: 1.5s; }
+        .conn-line {
+            stroke-dasharray: 6 4;
+            animation: lineFlow 1.8s linear infinite;
+        }
+        .conn-line-2 { animation-delay: 0.4s; }
+        .conn-line-3 { animation-delay: 0.8s; }
+        .conn-line-4 { animation-delay: 1.2s; }
+        .conn-line-5 { animation-delay: 0.2s; }
+        .conn-line-6 { animation-delay: 1.6s; }
+
+        /* ── Client logo strip ──────────────────────────────────────── */
+        .logo-strip {
+            background: #f9fafb;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 32px 24px;
+        }
+        .logo-strip-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .logo-strip-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #aab4be;
+            white-space: nowrap;
+        }
+        .logo-strip-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        .logo-strip-logos {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .client-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+        }
+        .client-logo-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #9aa5b1;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+        }
+        .client-logo-sector {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #bdc8d0;
+        }
+
         /* ── What TT Does ───────────────────────────────────────────── */
         .what-tt {
             background: var(--light);
@@ -102,7 +215,7 @@
         .service-card {
             background: var(--white);
             border-radius: 10px;
-            padding: 28px 24px;
+            padding: 32px 28px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
         .service-icon {
@@ -126,13 +239,13 @@
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 28px;
             margin-top: 40px;
         }
         .project-card {
             border: 1px solid rgba(0,0,0,0.08);
             border-radius: 10px;
-            padding: 28px 24px;
+            padding: 32px 28px;
             transition: box-shadow 0.2s, border-color 0.2s;
         }
         .project-card:hover {
@@ -199,17 +312,45 @@
         }
         .about-link:hover { opacity: 0.75; }
 
+        /* ── Scroll reveal animations ────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Increased section whitespace (homepage) ─────────────────── */
+        .what-tt,
+        .live-projects,
+        .brief-about {
+            padding-top: 96px;
+            padding-bottom: 96px;
+        }
+
         /* ── Responsive ─────────────────────────────────────────────── */
         @media (max-width: 768px) {
+            .hero { padding: 72px 24px 80px; }
+            .hero-inner { flex-direction: column; gap: 40px; }
+            .hero-graphic { width: 220px; height: 200px; }
             .hero h1 { font-size: 32px; }
             .hero-subtitle { font-size: 16px; }
             .services-grid { grid-template-columns: 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
+            .logo-strip-divider { display: none; }
+            .logo-strip-inner { gap: 24px; }
+            .what-tt,
+            .live-projects,
+            .brief-about { padding-top: 64px; padding-bottom: 64px; }
         }
 
         @media (max-width: 480px) {
-            .hero { padding: 56px 20px 72px; }
+            .hero { padding: 56px 20px 64px; }
             .hero h1 { font-size: 28px; }
+            .hero-graphic { display: none; }
         }
     </style>
 
@@ -352,17 +493,68 @@
 
 <!-- ── Hero ──────────────────────────────────────────────────────────── -->
 <section class="hero">
-    <span class="hero-label">AI Integration for Small Businesses</span>
-    <h1>I build AI systems that actually run businesses</h1>
-    <p class="hero-subtitle">Real systems running real businesses. No jargon, no hype - just tools that save time and make money.</p>
-    <div class="hero-ctas">
-        <a href="/projects" class="btn-accent">See My Work</a>
-        <a href="/ao/#free-score" class="btn-outline">Free AO Score</a>
+    <div class="hero-inner">
+        <div class="hero-content">
+            <span class="hero-label">AI Integration for Small Businesses</span>
+            <h1>I build AI systems that actually run businesses</h1>
+            <p class="hero-subtitle">Real systems running real businesses. No jargon, no hype - just tools that save time and make money.</p>
+            <div class="hero-ctas">
+                <a href="/projects" class="btn-accent">See My Work</a>
+                <a href="/ao/#free-score" class="btn-outline">Free AO Score</a>
+            </div>
+        </div>
+        <!-- CSS-only connected nodes illustration -->
+        <div class="hero-graphic" aria-hidden="true">
+            <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
+                <!-- Connection lines -->
+                <line class="conn-line" x1="140" y1="130" x2="60"  y2="60"  stroke="rgba(255,111,32,0.35)" stroke-width="1.5"/>
+                <line class="conn-line conn-line-2" x1="140" y1="130" x2="220" y2="60"  stroke="rgba(255,111,32,0.35)" stroke-width="1.5"/>
+                <line class="conn-line conn-line-3" x1="140" y1="130" x2="40"  y2="170" stroke="rgba(255,111,32,0.25)" stroke-width="1.5"/>
+                <line class="conn-line conn-line-4" x1="140" y1="130" x2="240" y2="170" stroke="rgba(255,111,32,0.25)" stroke-width="1.5"/>
+                <line class="conn-line conn-line-5" x1="140" y1="130" x2="140" y2="220" stroke="rgba(255,111,32,0.3)"  stroke-width="1.5"/>
+                <line class="conn-line conn-line-6" x1="60"  y1="60"  x2="220" y2="60"  stroke="rgba(255,255,255,0.1)"  stroke-width="1"/>
+                <line                               x1="40"  y1="170" x2="140" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line                               x1="240" y1="170" x2="140" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <!-- Central node -->
+                <circle class="node-lg" cx="140" cy="130" r="6" fill="#ff6f20"/>
+                <circle cx="140" cy="130" r="16" fill="rgba(255,111,32,0.12)"/>
+                <circle cx="140" cy="130" r="26" fill="rgba(255,111,32,0.05)"/>
+                <!-- Outer nodes -->
+                <circle class="node-sm node-2" cx="60"  cy="60"  r="4" fill="rgba(255,255,255,0.7)"/>
+                <circle class="node-sm node-3" cx="220" cy="60"  r="4" fill="rgba(255,255,255,0.7)"/>
+                <circle class="node-sm node-4" cx="40"  cy="170" r="4" fill="rgba(255,255,255,0.55)"/>
+                <circle class="node-sm node-5" cx="240" cy="170" r="4" fill="rgba(255,255,255,0.55)"/>
+                <circle class="node-sm node-6" cx="140" cy="220" r="4" fill="rgba(255,255,255,0.6)"/>
+                <!-- Tiny accent dots -->
+                <circle cx="100" cy="42"  r="2.5" fill="rgba(255,111,32,0.4)"/>
+                <circle cx="185" cy="42"  r="2.5" fill="rgba(255,111,32,0.4)"/>
+                <circle cx="22"  cy="130" r="2"   fill="rgba(255,255,255,0.2)"/>
+                <circle cx="258" cy="130" r="2"   fill="rgba(255,255,255,0.2)"/>
+            </svg>
+        </div>
     </div>
 </section>
 
+<!-- ── Client logo strip ──────────────────────────────────────────────── -->
+<div class="logo-strip reveal">
+    <div class="logo-strip-inner">
+        <span class="logo-strip-label">Systems built for</span>
+        <div class="logo-strip-divider"></div>
+        <div class="logo-strip-logos">
+            <a href="/projects" class="client-logo" aria-label="Performance Interpreting project">
+                <span class="client-logo-name">Performance Interpreting</span>
+                <span class="client-logo-sector">BSL Interpretation</span>
+            </a>
+            <a href="/projects" class="client-logo" aria-label="The Sonic Sanctuary project">
+                <span class="client-logo-name">The Sonic Sanctuary</span>
+                <span class="client-logo-sector">Sound Therapy</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- ── What TT Does ───────────────────────────────────────────────────── -->
-<section class="what-tt">
+<section class="what-tt reveal">
     <div class="container">
         <h2>What Tailored Tools Does</h2>
         <div class="services-grid">
@@ -386,7 +578,7 @@
 </section>
 
 <!-- ── Live Projects ──────────────────────────────────────────────────── -->
-<section class="live-projects">
+<section class="live-projects reveal">
     <div class="container">
         <h2>Live Projects</h2>
         <p class="section-subtitle">AI systems running in production right now</p>
@@ -428,7 +620,7 @@
 </div>
 
 <!-- ── Brief About ────────────────────────────────────────────────────── -->
-<section class="brief-about">
+<section class="brief-about reveal">
     <div class="container">
         <img src="/james.jpg" alt="James Edwards" class="about-photo">
         <h2>I'm James</h2>
@@ -451,6 +643,7 @@
 </footer>
 
 <script>
+// Nav hamburger toggle
 document.querySelector('.hamburger').addEventListener('click', function() {
     this.classList.toggle('active');
     document.querySelector('.nav-links').classList.toggle('open');
@@ -461,6 +654,22 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
         document.querySelector('.nav-links').classList.remove('open');
     });
 });
+
+// Scroll reveal — fade-in sections as they enter the viewport
+(function() {
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        revealObserver.observe(el);
+    });
+})();
 </script>
 
 </body>

@@ -426,6 +426,106 @@
             .hero h1 { font-size: 28px; }
             .hero-graphic { display: none; }
         }
+
+        /* ── Free AO Score ───────────────────────────────────────────── */
+        .free-score {
+            background: var(--white);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding-top: 96px;
+            padding-bottom: 96px;
+        }
+        .free-score h2 {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .free-score .section-subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .tally-embed {
+            max-width: 720px;
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f9fafb;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            padding: 32px;
+        }
+
+        /* ── Email Capture ───────────────────────────────────────────── */
+        .email-capture {
+            background: #f4f5f7;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding-top: 64px;
+            padding-bottom: 64px;
+        }
+        .email-capture h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        /* ── Testimonial ─────────────────────────────────────────────── */
+        .testimonial {
+            background: var(--dark, #0D1B2A);
+            padding-top: 96px;
+            padding-bottom: 96px;
+        }
+        .testimonial-quote {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            border: none;
+            padding: 0;
+            position: relative;
+        }
+        .testimonial-quote::before {
+            content: '\201C';
+            display: block;
+            font-size: 120px;
+            line-height: 0.6;
+            color: var(--accent, #ff6f20);
+            opacity: 0.35;
+            font-family: Georgia, serif;
+            margin-bottom: 24px;
+        }
+        .testimonial-quote p {
+            font-size: 22px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+            margin-bottom: 28px;
+        }
+        .testimonial-quote cite {
+            font-style: normal;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .testimonial-quote cite strong {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white, #fff);
+        }
+        .testimonial-quote cite span {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent, #ff6f20);
+        }
+
+        /* ── Responsive additions ────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .free-score,
+            .testimonial { padding-top: 64px; padding-bottom: 64px; }
+            .email-capture { padding-top: 48px; padding-bottom: 48px; }
+            .tally-embed { padding: 20px; }
+            .testimonial-quote p { font-size: 18px; }
+            .testimonial-quote::before { font-size: 80px; }
+        }
     </style>
 
     <!-- Structured Data -->
@@ -560,7 +660,7 @@
             <li><a href="/ao/">AO</a></li>
             <li><a href="/workshops">Workshops</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Book a Free Chat</a></li>
         </ul>
     </div>
 </nav>
@@ -574,7 +674,7 @@
             <p class="hero-subtitle">Real systems running real businesses. No jargon, no hype - just tools that save time and make money.</p>
             <div class="hero-ctas">
                 <a href="/projects" class="btn-accent">See My Work</a>
-                <a href="/ao/#free-score" class="btn-outline">Free AO Score</a>
+                <a href="#free-score" class="btn-outline">Free AO Score</a>
             </div>
         </div>
         <!-- CSS-only connected nodes illustration -->
@@ -673,6 +773,19 @@
     </div>
 </section>
 
+<!-- ── Testimonial ───────────────────────────────────────────────────── -->
+<section class="testimonial reveal">
+    <div class="container">
+        <blockquote class="testimonial-quote">
+            <p>"Before James built our system, we were managing everything through spreadsheets and email chains. Now six staff use the platform daily and nothing falls through the cracks."</p>
+            <cite>
+                <strong>Marie Edwards</strong>
+                <span>Founder, Performance Interpreting</span>
+            </cite>
+        </blockquote>
+    </div>
+</section>
+
 <!-- ── Stats Strip ────────────────────────────────────────────────────── -->
 <div class="stats-strip">
     <div class="stats-row">
@@ -692,6 +805,26 @@
         </div>
     </div>
 </div>
+
+<!-- ── Free AO Score ─────────────────────────────────────────────────── -->
+<section class="free-score reveal" id="free-score">
+    <div class="container">
+        <h2>Is AI Recommending Your Business?</h2>
+        <p class="section-subtitle">Find out in 2 minutes. Get a free score across 6 dimensions — no obligation, no jargon.</p>
+        <div class="tally-embed">
+            <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ── Email Capture ─────────────────────────────────────────────────── -->
+<section class="email-capture reveal">
+    <div class="container" style="text-align:center;">
+        <h3>Get Practical AI Tips for Your Business</h3>
+        <p class="section-subtitle">No spam. Just useful stuff, when it matters.</p>
+        <a href="mailto:hello@tailored-tools.com?subject=Subscribe%20to%20AI%20tips" class="btn-accent" style="margin-top:16px;">Subscribe &rarr;</a>
+    </div>
+</section>
 
 <!-- ── Brief About ────────────────────────────────────────────────────── -->
 <section class="brief-about reveal">
@@ -809,6 +942,8 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     }
 })();
 </script>
+
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
 
 </body>
 </html>

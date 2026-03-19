@@ -30,7 +30,22 @@
       max-width: 360px;
     }
 
-    /* Header */
+    /* --- Entrance animations --- */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: slideIn 0.5s ease-out forwards;
+    }
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .header { animation-delay: 0s; }
+    .section:nth-child(2) { animation-delay: 0.12s; }
+    .section:nth-child(3) { animation-delay: 0.24s; }
+    .section:nth-child(4) { animation-delay: 0.36s; }
+    .footer-wrap { animation-delay: 0.48s; }
+
+    /* --- Header --- */
     .header {
       display: flex;
       flex-direction: column;
@@ -58,7 +73,7 @@
       margin-top: 3px;
     }
 
-    /* Section label */
+    /* --- Section label --- */
     .section-label {
       font-size: 9px;
       font-weight: 600;
@@ -68,12 +83,12 @@
       margin-bottom: 7px;
     }
 
-    /* Spacing between sections */
+    /* --- Spacing --- */
     .section + .section {
       margin-top: 14px;
     }
 
-    /* Link cards — base */
+    /* --- Link cards base --- */
     .link-card {
       display: block;
       width: 100%;
@@ -81,13 +96,14 @@
       text-decoration: none;
       color: inherit;
       -webkit-tap-highlight-color: transparent;
-      transition: filter 0.15s;
+      transition: transform 0.15s, filter 0.15s;
     }
     .link-card:active {
+      transform: scale(0.98);
       filter: brightness(1.15);
     }
 
-    /* Featured card (Free AI Score) */
+    /* --- Featured card (Free AI Score) with pulse --- */
     .link-card--featured {
       padding: 13px 16px;
       background: rgba(255, 111, 32, 0.15);
@@ -109,91 +125,7 @@
       margin-top: 3px;
     }
 
-    /* Standard dark card */
-    .link-card--dark {
-      padding: 13px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .link-card--dark .card-heading {
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .link-card--dark .card-sub {
-      font-size: 11px;
-      color: #aaa;
-      margin-top: 3px;
-    }
-
-    /* Side-by-side WhatsApp cards */
-    .wa-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .link-card--wa {
-      flex: 1;
-      min-height: 72px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      text-decoration: none;
-      color: #fff;
-      -webkit-tap-highlight-color: transparent;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 10px 10px 9px;
-      transition: filter 0.15s;
-    }
-    .link-card--wa:active {
-      filter: brightness(1.2);
-    }
-
-    /* Sound bath gradient: deep indigo/purple — calm, meditative */
-    .link-card--soundbath {
-      background:
-        linear-gradient(
-          to top,
-          rgba(13, 27, 42, 0.88) 0%,
-          rgba(13, 27, 42, 0.45) 60%,
-          rgba(13, 27, 42, 0.1) 100%
-        ),
-        linear-gradient(135deg, #1a0533 0%, #2d1b69 40%, #0d2a4a 100%);
-    }
-
-    /* Drum circle gradient: warm amber/terracotta — rhythm, energy */
-    .link-card--drumcircle {
-      background:
-        linear-gradient(
-          to top,
-          rgba(13, 27, 42, 0.88) 0%,
-          rgba(13, 27, 42, 0.45) 60%,
-          rgba(13, 27, 42, 0.1) 100%
-        ),
-        linear-gradient(135deg, #3d1a00 0%, #7a3800 45%, #4a2010 100%);
-    }
-
-    .wa-heading {
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-    }
-    .wa-sub {
-      font-size: 10px;
-      color: #ccc;
-      margin-top: 2px;
-    }
-    .wa-note {
-      font-size: 9px;
-      color: #aaa;
-      margin-top: 1px;
-    }
-
-    /* Inline events card + SS link */
+    /* --- Events card --- */
     .events-row {
       display: flex;
       align-items: center;
@@ -206,9 +138,10 @@
       text-decoration: none;
       color: inherit;
       -webkit-tap-highlight-color: transparent;
-      transition: filter 0.15s;
+      transition: transform 0.15s, filter 0.15s;
     }
     .events-row:active {
+      transform: scale(0.98);
       filter: brightness(1.15);
     }
     .events-row .card-heading {
@@ -228,19 +161,134 @@
       margin-left: 8px;
     }
 
-    /* Footer */
-    .footer {
-      margin-top: 18px;
-      padding-top: 14px;
+    /* --- WhatsApp cards --- */
+    .wa-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .link-card--wa {
+      flex: 1;
+      min-height: 90px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      text-decoration: none;
+      color: #fff;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px 10px 9px;
+      transition: transform 0.15s, filter 0.15s;
+      background-size: cover;
+      background-position: center;
+    }
+    .link-card--wa:active {
+      transform: scale(0.97);
+      filter: brightness(1.2);
+    }
+    /* Dark overlay for text readability */
+    .link-card--wa::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13, 27, 42, 0.92) 0%,
+        rgba(13, 27, 42, 0.55) 50%,
+        rgba(13, 27, 42, 0.25) 100%
+      );
+      z-index: 1;
+    }
+    .link-card--wa > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .link-card--soundbath {
+      background-image: url('/images/soundbath-bg.jpg');
+    }
+    .link-card--drumcircle {
+      background-image: url('/images/drumcircle-bg.jpg');
+    }
+
+    .wa-icon-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 2px;
+    }
+    .wa-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .wa-heading {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .wa-sub {
+      font-size: 10px;
+      color: #ccc;
+      margin-top: 2px;
+    }
+    .wa-note {
+      font-size: 9px;
+      color: #aaa;
+      margin-top: 1px;
+    }
+
+    /* --- About Me card --- */
+    .about-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.15s, filter 0.15s;
+    }
+    .about-card:active {
+      transform: scale(0.98);
+      filter: brightness(1.15);
+    }
+    .about-card .about-text {
+      font-size: 11px;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    .about-card .about-text strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .about-arrow {
+      font-size: 12px;
+      color: #ff6f20;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    /* --- Footer --- */
+    .footer-wrap {
+      margin-top: 16px;
+      padding-top: 12px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       text-align: center;
     }
-    .footer a {
+    .footer-wrap a {
       font-size: 11px;
       color: #777;
       text-decoration: none;
     }
-    .footer a:hover {
+    .footer-wrap a:hover {
       color: #aaa;
     }
   </style>
@@ -249,14 +297,14 @@
   <div class="card">
 
     <!-- Header -->
-    <div class="header">
+    <div class="header animate-in">
       <img src="/james.jpg" alt="James Edwards" class="avatar">
       <div class="name">James Edwards</div>
       <div class="subtitle">Tailored Tools &middot; The Sonic Sanctuary</div>
     </div>
 
     <!-- For Your Business -->
-    <div class="section">
+    <div class="section animate-in">
       <div class="section-label">For Your Business</div>
       <a href="/ao/#free-score" class="link-card link-card--featured">
         <div class="card-heading">Free AI Score</div>
@@ -265,7 +313,7 @@
     </div>
 
     <!-- The Sonic Sanctuary -->
-    <div class="section">
+    <div class="section animate-in">
       <div class="section-label">The Sonic Sanctuary</div>
 
       <a href="https://www.thesonicsanctuary.uk/events" class="events-row" target="_blank" rel="noopener">
@@ -278,20 +326,34 @@
 
       <div class="wa-row">
         <a href="https://chat.whatsapp.com/FQbYfPeXTai2LjmFSOJ8L5" class="link-card--wa link-card--soundbath" target="_blank" rel="noopener" aria-label="Join the Sound Baths WhatsApp group">
-          <div class="wa-heading">Sound Baths</div>
-          <div class="wa-sub">WhatsApp &middot; 140+</div>
+          <div class="wa-icon-row">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <div class="wa-heading">Sound Baths</div>
+          </div>
+          <div class="wa-sub">140+ members</div>
           <div class="wa-note">Announcements only</div>
         </a>
         <a href="https://chat.whatsapp.com/LF1iSDoJyAZH9gyYAlu74c" class="link-card--wa link-card--drumcircle" target="_blank" rel="noopener" aria-label="Join the Drum Circle WhatsApp group">
-          <div class="wa-heading">Drum Circle</div>
-          <div class="wa-sub">WhatsApp &middot; 50+</div>
+          <div class="wa-icon-row">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <div class="wa-heading">Drum Circle</div>
+          </div>
+          <div class="wa-sub">50+ members</div>
           <div class="wa-note">Announcements only</div>
         </a>
       </div>
     </div>
 
+    <!-- About Me -->
+    <div class="section animate-in">
+      <a href="/about" class="about-card">
+        <div class="about-text"><strong>AI consultant</strong> &amp; <strong>sound therapist</strong><br>Based in Maidstone, Kent</div>
+        <span class="about-arrow">&#8599;</span>
+      </a>
+    </div>
+
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer-wrap animate-in">
       <a href="/">tailored-tools.com &rarr;</a>
     </div>
 

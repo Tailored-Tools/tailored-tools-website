@@ -1,40 +1,60 @@
 # Tailored Tools
 
-> Kent-based technology consultancy helping small service businesses get recommended by AI assistants.
+> Kent-based technology consultancy helping small businesses integrate AI into their operations. Founded by James Edwards.
 
 ## What we do
 
-Tailored Tools builds AI credibility for small businesses. When someone asks ChatGPT, Perplexity, or Google AI for a local service recommendation, the businesses that get recommended are the ones with properly structured information. We help you become one of them.
+Tailored Tools builds AI-powered business systems and helps small service businesses get recommended by AI assistants. We work across three areas: business automation (custom platforms), Agent Optimisation (AI discoverability), and workshops (hands-on training).
 
-## Services
+## Live Projects
 
-### AO Audit (Agent Optimisation Audit) — £247
-A scored AO Audit across six dimensions: data readability, service descriptions, pricing signals, trust signals, availability, and AI visibility. Delivered as a PDF report with prioritised recommendations and a 20-minute debrief call. Turnaround: 5 working days.
+### Performance Interpreting
+Built a complete booking management OS for the UK's leading BSL interpretation agency. Staff portal with role-based access, AI-powered email extraction, Google Sheets integration, interpreter database (379 BSL + Irish interpreters), and automated workflows.
+- https://tailored-tools.com/projects
+
+### The Sonic Sanctuary
+Built a unified business platform replacing 6 separate tools. Event management, Stripe payments, intro pass system, WhatsApp integration (140+ member community), customer comms, B2B booking, and a public website fed from the same data source.
+- https://tailored-tools.com/projects
+
+## Agent Optimisation (AO)
+
+### AO Audit — £247
+A scored audit across six dimensions: data readability, service descriptions, pricing signals, trust signals, availability, and AI visibility. PDF report with prioritised recommendations. Turnaround: 5 working days.
 
 ### AO Implementation — from £497
-Making your business fully AI-readable — services, pricing, credentials, and availability structured so AI agents can confidently recommend you. No visible changes to your website.
+Making your business fully AI-readable so AI agents can confidently recommend you.
 
 ### AO Audit + Implementation Bundle — £697
-Full audit followed by complete implementation of all recommendations. Save £47 vs booking separately.
+Full audit followed by complete implementation. Save £47 vs booking separately.
 
 ### AO Monitoring — £97/month
-Monthly AI credibility monitoring — tracking what AI agents say about your business across ChatGPT, Perplexity, Gemini, and Claude. Includes accuracy checks, narrative protection, competitor tracking, and regression alerts. Annual option: £970/year (save £194). Requires an initial AO Audit.
+Monthly AI credibility monitoring across ChatGPT, Perplexity, Gemini, and Claude. Accuracy checks, narrative protection, competitor tracking, regression alerts. Annual: £970/year.
 
 ### AO Workshops — available on request
-"Can AI Confidently Recommend Your Business?" — a 90-120 minute hands-on workshop with live audit demonstration for up to 30 people. Available in-person or remotely.
+90-120 minute hands-on workshop with live audit demonstration for up to 30 people.
 
-### Custom Dashboards
-Single-login dashboards consolidating bookings, revenue, and performance metrics from multiple business tools.
+- https://tailored-tools.com/ao/
+
+## Other Services
 
 ### Business Automation
-Automation of repetitive tasks: client onboarding, invoice reminders, booking confirmations, data entry workflows.
+Custom platforms that automate bookings, comms, and operations - built with AI.
+
+### Custom Dashboards
+Single-login dashboards consolidating bookings, revenue, and metrics from multiple tools.
 
 ### Software Integrations
 Connecting existing tools (Square, Google Sheets, Outlook, Stripe) so they share data automatically.
 
+## Workshops & Community
+
+Hands-on AI workshops for local businesses and teams in Maidstone, Kent. No jargon, no hype - just practical tools that save time. James is part of the Claude Community Ambassador programme.
+- https://tailored-tools.com/workshops
+
 ## About
 
-Founded in 2025 by James Edwards. Based in Maidstone, Kent, UK. Serving businesses across the United Kingdom.
+Founded in 2025 by James Edwards. Based in Maidstone, Kent, UK. James runs three businesses and built AI systems into all of them. Not a tech person selling AI - a business owner who found it genuinely useful.
+- https://tailored-tools.com/about
 
 ## Contact
 
@@ -46,10 +66,10 @@ Founded in 2025 by James Edwards. Based in Maidstone, Kent, UK. Serving business
 
 ## Blog
 
-We publish plain-English articles on AI credibility and Agent Optimisation:
-- https://tailored-tools.com/blog/
-- https://tailored-tools.com/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html
-- https://tailored-tools.com/blog/is-ai-saying-the-wrong-things-about-your-business.html
-- https://tailored-tools.com/blog/how-much-does-ai-optimisation-cost.html
-- https://tailored-tools.com/blog/geo-aeo-ao-whats-the-difference.html
-- https://tailored-tools.com/blog/how-to-check-if-ai-recommends-your-business.html
+Plain-English articles on AI credibility and Agent Optimisation:
+- https://tailored-tools.com/ao/blog/
+- https://tailored-tools.com/ao/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html
+- https://tailored-tools.com/ao/blog/is-ai-saying-the-wrong-things-about-your-business.html
+- https://tailored-tools.com/ao/blog/how-much-does-ai-optimisation-cost.html
+- https://tailored-tools.com/ao/blog/geo-aeo-ao-whats-the-difference.html
+- https://tailored-tools.com/ao/blog/how-to-check-if-ai-recommends-your-business.html

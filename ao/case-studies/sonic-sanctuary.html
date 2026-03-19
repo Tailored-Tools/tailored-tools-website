@@ -6,13 +6,13 @@
     <title>Case Study: The Sonic Sanctuary - 20 to 85 in One Deployment | Tailored Tools</title>
     <meta name="description" content="How a sound therapy business in Kent went from invisible to AI agents (20/100) to Ready for recommendation (85/100) with one AO implementation.">
 
-    <link rel="canonical" href="https://tailored-tools.com/case-studies/sonic-sanctuary">
+    <link rel="canonical" href="https://tailored-tools.com/ao/case-studies/sonic-sanctuary.html">
 
     <link rel="icon" href="/favicon.png?v=3" type="image/png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tailored-tools.com/case-studies/sonic-sanctuary">
+    <meta property="og:url" content="https://tailored-tools.com/ao/case-studies/sonic-sanctuary.html">
     <meta property="og:title" content="Case Study: The Sonic Sanctuary - AO Score 20 to 85">
     <meta property="og:description" content="How a sound therapy business went from invisible to AI agents to Ready for recommendation with one AO implementation.">
     <meta property="og:image" content="https://tailored-tools.com/og-image.png">
@@ -21,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <style>
         :root {
             --primary: #203a4c;
@@ -380,18 +381,18 @@
 
 <nav>
     <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="/#ao">AO</a></li>
-            <li><a href="/#services">Services</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#contact">Contact</a></li>
-            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta" target="_blank" rel="noopener">Get AO Audit &rarr;</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <button class="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/" class="active">AO</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
     </div>
 </nav>
 
@@ -534,12 +535,12 @@
     <h2>What this proves</h2>
     <p>A business can have excellent content, fair pricing, and good reviews, and still be invisible to AI agents. The gap isn't about quality. It's about whether AI agents can actually read your information.</p>
     <p>Building algorithmic trust closes that gap. One deployment, no visible changes, and the business went from a score of 20 (Invisible) to 85 (Ready). That's the difference between being excluded from AI recommendations and being a candidate for them.</p>
-    <p><a href="/methodology" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read our full methodology &rarr;</a></p>
+    <p><a href="/ao/methodology.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read our full methodology &rarr;</a></p>
 
     <div class="cta-box">
         <h3>Want to know your score?</h3>
         <p>We'll audit your website and send you your score within 2 working days. Free, no obligation.</p>
-        <a href="/#free-score" class="cta-btn">Get your free AO score &rarr;</a>
+        <a href="/ao/#free-score" class="cta-btn">Get your free AO score &rarr;</a>
         <p style="margin-top: 16px; font-size: 14px; color: rgba(255,255,255,0.45); text-align: center;">Already know you need it?<br><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: 600;">Get the full AO Audit (&pound;247) &rarr;</a></p>
     </div>
 
@@ -550,18 +551,19 @@
     <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
+
+
 <script>
-document.getElementById('hamburger').addEventListener('click', function() {
+document.querySelector('.hamburger').addEventListener('click', function() {
     this.classList.toggle('active');
-    document.getElementById('navLinks').classList.toggle('open');
+    document.querySelector('.nav-links').classList.toggle('open');
 });
-document.querySelectorAll('#navLinks a').forEach(function(link) {
+document.querySelectorAll('.nav-links a').forEach(function(link) {
     link.addEventListener('click', function() {
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('navLinks').classList.remove('open');
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('open');
     });
 });
 </script>
-
 </body>
 </html>

@@ -3,2412 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailored Tools: AI credibility, dashboards and automation for small businesses</title>
-    <meta name="description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.">
+    <title>Tailored Tools - AI Integration for Small Businesses</title>
+    <meta name="description" content="I build AI systems that run businesses. Three live platforms, no jargon. Business automation, agent optimisation, and workshops.">
 
     <link rel="canonical" href="https://tailored-tools.com/">
-
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.png?v=3" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tailored-tools.com/">
-    <meta property="og:title" content="Tailored Tools: AI credibility, dashboards and automation for small businesses">
-    <meta property="og:description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations.">
+    <meta property="og:title" content="Tailored Tools - AI Integration for Small Businesses">
+    <meta property="og:description" content="I build AI systems that run businesses. Three live platforms, no jargon. Business automation, agent optimisation, and workshops.">
     <meta property="og:image" content="https://tailored-tools.com/og-image.png">
     <meta property="og:locale" content="en_GB">
 
     <!-- Twitter/X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tailored Tools: AI credibility, dashboards and automation">
-    <meta name="twitter:description" content="Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations.">
-    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
 
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
     <style>
-        :root {
-            --primary: #203a4c;
-            --accent: #ff6f20;
-            --dark: #0D1B2A;
-            --white: #FFFFFF;
-            --light: #f4f5f7;
-            --text: #203a4c;
-            --text-light: #5a6a7a;
-            --max-width: 960px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--text);
-            line-height: 1.7;
-            background: var(--white);
-        }
-
-        /* Nav */
-        nav {
-            background: var(--dark);
-            padding: 16px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-logo {
-            display: block;
-            width: 175px;
-            height: 48px;
-            background: url('tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
-            flex-shrink: 0;
-        }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
-        .nav-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--accent); }
-        .nav-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white) !important;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-size: 13px !important;
-            font-weight: 700 !important;
-            text-decoration: none;
-            transition: opacity 0.2s;
-            white-space: nowrap;
-        }
-        .nav-cta:hover { opacity: 0.88; color: var(--white) !important; }
-
-
-        /* ChatGPT demo mockup */
-        .chatgpt-demo {
-            margin-top: 48px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .chat-window {
-            background: #1a1a1a;
-            border-radius: 12px;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        .chat-titlebar {
-            background: #2a2a2a;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .chat-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .chat-titlebar-label {
-            font-size: 12px;
-            color: rgba(255,255,255,0.35);
-            margin-left: 8px;
-            font-weight: 500;
-        }
-        .chat-status-badge {
-            margin-left: auto;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .badge-before { background: rgba(255,80,80,0.15); color: #ff6060; }
-        .badge-after  { background: rgba(63,168,106,0.2); color: #3fa86a; }
-        .chat-body { padding: 16px; }
-        .chat-msg {
-            margin-bottom: 14px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-        .chat-msg.user {
-            background: #2a2a2a;
-            border-radius: 10px 10px 2px 10px;
-            padding: 10px 14px;
-            color: rgba(255,255,255,0.85);
-            margin-left: 24px;
-        }
-        .chat-msg.ai {
-            color: rgba(255,255,255,0.7);
-            padding: 2px 4px;
-        }
-        .chat-msg.ai strong { color: rgba(255,255,255,0.9); display: block; margin-bottom: 8px; }
-        .chat-result {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin: 8px 0;
-            font-size: 12px;
-        }
-        .chat-result.found {
-            border-color: rgba(63,168,106,0.3);
-            background: rgba(63,168,106,0.06);
-        }
-        .chat-result-name {
-            font-weight: 700;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 4px;
-        }
-        .chat-result-name.found-name { color: #3fa86a; }
-        .chat-result-detail {
-            color: rgba(255,255,255,0.45);
-            line-height: 1.5;
-        }
-        .chat-result-detail .chip {
-            display: inline-block;
-            background: rgba(63,168,106,0.15);
-            color: #3fa86a;
-            font-size: 10px;
-            font-weight: 600;
-            padding: 1px 6px;
-            border-radius: 4px;
-            margin-right: 4px;
-        }
-        .chat-not-found {
-            color: rgba(255,255,255,0.3);
-            font-style: italic;
-            font-size: 12px;
-            padding: 6px 0;
-        }
-        .chat-demo-label {
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .chat-demo-label.before { color: rgba(255,80,80,0.7); }
-        .chat-demo-label.after  { color: #3fa86a; }
-        @media (max-width: 680px) {
-            .chatgpt-demo { grid-template-columns: 1fr; }
-        }
-
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-        .hamburger span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: rgba(255,255,255,0.7);
-            margin: 5px 0;
-            transition: all 0.3s;
-        }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        /* Sections */
-        section { padding: 80px 24px; }
-        .container { max-width: var(--max-width); margin: 0 auto; }
-        h2 {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-        h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        .section-subtitle {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        /* Hero */
+        /* ── Hero ───────────────────────────────────────────────────── */
         .hero {
-            background-color: var(--dark);
-            background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background: linear-gradient(135deg, #0D1B2A 0%, #1a2d42 100%);
             color: var(--white);
-            padding: 48px 24px 80px;
+            padding: 80px 24px 96px;
             text-align: center;
-            border-bottom: 3px solid var(--accent);
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
         .hero h1 {
-            font-size: 52px;
+            font-size: 44px;
             font-weight: 800;
             line-height: 1.15;
+            color: var(--white);
             margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-        .hero h1 span { color: var(--accent); }
-        .hero h1 .cycle-name { color: #fff; }
-        .cycle-row {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            transition: opacity 0.35s ease;
-        }
-        .cycle-row.fading {
-            opacity: 0;
-        }
-        .cycle-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 58px;
-            height: 58px;
-            border-radius: 14px;
-            background: #333;
-            flex-shrink: 0;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-        }
-        .cycle-badge img { display: block; pointer-events: none; user-select: none; flex-shrink: 0; }
-        .cycle-name { color: #fff; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-style: normal; }
-        .hero-recommends { color: var(--accent); display: block; }
-        .hero .subtitle {
-            font-size: 18px;
-            color: rgba(255,255,255,0.65);
-            margin-bottom: 36px;
-            max-width: 560px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.65);
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
         }
         .hero-ctas {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             justify-content: center;
-            align-items: center;
             flex-wrap: wrap;
-            margin-bottom: 56px;
         }
-        .hero-cta-primary {
+        .btn-outline {
             display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 15px 32px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: opacity 0.2s;
-        }
-        .hero-cta-primary:hover { opacity: 0.9; }
-        .hero-cta-secondary {
-            color: rgba(255,255,255,0.55);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 1px;
-            transition: color 0.2s, border-color 0.2s;
-        }
-        .hero-cta-secondary:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.5); }
-        /* keep old .hero-cta for any references */
-        .hero-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 14px 32px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: opacity 0.2s;
-        }
-        .hero-cta:hover { opacity: 0.9; }
-
-        /* Stats strip */
-        .stats-strip {
-            background: #121f2b;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 32px 24px;
-        }
-        .stats-row {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .stat-item {
-            text-align: center;
-            padding: 0 52px;
-        }
-        .stat-num {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-        .stat-label {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-            line-height: 1.5;
-            max-width: 140px;
-            margin: 0 auto;
-        }
-        .stat-divider {
-            width: 1px;
-            height: 52px;
-            background: rgba(255,255,255,0.08);
-            flex-shrink: 0;
-        }
-
-        /* Audit preview card */
-        .audit-preview-wrap {
-            margin-top: 48px;
-            background: var(--white);
-            border: 1px solid #e0e4e8;
-            border-radius: 12px;
-            overflow: hidden;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-            text-align: left;
-        }
-        .audit-preview-top {
-            background: var(--dark);
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .audit-preview-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: rgba(255,255,255,0.45);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .audit-preview-score {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1;
-        }
-        .audit-preview-score small {
-            font-size: 13px;
-            font-weight: 400;
-            color: rgba(255,255,255,0.35);
-        }
-        .audit-preview-biz {
-            padding: 10px 20px;
-            font-size: 13px;
-            color: var(--text-light);
-            border-bottom: 1px solid #f0f2f5;
-            font-style: italic;
-        }
-        .audit-bars {
-            padding: 16px 20px;
-        }
-        .audit-bar-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-        .audit-bar-row:last-child { margin-bottom: 0; }
-        .audit-bar-name {
-            font-size: 12px;
-            color: var(--text-light);
-            width: 130px;
-            flex-shrink: 0;
-        }
-        .audit-bar-track {
-            flex: 1;
-            height: 6px;
-            background: #f0f2f5;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .audit-bar-fill {
-            height: 100%;
-            border-radius: 3px;
-        }
-        .bar-low  { background: #d94f4f; }
-        .bar-mid  { background: #e09030; }
-        .bar-good { background: #3fa86a; }
-        .audit-bar-val {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-light);
-            width: 28px;
-            text-align: right;
-            flex-shrink: 0;
-        }
-        .audit-preview-foot {
-            padding: 12px 20px;
-            background: #fff8f3;
-            border-top: 1px solid rgba(255,111,32,0.15);
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Shift Section */
-        .shift-section { background: var(--white); }
-        .shift-section h2 { margin-bottom: 12px; }
-        .shift-intro {
-            font-size: 17px;
-            color: var(--text-light);
-            max-width: 640px;
-            margin-bottom: 48px;
-            line-height: 1.8;
-        }
-        .shift-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e0e4e8;
-            margin-bottom: 40px;
-        }
-        .shift-col {
-            padding: 36px 32px;
-        }
-        .shift-col.then { background: #f4f5f7; }
-        .shift-col.now { background: var(--dark); color: var(--white); }
-        .shift-col .shift-label {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            color: var(--text-light);
-        }
-        .shift-col.now .shift-label { color: rgba(255,255,255,0.5); }
-        .shift-col h3 {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        .shift-col.now h3 { color: var(--white); }
-        .shift-steps { list-style: none; padding: 0; margin: 0; }
-        .shift-steps li {
-            font-size: 14px;
-            color: var(--text-light);
-            padding: 6px 0 6px 20px;
-            position: relative;
-            line-height: 1.6;
-        }
-        .shift-col.now .shift-steps li { color: rgba(255,255,255,0.7); }
-        .shift-steps li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 13px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #c0c8d0;
-        }
-        .shift-col.now .shift-steps li::before { background: var(--accent); }
-        .shift-punchline {
-            background: rgba(255,111,32,0.08);
             border: 2px solid var(--accent);
-            padding: 32px 36px;
-            border-radius: 10px;
-            font-size: 20px;
-            color: var(--primary);
-            font-weight: 600;
-            max-width: 720px;
-            margin: 40px auto 0;
-            line-height: 1.6;
-            text-align: center;
-        }
-        @media (max-width: 640px) {
-            .shift-comparison { grid-template-columns: 1fr; }
-        }
-
-        /* AO Section */
-        .ao-section { background: var(--light); padding-bottom: 32px; scroll-margin-top: 50px; }
-        .ao-badge {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            font-size: 13px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 4px;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
-        }
-        .ao-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-top: 32px;
-        }
-        .ao-card {
-            background: var(--white);
-            border: 1px solid #e0e4e8;
-            border-radius: 10px;
-            padding: 28px;
-        }
-        .ao-card h3 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .ao-icon { width: 22px; height: 22px; flex-shrink: 0; }
-        .ao-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
-        .ao-card.ao-card-full { grid-column: 1 / -1; padding: 20px 28px; }
-        .ao-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            margin-top: 16px;
-            transition: opacity 0.2s;
-        }
-        .ao-cta:hover { opacity: 0.9; }
-        .ao-card-toggle { display: none; }
-        .ao-card-summary { display: none; }
-        .ao-card-head .tag { display: none; }
-        .ao-card-body { max-height: none; overflow: visible; }
-        .ao-card .tag {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 600;
             color: var(--accent);
-            background: rgba(255,111,32,0.08);
-            padding: 3px 8px;
-            border-radius: 3px;
-            margin-top: 12px;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-            margin-top: 32px;
-        }
-        .service-card {
-            border: 1px solid #e0e4e8;
-            border-radius: 10px;
-            padding: 28px;
-        }
-        .service-card h3 { font-size: 16px; }
-        .service-card p { font-size: 14px; color: var(--text-light); }
-
-        /* About */
-        .about-section { background: var(--light); }
-        .about-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent);
-            float: right;
-            margin: 0 0 16px 24px;
-        }
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-        .about-content p { font-size: 15px; color: var(--text-light); margin-bottom: 16px; }
-        .about-facts {
-            background: var(--white);
-            border: 1px solid #e0e4e8;
-            border-radius: 10px;
-            padding: 24px;
-        }
-        .about-facts li {
-            list-style: none;
-            font-size: 14px;
-            color: var(--text-light);
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .about-facts li:last-child { border-bottom: none; }
-        .about-facts li strong { color: var(--primary); }
-
-        /* Contact */
-        .contact-section { text-align: center; }
-        .contact-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            margin-top: 32px;
-            align-items: center;
-        }
-        .contact-left p {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-        .contact-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
             padding: 12px 24px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
             font-size: 15px;
-            transition: opacity 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
-        .contact-cta:hover { opacity: 0.9; }
-        .contact-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--white);
         }
-        .contact-links li {
-            padding: 14px 0;
-            border-bottom: 1px solid #e0e4e8;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .contact-links li:last-child { border-bottom: none; }
-        .contact-links .link-label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-light);
-        }
-        .contact-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-        }
-        .contact-links a:hover { opacity: 0.8; }
 
-        /* Quiz Section */
-        .quiz-section { background: var(--dark); color: var(--white); }
-        .quiz-badge {
-            display: inline-block;
-            background: rgba(255,111,32,0.2);
-            color: var(--accent);
-            font-size: 13px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 4px;
+        /* ── What TT Does ───────────────────────────────────────────── */
+        .what-tt {
+            background: var(--light);
+        }
+        .what-tt h2 {
+            margin-bottom: 8px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 28px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .service-icon {
+            font-size: 28px;
             margin-bottom: 16px;
-            letter-spacing: 1px;
+            display: block;
         }
-        .quiz-section h2 { color: var(--white); }
-        .quiz-section .section-subtitle { color: rgba(255,255,255,0.6); max-width: 560px; }
-        .quiz-wrap {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 36px;
-            margin-top: 32px;
-            max-width: 640px;
+        .service-card h3 {
+            margin-bottom: 10px;
         }
-        .quiz-progress {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 28px;
-        }
-        .quiz-pip {
-            flex: 1;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(255,255,255,0.12);
-            transition: background 0.3s;
-        }
-        .quiz-pip.done { background: var(--accent); }
-        .quiz-question {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-        .quiz-context {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-            margin-top: -16px;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-        .quiz-buttons {
-            display: flex;
-            gap: 12px;
-        }
-        .quiz-btn {
-            flex: 1;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.05);
-            color: var(--white);
+        .service-card p {
             font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .quiz-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
-        .quiz-btn.yes:hover, .quiz-btn.yes.selected { background: rgba(255,111,32,0.2); border-color: var(--accent); color: var(--accent); }
-        .quiz-btn.no:hover, .quiz-btn.no.selected { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
-        .quiz-result { display: none; }
-        .quiz-result.visible { display: block; }
-        .quiz-verdict-heading {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .quiz-verdict-heading span { color: var(--accent); }
-        .quiz-verdict {
-            font-size: 15px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-            margin-bottom: 28px;
-        }
-        .quiz-gaps { list-style: none; padding: 0; margin: 0 0 28px; }
-        .quiz-gaps li {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            padding: 6px 0 6px 20px;
-            position: relative;
+            color: var(--text-light);
             line-height: 1.6;
         }
-        .quiz-gaps li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 13px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-        .quiz-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 14px 28px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: opacity 0.2s;
-        }
-        .quiz-cta:hover { opacity: 0.9; }
-        .quiz-restart {
-            background: none;
-            border: none;
-            color: rgba(255,255,255,0.4);
-            font-size: 13px;
-            cursor: pointer;
-            margin-left: 16px;
-            text-decoration: underline;
-        }
-        .quiz-restart:hover { color: rgba(255,255,255,0.7); }
-        @media (max-width: 480px) {
-            .quiz-wrap { padding: 24px 20px; }
-            .quiz-question { font-size: 16px; }
-        }
 
-        /* Free Score Section */
-        .free-score-section {
-            background: var(--dark);
-            color: var(--white);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            scroll-margin-top: 60px;
+        /* ── Live Projects ──────────────────────────────────────────── */
+        .live-projects {
+            background: var(--white);
         }
-        .free-score-section h2 { color: var(--white); }
-        .free-score-section .section-subtitle { color: rgba(255,255,255,0.6); }
-        .free-score-badge {
-            display: inline-block;
-            background: rgba(22,163,74,0.2);
-            color: #3fa86a;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 4px;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
-        }
-        .tally-embed-wrapper {
-            position: relative;
-        }
-        .tally-embed-wrapper iframe {
-            border: none;
-        }
-        .tally-embed-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 65%;
-            height: 70px;
-            background: var(--dark);
-            pointer-events: none;
-            z-index: 1;
-        }
-        .free-score-steps {
-            margin-top: 48px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-        }
-        .free-score-step {
-            text-align: center;
-        }
-        .step-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-            color: var(--accent);
-            font-size: 15px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .step-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 4px;
-        }
-        .step-desc {
-            font-size: 13px;
-            color: rgba(255,255,255,0.45);
-            line-height: 1.5;
-        }
-        @media (max-width: 640px) {
-            .free-score-steps { grid-template-columns: 1fr; gap: 20px; }
-            .free-score-step { text-align: left; display: flex; gap: 16px; align-items: flex-start; }
-            .step-num { flex-shrink: 0; margin-bottom: 0; }
-        }
-
-        /* Partners Section */
-        .partners-section {
-            background: var(--dark);
-            color: var(--white);
-        }
-        .partners-section h2 { color: var(--white); }
-        .partners-section .section-subtitle { color: rgba(255,255,255,0.6); }
-        .partners-badge {
-            display: inline-block;
-            background: rgba(255,111,32,0.2);
-            color: var(--accent);
-            font-size: 13px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 4px;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
-        }
-        .partners-grid {
+        .projects-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
-            margin-top: 32px;
-        }
-        .partners-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 28px;
-        }
-        .partners-card h3 { color: var(--white); font-size: 16px; margin-bottom: 10px; }
-        .partners-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
-        .partners-card .partners-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            margin-top: 16px;
-            transition: opacity 0.2s;
-        }
-        .partners-card .partners-cta:hover { opacity: 0.9; }
-        .partners-tech-note {
             margin-top: 40px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .project-card {
+            border: 1px solid rgba(0,0,0,0.08);
             border-radius: 10px;
-            padding: 24px 28px;
+            padding: 28px 24px;
+            transition: box-shadow 0.2s, border-color 0.2s;
         }
-        .partners-tech-note p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.45);
-            line-height: 1.8;
-            font-family: 'Courier New', Courier, monospace;
+        .project-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-color: rgba(0,0,0,0.14);
         }
-        .partners-tech-note span { color: rgba(255,111,32,0.8); }
-        @media (max-width: 640px) {
-            .partners-grid { grid-template-columns: 1fr; }
-        }
-
-        /* FAQ Section */
-        .faq-section { background: var(--white); }
-        .faq-list { max-width: 720px; margin-top: 32px; }
-        .faq-item {
-            border-bottom: 1px solid #e0e4e8;
-            padding: 20px 0;
-        }
-        .faq-item:first-child { border-top: 1px solid #e0e4e8; }
-        .faq-q {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-        }
-        .faq-q::after {
-            content: '+';
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--accent);
-            flex-shrink: 0;
-            transition: transform 0.2s;
-        }
-        .faq-item.open .faq-q::after {
-            content: '-';
-        }
-        .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .faq-item.open .faq-a {
-            max-height: 300px;
-        }
-        .faq-a p {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.8;
-            padding-top: 12px;
-        }
-
-        /* Report preview section */
-        .report-preview-section { background: var(--light); padding-top: 16px; }
-        .report-scene {
-            margin-top: 48px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            padding-bottom: 24px;
-        }
-        .report-page-shadow {
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%) rotate(1.5deg);
-            width: 540px;
-            max-width: calc(100vw - 48px);
-            background: #dde2e8;
-            border-radius: 4px;
-            height: 100%;
-        }
-        .report-page {
-            position: relative;
-            background: #fff;
-            border-radius: 4px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.14);
-            width: 540px;
-            max-width: calc(100vw - 48px);
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-        .rp-header {
-            background: var(--dark);
-            padding: 20px 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .rp-header-left {}
-        .rp-brand {
+        .project-label {
             font-size: 11px;
             font-weight: 700;
-            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 4px;
-        }
-        .rp-doc-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.3px;
-        }
-        .rp-score-circle {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: conic-gradient(#ff6f20 0% 34%, rgba(255,255,255,0.1) 34% 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            flex-shrink: 0;
-        }
-        .rp-score-circle::after {
-            content: '';
-            position: absolute;
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            background: var(--dark);
-        }
-        .rp-score-inner {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            line-height: 1;
-        }
-        .rp-score-num {
-            font-size: 20px;
-            font-weight: 800;
             color: var(--accent);
-            display: block;
-        }
-        .rp-score-denom {
-            font-size: 10px;
-            color: rgba(255,255,255,0.3);
-            font-weight: 500;
-        }
-        .rp-meta {
-            background: #f8f9fa;
-            padding: 14px 28px;
-            border-bottom: 2px solid var(--accent);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .rp-biz-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .rp-biz-detail {
-            font-size: 12px;
-            color: var(--text-light);
-            margin-top: 2px;
-        }
-        .rp-date {
-            font-size: 11px;
-            color: var(--text-light);
-            text-align: right;
-        }
-        .rp-body { padding: 24px 28px; }
-        .rp-section-label {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-light);
-            margin-bottom: 14px;
-        }
-        .rp-dim-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             margin-bottom: 10px;
         }
-        .rp-dim-name {
-            font-size: 12px;
-            color: var(--text);
-            width: 150px;
-            flex-shrink: 0;
-            font-weight: 500;
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
-        .rp-dim-track {
-            flex: 1;
-            height: 7px;
-            background: #eef0f3;
-            border-radius: 4px;
-            overflow: hidden;
+        .project-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
-        .rp-dim-fill {
-            height: 100%;
-            border-radius: 4px;
-        }
-        .rp-fill-crit { background: #d94f4f; }
-        .rp-fill-mid  { background: #e09030; }
-        .rp-fill-good { background: #3fa86a; }
-        .rp-dim-score {
-            font-size: 12px;
+        .project-link {
+            font-size: 14px;
             font-weight: 700;
-            width: 34px;
-            text-align: right;
-            flex-shrink: 0;
-        }
-        .rp-dim-score.crit { color: #d94f4f; }
-        .rp-dim-score.mid  { color: #e09030; }
-        .rp-dim-score.good { color: #3fa86a; }
-        .rp-divider { height: 1px; background: #eef0f3; margin: 20px 0; }
-        .rp-actions {}
-        .rp-action-row {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            padding: 10px 0;
-            border-bottom: 1px solid #f4f5f7;
-        }
-        .rp-action-row:last-child { border-bottom: none; }
-        .rp-priority-tag {
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 7px;
-            border-radius: 3px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        .tag-critical  { background: rgba(217,79,79,0.1);  color: #d94f4f; }
-        .tag-important { background: rgba(224,144,48,0.12); color: #c07a20; }
-        .tag-quickwin  { background: rgba(63,168,106,0.12); color: #2d8a56; }
-        .rp-action-text {
-            font-size: 12px;
-            color: var(--text);
-            line-height: 1.5;
-        }
-        .rp-action-text span {
-            display: block;
-            font-size: 11px;
-            color: var(--text-light);
-            margin-top: 2px;
-        }
-        .rp-footer {
-            background: #f8f9fa;
-            border-top: 1px solid #eef0f3;
-            padding: 12px 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .rp-footer-note {
-            font-size: 11px;
-            color: var(--text-light);
-        }
-        .rp-footer-page {
-            font-size: 11px;
-            color: var(--text-light);
-        }
-        .report-caption {
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-light);
-            margin-top: 28px;
-        }
-        .report-caption a {
             color: var(--accent);
-            font-weight: 600;
             text-decoration: none;
+            transition: opacity 0.2s;
         }
-        .report-caption a:hover { text-decoration: underline; }
+        .project-link:hover { opacity: 0.75; }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.5);
-            padding: 40px 24px;
+        /* ── Brief About ────────────────────────────────────────────── */
+        .brief-about {
+            background: var(--white);
+            border-top: 1px solid rgba(0,0,0,0.06);
             text-align: center;
         }
-        .footer-logo-wrap {
-            width: 210px;
-            height: 72px;
-            background: url('tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
-            margin: 0 auto 16px;
+        .about-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            object-fit: cover;
+            margin-bottom: 20px;
         }
-        footer p { font-size: 13px; }
-        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-        footer a:hover { color: var(--accent); }
+        .brief-about h2 {
+            margin-bottom: 16px;
+        }
+        .brief-about p {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+        .about-link {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .about-link:hover { opacity: 0.75; }
 
-        /* Mobile */
-        @media (max-width: 640px) {
-            .stats-row { flex-direction: column; gap: 24px; }
-            .stat-divider { width: 40px; height: 1px; }
-            .stat-item { padding: 0; }
-        }
+        /* ── Responsive ─────────────────────────────────────────────── */
         @media (max-width: 768px) {
-            .nav-cta { display: none; }
-            .hero { padding: 24px 20px 32px; }
-            .hero h1 { font-size: 36px; letter-spacing: -0.5px; }
-            .hero .subtitle { font-size: 15px; margin-bottom: 24px; }
-            .hero-ctas { margin-bottom: 36px; }
-            .audit-preview-wrap { margin-top: 28px; }
-            .shift-intro { font-size: 15px; margin-bottom: 32px; }
-            .section-subtitle { margin-bottom: 24px; }
-            .ao-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; gap: 12px; }
-            .service-card { padding: 20px; }
-            .service-card p { font-size: 13px; }
-            .about-content { grid-template-columns: 1fr; }
-            .about-content p { font-size: 14px; }
-            .partners-card { padding: 20px; }
-            .partners-card p { font-size: 13px; }
-            .partners-tech-note { padding: 16px 20px; margin-top: 24px; }
-            .partners-tech-note p { font-size: 12px; }
-            section { padding: 40px 20px; }
-            .contact-split { grid-template-columns: 1fr; }
-            .hamburger { display: block; }
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: var(--dark);
-                flex-direction: column;
-                padding: 16px 24px;
-                gap: 16px;
-                border-top: 1px solid rgba(255,255,255,0.1);
-                z-index: 99;
-            }
-            .nav-links.open { display: flex; }
-            /* Collapsible AO cards */
-            .ao-card { position: relative; padding: 20px; padding-bottom: 16px; }
-            .ao-card-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-            .ao-card.expanded .ao-card-body { max-height: 600px; cursor: pointer; }
-            .ao-card-summary { display: block; font-size: 14px; color: var(--text-light); margin: 4px 0 0; cursor: pointer; }
-            .ao-card.expanded .ao-card-summary { display: none; }
-            .ao-card-head .tag { display: inline-block; margin-top: 0; }
-            .ao-card-toggle {
-                display: inline-block;
-                font-size: 13px;
-                font-weight: 600;
-                color: var(--accent);
-                cursor: pointer;
-                margin-top: 8px;
-                border: none;
-                background: none;
-                padding: 0;
-            }
-            .ao-card.expanded .ao-card-toggle::after { content: 'Show less'; }
-            .ao-card:not(.expanded) .ao-card-toggle::after { content: 'Show more'; }
-            .ao-card-head { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-            .ao-card-head .tag { margin-top: 0; }
+            .hero h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 56px 20px 72px; }
+            .hero h1 { font-size: 28px; }
         }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "email": "hello@tailored-tools.com",
+        "description": "AI integration for small businesses. Business automation, agent optimisation, and workshops.",
+        "founder": {
+            "@type": "Person",
+            "name": "James Edwards"
+        }
+    }
+    </script>
 </head>
 <body>
 
-<!-- Nav -->
+<!-- ── Nav ───────────────────────────────────────────────────────────── -->
 <nav>
     <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#ao">AO</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="/case-studies/sonic-sanctuary">Case Study</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="nav-cta" target="_blank" rel="noopener">Get AO Audit &rarr;</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <button class="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
     </div>
 </nav>
 
-
-<!-- Hero -->
+<!-- ── Hero ──────────────────────────────────────────────────────────── -->
 <section class="hero">
-    <div class="container">
-        <h1>Be the business<br><span class="cycle-row" id="cycleRow"><span class="cycle-badge" id="cycleBadge"></span><span class="cycle-name" id="cycleName"></span></span><br><span class="hero-recommends">recommends</span></h1>
-        <p class="subtitle">When someone asks an AI assistant to find a local plumber, therapist, or electrician, it recommends specific businesses. We make sure yours is one of them — without touching your website design or asking you to learn anything technical.</p>
-        <div class="hero-ctas">
-            <a href="#free-score" class="hero-cta-primary">Get your free AO score &rarr;</a>
-            <a href="#quiz" class="hero-cta-secondary">Not sure? Take the 30-second check</a>
-        </div>
+    <span class="hero-label">AI Integration for Small Businesses</span>
+    <h1>I build AI systems that actually run businesses</h1>
+    <p class="hero-subtitle">Three businesses. Three live AI systems. No jargon, no hype - just tools that save time and make money.</p>
+    <div class="hero-ctas">
+        <a href="/projects" class="btn-accent">See My Work</a>
+        <a href="/ao/#free-score" class="btn-outline">Free AO Score</a>
+    </div>
+</section>
 
-        <div class="audit-preview-wrap">
-            <div class="audit-preview-top">
-                <span class="audit-preview-label">AO Audit Report</span>
-                <span class="audit-preview-score">23<small>/100</small></span>
+<!-- ── What TT Does ───────────────────────────────────────────────────── -->
+<section class="what-tt">
+    <div class="container">
+        <h2>What Tailored Tools Does</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">⚙️</span>
+                <h3>Business Automation</h3>
+                <p>Custom platforms that automate your bookings, comms, and operations - built with AI</p>
             </div>
-            <div class="audit-preview-biz">Sample Local Plumbing Ltd &mdash; Maidstone, Kent</div>
-            <div class="audit-bars">
-                <div class="audit-bar-row">
-                    <span class="audit-bar-name">Data readability</span>
-                    <div class="audit-bar-track"><div class="audit-bar-fill bar-low" style="width:10%"></div></div>
-                    <span class="audit-bar-val">1/10</span>
-                </div>
-                <div class="audit-bar-row">
-                    <span class="audit-bar-name">Pricing signals</span>
-                    <div class="audit-bar-track"><div class="audit-bar-fill bar-low" style="width:20%"></div></div>
-                    <span class="audit-bar-val">2/10</span>
-                </div>
-                <div class="audit-bar-row">
-                    <span class="audit-bar-name">Trust &amp; reviews</span>
-                    <div class="audit-bar-track"><div class="audit-bar-fill bar-mid" style="width:40%"></div></div>
-                    <span class="audit-bar-val">4/10</span>
-                </div>
-                <div class="audit-bar-row">
-                    <span class="audit-bar-name">Service clarity</span>
-                    <div class="audit-bar-track"><div class="audit-bar-fill bar-low" style="width:30%"></div></div>
-                    <span class="audit-bar-val">3/10</span>
-                </div>
-                <div class="audit-bar-row">
-                    <span class="audit-bar-name">AI credibility</span>
-                    <div class="audit-bar-track"><div class="audit-bar-fill bar-low" style="width:20%"></div></div>
-                    <span class="audit-bar-val">2/10</span>
-                </div>
-                <div class="audit-bar-row">
-                    <span class="audit-bar-name">Local presence</span>
-                    <div class="audit-bar-track"><div class="audit-bar-fill bar-mid" style="width:40%"></div></div>
-                    <span class="audit-bar-val">4/10</span>
-                </div>
+            <div class="service-card">
+                <span class="service-icon">🎯</span>
+                <h3>Agent Optimisation</h3>
+                <p>Make your business the one AI recommends to customers</p>
             </div>
-            <div class="audit-preview-foot">5 critical gaps identified &middot; Priority fixes ranked by impact</div>
+            <div class="service-card">
+                <span class="service-icon">🤝</span>
+                <h3>Workshops</h3>
+                <p>Hands-on AI sessions for local businesses and teams</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Stats Strip -->
+<!-- ── Live Projects ──────────────────────────────────────────────────── -->
+<section class="live-projects">
+    <div class="container">
+        <h2>Live Projects</h2>
+        <p class="section-subtitle">AI systems running in production right now</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <p class="project-label">BSL Interpretation</p>
+                <h3>Performance Interpreting</h3>
+                <p>Booking management OS, staff portal, automated event processing for the UK's leading BSL agency</p>
+                <a href="/projects" class="project-link">View project &rarr;</a>
+            </div>
+            <div class="project-card">
+                <p class="project-label">Sound Therapy</p>
+                <h3>The Sonic Sanctuary</h3>
+                <p>Complete business platform - bookings, payments, comms, event management, customer WhatsApp</p>
+                <a href="/projects" class="project-link">View project &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Stats Strip ────────────────────────────────────────────────────── -->
 <div class="stats-strip">
     <div class="stats-row">
         <div class="stat-item">
-            <div class="stat-num">800M+</div>
-            <div class="stat-label">ChatGPT users every week</div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Live AI Systems</div>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <div class="stat-num">70%</div>
-            <div class="stat-label">fewer clicks past AI search answers</div>
+            <div class="stat-num">190+</div>
+            <div class="stat-label">Community Members</div>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <div class="stat-num">15.9%</div>
-            <div class="stat-label">conversion rate from AI referrals</div>
+            <div class="stat-num">11</div>
+            <div class="stat-label">Articles Published</div>
         </div>
     </div>
 </div>
 
-<!-- The Shift -->
-<section class="shift-section">
+<!-- ── Brief About ────────────────────────────────────────────────────── -->
+<section class="brief-about">
     <div class="container">
-        <h2>The way people find businesses has changed</h2>
-        <p class="shift-intro">Finding a local service used to mean Google, a few websites, maybe a couple of phone calls. Increasingly, that's not how it works.</p>
-
-        <div class="shift-comparison">
-            <div class="shift-col then">
-                <div class="shift-label">Before</div>
-                <h3>The human does the searching</h3>
-                <ul class="shift-steps">
-                    <li>Types "electrician near me" into Google</li>
-                    <li>Clicks through four or five websites</li>
-                    <li>Reads each one, checks reviews, compares prices</li>
-                    <li>Calls a couple to check availability</li>
-                    <li>Picks one and books</li>
-                </ul>
-            </div>
-            <div class="shift-col now">
-                <div class="shift-label">Now</div>
-                <h3>The AI does the searching</h3>
-                <ul class="shift-steps">
-                    <li>Person asks their AI assistant: "find me a reliable electrician available this week, who charges a fair call-out fee"</li>
-                    <li>AI scans for businesses that match those criteria</li>
-                    <li>Filters by location, availability, pricing signals, reviews</li>
-                    <li>Presents 2 or 3 options to the person</li>
-                    <li>Person picks one, often without visiting a website at all</li>
-                </ul>
-            </div>
-        </div>
-
-        <p class="shift-punchline">This isn't about ranking. It's about inclusion. If the AI can't read the information about your business, you're not in the conversation at all.</p>
-        <p style="text-align: center; font-size: 15px; color: var(--text-light); max-width: 640px; margin: 20px auto 0; line-height: 1.8;">And when AI <em>does</em> mention your business, is it accurate? Wrong prices, outdated services, confused with a competitor — that costs you customers too. AO works both sides: getting you recommended, and making sure the recommendation is right.</p>
+        <img src="/james.jpg" alt="James Edwards" class="about-photo">
+        <h2>I'm James</h2>
+        <p>I run a BSL interpretation agency and a sound therapy practice. I built AI into both of them. Now I help other small businesses do the same.</p>
+        <a href="/about" class="about-link">More about me &rarr;</a>
     </div>
 </section>
 
-<!-- Quiz -->
-<section class="quiz-section" id="quiz">
-    <div class="container">
-        <div class="quiz-badge">30-SECOND CHECK</div>
-        <h2>Should you care about AO?</h2>
-        <p class="section-subtitle">Five quick questions about your business. We'll tell you whether this is worth your time, and why.</p>
-
-        <div class="quiz-wrap">
-            <div id="quizQuestions">
-                <div class="quiz-progress" id="quizProgress">
-                    <div class="quiz-pip" id="pip0"></div>
-                    <div class="quiz-pip" id="pip1"></div>
-                    <div class="quiz-pip" id="pip2"></div>
-                    <div class="quiz-pip" id="pip3"></div>
-                    <div class="quiz-pip" id="pip4"></div>
-                </div>
-                <div class="quiz-question" id="quizQ"></div>
-                <div class="quiz-context" id="quizCtx"></div>
-                <div class="quiz-buttons">
-                    <button class="quiz-btn yes" onclick="quizAnswer(true)">Yes</button>
-                    <button class="quiz-btn no" onclick="quizAnswer(false)">No</button>
-                </div>
-            </div>
-
-            <div class="quiz-result" id="quizResult">
-                <div class="quiz-verdict-heading">Based on your answers, <span>AO is relevant for your business.</span></div>
-                <p class="quiz-verdict">Here's why, specifically:</p>
-                <ul class="quiz-gaps" id="quizGaps"></ul>
-                <a href="#free-score" class="quiz-cta">Get your free AO score &rarr;</a>
-                <button class="quiz-restart" onclick="quizRestart()">Start again</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Free Score -->
-<section class="free-score-section" id="free-score">
-    <div class="container">
-        <div class="free-score-badge">FREE</div>
-        <h2>Get your AO score</h2>
-        <p class="section-subtitle">We'll audit your website and send you your score out of 100, your band (Invisible, Fragmented, Visible, Ready, or Optimised), and a one-line summary of your biggest gap. Free, no obligation.</p>
-
-        <div class="tally-embed-wrapper" style="max-width: 600px; margin-top: 32px;">
-            <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
-        </div>
-
-        <div class="free-score-steps">
-            <div class="free-score-step">
-                <span class="step-num">1</span>
-                <div>
-                    <div class="step-title">You submit your URL</div>
-                    <div class="step-desc">Takes 10 seconds. No login, no signup.</div>
-                </div>
-            </div>
-            <div class="free-score-step">
-                <span class="step-num">2</span>
-                <div>
-                    <div class="step-title">We audit your site</div>
-                    <div class="step-desc">Six dimensions, automated analysis, human review.</div>
-                </div>
-            </div>
-            <div class="free-score-step">
-                <span class="step-num">3</span>
-                <div>
-                    <div class="step-title">You get your score</div>
-                    <div class="step-desc">Your number, your band, your biggest gap. Free.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- AO Section -->
-<section class="ao-section" id="ao">
-    <div class="container">
-        <div class="ao-badge">AO / AGENT OPTIMISATION</div>
-        <h2>Can AI confidently recommend your business?</h2>
-        <p class="section-subtitle">When AI recommends a business, it's because that business is readable by machines. Most small service businesses aren't. That's what AO fixes.</p>
-        <p class="section-subtitle" style="margin-top: -12px; font-style: italic;">Already invested in SEO? Good. AO builds directly on top of it. SEO makes you findable. AO makes you recommendable. And when AI gets things wrong about you, AO protects your narrative.</p>
-
-        <div class="ao-grid">
-            <div class="ao-card">
-                <div class="ao-card-head"><h3 id="ao-audit"><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>AO Audit</h3><div class="tag">&pound;247</div></div>
-                <p class="ao-card-summary">Six-dimension audit with scored PDF report and 20-minute debrief call.</p>
-                <div class="ao-card-body">
-                <p>We assess your business across six dimensions and give you a score out of 100. You get a scored PDF with prioritised recommendations, plus a 20-minute call to walk through it. Delivered within 5 working days.</p>
-                <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
-                    <li>- Data readability (can AI actually parse your site?)</li>
-                    <li>- Service descriptions and parameters</li>
-                    <li>- Pricing transparency</li>
-                    <li>- Trust signals and credentials</li>
-                    <li>- Availability and booking readiness</li>
-                    <li>- AI mentions and citations</li>
-                </ul>
-                <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" class="ao-cta" target="_blank" rel="noopener">Get your AO Audit &rarr;</a>
-                </div>
-                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
-            </div>
-            <div class="ao-card">
-                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>AO Implementation</h3><div class="tag">&pound;497</div></div>
-                <p class="ao-card-summary">We build the algorithmic trust that gets AI agents to recommend you.</p>
-                <div class="ao-card-body">
-                <p>We make your business information readable to AI agents: services, pricing, availability, credentials. Your customers see nothing different. Agents see everything they need to confidently recommend you.</p>
-                <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
-                    <li>- Your business made fully AI-readable</li>
-                    <li>- Services, pricing, and availability marked up</li>
-                    <li>- Trust signals and credentials added</li>
-                    <li>- Tested and validated before going live</li>
-                </ul>
-                <p style="font-size: 14px; color: var(--text-light);">You fill in a short form, we do the rest. No technical knowledge needed.</p>
-                <a href="https://buy.stripe.com/dRm8wRdxz8CE63J1Wj2go03" class="ao-cta" target="_blank" rel="noopener">Get AO Implementation &rarr;</a>
-                </div>
-                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
-            </div>
-            <div class="ao-card" style="border: 2px solid var(--accent);">
-                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>AO Audit + Implementation Bundle</h3><div class="tag">&pound;697</div></div>
-                <p class="ao-card-summary">Full audit and implementation in one package. Save &pound;47.</p>
-                <div class="ao-card-body">
-                <p>We audit your AI credibility, then implement everything from the report. One payment, end to end.</p>
-                <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
-                    <li>- Full six-dimension AO Audit with scored report</li>
-                    <li>- 20-minute debrief call to walk through findings</li>
-                    <li>- Complete AI readability implementation</li>
-                    <li>- Save &pound;47 compared to booking separately</li>
-                </ul>
-                <a href="https://buy.stripe.com/9B67sNalnf1263J58v2go04" class="ao-cta" target="_blank" rel="noopener">Get the Bundle &rarr;</a>
-                </div>
-                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
-            </div>
-            <div class="ao-card">
-                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>AO Monitoring</h3><div class="tag">&pound;97/month</div></div>
-                <p class="ao-card-summary">Monthly reports on what AI says about you. Catch inaccuracies before your customers do.</p>
-                <div class="ao-card-body">
-                <p>AI agents update their knowledge constantly. What they say about your business today might change tomorrow. Monitoring catches it before your customers do.</p>
-                <ul style="list-style: none; margin: 8px 0 12px; padding: 0; font-size: 14px; color: var(--text-light); line-height: 1.8;">
-                    <li>- Monthly report: what ChatGPT, Perplexity, Gemini, and Claude say about you</li>
-                    <li>- Accuracy tracking: are your prices, services, and hours correct across AI platforms?</li>
-                    <li>- Narrative protection: flag inaccurate or outdated information before customers see it</li>
-                    <li>- Competitor watch: are others being recommended instead of you, and why?</li>
-                    <li>- Regression alerts: catch drops in AI readability before they affect recommendations</li>
-                </ul>
-                <p style="font-size: 14px; color: var(--text-light);">&pound;97/month (or &pound;970/year — save &pound;194). Requires an initial AO Audit. The businesses that stay recommended don't treat this as a one-time fix.</p>
-                <a href="mailto:hello@tailored-tools.com?subject=AO%20Monitoring%20Enquiry" class="ao-cta">Start monitoring &rarr;</a>
-                </div>
-                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
-            </div>
-            <div class="ao-card ao-card-full">
-                <div class="ao-card-head"><h3><svg class="ao-icon" viewBox="0 0 24 24" fill="none" stroke="#ff6f20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>AO Workshops</h3><div class="tag">Per session</div></div>
-                <p class="ao-card-summary">90-120 min hands-on session with live audit demo. In-person or remote.</p>
-                <div class="ao-card-body">
-                <p>"Can AI Confidently Recommend Your Business?" - a hands-on session for business owners and teams of up to 30. Live audit demonstration. <strong>Available in-person or remotely.</strong> Perfect for networking groups, chambers of commerce, and business associations.</p>
-                <a href="mailto:hello@tailored-tools.com?subject=AO%20Workshop%20Enquiry" class="ao-cta">Enquire about a workshop &rarr;</a>
-                </div>
-                <button class="ao-card-toggle" onclick="this.closest('.ao-card').classList.toggle('expanded')"></button>
-            </div>
-        </div>
-
-        <div class="chatgpt-demo">
-            <div>
-                <div class="chat-demo-label before">Without AO</div>
-                <div class="chat-window">
-                    <div class="chat-titlebar">
-                        <span class="chat-dot" style="background:#ff5f57"></span>
-                        <span class="chat-dot" style="background:#febc2e"></span>
-                        <span class="chat-dot" style="background:#28c840"></span>
-                        <span class="chat-titlebar-label">ChatGPT</span>
-                        <span class="chat-status-badge badge-before">Not recommended</span>
-                    </div>
-                    <div class="chat-body">
-                        <div class="chat-msg user">"Find me a reliable plumber in Maidstone who does emergency callouts and is upfront about pricing."</div>
-                        <div class="chat-msg ai">
-                            <strong>Here are a few options in Maidstone:</strong>
-                            <div class="chat-result">
-                                <div class="chat-result-name">FastFlow Plumbing</div>
-                                <div class="chat-result-detail">Emergency callouts, pricing from £65. 4.8★ on Google (142 reviews)</div>
-                            </div>
-                            <div class="chat-result">
-                                <div class="chat-result-name">Kent Plumbing Solutions</div>
-                                <div class="chat-result-detail">Available same day. Clear callout rates listed on site.</div>
-                            </div>
-                            <div class="chat-not-found">Your business isn't here — AI doesn't have enough data to confidently recommend it.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="chat-demo-label after">With AO</div>
-                <div class="chat-window">
-                    <div class="chat-titlebar">
-                        <span class="chat-dot" style="background:#ff5f57"></span>
-                        <span class="chat-dot" style="background:#febc2e"></span>
-                        <span class="chat-dot" style="background:#28c840"></span>
-                        <span class="chat-titlebar-label">ChatGPT</span>
-                        <span class="chat-status-badge badge-after">Recommended</span>
-                    </div>
-                    <div class="chat-body">
-                        <div class="chat-msg user">"Find me a reliable plumber in Maidstone who does emergency callouts and is upfront about pricing."</div>
-                        <div class="chat-msg ai">
-                            <strong>Here are a few options in Maidstone:</strong>
-                            <div class="chat-result">
-                                <div class="chat-result-name">FastFlow Plumbing</div>
-                                <div class="chat-result-detail">Emergency callouts, pricing from £65. 4.8★ on Google (142 reviews)</div>
-                            </div>
-                            <div class="chat-result found">
-                                <div class="chat-result-name found-name">Your Business Name ✓</div>
-                                <div class="chat-result-detail">
-                                    <span class="chip">Callouts from £55</span>
-                                    <span class="chip">Same day</span>
-                                    Emergency plumbing, Maidstone &amp; surrounding areas. 4.9★ (89 reviews). Fully qualified, Gas Safe registered.
-                                </div>
-                            </div>
-                            <div class="chat-result">
-                                <div class="chat-result-name">Kent Plumbing Solutions</div>
-                                <div class="chat-result-detail">Available same day. Clear callout rates listed on site.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p style="text-align:center; font-size:13px; color:var(--text-light); margin-top:20px;">The difference between these two results is algorithmic trust — making your business information readable and verifiable by AI.<br><a href="/methodology" style="color:var(--accent); font-weight:600; text-decoration:none;">See exactly how we score your business &rarr;</a></p>
-    </div>
-</section>
-
-<!-- Report Preview -->
-<section class="report-preview-section">
-    <div class="container">
-        <h2>What your report looks like</h2>
-        <p class="section-subtitle">You receive a scored PDF like this, plus a 20-minute call to walk through it. Every gap identified, every fix ranked by impact. Delivered within 5 working days.</p>
-
-        <div class="report-scene">
-            <div class="report-page-shadow"></div>
-            <div class="report-page">
-
-                <div class="rp-header">
-                    <div class="rp-header-left">
-                        <div class="rp-brand">Tailored Tools &mdash; Agent Optimisation</div>
-                        <div class="rp-doc-title">AO Audit Report</div>
-                    </div>
-                    <div class="rp-score-circle">
-                        <div class="rp-score-inner">
-                            <span class="rp-score-num">34</span>
-                            <span class="rp-score-denom">/100</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rp-meta">
-                    <div>
-                        <div class="rp-biz-name">Hargreaves Electrical Ltd</div>
-                        <div class="rp-biz-detail">Electrician &middot; Maidstone, Kent &middot; tailored-tools.com/sample</div>
-                    </div>
-                    <div class="rp-date">Prepared: 17 Feb 2026<br>Ref: TT-AO-0042</div>
-                </div>
-
-                <div class="rp-body">
-                    <div class="rp-section-label">Dimension Scores</div>
-
-                    <div class="rp-dim-row">
-                        <span class="rp-dim-name">Data readability</span>
-                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-crit" style="width:20%"></div></div>
-                        <span class="rp-dim-score crit">2/10</span>
-                    </div>
-                    <div class="rp-dim-row">
-                        <span class="rp-dim-name">Pricing signals</span>
-                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-crit" style="width:20%"></div></div>
-                        <span class="rp-dim-score crit">2/10</span>
-                    </div>
-                    <div class="rp-dim-row">
-                        <span class="rp-dim-name">Service clarity</span>
-                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-mid" style="width:40%"></div></div>
-                        <span class="rp-dim-score mid">4/10</span>
-                    </div>
-                    <div class="rp-dim-row">
-                        <span class="rp-dim-name">Trust &amp; reviews</span>
-                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-mid" style="width:50%"></div></div>
-                        <span class="rp-dim-score mid">5/10</span>
-                    </div>
-                    <div class="rp-dim-row">
-                        <span class="rp-dim-name">Local presence</span>
-                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-mid" style="width:60%"></div></div>
-                        <span class="rp-dim-score mid">6/10</span>
-                    </div>
-                    <div class="rp-dim-row">
-                        <span class="rp-dim-name">AI credibility</span>
-                        <div class="rp-dim-track"><div class="rp-dim-fill rp-fill-crit" style="width:30%"></div></div>
-                        <span class="rp-dim-score crit">3/10</span>
-                    </div>
-
-                    <div class="rp-divider"></div>
-                    <div class="rp-section-label">Priority Actions</div>
-
-                    <div class="rp-actions">
-                        <div class="rp-action-row">
-                            <span class="rp-priority-tag tag-critical">Critical</span>
-                            <div class="rp-action-text">
-                                Make business information readable to AI agents
-                                <span>AI agents can't parse your services, location, or credentials. You're invisible to every recommendation engine.</span>
-                            </div>
-                        </div>
-                        <div class="rp-action-row">
-                            <span class="rp-priority-tag tag-critical">Critical</span>
-                            <div class="rp-action-text">
-                                Add a visible starting price for callout / first-hour rate
-                                <span>AI filters by budget. Without a price signal, your business is excluded from filtered recommendations entirely.</span>
-                            </div>
-                        </div>
-                        <div class="rp-action-row">
-                            <span class="rp-priority-tag tag-important">Important</span>
-                            <div class="rp-action-text">
-                                Complete all Google Business Profile service categories
-                                <span>3 service types missing. GBP is a primary AI data source for local businesses — gaps here reduce recommendation likelihood.</span>
-                            </div>
-                        </div>
-                        <div class="rp-action-row">
-                            <span class="rp-priority-tag tag-quickwin">Quick win</span>
-                            <div class="rp-action-text">
-                                Add NICEIC / qualification credentials to website copy
-                                <span>Trust signals are present in your GBP but not on your website. AI cross-references both sources.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rp-footer">
-                    <span class="rp-footer-note">Confidential &mdash; prepared for Hargreaves Electrical Ltd by Tailored Tools</span>
-                    <span class="rp-footer-page">Page 1 of 4</span>
-                </div>
-
-            </div>
-        </div>
-
-        <p class="report-caption">
-            This is a representative sample. Your report covers your actual business, services, and gaps. &nbsp;
-            <a href="https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01" target="_blank" rel="noopener">Get yours for £247 &rarr;</a>
-        </p>
-    </div>
-</section>
-
-<!-- Other Services -->
-<section id="services">
-    <div class="container">
-        <h2>Other services</h2>
-        <p class="section-subtitle">AO is our main focus, but we also help small businesses with the day-to-day tech that saves time and makes life easier.</p>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Dashboards</h3>
-                <p>One screen, one login. All your tools in a single view. No more juggling five tabs and three passwords.</p>
-            </div>
-            <div class="service-card">
-                <h3>Automation</h3>
-                <p>Client onboarding, invoice reminders, booking confirmations. Set it up once, let it run.</p>
-            </div>
-            <div class="service-card">
-                <h3>Integrations</h3>
-                <p>Square, Google Sheets, Outlook, Stripe, your website. We make them talk to each other.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section" id="faq">
-    <div class="container">
-        <h2>Common questions</h2>
-        <p class="section-subtitle">Straight answers, no jargon.</p>
-
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the difference between AO and SEO?</div>
-                <div class="faq-a"><p>SEO helps you rank on Google. AO helps you get recommended by AI assistants like ChatGPT, Perplexity, and Gemini. They share some foundations (good content, consistent listings), but AI agents need specific signals that Google doesn't require in the same way. Think of it as: SEO puts you on the list. AO gets you recommended.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you change my website design?</div>
-                <div class="faq-a"><p>No. Everything we add is invisible to your visitors. Your website looks exactly the same. We add a layer of data behind the scenes that AI agents can read directly. Your customers see nothing different. Agents see everything they need.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does it take?</div>
-                <div class="faq-a"><p>The free score takes 2 working days. The full AO Audit takes 5 working days and includes a 20-minute call to walk through your results. Implementation time depends on complexity, but most local businesses are done within a week.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this a one-time thing or ongoing?</div>
-                <div class="faq-a"><p>The audit and implementation are one-off. Once your data is in place, it stays. But AI agents update their knowledge constantly, so we offer monthly monitoring (£97/month) to track what they say about you, catch inaccuracies, and flag regressions. It's optional but recommended.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I'm already on Google Maps. Isn't that enough?</div>
-                <div class="faq-a"><p>Google Business Profile helps, and it's one of several sources AI agents check. But AI also reads your website, review sites, directories, and social media. If those sources disagree, or your website has no AI-readable data, the agent can't confidently recommend you. GBP is a piece of the puzzle, not the whole picture.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this guarantee AI recommends me?</div>
-                <div class="faq-a"><p>No. We won't promise that because it would be dishonest. What we guarantee is that your business will have the data that makes recommendations possible. Without it, you're excluded. With it, you're a candidate. The rest depends on your services, reviews, and competition.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I know if AI is even mentioning my business?</div>
-                <div class="faq-a"><p>Ask it. Open ChatGPT, Perplexity, or Gemini and type "Tell me about [your business name] in [your town]." Compare what it says to reality. Most business owners have never done this and are surprised by what they find. The biggest referrer to your business might never show up in your analytics.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the free AO score?</div>
-                <div class="faq-a"><p>We audit your website and send you three things: a score out of 100, the band you fall in (Invisible, Fragmented, Visible, Ready, or Optimised), and a one-line summary of your biggest gap. No sales call, no obligation. If you want the full report and debrief, that's the paid audit.</p></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Partners -->
-<section class="partners-section" id="it-consultants">
-    <div class="container">
-        <div class="partners-badge">FOR IT CONSULTANTS / MSPS</div>
-        <h2>Your clients are already asking about this.</h2>
-        <p class="section-subtitle">AI is changing how customers find businesses. You don't need to build the tooling - just order an AO Audit from us, deliver it to your client, and add it as a line item on your invoice.</p>
-
-        <div class="partners-grid">
-            <div class="partners-card">
-                <h3>Use our service, bill your client</h3>
-                <p>Order an AO Audit from us. Present the scored report to your client. Add it to their invoice with your markup. Any implementation changes from the report are yours to deliver - it's schema.org JSON-LD, well within your skillset.</p>
-                <a href="mailto:hello@tailored-tools.com?subject=IT%20Consultant%20Enquiry" class="partners-cta">Get in touch &rarr;</a>
-            </div>
-            <div class="partners-card">
-                <h3>Refer and earn</h3>
-                <p>Don't want to handle implementation? Just send clients our way. We do everything - audit and implementation. You get a referral fee on every introduction that converts.</p>
-                <a href="mailto:hello@tailored-tools.com?subject=Referral%20Enquiry" class="partners-cta">Talk to us about referrals &rarr;</a>
-            </div>
-        </div>
-
-        <div class="partners-tech-note">
-            <p>Under the hood: AO implementation is <span>schema.org JSON-LD</span> - structured data added to a client's website that makes their services, pricing, and credentials readable by AI agents. If you've been recommending SEO, this is the logical next step.</p>
-        </div>
-    </div>
-</section>
-
-<!-- About -->
-<section class="about-section" id="about">
-    <div class="container">
-        <h2>I'm James. This is why I do this.</h2>
-        <div class="about-content">
-            <div>
-                <img src="/james.jpg" alt="James Edwards, founder of Tailored Tools" class="about-photo">
-                <p>I'm based in Maidstone, Kent. I've spent years building technology for service businesses. Started in accessibility, now focused on AI credibility.</p>
-                <p>I run my own service businesses and kept seeing the same problem: good people doing excellent work, but AI couldn't recommend them. A therapist with 10 years of experience. A plumber who turns up on time. None of them showing up when it matters.</p>
-                <p>It's fixable. I work directly with each client. No account managers, no outsourcing. If you email me, I reply.</p>
-            </div>
-            <div class="about-facts">
-                <ul>
-                    <li><strong>Based in</strong> Maidstone, Kent</li>
-                    <li><strong>I work with</strong> Sole traders and small service businesses</li>
-                    <li><strong>I don't do</strong> Jargon, bloated proposals, or shiny things that gather dust</li>
-                    <li><strong>Reach me</strong> Monday–Friday, hello@tailored-tools.com</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section class="contact-section" id="contact">
-    <div class="container">
-        <h2>Get in touch</h2>
-        <div class="contact-split">
-            <div class="contact-left">
-                <p>I'm easy to reach. Drop me an email and I'll get back to you the same day (often within the hour). No forms, no chatbots, no waiting a week for a call.</p>
-                <a href="mailto:hello@tailored-tools.com" class="contact-cta">Email me directly &rarr;</a>
-                <a href="mailto:hello@tailored-tools.com?subject=Book%20a%20Call" class="contact-cta" style="margin-top: 8px; background: transparent; border: 1px solid var(--accent); color: var(--accent);">Book a call &rarr;</a>
-            </div>
-            <ul class="contact-links">
-                <li>
-                    <span class="link-label">Email</span>
-                    <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a>
-                </li>
-                <li>
-                    <span class="link-label">AO Enquiries</span>
-                    <a href="mailto:ao@tailored-tools.com">ao@tailored-tools.com</a>
-                </li>
-                <li>
-                    <span class="link-label">Instagram</span>
-                    <a href="https://instagram.com/tailored.tools" rel="noopener">@tailored.tools</a>
-                </li>
-                <li>
-                    <span class="link-label">LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/jamesedwards7" rel="noopener">James Edwards</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://tailored-tools.com/#organization",
-      "name": "Tailored Tools",
-      "url": "https://tailored-tools.com",
-      "logo": "https://tailored-tools.com/tt-logo-dark.svg",
-      "telephone": "+447481789098",
-      "email": "hello@tailored-tools.com",
-      "sameAs": [
-        "https://instagram.com/tailored.tools",
-        "https://www.linkedin.com/in/jamesedwards7"
-      ],
-      "areaServed": {
-        "@type": "Country",
-        "name": "United Kingdom"
-      },
-      "description": "Kent-based technology consultancy helping small service businesses with AI credibility, dashboards, automation, and integrations.",
-      "foundingDate": "2025",
-      "founder": {
-        "@type": "Person",
-        "name": "James Edwards",
-        "url": "https://www.linkedin.com/in/jamesedwards7",
-        "knowsAbout": ["Agent Optimisation", "AI credibility", "schema.org structured data", "business automation", "software integration"],
-        "hasCredential": {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional Experience",
-          "name": "Technology Consultant — AI Credibility and Business Systems"
-        }
-      }
-    },
-    {
-      "@type": ["LocalBusiness", "ProfessionalService"],
-      "@id": "https://tailored-tools.com/#business",
-      "name": "Tailored Tools",
-      "description": "Specialist technology consultancy helping small service businesses with AI credibility (Agent Optimisation), custom dashboards, business automation, and software integrations. Based in Maidstone, Kent.",
-      "url": "https://tailored-tools.com",
-      "telephone": "+447481789098",
-      "email": "hello@tailored-tools.com",
-      "image": "https://tailored-tools.com/og-image.png",
-      "logo": "https://tailored-tools.com/tt-logo-dark.svg",
-      "priceRange": "$$",
-      "sameAs": [
-        "https://instagram.com/tailored.tools",
-        "https://www.linkedin.com/in/jamesedwards7"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Maidstone",
-        "addressRegion": "Kent",
-        "addressCountry": "GB"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 51.2724,
-        "longitude": 0.5209
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        }
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "17:00"
-        }
-      ],
-      "potentialAction": {
-        "@type": "OrderAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://buy.stripe.com/bJe8wRdxz3ik77NcAX2go01",
-          "actionPlatform": "https://schema.org/DesktopWebPlatform"
-        },
-        "name": "Book an AO Audit",
-        "description": "Order an AO Audit — scored report and 20-minute debrief call"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#ao-audit",
-      "name": "AO Audit",
-      "description": "Comprehensive AO Audit across six dimensions: data readability, service descriptions, pricing transparency, trust signals, availability, and AI visibility. Produces a scored report with prioritised recommendations. Typical turnaround within 5 working days.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "Agent Optimisation Audit",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "AO Audit",
-        "description": "Full AO Audit with scored PDF report, prioritised recommendations, and 20-minute debrief call. Delivered within 5 working days.",
-        "price": "247",
-        "priceCurrency": "GBP",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#ao-implementation",
-      "name": "AO Implementation",
-      "description": "Making your business fully AI-readable — services, pricing, credentials, and availability structured so AI agents can confidently recommend you. No visible changes to your website.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "AI Readability Implementation",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "AO Implementation",
-        "description": "Complete AI readability implementation for your business",
-        "price": "497.00",
-        "priceCurrency": "GBP",
-        "url": "https://buy.stripe.com/dRm8wRdxz8CE63J1Wj2go03",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#ao-bundle",
-      "name": "AO Audit + Implementation Bundle",
-      "description": "Combined AO Audit and implementation. Full audit across six dimensions followed by complete implementation of all recommendations — making your business fully AI-readable with pricing, services, and credentials structured for AI agents.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "Agent Optimisation Audit and Implementation",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "AO Audit + Implementation Bundle",
-        "description": "Full audit and implementation bundle — save £47 compared to booking separately",
-        "price": "697.00",
-        "priceCurrency": "GBP",
-        "url": "https://buy.stripe.com/9B67sNalnf1263J58v2go04",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#ao-monitoring",
-      "name": "AO Monitoring",
-      "description": "Monthly AI credibility monitoring — tracking what AI agents say about your business across ChatGPT, Perplexity, Gemini, and Claude. Includes accuracy checks, narrative protection, competitor tracking, and regression alerts.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "AI Credibility Monitoring",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "AO Monitoring",
-        "description": "Monthly AI credibility monitoring with reports on what ChatGPT, Perplexity, Gemini, and Claude say about your business",
-        "price": "97",
-        "priceCurrency": "GBP",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#ao-workshops",
-      "name": "AO Workshops",
-      "description": "Can AI Confidently Recommend Your Business? — a 90–120 minute hands-on workshop for business owners and teams of up to 30 people with live audit demonstration. Available in-person or delivered remotely. Priced per session.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "Business Workshop",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "AO Workshop Session",
-        "description": "90–120 minute workshop with live audit demonstration, priced per session",
-        "availability": "https://schema.org/PreOrder"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#dashboards",
-      "name": "Custom Dashboards",
-      "description": "Single-login dashboards that consolidate data from multiple business tools into one view — bookings, revenue, performance metrics — without juggling separate logins and spreadsheets.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "Dashboard Development",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "Custom Dashboard",
-        "description": "Bespoke dashboard consolidating your business data into a single view",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#automation",
-      "name": "Business Automation",
-      "description": "Automation of repetitive business tasks including client onboarding, invoice reminders, booking confirmations, and data entry workflows.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "Business Process Automation",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "Business Automation",
-        "description": "Custom automation workflows for repetitive business tasks",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://tailored-tools.com/#integrations",
-      "name": "Software Integrations",
-      "description": "Connecting existing business tools — Square, Google Sheets, Outlook, Stripe, websites — so they share data automatically without manual copy-pasting.",
-      "provider": {"@id": "https://tailored-tools.com/#organization"},
-      "serviceType": "Systems Integration",
-      "areaServed": {"@type": "Country", "name": "United Kingdom"},
-      "offers": {
-        "@type": "Offer",
-        "name": "Software Integration",
-        "description": "Connect your business tools so they share data automatically",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://tailored-tools.com/#website",
-      "url": "https://tailored-tools.com",
-      "name": "Tailored Tools",
-      "publisher": {"@id": "https://tailored-tools.com/#organization"}
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://tailored-tools.com/",
-      "url": "https://tailored-tools.com/",
-      "name": "Tailored Tools: AI credibility, dashboards and automation for small businesses",
-      "description": "Making the techy stuff simple for small businesses. Agent Optimisation audits, dashboards, automation, and integrations. Based in Kent.",
-      "isPartOf": {"@id": "https://tailored-tools.com/#website"},
-      "about": {"@id": "https://tailored-tools.com/#business"}
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What's the difference between AO and SEO?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SEO helps you rank on Google. AO helps you get recommended by AI assistants like ChatGPT, Perplexity, and Gemini. They share some foundations but AI agents need specific signals that Google doesn't require. SEO puts you on the list. AO gets you recommended."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you change my website design?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Everything we add is invisible to your visitors. Your website looks exactly the same. We add a layer of data behind the scenes that AI agents can read directly."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does an AO Audit take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The free score takes 2 working days. The full AO Audit takes 5 working days and includes a 20-minute call to walk through your results. Implementation time depends on complexity but most local businesses are done within a week."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is AO a one-time thing or ongoing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The audit and implementation are one-off. Once your data is in place, it stays. We offer optional monthly monitoring at £97/month to track what AI agents say about you, catch inaccuracies, and flag regressions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "I'm already on Google Maps. Isn't that enough for AI?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Google Business Profile helps, but AI agents also read your website, review sites, directories, and social media. If those sources disagree or your website has no AI-readable data, the agent can't confidently recommend you. GBP is a piece of the puzzle, not the whole picture."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will AO guarantee AI recommends my business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. What we guarantee is that your business will have the data that makes recommendations possible. Without it, you're excluded. With it, you're a candidate. The rest depends on your services, reviews, and competition."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I know if AI is mentioning my business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ask it. Open ChatGPT, Perplexity, or Gemini and type 'Tell me about [your business name] in [your town].' Compare what it says to reality. Most business owners have never done this and are surprised by what they find."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the free AO score?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We audit your website and send you three things: a score out of 100, the band you fall in (Invisible, Fragmented, Visible, Ready, or Optimised), and a one-line summary of your biggest gap. No sales call, no obligation."
-      }
-    }
-  ]
-}
-</script>
-
-<!-- Footer -->
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
-    <p>&copy; 2026 Tailored Tools. All rights reserved. · <a href="/privacy.html">Privacy Policy</a></p>
+    <p>
+        <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a>
+        &middot;
+        <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot;
+        <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+    <p style="margin-top: 10px;">&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
 <script>
-document.getElementById('hamburger').addEventListener('click', function() {
+document.querySelector('.hamburger').addEventListener('click', function() {
     this.classList.toggle('active');
-    document.getElementById('navLinks').classList.toggle('open');
+    document.querySelector('.nav-links').classList.toggle('open');
 });
-document.querySelectorAll('#navLinks a').forEach(function(link) {
+document.querySelectorAll('.nav-links a').forEach(function(link) {
     link.addEventListener('click', function() {
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('navLinks').classList.remove('open');
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('open');
     });
 });
 </script>
 
-<script>
-// Cycling headline — icon + name fades between platforms
-(function() {
-    const CDN = 'https://cdn.simpleicons.org/';
-    const platforms = [
-        { name: 'ChatGPT',    bg: '#10a37f', slug: 'openai',           color: 'white',  size: 30 },
-        { name: 'Perplexity', bg: '#191919', slug: 'perplexity',       color: 'white',  size: 30 },
-        { name: 'Gemini',     bg: '#1A73E8', slug: 'googlegemini',     color: 'white',  size: 30 },
-        { name: 'Google',     bg: '#fff',    src: 'https://www.google.com/s2/favicons?domain=google.com&sz=64', size: 44 },
-        { name: 'Claude',     bg: '#D97757', slug: 'claude',           color: 'white',  size: 30 },
-        { name: 'Grok',       bg: '#111',    src: 'https://www.google.com/s2/favicons?domain=grok.com&sz=64',                    size: 40 },
-        { name: 'Meta AI',    bg: '#0866FF', slug: 'meta',             color: 'white',  size: 30 },
-        { name: 'Copilot',    bg: '#fff',    src: 'https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=64',     size: 44, radius: '50%' },
-    ];
-
-    let i = 0;
-    const row  = document.getElementById('cycleRow');
-    const badge = document.getElementById('cycleBadge');
-    const nameEl = document.getElementById('cycleName');
-    if (!row || !badge || !nameEl) return;
-
-    function render() {
-        const p = platforms[i];
-        const rot = i % 2 === 0 ? -7 : 7;
-        badge.style.background = p.bg;
-        badge.style.borderRadius = p.radius || '14px';
-        badge.style.transform = `rotate(${rot}deg)`;
-        const imgSrc = p.src || `${CDN}${p.slug}/${p.color}`;
-        const s = p.size || 30;
-        badge.innerHTML = `<img src="${imgSrc}" width="${s}" height="${s}" alt="" draggable="false" style="display:block;width:${s}px;height:${s}px;flex-shrink:0" onerror="this.style.opacity=0">`;
-        nameEl.textContent = p.name;
-    }
-
-    render();
-
-    setInterval(function() {
-        row.classList.add('fading');
-        setTimeout(function() {
-            i = (i + 1) % platforms.length;
-            render();
-            row.classList.remove('fading');
-        }, 310);
-    }, 2000);
-})();
-
-const quizData = [
-    {
-        q: "Do new clients currently find your business through Google or online searches?",
-        ctx: "Even occasionally counts.",
-        yes: "Online search is already a channel for you. AI is changing how that works, and without AO, your visibility there will quietly shrink.",
-        no: "Online search is the fastest-growing way people find local services. AI is leading that shift, and AO is how you show up in it."
-    },
-    {
-        q: "Is your pricing listed anywhere on your website?",
-        ctx: "Even a starting price or rough range.",
-        yes: "Good. But pricing on a website and pricing that AI can actually read and filter by are two different things. The audit checks whether yours is set up correctly.",
-        no: "AI filters recommendations by budget. Without a visible price, it skips your business entirely, even if you're the best option. This is one of the simplest gaps to fix."
-    },
-    {
-        q: "Do you have active competitors who show up when you Google your service type?",
-        ctx: "Type your service and location into Google now if you're unsure.",
-        yes: "When AI recommends your service type locally, it'll pick from the businesses it can read. Right now, those competitors are more likely to be in that list than you are.",
-        no: "Being first in a space where competitors aren't yet AI-ready is a real advantage. AO helps you lock that in before they catch up."
-    },
-    {
-        q: "Do most of your new clients come from word of mouth or repeat business rather than online?",
-        ctx: "Be honest, there's no wrong answer here.",
-        yes: "Referrals are great but unpredictable. AI credibility gives you a channel that works independently of who your clients happen to mention you to.",
-        no: "You're already dependent on online channels working well. AO makes sure AI, the fastest-growing part of online search, is one of them."
-    },
-    {
-        q: "Would getting recommended to 2 or 3 more new clients per month by AI make a real difference to your business?",
-        ctx: "Think about what that's worth annually.",
-        yes: "That's exactly the gap AO is designed to close. The audit tells you precisely what's stopping it from happening right now.",
-        no: "If online growth isn't the priority, the audit will still tell you where you stand, so you can make that call with the full picture."
-    }
-];
-
-let current = 0;
-const insights = [];
-
-function quizRender() {
-    const d = quizData[current];
-    document.getElementById('quizQ').textContent = d.q;
-    document.getElementById('quizCtx').textContent = d.ctx;
-    document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('selected'));
-    for (let i = 0; i < 5; i++) {
-        document.getElementById('pip' + i).classList.toggle('done', i < current);
-    }
-}
-
-function quizAnswer(yes) {
-    const btn = document.querySelector('.quiz-btn.' + (yes ? 'yes' : 'no'));
-    btn.classList.add('selected');
-    insights.push(yes ? quizData[current].yes : quizData[current].no);
-    document.getElementById('pip' + current).classList.add('done');
-    current++;
-    setTimeout(() => {
-        document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('selected'));
-        if (current < quizData.length) { quizRender(); }
-        else { quizShow(); }
-    }, 200);
-}
-
-function quizShow() {
-    document.getElementById('quizQuestions').style.display = 'none';
-    document.getElementById('quizResult').classList.add('visible');
-    const list = document.getElementById('quizGaps');
-    list.innerHTML = '';
-    insights.forEach(ins => {
-        const li = document.createElement('li');
-        li.textContent = ins;
-        list.appendChild(li);
-    });
-}
-
-function quizRestart() {
-    current = 0; insights.length = 0;
-    document.getElementById('quizQuestions').style.display = 'block';
-    document.getElementById('quizResult').classList.remove('visible');
-    quizRender();
-}
-
-quizRender();
-
-document.querySelectorAll('.ao-card').forEach(function(card) {
-    var head = card.querySelector('.ao-card-head');
-    var summary = card.querySelector('.ao-card-summary');
-    var body = card.querySelector('.ao-card-body');
-    if (head) head.addEventListener('click', function() { card.classList.toggle('expanded'); });
-    if (summary) summary.addEventListener('click', function() { card.classList.toggle('expanded'); });
-    if (body) body.addEventListener('click', function(e) {
-        if (!e.target.closest('a, button')) card.classList.toggle('expanded');
-    });
-});
-</script>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
 </body>
 </html>

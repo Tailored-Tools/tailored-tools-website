@@ -1,0 +1,238 @@
+/* ============================================================
+   Tailored Tools — Shared Stylesheet
+   Linked from all pages: index, /ao/, /projects/, /workshops/,
+   /about/, privacy.html. NOT used by links.html (standalone).
+   ============================================================ */
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+    --primary:    #203a4c;
+    --accent:     #ff6f20;
+    --dark:       #0D1B2A;
+    --white:      #FFFFFF;
+    --light:      #f4f5f7;
+    --text:       #203a4c;
+    --text-light: #5a6a7a;
+    --max-width:  960px;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Base typography ────────────────────────────────────────── */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    background: var(--white);
+}
+
+/* ── Nav ────────────────────────────────────────────────────── */
+nav {
+    background: var(--dark);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Logo: tt-logo-light.svg (white version) on dark nav */
+.nav-logo {
+    display: block;
+    width: 175px;
+    height: 48px;
+    background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
+    flex-shrink: 0;
+}
+.nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+}
+.nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-links a:hover  { color: var(--accent); }
+.nav-links a.active { color: var(--white); font-weight: 700; }
+/* Nav CTA — default "Get in Touch" mailto link.
+   AO page overrides to "Get AO Audit" with Stripe link in page CSS. */
+.nav-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.88; color: var(--white) !important; }
+
+/* Hamburger (mobile) */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(255,255,255,0.7);
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ── Footer ─────────────────────────────────────────────────── */
+footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 24px;
+    text-align: center;
+}
+/* Logo: tt-logo-light.svg (white version) centred in footer */
+.footer-logo-wrap {
+    width: 210px;
+    height: 72px;
+    background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+    margin: 0 auto 16px;
+}
+footer p   { font-size: 13px; }
+footer a   { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+/* ── Section / layout ───────────────────────────────────────── */
+section    { padding: 80px 24px; }
+.container { max-width: var(--max-width); margin: 0 auto; }
+
+/* ── Common headings ────────────────────────────────────────── */
+h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+.section-subtitle {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+/* ── Stats strip ────────────────────────────────────────────── */
+.stats-strip {
+    background: #121f2b;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 24px;
+}
+.stats-row {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stat-item {
+    text-align: center;
+    padding: 0 52px;
+}
+.stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+    max-width: 140px;
+    margin: 0 auto;
+}
+.stat-divider {
+    width: 1px;
+    height: 52px;
+    background: rgba(255,255,255,0.08);
+    flex-shrink: 0;
+}
+
+/* ── Accent / CTA button utility ────────────────────────────── */
+.btn-accent {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: opacity 0.2s;
+}
+.btn-accent:hover { opacity: 0.9; }
+
+/* ── Mobile responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Nav: hide CTA, show hamburger, open mobile menu */
+    .nav-cta { display: none; }
+    .hamburger { display: block; }
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 16px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+
+    /* Layout */
+    section { padding: 40px 20px; }
+    .section-subtitle { margin-bottom: 24px; }
+}
+
+@media (max-width: 640px) {
+    /* Stats strip stacks vertically */
+    .stats-row { flex-direction: column; gap: 24px; }
+    .stat-divider { width: 40px; height: 1px; }
+    .stat-item { padding: 0; }
+}
+
+/* ── Hamburger JS hook (shared across all pages) ────────────── */
+/*
+   Every page that uses this nav should include this inline script
+   (or a shared nav.js) to wire up the hamburger toggle:
+
+   document.getElementById('hamburger').addEventListener('click', function() {
+       this.classList.toggle('active');
+       document.getElementById('navLinks').classList.toggle('open');
+   });
+*/

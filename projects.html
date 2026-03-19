@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Tailored Tools</title>
+    <meta name="description" content="Live AI systems built for real businesses. See how we automated operations for a BSL interpretation agency and a sound therapy practice.">
+
+    <link rel="canonical" href="https://tailored-tools.com/projects">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/projects">
+    <meta property="og:title" content="Projects - Tailored Tools">
+    <meta property="og:description" content="Live AI systems built for real businesses. See how we automated operations for a BSL interpretation agency and a sound therapy practice.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects - Tailored Tools">
+    <meta name="twitter:description" content="Live AI systems built for real businesses. See how we automated operations for a BSL interpretation agency and a sound therapy practice.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* ── Page hero ───────────────────────────────────────────── */
+        .page-hero {
+            background: var(--dark);
+            padding: 64px 24px 56px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .page-hero .subtitle {
+            font-size: 17px;
+            color: rgba(255,255,255,0.55);
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── Project section ─────────────────────────────────────── */
+        .project-section {
+            padding: 80px 24px;
+        }
+        .project-section:nth-child(even) {
+            background: var(--light);
+        }
+        .project-header {
+            margin-bottom: 48px;
+        }
+        .project-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .project-header h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .project-header p {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        /* ── Before / After toggle ───────────────────────────────── */
+        .ba-toggle-wrap {
+            margin-bottom: 56px;
+        }
+        .ba-controls {
+            display: flex;
+            gap: 0;
+            margin-bottom: 28px;
+        }
+        .ba-btn {
+            flex: 1;
+            max-width: 200px;
+            padding: 10px 0;
+            border: 2px solid #d0d5dc;
+            background: var(--white);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .ba-btn:first-child { border-radius: 6px 0 0 6px; }
+        .ba-btn:last-child  { border-radius: 0 6px 6px 0; border-left: none; }
+        .ba-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .ba-view {
+            position: relative;
+            min-height: 320px;
+        }
+        .ba-state {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(8px);
+        }
+        .ba-state.visible {
+            opacity: 1;
+            position: relative;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        /* Before state — scattered pills */
+        .before-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            padding: 32px 0;
+        }
+        .before-pill {
+            background: var(--white);
+            border: 1px solid #d0d5dc;
+            border-radius: 8px;
+            padding: 14px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        .before-pill:nth-child(1) { transform: rotate(-3deg) translateY(8px); }
+        .before-pill:nth-child(2) { transform: rotate(2deg) translateY(-6px); }
+        .before-pill:nth-child(3) { transform: rotate(-1.5deg) translateY(12px); }
+        .before-pill:nth-child(4) { transform: rotate(3deg) translateY(-4px); }
+        .before-pill:nth-child(5) { transform: rotate(-2deg) translateY(10px); }
+        .before-pill:nth-child(6) { transform: rotate(1.5deg) translateY(-8px); }
+        .before-pill .pill-status {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: #c0c0c0;
+            margin-top: 2px;
+        }
+        .before-label {
+            text-align: center;
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* After state — hub and spoke */
+        .after-hub {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 0;
+        }
+        .hub-centre {
+            background: var(--accent);
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 800;
+            padding: 20px 36px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 20px rgba(255,111,32,0.25);
+        }
+        .hub-spokes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 560px;
+            position: relative;
+        }
+        .hub-spokes::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: var(--accent);
+            transform: translateX(-50%);
+        }
+        .spoke-node {
+            background: var(--white);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            position: relative;
+        }
+        .spoke-node::before {
+            content: '';
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            width: 2px;
+            height: 13px;
+            background: var(--accent);
+            transform: translateX(-50%);
+        }
+        .spoke-node .spoke-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        .after-label {
+            text-align: center;
+            font-size: 14px;
+            color: var(--accent);
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* ── Architecture flow ───────────────────────────────────── */
+        .arch-section {
+            margin-bottom: 56px;
+        }
+        .arch-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            overflow-x: auto;
+            padding: 12px 0;
+        }
+        .arch-step {
+            background: var(--white);
+            border: 1px solid #d0d5dc;
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .arch-arrow {
+            color: var(--accent);
+            font-size: 20px;
+            font-weight: 700;
+            padding: 0 8px;
+            flex-shrink: 0;
+        }
+        .project-section:nth-child(even) .arch-step {
+            background: var(--white);
+        }
+
+        /* ── Feature cards (expandable) ──────────────────────────── */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 56px;
+        }
+        .feature-card {
+            background: var(--white);
+            border: 1px solid #e0e4e8;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+        .feature-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .feature-card-header h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+        .feature-chevron {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            color: var(--text-light);
+        }
+        .feature-card.expanded .feature-chevron {
+            transform: rotate(180deg);
+        }
+        .feature-card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .feature-card.expanded .feature-card-body {
+            max-height: 300px;
+        }
+        .feature-card-body p {
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ── Stats strip (project-level) ─────────────────────────── */
+        .project-stats {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 32px 24px;
+        }
+        .project-stats .stats-row {
+            max-width: 100%;
+        }
+        .project-stats .stat-num {
+            font-size: 32px;
+        }
+
+        /* ── CTA section ─────────────────────────────────────────── */
+        .projects-cta {
+            background: var(--dark);
+            padding: 64px 24px;
+            text-align: center;
+        }
+        .projects-cta h2 {
+            color: var(--white);
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .projects-cta p {
+            color: rgba(255,255,255,0.55);
+            font-size: 16px;
+            margin-bottom: 28px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Mobile responsive ───────────────────────────────────── */
+        @media (max-width: 768px) {
+            .page-hero { padding: 40px 20px 36px; }
+            .page-hero h1 { font-size: 30px; }
+            .page-hero .subtitle { font-size: 15px; }
+
+            .project-section { padding: 48px 20px; }
+            .project-header h2 { font-size: 26px; }
+
+            .feature-cards { grid-template-columns: 1fr; }
+
+            .hub-spokes { grid-template-columns: repeat(2, 1fr); }
+
+            .arch-flow { gap: 0; }
+
+            .project-stats { border-radius: 0; margin: 0 -20px; padding: 28px 20px; }
+        }
+
+        @media (max-width: 640px) {
+            .hub-spokes { grid-template-columns: 1fr; max-width: 280px; }
+
+            .arch-flow {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .arch-step {
+                white-space: normal;
+                text-align: center;
+            }
+            .arch-arrow {
+                transform: rotate(90deg);
+                padding: 4px 0;
+                text-align: center;
+            }
+
+            .ba-controls { max-width: 100%; }
+            .ba-btn { max-width: none; }
+
+            .project-stats .stats-row { flex-direction: column; gap: 24px; }
+            .project-stats .stat-divider { width: 40px; height: 1px; }
+            .project-stats .stat-item { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/projects" class="active">Projects</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero">
+    <h1>Live Projects</h1>
+    <p class="subtitle">AI systems we've built and deployed for real businesses. These aren't demos - they're running in production right now.</p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     THE SONIC SANCTUARY
+     ════════════════════════════════════════════════════════════ -->
+<section class="project-section" id="sonic-sanctuary">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="project-header">
+            <div class="project-label">Client Project</div>
+            <h2>The Sonic Sanctuary</h2>
+            <p>A sound therapy practice running sound baths and drum circles in Kent. We replaced six disconnected tools with one unified operating system.</p>
+        </div>
+
+        <!-- Before / After -->
+        <div class="ba-toggle-wrap" data-ba="ss">
+            <div class="ba-controls">
+                <button class="ba-btn active" data-show="before">Before</button>
+                <button class="ba-btn" data-show="after">After</button>
+            </div>
+
+            <div class="ba-view">
+                <!-- BEFORE -->
+                <div class="ba-state visible" data-state="before">
+                    <div class="before-grid">
+                        <div class="before-pill">Square<span class="pill-status">Payments</span></div>
+                        <div class="before-pill">Weebly<span class="pill-status">Website</span></div>
+                        <div class="before-pill">Carrd<span class="pill-status">Landing page</span></div>
+                        <div class="before-pill">Google Sheets<span class="pill-status">Manual tracking</span></div>
+                        <div class="before-pill">WhatsApp<span class="pill-status">Manual messages</span></div>
+                        <div class="before-pill">Email<span class="pill-status">Manual comms</span></div>
+                    </div>
+                    <p class="before-label">Six disconnected tools. Nothing talks to anything else.</p>
+                </div>
+
+                <!-- AFTER -->
+                <div class="ba-state" data-state="after">
+                    <div class="after-hub">
+                        <div class="hub-centre">SS OS</div>
+                        <div class="hub-spokes">
+                            <div class="spoke-node">Stripe<span class="spoke-label">Payments</span></div>
+                            <div class="spoke-node">Google Sheets<span class="spoke-label">Database</span></div>
+                            <div class="spoke-node">Dashboard<span class="spoke-label">Admin</span></div>
+                            <div class="spoke-node">WhatsApp<span class="spoke-label">Automated</span></div>
+                            <div class="spoke-node">Website<span class="spoke-label">Public</span></div>
+                            <div class="spoke-node">Email<span class="spoke-label">Automated</span></div>
+                        </div>
+                    </div>
+                    <p class="after-label">One system. Everything connected.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture flow -->
+        <div class="arch-section">
+            <h3>How it works</h3>
+            <div class="arch-flow">
+                <div class="arch-step">Customer visits website</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Books event online</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Stripe payment</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Sheets updated</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Dashboard reflects</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">WhatsApp confirms</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Event day check-in</div>
+            </div>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Event Management</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Create, duplicate, and manage sound bath and drum circle events. Automatic expiry, capacity tracking, published to public website.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Stripe Payments</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Online bookings with Stripe Checkout. Pass system for regular attendees. Automatic receipt emails.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Intro Pass System</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>First-time visitor passes at reduced rate. One per customer, automatically enforced.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>WhatsApp Integration</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Automated event announcements to 140+ member sound bath group and 50+ drum circle group. Customer follow-ups.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Customer Comms</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Booking confirmations, reminders, and follow-ups via email. B2B invoicing for corporate clients.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>B2B Booking</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Corporate and charity bookings with custom pricing. Invoiced separately from public events.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Public Website</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Events page fed from same data source as dashboard. Real-time availability. No double-entry.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="project-stats">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-num">200+</div>
+                    <div class="stat-label">Events Managed</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-num">140+</div>
+                    <div class="stat-label">Sound Bath Community</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-num">1</div>
+                    <div class="stat-label">Unified Platform (replaced 6 tools)</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PERFORMANCE INTERPRETING
+     ════════════════════════════════════════════════════════════ -->
+<section class="project-section" id="performance-interpreting">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="project-header">
+            <div class="project-label">Client Project</div>
+            <h2>Performance Interpreting</h2>
+            <p>A BSL interpretation agency managing bookings, interpreters, and staff across the UK and Ireland. We replaced spreadsheets and email chains with a custom operating system.</p>
+        </div>
+
+        <!-- Before / After -->
+        <div class="ba-toggle-wrap" data-ba="pi">
+            <div class="ba-controls">
+                <button class="ba-btn active" data-show="before">Before</button>
+                <button class="ba-btn" data-show="after">After</button>
+            </div>
+
+            <div class="ba-view">
+                <!-- BEFORE -->
+                <div class="ba-state visible" data-state="before">
+                    <div class="before-grid">
+                        <div class="before-pill">Email chains<span class="pill-status">Scattered comms</span></div>
+                        <div class="before-pill">Spreadsheets<span class="pill-status">Multiple files</span></div>
+                        <div class="before-pill">Phone calls<span class="pill-status">No record</span></div>
+                        <div class="before-pill">Manual booking<span class="pill-status">Copy-paste</span></div>
+                        <div class="before-pill">Paper trails<span class="pill-status">Filing cabinets</span></div>
+                    </div>
+                    <p class="before-label">Fragmented. Nothing connected. Easy to miss things.</p>
+                </div>
+
+                <!-- AFTER -->
+                <div class="ba-state" data-state="after">
+                    <div class="after-hub">
+                        <div class="hub-centre">PI OS</div>
+                        <div class="hub-spokes">
+                            <div class="spoke-node">Supabase<span class="spoke-label">Database</span></div>
+                            <div class="spoke-node">Staff Portal<span class="spoke-label">Role-based</span></div>
+                            <div class="spoke-node">Email Extractor<span class="spoke-label">AI-powered</span></div>
+                            <div class="spoke-node">Google Sheets<span class="spoke-label">Dashboards</span></div>
+                            <div class="spoke-node">FreeAgent<span class="spoke-label">Invoicing</span></div>
+                            <div class="spoke-node">M365<span class="spoke-label">Email</span></div>
+                        </div>
+                    </div>
+                    <p class="after-label">One system. Everyone on the same page.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture flow -->
+        <div class="arch-section">
+            <h3>How it works</h3>
+            <div class="arch-flow">
+                <div class="arch-step">Client enquiry</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">PI OS booking</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Staff assigned</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Email extractor (AI)</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">Sheets dashboards</div>
+                <span class="arch-arrow">&rarr;</span>
+                <div class="arch-step">FreeAgent invoice</div>
+            </div>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Booking Management</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Complete booking lifecycle from enquiry to completion. Status tracking, assignment, notes, timeline.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Staff Portal</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Role-based access for 6+ team members. Each staff member sees relevant bookings, manages their workload.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Email Extractor (AI)</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>One-click email parsing using Claude AI. Searches staff's M365 mailbox, extracts booking details from email threads automatically.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Google Sheets Integration</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Read-only dashboards for Festivals, Seasons (football clubs), and Tours (Live Nation). Pulls from existing spreadsheets the team already uses.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Interpreter Database</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>379 interpreters (346 BSL + 33 Irish) imported and searchable. Skills, availability, location, qualifications.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-header">
+                    <h4>Automated Workflows</h4>
+                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="feature-card-body">
+                    <p>Confirmation emails, status updates, nudge system for stale bookings. Reduces manual follow-up.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="project-stats">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-num">379</div>
+                    <div class="stat-label">Interpreters in Database</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-num">6+</div>
+                    <div class="stat-label">Staff Using Daily</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-num">1</div>
+                    <div class="stat-label">Platform (replaced spreadsheets + email)</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="projects-cta">
+    <h2>Want something like this?</h2>
+    <p>We build custom systems for small businesses. No templates, no bloat - just what you actually need.</p>
+    <a href="mailto:hello@tailored-tools.com" class="btn-accent">Get in Touch &rarr;</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+/* Hamburger menu */
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+/* Before / After toggle */
+document.querySelectorAll('.ba-toggle-wrap').forEach(function(wrap) {
+    var buttons = wrap.querySelectorAll('.ba-btn');
+    var states = wrap.querySelectorAll('.ba-state');
+
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var target = this.getAttribute('data-show');
+
+            buttons.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            states.forEach(function(s) {
+                if (s.getAttribute('data-state') === target) {
+                    s.classList.add('visible');
+                } else {
+                    s.classList.remove('visible');
+                }
+            });
+        });
+    });
+});
+
+/* Expandable feature cards */
+document.querySelectorAll('.feature-card').forEach(function(card) {
+    card.querySelector('.feature-card-header').addEventListener('click', function() {
+        card.classList.toggle('expanded');
+    });
+});
+</script>
+
+</body>
+</html>

@@ -172,7 +172,7 @@
             font-style: italic;
         }
 
-        /* After state — hub and spoke */
+        /* After state — hub and spoke with proper tree lines */
         .after-hub {
             display: flex;
             flex-direction: column;
@@ -191,24 +191,31 @@
             z-index: 2;
             box-shadow: 0 4px 20px rgba(255,111,32,0.25);
         }
-        .hub-spokes {
+        /* Vertical trunk from hub */
+        .hub-trunk {
+            width: 2px;
+            height: 28px;
+            background: var(--accent);
+        }
+        /* Row of spokes with horizontal connector */
+        .hub-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            margin-top: 20px;
             width: 100%;
             max-width: 560px;
             position: relative;
+            margin-bottom: 12px;
         }
-        .hub-spokes::before {
+        /* Horizontal connector line above each row */
+        .hub-row::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: 50%;
-            width: 2px;
-            height: 20px;
+            top: 0;
+            left: calc(16.67%);
+            right: calc(16.67%);
+            height: 2px;
             background: var(--accent);
-            transform: translateX(-50%);
         }
         .spoke-node {
             background: var(--white);
@@ -220,14 +227,16 @@
             font-weight: 600;
             color: var(--primary);
             position: relative;
+            margin-top: 20px;
         }
+        /* Vertical line from horizontal connector down to each node */
         .spoke-node::before {
             content: '';
             position: absolute;
-            top: -13px;
+            top: -20px;
             left: 50%;
             width: 2px;
-            height: 13px;
+            height: 20px;
             background: var(--accent);
             transform: translateX(-50%);
         }
@@ -286,10 +295,11 @@
 
         /* ── Feature cards (expandable) ──────────────────────────── */
         .feature-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             margin-bottom: 56px;
+            max-width: 620px;
         }
         .feature-card {
             background: var(--white);
@@ -382,9 +392,7 @@
             .project-section { padding: 48px 20px; }
             .project-header h2 { font-size: 26px; }
 
-            .feature-cards { grid-template-columns: 1fr; }
-
-            .hub-spokes { grid-template-columns: repeat(2, 1fr); }
+            .hub-row { gap: 8px; }
 
             .arch-flow { gap: 0; }
 
@@ -392,7 +400,8 @@
         }
 
         @media (max-width: 640px) {
-            .hub-spokes { grid-template-columns: 1fr; max-width: 280px; }
+            .hub-row { grid-template-columns: 1fr 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+            .hub-row::before { left: 25%; right: 25%; }
 
             .arch-flow {
                 flex-direction: column;
@@ -481,10 +490,13 @@
                 <div class="ba-state" data-state="after">
                     <div class="after-hub">
                         <div class="hub-centre">SS OS</div>
-                        <div class="hub-spokes">
+                        <div class="hub-trunk"></div>
+                        <div class="hub-row">
                             <div class="spoke-node">Stripe<span class="spoke-label">Payments</span></div>
                             <div class="spoke-node">Google Sheets<span class="spoke-label">Database</span></div>
                             <div class="spoke-node">Dashboard<span class="spoke-label">Admin</span></div>
+                        </div>
+                        <div class="hub-row">
                             <div class="spoke-node">WhatsApp<span class="spoke-label">Automated</span></div>
                             <div class="spoke-node">Website<span class="spoke-label">Public</span></div>
                             <div class="spoke-node">Email<span class="spoke-label">Automated</span></div>
@@ -648,10 +660,13 @@
                 <div class="ba-state" data-state="after">
                     <div class="after-hub">
                         <div class="hub-centre">PI OS</div>
-                        <div class="hub-spokes">
+                        <div class="hub-trunk"></div>
+                        <div class="hub-row">
                             <div class="spoke-node">Supabase<span class="spoke-label">Database</span></div>
                             <div class="spoke-node">Staff Portal<span class="spoke-label">Role-based</span></div>
                             <div class="spoke-node">Email Extractor<span class="spoke-label">AI-powered</span></div>
+                        </div>
+                        <div class="hub-row">
                             <div class="spoke-node">Google Sheets<span class="spoke-label">Dashboards</span></div>
                             <div class="spoke-node">FreeAgent<span class="spoke-label">Invoicing</span></div>
                             <div class="spoke-node">M365<span class="spoke-label">Email</span></div>

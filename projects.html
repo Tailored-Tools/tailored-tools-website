@@ -279,40 +279,34 @@
         .arch-flow {
             display: flex;
             align-items: center;
-            overflow-x: auto;
+            flex-wrap: wrap;
+            gap: 6px 0;
             padding: 12px 0;
-            -webkit-overflow-scrolling: touch;
         }
         .arch-step {
             background: var(--white);
             border: 2px solid var(--accent);
             border-radius: 8px;
-            padding: 12px 16px;
+            padding: 10px 14px;
             font-size: 12px;
             font-weight: 600;
             color: var(--primary);
             white-space: nowrap;
-            flex-shrink: 0;
-            position: relative;
         }
         .arch-connector {
-            width: 32px;
+            width: 24px;
             height: 2px;
             background: var(--accent);
-            flex-shrink: 0;
             position: relative;
         }
-        /* Arrow head on connector */
         .arch-connector::after {
             content: '';
             position: absolute;
             right: -1px;
             top: -4px;
-            width: 0;
-            height: 0;
-            border-left: 6px solid var(--accent);
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
+            border-left: 5px solid var(--accent);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
         }
         .project-section:nth-child(even) .arch-step {
             background: var(--white);
@@ -552,19 +546,15 @@
         <div class="arch-section">
             <h3>How it works</h3>
             <div class="arch-flow">
-                <div class="arch-step">Customer visits website</div>
-                <div class="arch-connector"></div>
-                <div class="arch-step">Books event online</div>
+                <div class="arch-step">Customer books</div>
                 <div class="arch-connector"></div>
                 <div class="arch-step">Stripe payment</div>
                 <div class="arch-connector"></div>
                 <div class="arch-step">Sheets updated</div>
                 <div class="arch-connector"></div>
-                <div class="arch-step">Dashboard reflects</div>
-                <div class="arch-connector"></div>
                 <div class="arch-step">WhatsApp confirms</div>
                 <div class="arch-connector"></div>
-                <div class="arch-step">Event day check-in</div>
+                <div class="arch-step">Event check-in</div>
             </div>
         </div>
 
@@ -724,15 +714,13 @@
             <div class="arch-flow">
                 <div class="arch-step">Client enquiry</div>
                 <div class="arch-connector"></div>
-                <div class="arch-step">PI OS booking</div>
+                <div class="arch-step">Booking created</div>
                 <div class="arch-connector"></div>
                 <div class="arch-step">Staff assigned</div>
                 <div class="arch-connector"></div>
-                <div class="arch-step">Email extractor (AI)</div>
+                <div class="arch-step">AI extracts details</div>
                 <div class="arch-connector"></div>
-                <div class="arch-step">Sheets dashboards</div>
-                <div class="arch-connector"></div>
-                <div class="arch-step">FreeAgent invoice</div>
+                <div class="arch-step">Invoice sent</div>
             </div>
         </div>
 

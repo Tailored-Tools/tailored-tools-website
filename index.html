@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailored Tools - AI Integration for Small Businesses</title>
+    <meta name="description" content="I build AI systems that run businesses. Three live platforms, no jargon. Business automation, agent optimisation, and workshops.">
+
+    <link rel="canonical" href="https://tailored-tools.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/">
+    <meta property="og:title" content="Tailored Tools - AI Integration for Small Businesses">
+    <meta property="og:description" content="I build AI systems that run businesses. Three live platforms, no jargon. Business automation, agent optimisation, and workshops.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* ── Hero ───────────────────────────────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, #0D1B2A 0%, #1a2d42 100%);
+            color: var(--white);
+            padding: 80px 24px 96px;
+            text-align: center;
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.65);
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* ── What TT Does ───────────────────────────────────────────── */
+        .what-tt {
+            background: var(--light);
+        }
+        .what-tt h2 {
+            margin-bottom: 8px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 28px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .service-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .service-card h3 {
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ── Live Projects ──────────────────────────────────────────── */
+        .live-projects {
+            background: var(--white);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .project-card {
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .project-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-color: rgba(0,0,0,0.14);
+        }
+        .project-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .project-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .project-link:hover { opacity: 0.75; }
+
+        /* ── Brief About ────────────────────────────────────────────── */
+        .brief-about {
+            background: var(--white);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .about-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .brief-about h2 {
+            margin-bottom: 16px;
+        }
+        .brief-about p {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+        .about-link {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .about-link:hover { opacity: 0.75; }
+
+        /* ── Responsive ─────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 56px 20px 72px; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tailored Tools",
+        "url": "https://tailored-tools.com",
+        "email": "hello@tailored-tools.com",
+        "description": "AI integration for small businesses. Business automation, agent optimisation, and workshops.",
+        "founder": {
+            "@type": "Person",
+            "name": "James Edwards"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<!-- ── Nav ───────────────────────────────────────────────────────────── -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <button class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────── -->
+<section class="hero">
+    <span class="hero-label">AI Integration for Small Businesses</span>
+    <h1>I build AI systems that actually run businesses</h1>
+    <p class="hero-subtitle">Three businesses. Three live AI systems. No jargon, no hype - just tools that save time and make money.</p>
+    <div class="hero-ctas">
+        <a href="/projects" class="btn-accent">See My Work</a>
+        <a href="/ao/#free-score" class="btn-outline">Free AO Score</a>
+    </div>
+</section>
+
+<!-- ── What TT Does ───────────────────────────────────────────────────── -->
+<section class="what-tt">
+    <div class="container">
+        <h2>What Tailored Tools Does</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">⚙️</span>
+                <h3>Business Automation</h3>
+                <p>Custom platforms that automate your bookings, comms, and operations - built with AI</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎯</span>
+                <h3>Agent Optimisation</h3>
+                <p>Make your business the one AI recommends to customers</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🤝</span>
+                <h3>Workshops</h3>
+                <p>Hands-on AI sessions for local businesses and teams</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Live Projects ──────────────────────────────────────────────────── -->
+<section class="live-projects">
+    <div class="container">
+        <h2>Live Projects</h2>
+        <p class="section-subtitle">AI systems running in production right now</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <p class="project-label">BSL Interpretation</p>
+                <h3>Performance Interpreting</h3>
+                <p>Booking management OS, staff portal, automated event processing for the UK's leading BSL agency</p>
+                <a href="/projects" class="project-link">View project &rarr;</a>
+            </div>
+            <div class="project-card">
+                <p class="project-label">Sound Therapy</p>
+                <h3>The Sonic Sanctuary</h3>
+                <p>Complete business platform - bookings, payments, comms, event management, customer WhatsApp</p>
+                <a href="/projects" class="project-link">View project &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Stats Strip ────────────────────────────────────────────────────── -->
+<div class="stats-strip">
+    <div class="stats-row">
+        <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Live AI Systems</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <div class="stat-num">190+</div>
+            <div class="stat-label">Community Members</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <div class="stat-num">11</div>
+            <div class="stat-label">Articles Published</div>
+        </div>
+    </div>
+</div>
+
+<!-- ── Brief About ────────────────────────────────────────────────────── -->
+<section class="brief-about">
+    <div class="container">
+        <img src="/james.jpg" alt="James Edwards" class="about-photo">
+        <h2>I'm James</h2>
+        <p>I run a BSL interpretation agency and a sound therapy practice. I built AI into both of them. Now I help other small businesses do the same.</p>
+        <a href="/about" class="about-link">More about me &rarr;</a>
+    </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>
+        <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a>
+        &middot;
+        <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot;
+        <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+    <p style="margin-top: 10px;">&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('open');
+    });
+});
+</script>
+
+</body>
+</html>

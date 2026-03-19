@@ -132,44 +132,65 @@
             transform: translateY(0);
         }
 
-        /* Before state — scattered pills */
+        /* Before state — chaotic scattered pills */
         .before-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            padding: 32px 0;
+            position: relative;
+            min-height: 280px;
+            margin: 16px 0;
         }
         .before-pill {
+            position: absolute;
             background: var(--white);
             border: 1px solid #d0d5dc;
             border-radius: 8px;
-            padding: 14px 22px;
-            font-size: 14px;
+            padding: 12px 18px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-light);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            position: relative;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            white-space: nowrap;
         }
-        .before-pill:nth-child(1) { transform: rotate(-3deg) translateY(8px); }
-        .before-pill:nth-child(2) { transform: rotate(2deg) translateY(-6px); }
-        .before-pill:nth-child(3) { transform: rotate(-1.5deg) translateY(12px); }
-        .before-pill:nth-child(4) { transform: rotate(3deg) translateY(-4px); }
-        .before-pill:nth-child(5) { transform: rotate(-2deg) translateY(10px); }
-        .before-pill:nth-child(6) { transform: rotate(1.5deg) translateY(-8px); }
+        /* Chaotic positions — deliberately messy */
+        .before-pill:nth-child(1) { top: 8%;  left: 5%;   transform: rotate(-7deg); }
+        .before-pill:nth-child(2) { top: 2%;  left: 55%;  transform: rotate(4deg); }
+        .before-pill:nth-child(3) { top: 38%; left: 32%;  transform: rotate(-3deg); }
+        .before-pill:nth-child(4) { top: 30%; left: 68%;  transform: rotate(8deg); }
+        .before-pill:nth-child(5) { top: 65%; left: 8%;   transform: rotate(-5deg); }
+        .before-pill:nth-child(6) { top: 70%; left: 52%;  transform: rotate(6deg); }
+        /* Broken connection lines — red dashed */
+        .before-pill::after {
+            content: '✕';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 18px;
+            height: 18px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
         .before-pill .pill-status {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 400;
-            color: #c0c0c0;
+            color: #b0b0b0;
             margin-top: 2px;
         }
         .before-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
             text-align: center;
             font-size: 14px;
-            color: #b0b0b0;
-            margin-top: 16px;
-            font-style: italic;
+            color: #e74c3c;
+            font-weight: 600;
         }
 
         /* After state — hub and spoke with proper tree lines */
@@ -400,6 +421,8 @@
         }
 
         @media (max-width: 640px) {
+            .before-grid { min-height: 240px; }
+            .before-pill { font-size: 11px; padding: 10px 14px; }
             .hub-row { grid-template-columns: 1fr 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
             .hub-row::before { left: 25%; right: 25%; }
 

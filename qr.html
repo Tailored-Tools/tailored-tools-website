@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan to Connect</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: #0D1B2A;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+    }
+
+    /* Ambient animated background */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,111,32,0.15) 0%, transparent 70%);
+      top: -200px;
+      right: -150px;
+      animation: drift1 8s ease-in-out infinite alternate;
+    }
+    .bg::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,111,32,0.08) 0%, transparent 70%);
+      bottom: -200px;
+      left: -100px;
+      animation: drift2 10s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 {
+      to { transform: translate(-80px, 60px); }
+    }
+    @keyframes drift2 {
+      to { transform: translate(60px, -40px); }
+    }
+
+    /* Content */
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 28px;
+      padding: 32px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.2s forwards;
+    }
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2.5px solid #ff6f20;
+      object-fit: contain;
+    }
+    .header-text { text-align: left; }
+    .name {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    /* QR wrapper */
+    .qr-wrap {
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.4s forwards;
+    }
+    .qr-ring {
+      position: absolute;
+      inset: -14px;
+      border-radius: 24px;
+      border: 2px solid rgba(255,111,32,0.3);
+      animation: ringPulse 3s ease-in-out infinite;
+    }
+    .qr-ring:nth-child(2) {
+      inset: -26px;
+      border-radius: 30px;
+      border-color: rgba(255,111,32,0.15);
+      animation-delay: 0.5s;
+    }
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .qr-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    #qr-canvas {
+      display: block;
+      width: 220px;
+      height: 220px;
+    }
+
+    /* CTA */
+    .cta {
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.6s forwards;
+    }
+    .cta-main {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .cta-main span {
+      color: #ff6f20;
+    }
+    .cta-sub {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 6px;
+    }
+
+    /* Scan indicator */
+    .scan-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.8s forwards;
+    }
+    .scan-dot {
+      width: 8px;
+      height: 8px;
+      background: #ff6f20;
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    .scan-text {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Corner accents on QR box */
+    .qr-box::before, .qr-box::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-color: #ff6f20;
+      border-style: solid;
+      z-index: 2;
+    }
+    .qr-box::before {
+      top: -4px;
+      left: -4px;
+      border-width: 3px 0 0 3px;
+      border-radius: 4px 0 0 0;
+    }
+    .qr-box::after {
+      bottom: -4px;
+      right: -4px;
+      border-width: 0 3px 3px 0;
+      border-radius: 0 0 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div class="container">
+    <div class="header">
+      <img src="/james.jpg" alt="James Edwards" class="avatar">
+      <div class="header-text">
+        <div class="name">James Edwards</div>
+        <div class="subtitle">Tailored Tools &middot; The Sonic Sanctuary</div>
+      </div>
+    </div>
+
+    <div class="qr-wrap">
+      <div class="qr-ring"></div>
+      <div class="qr-ring"></div>
+      <div class="qr-box">
+        <canvas id="qr-canvas"></canvas>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div class="cta-main">Scan to <span>connect</span></div>
+      <div class="cta-sub">Free AI score, sound baths, events &amp; more</div>
+    </div>
+
+    <div class="scan-indicator">
+      <div class="scan-dot"></div>
+      <div class="scan-text">Point your camera here</div>
+    </div>
+  </div>
+
+  <script>
+    var qr = qrcode(0, 'M');
+    qr.addData('https://tailored-tools.com/links');
+    qr.make();
+
+    var canvas = document.getElementById('qr-canvas');
+    var size = 220;
+    var moduleCount = qr.getModuleCount();
+    var cellSize = size / moduleCount;
+    canvas.width = size * 2;
+    canvas.height = size * 2;
+    canvas.style.width = size + 'px';
+    canvas.style.height = size + 'px';
+    var ctx = canvas.getContext('2d');
+    ctx.scale(2, 2);
+
+    // Draw rounded modules
+    var r = cellSize * 0.35;
+    for (var row = 0; row < moduleCount; row++) {
+      for (var col = 0; col < moduleCount; col++) {
+        if (qr.isDark(row, col)) {
+          var x = col * cellSize;
+          var y = row * cellSize;
+          ctx.fillStyle = '#0D1B2A';
+          ctx.beginPath();
+          ctx.roundRect(x + 0.5, y + 0.5, cellSize - 1, cellSize - 1, r);
+          ctx.fill();
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -424,13 +424,17 @@
         @media (max-width: 480px) {
             .hero { padding: 56px 20px 64px; }
             .hero h1 { font-size: 28px; }
-            .hero-graphic { width: 180px; height: 170px; margin: 0 auto; }
-            .hero-ctas { flex-direction: column; }
-            .hero-ctas .btn-accent,
-            .hero-ctas .btn-outline {
-                width: 100%;
-                text-align: center;
+            .hero-inner { flex-direction: column; gap: 0; }
+            .hero-graphic {
+                width: 120px;
+                height: 120px;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                opacity: 0.5;
             }
+            .hero-content { position: relative; }
+            .hero-ctas { flex-direction: column; align-items: flex-start; }
         }
 
         /* ── Free AO Score ───────────────────────────────────────────── */

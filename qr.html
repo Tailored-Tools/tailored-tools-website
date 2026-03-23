@@ -134,8 +134,8 @@
     }
     #qr-canvas {
       display: block;
-      width: 220px;
-      height: 220px;
+      width: 260px;
+      height: 260px;
     }
 
     /* CTA */
@@ -245,32 +245,31 @@
   </div>
 
   <script>
-    var qr = qrcode(0, 'M');
+    var qr = qrcode(0, 'H');
     qr.addData('https://tailored-tools.com/links');
     qr.make();
 
     var canvas = document.getElementById('qr-canvas');
-    var size = 220;
+    var size = 260;
     var moduleCount = qr.getModuleCount();
     var cellSize = size / moduleCount;
-    canvas.width = size * 2;
-    canvas.height = size * 2;
+    canvas.width = size * 3;
+    canvas.height = size * 3;
     canvas.style.width = size + 'px';
     canvas.style.height = size + 'px';
     var ctx = canvas.getContext('2d');
-    ctx.scale(2, 2);
+    ctx.scale(3, 3);
 
-    // Draw rounded modules
-    var r = cellSize * 0.35;
+    // Crisp square modules — maximum camera compatibility
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, size, size);
     for (var row = 0; row < moduleCount; row++) {
       for (var col = 0; col < moduleCount; col++) {
         if (qr.isDark(row, col)) {
           var x = col * cellSize;
           var y = row * cellSize;
-          ctx.fillStyle = '#0D1B2A';
-          ctx.beginPath();
-          ctx.roundRect(x + 0.5, y + 0.5, cellSize - 1, cellSize - 1, r);
-          ctx.fill();
+          ctx.fillStyle = '#000';
+          ctx.fillRect(Math.floor(x), Math.floor(y), Math.ceil(cellSize), Math.ceil(cellSize));
         }
       }
     }

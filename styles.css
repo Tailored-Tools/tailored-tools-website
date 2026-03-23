@@ -199,12 +199,6 @@ h3 {
     /* Nav: hide CTA, show hamburger, open mobile menu */
     .nav-cta { display: none; }
     .hamburger { display: block; }
-    .nav-logo {
-        background-image: url('/tt-logo-dark.svg');
-        background-position: center;
-        background-size: contain;
-        width: 150px;
-    }
     .nav-links {
         display: none;
         position: fixed;

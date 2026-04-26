@@ -1,0 +1,261 @@
+{
+  "_comment": "Source of truth for blog series taxonomy. Hand-coded HTML mirrors this — keep in sync when adding posts. Series landing pages live at /ao/blog/series/<slug>/.",
+  "series": {
+    "agent-optimisation": {
+      "name": "Agent Optimisation",
+      "slug": "agent-optimisation",
+      "description": "How small businesses get found, recommended, and accurately described by AI assistants. The original Tailored Tools track.",
+      "audience": "Small business owners weighing what AI search means for them.",
+      "accent": "#ff6f20",
+      "accent_soft": "#fff0e6",
+      "order": 1
+    },
+    "anti-hype": {
+      "name": "Anti-hype",
+      "slug": "anti-hype",
+      "description": "Honest reality checks on what AI can and can't do, what it actually costs, and where it isn't the right tool. Written for the people the demos forgot.",
+      "audience": "Anyone tired of being told AI will change everything by Friday.",
+      "accent": "#d4396b",
+      "accent_soft": "#fce1e9",
+      "order": 2
+    },
+    "walkthroughs": {
+      "name": "Walkthroughs",
+      "slug": "walkthroughs",
+      "description": "Step-by-step routines you can actually run. Each one ends with a step that is deliberately not AI — because knowing when not to reach for it is the skill.",
+      "audience": "Curious beginners and busy people who learn by following a recipe.",
+      "accent": "#0e6f7a",
+      "accent_soft": "#d6ebee",
+      "order": 3
+    },
+    "friction": {
+      "name": "Friction",
+      "slug": "friction",
+      "description": "Where AI gets stuck, gives bad answers, or quietly costs you time. Naming the awkward bits so you know to spot them.",
+      "audience": "Anyone who has shouted at a chatbot this week.",
+      "accent": "#c9831c",
+      "accent_soft": "#fbeed6",
+      "order": 4
+    },
+    "starter-packs": {
+      "name": "Starter packs",
+      "slug": "starter-packs",
+      "description": "Ten first prompts for whatever you do. Tool-agnostic. No accounts, no jargon, just lines you can paste and adapt.",
+      "audience": "People who know AI is useful but have stared at the empty box wondering what to type.",
+      "accent": "#6b3ad9",
+      "accent_soft": "#e5dbf9",
+      "order": 5
+    },
+    "jargon-glossary": {
+      "name": "Jargon glossary",
+      "slug": "jargon-glossary",
+      "description": "Plain-English definitions for the words that get thrown around in AI conversations. Token, context, agent, RAG, MCP — defined so you can follow without nodding along.",
+      "audience": "Anyone who has been in a meeting where they didn't want to ask what something meant.",
+      "accent": "#2c5f8d",
+      "accent_soft": "#dee8f3",
+      "order": 6
+    }
+  },
+  "posts": [
+    {
+      "slug": "ai-doesnt-rank-your-business-it-includes-or-excludes-it",
+      "title": "AI doesn't rank your business. It includes or excludes it.",
+      "url": "/ao/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html",
+      "series": "agent-optimisation",
+      "series_position": 1,
+      "date": "2026-03-10",
+      "read_time": "5 min read",
+      "excerpt": "SEO is about ranking. AO is about inclusion. When someone asks AI for a recommendation, you're either in the conversation or you don't exist. There is no page two."
+    },
+    {
+      "slug": "is-ai-saying-the-wrong-things-about-your-business",
+      "title": "Is AI saying the wrong things about your business?",
+      "url": "/ao/blog/is-ai-saying-the-wrong-things-about-your-business.html",
+      "series": "agent-optimisation",
+      "series_position": 2,
+      "date": "2026-03-03",
+      "read_time": "5 min read",
+      "excerpt": "AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers."
+    },
+    {
+      "slug": "how-much-does-ai-optimisation-cost",
+      "title": "How much does AI optimisation cost for a small business?",
+      "url": "/ao/blog/how-much-does-ai-optimisation-cost.html",
+      "series": "agent-optimisation",
+      "series_position": 3,
+      "date": "2026-02-26",
+      "read_time": "5 min read",
+      "excerpt": "A realistic breakdown of what AI optimisation costs for small service businesses in 2026, from free fixes to professional audits and implementation."
+    },
+    {
+      "slug": "geo-aeo-ao-whats-the-difference",
+      "title": "GEO, AEO, and AO: what's the difference and which one matters?",
+      "url": "/ao/blog/geo-aeo-ao-whats-the-difference.html",
+      "series": "agent-optimisation",
+      "series_position": 4,
+      "date": "2026-02-25",
+      "read_time": "5 min read",
+      "excerpt": "The field has three names and counting. Here is what GEO, AEO, and AO each mean, where they overlap, and which approach actually matters for small service businesses in 2026."
+    },
+    {
+      "slug": "how-to-check-if-ai-recommends-your-business",
+      "title": "How to check if AI recommends your business (and what to do if it doesn't)",
+      "url": "/ao/blog/how-to-check-if-ai-recommends-your-business.html",
+      "series": "agent-optimisation",
+      "series_position": 5,
+      "date": "2026-02-24",
+      "read_time": "5 min read",
+      "excerpt": "A five-minute test across ChatGPT, Perplexity, and Google AI will tell you whether your business is being recommended. Here is how to run it, what the results mean, and what to fix first."
+    },
+    {
+      "slug": "why-ai-customers-convert-better",
+      "title": "Why customers who find you through AI are different",
+      "url": "/ao/blog/why-ai-customers-convert-better.html",
+      "series": "agent-optimisation",
+      "series_position": 6,
+      "date": "2026-02-17",
+      "read_time": "3 min read",
+      "excerpt": "AI-referred customers convert at 15.9% versus 1.76% for Google organic. Here is why the numbers are so different, and what it means for how you think about AI credibility."
+    },
+    {
+      "slug": "schema-markup-for-small-business",
+      "title": "What is schema markup, and why does AI care about it?",
+      "url": "/ao/blog/schema-markup-for-small-business.html",
+      "series": "agent-optimisation",
+      "series_position": 7,
+      "date": "2026-02-10",
+      "read_time": "4 min read",
+      "excerpt": "Schema markup is invisible code that labels the information on your website so AI can read it directly. Here is what it is, how it works, and why it has become important in 2026."
+    },
+    {
+      "slug": "google-business-profile-ai-search",
+      "title": "Does your Google Business Profile affect ChatGPT results?",
+      "url": "/ao/blog/google-business-profile-ai-search.html",
+      "series": "agent-optimisation",
+      "series_position": 8,
+      "date": "2026-02-03",
+      "read_time": "3 min read",
+      "excerpt": "Yes, more than most people realise. Here is exactly how your Google Business Profile influences what AI assistants recommend for local service searches."
+    },
+    {
+      "slug": "what-is-agent-optimisation",
+      "title": "What is Agent Optimisation?",
+      "url": "/ao/blog/what-is-agent-optimisation.html",
+      "series": "agent-optimisation",
+      "series_position": 9,
+      "date": "2026-01-27",
+      "read_time": "4 min read",
+      "excerpt": "SEO helped you appear in Google results. Agent Optimisation helps you appear in AI recommendations. Here is what it actually involves and why the distinction matters."
+    },
+    {
+      "slug": "how-to-get-recommended-by-ai",
+      "title": "How to get your business recommended by AI assistants",
+      "url": "/ao/blog/how-to-get-recommended-by-ai.html",
+      "series": "agent-optimisation",
+      "series_position": 10,
+      "date": "2026-01-20",
+      "read_time": "5 min read",
+      "excerpt": "People are asking ChatGPT and Perplexity to find services near them. Here is what determines whether your business makes the shortlist or gets skipped entirely."
+    },
+    {
+      "slug": "why-isnt-my-business-on-chatgpt",
+      "title": "Why isn't my business showing up on ChatGPT?",
+      "url": "/ao/blog/why-isnt-my-business-on-chatgpt.html",
+      "series": "agent-optimisation",
+      "series_position": 11,
+      "date": "2026-01-13",
+      "read_time": "4 min read",
+      "excerpt": "You search for your own business, or for your service in your town, and nothing comes back. Here are the three most common reasons — and what you can do about each one."
+    },
+    {
+      "slug": "when-not-to-use-ai",
+      "title": "When not to use AI",
+      "url": "/ao/blog/when-not-to-use-ai.html",
+      "series": "anti-hype",
+      "series_position": 1,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "Four situations where AI is the wrong tool — slower, worse, or actively harmful than just doing it yourself or asking a human. Nobody in the AI space posts this."
+    },
+    {
+      "slug": "things-ai-still-cant-do",
+      "title": "Things AI still can't do",
+      "url": "/ao/blog/things-ai-still-cant-do.html",
+      "series": "anti-hype",
+      "series_position": 2,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "The demos are impressive. The limits are real. Four honest things AI still can't do in 2026, and why knowing them makes you better at using what it can."
+    },
+    {
+      "slug": "the-honest-cost-of-ai",
+      "title": "The honest cost of AI",
+      "url": "/ao/blog/the-honest-cost-of-ai.html",
+      "series": "anti-hype",
+      "series_position": 3,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "The subscription fee is the small bit. What AI actually costs when you use it properly — verification time, learning curve, the skill tax. Worth it, mostly. But go in with open eyes."
+    },
+    {
+      "slug": "the-ai-trust-ladder",
+      "title": "The AI trust ladder: five rungs of how much you should trust the output",
+      "url": "/ao/blog/the-ai-trust-ladder.html",
+      "series": "walkthroughs",
+      "series_position": 1,
+      "date": "2026-04-26",
+      "read_time": "5 min read",
+      "excerpt": "How much do you actually trust AI output? Five rungs, from rewrite-every-word to let-it-ship. Most of us are on different rungs for different tasks — and trust should be earned task by task."
+    },
+    {
+      "slug": "first-prompts-for-teachers",
+      "title": "First prompts if you're a teacher",
+      "url": "/ao/blog/first-prompts-for-teachers.html",
+      "series": "starter-packs",
+      "series_position": 1,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "Ten first prompts for the bits of teaching where AI helps. Cut the admin. Keep the craft. Tool-agnostic, paste-and-adapt."
+    },
+    {
+      "slug": "first-prompts-for-small-business-owners",
+      "title": "First prompts if you run a small business",
+      "url": "/ao/blog/first-prompts-for-small-business-owners.html",
+      "series": "starter-packs",
+      "series_position": 2,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "Ten first prompts that take admin off your plate so you can spend more time with customers. Tool-agnostic. Sound human. Stay human."
+    },
+    {
+      "slug": "first-prompts-for-parents",
+      "title": "First prompts if you're a parent",
+      "url": "/ao/blog/first-prompts-for-parents.html",
+      "series": "starter-packs",
+      "series_position": 3,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "Ten first prompts for parents — less Googling, more presence. Use it to think. Not to parent for you."
+    },
+    {
+      "slug": "first-prompts-for-students",
+      "title": "First prompts if you're a student",
+      "url": "/ao/blog/first-prompts-for-students.html",
+      "series": "starter-packs",
+      "series_position": 4,
+      "date": "2026-04-26",
+      "read_time": "4 min read",
+      "excerpt": "Ten first prompts for students. Sharpen your work. Don't outsource it. If it didn't think, you didn't learn."
+    },
+    {
+      "slug": "six-ai-words-youll-keep-hearing",
+      "title": "Six AI words you'll keep hearing",
+      "url": "/ao/blog/six-ai-words-youll-keep-hearing.html",
+      "series": "jargon-glossary",
+      "series_position": 1,
+      "date": "2026-04-26",
+      "read_time": "5 min read",
+      "excerpt": "Token. Context. Hallucination. Agent. RAG. MCP. The six words most likely to trip you up in any AI conversation, defined in plain English."
+    }
+  ]
+}

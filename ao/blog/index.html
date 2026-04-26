@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles on AI credibility for small businesses | Tailored Tools</title>
-    <meta name="description" content="Plain-English articles on AI credibility, Agent Optimisation, and getting your small business recommended by ChatGPT, Perplexity, and Google AI.">
+    <title>Articles on AI for small businesses and curious humans | Tailored Tools</title>
+    <meta name="description" content="Plain-English writing on AI: agent optimisation, anti-hype, walkthroughs, starter packs, friction, and a jargon glossary. Most of it grew out of the Kent AI Meet Up.">
     <meta property="og:title" content="Articles | Tailored Tools">
-    <meta property="og:description" content="Plain-English articles on AI credibility and Agent Optimisation for small businesses.">
+    <meta property="og:description" content="Plain-English writing on AI for small businesses and curious humans. Six series, no jargon, no hype.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tailored-tools.com/ao/blog/">
     <meta property="og:image" content="https://tailored-tools.com/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Articles on AI credibility for small businesses | Tailored Tools">
-    <meta name="twitter:description" content="Plain-English articles on AI credibility, Agent Optimisation, and getting your small business recommended by ChatGPT, Perplexity, and Google AI.">
+    <meta name="twitter:title" content="Articles on AI for small businesses and curious humans | Tailored Tools">
+    <meta name="twitter:description" content="Plain-English writing on AI for small businesses and curious humans. Six series, no jargon, no hype.">
     <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
     <link rel="canonical" href="https://tailored-tools.com/ao/blog/">
     <link rel="icon" href="/favicon.png?v=3" type="image/png">
@@ -31,6 +31,13 @@
             --text: #203a4c;
             --mid: #5a6a7a;
             --max-width: 960px;
+
+            --series-ao: #ff6f20;
+            --series-antihype: #d4396b;
+            --series-walkthroughs: #0e6f7a;
+            --series-friction: #c9831c;
+            --series-starterpacks: #6b3ad9;
+            --series-jargon: #2c5f8d;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.7; background: var(--white); }
@@ -58,7 +65,55 @@
         }
         .blog-header-inner { max-width: var(--max-width); margin: 0 auto; }
         .blog-header h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
-        .blog-header p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 520px; }
+        .blog-header p { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 620px; }
+
+        .series-bar {
+            background: var(--light);
+            padding: 24px;
+            border-bottom: 1px solid #e8ecf0;
+            position: sticky;
+            top: 76px;
+            z-index: 50;
+        }
+        .series-bar-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .series-bar-label {
+            font-size: 12px;
+            color: var(--mid);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 8px;
+        }
+        .series-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border: 1px solid #d8dde3;
+            background: var(--white);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.15s;
+            text-decoration: none;
+        }
+        .series-chip:hover { border-color: var(--accent); color: var(--accent); }
+        .series-chip.active { background: var(--text); color: var(--white); border-color: var(--text); }
+        .series-chip-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
 
         .blog-list { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px; }
 
@@ -72,11 +127,38 @@
         .article-card:first-child { padding-top: 0; }
         .article-card:last-child { border-bottom: none; }
         .article-card:hover .article-card-title { color: var(--accent); }
-        .article-card-meta { font-size: 12px; color: var(--mid); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+        .article-card.hidden { display: none; }
+
+        .article-card-tags {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .series-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--white);
+            padding: 3px 10px;
+            border-radius: 3px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+        .series-badge[data-series="agent-optimisation"] { background: var(--series-ao); }
+        .series-badge[data-series="anti-hype"]         { background: var(--series-antihype); }
+        .series-badge[data-series="walkthroughs"]      { background: var(--series-walkthroughs); }
+        .series-badge[data-series="friction"]          { background: var(--series-friction); }
+        .series-badge[data-series="starter-packs"]     { background: var(--series-starterpacks); }
+        .series-badge[data-series="jargon-glossary"]   { background: var(--series-jargon); }
+
+        .article-card-meta { font-size: 12px; color: var(--mid); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
         .article-card-title { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; transition: color 0.2s; }
         .article-card-excerpt { font-size: 15px; color: var(--mid); line-height: 1.7; max-width: 640px; }
         .article-card-read { font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 12px; }
-        .article-card-featured { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); background: rgba(255,111,32,0.1); padding: 2px 10px; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
 
         footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
         .footer-logo-wrap { width: 210px; height: 72px; background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; margin: 0 auto 16px; }
@@ -89,6 +171,8 @@
             .blog-header h1 { font-size: 26px; }
             .blog-list { padding: 32px 20px; }
             .article-card-title { font-size: 18px; }
+            .series-bar { padding: 16px 20px; top: 64px; }
+            .series-bar-label { width: 100%; margin-bottom: 4px; }
             .hamburger { display: block; }
             .nav-links {
                 display: none;
@@ -110,86 +194,32 @@
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Articles on AI credibility for small businesses",
-      "description": "Plain-English articles on AI credibility, Agent Optimisation, and getting your small business recommended by ChatGPT, Perplexity, and Google AI.",
+      "name": "Articles on AI for small businesses and curious humans",
+      "description": "Plain-English writing on AI: agent optimisation, anti-hype, walkthroughs, starter packs, friction, and a jargon glossary.",
       "url": "https://tailored-tools.com/ao/blog/",
       "isPartOf": {
         "@type": "WebSite",
         "name": "Tailored Tools",
         "url": "https://tailored-tools.com"
       },
-      "mainEntity": {
-        "@type": "ItemList",
-        "numberOfItems": 11,
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "url": "https://tailored-tools.com/ao/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html",
-            "name": "AI doesn't rank your business. It includes or excludes it."
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "url": "https://tailored-tools.com/ao/blog/is-ai-saying-the-wrong-things-about-your-business.html",
-            "name": "Is AI saying the wrong things about your business?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "url": "https://tailored-tools.com/ao/blog/how-much-does-ai-optimisation-cost.html",
-            "name": "How much does AI optimisation cost for a small business?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "url": "https://tailored-tools.com/ao/blog/geo-aeo-ao-whats-the-difference.html",
-            "name": "GEO, AEO, and AO: what's the difference and which one matters?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "url": "https://tailored-tools.com/ao/blog/how-to-check-if-ai-recommends-your-business.html",
-            "name": "How to check if AI recommends your business (and what to do if it doesn't)"
-          },
-          {
-            "@type": "ListItem",
-            "position": 6,
-            "url": "https://tailored-tools.com/ao/blog/why-isnt-my-business-on-chatgpt.html",
-            "name": "Why isn't my business showing up on ChatGPT?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 7,
-            "url": "https://tailored-tools.com/ao/blog/how-to-get-recommended-by-ai.html",
-            "name": "How to get your business recommended by AI assistants"
-          },
-          {
-            "@type": "ListItem",
-            "position": 8,
-            "url": "https://tailored-tools.com/ao/blog/what-is-agent-optimisation.html",
-            "name": "What is Agent Optimisation?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 9,
-            "url": "https://tailored-tools.com/ao/blog/google-business-profile-ai-search.html",
-            "name": "Does your Google Business Profile affect ChatGPT results?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 10,
-            "url": "https://tailored-tools.com/ao/blog/schema-markup-for-small-business.html",
-            "name": "What is schema markup, and why does AI care about it?"
-          },
-          {
-            "@type": "ListItem",
-            "position": 11,
-            "url": "https://tailored-tools.com/ao/blog/why-ai-customers-convert-better.html",
-            "name": "Why customers who find you through AI are different"
-          }
-        ]
-      }
+      "hasPart": [
+        { "@type": "CreativeWorkSeries", "name": "Agent Optimisation", "url": "https://tailored-tools.com/ao/blog/series/agent-optimisation/" },
+        { "@type": "CreativeWorkSeries", "name": "Anti-hype",          "url": "https://tailored-tools.com/ao/blog/series/anti-hype/" },
+        { "@type": "CreativeWorkSeries", "name": "Walkthroughs",       "url": "https://tailored-tools.com/ao/blog/series/walkthroughs/" },
+        { "@type": "CreativeWorkSeries", "name": "Friction",           "url": "https://tailored-tools.com/ao/blog/series/friction/" },
+        { "@type": "CreativeWorkSeries", "name": "Starter packs",      "url": "https://tailored-tools.com/ao/blog/series/starter-packs/" },
+        { "@type": "CreativeWorkSeries", "name": "Jargon glossary",    "url": "https://tailored-tools.com/ao/blog/series/jargon-glossary/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://tailored-tools.com/ao/blog/" }
+      ]
     }
     </script>
 </head>
@@ -216,89 +246,222 @@
 <div class="blog-header">
     <div class="blog-header-inner">
         <h1>Articles</h1>
-        <p>Plain-English writing on AI credibility, Agent Optimisation, and what the shift to AI search means for small businesses.</p>
+        <p>Plain-English writing on AI for small businesses and curious humans. Six series, all of it tool-agnostic. Most of it grew out of conversations at the Kent AI Meet Up.</p>
+    </div>
+</div>
+
+<div class="series-bar">
+    <div class="series-bar-inner">
+        <span class="series-bar-label">Series</span>
+        <button class="series-chip active" data-filter="all">All</button>
+        <a class="series-chip" href="/ao/blog/series/agent-optimisation/" data-filter="agent-optimisation"><span class="series-chip-dot" style="background:var(--series-ao)"></span>Agent Optimisation</a>
+        <a class="series-chip" href="/ao/blog/series/anti-hype/" data-filter="anti-hype"><span class="series-chip-dot" style="background:var(--series-antihype)"></span>Anti-hype</a>
+        <a class="series-chip" href="/ao/blog/series/walkthroughs/" data-filter="walkthroughs"><span class="series-chip-dot" style="background:var(--series-walkthroughs)"></span>Walkthroughs</a>
+        <a class="series-chip" href="/ao/blog/series/friction/" data-filter="friction"><span class="series-chip-dot" style="background:var(--series-friction)"></span>Friction</a>
+        <a class="series-chip" href="/ao/blog/series/starter-packs/" data-filter="starter-packs"><span class="series-chip-dot" style="background:var(--series-starterpacks)"></span>Starter packs</a>
+        <a class="series-chip" href="/ao/blog/series/jargon-glossary/" data-filter="jargon-glossary"><span class="series-chip-dot" style="background:var(--series-jargon)"></span>Jargon glossary</a>
     </div>
 </div>
 
 <div class="blog-list">
 
-    <a href="/ao/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html" class="article-card">
-        <div class="article-card-featured">New</div>
-        <div class="article-card-meta">10 Mar 2026 &middot; 5 min read</div>
+    <a href="/ao/blog/when-not-to-use-ai.html" class="article-card" data-series="anti-hype">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="anti-hype">Anti-hype · 1</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">When not to use AI</div>
+        <div class="article-card-excerpt">Four situations where AI is the wrong tool — slower, worse, or actively harmful than just doing it yourself or asking a human. Nobody in the AI space posts this.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/things-ai-still-cant-do.html" class="article-card" data-series="anti-hype">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="anti-hype">Anti-hype · 2</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">Things AI still can't do</div>
+        <div class="article-card-excerpt">The demos are impressive. The limits are real. Four honest things AI still can't do in 2026, and why knowing them makes you better at using what it can.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/the-honest-cost-of-ai.html" class="article-card" data-series="anti-hype">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="anti-hype">Anti-hype · 3</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">The honest cost of AI</div>
+        <div class="article-card-excerpt">The subscription fee is the small bit. What AI actually costs when you use it properly — verification time, learning curve, the skill tax. Worth it, mostly. But go in with open eyes.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/the-ai-trust-ladder.html" class="article-card" data-series="walkthroughs">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="walkthroughs">Walkthroughs · 1</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 5 min read</span>
+        </div>
+        <div class="article-card-title">The AI trust ladder: five rungs of how much you should trust the output</div>
+        <div class="article-card-excerpt">How much do you actually trust AI output? Five rungs, from rewrite-every-word to let-it-ship. Most of us are on different rungs for different tasks — and trust should be earned task by task.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/first-prompts-for-teachers.html" class="article-card" data-series="starter-packs">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="starter-packs">Starter packs · 1</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">First prompts if you're a teacher</div>
+        <div class="article-card-excerpt">Ten first prompts for the bits of teaching where AI helps. Cut the admin. Keep the craft. Tool-agnostic, paste-and-adapt.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/first-prompts-for-small-business-owners.html" class="article-card" data-series="starter-packs">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="starter-packs">Starter packs · 2</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">First prompts if you run a small business</div>
+        <div class="article-card-excerpt">Ten first prompts that take admin off your plate so you can spend more time with customers. Tool-agnostic. Sound human. Stay human.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/first-prompts-for-parents.html" class="article-card" data-series="starter-packs">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="starter-packs">Starter packs · 3</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">First prompts if you're a parent</div>
+        <div class="article-card-excerpt">Ten first prompts for parents — less Googling, more presence. Use it to think. Not to parent for you.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/first-prompts-for-students.html" class="article-card" data-series="starter-packs">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="starter-packs">Starter packs · 4</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">First prompts if you're a student</div>
+        <div class="article-card-excerpt">Ten first prompts for students. Sharpen your work. Don't outsource it. If it didn't think, you didn't learn.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/six-ai-words-youll-keep-hearing.html" class="article-card" data-series="jargon-glossary">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="jargon-glossary">Jargon glossary · 1</span>
+            <span class="article-card-meta">26 Apr 2026 &middot; 5 min read</span>
+        </div>
+        <div class="article-card-title">Six AI words you'll keep hearing</div>
+        <div class="article-card-excerpt">Token. Context. Hallucination. Agent. RAG. MCP. The six words most likely to trip you up in any AI conversation, defined in plain English.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/ai-doesnt-rank-your-business-it-includes-or-excludes-it.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">10 Mar 2026 &middot; 5 min read</span>
+        </div>
         <div class="article-card-title">AI doesn't rank your business. It includes or excludes it.</div>
         <div class="article-card-excerpt">SEO is about ranking. AO is about inclusion. When someone asks AI for a recommendation, you're either in the conversation or you don't exist. There is no page two.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
-    <a href="/ao/blog/is-ai-saying-the-wrong-things-about-your-business.html" class="article-card">
-        <div class="article-card-featured">New</div>
-        <div class="article-card-meta">3 Mar 2026 &middot; 5 min read</div>
+    <a href="/ao/blog/is-ai-saying-the-wrong-things-about-your-business.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">3 Mar 2026 &middot; 5 min read</span>
+        </div>
         <div class="article-card-title">Is AI saying the wrong things about your business?</div>
         <div class="article-card-excerpt">AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
-    <a href="/ao/blog/how-much-does-ai-optimisation-cost.html" class="article-card">
-        <div class="article-card-meta">26 Feb 2026 &middot; 5 min read</div>
+    <a href="/ao/blog/how-much-does-ai-optimisation-cost.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">26 Feb 2026 &middot; 5 min read</span>
+        </div>
         <div class="article-card-title">How much does AI optimisation cost for a small business?</div>
         <div class="article-card-excerpt">A realistic breakdown of what AI optimisation costs for small service businesses in 2026, from free fixes to professional audits and implementation.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
-    <a href="/ao/blog/geo-aeo-ao-whats-the-difference.html" class="article-card">
-        <div class="article-card-featured">Featured</div>
-        <div class="article-card-meta">25 Feb 2026 &middot; 5 min read</div>
+    <a href="/ao/blog/geo-aeo-ao-whats-the-difference.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">25 Feb 2026 &middot; 5 min read</span>
+        </div>
         <div class="article-card-title">GEO, AEO, and AO: what's the difference and which one matters?</div>
         <div class="article-card-excerpt">The field has three names and counting. Here is what GEO, AEO, and AO each mean, where they overlap, and which approach actually matters for small service businesses in 2026.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
-    <a href="/ao/blog/why-isnt-my-business-on-chatgpt.html" class="article-card">
-        <div class="article-card-meta">13 Jan 2026 &middot; 4 min read</div>
-        <div class="article-card-title">Why isn't my business showing up on ChatGPT?</div>
-        <div class="article-card-excerpt">You search for your own business, or for your service in your town, and nothing comes back. Here are the three most common reasons — and what you can do about each one.</div>
+    <a href="/ao/blog/how-to-check-if-ai-recommends-your-business.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">24 Feb 2026 &middot; 5 min read</span>
+        </div>
+        <div class="article-card-title">How to check if AI recommends your business (and what to do if it doesn't)</div>
+        <div class="article-card-excerpt">A five-minute test across ChatGPT, Perplexity, and Google AI will tell you whether your business is being recommended. Here is how to run it, what the results mean, and what to fix first.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
-    <a href="/ao/blog/how-to-get-recommended-by-ai.html" class="article-card">
-        <div class="article-card-meta">20 Jan 2026 &middot; 5 min read</div>
-        <div class="article-card-title">How to get your business recommended by AI assistants</div>
-        <div class="article-card-excerpt">People are asking ChatGPT and Perplexity to find services near them. Here is what determines whether your business makes the shortlist or gets skipped entirely.</div>
-        <div class="article-card-read">Read article &rarr;</div>
-    </a>
-
-    <a href="/ao/blog/what-is-agent-optimisation.html" class="article-card">
-        <div class="article-card-meta">27 Jan 2026 &middot; 4 min read</div>
-        <div class="article-card-title">What is Agent Optimisation?</div>
-        <div class="article-card-excerpt">SEO helped you appear in Google results. Agent Optimisation helps you appear in AI recommendations. Here is what it actually involves and why the distinction matters.</div>
-        <div class="article-card-read">Read article &rarr;</div>
-    </a>
-
-    <a href="/ao/blog/google-business-profile-ai-search.html" class="article-card">
-        <div class="article-card-meta">3 Feb 2026 &middot; 3 min read</div>
-        <div class="article-card-title">Does your Google Business Profile affect ChatGPT results?</div>
-        <div class="article-card-excerpt">Yes, more than most people realise. Here is exactly how your Google Business Profile influences what AI assistants recommend for local service searches.</div>
-        <div class="article-card-read">Read article &rarr;</div>
-    </a>
-
-    <a href="/ao/blog/schema-markup-for-small-business.html" class="article-card">
-        <div class="article-card-meta">10 Feb 2026 &middot; 4 min read</div>
-        <div class="article-card-title">What is schema markup, and why does AI care about it?</div>
-        <div class="article-card-excerpt">Schema markup is invisible code that labels the information on your website so AI can read it directly. Here is what it is, how it works, and why it has become important in 2026.</div>
-        <div class="article-card-read">Read article &rarr;</div>
-    </a>
-
-    <a href="/ao/blog/why-ai-customers-convert-better.html" class="article-card">
-        <div class="article-card-meta">17 Feb 2026 &middot; 3 min read</div>
+    <a href="/ao/blog/why-ai-customers-convert-better.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">17 Feb 2026 &middot; 3 min read</span>
+        </div>
         <div class="article-card-title">Why customers who find you through AI are different</div>
         <div class="article-card-excerpt">AI-referred customers convert at 15.9% versus 1.76% for Google organic. Here is why the numbers are so different, and what it means for how you think about AI credibility.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
-    <a href="/ao/blog/how-to-check-if-ai-recommends-your-business.html" class="article-card">
-        <div class="article-card-meta">24 Feb 2026 &middot; 5 min read</div>
-        <div class="article-card-title">How to check if AI recommends your business (and what to do if it doesn't)</div>
-        <div class="article-card-excerpt">A five-minute test across ChatGPT, Perplexity, and Google AI will tell you whether your business is being recommended. Here is how to run it, what the results mean, and what to fix first.</div>
+    <a href="/ao/blog/schema-markup-for-small-business.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">10 Feb 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">What is schema markup, and why does AI care about it?</div>
+        <div class="article-card-excerpt">Schema markup is invisible code that labels the information on your website so AI can read it directly. Here is what it is, how it works, and why it has become important in 2026.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/google-business-profile-ai-search.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">3 Feb 2026 &middot; 3 min read</span>
+        </div>
+        <div class="article-card-title">Does your Google Business Profile affect ChatGPT results?</div>
+        <div class="article-card-excerpt">Yes, more than most people realise. Here is exactly how your Google Business Profile influences what AI assistants recommend for local service searches.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/what-is-agent-optimisation.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">27 Jan 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">What is Agent Optimisation?</div>
+        <div class="article-card-excerpt">SEO helped you appear in Google results. Agent Optimisation helps you appear in AI recommendations. Here is what it actually involves and why the distinction matters.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/how-to-get-recommended-by-ai.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">20 Jan 2026 &middot; 5 min read</span>
+        </div>
+        <div class="article-card-title">How to get your business recommended by AI assistants</div>
+        <div class="article-card-excerpt">People are asking ChatGPT and Perplexity to find services near them. Here is what determines whether your business makes the shortlist or gets skipped entirely.</div>
+        <div class="article-card-read">Read article &rarr;</div>
+    </a>
+
+    <a href="/ao/blog/why-isnt-my-business-on-chatgpt.html" class="article-card" data-series="agent-optimisation">
+        <div class="article-card-tags">
+            <span class="series-badge" data-series="agent-optimisation">Agent Optimisation</span>
+            <span class="article-card-meta">13 Jan 2026 &middot; 4 min read</span>
+        </div>
+        <div class="article-card-title">Why isn't my business showing up on ChatGPT?</div>
+        <div class="article-card-excerpt">You search for your own business, or for your service in your town, and nothing comes back. Here are the three most common reasons — and what you can do about each one.</div>
         <div class="article-card-read">Read article &rarr;</div>
     </a>
 
@@ -308,8 +471,6 @@
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
-
-
 
 <script>
 document.querySelector('.hamburger').addEventListener('click', function() {
@@ -321,6 +482,14 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
         document.querySelector('.hamburger').classList.remove('active');
         document.querySelector('.nav-links').classList.remove('open');
     });
+});
+
+// Series filter — only the "All" chip filters in place; series chips are real links to landing pages.
+document.querySelector('[data-filter="all"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.series-chip').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.article-card').forEach(card => card.classList.remove('hidden'));
 });
 </script>
 </body>

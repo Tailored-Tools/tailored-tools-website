@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First prompts if you're a teacher | Tailored Tools</title>
+    <meta name="description" content="Ten first prompts for the bits of teaching where AI helps. Cut the admin. Keep the craft. Tool-agnostic, paste-and-adapt.">
+    <meta property="og:title" content="First prompts if you're a teacher | Tailored Tools">
+    <meta property="og:description" content="Ten first prompts for teachers. Cut the admin, keep the craft. Tool-agnostic.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/ao/blog/first-prompts-for-teachers.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="First prompts if you're a teacher | Tailored Tools">
+    <meta name="twitter:description" content="Ten first prompts for teachers. Cut the admin, keep the craft.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="canonical" href="https://tailored-tools.com/ao/blog/first-prompts-for-teachers.html">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --primary: #203a4c; --accent: #ff6f20; --series-color: #6b3ad9; --series-soft: #e5dbf9; --dark: #0D1B2A; --white: #FFFFFF; --light: #f4f5f7; --text: #203a4c; --max-width: 960px; --mid: #5a6a7a; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+        nav { position: sticky; top: 0; z-index: 100; background: var(--dark); border-bottom: 2px solid var(--accent); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { list-style: none; display: flex; gap: 28px; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .article-header { padding: 60px 24px 40px; background: var(--light); border-bottom: 3px solid var(--series-color); }
+        .article-header-inner { max-width: 720px; margin: 0 auto; }
+        .article-header h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--primary); line-height: 1.25; margin-top: 12px; }
+        .article-meta { font-size: 13px; color: #5a6a7a; margin-top: 12px; }
+        .series-crumb { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--series-color); text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+        .series-crumb:hover { text-decoration: underline; }
+        .series-crumb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--series-color); display: inline-block; }
+        .back-link { display: inline-block; font-size: 13px; color: #5a6a7a; text-decoration: none; margin-bottom: 32px; }
+        .back-link:hover { color: var(--series-color); }
+        .article-body { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        .article-body h2 { font-size: 20px; font-weight: 700; color: var(--primary); margin: 40px 0 16px; }
+        .article-body p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+        .article-body strong { color: var(--primary); }
+        .pullquote { border-left: 4px solid var(--series-color); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 17px; font-style: italic; color: var(--text); }
+        .prompt-list { list-style: none; padding: 0; margin: 24px 0 32px; counter-reset: prompts; }
+        .prompt-item { display: flex; gap: 18px; align-items: flex-start; padding: 18px 20px; background: var(--light); border: 1px solid #e8ecf0; border-radius: 8px; margin-bottom: 12px; }
+        .prompt-item-num { background: var(--series-color); color: white; font-weight: 800; font-size: 14px; padding: 6px 10px; border-radius: 5px; min-width: 36px; text-align: center; flex-shrink: 0; letter-spacing: -0.02em; }
+        .prompt-item-body { flex: 1; }
+        .prompt-item-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .prompt-item-text { font-size: 15px; color: var(--text); font-style: italic; line-height: 1.5; margin: 0; }
+        .series-nav { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; gap: 16px; flex-wrap: wrap; }
+        .series-nav a { flex: 1; min-width: 240px; padding: 18px 20px; border: 1px solid #e8ecf0; border-radius: 8px; text-decoration: none; transition: border-color 0.2s; }
+        .series-nav a:hover { border-color: var(--series-color); }
+        .series-nav-dir { font-size: 11px; color: var(--mid); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .series-nav-title { font-size: 14px; color: var(--text); font-weight: 600; }
+        .series-nav-all { text-align: center; font-size: 13px; margin-top: 24px; }
+        .series-nav-all a { color: var(--series-color); text-decoration: none; font-weight: 600; }
+        .article-cta { background: var(--light); border-left: 4px solid var(--accent); padding: 28px 32px; margin: 48px 0 0; border-radius: 0 8px 8px 0; }
+        .article-cta h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .article-cta p { margin-bottom: 16px; font-size: 15px; color: #5a6a7a; }
+        .cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; }
+        .cta-btn:hover { background: #e55e10; }
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 48px 24px 36px; font-size: 13px; margin-top: 80px; }
+        .footer-logo-wrap { background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; width: 210px; height: 72px; margin: 0 auto 16px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "First prompts if you're a teacher", "description": "Ten first prompts for the bits of teaching where AI helps. Cut the admin. Keep the craft.", "author": { "@type": "Person", "name": "James Edwards", "url": "https://tailored-tools.com/about" }, "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" }, "datePublished": "2026-04-26", "url": "https://tailored-tools.com/ao/blog/first-prompts-for-teachers.html", "mainEntityOfPage": "https://tailored-tools.com/ao/blog/first-prompts-for-teachers.html", "isPartOf": { "@type": "CreativeWorkSeries", "name": "Starter packs", "url": "https://tailored-tools.com/ao/blog/series/starter-packs/" } }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://tailored-tools.com/ao/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Starter packs", "item": "https://tailored-tools.com/ao/blog/series/starter-packs/" },
+        { "@type": "ListItem", "position": 4, "name": "First prompts if you're a teacher",  "item": "https://tailored-tools.com/ao/blog/first-prompts-for-teachers.html" }
+      ]
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li><li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/" class="active">AO</a></li><li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/workshops">Workshops</a></li><li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/ao/blog/" class="back-link">&#8592; All articles</a>
+        <a href="/ao/blog/series/starter-packs/" class="series-crumb"><span class="series-crumb-dot"></span>Starter packs &middot; Part 01 &middot; Teachers</a>
+        <h1>First prompts if you're a teacher</h1>
+        <div class="article-meta">26 April 2026 &middot; 4 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>Ten first prompts for teachers. Tool-agnostic — they work in any chat assistant. The point isn't to outsource the craft of teaching. It's to take the admin off your evening so you can spend it doing the bit only you can do.</p>
+    <p>Paste, edit, adapt. Replace anything in square brackets with your specifics.</p>
+
+    <ul class="prompt-list">
+        <li class="prompt-item">
+            <div class="prompt-item-num">01</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Lesson kickstart</div>
+                <p class="prompt-item-text">"Draft a 45-minute lesson on [topic] for Year 7."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">02</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Three versions</div>
+                <p class="prompt-item-text">"This activity — easier version, same, harder."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">03</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Parent email</div>
+                <p class="prompt-item-text">"Draft a warm, clear email about [situation]."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">04</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Rubric builder</div>
+                <p class="prompt-item-text">"Turn these learning objectives into a useable rubric."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">05</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Misconception list</div>
+                <p class="prompt-item-text">"What will students get wrong about this — and why?"</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">06</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Quick quiz</div>
+                <p class="prompt-item-text">"Ten questions on this, varied difficulty."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">07</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Feedback bank</div>
+                <p class="prompt-item-text">"Rewrite this comment to be specific and actionable."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">08</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Report drafts</div>
+                <p class="prompt-item-text">"Three report comments for a student who [trait]."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">09</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Real examples</div>
+                <p class="prompt-item-text">"Three examples that make this concept click."</p>
+            </div>
+        </li>
+        <li class="prompt-item">
+            <div class="prompt-item-num">10</div>
+            <div class="prompt-item-body">
+                <div class="prompt-item-title">Discussion starters</div>
+                <p class="prompt-item-text">"Five questions that spark real discussion, not dead air."</p>
+            </div>
+        </li>
+    </ul>
+
+    <h2>Two things to keep in mind</h2>
+    <p><strong>The craft stays yours.</strong> AI can give you a draft of a parent email. It can't notice that this particular parent needs the firmness softened, or that the previous email crossed lines. Your judgement is the value. The draft just gets you to the part where judgement matters faster.</p>
+    <p><strong>Don't paste anything you wouldn't want stored.</strong> Pupil names, safeguarding details, anything covered by your school's data policy — keep them out. Edit them in by hand after the AI has done its work, or use placeholders the AI never sees.</p>
+    <p class="pullquote">The craft stays yours. Always.</p>
+
+    <div class="article-cta">
+        <h3>Got a teacher friend who'd find this useful?</h3>
+        <p>Send them the link. The Kent AI Meet Up is also a friendly place to swap what's working in classrooms — no jargon, no pressure to know anything in advance.</p>
+        <a href="/workshops" class="cta-btn">See upcoming meet-ups &rarr;</a>
+    </div>
+</div>
+
+<div class="series-nav">
+    <a href="/ao/blog/series/starter-packs/">
+        <div class="series-nav-dir">First in series</div>
+        <div class="series-nav-title">Teachers</div>
+    </a>
+    <a href="/ao/blog/first-prompts-for-small-business-owners.html">
+        <div class="series-nav-dir">Next pack &rarr;</div>
+        <div class="series-nav-title">Small business owners</div>
+    </a>
+</div>
+<div class="series-nav-all"><a href="/ao/blog/series/starter-packs/">See all Starter packs</a></div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

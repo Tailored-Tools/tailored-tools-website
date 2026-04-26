@@ -572,6 +572,97 @@
             color: var(--accent, #ff6f20);
         }
 
+        /* ── Kent AI callout ─────────────────────────────────────────── */
+        .kent-ai-callout {
+            background: radial-gradient(ellipse at 22% 30%, rgba(255,111,32,0.18) 0%, rgba(13,27,42,0) 55%), radial-gradient(ellipse at 88% 80%, rgba(26,58,92,0.6) 0%, rgba(13,27,42,0) 60%), #0D1B2A;
+            color: #fff;
+            padding: 72px 24px;
+        }
+        .kac-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .kac-image {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 18px 56px rgba(255,111,32,0.18), 0 4px 16px rgba(0,0,0,0.4);
+            position: relative;
+        }
+        .kac-image img { display: block; width: 100%; height: auto; }
+        .kac-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ff6f20;
+            margin-bottom: 14px;
+        }
+        .kac-pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff6f20;
+            box-shadow: 0 0 0 0 rgba(255,111,32,0.7);
+            animation: kacPulse 2s infinite;
+        }
+        @keyframes kacPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(255,111,32,0.7); }
+            70%  { box-shadow: 0 0 0 10px rgba(255,111,32,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,111,32,0); }
+        }
+        .kac-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: -0.015em;
+            margin-bottom: 16px;
+        }
+        .kac-content h2 span { color: #ff6f20; }
+        .kac-content p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.7;
+            margin-bottom: 22px;
+            max-width: 520px;
+        }
+        .kac-event {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .kac-event-label { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .kac-event-detail { font-size: 15px; color: #fff; font-weight: 600; }
+        .kac-event-detail strong { color: #ff6f20; font-weight: 700; }
+        .kac-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+        .kac-ctas a {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .kac-ctas .kac-primary { background: #ff6f20; color: #fff; }
+        .kac-ctas .kac-primary:hover { opacity: 0.9; }
+        .kac-ctas .kac-ghost { background: transparent; color: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.2); }
+        .kac-ctas .kac-ghost:hover { border-color: #ff6f20; color: #ff6f20; }
+
         /* ── Responsive additions ────────────────────────────────────── */
         @media (max-width: 768px) {
             .free-score,
@@ -580,6 +671,10 @@
             .tally-embed { padding: 20px; }
             .testimonial-quote p { font-size: 18px; }
             .testimonial-quote::before { font-size: 80px; }
+            .kent-ai-callout { padding: 56px 20px; }
+            .kac-inner { grid-template-columns: 1fr; gap: 28px; }
+            .kac-content h2 { font-size: 28px; }
+            .kac-content p { font-size: 16px; }
         }
     </style>
 
@@ -840,6 +935,28 @@
                 <span>Founder, Performance Interpreting — BSL Interpretation Services, UK</span>
             </cite>
         </blockquote>
+    </div>
+</section>
+
+<!-- ── Kent AI Community Callout ─────────────────────────────────────── -->
+<section class="kent-ai-callout reveal" aria-labelledby="kac-heading">
+    <div class="kac-inner">
+        <a href="/community/" class="kac-image" aria-label="Kent AI community">
+            <img src="/images/kent-ai-logo.png" alt="Kent AI — constellation invicta horse logo" width="640" height="427" loading="lazy">
+        </a>
+        <div class="kac-content">
+            <div class="kac-eyebrow"><span class="kac-pulse"></span> Kent AI Community</div>
+            <h2 id="kac-heading">Free monthly AI meet-ups in <span>Kent</span></h2>
+            <p>I run Kent AI — a free, grassroots community for anyone in Kent curious or concerned about AI. No jargon, no judgement, just real conversations. In-person in Maidstone, plus an active Facebook group and WhatsApp threads.</p>
+            <div class="kac-event">
+                <span class="kac-event-label">Next meet-up</span>
+                <span class="kac-event-detail"><strong>Thu 21 May, 7pm</strong> &middot; The Bull, Linton, Maidstone</span>
+            </div>
+            <div class="kac-ctas">
+                <a href="/community/" class="kac-primary">Join the Kent AI community &rarr;</a>
+                <a href="https://www.facebook.com/groups/1537764381187633/" target="_blank" rel="noopener" class="kac-ghost">Facebook group</a>
+            </div>
+        </div>
     </div>
 </section>
 

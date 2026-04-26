@@ -1,5 +1,5 @@
 {
-  "_comment": "Source of truth for blog series taxonomy. Hand-coded HTML mirrors this — keep in sync when adding posts. Series landing pages live at /ao/blog/series/<slug>/.",
+  "_comment": "Source of truth for blog series taxonomy. Hand-coded HTML mirrors this \u2014 keep in sync when adding posts. Series landing pages live at /ao/blog/series/<slug>/.",
   "series": {
     "agent-optimisation": {
       "name": "Agent Optimisation",
@@ -22,7 +22,7 @@
     "walkthroughs": {
       "name": "Walkthroughs",
       "slug": "walkthroughs",
-      "description": "Step-by-step routines you can actually run. Each one ends with a step that is deliberately not AI — because knowing when not to reach for it is the skill.",
+      "description": "Step-by-step routines you can actually run. Each one ends with a step that is deliberately not AI \u2014 because knowing when not to reach for it is the skill.",
       "audience": "Curious beginners and busy people who learn by following a recipe.",
       "accent": "#0e6f7a",
       "accent_soft": "#d6ebee",
@@ -49,7 +49,7 @@
     "jargon-glossary": {
       "name": "Jargon glossary",
       "slug": "jargon-glossary",
-      "description": "Plain-English definitions for the words that get thrown around in AI conversations. Token, context, agent, RAG, MCP — defined so you can follow without nodding along.",
+      "description": "Plain-English definitions for the words that get thrown around in AI conversations. Token, context, agent, RAG, MCP \u2014 defined so you can follow without nodding along.",
       "audience": "Anyone who has been in a meeting where they didn't want to ask what something meant.",
       "accent": "#2c5f8d",
       "accent_soft": "#dee8f3",
@@ -75,7 +75,7 @@
       "series_position": 2,
       "date": "2026-03-03",
       "read_time": "5 min read",
-      "excerpt": "AI doesn't just recommend businesses — it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers."
+      "excerpt": "AI doesn't just recommend businesses \u2014 it describes them. If it's saying the wrong prices, wrong services, or confusing you with a competitor, that's costing you customers."
     },
     {
       "slug": "how-much-does-ai-optimisation-cost",
@@ -165,7 +165,7 @@
       "series_position": 11,
       "date": "2026-01-13",
       "read_time": "4 min read",
-      "excerpt": "You search for your own business, or for your service in your town, and nothing comes back. Here are the three most common reasons — and what you can do about each one."
+      "excerpt": "You search for your own business, or for your service in your town, and nothing comes back. Here are the three most common reasons \u2014 and what you can do about each one."
     },
     {
       "slug": "when-not-to-use-ai",
@@ -173,9 +173,9 @@
       "url": "/ao/blog/when-not-to-use-ai.html",
       "series": "anti-hype",
       "series_position": 1,
-      "date": "2026-04-26",
+      "date": "2026-03-20",
       "read_time": "4 min read",
-      "excerpt": "Four situations where AI is the wrong tool — slower, worse, or actively harmful than just doing it yourself or asking a human. Nobody in the AI space posts this."
+      "excerpt": "Four situations where AI is the wrong tool \u2014 slower, worse, or actively harmful than just doing it yourself or asking a human. Nobody in the AI space posts this."
     },
     {
       "slug": "things-ai-still-cant-do",
@@ -183,7 +183,7 @@
       "url": "/ao/blog/things-ai-still-cant-do.html",
       "series": "anti-hype",
       "series_position": 2,
-      "date": "2026-04-26",
+      "date": "2026-03-31",
       "read_time": "4 min read",
       "excerpt": "The demos are impressive. The limits are real. Four honest things AI still can't do in 2026, and why knowing them makes you better at using what it can."
     },
@@ -195,7 +195,7 @@
       "series_position": 3,
       "date": "2026-04-26",
       "read_time": "4 min read",
-      "excerpt": "The subscription fee is the small bit. What AI actually costs when you use it properly — verification time, learning curve, the skill tax. Worth it, mostly. But go in with open eyes."
+      "excerpt": "The subscription fee is the small bit. What AI actually costs when you use it properly \u2014 verification time, learning curve, the skill tax. Worth it, mostly. But go in with open eyes."
     },
     {
       "slug": "the-ai-trust-ladder",
@@ -203,9 +203,9 @@
       "url": "/ao/blog/the-ai-trust-ladder.html",
       "series": "walkthroughs",
       "series_position": 1,
-      "date": "2026-04-26",
+      "date": "2026-04-07",
       "read_time": "5 min read",
-      "excerpt": "How much do you actually trust AI output? Five rungs, from rewrite-every-word to let-it-ship. Most of us are on different rungs for different tasks — and trust should be earned task by task."
+      "excerpt": "How much do you actually trust AI output? Five rungs, from rewrite-every-word to let-it-ship. Most of us are on different rungs for different tasks \u2014 and trust should be earned task by task."
     },
     {
       "slug": "first-prompts-for-teachers",
@@ -213,7 +213,7 @@
       "url": "/ao/blog/first-prompts-for-teachers.html",
       "series": "starter-packs",
       "series_position": 1,
-      "date": "2026-04-26",
+      "date": "2026-03-24",
       "read_time": "4 min read",
       "excerpt": "Ten first prompts for the bits of teaching where AI helps. Cut the admin. Keep the craft. Tool-agnostic, paste-and-adapt."
     },
@@ -223,7 +223,7 @@
       "url": "/ao/blog/first-prompts-for-small-business-owners.html",
       "series": "starter-packs",
       "series_position": 2,
-      "date": "2026-04-26",
+      "date": "2026-04-03",
       "read_time": "4 min read",
       "excerpt": "Ten first prompts that take admin off your plate so you can spend more time with customers. Tool-agnostic. Sound human. Stay human."
     },
@@ -233,9 +233,9 @@
       "url": "/ao/blog/first-prompts-for-parents.html",
       "series": "starter-packs",
       "series_position": 3,
-      "date": "2026-04-26",
+      "date": "2026-04-14",
       "read_time": "4 min read",
-      "excerpt": "Ten first prompts for parents — less Googling, more presence. Use it to think. Not to parent for you."
+      "excerpt": "Ten first prompts for parents \u2014 less Googling, more presence. Use it to think. Not to parent for you."
     },
     {
       "slug": "first-prompts-for-students",
@@ -243,7 +243,7 @@
       "url": "/ao/blog/first-prompts-for-students.html",
       "series": "starter-packs",
       "series_position": 4,
-      "date": "2026-04-26",
+      "date": "2026-04-17",
       "read_time": "4 min read",
       "excerpt": "Ten first prompts for students. Sharpen your work. Don't outsource it. If it didn't think, you didn't learn."
     },
@@ -253,7 +253,7 @@
       "url": "/ao/blog/six-ai-words-youll-keep-hearing.html",
       "series": "jargon-glossary",
       "series_position": 1,
-      "date": "2026-04-26",
+      "date": "2026-03-17",
       "read_time": "5 min read",
       "excerpt": "Token. Context. Hallucination. Agent. RAG. MCP. The six words most likely to trip you up in any AI conversation, defined in plain English."
     }

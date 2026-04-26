@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The honest cost of AI | Tailored Tools</title>
+    <meta name="description" content="The subscription fee is the small bit. What AI actually costs when you use it properly — verification time, learning curve, the skill tax.">
+    <meta property="og:title" content="The honest cost of AI | Tailored Tools">
+    <meta property="og:description" content="What AI actually costs when you use it properly. Worth it, mostly. But go in with open eyes.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/ao/blog/the-honest-cost-of-ai.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The honest cost of AI | Tailored Tools">
+    <meta name="twitter:description" content="What AI actually costs when you use it properly. Worth it, mostly. But go in with open eyes.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="canonical" href="https://tailored-tools.com/ao/blog/the-honest-cost-of-ai.html">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --primary: #203a4c; --accent: #ff6f20; --series-color: #d4396b; --series-soft: #fce1e9; --dark: #0D1B2A; --white: #FFFFFF; --light: #f4f5f7; --text: #203a4c; --max-width: 960px; --mid: #5a6a7a; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+        nav { position: sticky; top: 0; z-index: 100; background: var(--dark); border-bottom: 2px solid var(--accent); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { list-style: none; display: flex; gap: 28px; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .article-header { padding: 60px 24px 40px; background: var(--light); border-bottom: 3px solid var(--series-color); }
+        .article-header-inner { max-width: 720px; margin: 0 auto; }
+        .article-header h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--primary); line-height: 1.25; margin-top: 12px; }
+        .article-meta { font-size: 13px; color: #5a6a7a; margin-top: 12px; }
+        .series-crumb { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--series-color); text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+        .series-crumb:hover { text-decoration: underline; }
+        .series-crumb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--series-color); display: inline-block; }
+        .back-link { display: inline-block; font-size: 13px; color: #5a6a7a; text-decoration: none; margin-bottom: 32px; }
+        .back-link:hover { color: var(--series-color); }
+        .article-body { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        .article-body h2 { font-size: 20px; font-weight: 700; color: var(--primary); margin: 40px 0 16px; }
+        .article-body p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+        .article-body strong { color: var(--primary); }
+        .pullquote { border-left: 4px solid var(--series-color); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 17px; font-style: italic; color: var(--text); }
+        .series-nav { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; gap: 16px; flex-wrap: wrap; }
+        .series-nav a { flex: 1; min-width: 240px; padding: 18px 20px; border: 1px solid #e8ecf0; border-radius: 8px; text-decoration: none; transition: border-color 0.2s; }
+        .series-nav a:hover { border-color: var(--series-color); }
+        .series-nav-dir { font-size: 11px; color: var(--mid); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .series-nav-title { font-size: 14px; color: var(--text); font-weight: 600; }
+        .series-nav-all { text-align: center; font-size: 13px; margin-top: 24px; }
+        .series-nav-all a { color: var(--series-color); text-decoration: none; font-weight: 600; }
+        .article-cta { background: var(--light); border-left: 4px solid var(--accent); padding: 28px 32px; margin: 48px 0 0; border-radius: 0 8px 8px 0; }
+        .article-cta h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .article-cta p { margin-bottom: 16px; font-size: 15px; color: #5a6a7a; }
+        .cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .cta-btn:hover { background: #e55e10; }
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 48px 24px 36px; font-size: 13px; margin-top: 80px; }
+        .footer-logo-wrap { background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; width: 210px; height: 72px; margin: 0 auto 16px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "The honest cost of AI", "description": "What AI actually costs when you use it properly — subscriptions, verification time, learning curve, the skill tax.", "author": { "@type": "Person", "name": "James Edwards", "url": "https://tailored-tools.com/about" }, "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" }, "datePublished": "2026-04-26", "url": "https://tailored-tools.com/ao/blog/the-honest-cost-of-ai.html", "mainEntityOfPage": "https://tailored-tools.com/ao/blog/the-honest-cost-of-ai.html", "isPartOf": { "@type": "CreativeWorkSeries", "name": "Anti-hype", "url": "https://tailored-tools.com/ao/blog/series/anti-hype/" } }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://tailored-tools.com/ao/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Anti-hype", "item": "https://tailored-tools.com/ao/blog/series/anti-hype/" },
+        { "@type": "ListItem", "position": 4, "name": "The honest cost of AI",  "item": "https://tailored-tools.com/ao/blog/the-honest-cost-of-ai.html" }
+      ]
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li><li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/" class="active">AO</a></li><li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/workshops">Workshops</a></li><li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/ao/blog/" class="back-link">&#8592; All articles</a>
+        <a href="/ao/blog/series/anti-hype/" class="series-crumb"><span class="series-crumb-dot"></span>Anti-hype &middot; Part 03</a>
+        <h1>The honest cost of AI</h1>
+        <div class="article-meta">26 April 2026 &middot; 4 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>The subscription fee is the small bit. People budget £20 a month for a chat assistant and assume that's the cost. It isn't. The headline price is the bait. The real bill comes in the four other line items nobody puts on the marketing page.</p>
+
+    <h2>1. Subscriptions: £20 to £60 a month, often more than one</h2>
+    <p>The visible cost. A general assistant for everyday work. A specialist tool for a specific job (image generation, transcription, code help). A search-augmented one for research. Most people who use AI seriously end up with two or three subscriptions running at once. £20 quickly becomes £60.</p>
+    <p>Add a team and the maths shifts again. Per-seat licensing means a five-person business with proper AI tooling is looking at £200 to £300 a month before anyone has done any work.</p>
+
+    <h2>2. Verification time: hours every week</h2>
+    <p>This is the cost almost nobody warns you about. Every output AI gives you needs reading. Most of it needs checking. Some of it needs rewriting. The faster you go, the more verification you owe — because what AI delivers fast is also what it gets confidently wrong.</p>
+    <p>Plan for hours every week of "wait, did it actually do what I asked?" That time is real. It comes out of the time AI was supposed to give you back. Sometimes the maths still works out. Sometimes it doesn't.</p>
+
+    <h2>3. Learning curve: ongoing</h2>
+    <p>The tools change every month. The features that were paid become free. The features that were free disappear behind a wall. Best practice for prompting in January is dated by April. Models get replaced. Interfaces get redesigned.</p>
+    <p>If you stop investing time in keeping up, your AI use silently degrades. You don't notice — you just keep getting worse outputs and don't know why. Budget time for staying current. Not a lot, but not zero.</p>
+
+    <h2>4. The skill tax: hidden but real</h2>
+    <p>The most uncomfortable cost. The more you let AI draft, the rustier your own drafting gets. The more you let it summarise, the less you read closely. The more you let it think on your behalf, the harder thinking becomes when you actually need to.</p>
+    <p>This isn't an argument against using AI. It's an argument for noticing what you're handing over. Some skills you don't mind losing. Others you very much do.</p>
+    <p class="pullquote">The convenience is real. The drift is real too. Pick which skills you protect.</p>
+
+    <h2>Still worth it?</h2>
+    <p>Usually, yes. For most people doing most kinds of work, AI used well saves more than it costs — measured properly, across all four lines. But "used well" is the bit that matters. Used badly, you pay every cost and get only a fraction of the benefit.</p>
+    <p>Go in with open eyes. Track what you're actually getting back, not what the marketing said you would. Drop the tools you opened twice and never again. Keep the ones that earn their place.</p>
+
+    <div class="article-cta">
+        <h3>What's a cost nobody warned you about?</h3>
+        <p>Bring it to the Kent AI Meet Up. The honest cost conversations are some of the best ones we have.</p>
+        <a href="/workshops" class="cta-btn">See upcoming meet-ups &rarr;</a>
+    </div>
+</div>
+
+<div class="series-nav">
+    <a href="/ao/blog/things-ai-still-cant-do.html">
+        <div class="series-nav-dir">&larr; Previous in Anti-hype</div>
+        <div class="series-nav-title">Things AI still can't do</div>
+    </a>
+    <a href="/ao/blog/series/anti-hype/">
+        <div class="series-nav-dir">More in Anti-hype</div>
+        <div class="series-nav-title">See all Anti-hype articles</div>
+    </a>
+</div>
+<div class="series-nav-all"><a href="/ao/blog/series/anti-hype/">See all Anti-hype articles</a></div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

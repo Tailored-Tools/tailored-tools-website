@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six AI words you'll keep hearing | Tailored Tools</title>
+    <meta name="description" content="Token. Context. Hallucination. Agent. RAG. MCP. The six words most likely to trip you up in any AI conversation, defined in plain English.">
+    <meta property="og:title" content="Six AI words you'll keep hearing | Tailored Tools">
+    <meta property="og:description" content="Plain-English definitions for token, context, hallucination, agent, RAG, and MCP.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Six AI words you'll keep hearing | Tailored Tools">
+    <meta name="twitter:description" content="Plain-English definitions for token, context, hallucination, agent, RAG, and MCP.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="canonical" href="https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --primary: #203a4c; --accent: #ff6f20; --series-color: #2c5f8d; --series-soft: #dee8f3; --dark: #0D1B2A; --white: #FFFFFF; --light: #f4f5f7; --text: #203a4c; --max-width: 960px; --mid: #5a6a7a; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+        nav { position: sticky; top: 0; z-index: 100; background: var(--dark); border-bottom: 2px solid var(--accent); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { list-style: none; display: flex; gap: 28px; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .article-header { padding: 60px 24px 40px; background: var(--light); border-bottom: 3px solid var(--series-color); }
+        .article-header-inner { max-width: 720px; margin: 0 auto; }
+        .article-header h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--primary); line-height: 1.25; margin-top: 12px; }
+        .article-meta { font-size: 13px; color: #5a6a7a; margin-top: 12px; }
+        .series-crumb { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--series-color); text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+        .series-crumb:hover { text-decoration: underline; }
+        .series-crumb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--series-color); display: inline-block; }
+        .back-link { display: inline-block; font-size: 13px; color: #5a6a7a; text-decoration: none; margin-bottom: 32px; }
+        .back-link:hover { color: var(--series-color); }
+        .article-body { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        .article-body h2 { font-size: 20px; font-weight: 700; color: var(--primary); margin: 40px 0 16px; }
+        .article-body p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+        .article-body strong { color: var(--primary); }
+        .term-card { background: var(--light); border-left: 4px solid var(--series-color); padding: 22px 26px; margin: 22px 0; border-radius: 0 6px 6px 0; }
+        .term-name { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 4px; letter-spacing: -0.01em; }
+        .term-pron { font-size: 13px; color: var(--mid); font-style: italic; margin-bottom: 14px; }
+        .term-card p { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 12px; }
+        .term-card p:last-child { margin-bottom: 0; }
+        .term-card .meta { font-size: 12px; color: var(--mid); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 10px; }
+        .pullquote { border-left: 4px solid var(--series-color); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 17px; font-style: italic; color: var(--text); }
+        .series-nav { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; gap: 16px; flex-wrap: wrap; }
+        .series-nav a { flex: 1; min-width: 240px; padding: 18px 20px; border: 1px solid #e8ecf0; border-radius: 8px; text-decoration: none; transition: border-color 0.2s; }
+        .series-nav a:hover { border-color: var(--series-color); }
+        .series-nav-dir { font-size: 11px; color: var(--mid); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .series-nav-title { font-size: 14px; color: var(--text); font-weight: 600; }
+        .series-nav-all { text-align: center; font-size: 13px; margin-top: 24px; }
+        .series-nav-all a { color: var(--series-color); text-decoration: none; font-weight: 600; }
+        .article-cta { background: var(--light); border-left: 4px solid var(--accent); padding: 28px 32px; margin: 48px 0 0; border-radius: 0 8px 8px 0; }
+        .article-cta h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .article-cta p { margin-bottom: 16px; font-size: 15px; color: #5a6a7a; }
+        .cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; }
+        .cta-btn:hover { background: #e55e10; }
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 48px 24px 36px; font-size: 13px; margin-top: 80px; }
+        .footer-logo-wrap { background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; width: 210px; height: 72px; margin: 0 auto 16px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Six AI words you'll keep hearing",
+      "description": "Token, context, hallucination, agent, RAG, and MCP — defined in plain English.",
+      "image": "https://tailored-tools.com/og-image.png",
+      "author": { "@type": "Person", "name": "James Edwards", "url": "https://tailored-tools.com/about" },
+      "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" },
+      "datePublished": "2026-04-26",
+      "url": "https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html",
+      "mainEntityOfPage": "https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html",
+      "isPartOf": { "@type": "CreativeWorkSeries", "name": "Jargon glossary", "url": "https://tailored-tools.com/ao/blog/series/jargon-glossary/" },
+      "about": [
+        { "@type": "DefinedTerm", "name": "Token" },
+        { "@type": "DefinedTerm", "name": "Context" },
+        { "@type": "DefinedTerm", "name": "Hallucination" },
+        { "@type": "DefinedTerm", "name": "Agent" },
+        { "@type": "DefinedTerm", "name": "RAG" },
+        { "@type": "DefinedTerm", "name": "MCP" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://tailored-tools.com/ao/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Jargon glossary", "item": "https://tailored-tools.com/ao/blog/series/jargon-glossary/" },
+        { "@type": "ListItem", "position": 4, "name": "Six AI words you'll keep hearing",  "item": "https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html" }
+      ]
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li><li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/" class="active">AO</a></li><li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/workshops">Workshops</a></li><li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/ao/blog/" class="back-link">&#8592; All articles</a>
+        <a href="/ao/blog/series/jargon-glossary/" class="series-crumb"><span class="series-crumb-dot"></span>Jargon glossary &middot; Part 01</a>
+        <h1>Six AI words you'll keep hearing</h1>
+        <div class="article-meta">26 April 2026 &middot; 5 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>Every AI conversation eventually produces a word that lands awkwardly. Someone uses it like everyone knows what it means. Some people do. Most are nodding along. The point of this glossary isn't to make you sound clever — it's to let you follow the conversation without nodding along, and to call out when someone is using a word vaguely.</p>
+    <p>Six terms, defined the way I'd actually explain them to a friend.</p>
+
+    <div class="term-card">
+        <div class="term-name">Token</div>
+        <div class="term-pron">noun · the unit AI thinks in</div>
+        <p>A chunk of text — usually part of a word, sometimes a whole short word, sometimes punctuation. The word "tomorrow" is two tokens. "It's" is two tokens. AI doesn't read words the way you do; it reads tokens.</p>
+        <p>You'll hear about tokens because most AI tools price by them, and most have a maximum number they can handle in one go. Rough rule: 1,000 tokens is about 750 English words.</p>
+        <div class="meta">Heard most often when someone says: "we hit the token limit"</div>
+    </div>
+
+    <div class="term-card">
+        <div class="term-name">Context</div>
+        <div class="term-pron">noun · everything AI is currently seeing</div>
+        <p>The full set of text the AI has in front of it as it produces a reply. Your prompt. The chat history above. Any documents you uploaded. Any system instructions the tool added in the background.</p>
+        <p>Each model has a <strong>context window</strong> — the maximum amount of text it can hold at once. Past that, the earliest stuff gets pushed out. This is why long chats start to "forget" things you said at the beginning. Not malice. Capacity.</p>
+        <div class="meta">Heard most often when someone says: "I gave it too much context"</div>
+    </div>
+
+    <div class="term-card">
+        <div class="term-name">Hallucination</div>
+        <div class="term-pron">noun · when AI confidently invents something</div>
+        <p>An output that sounds factual but isn't. The book that doesn't exist. The quote that was never said. The page number that points to the wrong section. Hallucinations are the most dangerous AI failure mode because they look exactly like correct answers — confident, fluent, plausible.</p>
+        <p>They happen because AI predicts the most likely next word, not the most likely true word. If something would <em>sound</em> right in that position, it gets produced.</p>
+        <div class="meta">Heard most often when someone says: "it just made up the source"</div>
+    </div>
+
+    <div class="term-card">
+        <div class="term-name">Agent</div>
+        <div class="term-pron">noun · AI that does things, not just answers</div>
+        <p>An AI system that takes actions on someone's behalf — not just producing text, but actually doing the thing. Booking the meeting. Sending the email. Filing the form. Buying the train ticket.</p>
+        <p>The output of an agent is action, not language. That changes the stakes considerably. A wrong answer is annoying; a wrong action moves money or sends emails to actual humans. Treat them with care, and never give them more permission than the task needs.</p>
+        <div class="meta">Heard most often when someone says: "I let the agent handle it"</div>
+    </div>
+
+    <div class="term-card">
+        <div class="term-name">RAG</div>
+        <div class="term-pron">noun · Retrieval-Augmented Generation</div>
+        <p>A setup where AI is given access to specific documents — your handbook, your knowledge base, your past emails — and is told to look at those before answering. Instead of relying purely on what was in its training data, it retrieves the relevant bit first, then writes the answer.</p>
+        <p>RAG is the technique behind most "AI that knows your business" tools. Done well, it makes the answers grounded and citeable. Done badly, it gives you confident answers from out-of-date documents.</p>
+        <div class="meta">Heard most often when someone says: "we set up RAG over the company wiki"</div>
+    </div>
+
+    <div class="term-card">
+        <div class="term-name">MCP</div>
+        <div class="term-pron">noun · Model Context Protocol</div>
+        <p>A standard way for AI tools to connect to other things — your calendar, your email, your files, a database, a third-party service. Think of it as the plumbing that lets AI reach beyond its own chat window into the rest of your software.</p>
+        <p>MCP is mostly a developer concern, but you'll hear it mentioned because it's how a lot of the "AI agent" experiences are being built right now. If you remember nothing else: it's a connector standard, like how a USB port is a standard.</p>
+        <div class="meta">Heard most often when someone says: "we connected it via MCP"</div>
+    </div>
+
+    <h2>One small habit</h2>
+    <p>If someone uses one of these words in a way that doesn't quite click, it's almost always fine to ask. "When you say RAG, do you mean over your own documents, or something else?" Most people will be relieved to be asked, because most of them weren't sure either.</p>
+    <p class="pullquote">No jargon, no gatekeeping. Just words, defined.</p>
+
+    <div class="article-cta">
+        <h3>A word you keep hearing that needs adding here?</h3>
+        <p>Send it over. The glossary grows by whatever turned up at the last meet-up and made everyone go "wait, what does that mean?"</p>
+        <a href="mailto:hello@tailored-tools.com" class="cta-btn">Suggest a term &rarr;</a>
+    </div>
+</div>
+
+<div class="series-nav">
+    <a href="/ao/blog/series/jargon-glossary/">
+        <div class="series-nav-dir">First in series</div>
+        <div class="series-nav-title">Six AI words you'll keep hearing</div>
+    </a>
+    <a href="/ao/blog/series/jargon-glossary/">
+        <div class="series-nav-dir">More definitions coming</div>
+        <div class="series-nav-title">See all Jargon glossary articles</div>
+    </a>
+</div>
+<div class="series-nav-all"><a href="/ao/blog/series/jargon-glossary/">See all Jargon glossary articles</a></div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

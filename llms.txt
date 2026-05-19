@@ -72,7 +72,10 @@ Founded in 2025 by James Edwards. Based in Maidstone, Kent, UK. James runs three
 
 ## Blog
 
-Plain-English articles on AI for small businesses and curious humans. Organised into six series:
+Plain-English articles on AI for small businesses and curious humans. Organised into six series, plus standalone launch posts.
+
+### Launch posts (standalone milestones from our own builds)
+- https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html — The PI Events App, two weeks in: 750+ downloads, 50+ interpreter requests, first bookings confirmed (May 2026)
 
 ### Agent Optimisation (the original Tailored Tools track)
 - https://tailored-tools.com/ao/blog/series/agent-optimisation/

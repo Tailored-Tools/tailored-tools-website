@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The PI Events App, two weeks in: 750 downloads and 50 interpreter requests | Tailored Tools</title>
+    <meta name="description" content="Two weeks after launch, the PI Events App has 750+ downloads, 50+ interpreter requests, and the first bookings already confirmed. Real numbers from a real small-business AI build.">
+    <meta property="og:title" content="The PI Events App, two weeks in: 750 downloads and 50 interpreter requests | Tailored Tools">
+    <meta property="og:description" content="Two weeks. 750+ downloads. 50+ interpreter requests. Bookings already confirmed. What happens when a small business ships the tool instead of talking about it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The PI Events App, two weeks in: 750 downloads and 50 interpreter requests | Tailored Tools">
+    <meta name="twitter:description" content="Two weeks. 750+ downloads. 50+ interpreter requests. Bookings already confirmed. What happens when a small business ships the tool instead of talking about it.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+    <link rel="canonical" href="https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --primary: #203a4c; --accent: #ff6f20; --series-color: #ff6f20; --series-soft: #fff0e6; --dark: #0D1B2A; --white: #FFFFFF; --light: #f4f5f7; --text: #203a4c; --max-width: 960px; --mid: #5a6a7a; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+        nav { position: sticky; top: 0; z-index: 100; background: var(--dark); border-bottom: 2px solid var(--accent); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { list-style: none; display: flex; gap: 28px; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .article-header { padding: 60px 24px 40px; background: var(--light); border-bottom: 3px solid var(--series-color); }
+        .article-header-inner { max-width: 720px; margin: 0 auto; }
+        .article-header h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--primary); line-height: 1.25; margin-top: 12px; }
+        .article-meta { font-size: 13px; color: #5a6a7a; margin-top: 12px; }
+        .launch-crumb { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--series-color); letter-spacing: 0.5px; text-transform: uppercase; }
+        .launch-crumb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--series-color); display: inline-block; }
+        .back-link { display: inline-block; font-size: 13px; color: #5a6a7a; text-decoration: none; margin-bottom: 32px; }
+        .back-link:hover { color: var(--series-color); }
+        .article-body { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        .article-body h2 { font-size: 20px; font-weight: 700; color: var(--primary); margin: 40px 0 16px; }
+        .article-body p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+        .article-body strong { color: var(--primary); }
+        .article-body ul { margin: 0 0 24px 22px; }
+        .article-body li { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 6px; }
+        .pullquote { border-left: 4px solid var(--series-color); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 17px; font-style: italic; color: var(--text); }
+        .numbers-card { background: var(--series-soft); border: 1px solid #f7d9c1; border-radius: 10px; padding: 24px 28px; margin: 28px 0 36px; }
+        .numbers-card .nrow { display: flex; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px dashed #f0c9a4; }
+        .numbers-card .nrow:last-child { border-bottom: none; }
+        .numbers-card .nval { font-size: 28px; font-weight: 800; color: var(--series-color); min-width: 88px; }
+        .numbers-card .nlabel { font-size: 15px; color: var(--text); }
+        .article-cta { background: var(--light); border-left: 4px solid var(--accent); padding: 28px 32px; margin: 48px 0 0; border-radius: 0 8px 8px 0; }
+        .article-cta h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .article-cta p { margin-bottom: 16px; font-size: 15px; color: #5a6a7a; }
+        .cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .cta-btn:hover { background: #e55e10; }
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 48px 24px 36px; font-size: 13px; margin-top: 80px; }
+        .footer-logo-wrap { background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; width: 210px; height: 72px; margin: 0 auto 16px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+    </style>
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "The PI Events App, two weeks in: 750 downloads and 50 interpreter requests", "description": "Two weeks after launch, the PI Events App has 750+ downloads, 50+ interpreter requests, and the first bookings already confirmed.", "author": { "@type": "Person", "name": "James Edwards", "url": "https://tailored-tools.com/about" }, "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" }, "datePublished": "2026-05-19", "url": "https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html", "mainEntityOfPage": "https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html" }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://tailored-tools.com/ao/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "The PI Events App, two weeks in",  "item": "https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html" }
+      ]
+    }
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li><li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/" class="active">AO</a></li><li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/workshops">Workshops</a></li><li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-header-inner">
+        <a href="/ao/blog/" class="back-link">&#8592; All articles</a>
+        <span class="launch-crumb"><span class="launch-crumb-dot"></span>Launch &middot; PI Events App</span>
+        <h1>The PI Events App, two weeks in: 750 downloads and 50 interpreter requests</h1>
+        <div class="article-meta">19 May 2026 &middot; 3 min read &middot; by James Edwards</div>
+    </div>
+</div>
+
+<div class="article-body">
+    <p>We shipped the PI Events App two weeks ago. Here is where it is now.</p>
+
+    <div class="numbers-card">
+        <div class="nrow"><div class="nval">750+</div><div class="nlabel">downloads in the first two weeks</div></div>
+        <div class="nrow"><div class="nval">50+</div><div class="nlabel">interpreter requests submitted through the app</div></div>
+        <div class="nrow"><div class="nval">Yes</div><div class="nlabel">bookings from those requests already confirmed</div></div>
+    </div>
+
+    <p>That is the whole post in three lines. The rest is why those numbers matter more than another AI demo.</p>
+
+    <h2>Why these three numbers, in that order</h2>
+    <p><strong>Downloads</strong> are the easy number. They tell you people found the app, thought it might solve something, and committed enough to install it. 750 in two weeks for a niche professional app is a strong signal that there was a real gap waiting to be filled.</p>
+    <p><strong>Requests</strong> are the number that counts. Fifty people downloaded the app, opened it, and used it for the thing it was built to do — request British Sign Language interpreter coverage for an event. A download is a maybe. A request is a yes.</p>
+    <p><strong>Confirmed bookings</strong> are the only number that finally matters. That is revenue moving through the system. Interpreters paid. Deaf audiences getting access to events they otherwise might not have had.</p>
+
+    <p class="pullquote">A download is a maybe. A request is a yes. A booking is the thing the whole app exists for.</p>
+
+    <h2>Why this is the post worth writing</h2>
+    <p>Most of the AI story right now is demos. Slick videos. Threads about prompts. Funding rounds. What you do not see as often is a small business actually shipping the thing, getting it in front of real users, and watching real money move through real workflows in real weeks.</p>
+    <p>Performance Interpreting is a family business. My wife Marie founded it. I built the technology. It is not a venture-backed AI startup with a 12-person product team. It is a UK BSL interpretation agency with a clear problem — getting interpreter coverage organised for events is harder than it should be — and now, an app that takes friction out of that loop.</p>
+    <p>The PI Events App did not need a billion-dollar model to be useful. It needed to be built, shipped, and put in front of the people who would actually use it.</p>
+
+    <h2>What "AI for small business" actually looks like</h2>
+    <p>When I tell people I use AI to build operational tools, the picture they have in mind is usually wrong. It is not a magic robot doing the work. It is a small business owner using AI to move faster — designing the data model, writing the code, drafting the copy, debugging the launch — and then putting the result in front of real users to see what they do with it.</p>
+    <p>Two weeks in, what real users are doing is downloading it, using it, and starting to book through it. That is the proof. Not a demo. Not a thread. A live app, with requests landing and bookings being confirmed.</p>
+
+    <h2>What is next</h2>
+    <p>We are listening. Two weeks of usage data is a small but real signal about what people need first. The next round of changes is being shaped by what the 50 requests actually looked like, and what got in the way of more of them being made.</p>
+    <p>If you run a venue, festival, tour, or production company that needs BSL interpreter coverage — the app is live. If you are a small business owner wondering whether AI can really help you ship something useful for the people you serve — this is one small data point that says yes.</p>
+
+    <div class="article-cta">
+        <h3>See how it was built</h3>
+        <p>The PI Events App sits on top of the PI OS booking platform we built for Performance Interpreting. Same data, same interpreter database, now in your customers' pockets.</p>
+        <a href="/projects#performance-interpreting" class="cta-btn">See the Performance Interpreting project &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>

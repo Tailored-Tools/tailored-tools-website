@@ -54,9 +54,28 @@
       "accent": "#2c5f8d",
       "accent_soft": "#dee8f3",
       "order": 6
+    },
+    "launch": {
+      "name": "Launch",
+      "slug": "launch",
+      "description": "Standalone milestone posts about apps and tools we have shipped. Real numbers, real users, real bookings.",
+      "audience": "Small business owners wondering whether AI can really help them ship something useful.",
+      "accent": "#ff6f20",
+      "accent_soft": "#fff0e6",
+      "order": 0,
+      "standalone": true
     }
   },
   "posts": [
+    {
+      "slug": "pi-events-app-two-weeks-in",
+      "title": "The PI Events App, two weeks in: 750 downloads and 50 interpreter requests",
+      "url": "/ao/blog/pi-events-app-two-weeks-in.html",
+      "series": "launch",
+      "date": "2026-05-19",
+      "read_time": "3 min read",
+      "excerpt": "Two weeks after launch: 750+ downloads, 50+ interpreter requests, and the first bookings already confirmed. What happens when a small business ships the tool instead of talking about it."
+    },
     {
       "slug": "ai-doesnt-rank-your-business-it-includes-or-excludes-it",
       "title": "AI doesn't rank your business. It includes or excludes it.",

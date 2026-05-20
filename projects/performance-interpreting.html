@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Interpreting - Client Project | Tailored Tools</title>
+    <meta name="description" content="A family-run BSL interpretation agency in the UK and Ireland. We built the PI Events App so venues and producers can request interpreter coverage in a few taps. Live since May 2026.">
+
+    <link rel="canonical" href="https://tailored-tools.com/projects/performance-interpreting">
+
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/projects/performance-interpreting">
+    <meta property="og:title" content="Performance Interpreting - Client Project | Tailored Tools">
+    <meta property="og:description" content="A family-run BSL interpretation agency in the UK and Ireland. We built the PI Events App so venues and producers can request interpreter coverage in a few taps.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Performance Interpreting - Client Project | Tailored Tools">
+    <meta name="twitter:description" content="A family-run BSL interpretation agency in the UK and Ireland. We built the PI Events App so venues and producers can request interpreter coverage in a few taps.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 880px;
+            --green: #16A34A;
+            --amber: #c9831c;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        /* ── Nav ─────────────────────────────────────────────────── */
+        nav { background: var(--dark); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
+        .nav-cta:hover { background: #e55e10; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
+
+        /* ── Hero ────────────────────────────────────────────────── */
+        .project-hero { background: var(--dark); padding: 56px 24px 48px; color: var(--white); border-bottom: 3px solid var(--accent); }
+        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+        .back-link { display: inline-block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 24px; }
+        .back-link:hover { color: var(--accent); }
+        .project-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .project-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
+        .project-hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+        .project-hero .lead { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 640px; line-height: 1.7; }
+
+        /* ── Section base ────────────────────────────────────────── */
+        .section { padding: 72px 24px; }
+        .section:nth-child(even) { background: var(--light); }
+        .inner { max-width: var(--max-width); margin: 0 auto; }
+        .section h2 { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 14px; }
+        .section p { font-size: 16px; color: var(--text); margin-bottom: 18px; line-height: 1.8; }
+        .section p:last-child { margin-bottom: 0; }
+        .section ul { margin: 0 0 18px 22px; }
+        .section li { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 6px; }
+        .section a.inline { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
+        .section a.inline:hover { border-bottom-color: var(--accent); }
+
+        /* ── Status pill ─────────────────────────────────────────── */
+        .status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+        .status-pill.live { background: rgba(22,163,74,0.12); color: var(--green); }
+        .status-pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+        .status-pill.dev { background: rgba(201,131,28,0.14); color: var(--amber); }
+        .status-pill.dev::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+
+        /* ── Stat tiles ──────────────────────────────────────────── */
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0 28px; }
+        .stat-tile { background: var(--white); border: 1px solid #e8ecf0; border-radius: 10px; padding: 22px 20px; text-align: left; }
+        .section:nth-child(even) .stat-tile { background: var(--white); }
+        .stat-num { font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1.1; margin-bottom: 6px; }
+        .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+        /* ── CTA section ─────────────────────────────────────────── */
+        .section-cta { background: var(--dark); text-align: center; }
+        .section-cta h2 { color: var(--white); margin-bottom: 12px; }
+        .section-cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; }
+        .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .btn-primary:hover { background: #e55e10; }
+
+        /* ── Footer ──────────────────────────────────────────────── */
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
+        .footer-logo-wrap { width: 210px; height: 72px; background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; margin: 0 auto 16px; }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        /* ── Mobile ──────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .project-hero { padding: 44px 20px 36px; }
+            .section { padding: 56px 20px; }
+            .stat-grid { grid-template-columns: 1fr; gap: 12px; }
+            .stat-tile { padding: 18px 18px; }
+            .stat-num { font-size: 30px; }
+            .hamburger { display: block; }
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 16px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Performance Interpreting",
+      "description": "A family-run BSL interpretation agency in the UK and Ireland. Tailored Tools built the PI Events App so venues and producers can request interpreter coverage in a few taps.",
+      "url": "https://tailored-tools.com/projects/performance-interpreting",
+      "creator": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+      "about": { "@type": "Organization", "name": "Performance Interpreting", "url": "https://performanceinterpreting.co.uk" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://tailored-tools.com/projects" },
+        { "@type": "ListItem", "position": 3, "name": "Performance Interpreting", "item": "https://tailored-tools.com/projects/performance-interpreting" }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <button class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects" class="active">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="project-hero">
+    <div class="hero-inner">
+        <a href="/projects" class="back-link">&larr; All projects</a>
+        <div class="project-label"><span class="dot"></span>Client Project</div>
+        <h1>Performance Interpreting</h1>
+        <p class="lead">A family-run BSL interpretation agency providing communication access for the Deaf community across the UK and Ireland. We are building the technology that takes friction out of how interpreters are booked.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="inner">
+        <div class="status-pill live">Live &middot; Shipped May 2026</div>
+        <h2>The PI Events App</h2>
+        <p>A mobile app for venues, event organisers, festivals, and producers to request British Sign Language interpreter coverage for upcoming events. A few taps to submit a request. No spreadsheets, no email back-and-forth, no missed details.</p>
+
+        <div class="stat-grid">
+            <div class="stat-tile">
+                <div class="stat-num">750+</div>
+                <div class="stat-label">Downloads in the first two weeks</div>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-num">50+</div>
+                <div class="stat-label">Interpreter requests submitted through the app</div>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-num">Live</div>
+                <div class="stat-label">First bookings already confirmed</div>
+            </div>
+        </div>
+
+        <p><a class="inline" href="/ao/blog/pi-events-app-two-weeks-in.html">Read the launch story &rarr;</a></p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>About the agency</h2>
+        <p><strong>Performance Interpreting</strong> was founded by Marie Edwards. It is a BSL interpretation agency providing communication access for the Deaf community &mdash; at festivals, football matches, theatre, live music, conferences, and workplaces &mdash; across the UK and Ireland.</p>
+        <ul>
+            <li>A network of 379 interpreters (346 BSL + 33 Irish)</li>
+            <li>Coverage across the UK and Ireland</li>
+            <li>Working with festivals, football clubs, live music tours, theatre, and corporate clients</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <div class="status-pill dev">In development</div>
+        <h2>The platform underneath: PI OS</h2>
+        <p>The Events App sits on top of a booking platform we are building for the agency &mdash; what we call PI OS. The interpreter database, the booking lifecycle, the staff portal, and the integrations live there. Parts of it are running in production today. Other parts are still being built.</p>
+        <p>We will write about PI OS properly when it is finished. For now, the app is the thing that is in customers' hands and earning its keep.</p>
+    </div>
+</section>
+
+<section class="section section-cta">
+    <div class="inner">
+        <h2>Want something like this for your business?</h2>
+        <p>We build custom systems and AI-assisted tools for small businesses. No templates, no bloat &mdash; just what you actually need.</p>
+        <a href="mailto:hello@tailored-tools.com" class="btn-primary">Get in touch &rarr;</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('open');
+    });
+});
+</script>
+</body>
+</html>

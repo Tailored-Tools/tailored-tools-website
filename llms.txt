@@ -9,8 +9,8 @@ Tailored Tools builds AI-powered business systems and helps small service busine
 ## Live Projects
 
 ### Performance Interpreting
-Built a complete booking management OS for the UK's leading BSL interpretation agency. Staff portal with role-based access, AI-powered email extraction, Google Sheets integration, interpreter database (379 BSL + Irish interpreters), and automated workflows.
-- https://tailored-tools.com/projects
+A family-run BSL interpretation agency in the UK and Ireland. Built the PI Events App (live since May 2026 — 750+ downloads in the first two weeks, 50+ interpreter requests, first bookings already confirmed) so venues and event organisers can request interpreter coverage in a few taps. The wider PI OS booking platform (interpreter database of 379 BSL + Irish interpreters, staff portal, email extraction, integrations) is in progress beneath it.
+- https://tailored-tools.com/projects/performance-interpreting
 
 ### The Sonic Sanctuary
 Built a unified business platform replacing 6 separate tools. Event management, Stripe payments, intro pass system, WhatsApp integration (140+ member community), customer comms, B2B booking, and a public website fed from the same data source.

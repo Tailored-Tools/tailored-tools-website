@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Tailored Tools</title>
-    <meta name="description" content="Live AI systems built for real businesses. See how we automated operations for a BSL interpretation agency and a sound therapy practice.">
+    <meta name="description" content="Live platforms built for real businesses — a BSL interpretation agency with three live properties (including a mobile app with 800+ downloads in its first month), and a sound therapy practice managed remotely from a phone.">
 
     <link rel="canonical" href="https://tailored-tools.com/projects">
 
@@ -395,6 +395,84 @@
             font-size: 32px;
         }
 
+        /* ── Property grid (multi-property portfolio) ────────────── */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .property-card {
+            background: var(--white);
+            border: 1px solid #eaecef;
+            border-radius: 12px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+        }
+        .property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            border-color: rgba(0,0,0,0.14);
+        }
+        .property-card-featured {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(255,111,32,0.12);
+        }
+        .property-card .property-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .property-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--primary);
+            word-break: break-word;
+        }
+        .property-card p {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-light);
+            margin-bottom: 18px;
+            flex: 1;
+        }
+        .property-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+            align-self: flex-start;
+        }
+        .property-link:hover { opacity: 0.75; }
+        .property-stats-inline {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,111,32,0.18);
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .property-stat-num {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .property-stat-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        @media (max-width: 900px) {
+            .property-grid { grid-template-columns: 1fr; gap: 16px; }
+        }
+
         /* ── CTA section ─────────────────────────────────────────── */
         .projects-cta {
             background: var(--dark);
@@ -506,8 +584,69 @@
 <!-- Hero -->
 <div class="page-hero">
     <h1>Live Projects</h1>
-    <p class="subtitle">AI systems we've built and deployed for real businesses. These aren't demos - they're running in production right now.</p>
+    <p class="subtitle">Platforms we've built and deployed for real businesses. These aren't demos — they're running in production right now.</p>
 </div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PERFORMANCE INTERPRETING
+     ════════════════════════════════════════════════════════════ -->
+<section class="project-section" id="performance-interpreting">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="project-header reveal">
+            <div class="project-label">Client Portfolio</div>
+            <h2>Performance Interpreting</h2>
+            <p>BSL and ISL interpretation across the UK and Ireland. We build the digital platforms PI runs on — three live properties serving clients, training the next wave of interpreters, and putting paid work directly into interpreters' hands.</p>
+        </div>
+
+        <!-- Three live properties -->
+        <div class="property-grid reveal">
+            <article class="property-card">
+                <div class="property-label">Client-Facing Site</div>
+                <h3>Main Website</h3>
+                <p>The agency's primary public site. Booking enquiries, services, festival logistics, and case studies — designed to convert and built to scale with the business.</p>
+                <a href="https://www.performanceinterpreting.co.uk" target="_blank" rel="noopener" class="property-link">performanceinterpreting.co.uk &rarr;</a>
+            </article>
+            <article class="property-card">
+                <div class="property-label">Training Platform</div>
+                <h3>PI Academy</h3>
+                <p>A dedicated CPD and training platform for working interpreters — courses, resources, and a growing community of practitioners.</p>
+                <a href="https://academy.performanceinterpreting.co.uk" target="_blank" rel="noopener" class="property-link">academy.performanceinterpreting.co.uk &rarr;</a>
+            </article>
+            <article class="property-card property-card-featured">
+                <div class="property-label">Mobile App</div>
+                <h3>PI Events App</h3>
+                <p>Native iOS and Android app that puts live event bookings directly into qualified interpreters' hands. Already driving measurable revenue uplift via increased interpreter requests.</p>
+                <div class="property-stats-inline">
+                    <span class="property-stat-num">800+</span>
+                    <span class="property-stat-label">downloads in month one</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- Stats -->
+        <div class="project-stats reveal">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Live Properties</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-num">800+</div>
+                    <div class="stat-label">App Downloads (Month 1)</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-num">↑</div>
+                    <div class="stat-label">Revenue from interpreter requests</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 <!-- ════════════════════════════════════════════════════════════
      THE SONIC SANCTUARY
@@ -519,7 +658,7 @@
         <div class="project-header reveal">
             <div class="project-label">Client Project</div>
             <h2>The Sonic Sanctuary</h2>
-            <p>A sound therapy practice running sound baths and drum circles in Kent. We replaced six disconnected tools with one unified operating system.</p>
+            <p>A sound therapy practice running sound baths and drum circles in Kent. We replaced six disconnected tools with one unified operating system — used daily to run the business remotely from a phone.</p>
         </div>
 
         <!-- Before / After -->
@@ -669,162 +808,6 @@
                 <div class="stat-item">
                     <div class="stat-num">1</div>
                     <div class="stat-label">Unified Platform (replaced 6 tools)</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     PERFORMANCE INTERPRETING
-     ════════════════════════════════════════════════════════════ -->
-<section class="project-section" id="performance-interpreting">
-    <div class="container">
-
-        <!-- Header -->
-        <div class="project-header reveal">
-            <div class="project-label">Client Project</div>
-            <h2>Performance Interpreting</h2>
-            <p>A BSL interpretation agency managing bookings, interpreters, and staff across the UK and Ireland. We replaced spreadsheets and email chains with a custom operating system.</p>
-        </div>
-
-        <!-- Before / After -->
-        <div class="ba-toggle-wrap reveal" data-ba="pi">
-            <div class="ba-controls">
-                <button class="ba-btn active" data-show="before">Before</button>
-                <button class="ba-btn" data-show="after">After</button>
-            </div>
-
-            <div class="ba-view">
-                <!-- BEFORE -->
-                <div class="ba-state visible" data-state="before">
-                    <div class="before-grid">
-                        <div class="before-pill">Email chains<span class="pill-status">Scattered comms</span></div>
-                        <div class="before-pill">Spreadsheets<span class="pill-status">Multiple files</span></div>
-                        <div class="before-pill">Phone calls<span class="pill-status">No record</span></div>
-                        <div class="before-pill">Manual booking<span class="pill-status">Copy-paste</span></div>
-                        <div class="before-pill">Paper trails<span class="pill-status">Filing cabinets</span></div>
-                    </div>
-                    <p class="before-label">Fragmented. Nothing connected. Easy to miss things.</p>
-                </div>
-
-                <!-- AFTER -->
-                <div class="ba-state" data-state="after">
-                    <div class="after-hub">
-                        <div class="hub-centre">PI OS</div>
-                        <div class="hub-trunk"></div>
-                        <div class="hub-row">
-                            <div class="spoke-node">Supabase<span class="spoke-label">Database</span></div>
-                            <div class="spoke-node">Staff Portal<span class="spoke-label">Role-based</span></div>
-                            <div class="spoke-node">Email Extractor<span class="spoke-label">AI-powered</span></div>
-                        </div>
-                        <div class="hub-row">
-                            <div class="spoke-node">Google Sheets<span class="spoke-label">Dashboards</span></div>
-                            <div class="spoke-node">FreeAgent<span class="spoke-label">Invoicing</span></div>
-                            <div class="spoke-node">M365<span class="spoke-label">Email</span></div>
-                        </div>
-                    </div>
-                    <p class="after-label">One system. Everyone on the same page.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Architecture flow -->
-        <div class="arch-section reveal">
-            <h3>How it works</h3>
-            <div class="arch-flow">
-                <div class="arch-step">Client enquiry</div>
-                <div class="arch-connector"></div>
-                <div class="arch-step">Booking created</div>
-                <div class="arch-connector"></div>
-                <div class="arch-step">Staff assigned</div>
-                <div class="arch-connector"></div>
-                <div class="arch-step">AI extracts details</div>
-                <div class="arch-connector"></div>
-                <div class="arch-step">Invoice sent</div>
-            </div>
-        </div>
-
-        <!-- Feature cards -->
-        <div class="feature-cards reveal">
-            <div class="feature-card">
-                <div class="feature-card-header">
-                    <h4>Booking Management</h4>
-                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="feature-card-body">
-                    <p>Complete booking lifecycle from enquiry to completion. Status tracking, assignment, notes, timeline.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card-header">
-                    <h4>Staff Portal</h4>
-                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="feature-card-body">
-                    <p>Role-based access for 6+ team members. Each staff member sees relevant bookings, manages their workload.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card-header">
-                    <h4>Email Extractor (AI)</h4>
-                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="feature-card-body">
-                    <p>One-click email parsing using Claude AI. Searches staff's M365 mailbox, extracts booking details from email threads automatically.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card-header">
-                    <h4>Google Sheets Integration</h4>
-                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="feature-card-body">
-                    <p>Read-only dashboards for Festivals, Seasons (football clubs), and Tours (Live Nation). Pulls from existing spreadsheets the team already uses.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card-header">
-                    <h4>Interpreter Database</h4>
-                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="feature-card-body">
-                    <p>379 interpreters (346 BSL + 33 Irish) imported and searchable. Skills, availability, location, qualifications.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card-header">
-                    <h4>Automated Workflows</h4>
-                    <svg class="feature-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="feature-card-body">
-                    <p>Confirmation emails, status updates, nudge system for stale bookings. Reduces manual follow-up.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="project-stats reveal">
-            <div class="stats-row">
-                <div class="stat-item">
-                    <div class="stat-num">379</div>
-                    <div class="stat-label">Interpreters in Database</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-num">6+</div>
-                    <div class="stat-label">Staff Using Daily</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-num">1</div>
-                    <div class="stat-label">Platform (replaced spreadsheets + email)</div>
                 </div>
             </div>
         </div>

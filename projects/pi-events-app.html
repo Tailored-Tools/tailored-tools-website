@@ -15,13 +15,13 @@
     <meta property="og:url" content="https://tailored-tools.com/projects/pi-events-app">
     <meta property="og:title" content="PI Events App - BSL-first native mobile app case study | Tailored Tools">
     <meta property="og:description" content="A BSL & ISL first native iOS and Android app for the UK Deaf community. AI-drafted access requests, offline-first events, sign-language video on every screen.">
-    <meta property="og:image" content="https://tailored-tools.com/images/projects/pi-events-app/support-speech-to-text.png">
+    <meta property="og:image" content="https://tailored-tools.com/images/projects/pi-events-app/app-my-order.png">
     <meta property="og:locale" content="en_GB">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PI Events App - BSL-first native mobile app case study | Tailored Tools">
     <meta name="twitter:description" content="A BSL & ISL first native iOS and Android app for the UK Deaf community. AI-drafted access requests, offline-first events, sign-language video on every screen.">
-    <meta name="twitter:image" content="https://tailored-tools.com/images/projects/pi-events-app/support-speech-to-text.png">
+    <meta name="twitter:image" content="https://tailored-tools.com/images/projects/pi-events-app/app-my-order.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,6 +139,46 @@
         .video-grid figure { margin: 0; }
         .video-grid video { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 8px 32px rgba(13,27,42,0.18); background: #000; }
         .video-grid figcaption { font-size: 13px; color: var(--text-light); margin-top: 12px; line-height: 1.5; text-align: center; }
+        .video-grid figure { position: relative; cursor: zoom-in; transition: transform 0.18s ease; }
+        .video-grid figure:hover { transform: translateY(-2px); }
+        .video-grid figure::after {
+            content: ""; position: absolute; top: 12px; right: 12px;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: rgba(13,27,42,0.78) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M9 21H3v-6'/%3E%3Cpath d='M21 3l-7 7'/%3E%3Cpath d='M3 21l7-7'/%3E%3C/svg%3E") center/16px no-repeat;
+            opacity: 0; transition: opacity 0.18s ease; pointer-events: none;
+        }
+        .video-grid figure:hover::after { opacity: 1; }
+
+        /* ── Lightbox ────────────────────────────────────────────── */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(13,27,42,0.92);
+            display: none; align-items: center; justify-content: center;
+            padding: 40px 20px;
+            opacity: 0; transition: opacity 0.25s ease;
+        }
+        .lightbox.open { display: flex; opacity: 1; }
+        .lightbox-stage { position: relative; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .lightbox video {
+            max-height: 80vh; max-width: 100%; width: auto; height: auto;
+            border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: #000;
+        }
+        .lightbox-caption { color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 500; text-align: center; max-width: 480px; }
+        .lightbox-close {
+            position: absolute; top: -52px; right: -8px;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.12); color: #fff;
+            border: none; cursor: pointer; font-size: 22px; line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.18s ease;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+        @media (max-width: 640px) {
+            .lightbox { padding: 20px 16px; }
+            .lightbox-close { top: -46px; right: 0; width: 36px; height: 36px; font-size: 20px; }
+            .lightbox video { max-height: 75vh; }
+        }
 
         /* ── CTA section ─────────────────────────────────────────── */
         .section-cta { background: var(--dark); text-align: center; }
@@ -179,7 +219,7 @@
       "name": "PI Events App",
       "description": "A BSL & ISL first native iOS and Android app for the UK Deaf community to find interpreted live events and request access where none yet exists. Designed and built by Tailored Tools for Performance Interpreting.",
       "url": "https://tailored-tools.com/projects/pi-events-app",
-      "image": "https://tailored-tools.com/images/projects/pi-events-app/support-speech-to-text.png",
+      "image": "https://tailored-tools.com/images/projects/pi-events-app/app-my-order.png",
       "creator": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
       "about": { "@type": "MobileApplication", "name": "PI Events App", "operatingSystem": "iOS, Android", "applicationCategory": "LifestyleApplication" },
       "sponsor": { "@type": "Organization", "name": "Performance Interpreting", "url": "https://performanceinterpreting.co.uk" }
@@ -274,7 +314,7 @@
                 <figcaption>AI-drafted access request.</figcaption>
             </figure>
             <figure>
-                <video src="/images/projects/pi-events-app/pi-events-order.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Communication Tool Kit — showing the MY ORDER card"></video>
+                <video src="/images/projects/pi-events-app/pi-events-toolkit.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Communication Tool Kit — showing the MY ORDER card"></video>
                 <figcaption>The MY ORDER tool kit card.</figcaption>
             </figure>
             <figure>
@@ -309,7 +349,7 @@
             <!-- 1 -->
             <div class="feature">
                 <div class="feature-media">
-                    <img src="/images/projects/pi-events-app/browse-categories.png" alt="Browse interpreted events by category — concerts, sports, festivals, theatre, comedy, family, pride" loading="lazy">
+                    <img src="/images/projects/pi-events-app/app-browse.png" alt="Browse interpreted events by category — concerts, sports, festivals, theatre, comedy, family, pride" loading="lazy">
                 </div>
                 <div class="feature-body">
                     <h3>Browse interpreted events</h3>
@@ -320,7 +360,7 @@
             <!-- 2 -->
             <div class="feature">
                 <div class="feature-media">
-                    <img src="/images/projects/pi-events-app/event-detail.png" alt="Smart search across events, venues and categories" loading="lazy">
+                    <img src="/images/projects/pi-events-app/app-search.png" alt="Smart search across events, venues and categories" loading="lazy">
                 </div>
                 <div class="feature-body">
                     <h3>Smart search</h3>
@@ -331,7 +371,7 @@
             <!-- 3 — killer -->
             <div class="feature">
                 <div class="feature-media">
-                    <img src="/images/projects/pi-events-app/request-interpreter.png" alt="Request an interpreter screen showing AI-drafted email and autofilled venue address" loading="lazy">
+                    <img src="/images/projects/pi-events-app/app-request.png" alt="Request an interpreter screen showing AI-drafted email and autofilled venue address" loading="lazy">
                 </div>
                 <div class="feature-body">
                     <h3>Request an interpreter <span class="pill">killer</span></h3>
@@ -342,7 +382,7 @@
             <!-- 4 -->
             <div class="feature">
                 <div class="feature-media">
-                    <img src="/images/projects/pi-events-app/support-speech-to-text.png" alt="Communication Tool Kit cards including I am Deaf, Emergency, My Order and live speech-to-text" loading="lazy">
+                    <img src="/images/projects/pi-events-app/app-toolkit.png" alt="Communication Tool Kit cards including I am Deaf, Emergency, My Order and live speech-to-text" loading="lazy">
                 </div>
                 <div class="feature-body">
                     <h3>Communication Tool Kit</h3>
@@ -353,7 +393,7 @@
             <!-- 5 -->
             <div class="feature">
                 <div class="feature-media">
-                    <img src="/images/projects/pi-events-app/bsl-isl-videos.png" alt="A signed video explainer in the app — sign language is the primary content" loading="lazy">
+                    <img src="/images/projects/pi-events-app/app-videos.png" alt="A signed video explainer in the app — sign language is the primary content" loading="lazy">
                 </div>
                 <div class="feature-body">
                     <h3>BSL &amp; ISL on every screen</h3>
@@ -364,11 +404,11 @@
             <!-- 6 -->
             <div class="feature">
                 <div class="feature-media">
-                    <img src="/images/projects/pi-events-app/festival-checklist.png" alt="Festival checklist and feedback flow inside the app" loading="lazy">
+                    <img src="/images/projects/pi-events-app/app-my-order.png" alt="The distinctive turquoise MY ORDER communication card" loading="lazy">
                 </div>
                 <div class="feature-body">
-                    <h3>Feedback in sign language</h3>
-                    <p>Post-event feedback by BSL/ISL video or by form &mdash; the choice always there. Closes the loop with venues and gives PI structured signal.</p>
+                    <h3>The MY ORDER card</h3>
+                    <p>The single most distinctive screen in the app &mdash; a turquoise card to show staff at the bar. Users showed each other this one first.</p>
                 </div>
             </div>
 
@@ -405,12 +445,12 @@
 
         <div class="phone-pair">
             <figure>
-                <img src="/images/projects/pi-events-app/onboarding-language.png" alt="Onboarding language selection screen — BSL, ISL or English picked before any other content appears" loading="lazy">
-                <figcaption>Language picked before any English appears on screen.</figcaption>
+                <img src="/images/projects/pi-events-app/app-request.png" alt="Request an interpreter screen — AI-drafted email ready to send with autofilled venue address" loading="lazy">
+                <figcaption>AI-drafted access request, venue address autofilled.</figcaption>
             </figure>
             <figure>
-                <img src="/images/projects/pi-events-app/event-detail.png" alt="Event detail screen with a signed video explainer, accessibility information and request action" loading="lazy">
-                <figcaption>Event detail with signed explainer and access info inline.</figcaption>
+                <img src="/images/projects/pi-events-app/app-videos.png" alt="A signed video explainer in the app — sign language is the primary content" loading="lazy">
+                <figcaption>Signed guidance on every major screen.</figcaption>
             </figure>
         </div>
     </div>
@@ -467,6 +507,15 @@
     <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
+<!-- Lightbox for enlarging demo videos -->
+<div class="lightbox" id="videoLightbox" aria-hidden="true" role="dialog" aria-label="Enlarged demo video">
+    <div class="lightbox-stage">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged video">&times;</button>
+        <video id="lightboxVideo" autoplay loop muted playsinline controls></video>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+</div>
+
 <script>
 document.querySelector('.hamburger').addEventListener('click', function() {
     this.classList.toggle('active');
@@ -478,6 +527,50 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
         document.querySelector('.nav-links').classList.remove('open');
     });
 });
+
+// Demo video lightbox
+(function() {
+    var lightbox = document.getElementById('videoLightbox');
+    var lightboxVideo = document.getElementById('lightboxVideo');
+    var lightboxCaption = document.getElementById('lightboxCaption');
+    var closeBtn = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+        lightboxVideo.src = src;
+        lightboxCaption.textContent = caption || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // Pause any background videos so audio/cpu stays sane
+        document.querySelectorAll('.video-grid video').forEach(function(v) { try { v.pause(); } catch(e){} });
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxVideo.pause();
+        lightboxVideo.removeAttribute('src');
+        lightboxVideo.load();
+        document.body.style.overflow = '';
+        // Resume grid videos
+        document.querySelectorAll('.video-grid video').forEach(function(v) { try { v.play(); } catch(e){} });
+    }
+
+    document.querySelectorAll('.video-grid figure').forEach(function(fig) {
+        fig.addEventListener('click', function() {
+            var v = fig.querySelector('video');
+            var cap = fig.querySelector('figcaption');
+            if (v) openLightbox(v.currentSrc || v.src, cap ? cap.textContent : '');
+        });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+})();
 </script>
 </body>
 </html>

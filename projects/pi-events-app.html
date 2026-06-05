@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PI Events App - BSL-first native mobile app case study | Tailored Tools</title>
+    <meta name="description" content="How Tailored Tools designed and built the PI Events App — a BSL & ISL first native iOS and Android app for the UK Deaf community. AI-drafted access requests, offline-first events, sign-language video on every screen.">
+
+    <link rel="canonical" href="https://tailored-tools.com/projects/pi-events-app">
+
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/projects/pi-events-app">
+    <meta property="og:title" content="PI Events App - BSL-first native mobile app case study | Tailored Tools">
+    <meta property="og:description" content="A BSL & ISL first native iOS and Android app for the UK Deaf community. AI-drafted access requests, offline-first events, sign-language video on every screen.">
+    <meta property="og:image" content="https://tailored-tools.com/images/projects/pi-events-app/support-speech-to-text.png">
+    <meta property="og:locale" content="en_GB">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PI Events App - BSL-first native mobile app case study | Tailored Tools">
+    <meta name="twitter:description" content="A BSL & ISL first native iOS and Android app for the UK Deaf community. AI-drafted access requests, offline-first events, sign-language video on every screen.">
+    <meta name="twitter:image" content="https://tailored-tools.com/images/projects/pi-events-app/support-speech-to-text.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 880px;
+            --green: #16A34A;
+            --amber: #c9831c;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        /* ── Nav ─────────────────────────────────────────────────── */
+        nav { background: var(--dark); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
+        .nav-cta:hover { background: #e55e10; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
+
+        /* ── Hero ────────────────────────────────────────────────── */
+        .project-hero { background: var(--dark); padding: 56px 24px 48px; color: var(--white); border-bottom: 3px solid var(--accent); }
+        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+        .back-link { display: inline-block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 24px; }
+        .back-link:hover { color: var(--accent); }
+        .project-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .project-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
+        .project-hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+        .project-hero .lead { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 640px; line-height: 1.7; }
+
+        /* ── Section base ────────────────────────────────────────── */
+        .section { padding: 72px 24px; }
+        .section:nth-child(even) { background: var(--light); }
+        .inner { max-width: var(--max-width); margin: 0 auto; }
+        .section h2 { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 14px; }
+        .section h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin: 28px 0 10px; }
+        .section p { font-size: 16px; color: var(--text); margin-bottom: 18px; line-height: 1.8; }
+        .section p:last-child { margin-bottom: 0; }
+        .section ul { margin: 0 0 18px 22px; }
+        .section li { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 6px; }
+        .section a.inline { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
+        .section a.inline:hover { border-bottom-color: var(--accent); }
+
+        .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+
+        /* ── Status pill ─────────────────────────────────────────── */
+        .status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+        .status-pill.live { background: rgba(22,163,74,0.12); color: var(--green); }
+        .status-pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+
+        /* ── Stat tiles ──────────────────────────────────────────── */
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 8px; }
+        .stat-tile { background: var(--white); border: 1px solid #e8ecf0; border-radius: 10px; padding: 22px 20px; text-align: left; }
+        .section:nth-child(even) .stat-tile { background: var(--white); }
+        .stat-num { font-size: 30px; font-weight: 800; color: var(--accent); line-height: 1.1; margin-bottom: 6px; }
+        .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+        /* ── Phone screenshot strip ──────────────────────────────── */
+        .phone-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 32px 0 8px; }
+        .phone-strip figure { margin: 0; }
+        .phone-strip img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 8px 32px rgba(13,27,42,0.18); background: #000; }
+        .phone-strip figcaption { font-size: 13px; color: var(--text-light); margin-top: 12px; line-height: 1.5; text-align: center; }
+
+        /* ── Phone pair (large two-up) ───────────────────────────── */
+        .phone-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0 8px; align-items: start; }
+        .phone-pair img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 8px 32px rgba(13,27,42,0.18); background: #000; }
+        .phone-pair figcaption { font-size: 13px; color: var(--text-light); margin-top: 12px; line-height: 1.5; text-align: center; }
+
+        /* ── Feature blocks ──────────────────────────────────────── */
+        .feature { margin: 36px 0; padding: 28px; background: var(--white); border: 1px solid #e8ecf0; border-radius: 12px; display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center; }
+        .section:nth-child(even) .feature { background: var(--white); }
+        .feature.flip { grid-template-columns: 1fr 220px; }
+        .feature img, .feature video { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 6px 20px rgba(13,27,42,0.16); background: #000; }
+        .feature .feature-body h3 { margin: 0 0 8px; font-size: 19px; color: var(--primary); }
+        .feature .feature-body p { font-size: 15px; color: var(--text); margin: 0; line-height: 1.7; }
+        .feature .feature-media { order: 1; }
+        .feature.flip .feature-media { order: 2; }
+        .feature .feature-body { order: 2; }
+        .feature.flip .feature-body { order: 1; }
+
+        /* ── Pull quote ──────────────────────────────────────────── */
+        .pull-quote { border-left: 4px solid var(--accent); padding: 6px 0 6px 24px; margin: 36px 0; }
+        .pull-quote p { font-size: 18px; font-style: italic; color: var(--primary); line-height: 1.7; margin-bottom: 14px; }
+        .pull-quote cite { font-style: normal; font-size: 13px; color: var(--text-light); font-weight: 600; }
+
+        /* ── Tech chips ──────────────────────────────────────────── */
+        .tech-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px; }
+        .tech-chip { background: var(--white); border: 1px solid #dbe1e7; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: var(--primary); }
+        .section:nth-child(even) .tech-chip { background: var(--white); }
+
+        /* ── Demo video grid ─────────────────────────────────────── */
+        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+        .video-grid figure { margin: 0; }
+        .video-grid video { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 8px 32px rgba(13,27,42,0.18); background: #000; }
+        .video-grid figcaption { font-size: 13px; color: var(--text-light); margin-top: 12px; line-height: 1.5; text-align: center; }
+
+        /* ── CTA section ─────────────────────────────────────────── */
+        .section-cta { background: var(--dark); text-align: center; }
+        .section-cta h2 { color: var(--white); margin-bottom: 12px; }
+        .section-cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; }
+        .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .btn-primary:hover { background: #e55e10; }
+
+        /* ── Footer ──────────────────────────────────────────────── */
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
+        .footer-logo-wrap { width: 210px; height: 72px; background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; margin: 0 auto 16px; }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        /* ── Mobile ──────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .project-hero { padding: 44px 20px 36px; }
+            .section { padding: 56px 20px; }
+            .stat-grid { grid-template-columns: 1fr; gap: 12px; }
+            .stat-tile { padding: 18px 18px; }
+            .stat-num { font-size: 28px; }
+            .phone-strip { grid-template-columns: 1fr; gap: 28px; max-width: 320px; margin-left: auto; margin-right: auto; }
+            .phone-pair { grid-template-columns: 1fr; gap: 24px; max-width: 320px; margin-left: auto; margin-right: auto; }
+            .feature, .feature.flip { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
+            .feature .feature-media, .feature.flip .feature-media { order: 1; max-width: 220px; margin: 0 auto; }
+            .feature .feature-body, .feature.flip .feature-body { order: 2; }
+            .video-grid { grid-template-columns: 1fr; gap: 28px; max-width: 320px; margin-left: auto; margin-right: auto; }
+            .hamburger { display: block; }
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 16px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "PI Events App",
+      "description": "A BSL & ISL first native iOS and Android app for the UK Deaf community to find interpreted live events and request access where none yet exists. Designed and built by Tailored Tools for Performance Interpreting.",
+      "url": "https://tailored-tools.com/projects/pi-events-app",
+      "image": "https://tailored-tools.com/images/projects/pi-events-app/support-speech-to-text.png",
+      "creator": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+      "about": { "@type": "MobileApplication", "name": "PI Events App", "operatingSystem": "iOS, Android", "applicationCategory": "LifestyleApplication" },
+      "sponsor": { "@type": "Organization", "name": "Performance Interpreting", "url": "https://performanceinterpreting.co.uk" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://tailored-tools.com/projects" },
+        { "@type": "ListItem", "position": 3, "name": "PI Events App", "item": "https://tailored-tools.com/projects/pi-events-app" }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
+        <button class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects" class="active">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="project-hero">
+    <div class="hero-inner">
+        <a href="/projects/performance-interpreting" class="back-link">&larr; Performance Interpreting</a>
+        <div class="project-label"><span class="dot"></span>Case Study &middot; Native Mobile App</div>
+        <h1>PI Events App</h1>
+        <p class="lead">A BSL &amp; ISL first native iOS and Android app for the UK Deaf community. Every interpreted event in one place, AI-drafted access requests for events without coverage, and a communication tool kit for the venue itself. Designed and built by Tailored Tools for <a href="https://performanceinterpreting.co.uk" class="inline" target="_blank" rel="external noopener" style="color: rgba(255,255,255,0.9);">Performance Interpreting</a>.</p>
+    </div>
+</header>
+
+<!-- ─────────────────────────── PROBLEM ─────────────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="status-pill live">Live on iOS &amp; Android</div>
+        <div class="eyebrow">The problem</div>
+        <h2>BSL events were everywhere &mdash; and nowhere</h2>
+        <p>PI deliver British and Irish Sign Language access at over 600 live events a year. Arsenal. Wembley. The O2. Royal Albert Hall. Live Nation. Festival Republic. The work was happening; the audiences couldn't find it.</p>
+        <p>Information sat scattered across organiser websites, ticketing platforms and venue accessibility teams that didn't talk to each other. And when an event <em>didn't</em> have interpreter access yet, requesting it was friction-heavy: work out who to email, find the contact, draft the message, follow up. Most Deaf attendees gave up before they started.</p>
+        <p>PI brought us a brief shaped by that reality. Build something that closes the loop.</p>
+    </div>
+</section>
+
+<!-- ─────────────────────────── BRIEF ───────────────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">The brief</div>
+        <h2>A consumer app, free at the point of use, BSL-first by design</h2>
+        <p>The constraints were sharp and they drove every engineering decision:</p>
+        <ul>
+            <li><strong>Centralise every PI-delivered interpreted event</strong> into one searchable place.</li>
+            <li><strong>Let users request access at non-PI events</strong> with the fewest possible taps.</li>
+            <li><strong>Provide communication tools for the day</strong> &mdash; not just discovery.</li>
+            <li><strong>BSL &amp; ISL first.</strong> Every screen has a signed video. Onboarding picks language <em>before</em> any English appears on screen.</li>
+            <li><strong>Work offline.</strong> Venue Wi-Fi is unreliable; the app cannot be.</li>
+            <li><strong>Native iOS and Android.</strong> Not a web wrapper. Native feel on both platforms.</li>
+        </ul>
+
+        <div class="pull-quote">
+            <p>The brief was to empower the user at every stage of the event they are enjoying. Before &mdash; you give the app the event details, AI drafts the access request email for you, the venue's address is autofilled, and you send it with the tap of a few buttons. At the event &mdash; communication cards and live speech-to-text so a Deaf attendee can engage with bar staff or security without having to use their voice. After &mdash; feedback in sign language or by form, the choice always there. Designed to work offline at venues where the Wi-Fi gives up, BSL &amp; ISL first by default, and built to disappear once you have got what you need. Every engineering decision came from those constraints.</p>
+            <cite>&mdash; James Edwards, Founder, Tailored Tools</cite>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────────────────── WHAT WE BUILT ───────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">What we built</div>
+        <h2>Six features, one loop closed</h2>
+        <p>The app is small on purpose. Every screen earns its place against the brief. No upsells, no dashboards the user didn't ask for, no analytics scaffolding leaking into the experience.</p>
+
+        <!-- 1: Browse -->
+        <div class="feature">
+            <div class="feature-media">
+                <img src="/images/projects/pi-events-app/browse-categories.png" alt="Browse interpreted events by category — concerts, sports, festivals, theatre, comedy, family, pride" loading="lazy">
+            </div>
+            <div class="feature-body">
+                <h3>1. Browse interpreted events</h3>
+                <p>Every PI-delivered BSL and ISL event nationwide, filterable by category &mdash; concerts, sports, festivals, theatre, comedy, family, pride and more. Cached for offline use the moment the app opens on Wi-Fi.</p>
+            </div>
+        </div>
+
+        <!-- 2: Search -->
+        <div class="feature flip">
+            <div class="feature-body">
+                <h3>2. Smart search</h3>
+                <p>Type-ahead fuzzy search across events, venues and categories. Forgives spelling. Surfaces the venue match when you misremember the headline act and only know where you saw it last.</p>
+            </div>
+            <div class="feature-media">
+                <video src="/images/projects/pi-events-app/pi-events-search.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of search across events, venues and categories"></video>
+            </div>
+        </div>
+
+        <!-- 3: Request — strongest -->
+        <div class="feature">
+            <div class="feature-media">
+                <img src="/images/projects/pi-events-app/request-interpreter.png" alt="Request an interpreter screen showing an AI-drafted email and autofilled venue address" loading="lazy">
+            </div>
+            <div class="feature-body">
+                <h3>3. Request an interpreter <span style="color: var(--accent); font-weight: 700;">&mdash; the killer feature</span></h3>
+                <p>For events without confirmed access: the user gives the app the event details, an AI drafts the access request email, the venue's address is autofilled, and you send it with a few taps. A process that used to take hours of research per event collapses into a single screen. This is the feature prospects ask us about most.</p>
+            </div>
+        </div>
+
+        <!-- 4: Communication Tool Kit -->
+        <div class="feature flip">
+            <div class="feature-body">
+                <h3>4. Communication Tool Kit</h3>
+                <p>Pre-made cards to show staff &mdash; <em>I am Deaf</em>, <em>Emergency</em>, <em>My Order</em>, <em>Speech to Text</em> &mdash; customisable, plus a live speech-to-text mode. Designed for the moments at the bar, with security, or in an emergency when an interpreter isn't physically present. The cards are the most distinctive thing in the app and the part users showed each other first.</p>
+            </div>
+            <div class="feature-media">
+                <img src="/images/projects/pi-events-app/support-speech-to-text.png" alt="Communication Tool Kit cards including a turquoise MY ORDER card and live speech-to-text mode" loading="lazy">
+            </div>
+        </div>
+
+        <!-- 5: BSL & ISL videos -->
+        <div class="feature">
+            <div class="feature-media">
+                <img src="/images/projects/pi-events-app/bsl-isl-videos.png" alt="A signed video explaining a feature of the app — sign language is the primary content, not a subtitle" loading="lazy">
+            </div>
+            <div class="feature-body">
+                <h3>5. BSL &amp; ISL video on every screen</h3>
+                <p>Marie Pascall signs the guidance herself on every major screen. Sign language is the <em>primary</em> content here, not subtitles bolted onto English. The video infrastructure runs across discovery, request, tool kit and feedback &mdash; one of the larger engineering surfaces in the build.</p>
+            </div>
+        </div>
+
+        <!-- 6: Feedback -->
+        <div class="feature flip">
+            <div class="feature-body">
+                <h3>6. Feedback in sign language</h3>
+                <p>Post-event, users can submit feedback in BSL or ISL by video, or by form &mdash; the choice always there. Closes the loop with venues and gives PI structured signal on which interpreter assignments landed well.</p>
+            </div>
+            <div class="feature-media">
+                <img src="/images/projects/pi-events-app/festival-checklist.png" alt="Festival checklist and event detail view inside the app" loading="lazy">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ─────────────────────────── TECH ────────────────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">Under the hood</div>
+        <h2>Native on both platforms, offline by default</h2>
+        <p>Built for App Store and Play Store distribution from one shared TypeScript codebase using Capacitor, with native platform integrations where it mattered &mdash; push, local storage, hardware mic for speech-to-text, deep links from venue emails back into the request flow.</p>
+
+        <div class="tech-chips">
+            <span class="tech-chip">Native iOS</span>
+            <span class="tech-chip">Native Android</span>
+            <span class="tech-chip">Capacitor</span>
+            <span class="tech-chip">Offline-first cache</span>
+            <span class="tech-chip">AI-drafted emails</span>
+            <span class="tech-chip">Sign-language video infra</span>
+            <span class="tech-chip">Push notifications</span>
+            <span class="tech-chip">BSL-first onboarding</span>
+        </div>
+
+        <h3>The engineering decisions that came straight from the brief</h3>
+        <ul>
+            <li><strong>BSL-first onboarding.</strong> Language choice happens before any English text appears on screen. A real constraint &mdash; not a cosmetic flag &mdash; that ripples through routing, the splash sequence, and every translation file.</li>
+            <li><strong>Offline-first events.</strong> Event data is cached on first load and re-validated in the background. The Tool Kit cards are stored locally; they work in the foyer of a venue with zero bars.</li>
+            <li><strong>AI-drafted request emails.</strong> The killer feature. Event details in, ready-to-send email out, venue address autofilled, sender stays in the loop with full edit control before send.</li>
+            <li><strong>Push for nearby interpreted events.</strong> Opt-in notifications for newly confirmed events near the user &mdash; the part PI's audience kept asking for and the part that closes the discovery loop.</li>
+            <li><strong>Native chrome on both platforms.</strong> Bottom-tab navigation on iOS, material patterns on Android. One codebase, two genuinely native-feeling apps.</li>
+        </ul>
+
+        <div class="phone-pair">
+            <figure>
+                <img src="/images/projects/pi-events-app/onboarding-language.png" alt="Onboarding language selection screen — BSL, ISL or English picked before any other content appears" loading="lazy">
+                <figcaption>Language picked before any English appears on screen.</figcaption>
+            </figure>
+            <figure>
+                <img src="/images/projects/pi-events-app/event-detail.png" alt="Event detail screen with a signed video explainer, accessibility information and request action" loading="lazy">
+                <figcaption>Event detail with signed explainer and access info inline.</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────────────────── DEMOS ───────────────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">In motion</div>
+        <h2>Live demos from the app</h2>
+        <p>Short clips captured from the shipped build &mdash; same flows currently running on App Store and Play Store today.</p>
+
+        <div class="video-grid">
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-browse.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Browsing the events list filtered by category"></video>
+                <figcaption>Browsing by category.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-request.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Requesting an interpreter with AI-drafted email"></video>
+                <figcaption>AI-drafted access request.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-order.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Communication Tool Kit — showing the MY ORDER card"></video>
+                <figcaption>The MY ORDER tool kit card.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-videos.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Sign-language video on a major app screen"></video>
+                <figcaption>Signed guidance on every screen.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-notifications.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Push notifications for newly confirmed interpreted events"></video>
+                <figcaption>Push for nearby interpreted events.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-rights.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Know-your-rights content presented in BSL"></video>
+                <figcaption>Know-your-rights content, in sign.</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────────────────── OUTCOME ─────────────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">The outcome</div>
+        <h2>Shipped, in pockets, and recommended by the community first</h2>
+
+        <div class="stat-grid">
+            <div class="stat-tile">
+                <div class="stat-num">iOS + Android</div>
+                <div class="stat-label">Live on both App Store and Play Store, free to end users</div>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-num">DeafExpo 2026</div>
+                <div class="stat-label">Peer-recommended at the UK's biggest Deaf community event before any paid marketing</div>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-num">Press</div>
+                <div class="stat-label">Featured by The Limping Chicken, the UK's leading Deaf news outlet</div>
+            </div>
+        </div>
+
+        <p>The signal we cared about most was the first one. The app was peer-recommended at DeafExpo 2026 by Deaf attendees themselves &mdash; community validation that no marketing spend can buy. Press followed naturally. The full <a class="inline" href="https://performanceinterpreting.co.uk/press/pi-events-app/" target="_blank" rel="external noopener">PI Events App press kit</a> is live and being used by journalists writing about the launch.</p>
+
+        <p>For PI, the app turns a decade of delivered BSL events into a single discoverable surface and gives Deaf audiences a tool they can hand to a venue when access doesn't yet exist. For Tailored Tools, it's the proof point we point at when a small business asks whether we can ship something native, accessible and genuinely useful &mdash; not just a marketing site.</p>
+    </div>
+</section>
+
+<!-- ─────────────────────────── CLIENT ──────────────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">About the client</div>
+        <h2>Performance Interpreting</h2>
+        <p><strong>Performance Interpreting</strong> is the UK and Ireland's leading provider of BSL and ISL access at live events, founded by Marie Pascall &mdash; born with unilateral deafness, inducted into Signature's Hall of Fame, and the interpreter who gave key evidence in the landmark Little Mix BSL case that helped establish BSL access as a legal requirement under the Equality Act 2010.</p>
+        <p>PI deliver interpreter coverage at over 600 live events a year &mdash; for Arsenal, Wembley Stadium, The O2, Royal Albert Hall, Live Nation, Festival Republic, BBC, UEFA and the NFL among others. The PI Events App sits alongside the rest of the agency's digital estate &mdash; see <a href="/projects/performance-interpreting" class="inline">the full Performance Interpreting portfolio entry</a> for the wider picture.</p>
+    </div>
+</section>
+
+<!-- ─────────────────────────── CTA ─────────────────────────────── -->
+<section class="section section-cta">
+    <div class="inner">
+        <h2>Building something similar?</h2>
+        <p>We design and build accessible native apps, AI-assisted tools, and operating systems for small businesses who need software that actually fits the work.</p>
+        <a href="mailto:hello@tailored-tools.com" class="btn-primary">Get in touch &rarr;</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('open');
+    });
+});
+</script>
+</body>
+</html>

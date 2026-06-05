@@ -138,21 +138,22 @@
         .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
         .video-grid figure { margin: 0; position: relative; cursor: zoom-in; transition: transform 0.18s ease; }
         .video-grid figure:hover { transform: translateY(-2px); }
-        /* Uniform tile — videos may have different intrinsic resolutions, force consistent aspect */
+        /* Uniform tile — most demos are 16:9 landscape (phone framed). One is portrait,
+           we letterbox it (contain) so nothing important gets cropped. */
         .video-grid .video-wrap {
             position: relative;
-            aspect-ratio: 9 / 16;
-            border-radius: 18px;
+            aspect-ratio: 16 / 9;
+            border-radius: 14px;
             overflow: hidden;
-            background: #000;
-            box-shadow: 0 8px 32px rgba(13,27,42,0.18);
+            background: #0D1B2A;
+            box-shadow: 0 8px 28px rgba(13,27,42,0.18);
         }
         .video-grid video {
             position: absolute; inset: 0;
             width: 100%; height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
-            background: #000;
+            background: #0D1B2A;
         }
         .video-grid figcaption { font-size: 13px; color: var(--text-light); margin-top: 12px; line-height: 1.5; text-align: center; }
         .video-grid figure::after {

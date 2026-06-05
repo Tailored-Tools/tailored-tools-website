@@ -110,17 +110,19 @@
         .phone-pair img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 8px 32px rgba(13,27,42,0.18); background: #000; }
         .phone-pair figcaption { font-size: 13px; color: var(--text-light); margin-top: 12px; line-height: 1.5; text-align: center; }
 
-        /* ── Feature blocks ──────────────────────────────────────── */
-        .feature { margin: 36px 0; padding: 28px; background: var(--white); border: 1px solid #e8ecf0; border-radius: 12px; display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center; }
-        .section:nth-child(even) .feature { background: var(--white); }
-        .feature.flip { grid-template-columns: 1fr 220px; }
-        .feature img, .feature video { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 6px 20px rgba(13,27,42,0.16); background: #000; }
-        .feature .feature-body h3 { margin: 0 0 8px; font-size: 19px; color: var(--primary); }
-        .feature .feature-body p { font-size: 15px; color: var(--text); margin: 0; line-height: 1.7; }
-        .feature .feature-media { order: 1; }
-        .feature.flip .feature-media { order: 2; }
-        .feature .feature-body { order: 2; }
-        .feature.flip .feature-body { order: 1; }
+        /* ── Feature grid — interlocked colour bands ─────────────── */
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 32px 0 8px; border-radius: 14px; overflow: hidden; border: 1px solid #e8ecf0; }
+        .feature { display: grid; grid-template-columns: 130px 1fr; gap: 18px; padding: 22px 22px; align-items: center; background: var(--white); }
+        /* Checker — diagonal interlock */
+        .feature-grid .feature:nth-child(4n+2),
+        .feature-grid .feature:nth-child(4n+3) { background: #fff4ec; } /* soft accent tint */
+        .section:nth-child(even) .feature { background: #ffffff; }
+        .section:nth-child(even) .feature-grid .feature:nth-child(4n+2),
+        .section:nth-child(even) .feature-grid .feature:nth-child(4n+3) { background: #fff4ec; }
+        .feature img, .feature video { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 4px 14px rgba(13,27,42,0.18); background: #000; }
+        .feature .feature-body h3 { margin: 0 0 6px; font-size: 16px; color: var(--primary); line-height: 1.3; }
+        .feature .feature-body p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.65; }
+        .feature .feature-body .pill { display: inline-block; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
 
         /* ── Pull quote ──────────────────────────────────────────── */
         .pull-quote { border-left: 4px solid var(--accent); padding: 6px 0 6px 24px; margin: 36px 0; }
@@ -161,10 +163,9 @@
             .stat-num { font-size: 28px; }
             .phone-strip { grid-template-columns: 1fr; gap: 28px; max-width: 320px; margin-left: auto; margin-right: auto; }
             .phone-pair { grid-template-columns: 1fr; gap: 24px; max-width: 320px; margin-left: auto; margin-right: auto; }
-            .feature, .feature.flip { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
-            .feature .feature-media, .feature.flip .feature-media { order: 1; max-width: 220px; margin: 0 auto; }
-            .feature .feature-body, .feature.flip .feature-body { order: 2; }
-            .video-grid { grid-template-columns: 1fr; gap: 28px; max-width: 320px; margin-left: auto; margin-right: auto; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .feature { grid-template-columns: 110px 1fr; padding: 18px; }
+            .video-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
             .hamburger { display: block; }
             .nav-links { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 16px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
             .nav-links.open { display: flex; }
@@ -260,79 +261,118 @@
     </div>
 </section>
 
-<!-- ─────────────────────────── WHAT WE BUILT ───────────────────── -->
+<!-- ─────────────────────────── DEMOS (moved up) ────────────────── -->
+<section class="section">
+    <div class="inner">
+        <div class="eyebrow">In motion</div>
+        <h2>Live demos from the shipped build</h2>
+        <p>Short clips of the actual flows running on App Store and Play Store today &mdash; AI-drafted access requests, the Communication Tool Kit, push for nearby interpreted events, and sign-language video on every screen.</p>
+
+        <div class="video-grid">
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-request.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Requesting an interpreter with AI-drafted email"></video>
+                <figcaption>AI-drafted access request.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-order.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Communication Tool Kit — showing the MY ORDER card"></video>
+                <figcaption>The MY ORDER tool kit card.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-browse.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Browsing the events list filtered by category"></video>
+                <figcaption>Browsing by category.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-videos.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Sign-language video on a major app screen"></video>
+                <figcaption>Signed guidance on every screen.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-notifications.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Push notifications for newly confirmed interpreted events"></video>
+                <figcaption>Push for nearby interpreted events.</figcaption>
+            </figure>
+            <figure>
+                <video src="/images/projects/pi-events-app/pi-events-rights.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Know-your-rights content presented in BSL"></video>
+                <figcaption>Know-your-rights content, in sign.</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────────────────────── WHAT WE BUILT (tighter grid) ────── -->
 <section class="section">
     <div class="inner">
         <div class="eyebrow">What we built</div>
         <h2>Six features, one loop closed</h2>
         <p>The app is small on purpose. Every screen earns its place against the brief. No upsells, no dashboards the user didn't ask for, no analytics scaffolding leaking into the experience.</p>
 
-        <!-- 1: Browse -->
-        <div class="feature">
-            <div class="feature-media">
-                <img src="/images/projects/pi-events-app/browse-categories.png" alt="Browse interpreted events by category — concerts, sports, festivals, theatre, comedy, family, pride" loading="lazy">
-            </div>
-            <div class="feature-body">
-                <h3>1. Browse interpreted events</h3>
-                <p>Every PI-delivered BSL and ISL event nationwide, filterable by category &mdash; concerts, sports, festivals, theatre, comedy, family, pride and more. Cached for offline use the moment the app opens on Wi-Fi.</p>
-            </div>
-        </div>
+        <div class="feature-grid">
 
-        <!-- 2: Search -->
-        <div class="feature flip">
-            <div class="feature-body">
-                <h3>2. Smart search</h3>
-                <p>Type-ahead fuzzy search across events, venues and categories. Forgives spelling. Surfaces the venue match when you misremember the headline act and only know where you saw it last.</p>
+            <!-- 1 -->
+            <div class="feature">
+                <div class="feature-media">
+                    <img src="/images/projects/pi-events-app/browse-categories.png" alt="Browse interpreted events by category — concerts, sports, festivals, theatre, comedy, family, pride" loading="lazy">
+                </div>
+                <div class="feature-body">
+                    <h3>Browse interpreted events</h3>
+                    <p>Every PI-delivered BSL and ISL event nationwide, filterable by category. Cached offline the moment the app opens on Wi-Fi.</p>
+                </div>
             </div>
-            <div class="feature-media">
-                <video src="/images/projects/pi-events-app/pi-events-search.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of search across events, venues and categories"></video>
-            </div>
-        </div>
 
-        <!-- 3: Request — strongest -->
-        <div class="feature">
-            <div class="feature-media">
-                <img src="/images/projects/pi-events-app/request-interpreter.png" alt="Request an interpreter screen showing an AI-drafted email and autofilled venue address" loading="lazy">
+            <!-- 2 -->
+            <div class="feature">
+                <div class="feature-media">
+                    <img src="/images/projects/pi-events-app/event-detail.png" alt="Smart search across events, venues and categories" loading="lazy">
+                </div>
+                <div class="feature-body">
+                    <h3>Smart search</h3>
+                    <p>Type-ahead fuzzy search across events, venues and categories. Forgives spelling and surfaces venues when you misremember the act.</p>
+                </div>
             </div>
-            <div class="feature-body">
-                <h3>3. Request an interpreter <span style="color: var(--accent); font-weight: 700;">&mdash; the killer feature</span></h3>
-                <p>For events without confirmed access: the user gives the app the event details, an AI drafts the access request email, the venue's address is autofilled, and you send it with a few taps. A process that used to take hours of research per event collapses into a single screen. This is the feature prospects ask us about most.</p>
-            </div>
-        </div>
 
-        <!-- 4: Communication Tool Kit -->
-        <div class="feature flip">
-            <div class="feature-body">
-                <h3>4. Communication Tool Kit</h3>
-                <p>Pre-made cards to show staff &mdash; <em>I am Deaf</em>, <em>Emergency</em>, <em>My Order</em>, <em>Speech to Text</em> &mdash; customisable, plus a live speech-to-text mode. Designed for the moments at the bar, with security, or in an emergency when an interpreter isn't physically present. The cards are the most distinctive thing in the app and the part users showed each other first.</p>
+            <!-- 3 — killer -->
+            <div class="feature">
+                <div class="feature-media">
+                    <img src="/images/projects/pi-events-app/request-interpreter.png" alt="Request an interpreter screen showing AI-drafted email and autofilled venue address" loading="lazy">
+                </div>
+                <div class="feature-body">
+                    <h3>Request an interpreter <span class="pill">killer</span></h3>
+                    <p>Event details in, AI-drafted request email out, venue address autofilled, send with a few taps. Hours of research collapsed into a single screen.</p>
+                </div>
             </div>
-            <div class="feature-media">
-                <img src="/images/projects/pi-events-app/support-speech-to-text.png" alt="Communication Tool Kit cards including a turquoise MY ORDER card and live speech-to-text mode" loading="lazy">
-            </div>
-        </div>
 
-        <!-- 5: BSL & ISL videos -->
-        <div class="feature">
-            <div class="feature-media">
-                <img src="/images/projects/pi-events-app/bsl-isl-videos.png" alt="A signed video explaining a feature of the app — sign language is the primary content, not a subtitle" loading="lazy">
+            <!-- 4 -->
+            <div class="feature">
+                <div class="feature-media">
+                    <img src="/images/projects/pi-events-app/support-speech-to-text.png" alt="Communication Tool Kit cards including I am Deaf, Emergency, My Order and live speech-to-text" loading="lazy">
+                </div>
+                <div class="feature-body">
+                    <h3>Communication Tool Kit</h3>
+                    <p><em>I am Deaf</em>, <em>Emergency</em>, <em>My Order</em>, <em>Speech to Text</em> &mdash; customisable cards plus a live speech-to-text mode for the bar, security, or an emergency.</p>
+                </div>
             </div>
-            <div class="feature-body">
-                <h3>5. BSL &amp; ISL video on every screen</h3>
-                <p>Marie Pascall signs the guidance herself on every major screen. Sign language is the <em>primary</em> content here, not subtitles bolted onto English. The video infrastructure runs across discovery, request, tool kit and feedback &mdash; one of the larger engineering surfaces in the build.</p>
-            </div>
-        </div>
 
-        <!-- 6: Feedback -->
-        <div class="feature flip">
-            <div class="feature-body">
-                <h3>6. Feedback in sign language</h3>
-                <p>Post-event, users can submit feedback in BSL or ISL by video, or by form &mdash; the choice always there. Closes the loop with venues and gives PI structured signal on which interpreter assignments landed well.</p>
+            <!-- 5 -->
+            <div class="feature">
+                <div class="feature-media">
+                    <img src="/images/projects/pi-events-app/bsl-isl-videos.png" alt="A signed video explainer in the app — sign language is the primary content" loading="lazy">
+                </div>
+                <div class="feature-body">
+                    <h3>BSL &amp; ISL on every screen</h3>
+                    <p>Marie Pascall signs the guidance herself. Sign language is the <em>primary</em> content here, not subtitles bolted on top of English.</p>
+                </div>
             </div>
-            <div class="feature-media">
-                <img src="/images/projects/pi-events-app/festival-checklist.png" alt="Festival checklist and event detail view inside the app" loading="lazy">
-            </div>
-        </div>
 
+            <!-- 6 -->
+            <div class="feature">
+                <div class="feature-media">
+                    <img src="/images/projects/pi-events-app/festival-checklist.png" alt="Festival checklist and feedback flow inside the app" loading="lazy">
+                </div>
+                <div class="feature-body">
+                    <h3>Feedback in sign language</h3>
+                    <p>Post-event feedback by BSL/ISL video or by form &mdash; the choice always there. Closes the loop with venues and gives PI structured signal.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -371,42 +411,6 @@
             <figure>
                 <img src="/images/projects/pi-events-app/event-detail.png" alt="Event detail screen with a signed video explainer, accessibility information and request action" loading="lazy">
                 <figcaption>Event detail with signed explainer and access info inline.</figcaption>
-            </figure>
-        </div>
-    </div>
-</section>
-
-<!-- ─────────────────────────── DEMOS ───────────────────────────── -->
-<section class="section">
-    <div class="inner">
-        <div class="eyebrow">In motion</div>
-        <h2>Live demos from the app</h2>
-        <p>Short clips captured from the shipped build &mdash; same flows currently running on App Store and Play Store today.</p>
-
-        <div class="video-grid">
-            <figure>
-                <video src="/images/projects/pi-events-app/pi-events-browse.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Browsing the events list filtered by category"></video>
-                <figcaption>Browsing by category.</figcaption>
-            </figure>
-            <figure>
-                <video src="/images/projects/pi-events-app/pi-events-request.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Requesting an interpreter with AI-drafted email"></video>
-                <figcaption>AI-drafted access request.</figcaption>
-            </figure>
-            <figure>
-                <video src="/images/projects/pi-events-app/pi-events-order.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Communication Tool Kit — showing the MY ORDER card"></video>
-                <figcaption>The MY ORDER tool kit card.</figcaption>
-            </figure>
-            <figure>
-                <video src="/images/projects/pi-events-app/pi-events-videos.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Sign-language video on a major app screen"></video>
-                <figcaption>Signed guidance on every screen.</figcaption>
-            </figure>
-            <figure>
-                <video src="/images/projects/pi-events-app/pi-events-notifications.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Push notifications for newly confirmed interpreted events"></video>
-                <figcaption>Push for nearby interpreted events.</figcaption>
-            </figure>
-            <figure>
-                <video src="/images/projects/pi-events-app/pi-events-rights.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Know-your-rights content presented in BSL"></video>
-                <figcaption>Know-your-rights content, in sign.</figcaption>
             </figure>
         </div>
     </div>

@@ -29,11 +29,18 @@ body {
 
 /* ── Nav ────────────────────────────────────────────────────── */
 nav {
-    background: var(--dark);
+    background: rgba(13, 27, 42, 0.72);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
     padding: 16px 24px;
     position: sticky;
     top: 0;
     z-index: 100;
+}
+/* Solid fallback when backdrop-filter is unsupported, keeps contrast */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    nav { background: var(--dark); }
 }
 .nav-inner {
     max-width: var(--max-width);

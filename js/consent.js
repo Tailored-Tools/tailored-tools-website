@@ -31,11 +31,10 @@
         document.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function (frame) {
             var wrap = frame.parentElement;
             if (!wrap) return;
-            wrap.innerHTML = '<div class="embed-blocked" role="region" aria-label="Form blocked pending consent">' +
-                '<strong>Form blocked</strong>' +
-                'This form is hosted by Tally (Belgium) and may set session cookies. ' +
-                'Accept analytics-free embeds to load it, or ' +
-                '<a href="mailto:hello@tailored-tools.com">email us</a> instead.' +
+            wrap.innerHTML = '<div class="embed-blocked" role="region" aria-label="Free AO Score form, awaiting consent">' +
+                '<strong>Free AO Score form</strong>' +
+                'Hosted by <a href="https://tally.so" target="_blank" rel="noopener">Tally</a> (Belgium). Session cookies only, no analytics. ' +
+                'Load it below, or <a href="mailto:hello@tailored-tools.com">email us</a> for an AO Score.' +
                 '<br><button type="button" data-consent-accept>Load the form</button>' +
                 '</div>';
         });

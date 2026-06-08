@@ -521,16 +521,16 @@
         .tally-embed iframe {
             background: transparent;
         }
-        /* Cover Tally's "Made with Tally" watermark on desktop.
-           Tight to the actual badge dimensions so it doesn't bleed
-           over the right edge of form fields. */
+        /* Cover Tally's "Made with Tally" CTA badge on desktop.
+           Sized for the full pill-button watermark that sits at the
+           bottom-right of the iframe, level with the submit button. */
         .tally-embed::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 170px;
-            height: 32px;
+            width: 230px;
+            height: 56px;
             background: var(--dark);
             pointer-events: none;
             z-index: 1;

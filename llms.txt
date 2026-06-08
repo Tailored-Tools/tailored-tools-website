@@ -58,7 +58,7 @@ Kent AI is a free, grassroots community in Kent for anyone curious or concerned 
 
 ## Workshops & Community
 
-Hands-on AI workshops for local businesses and teams in Maidstone, Kent. No jargon, no hype - just practical tools that save time. James is part of the Claude Community Ambassador programme.
+Hands-on AI workshops for local businesses and teams in Maidstone, Kent. No jargon, no hype, just practical tools that save time.
 - https://tailored-tools.com/workshops
 
 ## About
@@ -105,9 +105,6 @@ Plain-English articles on AI for small businesses and curious humans. Organised 
 - https://tailored-tools.com/ao/blog/series/walkthroughs/
 - https://tailored-tools.com/ao/blog/the-ai-trust-ladder.html
 
-### Friction (where AI gets stuck, content coming)
-- https://tailored-tools.com/ao/blog/series/friction/
-
 ### Starter packs (first prompts by role)
 - https://tailored-tools.com/ao/blog/series/starter-packs/
 - https://tailored-tools.com/ao/blog/first-prompts-for-teachers.html
@@ -119,4 +116,4 @@ Plain-English articles on AI for small businesses and curious humans. Organised 
 - https://tailored-tools.com/ao/blog/series/jargon-glossary/
 - https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html
 
-The Anti-hype, Walkthroughs, Friction, Starter packs, and Jargon glossary series grew out of the Kent AI Meet Up, a free in-person community in Kent for people curious or concerned about AI.
+The Anti-hype, Walkthroughs, Starter packs, and Jargon glossary series grew out of the Kent AI Meet Up, a free in-person community in Kent for people curious or concerned about AI.

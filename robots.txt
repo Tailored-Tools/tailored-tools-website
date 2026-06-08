@@ -1,10 +1,10 @@
-# Tailored Tools — robots.txt
+# Tailored Tools, robots.txt
 # https://tailored-tools.com
 
 User-agent: *
 Allow: /
 
-# AI crawlers — explicitly welcomed
+# AI crawlers, explicitly welcomed
 User-agent: GPTBot
 Allow: /
 

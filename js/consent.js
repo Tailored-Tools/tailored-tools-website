@@ -34,7 +34,7 @@
             wrap.innerHTML = '<div class="embed-blocked" role="region" aria-label="Free AO Score form, awaiting consent">' +
                 '<strong>Free AO Score form</strong>' +
                 'Hosted by <a href="https://tally.so" target="_blank" rel="noopener">Tally</a> (Belgium). Session cookies only, no analytics. ' +
-                'Load it below, or <a href="mailto:hello@tailored-tools.com">email us</a> for an AO Score.' +
+                'Load it below, or <a href="mailto:ao@tailored-tools.com">email us</a> for an AO Score.' +
                 '<br><button type="button" data-consent-accept>Load the form</button>' +
                 '</div>';
         });

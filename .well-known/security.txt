@@ -1,0 +1,16 @@
+# Tailored Tools security contact (RFC 9116)
+# Trading name of James Edwards, sole trader
+# https://tailored-tools.com/
+
+Contact: mailto:security@tailored-tools.com
+Contact: mailto:hello@tailored-tools.com
+Expires: 2027-06-08T23:59:59Z
+Preferred-Languages: en
+Canonical: https://tailored-tools.com/.well-known/security.txt
+Policy: https://tailored-tools.com/privacy.html
+
+# If you've identified a security or privacy issue affecting any
+# Tailored Tools system or a platform we operate (PI Events App,
+# Sonic Sanctuary OS, Amanda Jane Wellness OS), please email the
+# above contact. Responsible disclosure appreciated; we aim to
+# acknowledge within 2 business days.

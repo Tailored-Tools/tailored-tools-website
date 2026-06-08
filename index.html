@@ -179,6 +179,12 @@
             border-bottom: 1px solid rgba(0,0,0,0.06);
             padding: 32px 24px;
         }
+        .logo-strip.recognition-strip {
+            background: var(--white);
+            border-top: 0;
+            padding-top: 24px;
+            padding-bottom: 36px;
+        }
         .logo-strip-inner {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -899,6 +905,24 @@
     </div>
 </div>
 
+<!-- ── Recognition strip ──────────────────────────────────────────────── -->
+<div class="logo-strip recognition-strip reveal">
+    <div class="logo-strip-inner">
+        <span class="logo-strip-label">Recognised by</span>
+        <div class="logo-strip-divider"></div>
+        <div class="logo-strip-logos">
+            <a href="https://www.anthropic.com/" target="_blank" rel="noopener" class="client-logo" aria-label="Claude Community Ambassador">
+                <span class="client-logo-name">Claude Community Ambassador</span>
+                <span class="client-logo-sector">Anthropic programme</span>
+            </a>
+            <a href="https://limpingchicken.com/" target="_blank" rel="noopener" class="client-logo" aria-label="Featured by The Limping Chicken">
+                <span class="client-logo-name">The Limping Chicken</span>
+                <span class="client-logo-sector">PI Events App feature</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- ── What TT Does ───────────────────────────────────────────────────── -->
 <section class="what-tt reveal">
     <div class="container">
@@ -956,7 +980,7 @@
 <!-- ── Brief About ────────────────────────────────────────────────────── -->
 <section class="brief-about reveal">
     <div class="container">
-        <img src="/james.jpg" alt="James Edwards" class="about-photo">
+        <img src="/james.jpg" alt="James Edwards" width="200" height="200" class="about-photo">
         <h2>I'm James</h2>
         <p>I run a sound therapy practice and built the tech for a BSL interpretation agency. Now I help other small businesses do the same.</p>
         <a href="/about" class="about-link">More about me &rarr;</a>
@@ -1156,7 +1180,7 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
 })();
 </script>
 
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+<script src="/js/consent.js" defer></script>
 
 </body>
 </html>

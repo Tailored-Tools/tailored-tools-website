@@ -985,26 +985,6 @@
     </div>
 </section>
 
-<!-- ── Stats Strip ────────────────────────────────────────────────────── -->
-<div class="stats-strip">
-    <div class="stats-row">
-        <div class="stat-item">
-            <div class="stat-num">7</div>
-            <div class="stat-label">Live Platforms</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-            <div class="stat-num">65</div>
-            <div class="stat-label">Community Members</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-            <div class="stat-num">21</div>
-            <div class="stat-label">Articles Published</div>
-        </div>
-    </div>
-</div>
-
 <!-- ── Free AO Score ─────────────────────────────────────────────────── -->
 <section class="free-score reveal" id="free-score">
     <div class="container">
@@ -1106,54 +1086,6 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     });
 })();
 
-// Counter animation on stats, count up when scrolled into view
-(function() {
-    function easeOutQuart(t) {
-        return 1 - Math.pow(1 - t, 4);
-    }
-
-    function animateCounter(el, target, suffix, duration) {
-        var start = performance.now();
-        function tick(now) {
-            var elapsed = now - start;
-            var progress = Math.min(elapsed / duration, 1);
-            var eased = easeOutQuart(progress);
-            var current = Math.round(eased * target);
-            el.textContent = current + suffix;
-            if (progress < 1) {
-                requestAnimationFrame(tick);
-            }
-        }
-        requestAnimationFrame(tick);
-    }
-
-    var statsObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var statNums = entry.target.querySelectorAll('.stat-num');
-                statNums.forEach(function(el) {
-                    var text = el.textContent.trim();
-                    var suffix = '';
-                    if (text.indexOf('+') !== -1) {
-                        suffix = '+';
-                        text = text.replace('+', '');
-                    }
-                    var target = parseInt(text, 10);
-                    if (!isNaN(target)) {
-                        el.textContent = '0' + suffix;
-                        animateCounter(el, target, suffix, 1500);
-                    }
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    var statsStrip = document.querySelector('.stats-strip');
-    if (statsStrip) {
-        statsObserver.observe(statsStrip);
-    }
-})();
 </script>
 
 <script src="/js/consent.js" defer></script>

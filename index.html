@@ -270,9 +270,12 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
         .service-icon {
-            font-size: 28px;
-            margin-bottom: 16px;
             display: block;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            color: #ff6f20;
+            stroke-width: 1.75;
         }
         .service-card h3 {
             margin-bottom: 10px;
@@ -503,6 +506,15 @@
         .tally-embed iframe {
             background: transparent;
         }
+        .form-consent {
+            font-size: 12px;
+            color: var(--text-light);
+            text-align: center;
+            margin: 14px auto 0;
+            max-width: 640px;
+            line-height: 1.6;
+        }
+        .form-consent a { color: var(--accent); }
 
         /* ── Email Capture ───────────────────────────────────────────── */
         .email-capture {
@@ -691,8 +703,8 @@
                 "email": "hello@tailored-tools.com",
                 "telephone": "+447481789098",
                 "description": "Custom platforms for specialist businesses — websites, apps, and operating systems for owner-operated businesses, with AI baked in where it earns its keep. Plus agent optimisation and workshops.",
-                "image": "https://tailored-tools.com/img/tt-logo-dark.svg",
-                "logo": "https://tailored-tools.com/img/tt-logo-dark.svg",
+                "image": "https://tailored-tools.com/tt-logo-dark.svg",
+                "logo": "https://tailored-tools.com/tt-logo-dark.svg",
                 "priceRange": "££",
                 "founder": {
                     "@type": "Person",
@@ -700,8 +712,10 @@
                 },
                 "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": "Orchard House, 16 Pear Tree Lane",
                     "addressLocality": "Maidstone",
                     "addressRegion": "Kent",
+                    "postalCode": "ME15 9QY",
                     "addressCountry": "GB"
                 },
                 "geo": {
@@ -871,9 +885,13 @@
                 <span class="client-logo-name">Performance Interpreting</span>
                 <span class="client-logo-sector">BSL Interpretation</span>
             </a>
-            <a href="/projects" class="client-logo" aria-label="The Sonic Sanctuary project">
+            <a href="/projects#sonic-sanctuary" class="client-logo" aria-label="The Sonic Sanctuary project">
                 <span class="client-logo-name">The Sonic Sanctuary</span>
                 <span class="client-logo-sector">Sound Therapy</span>
+            </a>
+            <a href="/projects#amanda-jane-wellness" class="client-logo" aria-label="Amanda Jane Wellness project">
+                <span class="client-logo-name">Amanda Jane Wellness</span>
+                <span class="client-logo-sector">Wellness Practice</span>
             </a>
         </div>
     </div>
@@ -885,19 +903,19 @@
         <h2>What Tailored Tools Does</h2>
         <div class="services-grid">
             <div class="service-card">
-                <span class="service-icon">⚙️</span>
+                <svg class="service-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7h7v7"/><path d="M3 17h7v-7"/><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                 <h3>Custom Platforms</h3>
-                <p>Websites, apps, and operating systems built around how your business actually runs — with AI woven in where it earns its keep</p>
+                <p>Websites, apps, and operating systems built around how your business actually runs &mdash; with AI woven in where it earns its keep.</p>
             </div>
             <div class="service-card">
-                <span class="service-icon">🤝</span>
+                <svg class="service-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
                 <h3>Workshops</h3>
-                <p>Hands-on AI sessions for local businesses and teams, run through Kent AI</p>
+                <p>Hands-on AI sessions for local businesses and teams, run through Kent AI.</p>
             </div>
             <div class="service-card">
-                <span class="service-icon">🎯</span>
+                <svg class="service-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                 <h3>Agent Optimisation</h3>
-                <p>Make your business one AI confidently recommends to customers</p>
+                <p>Make your business the one AI confidently recommends to customers.</p>
             </div>
         </div>
     </div>
@@ -921,22 +939,17 @@
                 <p>An operating system that runs the business from a phone — bookings, payments, automated WhatsApp comms, event management, public website. Used daily, anywhere.</p>
                 <a href="/projects#sonic-sanctuary" class="project-link">View project &rarr;</a>
             </div>
+            <div class="project-card">
+                <p class="project-label">Wellness Practice</p>
+                <h3>Amanda Jane Wellness</h3>
+                <p>Public website plus an operating system to manage clients, sessions, and content — built so a one-person practice can run cleanly without a full back office.</p>
+                <a href="/projects#amanda-jane-wellness" class="project-link">View project &rarr;</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ── Testimonial ───────────────────────────────────────────────────── -->
-<section class="testimonial reveal">
-    <div class="container">
-        <blockquote class="testimonial-quote">
-            <p>"We went from juggling six different tools to one platform that handles bookings, payments, customer communications, and event management automatically. James built us a system that genuinely runs the business — our team of six uses it every single day and we haven't missed a booking since."</p>
-            <cite>
-                <strong>Marie Edwards</strong>
-                <span>Founder, Performance Interpreting — BSL Interpretation Services, UK</span>
-            </cite>
-        </blockquote>
-    </div>
-</section>
+<!-- ── Testimonial placeholder (re-enable when external client quotes ready) ── -->
 
 <!-- ── Brief About ────────────────────────────────────────────────────── -->
 <section class="brief-about reveal">
@@ -960,7 +973,7 @@
             <p>I run Kent AI — a free, grassroots community for anyone in Kent curious or concerned about AI. No jargon, no judgement, just real conversations. In-person in Maidstone, plus an active Facebook group and WhatsApp threads.</p>
             <div class="kac-event">
                 <span class="kac-event-label">Next meet-up</span>
-                <span class="kac-event-detail"><strong>Thu 21 May, 7pm</strong> &middot; The Bull, Linton, Maidstone</span>
+                <span class="kac-event-detail"><strong>Date TBA</strong> &middot; The Bull, Linton, Maidstone &middot; <a href="https://www.facebook.com/groups/1537764381187633/" target="_blank" rel="noopener">watch the Facebook group</a></span>
             </div>
             <div class="kac-ctas">
                 <a href="/community/" class="kac-primary">Join the Kent AI community &rarr;</a>
@@ -974,17 +987,17 @@
 <div class="stats-strip">
     <div class="stats-row">
         <div class="stat-item">
-            <div class="stat-num">4</div>
+            <div class="stat-num">7</div>
             <div class="stat-label">Live Platforms</div>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <div class="stat-num">190+</div>
+            <div class="stat-num">65</div>
             <div class="stat-label">Community Members</div>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <div class="stat-num">11</div>
+            <div class="stat-num">21</div>
             <div class="stat-label">Articles Published</div>
         </div>
     </div>
@@ -1024,20 +1037,27 @@
         <div class="tally-embed">
             <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
         </div>
+        <p class="form-consent">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>. We use your details to generate and send your AO Score and to follow up about AO services. We never sell your data or share it for advertising.</p>
     </div>
 </section>
 
 <!-- ── Footer ─────────────────────────────────────────────────────────── -->
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
-    <p>
-        <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a>
-        &middot;
-        <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
-        &middot;
-        <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    <p>Custom platforms, agent optimisation, and workshops &mdash; for small businesses with serious ambition.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p class="footer-meta">
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+        &middot; <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot; <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
     </p>
-    <p style="margin-top: 10px;">&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
 <script>

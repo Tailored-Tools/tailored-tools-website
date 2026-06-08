@@ -371,7 +371,7 @@
         }
         .stat-label {
             font-size: 13px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.6);
             line-height: 1.5;
             max-width: 140px;
             margin: 0 auto;
@@ -382,6 +382,21 @@
             background: rgba(255,255,255,0.08);
             flex-shrink: 0;
         }
+        .stat-sources {
+            font-size: 11px;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            margin: 24px auto 0;
+            max-width: 720px;
+            padding: 0 24px;
+            line-height: 1.6;
+        }
+        .stat-sources a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: underline;
+            text-decoration-color: rgba(255,255,255,0.25);
+        }
+        .stat-sources a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
         /* Audit preview card */
         .audit-preview-wrap {
@@ -1453,6 +1468,12 @@
             <div class="stat-label">conversion rate from AI referrals</div>
         </div>
     </div>
+    <p class="stat-sources">
+        Sources:
+        ChatGPT weekly active users &mdash; <a href="https://openai.com/index/" target="_blank" rel="noopener">OpenAI announcement</a>, 2025.
+        Zero-click search behaviour &mdash; <a href="https://sparktoro.com/blog/" target="_blank" rel="noopener">SparkToro / Datos research</a>, 2024.
+        AI referral conversion rate &mdash; <a href="https://business.adobe.com/blog/" target="_blank" rel="noopener">Adobe Analytics</a>, 2024.
+    </p>
 </div>
 
 <!-- The Shift -->
@@ -1563,6 +1584,7 @@
         <div class="tally-embed-wrapper" style="max-width: 600px; margin-top: 32px;">
             <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
         </div>
+        <p style="font-size: 12px; color: rgba(255,255,255,0.55); text-align: center; margin: 14px auto 0; max-width: 640px; line-height: 1.6;">By submitting, you agree to our <a href="/privacy.html" style="color: var(--accent);">Privacy Policy</a>. We use your details to generate and send your AO Score and to follow up about AO services. We never sell your data or share it for advertising.</p>
 
         <div class="free-score-steps">
             <div class="free-score-step">
@@ -1739,6 +1761,7 @@
             </div>
         </div>
         <p style="text-align:center; font-size:13px; color:var(--text-light); margin-top:20px;">The difference between these two results is algorithmic trust — making your business information readable and verifiable by AI.<br><a href="/ao/methodology.html" style="color:var(--accent); font-weight:600; text-decoration:none;">See exactly how we score your business &rarr;</a></p>
+        <p style="text-align:center; font-size:12px; color:var(--text-light); margin-top:32px; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.6;">All AO purchases are B2B and subject to our <a href="/terms.html" style="color:var(--accent);">Terms of Service</a> and <a href="/privacy.html" style="color:var(--accent);">Privacy Policy</a>. Payments are processed securely by Stripe. By clicking any "Get" button above you confirm you are purchasing for business purposes.</p>
     </div>
 </section>
 
@@ -2217,7 +2240,20 @@
 
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
-    <p>&copy; 2026 Tailored Tools. All rights reserved. &middot; <a href="/privacy.html">Privacy Policy</a></p>
+    <p>Custom platforms, agent optimisation, and workshops &mdash; for small businesses with serious ambition.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p class="footer-meta">
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+        &middot; <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot; <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
 </footer>
 
 

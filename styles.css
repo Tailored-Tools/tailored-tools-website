@@ -42,6 +42,14 @@ nav {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     nav { background: var(--dark); }
 }
+/* Solid state, applied by /js/nav.js when scrolled over a light section.
+   Translucency over white goes muddy grey-blue, so we drop the glass here. */
+nav.nav-solid {
+    background: var(--dark);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: rgba(255, 255, 255, 0.10);
+}
 .nav-inner {
     max-width: var(--max-width);
     margin: 0 auto;

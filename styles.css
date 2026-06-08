@@ -165,7 +165,7 @@ h3 {
 
 /* ── Stats strip ────────────────────────────────────────────── */
 .stats-strip {
-    background: #121f2b;
+    background: var(--dark);
     border-bottom: 1px solid rgba(255,255,255,0.06);
     padding: 32px 24px;
 }

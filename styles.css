@@ -28,11 +28,14 @@ body {
 }
 
 /* ── Nav ────────────────────────────────────────────────────── */
+/* Bottom rule is always a real CSS border so the nav has a clear edge
+   regardless of what section sits behind it. Width and brightness vary
+   per state (at-top thicker, glassy/solid thinner). */
 nav {
     background: rgba(13, 27, 42, 0.55);
     backdrop-filter: saturate(180%) blur(16px);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
     padding: 16px 24px;
     position: sticky;
     top: 0;
@@ -48,7 +51,7 @@ nav.nav-solid {
     background: var(--dark);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border-bottom-color: rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
 }
 /* At-top state, applied by /js/nav.js when scrollY ~ 0. Solid dark with
    a thick white rule to anchor the top of the page; glass kicks in as
@@ -57,7 +60,7 @@ nav.nav-at-top {
     background: var(--dark);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.92);
 }
 .nav-inner {
     max-width: var(--max-width);

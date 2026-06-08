@@ -92,7 +92,7 @@
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Six AI words you'll keep hearing",
-      "description": "Token, context, hallucination, agent, RAG, and MCP — defined in plain English.",
+      "description": "Token, context, hallucination, agent, RAG, and MCP, defined in plain English.",
       "image": "https://tailored-tools.com/images/blog/six-ai-words-youll-keep-hearing.png",
       "author": { "@type": "Person", "name": "James Edwards", "url": "https://tailored-tools.com/about" },
       "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" },
@@ -163,13 +163,13 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
 </div>
 
 <div class="article-body">
-    <p>Every AI conversation eventually produces a word that lands awkwardly. Someone uses it like everyone knows what it means. Some people do. Most are nodding along. The point of this glossary isn't to make you sound clever — it's to let you follow the conversation without nodding along, and to call out when someone is using a word vaguely.</p>
+    <p>Every AI conversation eventually produces a word that lands awkwardly. Someone uses it like everyone knows what it means. Some people do. Most are nodding along. The point of this glossary isn't to make you sound clever, it's to let you follow the conversation without nodding along, and to call out when someone is using a word vaguely.</p>
     <p>Six terms, defined the way I'd actually explain them to a friend.</p>
 
     <div class="term-card">
         <div class="term-name">Token</div>
         <div class="term-pron">noun · the unit AI thinks in</div>
-        <p>A chunk of text — usually part of a word, sometimes a whole short word, sometimes punctuation. The word "tomorrow" is two tokens. "It's" is two tokens. AI doesn't read words the way you do; it reads tokens.</p>
+        <p>A chunk of text, usually part of a word, sometimes a whole short word, sometimes punctuation. The word "tomorrow" is two tokens. "It's" is two tokens. AI doesn't read words the way you do; it reads tokens.</p>
         <p>You'll hear about tokens because most AI tools price by them, and most have a maximum number they can handle in one go. Rough rule: 1,000 tokens is about 750 English words.</p>
         <div class="meta">Heard most often when someone says: "we hit the token limit"</div>
     </div>
@@ -178,14 +178,14 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
         <div class="term-name">Context</div>
         <div class="term-pron">noun · everything AI is currently seeing</div>
         <p>The full set of text the AI has in front of it as it produces a reply. Your prompt. The chat history above. Any documents you uploaded. Any system instructions the tool added in the background.</p>
-        <p>Each model has a <strong>context window</strong> — the maximum amount of text it can hold at once. Past that, the earliest stuff gets pushed out. This is why long chats start to "forget" things you said at the beginning. Not malice. Capacity.</p>
+        <p>Each model has a <strong>context window</strong>, the maximum amount of text it can hold at once. Past that, the earliest stuff gets pushed out. This is why long chats start to "forget" things you said at the beginning. Not malice. Capacity.</p>
         <div class="meta">Heard most often when someone says: "I gave it too much context"</div>
     </div>
 
     <div class="term-card">
         <div class="term-name">Hallucination</div>
         <div class="term-pron">noun · when AI confidently invents something</div>
-        <p>An output that sounds factual but isn't. The book that doesn't exist. The quote that was never said. The page number that points to the wrong section. Hallucinations are the most dangerous AI failure mode because they look exactly like correct answers — confident, fluent, plausible.</p>
+        <p>An output that sounds factual but isn't. The book that doesn't exist. The quote that was never said. The page number that points to the wrong section. Hallucinations are the most dangerous AI failure mode because they look exactly like correct answers, confident, fluent, plausible.</p>
         <p>They happen because AI predicts the most likely next word, not the most likely true word. If something would <em>sound</em> right in that position, it gets produced.</p>
         <div class="meta">Heard most often when someone says: "it just made up the source"</div>
     </div>
@@ -193,7 +193,7 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     <div class="term-card">
         <div class="term-name">Agent</div>
         <div class="term-pron">noun · AI that does things, not just answers</div>
-        <p>An AI system that takes actions on someone's behalf — not just producing text, but actually doing the thing. Booking the meeting. Sending the email. Filing the form. Buying the train ticket.</p>
+        <p>An AI system that takes actions on someone's behalf, not just producing text, but actually doing the thing. Booking the meeting. Sending the email. Filing the form. Buying the train ticket.</p>
         <p>The output of an agent is action, not language. That changes the stakes considerably. A wrong answer is annoying; a wrong action moves money or sends emails to actual humans. Treat them with care, and never give them more permission than the task needs.</p>
         <div class="meta">Heard most often when someone says: "I let the agent handle it"</div>
     </div>
@@ -201,7 +201,7 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     <div class="term-card">
         <div class="term-name">RAG</div>
         <div class="term-pron">noun · Retrieval-Augmented Generation</div>
-        <p>A setup where AI is given access to specific documents — your handbook, your knowledge base, your past emails — and is told to look at those before answering. Instead of relying purely on what was in its training data, it retrieves the relevant bit first, then writes the answer.</p>
+        <p>A setup where AI is given access to specific documents, your handbook, your knowledge base, your past emails, and is told to look at those before answering. Instead of relying purely on what was in its training data, it retrieves the relevant bit first, then writes the answer.</p>
         <p>RAG is the technique behind most "AI that knows your business" tools. Done well, it makes the answers grounded and citeable. Done badly, it gives you confident answers from out-of-date documents.</p>
         <div class="meta">Heard most often when someone says: "we set up RAG over the company wiki"</div>
     </div>
@@ -209,7 +209,7 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     <div class="term-card">
         <div class="term-name">MCP</div>
         <div class="term-pron">noun · Model Context Protocol</div>
-        <p>A standard way for AI tools to connect to other things — your calendar, your email, your files, a database, a third-party service. Think of it as the plumbing that lets AI reach beyond its own chat window into the rest of your software.</p>
+        <p>A standard way for AI tools to connect to other things, your calendar, your email, your files, a database, a third-party service. Think of it as the plumbing that lets AI reach beyond its own chat window into the rest of your software.</p>
         <p>MCP is mostly a developer concern, but you'll hear it mentioned because it's how a lot of the "AI agent" experiences are being built right now. If you remember nothing else: it's a connector standard, like how a USB port is a standard.</p>
         <div class="meta">Heard most often when someone says: "we connected it via MCP"</div>
     </div>

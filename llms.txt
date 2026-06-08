@@ -9,10 +9,10 @@ Tailored Tools builds AI-powered business systems and helps small service busine
 ## Live Projects
 
 ### Performance Interpreting
-A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026 — 800+ downloads in the first month, 50+ interpreter requests, first bookings already confirmed) so venues and event organisers can request interpreter coverage in a few taps. The wider PI OS booking platform (interpreter database of 379 BSL + Irish interpreters, staff portal, email extraction, integrations) is in progress beneath it.
+A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026, 800+ downloads in the first month, 50+ interpreter requests, first bookings already confirmed) so venues and event organisers can request interpreter coverage in a few taps. The wider PI OS booking platform (interpreter database of 379 BSL + Irish interpreters, staff portal, email extraction, integrations) is in progress beneath it.
 - https://tailored-tools.com/projects/performance-interpreting
 
-### PI Events App — consumer-side case study
+### PI Events App (consumer-side case study)
 Native iOS and Android app for the UK Deaf community: every PI-delivered BSL/ISL event in one place, AI-drafted access request emails for events without coverage, a Communication Tool Kit for the venue itself (I am Deaf / Emergency / My Order / live speech-to-text cards), sign-language video on every screen, offline-first, BSL-first onboarding. Peer-recommended at DeafExpo 2026, featured by The Limping Chicken.
 - https://tailored-tools.com/projects/pi-events-app
 
@@ -22,19 +22,19 @@ Built a unified business platform replacing 6 separate tools. Event management, 
 
 ## Agent Optimisation (AO)
 
-### AO Audit — £247
+### AO Audit, £247
 A scored audit across six dimensions: data readability, service descriptions, pricing signals, trust signals, availability, and AI visibility. PDF report with prioritised recommendations. Turnaround: 5 working days.
 
-### AO Implementation — from £497
+### AO Implementation, from £497
 Making your business fully AI-readable so AI agents can confidently recommend you.
 
-### AO Audit + Implementation Bundle — £697
+### AO Audit + Implementation Bundle, £697
 Full audit followed by complete implementation. Save £47 vs booking separately.
 
-### AO Monitoring — £97/month
+### AO Monitoring, £97/month
 Monthly AI credibility monitoring across ChatGPT, Perplexity, Gemini, and Claude. Accuracy checks, narrative protection, competitor tracking, regression alerts. Annual: £970/year.
 
-### AO Workshops — available on request
+### AO Workshops (available on request)
 90-120 minute hands-on workshop with live audit demonstration for up to 30 people.
 
 - https://tailored-tools.com/ao/
@@ -63,7 +63,7 @@ Hands-on AI workshops for local businesses and teams in Maidstone, Kent. No jarg
 
 ## About
 
-Tailored Tools is the trading name of James Edwards (sole trader, established April 2026). Based in Maidstone, Kent, UK. James runs The Sonic Sanctuary (his own sound therapy practice) and built platforms for Performance Interpreting (run by his spouse Marie Pascall) and Amanda Jane Wellness. Not a tech person selling AI — a business owner who found it genuinely useful and now helps other small businesses do the same.
+Tailored Tools is the trading name of James Edwards (sole trader, established April 2026). Based in Maidstone, Kent, UK. James runs The Sonic Sanctuary (his own sound therapy practice) and built platforms for Performance Interpreting (run by his spouse Marie Pascall) and Amanda Jane Wellness. Not a tech person selling AI, a business owner who found it genuinely useful and now helps other small businesses do the same.
 - https://tailored-tools.com/about
 
 ## Contact
@@ -79,7 +79,7 @@ Tailored Tools is the trading name of James Edwards (sole trader, established Ap
 Plain-English articles on AI for small businesses and curious humans. Organised into six series, plus standalone launch posts.
 
 ### Launch posts (standalone milestones from our own builds)
-- https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html — The PI Events App, two weeks in: 750+ downloads, 50+ interpreter requests, first bookings confirmed (May 2026)
+- https://tailored-tools.com/ao/blog/pi-events-app-two-weeks-in.html, The PI Events App, two weeks in: 750+ downloads, 50+ interpreter requests, first bookings confirmed (May 2026)
 
 ### Agent Optimisation (the original Tailored Tools track)
 - https://tailored-tools.com/ao/blog/series/agent-optimisation/
@@ -105,7 +105,7 @@ Plain-English articles on AI for small businesses and curious humans. Organised 
 - https://tailored-tools.com/ao/blog/series/walkthroughs/
 - https://tailored-tools.com/ao/blog/the-ai-trust-ladder.html
 
-### Friction (where AI gets stuck — content coming)
+### Friction (where AI gets stuck, content coming)
 - https://tailored-tools.com/ao/blog/series/friction/
 
 ### Starter packs (first prompts by role)
@@ -119,4 +119,4 @@ Plain-English articles on AI for small businesses and curious humans. Organised 
 - https://tailored-tools.com/ao/blog/series/jargon-glossary/
 - https://tailored-tools.com/ao/blog/six-ai-words-youll-keep-hearing.html
 
-The Anti-hype, Walkthroughs, Friction, Starter packs, and Jargon glossary series grew out of the Kent AI Meet Up — a free in-person community in Kent for people curious or concerned about AI.
+The Anti-hype, Walkthroughs, Friction, Starter packs, and Jargon glossary series grew out of the Kent AI Meet Up, a free in-person community in Kent for people curious or concerned about AI.

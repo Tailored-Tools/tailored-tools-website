@@ -314,26 +314,45 @@ h3 {
     .consent-banner { left: 12px; right: 12px; bottom: 12px; max-width: none; }
 }
 
-/* Placeholder shown in lieu of a blocked Tally embed */
+/* Placeholder shown in lieu of a third-party embed awaiting consent.
+   Styled to work on both light and dark parent sections via translucent
+   surfaces and a brand-accent CTA. */
 .embed-blocked {
-    border: 1px dashed rgba(255,255,255,0.22);
-    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
     padding: 28px 24px;
     text-align: center;
-    color: var(--text-light);
-    background: var(--light);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    font-size: 14px;
 }
-.embed-blocked strong { display: block; color: var(--primary); margin-bottom: 6px; font-size: 15px; }
+.embed-blocked strong {
+    display: block;
+    color: var(--white);
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.embed-blocked a { color: var(--accent); }
 .embed-blocked button {
-    margin-top: 12px;
+    margin-top: 16px;
     background: var(--accent);
     color: var(--white);
     border: none;
-    padding: 10px 18px;
+    padding: 11px 22px;
     border-radius: 6px;
     font-weight: 700;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px;
     font-family: inherit;
+    transition: opacity 0.2s;
 }
 .embed-blocked button:hover { opacity: 0.88; }
+/* Light-section variant: parent can opt in by adding .on-light */
+.embed-blocked.on-light {
+    background: var(--light);
+    border-color: rgba(0,0,0,0.08);
+    color: var(--text-light);
+}
+.embed-blocked.on-light strong { color: var(--primary); }

@@ -29,10 +29,10 @@ body {
 
 /* ── Nav ────────────────────────────────────────────────────── */
 nav {
-    background: rgba(13, 27, 42, 0.72);
-    backdrop-filter: saturate(180%) blur(14px);
-    -webkit-backdrop-filter: saturate(180%) blur(14px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(13, 27, 42, 0.55);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
     padding: 16px 24px;
     position: sticky;
     top: 0;

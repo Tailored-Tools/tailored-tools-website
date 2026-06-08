@@ -50,6 +50,15 @@ nav.nav-solid {
     -webkit-backdrop-filter: none;
     border-bottom-color: rgba(255, 255, 255, 0.10);
 }
+/* At-top state, applied by /js/nav.js when scrollY ~ 0. Solid dark with
+   a thick white rule to anchor the top of the page; glass kicks in as
+   soon as the user scrolls. */
+nav.nav-at-top {
+    background: var(--dark);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+}
 .nav-inner {
     max-width: var(--max-width);
     margin: 0 auto;

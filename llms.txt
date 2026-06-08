@@ -9,7 +9,7 @@ Tailored Tools builds AI-powered business systems and helps small service busine
 ## Live Projects
 
 ### Performance Interpreting
-A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026, 800+ downloads in the first month, 50+ interpreter requests, first bookings already confirmed) so venues and event organisers can request interpreter coverage in a few taps. The wider PI OS booking platform (interpreter database of 379 BSL + Irish interpreters, staff portal, email extraction, integrations) is in progress beneath it.
+A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026). Month 1 traction: 800+ downloads, 110+ venues onboarded with access and contact data, around £5,000 of bookings generated through app-originated interpreter requests, and the first confirmed bookings already delivered. The wider PI OS booking platform (interpreter database of 379 BSL + Irish interpreters, staff portal, email extraction, integrations) is in progress beneath it.
 - https://tailored-tools.com/projects/performance-interpreting
 
 ### PI Events App (consumer-side case study)
@@ -17,7 +17,7 @@ Native iOS and Android app for the UK Deaf community: every PI-delivered BSL/ISL
 - https://tailored-tools.com/projects/pi-events-app
 
 ### The Sonic Sanctuary
-Built a unified business platform replacing 6 separate tools. Event management, Stripe payments, intro pass system, WhatsApp integration (140+ member community), customer comms, B2B booking, and a public website fed from the same data source.
+Built a unified business platform replacing 6 separate tools. Event management, Stripe payments, intro pass system, WhatsApp integration (210-member community), customer comms, B2B booking, and a public website fed from the same data source. Reaches an audience of 1,259 across WhatsApp (210), Facebook (614), and Instagram (435), and saves roughly 5 hours of admin a week.
 - https://tailored-tools.com/projects
 
 ## Agent Optimisation (AO)

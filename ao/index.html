@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=6">
+    <link rel="stylesheet" href="/styles.css?v=7">
     <style>
         :root {
             --primary: #203a4c;
@@ -1576,9 +1576,30 @@
             </div>
         </div>
 
-        <div class="tally-embed-wrapper" style="max-width: 600px; margin-top: 32px;">
-            <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
-        </div>
+        <form class="ao-form" data-endpoint="https://REPLACE_AFTER_DEPLOY.workers.dev/ao-score" style="margin-top: 32px;" novalidate>
+            <div class="ao-form-row">
+                <label for="ao-name-2">Your name</label>
+                <input id="ao-name-2" name="name" type="text" required maxlength="200" autocomplete="name">
+            </div>
+            <div class="ao-form-row">
+                <label for="ao-business-2">Business name</label>
+                <input id="ao-business-2" name="business" type="text" required maxlength="200" autocomplete="organization">
+            </div>
+            <div class="ao-form-row">
+                <label for="ao-url-2">Website URL</label>
+                <input id="ao-url-2" name="url" type="url" required maxlength="500" placeholder="https://yourbusiness.com" autocomplete="url">
+            </div>
+            <div class="ao-form-row">
+                <label for="ao-email-2">Email address</label>
+                <input id="ao-email-2" name="email" type="email" required maxlength="200" autocomplete="email">
+            </div>
+            <div class="ao-form-honeypot" aria-hidden="true">
+                <label for="ao-website-url-confirm-2">Leave this empty</label>
+                <input id="ao-website-url-confirm-2" name="website_url_confirm" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="ao-form-submit">Get my AO Score &rarr;</button>
+            <div class="ao-form-status" aria-live="polite"></div>
+        </form>
         <p style="font-size: 12px; color: rgba(255,255,255,0.55); text-align: center; margin: 14px auto 0; max-width: 640px; line-height: 1.6;">By submitting, you agree to our <a href="/privacy.html" style="color: var(--accent);">Privacy Policy</a>. We use your details to generate and send your AO Score and to follow up about AO services. We never sell your data or share it for advertising.</p>
 
         <div class="free-score-steps">
@@ -2389,7 +2410,7 @@ document.querySelectorAll('.ao-card').forEach(function(card) {
     });
 });
 </script>
-<script src="/js/consent.js?v=2" defer></script>
+<script src="/js/ao-form.js" defer></script>
 <script>
 document.querySelector('.hamburger').addEventListener('click', function() {
     this.classList.toggle('active');

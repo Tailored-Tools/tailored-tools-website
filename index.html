@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=6">
+    <link rel="stylesheet" href="/styles.css?v=7">
 
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
@@ -1016,9 +1016,30 @@
                 <p>Are AI agents actually mentioning you when asked?</p>
             </div>
         </div>
-        <div class="tally-embed">
-            <iframe data-tally-src="https://tally.so/embed/44kaMB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get Your Free AO Score"></iframe>
-        </div>
+        <form class="ao-form" data-endpoint="https://REPLACE_AFTER_DEPLOY.workers.dev/ao-score" novalidate>
+            <div class="ao-form-row">
+                <label for="ao-name">Your name</label>
+                <input id="ao-name" name="name" type="text" required maxlength="200" autocomplete="name">
+            </div>
+            <div class="ao-form-row">
+                <label for="ao-business">Business name</label>
+                <input id="ao-business" name="business" type="text" required maxlength="200" autocomplete="organization">
+            </div>
+            <div class="ao-form-row">
+                <label for="ao-url">Website URL</label>
+                <input id="ao-url" name="url" type="url" required maxlength="500" placeholder="https://yourbusiness.com" autocomplete="url">
+            </div>
+            <div class="ao-form-row">
+                <label for="ao-email">Email address</label>
+                <input id="ao-email" name="email" type="email" required maxlength="200" autocomplete="email">
+            </div>
+            <div class="ao-form-honeypot" aria-hidden="true">
+                <label for="ao-website-url-confirm">Leave this empty</label>
+                <input id="ao-website-url-confirm" name="website_url_confirm" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="ao-form-submit">Get my AO Score &rarr;</button>
+            <div class="ao-form-status" aria-live="polite"></div>
+        </form>
         <p class="form-consent">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>. We use your details to generate and send your AO Score and to follow up about AO services. We never sell your data or share it for advertising.</p>
     </div>
 </section>
@@ -1089,7 +1110,7 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
 </script>
 
 <script src="/js/nav.js?v=2" defer></script>
-<script src="/js/consent.js?v=2" defer></script>
+<script src="/js/ao-form.js" defer></script>
 
 </body>
 </html>

@@ -1,0 +1,15 @@
+name = "ao-form"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# RESEND_API_KEY is provided at deploy time via:
+#   wrangler secret put RESEND_API_KEY
+# Never commit the key to git.
+
+[vars]
+# Public, non-secret config (overridable per environment if needed).
+FROM_EMAIL = "noreply@tailored-tools.com"
+TO_EMAIL   = "ao@tailored-tools.com"
+
+# CORS allow-list. Add staging origins here when needed.
+ALLOWED_ORIGINS = "https://tailored-tools.com,https://www.tailored-tools.com"

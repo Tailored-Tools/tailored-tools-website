@@ -246,6 +246,99 @@ h3 {
 }
 .btn-accent:hover { opacity: 0.9; }
 
+/* ── AO Score form (native, self-hosted) ────────────────────── */
+.ao-form {
+    max-width: 520px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.ao-form-row { display: flex; flex-direction: column; gap: 6px; }
+.ao-form-row label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+.ao-form-row input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.4;
+    transition: border-color 0.15s, background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.ao-form-row input::placeholder { color: rgba(255, 255, 255, 0.35); }
+.ao-form-row input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.06);
+}
+.ao-form-row input:invalid { box-shadow: none; }
+.ao-form-honeypot {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+}
+.ao-form-submit {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    border: 0;
+    border-radius: 6px;
+    padding: 14px 24px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 4px;
+}
+.ao-form-submit:hover { opacity: 0.9; }
+.ao-form-submit:disabled { opacity: 0.6; cursor: progress; }
+.ao-form-status {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    min-height: 1em;
+}
+.ao-form-status-error { color: #ff8a5b; }
+.ao-form-success {
+    text-align: center;
+    padding: 24px 12px;
+    border: 1px solid rgba(22, 163, 74, 0.4);
+    background: rgba(22, 163, 74, 0.08);
+    border-radius: 10px;
+    color: var(--white);
+}
+.ao-form-success h3 {
+    color: var(--white);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.ao-form-success p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+/* Form-consent disclosure shown beneath the form on dark sections */
+.ao-form ~ .form-consent {
+    color: rgba(255, 255, 255, 0.5);
+}
+.ao-form ~ .form-consent a { color: var(--accent); }
+
 /* ── Mobile responsive ──────────────────────────────────────── */
 @media (max-width: 768px) {
     /* Nav: hide CTA, show hamburger, open mobile menu */

@@ -73,12 +73,12 @@ nav.nav-at-top {
     justify-content: space-between;
     align-items: center;
 }
-/* Logo: tt-logo-light.svg (white version) on dark nav */
+/* Logo: tt-logo-light.png (white version) on dark nav */
 .nav-logo {
     display: block;
     width: 175px;
     height: 48px;
-    background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat;
+    background: url('/tt-logo-light.png') 62% 50% / 215px auto no-repeat;
     flex-shrink: 0;
 }
 .nav-links {
@@ -138,11 +138,11 @@ footer {
     padding: 48px 24px 32px;
     text-align: center;
 }
-/* Logo: tt-logo-light.svg (white version) centred in footer */
+/* Logo: tt-logo-light.png (white version) centred in footer */
 .footer-logo-wrap {
     width: 210px;
     height: 72px;
-    background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat;
+    background: url('/tt-logo-light.png') 62% 50% / 255px auto no-repeat;
     margin: 0 auto 12px;
 }
 footer p   { font-size: 13px; line-height: 1.6; }

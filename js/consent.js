@@ -82,15 +82,19 @@
         }
     });
 
-    if (stored === 'granted') {
-        loadTally();
-    } else if (stored === 'denied') {
-        showBlockedPlaceholders();
-    } else {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', buildBanner);
+    function init() {
+        if (stored === 'granted') {
+            loadTally();
         } else {
-            buildBanner();
+            // 'denied' or no-decision-yet: show placeholder so the AO Score CTA
+            // is visible. No-decision-yet also shows the banner below.
+            showBlockedPlaceholders();
+            if (stored !== 'denied') buildBanner();
         }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
     }
 })();

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sonic Sanctuary, Client Portfolio | Tailored Tools</title>
+    <meta name="description" content="A sound therapy practice in Maidstone running on a unified business platform we built. Replaces six disconnected tools with one operating system used daily, anywhere.">
+
+    <link rel="canonical" href="https://tailored-tools.com/projects/sonic-sanctuary">
+
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/projects/sonic-sanctuary">
+    <meta property="og:title" content="The Sonic Sanctuary, Client Portfolio | Tailored Tools">
+    <meta property="og:description" content="A sound therapy practice running on a unified business platform: events, Stripe payments, WhatsApp comms, public site, all from one operating system.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Sonic Sanctuary, Client Portfolio | Tailored Tools">
+    <meta name="twitter:description" content="A sound therapy practice running on a unified business platform we built.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=5">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 880px;
+            --green: #16A34A;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        nav { padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
+        .nav-cta:hover { background: #e55e10; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
+
+        .project-hero { background: var(--dark); padding: 56px 24px 48px; color: var(--white); border-bottom: 3px solid var(--accent); }
+        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+        .back-link { display: inline-block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 24px; }
+        .back-link:hover { color: var(--accent); }
+        .project-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .project-hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+        .project-hero .lead { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 640px; line-height: 1.7; }
+
+        .section { padding: 72px 24px; background: var(--white); }
+        .section:nth-child(even) { background: var(--light); }
+        .inner { max-width: var(--max-width); margin: 0 auto; }
+        .section h2 { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 14px; }
+        .section h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin: 22px 0 10px; }
+        .section p { font-size: 16px; color: var(--text); margin-bottom: 18px; line-height: 1.8; }
+        .section ul { margin: 0 0 18px 22px; }
+        .section li { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 6px; }
+        .section a.inline { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
+        .section a.inline:hover { border-bottom-color: var(--accent); }
+
+        .status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+        .status-pill.live { background: rgba(22,163,74,0.12); color: var(--green); }
+        .status-pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0 28px; }
+        .stat-tile { background: var(--white); border: 1px solid #e8ecf0; border-radius: 10px; padding: 22px 20px; text-align: left; }
+        .stat-num { font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1.1; margin-bottom: 6px; }
+        .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+        .replaced-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 28px; }
+        .replaced-card { background: rgba(231,76,60,0.05); border: 1px dashed rgba(231,76,60,0.3); border-radius: 8px; padding: 14px 16px; font-size: 14px; }
+        .replaced-card strong { display: block; font-weight: 700; color: var(--primary); margin-bottom: 2px; font-size: 15px; }
+        .replaced-card span { color: var(--text-light); font-size: 13px; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+        .feature-card { background: var(--white); border: 1px solid #e8ecf0; border-radius: 10px; padding: 22px 22px; }
+        .section:nth-child(even) .feature-card { background: var(--white); }
+        .feature-card h4 { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.65; margin: 0; }
+
+        .section-cta { background: var(--dark); text-align: center; }
+        .section-cta h2 { color: var(--white); margin-bottom: 12px; }
+        .section-cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; }
+        .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .btn-primary:hover { background: #e55e10; }
+
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
+        .footer-logo-wrap { width: 210px; height: 72px; background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; margin: 0 auto 16px; }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+        .footer-disclosure { max-width: 640px; margin: 20px auto 18px; padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .footer-disclosure p { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+
+        @media (max-width: 768px) {
+            .project-hero { padding: 44px 20px 36px; }
+            .section { padding: 56px 20px; }
+            .stat-grid, .replaced-grid, .feature-grid { grid-template-columns: 1fr; gap: 12px; }
+            .stat-num { font-size: 30px; }
+            .hamburger { display: block; }
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 16px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Sonic Sanctuary, Client Portfolio",
+      "description": "A sound therapy practice running on a unified business platform built by Tailored Tools.",
+      "author": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+      "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" },
+      "mainEntityOfPage": "https://tailored-tools.com/projects/sonic-sanctuary"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://tailored-tools.com/projects" },
+        { "@type": "ListItem", "position": 3, "name": "The Sonic Sanctuary", "item": "https://tailored-tools.com/projects/sonic-sanctuary" }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects" class="active">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="project-hero">
+    <div class="hero-inner">
+        <a href="/projects" class="back-link">&larr; All projects</a>
+        <span class="status-pill live">Live in production</span>
+        <div class="project-label">Sound Therapy &middot; Maidstone, Kent</div>
+        <h1>The Sonic Sanctuary</h1>
+        <p class="lead">A sound therapy and sound bath practice run from a phone. One operating system handles bookings, payments, event management, customer comms, and the public website, replacing six disconnected tools that previously didn't talk to each other.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>The problem</h2>
+        <p>Running a one-person specialist practice on off-the-shelf tools meant Square for payments, Weebly for a website, Carrd for a landing page, Google Sheets for tracking, WhatsApp for community comms, and email for everything else. Six separate places to update. Nothing in sync. Most evenings spent reconciling what had happened during the day.</p>
+        <div class="replaced-grid">
+            <div class="replaced-card"><strong>Square</strong><span>Payments</span></div>
+            <div class="replaced-card"><strong>Weebly</strong><span>Website</span></div>
+            <div class="replaced-card"><strong>Carrd</strong><span>Landing page</span></div>
+            <div class="replaced-card"><strong>Google Sheets</strong><span>Manual tracking</span></div>
+            <div class="replaced-card"><strong>WhatsApp</strong><span>Manual messages</span></div>
+            <div class="replaced-card"><strong>Email</strong><span>Manual comms</span></div>
+        </div>
+        <p>Each tool was fine on its own. The problem was the gaps between them, and the time spent gluing them together by hand.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>What we built</h2>
+        <p>A custom operating system, the SS OS, that hubs everything. One sign-in. One source of truth. Public events update automatically on the public website. Stripe receipts trigger WhatsApp confirmations. Customer records build themselves as people book. The phone runs the whole business; nothing else is needed day-to-day.</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Event Management</h4>
+                <p>Create, duplicate, edit, and retire sound bath and drum circle events. Capacity tracking. Auto-expiry. Published instantly to the public site.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Stripe Payments</h4>
+                <p>Online bookings via Stripe Checkout. Receipts emailed automatically. Refunds handled inside the dashboard, no separate Stripe login needed.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Intro Pass System</h4>
+                <p>First-time-visitor passes at a reduced rate. One per customer, automatically enforced via email lookup. No manual checking.</p>
+            </div>
+            <div class="feature-card">
+                <h4>WhatsApp Integration</h4>
+                <p>Automated event announcements to a 210-member sound bath community. Booking confirmations and reminders fire on schedule, no manual sends.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Customer Comms</h4>
+                <p>Booking confirmations, intro pass guidance, follow-ups via email. B2B invoicing for corporate clients, separated from public event flows.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Public Website</h4>
+                <p>Events page reads from the same data source as the dashboard. Real-time availability. No double-entry, no stale listings.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>By the numbers</h2>
+        <div class="stat-grid">
+            <div class="stat-tile">
+                <div class="stat-num">1,259</div>
+                <div class="stat-label">Combined community across WhatsApp (210), Facebook (614), Instagram (435)</div>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-num">5h+</div>
+                <div class="stat-label">Admin time saved per week, by the founder's own estimate</div>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-num">6 &rarr; 1</div>
+                <div class="stat-label">Tools consolidated into a single operating system</div>
+            </div>
+        </div>
+        <p>The OS runs from the founder's phone. Events can be created from a venue car park, payments verified between client sessions, and announcements scheduled while putting the kids to bed. The point isn't volume; it's removing the friction that quietly costs a one-person practice its evenings.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>About the business</h2>
+        <p><strong>The Sonic Sanctuary</strong> is a Maidstone-based sound therapy and sound bath practice. Public events run monthly at venues across Kent; private sessions and corporate bookings handled separately. The OS is intentionally invisible to attendees, customers see a clean public site, a smooth checkout, and the right reminders at the right time.</p>
+        <p>Founded and run by James Edwards, who also built Tailored Tools. The Sonic Sanctuary is the founder's own practice, which means the platform is dogfooded every day. Anything that breaks gets fixed; anything that's awkward gets reshaped. It's the slowest-moving but most lived-in of the platforms we ship.</p>
+        <p><a class="inline" href="https://thesonicsanctuary.uk" target="_blank" rel="noopener">Visit thesonicsanctuary.uk &rarr;</a></p>
+    </div>
+</section>
+
+<section class="section section-cta">
+    <h2>Want something similar?</h2>
+    <p>One operating system for the whole business, built around how you actually work. Not templates, not bloat, not a SaaS tower of subscriptions.</p>
+    <a href="mailto:hello@tailored-tools.com?subject=Custom%20platform%20enquiry" class="btn-primary">Get in touch &rarr;</a>
+</section>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>Custom platforms, agent optimisation, and workshops, for small businesses with serious ambition.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p>
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+    </p>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+<script src="/js/nav.js?v=2" defer></script>
+</body>
+</html>

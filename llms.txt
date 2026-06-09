@@ -18,7 +18,11 @@ Native iOS and Android app for the UK Deaf community: every PI-delivered BSL/ISL
 
 ### The Sonic Sanctuary
 Built a unified business platform replacing 6 separate tools. Event management, Stripe payments, intro pass system, WhatsApp integration (210-member community), customer comms, B2B booking, and a public website fed from the same data source. Reaches an audience of 1,259 across WhatsApp (210), Facebook (614), and Instagram (435), and saves roughly 5 hours of admin a week.
-- https://tailored-tools.com/projects
+- https://tailored-tools.com/projects/sonic-sanctuary
+
+### Amanda Jane Wellness
+A public website plus an operating system for a one-person wellness practice. Bookings, client records, and content management in one place. Currently in transition, the platform is built and live; the practice is in the early phase of moving onto it.
+- https://tailored-tools.com/projects/amanda-jane-wellness
 
 ## Agent Optimisation (AO)
 

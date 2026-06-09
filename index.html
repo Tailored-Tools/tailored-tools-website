@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=10">
+    <link rel="stylesheet" href="/styles.css?v=11">
 
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
@@ -212,17 +212,105 @@
             background: linear-gradient(180deg, rgba(255,111,32,0.85), rgba(255,111,32,0.25));
             border-radius: 2px;
         }
+        /* Card 1: Website (browser frame with URL bar) */
         .hg-card.card-1 {
-            inset: 6px 50px 90px 6px;
+            inset: 6px 60px 130px 6px;
             transform: translateZ(40px) rotate(-3deg);
         }
-        .hg-card.card-2 {
-            inset: 60px 6px 30px 80px;
-            transform: translateZ(70px) rotate(2deg);
+        .hg-card.card-1 .urlbar {
+            height: 14px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.08);
+            margin: 8px 0 14px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
         }
+        .hg-card.card-1 .urlbar::after {
+            content: '';
+            width: 60%;
+            height: 5px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.18);
+        }
+        .hg-card.card-1 .tag {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+        }
+        /* Card 2: App (phone-shaped, tall + narrow, with notch) */
+        .hg-card.card-2 {
+            inset: 50px 12px 40px 200px;
+            transform: translateZ(70px) rotate(2deg);
+            border-radius: 22px;
+            padding: 18px 12px 16px;
+        }
+        .hg-card.card-2 .notch {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 36%;
+            height: 6px;
+            border-radius: 0 0 8px 8px;
+            background: rgba(0,0,0,0.45);
+        }
+        .hg-card.card-2 .topbar { justify-content: center; margin-top: 4px; }
+        .hg-card.card-2 .topbar i { width: 5px; height: 5px; }
+        .hg-card.card-2 .tag {
+            position: absolute;
+            top: 14px;
+            right: 12px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+        }
+        /* Card 3: OS / Dashboard (wide, multi-widget) */
         .hg-card.card-3 {
-            inset: 200px 110px 6px 30px;
+            inset: 210px 80px 6px 24px;
             transform: translateZ(110px) rotate(-1deg);
+            padding: 12px 12px 14px;
+        }
+        .hg-card.card-3 .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .hg-card.card-3 .tile {
+            background: rgba(255,255,255,0.08);
+            border-radius: 6px;
+            padding: 6px 8px;
+        }
+        .hg-card.card-3 .tile .num {
+            font-size: 13px;
+            font-weight: 800;
+            color: #ff6f20;
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+        .hg-card.card-3 .tile .lbl {
+            height: 4px;
+            width: 60%;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.18);
+        }
+        .hg-card.card-3 .tag {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
         }
         /* Node pulse animation */
         @keyframes nodePulse {
@@ -906,23 +994,42 @@
         <!-- Stacked glass platform mockups -->
         <div class="hero-graphic" aria-hidden="true">
             <div class="hg-stack">
+                <!-- Card 1: WEBSITE — browser frame -->
                 <div class="hg-card card-1">
                     <div class="topbar"><i></i><i></i><i></i></div>
+                    <span class="tag">Website</span>
+                    <div class="urlbar"></div>
                     <div class="row w85"></div>
-                    <div class="row w70"></div>
-                    <div class="row w50"></div>
-                    <div class="row accent w70"></div>
-                </div>
-                <div class="hg-card card-2">
-                    <div class="topbar"><i class="dot-accent"></i><i></i><i></i></div>
-                    <div class="row w50"></div>
-                    <div class="chart"><span style="height:60%"></span><span style="height:90%"></span><span style="height:45%"></span><span style="height:75%"></span><span style="height:30%"></span><span style="height:85%"></span></div>
-                </div>
-                <div class="hg-card card-3">
-                    <div class="topbar"><i></i><i class="dot-accent"></i></div>
                     <div class="row w70"></div>
                     <div class="row accent w50"></div>
-                    <div class="row w85"></div>
+                </div>
+                <!-- Card 2: APP — phone/mobile -->
+                <div class="hg-card card-2">
+                    <div class="notch"></div>
+                    <div class="topbar"><i></i><i></i><i></i></div>
+                    <span class="tag">App</span>
+                    <div class="row w70"></div>
+                    <div class="chart">
+                        <span style="height:55%"></span>
+                        <span style="height:90%"></span>
+                        <span style="height:45%"></span>
+                        <span style="height:75%"></span>
+                        <span style="height:30%"></span>
+                        <span style="height:85%"></span>
+                    </div>
+                    <div class="row accent w85" style="margin-top:10px"></div>
+                </div>
+                <!-- Card 3: OS — dashboard with widget tiles -->
+                <div class="hg-card card-3">
+                    <div class="topbar"><i></i><i class="dot-accent"></i></div>
+                    <span class="tag">OS</span>
+                    <div class="row w50"></div>
+                    <div class="grid">
+                        <div class="tile"><div class="num">128</div><div class="lbl"></div></div>
+                        <div class="tile"><div class="num">£5k</div><div class="lbl"></div></div>
+                        <div class="tile"><div class="num">42</div><div class="lbl"></div></div>
+                        <div class="tile"><div class="num">98%</div><div class="lbl"></div></div>
+                    </div>
                 </div>
             </div>
             <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">

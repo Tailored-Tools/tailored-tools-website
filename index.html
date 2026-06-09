@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=9">
+    <link rel="stylesheet" href="/styles.css?v=10">
 
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
@@ -145,17 +145,84 @@
             color: var(--white);
         }
 
-        /* ── Hero illustration (CSS-only nodes) ─────────────────────── */
+        /* ── Hero illustration (stacked glass platform mockups) ─────── */
         .hero-graphic {
             flex-shrink: 0;
             width: 380px;
             height: 360px;
             position: relative;
+            perspective: 1200px;
         }
-        .hero-graphic svg {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
+        .hero-graphic svg { display: none; }
+        .hg-stack {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+            animation: hgFloat 9s ease-in-out infinite;
+        }
+        @keyframes hgFloat {
+            0%, 100% { transform: rotateX(8deg) rotateY(-12deg) translateY(0); }
+            50%      { transform: rotateX(8deg) rotateY(-12deg) translateY(-12px); }
+        }
+        .hg-card {
+            position: absolute;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.10);
+            padding: 14px 14px 16px;
+            overflow: hidden;
+        }
+        .hg-card .topbar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .hg-card .topbar i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.22);
+        }
+        .hg-card .topbar i.dot-accent { background: #ff6f20; box-shadow: 0 0 8px rgba(255,111,32,0.6); }
+        .hg-card .row {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.10);
+            margin-bottom: 8px;
+        }
+        .hg-card .row.w70 { width: 70%; }
+        .hg-card .row.w50 { width: 50%; }
+        .hg-card .row.w85 { width: 85%; }
+        .hg-card .row.accent {
+            background: linear-gradient(90deg, rgba(255,111,32,0.6), rgba(255,111,32,0.25));
+        }
+        .hg-card .chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            margin-top: 10px;
+            height: 38px;
+        }
+        .hg-card .chart span {
+            flex: 1;
+            background: linear-gradient(180deg, rgba(255,111,32,0.85), rgba(255,111,32,0.25));
+            border-radius: 2px;
+        }
+        .hg-card.card-1 {
+            inset: 6px 50px 90px 6px;
+            transform: translateZ(40px) rotate(-3deg);
+        }
+        .hg-card.card-2 {
+            inset: 60px 6px 30px 80px;
+            transform: translateZ(70px) rotate(2deg);
+        }
+        .hg-card.card-3 {
+            inset: 200px 110px 6px 30px;
+            transform: translateZ(110px) rotate(-1deg);
         }
         /* Node pulse animation */
         @keyframes nodePulse {
@@ -836,8 +903,28 @@
                 <a href="#free-score" class="btn-outline">Free AO Score</a>
             </div>
         </div>
-        <!-- Connected nodes illustration with glow -->
+        <!-- Stacked glass platform mockups -->
         <div class="hero-graphic" aria-hidden="true">
+            <div class="hg-stack">
+                <div class="hg-card card-1">
+                    <div class="topbar"><i></i><i></i><i></i></div>
+                    <div class="row w85"></div>
+                    <div class="row w70"></div>
+                    <div class="row w50"></div>
+                    <div class="row accent w70"></div>
+                </div>
+                <div class="hg-card card-2">
+                    <div class="topbar"><i class="dot-accent"></i><i></i><i></i></div>
+                    <div class="row w50"></div>
+                    <div class="chart"><span style="height:60%"></span><span style="height:90%"></span><span style="height:45%"></span><span style="height:75%"></span><span style="height:30%"></span><span style="height:85%"></span></div>
+                </div>
+                <div class="hg-card card-3">
+                    <div class="topbar"><i></i><i class="dot-accent"></i></div>
+                    <div class="row w70"></div>
+                    <div class="row accent w50"></div>
+                    <div class="row w85"></div>
+                </div>
+            </div>
             <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <filter id="orangeGlow" x="-50%" y="-50%" width="200%" height="200%">

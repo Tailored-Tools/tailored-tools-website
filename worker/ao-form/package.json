@@ -1,0 +1,12 @@
+{
+  "name": "ao-form",
+  "version": "1.0.0",
+  "description": "Receives the free AO Score form submission from the website, validates, runs cheap anti-spam, and emails the result to `ao@tailored-tools.com` via Resend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

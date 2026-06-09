@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda Jane Wellness, Client Portfolio | Tailored Tools</title>
+    <meta name="description" content="A wellness practitioner running on a custom public website plus an operating system to manage clients, sessions, and content, built so a one-person practice can run cleanly without a back office.">
+
+    <link rel="canonical" href="https://tailored-tools.com/projects/amanda-jane-wellness">
+
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tailored-tools.com/projects/amanda-jane-wellness">
+    <meta property="og:title" content="Amanda Jane Wellness, Client Portfolio | Tailored Tools">
+    <meta property="og:description" content="A custom public website plus an operating system for a one-person wellness practice, built so the back office runs itself.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Amanda Jane Wellness, Client Portfolio | Tailored Tools">
+    <meta name="twitter:description" content="A custom public website plus an operating system for a one-person wellness practice.">
+    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=5">
+    <style>
+        :root {
+            --primary: #203a4c;
+            --accent: #ff6f20;
+            --dark: #0D1B2A;
+            --white: #FFFFFF;
+            --light: #f4f5f7;
+            --text: #203a4c;
+            --text-light: #5a6a7a;
+            --max-width: 880px;
+            --amber: #c9831c;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        nav { padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: block; width: 175px; height: 48px; background: url('/tt-logo-light.svg') 62% 50% / 215px auto no-repeat; flex-shrink: 0; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
+        .nav-cta:hover { background: #e55e10; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
+
+        .project-hero { background: var(--dark); padding: 56px 24px 48px; color: var(--white); border-bottom: 3px solid var(--accent); }
+        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+        .back-link { display: inline-block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 24px; }
+        .back-link:hover { color: var(--accent); }
+        .project-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .project-hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+        .project-hero .lead { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 640px; line-height: 1.7; }
+
+        .section { padding: 72px 24px; background: var(--white); }
+        .section:nth-child(even) { background: var(--light); }
+        .inner { max-width: var(--max-width); margin: 0 auto; }
+        .section h2 { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 14px; }
+        .section h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin: 22px 0 10px; }
+        .section p { font-size: 16px; color: var(--text); margin-bottom: 18px; line-height: 1.8; }
+        .section ul { margin: 0 0 18px 22px; }
+        .section li { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 6px; }
+        .section a.inline { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
+        .section a.inline:hover { border-bottom-color: var(--accent); }
+
+        .status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+        .status-pill.dev { background: rgba(201,131,28,0.14); color: var(--amber); }
+        .status-pill.dev::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+
+        .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 28px 0; }
+        .flow-step { background: var(--white); border: 1px solid #e8ecf0; border-radius: 8px; padding: 16px 14px; text-align: center; font-size: 14px; font-weight: 700; color: var(--primary); position: relative; }
+        .section:nth-child(even) .flow-step { background: var(--white); }
+        .flow-step::after { content: "\2192"; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--accent); font-weight: 700; }
+        .flow-step:last-child::after { content: ""; }
+
+        .section-cta { background: var(--dark); text-align: center; }
+        .section-cta h2 { color: var(--white); margin-bottom: 12px; }
+        .section-cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; }
+        .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .btn-primary:hover { background: #e55e10; }
+
+        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
+        .footer-logo-wrap { width: 210px; height: 72px; background: url('/tt-logo-light.svg') 62% 50% / 255px auto no-repeat; margin: 0 auto 16px; }
+        footer p { font-size: 13px; }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+        .footer-disclosure { max-width: 640px; margin: 20px auto 18px; padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .footer-disclosure p { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+
+        @media (max-width: 768px) {
+            .project-hero { padding: 44px 20px 36px; }
+            .section { padding: 56px 20px; }
+            .flow-grid { grid-template-columns: 1fr; gap: 8px; }
+            .flow-step::after { content: ""; }
+            .hamburger { display: block; }
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 16px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Amanda Jane Wellness, Client Portfolio",
+      "description": "A custom public website plus an operating system built for a one-person wellness practice.",
+      "author": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+      "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" },
+      "mainEntityOfPage": "https://tailored-tools.com/projects/amanda-jane-wellness"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://tailored-tools.com/projects" },
+        { "@type": "ListItem", "position": 3, "name": "Amanda Jane Wellness", "item": "https://tailored-tools.com/projects/amanda-jane-wellness" }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects" class="active">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="project-hero">
+    <div class="hero-inner">
+        <a href="/projects" class="back-link">&larr; All projects</a>
+        <span class="status-pill dev">In transition, partial rollout</span>
+        <div class="project-label">Wellness Practice &middot; Kent</div>
+        <h1>Amanda Jane Wellness</h1>
+        <p class="lead">A public website plus an operating system for a one-person wellness practice, built so client records, session bookings, and content can all live in one place instead of a notebook, a calendar, and an inbox.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>The brief</h2>
+        <p>Amanda runs her wellness practice solo. Before the platform, coordinating each session meant juggling a calendar app, paper notes, email threads with clients, and a separate space for any written content or guidance she wanted to share. The friction wasn't dramatic, but it was constant, and constant friction is what quietly costs a one-person practice its evenings.</p>
+        <p>The brief was deliberately small: a clean public website that brings new people in, and an operating system the practice can run from, with as little ceremony as possible.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>What we built</h2>
+        <div class="flow-grid">
+            <div class="flow-step">Public website</div>
+            <div class="flow-step">Booking flow</div>
+            <div class="flow-step">Client records</div>
+            <div class="flow-step">Content management</div>
+        </div>
+        <p>Visitors land on the website, read about the work, and book. Bookings populate the client record automatically. Session notes and any written content Amanda wants to publish live in the same dashboard. One sign-in, one source of truth.</p>
+        <h3>What it includes</h3>
+        <ul>
+            <li><strong>Public website</strong>, designed around how Amanda explains her work, not a template imposed on it</li>
+            <li><strong>Booking flow</strong> for new and returning clients</li>
+            <li><strong>Client records</strong>, encrypted at rest and accessible only to Amanda</li>
+            <li><strong>Content management</strong> for articles, guides, and any written content she shares</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="inner">
+        <h2>Where we are now</h2>
+        <p><strong>This is an in-progress engagement.</strong> The platform is built and live; the practice is in the early phase of transitioning fully onto it. Until that transition is complete, we're keeping the metrics off this page rather than pre-claim outcomes that haven't fully landed.</p>
+        <p>A fuller case study, with Amanda's own words and the numbers that matter to her, will follow once she's been running on the OS for a few months. That's the right time to write it.</p>
+    </div>
+</section>
+
+<section class="section section-cta">
+    <h2>Build something similar for your practice?</h2>
+    <p>One-person businesses need the same operational backbone bigger ones have. Just simpler, quieter, and shaped around how you actually work.</p>
+    <a href="mailto:hello@tailored-tools.com?subject=Custom%20platform%20enquiry" class="btn-primary">Get in touch &rarr;</a>
+</section>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>Custom platforms, agent optimisation, and workshops, for small businesses with serious ambition.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p>
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+    </p>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+<script src="/js/nav.js?v=2" defer></script>
+</body>
+</html>

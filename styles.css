@@ -76,9 +76,9 @@ nav.nav-at-top {
 /* Logo: tt-logo-light.png (white version) on dark nav */
 .nav-logo {
     display: block;
-    width: 175px;
+    width: 170px;
     height: 48px;
-    background: url('/tt-logo-light.png') 62% 50% / 215px auto no-repeat;
+    background: url('/tt-logo-light.png') left center / contain no-repeat;
     flex-shrink: 0;
 }
 .nav-links {
@@ -140,9 +140,9 @@ footer {
 }
 /* Logo: tt-logo-light.png (white version) centred in footer */
 .footer-logo-wrap {
-    width: 210px;
-    height: 72px;
-    background: url('/tt-logo-light.png') 62% 50% / 255px auto no-repeat;
+    width: 220px;
+    height: 80px;
+    background: url('/tt-logo-light.png') center center / contain no-repeat;
     margin: 0 auto 12px;
 }
 footer p   { font-size: 13px; line-height: 1.6; }

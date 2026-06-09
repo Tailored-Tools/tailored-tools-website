@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=7">
+    <link rel="stylesheet" href="/styles.css?v=8">
     <style>
         :root {
             --primary: #203a4c;
@@ -906,23 +906,6 @@
             margin-bottom: 16px;
             letter-spacing: 1px;
         }
-        .tally-embed-wrapper {
-            position: relative;
-        }
-        .tally-embed-wrapper iframe {
-            border: none;
-        }
-        .tally-embed-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 65%;
-            height: 70px;
-            background: var(--dark);
-            pointer-events: none;
-            z-index: 1;
-        }
         .free-score-steps {
             margin-top: 48px;
             display: grid;
@@ -1330,7 +1313,6 @@
             section { padding: 40px 20px; }
             .contact-split { grid-template-columns: 1fr; }
             .hamburger { display: block; }
-            .tally-embed-wrapper::after { display: none; }
             .nav-links {
                 display: none;
                 position: fixed;
@@ -2315,8 +2297,8 @@
             i = (i + 1) % platforms.length;
             render();
             row.classList.remove('fading');
-        }, 310);
-    }, 2000);
+        }, 180);
+    }, 1100);
 })();
 
 const quizData = [

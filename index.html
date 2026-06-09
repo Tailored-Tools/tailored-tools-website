@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=7">
+    <link rel="stylesheet" href="/styles.css?v=8">
 
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
@@ -479,32 +479,6 @@
         @media (max-width: 640px) {
             .dimensions-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        .tally-embed {
-            max-width: 520px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-        }
-        .tally-embed iframe {
-            background: transparent;
-        }
-        /* Cover Tally's "Made with Tally" CTA badge on desktop.
-           Sized for the full pill-button watermark that sits at the
-           bottom-right of the iframe, level with the submit button. */
-        .tally-embed::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 230px;
-            height: 72px;
-            background: var(--dark);
-            pointer-events: none;
-            z-index: 1;
-        }
-        @media (max-width: 640px) {
-            .tally-embed::after { display: none; }
-        }
         .form-consent {
             font-size: 12px;
             color: var(--text-light);
@@ -681,7 +655,6 @@
             .free-score,
             .testimonial { padding-top: 64px; padding-bottom: 64px; }
             .email-capture { padding-top: 48px; padding-bottom: 48px; }
-            .tally-embed { padding: 20px; }
             .testimonial-quote p { font-size: 18px; }
             .testimonial-quote::before { font-size: 80px; }
             .kent-ai-callout { padding: 56px 20px; }

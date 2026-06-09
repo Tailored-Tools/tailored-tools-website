@@ -1,2 +1,3 @@
-.superpowers/
-.DS_Store
+worker/ao-form/node_modules/
+worker/ao-form/package-lock.json
+worker/ao-form/.wrangler/

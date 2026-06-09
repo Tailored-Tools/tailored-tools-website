@@ -1,0 +1,62 @@
+<h2>Site Architecture, Two Approaches</h2>
+<p class="subtitle">How to restructure tailored-tools.com from AO-only to portfolio consultancy</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Clean Break, New Homepage, AO Becomes a Section</h3>
+      <p><strong>Recommended.</strong> New <code>index.html</code> as welcome page. Current AO content moves to <code>/ao/</code> subdirectory. Each section gets its own page.</p>
+      <div style="margin-top:12px; padding:12px; background:rgba(255,255,255,0.05); border-radius:8px; font-size:14px; line-height:1.6;">
+        <strong>Structure:</strong><br>
+        <code>/</code> → Welcome homepage (new)<br>
+        <code>/projects/</code> → PI + SS case studies<br>
+        <code>/ao/</code> → Current AO content (quiz, score, services, pricing)<br>
+        <code>/ao/blog/</code> → Existing 11 blog posts<br>
+        <code>/ao/methodology</code> → Existing methodology page<br>
+        <code>/workshops/</code> → Community, meetups, ambassador<br>
+        <code>/about/</code> → James's journey, credentials<br>
+        <code>/links</code> → QR linktree page<br>
+      </div>
+      <div style="margin-top:8px; font-size:13px; color:#aaa;">
+        <strong>Pros:</strong> Clean URLs, each page is focused, AO blog/methodology URLs change but can redirect. Professional feel.<br>
+        <strong>Cons:</strong> More files to maintain. Existing AO URLs (tailored-tools.com/#free-score) break without redirects.
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Overlay, New Homepage, AO Stays at Root</h3>
+      <p>New welcome <code>index.html</code> replaces current homepage. Current AO page becomes <code>ao.html</code> at root level. Blog stays at <code>/blog/</code>.</p>
+      <div style="margin-top:12px; padding:12px; background:rgba(255,255,255,0.05); border-radius:8px; font-size:14px; line-height:1.6;">
+        <strong>Structure:</strong><br>
+        <code>/</code> → Welcome homepage (new)<br>
+        <code>/projects</code> → PI + SS case studies<br>
+        <code>/ao</code> → Current AO content (single page, as-is)<br>
+        <code>/blog/</code> → Existing 11 blog posts (unchanged)<br>
+        <code>/methodology</code> → Existing methodology (unchanged)<br>
+        <code>/workshops</code> → Community, meetups, ambassador<br>
+        <code>/about</code> → James's journey, credentials<br>
+        <code>/links</code> → QR linktree page<br>
+      </div>
+      <div style="margin-top:8px; font-size:13px; color:#aaa;">
+        <strong>Pros:</strong> Simpler migration. Blog URLs don't change. Less restructuring.<br>
+        <strong>Cons:</strong> Flat structure gets messy as content grows. AO content isn't grouped under its own path.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px; padding:16px; border:1px solid rgba(255,255,255,0.1); border-radius:8px;">
+  <h3 style="margin-top:0;">Shared Across Both</h3>
+  <ul style="font-size:14px; line-height:1.8;">
+    <li><strong>Shared nav bar</strong> across all pages: Home | Projects | AO | Workshops | About</li>
+    <li><strong>Shared footer</strong> with contact, socials, privacy link</li>
+    <li><strong>Existing design system</strong>, same colours, fonts, responsive approach</li>
+    <li><strong>QR /links page</strong> is standalone (no nav, linktree-style)</li>
+    <li><strong>james.jpg</strong> already exists in the repo, reused on homepage and about</li>
+    <li><strong>GitHub Pages</strong> deployment stays the same</li>
+  </ul>
+</div>

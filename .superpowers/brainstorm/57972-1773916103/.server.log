@@ -1,0 +1,7 @@
+{"type":"server-started","port":65245,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:65245","screen_dir":"/Users/james/Projects/Tailored-Tools/tailored-tools-website/.superpowers/brainstorm/57972-1773916103"}
+{"type":"screen-added","file":"/Users/james/Projects/Tailored-Tools/tailored-tools-website/.superpowers/brainstorm/57972-1773916103/approach.html"}
+{"type":"screen-added","file":"/Users/james/Projects/Tailored-Tools/tailored-tools-website/.superpowers/brainstorm/57972-1773916103/homepage-layout.html"}
+{"type":"screen-added","file":"/Users/james/Projects/Tailored-Tools/tailored-tools-website/.superpowers/brainstorm/57972-1773916103/homepage-layout-v2.html"}
+{"type":"screen-added","file":"/Users/james/Projects/Tailored-Tools/tailored-tools-website/.superpowers/brainstorm/57972-1773916103/qr-links-page.html"}
+{"type":"screen-added","file":"/Users/james/Projects/Tailored-Tools/tailored-tools-website/.superpowers/brainstorm/57972-1773916103/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

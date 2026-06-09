@@ -28,32 +28,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=8">
+    <link rel="stylesheet" href="/styles.css?v=9">
 
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
         .hero {
-            background: linear-gradient(-45deg, #0D1B2A, #1a2d42, #0D1B2A, #162438);
-            background-size: 400% 400%;
-            animation: gradientShift 12s ease infinite;
+            background: #0D1B2A;
             color: var(--white);
             padding: 100px 24px 112px;
             overflow: hidden;
             position: relative;
+            isolation: isolate;
         }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Aurora mesh blobs, large blurred radial gradients that drift slowly.
+           Stripe / Linear / Vercel style. Sits behind everything else. */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: -20%;
+            background:
+                radial-gradient(420px 380px at 20% 30%, rgba(255,111,32,0.32), transparent 60%),
+                radial-gradient(520px 440px at 80% 65%, rgba(46,82,140,0.45), transparent 60%),
+                radial-gradient(360px 320px at 55% 90%, rgba(255,111,32,0.18), transparent 60%);
+            filter: blur(40px);
+            animation: heroAurora 22s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
         }
-        /* Cursor glow overlay */
+        @keyframes heroAurora {
+            0%, 100% { transform: translate3d(0,0,0) scale(1); }
+            33%      { transform: translate3d(-3%,2%,0) scale(1.05); }
+            66%      { transform: translate3d(3%,-2%,0) scale(0.97); }
+        }
+        /* Film grain / noise overlay for premium texture. SVG turbulence
+           inlined as a data URI so there's no extra request. */
         .hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,111,32,0.08), transparent 60%);
+            background:
+                radial-gradient(700px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,111,32,0.10), transparent 55%),
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+            background-size: auto, 220px 220px;
             pointer-events: none;
             z-index: 1;
+            mix-blend-mode: screen;
         }
         .hero-inner {
             max-width: var(--max-width);
@@ -817,33 +836,45 @@
                 <a href="#free-score" class="btn-outline">Free AO Score</a>
             </div>
         </div>
-        <!-- CSS-only connected nodes illustration -->
+        <!-- Connected nodes illustration with glow -->
         <div class="hero-graphic" aria-hidden="true">
             <svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
-                <!-- Connection lines -->
-                <line class="conn-line" x1="140" y1="130" x2="60"  y2="60"  stroke="rgba(255,111,32,0.35)" stroke-width="1.5"/>
-                <line class="conn-line conn-line-2" x1="140" y1="130" x2="220" y2="60"  stroke="rgba(255,111,32,0.35)" stroke-width="1.5"/>
-                <line class="conn-line conn-line-3" x1="140" y1="130" x2="40"  y2="170" stroke="rgba(255,111,32,0.25)" stroke-width="1.5"/>
-                <line class="conn-line conn-line-4" x1="140" y1="130" x2="240" y2="170" stroke="rgba(255,111,32,0.25)" stroke-width="1.5"/>
-                <line class="conn-line conn-line-5" x1="140" y1="130" x2="140" y2="220" stroke="rgba(255,111,32,0.3)"  stroke-width="1.5"/>
-                <line class="conn-line conn-line-6" x1="60"  y1="60"  x2="220" y2="60"  stroke="rgba(255,255,255,0.1)"  stroke-width="1"/>
-                <line                               x1="40"  y1="170" x2="140" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                <line                               x1="240" y1="170" x2="140" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                <!-- Central node -->
-                <circle class="node-lg" cx="140" cy="130" r="6" fill="#ff6f20"/>
-                <circle cx="140" cy="130" r="16" fill="rgba(255,111,32,0.12)"/>
-                <circle cx="140" cy="130" r="26" fill="rgba(255,111,32,0.05)"/>
-                <!-- Outer nodes -->
-                <circle class="node-sm node-2" cx="60"  cy="60"  r="4" fill="rgba(255,255,255,0.7)"/>
-                <circle class="node-sm node-3" cx="220" cy="60"  r="4" fill="rgba(255,255,255,0.7)"/>
-                <circle class="node-sm node-4" cx="40"  cy="170" r="4" fill="rgba(255,255,255,0.55)"/>
-                <circle class="node-sm node-5" cx="240" cy="170" r="4" fill="rgba(255,255,255,0.55)"/>
-                <circle class="node-sm node-6" cx="140" cy="220" r="4" fill="rgba(255,255,255,0.6)"/>
-                <!-- Tiny accent dots -->
-                <circle cx="100" cy="42"  r="2.5" fill="rgba(255,111,32,0.4)"/>
-                <circle cx="185" cy="42"  r="2.5" fill="rgba(255,111,32,0.4)"/>
-                <circle cx="22"  cy="130" r="2"   fill="rgba(255,255,255,0.2)"/>
-                <circle cx="258" cy="130" r="2"   fill="rgba(255,255,255,0.2)"/>
+                <defs>
+                    <filter id="orangeGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3" result="b"/>
+                        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="2" result="b"/>
+                        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"  stop-color="#ff6f20" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#ff6f20" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <circle cx="140" cy="130" r="60" fill="url(#hubGlow)"/>
+                <line class="conn-line" x1="140" y1="130" x2="60"  y2="60"  stroke="rgba(255,158,90,0.85)" stroke-width="2.2" filter="url(#softGlow)"/>
+                <line class="conn-line conn-line-2" x1="140" y1="130" x2="220" y2="60"  stroke="rgba(255,158,90,0.85)" stroke-width="2.2" filter="url(#softGlow)"/>
+                <line class="conn-line conn-line-3" x1="140" y1="130" x2="40"  y2="170" stroke="rgba(255,158,90,0.7)"  stroke-width="2.2" filter="url(#softGlow)"/>
+                <line class="conn-line conn-line-4" x1="140" y1="130" x2="240" y2="170" stroke="rgba(255,158,90,0.7)"  stroke-width="2.2" filter="url(#softGlow)"/>
+                <line class="conn-line conn-line-5" x1="140" y1="130" x2="140" y2="220" stroke="rgba(255,158,90,0.78)" stroke-width="2.2" filter="url(#softGlow)"/>
+                <line class="conn-line conn-line-6" x1="60"  y1="60"  x2="220" y2="60"  stroke="rgba(255,255,255,0.32)" stroke-width="1.4"/>
+                <line                               x1="40"  y1="170" x2="140" y2="220" stroke="rgba(255,255,255,0.24)" stroke-width="1.4"/>
+                <line                               x1="240" y1="170" x2="140" y2="220" stroke="rgba(255,255,255,0.24)" stroke-width="1.4"/>
+                <circle cx="140" cy="130" r="22" fill="rgba(255,111,32,0.22)"/>
+                <circle cx="140" cy="130" r="14" fill="rgba(255,111,32,0.35)"/>
+                <circle class="node-lg" cx="140" cy="130" r="9" fill="#ff6f20" filter="url(#orangeGlow)"/>
+                <circle cx="140" cy="130" r="3" fill="#ffe8d6"/>
+                <circle class="node-sm node-2" cx="60"  cy="60"  r="6" fill="#fff" filter="url(#softGlow)"/>
+                <circle class="node-sm node-3" cx="220" cy="60"  r="6" fill="#fff" filter="url(#softGlow)"/>
+                <circle class="node-sm node-4" cx="40"  cy="170" r="5" fill="rgba(255,255,255,0.92)" filter="url(#softGlow)"/>
+                <circle class="node-sm node-5" cx="240" cy="170" r="5" fill="rgba(255,255,255,0.92)" filter="url(#softGlow)"/>
+                <circle class="node-sm node-6" cx="140" cy="220" r="5" fill="#fff" filter="url(#softGlow)"/>
+                <circle cx="100" cy="42"  r="3" fill="rgba(255,158,90,0.7)" filter="url(#softGlow)"/>
+                <circle cx="185" cy="42"  r="3" fill="rgba(255,158,90,0.7)" filter="url(#softGlow)"/>
+                <circle cx="22"  cy="130" r="2.5" fill="rgba(255,255,255,0.5)"/>
+                <circle cx="258" cy="130" r="2.5" fill="rgba(255,255,255,0.5)"/>
             </svg>
         </div>
     </div>

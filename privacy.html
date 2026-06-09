@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=7">
+    <link rel="stylesheet" href="/styles.css?v=8">
     <style>
         :root {
             --primary: #203a4c;
@@ -203,8 +203,7 @@
         <li><strong>GitHub Pages</strong>, website hosting. Operated by GitHub Inc. (US). <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub privacy statement</a>.</li>
         <li><strong>Cloudflare</strong>, DNS, CDN, security in front of this site (US/EU/UK edge). <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare privacy policy</a>.</li>
         <li><strong>Stripe</strong>, payment processing for paid services. Operated by Stripe Payments Europe Ltd / Stripe Inc. (Ireland / US). <a href="https://stripe.com/gb/privacy" target="_blank" rel="noopener">Stripe privacy policy</a>.</li>
-        <li><strong>Tally</strong>, embedded forms (the free AO Score form). Operated by Tally BV (Belgium). <a href="https://tally.so/help/privacy-policy" target="_blank" rel="noopener">Tally privacy policy</a>.</li>
-        <li><strong>Resend</strong>, transactional email delivery (e.g., your audit results) via the <code>send.tailored-tools.com</code> subdomain. Operated by Resend Inc. (US). <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend privacy policy</a>.</li>
+        <li><strong>Resend</strong>, transactional email delivery (including AO Score form submissions and audit results) via the <code>send.tailored-tools.com</code> subdomain. The free AO Score form posts to a Cloudflare Worker we operate, which calls Resend to email the submission to us, no third-party form embeds. Operated by Resend Inc. (US). <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend privacy policy</a>.</li>
         <li><strong>IONOS</strong>, inbound email hosting for <code>hello@tailored-tools.com</code>. Operated by IONOS SE (Germany). <a href="https://www.ionos.co.uk/terms-gtc/terms-privacy" target="_blank" rel="noopener">IONOS privacy policy</a>.</li>
         <li><strong>Google Fonts</strong>, web fonts loaded from <code>fonts.googleapis.com</code>. Operated by Google Ireland Ltd / Google LLC (US). <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a>.</li>
         <li><strong>HMRC and our accountant</strong>, for tax, accounting, and self-assessment reporting.</li>
@@ -220,13 +219,11 @@
     <ul>
         <li><strong>Cloudflare</strong> may set the <code>__cf_bm</code> bot-management cookie for security purposes (session lifetime).</li>
     </ul>
-    <h3>6.2 Third-party embeds (loaded only on the pages they appear)</h3>
+    <h3>6.2 Third-party fetches (no embeds, no cookies)</h3>
     <ul>
-        <li><strong>Tally form embed</strong> on pages with the free AO Score form: Tally may set session cookies and process your IP address per its policy.</li>
         <li><strong>Google Fonts</strong>: when your browser fetches our typeface from <code>fonts.googleapis.com</code>, Google receives your IP address per its policy. No cookies are set by Google Fonts itself.</li>
     </ul>
-    <h3>6.3 Consent and control</h3>
-    <p>When you first visit a page that contains a third-party embed (currently the Tally AO Score form), a small consent prompt appears. We do not load the Tally embed until you accept. If you decline, the form is replaced with a placeholder you can choose to load on demand. Strictly-necessary Cloudflare security cookies load regardless under PECR Regulation 6(4). You can change your choice at any time by clearing this site's storage in your browser settings.</p>
+    <p>This site has <strong>no third-party form embeds</strong>. The free AO Score form is hosted on our own domain and submits directly to a Cloudflare Worker we operate, no iframes, no third-party JavaScript, no consent banner required.</p>
 
     <h2>7. How long we keep your data</h2>
     <ul>

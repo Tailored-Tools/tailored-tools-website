@@ -57,10 +57,13 @@ export default {
         const text = renderText(body, request);
         const html = renderHtml(body, request);
 
+        // Trim the key defensively, copy-paste sometimes carries whitespace
+        // or a trailing newline which makes the Authorization header invalid.
+        const apiKey = String(env.RESEND_API_KEY || '').trim();
         const res = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+                'Authorization': `Bearer ${apiKey}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({

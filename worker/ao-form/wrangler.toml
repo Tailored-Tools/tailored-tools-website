@@ -8,7 +8,7 @@ compatibility_date = "2025-01-01"
 
 [vars]
 # Public, non-secret config (overridable per environment if needed).
-FROM_EMAIL = "noreply@tailored-tools.com"
+FROM_EMAIL = "noreply@send.tailored-tools.com"
 TO_EMAIL   = "ao@tailored-tools.com"
 
 # CORS allow-list. Add staging origins here when needed.

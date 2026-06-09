@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=11">
+    <link rel="stylesheet" href="/styles.css?v=12">
 
     <style>
         /* ── Hero ───────────────────────────────────────────────────── */
@@ -212,10 +212,29 @@
             background: linear-gradient(180deg, rgba(255,111,32,0.85), rgba(255,111,32,0.25));
             border-radius: 2px;
         }
+        /* Cards cycle through front / middle / back over 12s, offset by 4s each.
+           Each card spends ~33% of the loop at the front (Z 110, scale 1),
+           ~33% in the middle (Z 70), ~33% at the back (Z 40). */
+        @keyframes hgCycle1 {
+            0%,   100% { transform: translateZ(110px) rotate(-3deg) scale(1); }
+            33%        { transform: translateZ(40px)  rotate(-3deg) scale(0.93); }
+            66%        { transform: translateZ(70px)  rotate(-3deg) scale(0.97); }
+        }
+        @keyframes hgCycle2 {
+            0%,   100% { transform: translateZ(70px)  rotate(2deg) scale(0.97); }
+            33%        { transform: translateZ(110px) rotate(2deg) scale(1); }
+            66%        { transform: translateZ(40px)  rotate(2deg) scale(0.93); }
+        }
+        @keyframes hgCycle3 {
+            0%,   100% { transform: translateZ(40px)  rotate(-1deg) scale(0.93); }
+            33%        { transform: translateZ(70px)  rotate(-1deg) scale(0.97); }
+            66%        { transform: translateZ(110px) rotate(-1deg) scale(1); }
+        }
+
         /* Card 1: Website (browser frame with URL bar) */
         .hg-card.card-1 {
             inset: 6px 60px 130px 6px;
-            transform: translateZ(40px) rotate(-3deg);
+            animation: hgCycle1 12s ease-in-out infinite;
         }
         .hg-card.card-1 .urlbar {
             height: 14px;
@@ -246,7 +265,7 @@
         /* Card 2: App (phone-shaped, tall + narrow, with notch) */
         .hg-card.card-2 {
             inset: 50px 12px 40px 200px;
-            transform: translateZ(70px) rotate(2deg);
+            animation: hgCycle2 12s ease-in-out infinite;
             border-radius: 22px;
             padding: 18px 12px 16px;
         }
@@ -275,7 +294,7 @@
         /* Card 3: OS / Dashboard (wide, multi-widget) */
         .hg-card.card-3 {
             inset: 210px 80px 6px 24px;
-            transform: translateZ(110px) rotate(-1deg);
+            animation: hgCycle3 12s ease-in-out infinite;
             padding: 12px 12px 14px;
         }
         .hg-card.card-3 .grid {

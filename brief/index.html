@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your Website Brief · A gift from James</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F5F0;
+    --card:#FFFFFF;
+    --ink:#2C3A33;
+    --ink-soft:#5C6B62;
+    --moss:#7C9885;
+    --moss-deep:#4E6B58;
+    --line:#DDE4DC;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Karla',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    padding:0 20px 120px;
+  }
+  .wrap{max-width:620px;margin:0 auto}
+
+  /* ---------- header ---------- */
+  header{padding:56px 0 8px;text-align:center}
+  .eyebrow{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--moss-deep);font-weight:700;margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(30px,6vw,42px);line-height:1.15;margin-bottom:16px;
+  }
+  .intro{color:var(--ink-soft);max-width:46ch;margin:0 auto}
+  .intro strong{color:var(--ink)}
+
+  /* ---------- pebbles / progress ---------- */
+  .progress{
+    position:sticky;top:0;z-index:10;
+    background:linear-gradient(var(--paper) 85%, transparent);
+    padding:14px 0 18px;text-align:center;
+  }
+  .pebbles{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+  .pebble{
+    width:14px;height:11px;border-radius:50% 50% 46% 54% / 60% 60% 40% 40%;
+    background:var(--line);transition:background .4s ease, transform .4s ease;
+  }
+  .pebble.done{background:var(--moss);transform:translateY(-2px)}
+  .progress-label{font-size:13px;color:var(--ink-soft)}
+  .progress-label .saved{
+    display:inline-block;margin-left:8px;color:var(--moss-deep);font-weight:700;
+    opacity:0;transition:opacity .5s ease;
+  }
+  .progress-label .saved.show{opacity:1}
+
+  /* ---------- sections & questions ---------- */
+  section{margin-top:40px}
+  .section-title{
+    font-family:'Fraunces',serif;font-weight:600;font-size:22px;
+    display:flex;align-items:center;gap:12px;margin-bottom:6px;
+  }
+  .section-title::after{content:"";flex:1;height:1px;background:var(--line)}
+  .section-hint{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
+
+  .q{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;margin-bottom:14px;transition:border-color .3s ease;
+  }
+  .q.answered{border-color:var(--moss)}
+  .q label{display:block;font-weight:700;margin-bottom:4px}
+  .q .hint{font-size:14px;color:var(--ink-soft);margin-bottom:10px}
+  textarea,input[type=text]{
+    width:100%;border:1px solid var(--line);border-radius:9px;
+    padding:11px 13px;font:inherit;color:var(--ink);background:#FDFDFC;
+    resize:vertical;
+  }
+  textarea{min-height:74px}
+  textarea:focus,input:focus{outline:3px solid rgba(124,152,133,.4);border-color:var(--moss)}
+
+  /* ---------- actions ---------- */
+  .actions{
+    margin-top:48px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:26px;text-align:center;
+  }
+  .actions h2{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin-bottom:6px}
+  .actions p{font-size:15px;color:var(--ink-soft);margin-bottom:18px}
+  .btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  button,.btn{
+    font:inherit;font-weight:700;font-size:15px;cursor:pointer;
+    border-radius:999px;padding:12px 22px;border:1.5px solid var(--moss-deep);
+    text-decoration:none;display:inline-block;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--moss-deep);color:#fff}
+  .btn-primary:hover{transform:translateY(-1px);background:#3F5A49}
+  .btn-secondary{background:transparent;color:var(--moss-deep)}
+  .btn-secondary:hover{background:rgba(124,152,133,.12)}
+  button:focus-visible,.btn:focus-visible{outline:3px solid rgba(78,107,88,.5);outline-offset:2px}
+  .toast{
+    margin-top:14px;font-size:14px;font-weight:700;color:var(--moss-deep);
+    opacity:0;transition:opacity .4s ease;
+  }
+  .toast.show{opacity:1}
+  .reset{
+    display:block;margin:20px auto 0;background:none;border:none;
+    color:var(--ink-soft);font-size:13px;text-decoration:underline;cursor:pointer;padding:6px;
+  }
+
+  footer{margin-top:56px;text-align:center;font-size:13px;color:var(--ink-soft)}
+  footer a{color:var(--moss-deep);font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">A little thank-you project</div>
+    <h1>Let’s build your website</h1>
+    <p class="intro">Answer these however you like: half-sentences and bullet points are perfect. <strong>Everything saves automatically on this device</strong>, so dip in and out whenever. When you’re done, hit send at the bottom.</p>
+  </header>
+
+  <div class="progress" aria-live="polite">
+    <div class="pebbles" id="pebbles" aria-hidden="true"></div>
+    <div class="progress-label"><span id="count">0 of 12 answered</span><span class="saved" id="savedChip">Saved ✓</span></div>
+  </div>
+
+  <form id="brief" autocomplete="off">
+
+    <section>
+      <h2 class="section-title">The basics</h2>
+      <p class="section-hint">Who you are and what you do.</p>
+
+      <div class="q">
+        <label for="q1">1 · What’s your practice called?</label>
+        <p class="hint">Plus a tagline or one-liner if you have one. Don’t worry if not.</p>
+        <textarea id="q1" data-q="Name & tagline"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q2">2 · What do you offer?</label>
+        <p class="hint">List your services, plus rough prices if you’d like them shown.</p>
+        <textarea id="q2" data-q="Services & prices"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q3">3 · Who’s it for?</label>
+        <p class="hint">Describe your ideal client in a sentence.</p>
+        <textarea id="q3" data-q="Ideal client"></textarea>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Words &amp; content</h2>
+      <p class="section-hint">The story the site will tell.</p>
+
+      <div class="q">
+        <label for="q4">4 · What’s your story?</label>
+        <p class="hint">2–3 sentences. Why do you do this?</p>
+        <textarea id="q4" data-q="Your story"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q5">5 · What should visitors <em>do</em>?</label>
+        <p class="hint">Book a session, message you, join a mailing list…?</p>
+        <textarea id="q5" data-q="Main call to action"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q6">6 · How should people reach you?</label>
+        <p class="hint">Phone, email, Instagram, an existing booking link?</p>
+        <textarea id="q6" data-q="Contact & booking"></textarea>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Look &amp; feel</h2>
+      <p class="section-hint">This is the fun bit.</p>
+
+      <div class="q">
+        <label for="q7">7 · Three words for the vibe</label>
+        <p class="hint">e.g. calm, earthy, luxurious, playful, clinical, cosy…</p>
+        <input type="text" id="q7" data-q="Vibe words">
+      </div>
+
+      <div class="q">
+        <label for="q8">8 · Colours you love, or hate</label>
+        <textarea id="q8" data-q="Colours (love/hate)"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q9">9 · One or two websites you think are lovely</label>
+        <p class="hint">Any kind of site at all, and what you liked about them.</p>
+        <textarea id="q9" data-q="Reference sites"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q10">10 · Do you have photos?</label>
+        <p class="hint">Of you, your space, your work? Or should I plan around stock imagery for now?</p>
+        <textarea id="q10" data-q="Photos available"></textarea>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Practical bits</h2>
+      <p class="section-hint">Nearly there.</p>
+
+      <div class="q">
+        <label for="q11">11 · Do you own a domain name?</label>
+        <p class="hint">Like yourname.com. Or shall I suggest some options?</p>
+        <textarea id="q11" data-q="Domain name"></textarea>
+      </div>
+
+      <div class="q">
+        <label for="q12">12 · Anything you definitely <em>don’t</em> want?</label>
+        <textarea id="q12" data-q="Definite no's"></textarea>
+      </div>
+    </section>
+  </form>
+
+  <div class="actions">
+    <h2>All done?</h2>
+    <p>Send your answers over to James, whichever way is easiest.</p>
+    <div class="btn-row">
+      <button class="btn-primary" id="emailBtn" type="button">Email my answers</button>
+      <button class="btn-secondary" id="copyBtn" type="button">Copy my answers</button>
+      <button class="btn-secondary" id="downloadBtn" type="button">Download as text</button>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <button class="reset" id="resetBtn" type="button">Clear everything and start again</button>
+  </div>
+
+  <footer>
+    Made with care by <a href="https://tailored-tools.com">Tailored Tools</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // ====== CONFIG — change this to your email ======
+  var TO_EMAIL = "hello@tailored-tools.com";
+  // ================================================
+
+  var STORAGE_KEY = "tt-wellness-brief-v1";
+  var fields = Array.prototype.slice.call(document.querySelectorAll("[data-q]"));
+  var pebblesEl = document.getElementById("pebbles");
+  var countEl = document.getElementById("count");
+  var savedChip = document.getElementById("savedChip");
+  var toast = document.getElementById("toast");
+  var saveTimer, chipTimer, toastTimer;
+
+  // build pebbles
+  fields.forEach(function(){
+    var p = document.createElement("span");
+    p.className = "pebble";
+    pebblesEl.appendChild(p);
+  });
+  var pebbles = pebblesEl.children;
+
+  function load(){
+    var raw = null;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch(e){}
+    if(!raw) return;
+    try {
+      var data = JSON.parse(raw);
+      fields.forEach(function(f){ if(data[f.id]) f.value = data[f.id]; });
+    } catch(e){}
+  }
+
+  function save(){
+    var data = {};
+    fields.forEach(function(f){ data[f.id] = f.value; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e){}
+    savedChip.classList.add("show");
+    clearTimeout(chipTimer);
+    chipTimer = setTimeout(function(){ savedChip.classList.remove("show"); }, 1600);
+  }
+
+  function refresh(){
+    var done = 0;
+    fields.forEach(function(f, i){
+      var has = f.value.trim().length > 0;
+      if(has) done++;
+      pebbles[i].classList.toggle("done", has);
+      f.closest(".q").classList.toggle("answered", has);
+    });
+    countEl.textContent = done + " of " + fields.length + " answered";
+  }
+
+  function compile(){
+    var lines = ["WEBSITE BRIEF ANSWERS", "======================", ""];
+    fields.forEach(function(f, i){
+      lines.push((i+1) + ". " + f.getAttribute("data-q"));
+      lines.push(f.value.trim() || "(not answered)");
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 2600);
+  }
+
+  fields.forEach(function(f){
+    f.addEventListener("input", function(){
+      refresh();
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(save, 500);
+    });
+  });
+
+  document.getElementById("emailBtn").addEventListener("click", function(){
+    save();
+    var body = compile();
+    var href = "mailto:" + TO_EMAIL +
+      "?subject=" + encodeURIComponent("My website brief answers") +
+      "&body=" + encodeURIComponent(body);
+    if(href.length > 1900){
+      // long answers can exceed mailto limits — fall back to copy
+      copyAnswers(true);
+      return;
+    }
+    window.location.href = href;
+  });
+
+  function copyAnswers(fromEmail){
+    save();
+    var text = compile();
+    var note = fromEmail
+      ? "Answers copied. They were a bit long for email, so just paste them into a message to James."
+      : "Copied! Paste into a message to James.";
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ showToast(note); }, function(){ fallbackCopy(text, note); });
+    } else {
+      fallbackCopy(text, note);
+    }
+  }
+
+  function fallbackCopy(text, note){
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); showToast(note); }
+    catch(e){ showToast("Couldn’t copy automatically. Try the download button instead."); }
+    document.body.removeChild(ta);
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function(){ copyAnswers(false); });
+
+  document.getElementById("downloadBtn").addEventListener("click", function(){
+    save();
+    var blob = new Blob([compile()], {type:"text/plain;charset=utf-8"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "website-brief-answers.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+    showToast("Downloaded. Attach it to a message to James.");
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    if(!confirm("Clear all your answers? This can’t be undone.")) return;
+    fields.forEach(function(f){ f.value = ""; });
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    refresh();
+    showToast("All cleared. Fresh start.");
+  });
+
+  load();
+  refresh();
+})();
+</script>
+</body>
+</html>

@@ -4,7 +4,13 @@
 
 ## What we do
 
-Tailored Tools builds AI-powered business systems and helps small service businesses get recommended by AI assistants. We work across three areas: business automation (custom platforms), Agent Optimisation (AI discoverability), and workshops (hands-on training).
+Tailored Tools builds AI-powered business systems and helps small service businesses get recommended by AI assistants. We work across three areas: business automation (custom platforms and websites), Agent Optimisation (AI discoverability), and workshops (hands-on training).
+
+## How we work (the method)
+
+Every website build is prototype-first: the client answers a twelve-question brief, and within days sees a live website at a real URL — their name, story and branding, with working forms — before paying anything. Prototypes ship with a built-in feedback button (with screenshot attachments) that pipes client notes straight to Tailored Tools; feedback is usually live the same day. Clients register their own domains in their own accounts via plain-English walkthroughs (they own everything: domain, accounts, payments — nothing is locked to Tailored Tools). Before committing, every client gets a private running-costs page listing every pound they'll ever pay, researched against live provider pricing, including traps to avoid (first-year teaser pricing, renewal jumps, unnecessary add-ons). One agreed build fee, no meter running.
+- https://tailored-tools.com/how-i-work
+- Start a brief: https://tailored-tools.com/brief/
 
 ## Live Projects
 

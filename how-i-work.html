@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Work - Tailored Tools</title>
+    <meta name="description" content="Answer twelve questions. Within days you see a live website with your name on it — before you've paid anything. How every Tailored Tools build works: prototype first, everything in your name, no surprises.">
+    <link rel="canonical" href="https://tailored-tools.com/how-i-work">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/how-i-work">
+    <meta property="og:title" content="How I Work - Tailored Tools">
+    <meta property="og:description" content="Prototype first. Everything in your name. No surprises. The method behind every Tailored Tools build.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=14">
+    <style>
+        .hero {
+            background: #0D1B2A;
+            color: var(--white);
+            padding: 80px 24px 88px;
+        }
+        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+        .hero .hero-label {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 42px; font-weight: 800; line-height: 1.15;
+            color: var(--white); margin-bottom: 20px; max-width: 640px;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero p {
+            font-size: 18px; color: rgba(255,255,255,0.7);
+            max-width: 560px; line-height: 1.65; margin-bottom: 16px;
+        }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+        .btn-outline {
+            display: inline-block; border: 2px solid var(--accent); color: var(--accent);
+            padding: 12px 24px; border-radius: 6px; text-decoration: none;
+            font-weight: 700; font-size: 15px; transition: background 0.2s, color 0.2s;
+        }
+        .btn-outline:hover { background: var(--accent); color: var(--white); }
+
+        section { padding: 72px 24px; }
+        .section-inner { max-width: var(--max-width); margin: 0 auto; }
+        .light { background: #ffffff; color: var(--ink, #1a2332); }
+        .light h2 { font-size: 30px; font-weight: 800; color: #0D1B2A; margin-bottom: 10px; }
+        .light .lede { font-size: 17px; color: #55607a; max-width: 640px; margin-bottom: 40px; line-height: 1.65; }
+
+        /* steps */
+        .steps { list-style: none; margin: 0; padding: 0; max-width: 760px; counter-reset: step; }
+        .steps li {
+            position: relative; padding: 0 0 40px 76px; counter-increment: step;
+        }
+        .steps li::before {
+            content: counter(step);
+            position: absolute; left: 0; top: -4px;
+            width: 52px; height: 52px; border-radius: 12px;
+            background: #0D1B2A; color: var(--accent);
+            font-size: 22px; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .steps li:not(:last-child)::after {
+            content: ''; position: absolute; left: 25px; top: 56px; bottom: 8px;
+            width: 2px; background: #e8ebf1;
+        }
+        .steps h3 { font-size: 19px; font-weight: 700; color: #0D1B2A; margin-bottom: 6px; }
+        .steps p { font-size: 15.5px; color: #55607a; line-height: 1.65; max-width: 60ch; }
+        .steps p strong { color: #1a2332; }
+        .steps .step-aside {
+            display: inline-block; margin-top: 10px; font-size: 13.5px;
+            background: rgba(255,111,32,0.08); border: 1px solid rgba(255,111,32,0.25);
+            color: #b34a00; border-radius: 8px; padding: 8px 14px;
+        }
+
+        /* promises band */
+        .promises { background: #0D1B2A; color: var(--white); }
+        .promises h2 { font-size: 30px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+        .promises .lede { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 640px; margin-bottom: 40px; line-height: 1.65; }
+        .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .promise-card {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px; padding: 26px 24px;
+        }
+        .promise-card h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+        .promise-card h3 span { color: var(--accent); margin-right: 8px; }
+        .promise-card p { font-size: 14.5px; color: rgba(255,255,255,0.68); line-height: 1.65; }
+        @media (max-width: 800px) { .promise-grid { grid-template-columns: 1fr; } }
+
+        /* timeline strip */
+        .timeline-strip { background: #f6f7f9; }
+        .timeline-strip h2 { font-size: 30px; font-weight: 800; color: #0D1B2A; margin-bottom: 10px; }
+        .timeline-strip .lede { font-size: 17px; color: #55607a; max-width: 640px; margin-bottom: 36px; line-height: 1.65; }
+        .tl { max-width: 720px; border-left: 2px solid #dde2ea; padding-left: 28px; }
+        .tl-item { position: relative; padding-bottom: 26px; }
+        .tl-item::before {
+            content: ''; position: absolute; left: -35px; top: 5px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--accent); box-shadow: 0 0 0 4px rgba(255,111,32,0.18);
+        }
+        .tl-item .tl-when { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8b93a5; }
+        .tl-item p { font-size: 15.5px; color: #38415a; line-height: 1.6; max-width: 58ch; margin-top: 3px; }
+        .tl-item p strong { color: #0D1B2A; }
+
+        /* final cta */
+        .final-cta { background: #0D1B2A; color: var(--white); text-align: center; padding: 84px 24px; }
+        .final-cta h2 { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
+        .final-cta p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+        .final-cta .hero-ctas { justify-content: center; }
+
+        @media (max-width: 640px) {
+            .hero { padding: 56px 20px 64px; }
+            .hero h1 { font-size: 32px; }
+            section { padding: 56px 20px; }
+            .steps li { padding-left: 64px; }
+            .steps li::before { width: 44px; height: 44px; font-size: 18px; }
+            .steps li:not(:last-child)::after { left: 21px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/how-i-work" class="active">How I Work</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/ao/">AO</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-label">How I Work</span>
+        <h1>You see it <span>before</span> you pay for it</h1>
+        <p>Most web developers show you a proposal. I show you your website — live, at a real address, with your name and your words on it — before any money changes hands.</p>
+        <p>It started as a way of doing right by people. It turned out to be the best sales pitch I have, so now it's just how every build works.</p>
+        <div class="hero-ctas">
+            <a href="/brief/" class="btn-accent">Start your brief</a>
+            <a href="#the-method" class="btn-outline">See the method</a>
+        </div>
+    </div>
+</section>
+
+<section class="light" id="the-method" data-nav-bg="light">
+    <div class="section-inner">
+        <h2>The method</h2>
+        <p class="lede">Five steps. The first two cost you nothing but ten minutes of answers.</p>
+        <ol class="steps">
+            <li>
+                <h3>Answer twelve questions</h3>
+                <p>The <a href="/brief/">brief</a> asks what you do, who it's for, your story, your colours, sites you love. Half-sentences and voice-notes-turned-text are perfect. It autosaves, so dip in and out.</p>
+            </li>
+            <li>
+                <h3>See something real</h3>
+                <p>Within days you get a link. Not a mood board, not a wireframe — <strong>a live website</strong>: your name, your story, your vibe, working forms. Anything you haven't told me yet appears as a clearly-marked space, so you can see exactly what your answers will unlock.</p>
+                <span class="step-aside">Still nothing to pay. If it doesn't make you feel something, walk away — no hard feelings, no invoice.</span>
+            </li>
+            <li>
+                <h3>React, honestly</h3>
+                <p>Every prototype ships with a <strong>"leave a note"</strong> button in the corner. Tap it, type what you love or hate — attach a screenshot if it helps — and it lands straight in my inbox. Feedback usually goes live the same day, so the site becomes a conversation, not a reveal.</p>
+            </li>
+            <li>
+                <h3>We shape it together — and you learn as we go</h3>
+                <p>Real prices, your photos, your schedule drop in as you send them. And where there's something worth owning yourself — like your domain name — I don't do it <em>for</em> you: you get a plain-English walkthrough, you do it, and I'm on the end of a screenshot if you get stuck. My clients hold their own keys.</p>
+            </li>
+            <li>
+                <h3>You own everything, and know what it costs</h3>
+                <p>Before you commit, you get a private running-costs page: <strong>every pound you'll ever pay</strong>, researched against live prices — including the tricks to avoid, like first-year teaser pricing and checkout add-ons you never needed. One agreed build fee. No meter running.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="promises">
+    <div class="section-inner">
+        <h2>Three promises on every build</h2>
+        <p class="lede">These aren't marketing lines — they're on the private costs page every client gets, in writing.</p>
+        <div class="promise-grid">
+            <div class="promise-card">
+                <h3><span>&#10003;</span>Everything in your name</h3>
+                <p>Your domain, your accounts, your payments — registered to you, paid by you, owned by you from day one. Nothing is locked to Tailored Tools. If we ever part ways, you lose nothing.</p>
+            </div>
+            <div class="promise-card">
+                <h3><span>&#10003;</span>No surprises, ever</h3>
+                <p>Renewal price jumps, VAT quirks, currency fees, upsells at checkout — the traps are documented on your costs page before you meet them. Free tiers first; you only pay for tools once the business justifies them.</p>
+            </div>
+            <div class="promise-card">
+                <h3><span>&#10003;</span>You'll understand what you own</h3>
+                <p>Every build teaches you to run what's yours — the same no-jargon approach as the Kent AI meet-ups and workshops. The goal is a business owner who can't be held hostage by a developer. Including me.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="timeline-strip" data-nav-bg="light">
+    <div class="section-inner">
+        <h2>What this looks like in real life</h2>
+        <p class="lede">A recent build for a Kent yoga teacher, exactly as it happened.</p>
+        <div class="tl">
+            <div class="tl-item">
+                <span class="tl-when">Sunday evening</span>
+                <p>She sends her twelve answers over — services, story, "calm, warm and playful", a couple of websites she loves.</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-when">Monday</span>
+                <p><strong>The site is live.</strong> Her story near-verbatim, her logo drawn as a constellation in a night sky, working contact and mailing-list forms, and clearly-marked spaces for everything still to come.</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-when">Monday, 10:19am (the next one)</span>
+                <p>Her first note arrives through the site's own feedback button: two new sections she'd love, plus things she's already sorted. All of it live by that evening.</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-when">Within the week</span>
+                <p>Real timetable and prices on the page, and she's registering <strong>her own domain, in her own account, with her own card</strong> — from a step-by-step walkthrough written just for her.</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-when">Money paid so far by the client</span>
+                <p><strong>About £12 — to her domain registrar, not to me.</strong> The build fee gets agreed once she's seen exactly what she's buying.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <h2>Want to see yours?</h2>
+    <p>Twelve questions, ten minutes, nothing to pay. The worst case is you'll have written a really good brief.</p>
+    <div class="hero-ctas">
+        <a href="/brief/" class="btn-accent">Start your brief</a>
+        <a href="mailto:hello@tailored-tools.com?subject=I%27d%20like%20to%20book%20a%20free%20chat" class="btn-outline">Or book a free chat</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>Custom platforms, agent optimisation, and workshops, for small businesses with serious ambition.</p>
+    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p class="footer-meta">
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+        &middot; <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot; <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+</footer>
+
+<script src="/js/nav.js"></script>
+<script>
+var hb = document.getElementById('hamburger');
+if (hb) hb.addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

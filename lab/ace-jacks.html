@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a271c">
+<title>Ace &amp; Jacks Poker League, Case Study | Tailored Tools</title>
+<meta name="description" content="A weekly pub poker league ran sixteen seasons on a football plugin. Season 17 gets a proper table: a phone-first site styled like card-room stationery, and a back office built around the admin. In build, live for Season 17.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://tailored-tools.com/projects/ace-jacks">
+<link rel="icon" href="/favicon.png?v=3" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ace &amp; Jacks: a poker league gets a proper table | Tailored Tools">
+<meta property="og:description" content="Sixteen seasons on a football plugin. Season 17 starts on a system built for poker.">
+<meta property="og:image" content="https://tailored-tools.com/images/projects/ace-jacks-desktop.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..700;1,6..96,500..600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --felt: #0f3526; --felt-deep: #0a271c; --felt-hi: #17503a; --rail: #221710;
+    --paper: #f3eee2; --paper-2: #e9e1cf; --sheet: #fbf9f3; --rule: #e0d7c3; --rule-strong: #c4b595;
+    --ink: #16140f; --ink-2: #45403a; --ink-3: #605849; --red: #8c1c21; --red-on-felt: #e0474f;
+    --cream: #f5efe1; --cream-2: #d8cfba; --gold: #b3905a; --gold-soft: rgba(179,144,90,.55); --brass: #b3905a;
+    --display: 'Bodoni Moda', Georgia, serif; --body: 'Barlow', -apple-system, sans-serif;
+    --ui: 'Barlow Condensed', 'Barlow', sans-serif;
+    --suit: 'Apple Symbols', 'Segoe UI Symbol', 'DejaVu Sans', 'Bodoni Moda', serif;
+    --bw: min(78px, calc((50vw - 224px) / 5));
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #0c2e21; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--body); color: var(--cream); line-height: 1.6; overflow-x: hidden; background: transparent; font-variant-numeric: lining-nums; }
+/* Bodoni pinned to a text cut: the hairline display cut is hard to read on felt */
+h1, h2, h3, .bodoni { font-optical-sizing: none; }
+a { color: var(--cream); }
+button { font: inherit; color: inherit; cursor: pointer; }
+.s { font-family: var(--suit); font-variant-emoji: text; font-style: normal; }
+.r { color: var(--red); }
+:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+/* ── The table (fixed layers) ─────────────────────────────────── */
+/* Extends past the screen so iOS never shows a bare strip behind its toolbars */
+.felt { position: fixed; top: -25vh; bottom: -25vh; left: 0; right: 0; z-index: -3;
+    background-color: var(--felt);
+    background-image:
+        radial-gradient(1100px 700px at 62% 22%, rgba(245,239,225,0.085) 0%, transparent 62%),
+        radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(4,16,11,0.55) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"); }
+#motes { position: fixed; left: 0; top: -10vh; width: 100%; height: 120vh; z-index: -2; pointer-events: none; }
+
+/* ── The board: five cards dealt as you read ──────────────────── */
+.board { position: fixed; z-index: 0; top: 50%; right: max(24px, calc((100vw - 1100px) / 2 - 40px)); transform: translateY(-50%);
+    width: max-content; pointer-events: none; transition: opacity .6s ease; }
+.board.cleared { opacity: 0; }
+.board .lbl { display: flex; justify-content: space-between; font-family: var(--ui); font-weight: 600; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: rgba(245,239,225,.55); margin-bottom: 12px; }
+.board .lbl span:last-child { color: rgba(245,239,225,.38); }
+.layout { display: flex; gap: 12px; padding: 14px; border: 1px solid var(--gold-soft); border-radius: 10px; position: relative; perspective: 900px; }
+.layout::after { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(179,144,90,.22); border-radius: 7px; pointer-events: none; }
+.slot { position: relative; width: var(--bw); height: calc(var(--bw) * 1.4); border-radius: 7px; border: 1px dashed rgba(179,144,90,.4); flex: none; }
+.slot:nth-child(4) { margin-left: 6px; } .slot:nth-child(5) { margin-left: 6px; }
+.board .cap { margin-top: 14px; font-family: var(--display); font-style: italic; font-size: 19px; color: var(--cream); min-height: 1.4em; transition: opacity .4s; }
+.board .sub { font-family: var(--ui); font-size: 14px; letter-spacing: .04em; color: rgba(245,239,225,.55); }
+
+.bc { position: absolute; inset: 0; transform: translate(42vw, -70vh) rotate(160deg); opacity: 0;
+    transition: transform .65s cubic-bezier(.18,.84,.28,1), opacity .3s ease; perspective: 700px; }
+.bc.dealt { transform: rotate(var(--rot, 0deg)); opacity: 1; }
+.flip { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateY(180deg); transition: transform .6s cubic-bezier(.3,.7,.2,1); }
+.bc.up .flip { transform: none; transition-delay: .5s; }
+.face, .back { position: absolute; inset: 0; border-radius: 7px; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.face { background: var(--sheet); color: var(--ink); box-shadow: 0 1px 1px rgba(0,0,0,.25), 0 8px 18px rgba(0,0,0,.35); }
+.back { transform: rotateY(180deg); background-color: var(--red);
+    background-image: repeating-linear-gradient(45deg, rgba(245,239,225,.13) 0 1px, transparent 1px 7px), repeating-linear-gradient(-45deg, rgba(245,239,225,.13) 0 1px, transparent 1px 7px);
+    box-shadow: inset 0 0 0 4px var(--sheet), inset 0 0 0 5px var(--gold), 0 1px 1px rgba(0,0,0,.25), 0 8px 18px rgba(0,0,0,.35); }
+.bc .ix { position: absolute; top: 7%; left: 9%; display: flex; flex-direction: column; align-items: center; font-family: var(--display); font-weight: 600; font-size: calc(var(--bw) * .21); line-height: .95; }
+.bc .ix.br { top: auto; left: auto; bottom: 7%; right: 9%; transform: rotate(180deg); }
+.bc .pip { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: calc(var(--bw) * .5); line-height: 1; }
+.bc.red .face { color: var(--red); }
+.bc .river-mark { position: absolute; left: 0; right: 0; bottom: -34px; text-align: center; font-family: var(--ui); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,239,225,.55); opacity: 0; transition: opacity .5s .6s; }
+.bc.dealt .river-mark { opacity: 1; }
+
+/* phones and tablets: the board appears briefly whenever a card is dealt */
+.mini { position: fixed; z-index: 45; left: 50%; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 160%);
+    display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 14px; border-radius: 12px; background: rgba(10,39,28,.92);
+    border: 1px solid var(--gold-soft); box-shadow: 0 14px 30px rgba(0,0,0,.4); transition: transform .5s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+.mini.show { transform: translate(-50%, 0); }
+.mini .layout { --bw: 30px !important; padding: 0; border: 0; gap: 5px; }
+.mini .layout::after { display: none; }
+.mini .slot:nth-child(4), .mini .slot:nth-child(5) { margin-left: 3px; }
+.mini .bc { transform: translate(30vw, -60vh) rotate(160deg); }
+.mini .bc.dealt { transform: none; }
+.mini .bc .ix.br, .mini .bc .river-mark { display: none; }
+.mini .bc .ix { font-size: 10px; top: 4%; left: 8%; }
+.mini .bc .pip { font-size: 15px; top: 60%; }
+.mini .back { box-shadow: inset 0 0 0 2px var(--sheet), inset 0 0 0 3px var(--gold); }
+.mini .mlbl { font-family: var(--ui); font-weight: 600; font-size: 13px; letter-spacing: .04em; color: var(--cream-2); white-space: nowrap; line-height: 1.2; }
+
+/* ── TT bar ───────────────────────────────────────────────────── */
+.tt-bar { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1100px, calc(100% - 24px));
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 10px 9px 16px; border-radius: 999px; background: rgba(10,39,28,0.66);
+    border: 1px solid rgba(245,239,225,0.12); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.tt-bar .logo { display: block; width: 118px; height: 32px; background: url('/tt-logo-light.png') left center / contain no-repeat; }
+.tt-bar nav { display: flex; align-items: center; gap: 16px; }
+.tt-bar nav a { color: rgba(245,239,225,0.75); text-decoration: none; font-size: 14px; font-weight: 500; }
+.tt-bar nav a:hover { color: var(--cream); }
+.tt-bar nav a.cta { background: #ff6f20; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 700; }
+
+/* ── Layout and type ──────────────────────────────────────────── */
+.col { width: min(620px, calc(100% - 40px)); margin-left: max(20px, calc((100vw - 1100px) / 2)); position: relative; z-index: 1; }
+section { position: relative; padding: 18vh 0; }
+.eyebrow { font-family: var(--ui); font-weight: 600; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: var(--cream-2); display: block; margin-bottom: 18px; }
+.eyebrow .s { color: var(--red-on-felt); letter-spacing: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.06; letter-spacing: -0.005em; color: var(--cream); }
+h1 { font-size: clamp(36px, 5.6vw, 70px); margin-bottom: 26px; font-variation-settings: 'opsz' 28; }
+h2 { font-size: clamp(32px, 4.8vw, 56px); margin-bottom: 22px; font-variation-settings: 'opsz' 24; }
+h1 em, h2 em { font-style: italic; font-weight: 500; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: .16em; }
+p.lead { font-size: clamp(18px, 2.1vw, 21px); color: rgba(245,239,225,0.84); max-width: 560px; margin-bottom: 18px; }
+p { font-size: 17.5px; color: rgba(245,239,225,0.78); margin-bottom: 16px; }
+p strong { color: var(--cream); font-weight: 600; }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+.back-link { font-family: var(--ui); font-size: 15px; letter-spacing: .06em; color: rgba(245,239,225,0.6); text-decoration: none; margin-bottom: 26px; display: block; width: max-content; }
+.back-link:hover { color: var(--cream); }
+.badge { display: flex; width: fit-content; max-width: 100%; align-items: center; flex-wrap: wrap; gap: 4px 10px; align-self: flex-start; margin-bottom: 26px; padding: 8px 14px 8px 12px; border-radius: 2px;
+    font-family: var(--ui); font-weight: 600; font-size: 15px; letter-spacing: .05em; color: var(--cream); box-shadow: inset 0 0 0 1px var(--gold); background: rgba(10,39,28,.5); }
+.badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red-on-felt); animation: blink 1.4s steps(2, start) infinite; }
+.badge .sep { color: var(--gold); }
+.badge #daysLeft { color: var(--cream-2); font-weight: 500; }
+@keyframes blink { to { visibility: hidden; } }
+.facts { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 30px; border-top: 1px solid var(--gold-soft); padding-top: 22px; }
+.facts div { font-family: var(--ui); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,239,225,0.55); }
+.facts b { display: block; font-family: var(--display); font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 24px; color: var(--cream); margin-top: 2px; font-variation-settings: 'opsz' 14; }
+.scroll-hint { position: absolute; bottom: 5vh; left: max(20px, calc((100vw - 1100px) / 2)); font-family: var(--ui); font-size: 14px; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,239,225,0.42); }
+
+/* hero pair, phones and tablets only (the board does this job on wide screens) */
+.pair { display: none; position: relative; height: 104px; width: 130px; margin-bottom: 18px; perspective: 700px; }
+.pair { --bw: 66px; }
+.pair .bc { width: 66px; height: 92px; inset: auto; top: 6px; }
+.pair .bc:nth-child(1) { left: 0; --rot: -9deg; }
+.pair .bc:nth-child(2) { left: 46px; --rot: 7deg; top: 10px; }
+
+/* ── The bad hand ─────────────────────────────────────────────── */
+.hand { position: relative; margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 14px; }
+.hc { position: relative; perspective: 800px; opacity: 0; transform: translateY(-26px) rotate(-9deg);
+    transition: transform .6s cubic-bezier(.18,.84,.28,1) calc(var(--i) * 70ms), opacity .4s ease calc(var(--i) * 70ms); }
+.hand.in .hc { opacity: 1; transform: rotate(var(--r)); }
+.hand.folded .hc { transform: translate(var(--fx), var(--fy)) rotate(var(--fr)); transition-delay: calc(var(--i) * 45ms); }
+.hc .flip { display: grid; height: 100%; transform: none; }
+.hand.folded .hc .flip { transform: rotateY(180deg); transition-delay: calc(var(--i) * 45ms); }
+.hc .face, .hc .back { position: relative; grid-area: 1 / 1; inset: auto; border-radius: 9px; }
+.hc .face { padding: 14px 14px 16px; min-height: 172px; display: flex; flex-direction: column; }
+.hc .ix { font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1; margin-bottom: 14px; }
+.hc.red .ix { color: var(--red); }
+.hc b { font-family: var(--display); font-weight: 600; font-size: 22px; line-height: 1.05; color: var(--ink); margin-bottom: 8px; font-variation-settings: 'opsz' 14; }
+.hc span.t { font-size: 14px; line-height: 1.4; color: var(--ink-3); }
+.hand-ctl { display: flex; align-items: center; gap: 16px; margin-top: 22px; flex-wrap: wrap; }
+.btn-line { font-family: var(--ui); font-weight: 600; font-size: 16px; letter-spacing: .05em; padding: 10px 18px; border-radius: 2px; background: transparent; color: var(--cream); border: 0; box-shadow: inset 0 0 0 1px var(--gold); min-height: 44px; }
+.btn-line:hover { background: rgba(179,144,90,.18); }
+.hand-ctl small { font-family: var(--ui); font-size: 14.5px; letter-spacing: .04em; color: rgba(245,239,225,.55); }
+.muck { position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%); font-family: var(--display); font-style: italic; font-size: 26px; color: var(--cream); opacity: 0; transition: opacity .5s ease .5s; pointer-events: none; white-space: nowrap; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+.hand.folded .muck { opacity: 1; }
+
+/* ── Noticed → made (stationery on the felt) ──────────────────── */
+.noticed { display: grid; gap: 26px; margin-top: 40px; }
+.notice { position: relative; display: grid; grid-template-columns: 1fr; background: var(--sheet); color: var(--ink); border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2), 0 24px 50px rgba(0,0,0,.38); }
+.notice::before { content: ''; position: absolute; inset: 6px; border: 1px solid var(--gold-soft); pointer-events: none; }
+.notice > div { padding: 24px 26px; position: relative; }
+.notice .saw { border-bottom: 1px solid var(--rule); }
+.notice .tag { font-family: var(--ui); font-weight: 600; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 8px; }
+.notice .made .tag { color: var(--felt); }
+.notice h3 { font-size: 26px; margin-bottom: 8px; color: var(--ink); font-variation-settings: 'opsz' 14; }
+.notice p { font-size: 16px; margin: 0; color: var(--ink-2); }
+.specimen { margin-top: 18px; border-radius: 8px; position: relative; overflow: hidden; color: var(--cream);
+    background-color: var(--felt); box-shadow: inset 0 0 0 1px rgba(179,144,90,.5), inset 0 0 40px rgba(0,0,0,.35);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"); }
+.specimen .note { display: block; padding: 0 14px 12px; font-family: var(--ui); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,239,225,.5); }
+
+/* chores specimen: the old season rebuild vs one step */
+.chores { padding: 14px 14px 0; }
+.ch-stage { position: relative; min-height: 168px; }
+.ch-old { transition: opacity .5s ease, filter .5s ease; }
+.ch-row { display: grid; grid-template-columns: minmax(0, 1fr) repeat(6, 20px); gap: 5px; align-items: center; margin-bottom: 6px; }
+.ch-row span { font-family: var(--ui); font-size: 13.5px; line-height: 1.15; color: var(--cream-2); }
+.ch-row.h i { font-family: var(--ui); font-style: normal; font-size: 11px; text-align: center; color: rgba(245,239,225,.5); letter-spacing: .04em; }
+.ch-row b { height: 20px; border: 1px solid rgba(245,239,225,.28); border-radius: 2px; position: relative; }
+.ch-row b::after { content: ''; position: absolute; left: 3px; right: 3px; top: 50%; height: 2px; margin-top: -1px; background: var(--cream); transform: rotate(-35deg) scaleX(0); transform-origin: left; transition: transform .16s ease; border-radius: 1px; }
+.ch-row b.t::after { transform: rotate(-35deg) scaleX(1); }
+.ch-meta { font-family: var(--ui); font-size: 13px; letter-spacing: .05em; color: rgba(245,239,225,.6); margin-top: 6px; }
+.ch-new { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+.ch-new .stamp { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.05; color: var(--cream); padding: 14px 20px; box-shadow: inset 0 0 0 1px var(--gold); transform: rotate(-4deg) scale(1.3); transition: transform .35s cubic-bezier(.2,.9,.3,1.4); }
+.ch-new .stamp small { display: block; font-family: var(--ui); font-weight: 600; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--cream-2); margin-top: 6px; }
+.chores.done .ch-old { opacity: .12; filter: blur(1px); }
+.chores.done .ch-new { opacity: 1; }
+.chores.done .ch-new .stamp { transform: rotate(-4deg) scale(1); }
+.ch-btn { display: block; width: 100%; margin: 12px 0 10px; padding: 11px; border: 0; border-radius: 2px; background: var(--red); color: #fff; font-family: var(--ui); font-weight: 600; font-size: 16px; letter-spacing: .05em; min-height: 44px; transition: transform .12s ease, background .2s; }
+.ch-btn.press { transform: translateY(2px) scale(.98); background: #a3252b; }
+
+/* points specimen: Amy's chart, top ten places */
+.pts { padding: 14px 14px 0; }
+.pts-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.pts-head span { flex: 1 1 100%; font-family: var(--ui); font-weight: 600; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--cream-2); }
+.pts-head button { width: 44px; height: 40px; border: 0; border-radius: 2px; background: transparent; box-shadow: inset 0 0 0 1px var(--gold); color: var(--cream); font-size: 22px; line-height: 1; }
+.pts-head button:hover { background: rgba(179,144,90,.18); }
+.pts-head output { min-width: 44px; text-align: center; font-family: var(--display); font-weight: 600; font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+.pts-list { list-style: none; }
+.pts-list li { display: grid; grid-template-columns: 38px minmax(0, 1fr) 44px; gap: 10px; align-items: center; height: 22px; transition: opacity .3s; }
+.pts-list li.off { opacity: .22; }
+.pts-list .p { font-family: var(--ui); font-size: 14px; color: var(--cream-2); }
+.pts-list .bar { height: 7px; border-radius: 4px; background: rgba(245,239,225,.08); position: relative; overflow: hidden; }
+.pts-list .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: var(--w, 0%); background: var(--cream); border-radius: 4px; transition: width .6s cubic-bezier(.2,.8,.2,1); }
+.pts-list li:first-child .bar i { background: linear-gradient(90deg, var(--cream), #efe2c2); box-shadow: 0 0 0 1px var(--gold); }
+.pts-list b { font-family: var(--display); font-weight: 600; font-size: 16px; text-align: right; font-variant-numeric: tabular-nums; }
+.pts .note { padding-top: 10px; padding-left: 0; }
+
+/* phone-fit specimen */
+.fit { height: 262px; display: grid; grid-template-columns: 1fr; justify-items: center; align-items: end; }
+.fit-phone { position: relative; width: 150px; height: 182px; border: 2px solid var(--cream-2); border-radius: 20px 20px 0 0; border-bottom: 0; margin-right: 76px; }
+.fit-phone::before { content: ''; position: absolute; top: 7px; left: 50%; width: 38px; height: 8px; margin-left: -19px; border-radius: 6px; background: rgba(245,239,225,.3); }
+.fit-old, .fit-new { position: absolute; left: 8px; top: 26px; right: 8px; transition: opacity .5s ease; }
+.fit-old { right: auto; width: 154px; }  /* 426 / 375 of the screen width: hangs off the edge */
+.tbl i { display: block; height: 15px; margin-bottom: 4px; border-radius: 2px; background: repeating-linear-gradient(90deg, rgba(245,239,225,.5) 0 18px, transparent 18px 22px, rgba(245,239,225,.25) 22px 60px, transparent 60px 64px, rgba(245,239,225,.35) 64px 154px); }
+.over { position: absolute; top: -6px; bottom: -6px; left: 130px; width: 24px; border-left: 1px solid var(--red-on-felt);
+    background: repeating-linear-gradient(45deg, rgba(224,71,79,.4) 0 3px, transparent 3px 7px); }
+.over::after { content: '51px off the screen'; position: absolute; left: 32px; top: 30%; width: 64px; line-height: 1.2; font-family: var(--ui); font-weight: 600; font-size: 12px; letter-spacing: .04em; color: #f08a90; }
+.fit-new { opacity: 0; display: grid; gap: 6px; perspective: 500px; }
+.fit-new .mc { height: 36px; border-radius: 5px; background: var(--sheet); display: grid; grid-template-columns: 22px 1fr; align-items: center; padding: 0 8px; gap: 6px; transform: rotateX(90deg); transition: transform .5s cubic-bezier(.3,.7,.2,1); }
+.fit-new .mc .s { font-size: 14px; color: var(--ink); }
+.fit-new .mc .s.r { color: var(--red); }
+.fit-new .mc em { display: block; height: 5px; border-radius: 3px; background: var(--rule-strong); width: 80%; }
+.fit-new .mc em + em { width: 45%; margin-top: 4px; background: var(--rule); }
+.fit.new .fit-old { opacity: 0; }
+.fit.new .fit-new { opacity: 1; }
+.fit.new .fit-new .mc { transform: none; }
+.fit.new .fit-new .mc:nth-child(2) { transition-delay: .15s; }
+.fit.new .fit-new .mc:nth-child(3) { transition-delay: .3s; }
+.fit-cap { position: absolute; left: 14px; top: 12px; font-family: var(--ui); font-size: 13px; letter-spacing: .04em; color: rgba(245,239,225,.6); line-height: 1.3; }
+.fit-cap b { display: block; font-weight: 600; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); }
+
+/* ── A day, and the other nine-tenths ─────────────────────────── */
+.tenth .big { font-family: var(--display); font-weight: 600; font-size: clamp(64px, 13vw, 150px); line-height: .9; color: var(--cream); font-variation-settings: 'opsz' 40; margin: 6px 0 24px; }
+.tenth .big em { font-style: italic; font-weight: 500; }
+.pegrow { display: inline-flex; gap: 10px; list-style: none; padding: 9px 12px; background: var(--rail); border-radius: 30px; box-shadow: inset 0 0 0 1px rgba(179,144,90,.35); margin: 8px 0 14px; }
+.pegrow li { width: 16px; height: 16px; border-radius: 50%; background: #0d0907; box-shadow: inset 0 1px 2px rgba(0,0,0,.9); }
+.pegrow li.on { background: var(--brass); box-shadow: 0 0 0 2px var(--rail), 0 0 0 3px #e8c27a; animation: peg .6s cubic-bezier(.2,.9,.3,1.4) both; }
+@keyframes peg { from { transform: scale(.4); background: #0d0907; } }
+.pegkey { font-family: var(--ui); font-size: 15px; letter-spacing: .04em; color: rgba(245,239,225,.6); }
+
+/* ── Feature cards that flip ──────────────────────────────────── */
+.deck { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-top: 40px; }
+.fc { perspective: 900px; }
+.fc .flip { display: grid; height: 100%; transform: rotateY(180deg) translateY(-12px); transition: transform .85s cubic-bezier(.3,.7,.2,1) calc(var(--i) * 150ms); }
+.fc.on .flip { transform: none; }
+.fc .face, .fc .back { position: relative; inset: auto; grid-area: 1 / 1; border-radius: 10px; }
+.fc .face { padding: 16px 16px 18px; min-height: 196px; }
+.fc .ix { font-size: 22px; line-height: 1; display: block; margin-bottom: 14px; color: var(--ink); }
+.fc .ix.r { color: var(--red); }
+.fc h3 { font-size: 21px; color: var(--ink); margin-bottom: 8px; font-variation-settings: 'opsz' 14; }
+.fc p { font-size: 15px; line-height: 1.45; color: var(--ink-3); margin: 0; }
+.fc .wip { display: inline-block; margin-top: 10px; font-family: var(--ui); font-weight: 600; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); box-shadow: inset 0 0 0 1px var(--red); padding: 3px 7px; border-radius: 2px; }
+
+/* ── The rack: sixteen seasons as chip stacks ─────────────────── */
+.rack { display: grid; grid-template-columns: repeat(8, 1fr); gap: 22px 8px; margin-top: 40px; max-width: 420px; }
+.stack { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.chips { position: relative; width: 100%; max-width: 34px; height: 92px; display: flex; flex-direction: column-reverse; gap: 2px; }
+.chips i { display: block; height: 7px; border-radius: 2px; flex: none; }
+.stack.ghost .chips { border: 1px dashed rgba(245,239,225,.32); border-radius: 4px; }
+.stack.ghost .chips i { display: none; }
+.stack.ghost .chips::after { content: 'next'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); font-family: var(--ui); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,239,225,.32); }
+.stack.solid .chips i { background: repeating-linear-gradient(90deg, var(--red) 0 5px, var(--cream) 5px 8px); box-shadow: 0 0 0 1px var(--gold);
+    opacity: 0; transform: translateY(-36px); transition: transform .45s cubic-bezier(.3,.8,.3,1.25) calc(var(--k) * 110ms), opacity .2s calc(var(--k) * 110ms); }
+.rack.on .stack.solid .chips i { opacity: 1; transform: none; }
+.stack span { font-family: var(--ui); font-weight: 600; font-size: 13px; color: rgba(245,239,225,.45); }
+.stack.solid span { color: var(--cream); box-shadow: 0 1px 0 var(--gold); }
+.rack-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-family: var(--ui); font-size: 15px; letter-spacing: .03em; color: var(--cream-2); }
+.rack-key i { display: inline-block; width: 22px; height: 7px; border-radius: 2px; vertical-align: 2px; margin-right: 8px; }
+.rack-key .solid i { background: repeating-linear-gradient(90deg, var(--red) 0 5px, var(--cream) 5px 8px); box-shadow: 0 0 0 1px var(--gold); }
+.rack-key .ghost i { border: 1px dashed rgba(245,239,225,.45); }
+.tally { margin-top: 36px; background: var(--sheet); color: var(--ink); border-radius: 2px; padding: 24px 26px; position: relative; box-shadow: 0 24px 50px rgba(0,0,0,.38); max-width: 460px; }
+.tally::before { content: ''; position: absolute; inset: 6px; border: 1px solid var(--gold-soft); pointer-events: none; }
+.tally h3 { font-size: 22px; color: var(--ink); margin-bottom: 12px; font-variation-settings: 'opsz' 14; }
+.tally dl div { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.tally dt { font-family: var(--ui); font-size: 16px; letter-spacing: .04em; color: var(--ink-3); }
+.tally dd { font-family: var(--display); font-weight: 600; font-size: 26px; font-variant-numeric: tabular-nums; }
+.tally dd.zero { color: var(--felt); }
+.tally p { font-size: 15px; color: var(--ink-3); margin: 14px 0 0; }
+
+/* ── Cribbage-board timeline ──────────────────────────────────── */
+.crib { list-style: none; margin-top: 40px; position: relative; }
+.crib::before { content: ''; position: absolute; left: 13px; top: 6px; bottom: 6px; width: 12px; margin-left: -6px; border-radius: 8px; background: var(--rail); box-shadow: inset 0 0 0 1px rgba(179,144,90,.3); }
+.crib li { display: grid; grid-template-columns: 26px 1fr; gap: 20px; align-items: start; padding-bottom: 28px; position: relative; }
+.crib .hole { width: 26px; height: 26px; display: grid; place-items: center; position: relative; z-index: 1; }
+.crib .hole::after { content: ''; width: 12px; height: 12px; border-radius: 50%; background: #0d0907; box-shadow: inset 0 1px 2px rgba(0,0,0,.9), 0 0 0 4px var(--rail); transition: background .5s, box-shadow .5s; }
+.crib li.done.on .hole::after { background: var(--brass); box-shadow: 0 0 0 4px var(--rail), 0 0 0 5px rgba(232,194,122,.6); }
+.crib li.now.on .hole::after { background: #e8c27a; box-shadow: 0 0 0 4px var(--rail), 0 0 0 5px #e8c27a; animation: glow 2.2s ease-in-out infinite; }
+@keyframes glow { 50% { box-shadow: 0 0 0 4px var(--rail), 0 0 0 5px #e8c27a, 0 0 18px 6px rgba(232,194,122,.45); } }
+.crib .when { font-family: var(--ui); font-weight: 600; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-2); display: block; margin: 2px 0 4px; }
+.crib li.now .when { color: #e8c27a; }
+.crib li.later .when { color: rgba(245,239,225,.5); }
+.crib p { margin: 0; font-size: 16.5px; }
+
+/* ── The river ────────────────────────────────────────────────── */
+.river { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin-top: 40px; }
+.rv { width: 210px; aspect-ratio: 5 / 7; perspective: 900px; cursor: pointer; border: 0; background: none; padding: 0; text-align: center; }
+.rv .card { position: relative; width: 100%; height: 100%; border-radius: 12px; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.3,.7,.2,1); animation: hover 5s ease-in-out infinite;
+    background-color: var(--red);
+    background-image: repeating-linear-gradient(45deg, rgba(245,239,225,.13) 0 1px, transparent 1px 9px), repeating-linear-gradient(-45deg, rgba(245,239,225,.13) 0 1px, transparent 1px 9px);
+    box-shadow: inset 0 0 0 7px var(--sheet), inset 0 0 0 8px var(--gold), 0 2px 2px rgba(0,0,0,.25), 0 30px 50px rgba(0,0,0,.45); }
+@keyframes hover { 50% { transform: translateY(-6px) rotate(.6deg); } }
+.rv:hover .card, .rv.peek .card { animation: none; transform: rotateY(-22deg) rotateZ(-2deg) translateY(-6px); }
+.rv .panel { position: absolute; left: 20%; right: 20%; top: 24%; bottom: 24%; background: var(--sheet); color: var(--ink); border-radius: 50% / 30%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 0 1px var(--gold), 0 0 0 5px var(--red), 0 0 0 6px var(--gold); }
+.rv .panel span { font-family: var(--ui); font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); }
+.rv .panel b { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1; margin: 4px 0; font-variation-settings: 'opsz' 14; }
+.rv .panel em { font-style: normal; font-family: var(--ui); font-weight: 600; font-size: 13px; letter-spacing: .06em; color: var(--ink-3); }
+.cd { display: flex; gap: 18px; margin: 4px 0 18px; }
+.cd div { font-family: var(--ui); font-weight: 500; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,239,225,.55); text-align: left; }
+.cd b { display: block; font-family: var(--display); font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: 0; color: var(--cream); font-variant-numeric: tabular-nums; font-variation-settings: 'opsz' 14; }
+
+/* ── Screens ──────────────────────────────────────────────────── */
+.shots { width: min(980px, calc(100% - 40px)); margin: 50px auto 0; position: relative; padding-right: 22%; }
+.browser { border-radius: 12px; overflow: hidden; background: #0a1f17; box-shadow: 0 40px 90px rgba(0,0,0,0.55); border: 1px solid rgba(245,239,225,0.12); }
+.browser .bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #13261e; }
+.browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(245,239,225,0.22); }
+.browser .bar span { margin-left: 12px; font-family: var(--ui); font-size: 13px; color: rgba(245,239,225,0.6); }
+.browser img, .phone img { display: block; width: 100%; height: auto; }
+.phone { position: absolute; right: 0; bottom: -36px; width: 26%; border: 6px solid #050a08; background: #0a1f17; border-radius: 15% / 7%; overflow: hidden;
+    container-type: inline-size; box-shadow: 0 30px 70px rgba(0,0,0,0.6); }
+.phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 var(--body); color: #fff; }
+.phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; }
+.phone img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+.caption { width: min(980px, calc(100% - 40px)); margin: 64px auto 0; font-family: var(--ui); font-size: 15px; letter-spacing: .03em; color: rgba(245,239,225,0.55); }
+
+/* ── CTA ──────────────────────────────────────────────────────── */
+.cta { text-align: center; padding: 22vh 20px 14vh; }
+.cta h2 { max-width: 760px; margin: 0 auto 20px; }
+.cta p { max-width: 520px; margin: 0 auto 32px; }
+.btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 24px; border-radius: 2px; font-family: var(--ui); font-weight: 600; letter-spacing: .04em; text-decoration: none; font-size: 18px; }
+.btn.primary { background: var(--red); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+.btn.primary:hover { background: #a3252b; }
+.btn.ghost { box-shadow: inset 0 0 0 1px var(--gold); color: var(--cream); }
+.btn.ghost:hover { background: rgba(179,144,90,.18); }
+.cta .signoff { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--cream-2); margin: 56px auto 0; }
+.signoff .s { font-style: normal; margin: 0 4px; }
+.next { display: block; text-align: center; padding: 34px 20px; border-top: 1px solid var(--gold-soft); color: var(--cream); text-decoration: none; font-weight: 600; background: rgba(10,39,28,0.7); position: relative; z-index: 1; }
+.next span { color: var(--red-on-felt); }
+
+footer { background: #0D1B2A; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-family: 'Karla', sans-serif; font-size: 13px; position: relative; z-index: 1; }
+footer .fl { width: 200px; height: 70px; background: url('/tt-logo-light.png') center / contain no-repeat; margin: 0 auto 14px; }
+footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (min-width: 900px) {
+    .notice { grid-template-columns: 0.9fr 1.1fr; }
+    .notice .saw { border-bottom: 0; border-right: 1px solid var(--rule); }
+}
+@media (max-width: 1159px) {
+    .board { display: none; }
+    .pair { display: block; }
+}
+@media (min-width: 1160px) { .mini { display: none; } }
+@media (max-width: 899px) {
+    section { padding: 12vh 0; }
+}
+@media (max-width: 640px) {
+    .tt-bar nav a:not(.cta) { display: none; }
+    .shots { padding-right: 28%; }
+    .phone { width: 32%; bottom: -22px; }
+    .col { width: calc(100% - 40px); margin-left: 20px; }
+    .river { grid-template-columns: 1fr; justify-items: start; gap: 26px; }
+    .rv { width: 180px; }
+    .hc .face { min-height: 160px; padding: 12px 12px 14px; }
+    .hc b { font-size: 20px; }
+}
+@media (max-width: 360px) {
+    .hand { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hc b { font-size: 18px; }
+    .hc span.t { font-size: 13px; }
+    .deck { grid-template-columns: 1fr; }
+    .fc .face { min-height: 0; }
+    .notice > div { padding: 22px 20px; }
+    .cd { gap: 14px; }
+    .cd b { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .hc, .hand.in .hc { opacity: 1; transform: rotate(var(--r)); }
+    .fc .flip { transform: none; }
+    .stack.solid .chips i { opacity: 1; transform: none; }
+    .fit-new .mc { transform: none; }
+    .mini { display: none; }
+}
+</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Article", "headline": "Ace & Jacks Poker League: a proper table for Season 17",
+  "author": { "@type": "Person", "name": "James Edwards" },
+  "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+  "image": "https://tailored-tools.com/images/projects/ace-jacks-desktop.jpg" }
+</script>
+</head>
+<body>
+
+<div class="felt" aria-hidden="true"></div>
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<!-- The board: Ace & Jacks, dealt as a hand. Four up make two pair, aces and jacks. The river waits for Season 17. -->
+<div class="board" id="board" aria-hidden="true">
+    <div class="lbl"><span>The board</span><span id="boardCount">1 of 5</span></div>
+    <div class="layout" id="boardLayout"></div>
+    <div class="cap" id="boardCap">The league</div>
+    <div class="sub" id="boardSub">Ace of spades</div>
+</div>
+<div class="mini" id="mini" aria-hidden="true"><div class="layout" id="miniLayout"></div><span class="mlbl" id="miniCap">The league</span></div>
+
+<header class="tt-bar">
+    <a href="/" class="logo" aria-label="Tailored Tools home"></a>
+    <nav>
+        <a href="/projects">All work</a>
+        <a href="/pricing">Prices</a>
+        <a href="/brief/" class="cta">Start your brief</a>
+    </nav>
+</header>
+
+<main>
+<section class="hero" data-deal="0">
+    <div class="col">
+        <a href="/projects" class="back-link">&larr; All work</a>
+        <div class="pair" id="pair" aria-hidden="true"></div>
+        <span class="badge"><span class="dot" aria-hidden="true"></span>In build <span class="sep" aria-hidden="true">&middot;</span> Live for Season 17 on 30 November <span id="daysLeft"></span></span>
+        <span class="eyebrow">Case study &middot; Pub poker league &middot; Watford, Hemel &amp; Dunstable</span>
+        <h1>Sixteen seasons on a football plugin. Season 17 gets a <em>proper table</em>.</h1>
+        <p class="lead">Ace &amp; Jacks is a weekly pub poker league: six venues across Watford, Hemel and Dunstable, sixteen seasons so far. Stephen runs it. Amy does the admin. Their website ran on a football league plugin.</p>
+        <div class="facts">
+            <div>Venues<b>6</b></div>
+            <div>Seasons so far<b>16</b></div>
+            <div>Season 17 starts<b>30 November 2026</b></div>
+        </div>
+    </div>
+    <span class="scroll-hint" aria-hidden="true">Scroll, and the cards come out</span>
+</section>
+
+<section id="hand">
+    <div class="col">
+        <span class="eyebrow">The hand they were holding</span>
+        <h2>The old site was a bad hand. <em>Time to fold.</em></h2>
+        <p class="lead">WordPress with SportsPress, a football league plugin repurposed for poker. It carried sixteen seasons. Here's what it was holding.</p>
+        <div class="hand" id="badHand">
+            <div class="hc" style="--i:0;--r:-2deg"><div class="flip"><div class="face"><span class="ix">2<span class="s">&#9827;&#xFE0E;</span></span><b>426px</b><span class="t">A league table on a 375px phone screen. It scrolled sideways.</span></div><div class="back"></div></div></div>
+            <div class="hc red" style="--i:1;--r:1.5deg"><div class="flip"><div class="face"><span class="ix">7<span class="s">&#9830;&#xFE0E;</span></span><b>An empty grey block</b><span class="t">Where the hero image should have been.</span></div><div class="back"></div></div></div>
+            <div class="hc" style="--i:2;--r:-1deg"><div class="flip"><div class="face"><span class="ix">3<span class="s">&#9824;&#xFE0E;</span></span><b>155</b><span class="t">Links in the menu.</span></div><div class="back"></div></div></div>
+            <div class="hc red" style="--i:3;--r:2deg"><div class="flip"><div class="face"><span class="ix">4<span class="s">&#9829;&#xFE0E;</span></span><b>Empty frames</b><span class="t">A winners carousel with nothing in it.</span></div><div class="back"></div></div></div>
+            <div class="hc" style="--i:4;--r:-1.5deg"><div class="flip"><div class="face"><span class="ix">5<span class="s">&#9827;&#xFE0E;</span></span><b>PHP 7.4</b><span class="t">Out of support since November 2022.</span></div><div class="back"></div></div></div>
+            <div class="hc red" style="--i:5;--r:1deg"><div class="flip"><div class="face"><span class="ix">6<span class="s">&#9830;&#xFE0E;</span></span><b>March 2024</b><span class="t">The last scheduled backup.</span></div><div class="back"></div></div></div>
+            <div class="hc" style="--i:6;--r:-2.5deg"><div class="flip"><div class="face"><span class="ix">8<span class="s">&#9824;&#xFE0E;</span></span><b>Who pays?</b><span class="t">Nobody was sure who was paying for the hosting.</span></div><div class="back"></div></div></div>
+            <span class="muck" aria-hidden="true">Folded.</span>
+        </div>
+        <div class="hand-ctl"><button type="button" class="btn-line" id="foldBtn">Fold this hand</button><small id="foldNote">It folds itself as you scroll past.</small></div>
+    </div>
+</section>
+
+<section id="noticed" data-deal="1">
+    <div class="col">
+        <span class="eyebrow">Before any code</span>
+        <h2>I started with <em>Amy's week</em>, not the website.</h2>
+        <p class="lead">The website is the part players see. The work that wears people down sits behind it.</p>
+
+        <div class="noticed">
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Her week was fine. Her new season wasn't.</h3><p>Amy's weekly admin is under two hours, in her own words. The real pain came every new season, twelve games per venue: duplicating pages, re-attaching 200+ players to every venue, editing score tables by hand.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A back office designed around her three jobs: enter results, manage players, start a season. A new season becomes one step instead of a day of rebuilding. It's being built now.</p>
+                    <div class="specimen chores" id="chores">
+                        <div class="ch-stage">
+                            <div class="ch-old" aria-hidden="true">
+                                <div class="ch-row h"><span></span><i>V1</i><i>V2</i><i>V3</i><i>V4</i><i>V5</i><i>V6</i></div>
+                                <div class="ch-row"><span>Duplicate pages</span><b></b><b></b><b></b><b></b><b></b><b></b></div>
+                                <div class="ch-row"><span>Re-attach 200+ players</span><b></b><b></b><b></b><b></b><b></b><b></b></div>
+                                <div class="ch-row"><span>Edit score tables</span><b></b><b></b><b></b><b></b><b></b><b></b></div>
+                                <div class="ch-row"><span>Type points from the chart</span><b></b><b></b><b></b><b></b><b></b><b></b></div>
+                                <div class="ch-meta" id="chMeta">The old way, venue by venue</div>
+                            </div>
+                            <div class="ch-new"><p class="stamp">Season ready.<small>One step</small></p></div>
+                        </div>
+                        <button type="button" class="ch-btn" id="chBtn">Start a season</button>
+                        <small class="note">Illustration. The back office is in build.</small>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Points came off a paper chart.</h3><p>How many points you get depends on how many played that night and where you finished. Amy typed every one in from a separate chart.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A points engine that reproduces her chart exactly. Change the size of the night and watch the top ten re-deal.</p>
+                    <div class="specimen pts" id="pts">
+                        <div class="pts-head"><span>Players tonight</span><button type="button" id="ptsLess" aria-label="Fewer players">&minus;</button><output id="ptsN" aria-live="polite">24</output><button type="button" id="ptsMore" aria-label="More players">+</button></div>
+                        <ol class="pts-list" id="ptsList"></ol>
+                        <small class="note" id="ptsNote">Amy's chart, top ten places</small>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>The table didn't fit a phone.</h3><p>426 pixels wide on a 375 pixel screen. To find yourself, you scrolled sideways.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A phone-first site, styled like card-room stationery: felt, gold hairlines, and players dealt as cards that flip.</p>
+                    <div class="specimen fit" id="fit" aria-hidden="true">
+                        <div class="fit-cap"><b id="fitLabel">Old site</b><span id="fitNote">426px table, 375px screen</span></div>
+                        <div class="fit-phone">
+                            <div class="fit-old"><div class="tbl"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="over"></span></div>
+                            <div class="fit-new">
+                                <div class="mc"><span class="s">&#9824;&#xFE0E;</span><div><em></em><em></em></div></div>
+                                <div class="mc"><span class="s r">&#9829;&#xFE0E;</span><div><em></em><em></em></div></div>
+                                <div class="mc"><span class="s">&#9827;&#xFE0E;</span><div><em></em><em></em></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="tenth" id="tenth" data-deal="2">
+    <div class="col">
+        <span class="eyebrow">25 September</span>
+        <h2>The public site took</h2>
+        <p class="big" aria-hidden="true">a <em>day</em>.</p>
+        <p class="lead">And it was about 10% of the work. The rest sits underneath: the back office, sixteen seasons of data, and the cutover.</p>
+        <ol class="pegrow" id="pegrow" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+        <p class="pegkey">One peg in ten: the part you can see.</p>
+    </div>
+</section>
+
+<section id="deck">
+    <div class="col">
+        <span class="eyebrow">What the new system does</span>
+        <h2>Every card has <em>a job</em>.</h2>
+        <p class="lead">Dealt face down, turned over as you get to them.</p>
+        <div class="deck">
+            <div class="fc" style="--i:0"><div class="flip"><div class="face"><span class="ix s">&#9824;&#xFE0E;</span><h3>Installs like an app</h3><p>It installs on a phone's home screen, like an app.</p></div><div class="back"></div></div></div>
+            <div class="fc" style="--i:1"><div class="flip"><div class="face"><span class="ix s r">&#9830;&#xFE0E;</span><h3>Your nearest venue</h3><p>It finds the closest of the six for you.</p></div><div class="back"></div></div></div>
+            <div class="fc" style="--i:2"><div class="flip"><div class="face"><span class="ix s">&#9827;&#xFE0E;</span><h3>Qualified, at a glance</h3><p>Players who've qualified are highlighted.</p></div><div class="back"></div></div></div>
+            <div class="fc" style="--i:3"><div class="flip"><div class="face"><span class="ix s r">&#9829;&#xFE0E;</span><h3>Amy's chart, exactly</h3><p>The points engine reproduces her paper chart, place for place.</p></div><div class="back"></div></div></div>
+            <div class="fc" style="--i:4"><div class="flip"><div class="face"><span class="ix s">&#9824;&#xFE0E;</span><h3>Three jobs, one office</h3><p>Enter results, manage players, start a season.</p><span class="wip">In build</span></div><div class="back"></div></div></div>
+            <div class="fc" style="--i:5"><div class="flip"><div class="face"><span class="ix s r">&#9830;&#xFE0E;</span><h3>No money, anywhere</h3><p>Not on the site, not in the database. Deliberately, out of care for pub gambling-licence rules.</p></div><div class="back"></div></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="rackSec" data-deal="3">
+    <div class="col">
+        <span class="eyebrow">Moving sixteen seasons</span>
+        <h2>Season 16 is moved and checked. <em>Fifteen to go.</em></h2>
+        <p class="lead">Before touching anything, I took a full backup of the old site: 2.6 GB, every archive tested. Then Season 16 went into the new database and was checked against the old site. Zero problems.</p>
+        <div class="rack" id="rack" role="img" aria-label="Sixteen chip stacks, one per season. Season 16 is solid: moved and checked. Seasons 1 to 15 are outlines: next."></div>
+        <p class="rack-key"><span class="solid"><i></i>Moved, checked, zero problems</span><span class="ghost"><i></i>Next</span></p>
+        <div class="tally" id="tally">
+            <h3>Season 16, checked against the old site</h3>
+            <dl>
+                <div><dt>Nights</dt><dd data-n="41">41</dd></div>
+                <div><dt>Players</dt><dd data-n="197">197</dd></div>
+                <div><dt>Results</dt><dd data-n="1116">1,116</dd></div>
+                <div><dt>Winner photos</dt><dd data-n="28">28</dd></div>
+                <div><dt>Problems</dt><dd class="zero">0</dd></div>
+            </dl>
+            <p>Seasons 1 to 15 come next. Across all sixteen: 1,544 nights and 1,137 players.</p>
+        </div>
+    </div>
+</section>
+
+<section id="timeline">
+    <div class="col">
+        <span class="eyebrow">Where it stands</span>
+        <h2>Pegged so far, and <em>still to come</em>.</h2>
+        <ol class="crib">
+            <li class="done"><span class="hole"></span><div><span class="when">25 September</span><p><strong>The public site, built in a day.</strong> Phone-first, in card-room stationery.</p></div></li>
+            <li class="done"><span class="hole"></span><div><span class="when">Backed up</span><p>The whole old site: 2.6 GB, every archive tested.</p></div></li>
+            <li class="done"><span class="hole"></span><div><span class="when">Season 16</span><p>Moved into the new database and checked against the old site. Zero problems.</p></div></li>
+            <li class="now"><span class="hole"></span><div><span class="when">Now</span><p><strong>The back office</strong>, built around Amy's three jobs. Seasons 1 to 15 come next.</p></div></li>
+            <li class="later"><span class="hole"></span><div><span class="when">Mid-November</span><p>Cutover to the new system.</p></div></li>
+            <li class="later"><span class="hole"></span><div><span class="when">30 November</span><p><strong>Season 17 starts on it.</strong></p></div></li>
+        </ol>
+    </div>
+</section>
+
+<section id="riverSec" data-deal="4">
+    <div class="col">
+        <span class="eyebrow">The river</span>
+        <h2>The last card is dealt on <em>30 November</em>.</h2>
+        <div class="river">
+            <button type="button" class="rv" id="rv" aria-label="The river card, face down until Season 17">
+                <div class="card"><div class="panel"><span>Season 17</span><b>30.11</b><em>2026</em></div></div>
+            </button>
+            <div>
+                <div class="cd" id="cd" aria-label="Time until Season 17">
+                    <div><b id="cdD">&nbsp;</b>Days</div>
+                    <div><b id="cdH">&nbsp;</b>Hours</div>
+                    <div><b id="cdM">&nbsp;</b>Mins</div>
+                </div>
+                <p>Cutover is planned for mid-November. Season 17 is the first season played on the new system. Until then, this card stays face down. It's in build, and I'd rather say so.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="screens">
+    <div class="col">
+        <span class="eyebrow">The new public site</span>
+        <h2>Built, and waiting for <em>cutover</em>.</h2>
+    </div>
+    <div class="shots">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><span>Ace &amp; Jacks Poker League</span></div><img src="/images/projects/ace-jacks-desktop.jpg" alt="The new Ace &amp; Jacks homepage on a laptop: baize green, the league's logo, and the week's games dealt as playing cards" width="1600" height="1000" loading="lazy"></div>
+        <div class="phone"><img src="/images/projects/ace-jacks-mobile.jpg" alt="The new Ace &amp; Jacks homepage on a phone, with tonight's game as the top card of a hand and a suit for each tab" width="780" height="1688" loading="lazy"></div>
+    </div>
+    <p class="caption">Phone-first, styled like card-room stationery: felt, gold hairlines, dealt cards.</p>
+</section>
+
+<!-- Client quote: add once Stephen's words are in. Keep it verbatim. -->
+
+<section class="cta">
+    <h2>Running something on a tool <em>never meant for it</em>?</h2>
+    <p>Ace &amp; Jacks was. Twelve questions, ten minutes, and you'll see a live version of yours before you pay anything.</p>
+    <div class="btns">
+        <a href="/brief/" class="btn primary">Start your brief &rarr;</a>
+        <a href="/pricing" class="btn ghost">See prices</a>
+    </div>
+    <p class="signoff"><span class="s">&#9824;&#xFE0E;</span> Shuffle up and deal. <span class="s" style="color:var(--red-on-felt)">&#9829;&#xFE0E;</span></p>
+</section>
+</main>
+
+<a class="next" href="/projects/mane-london">Next: Mane London, who came in for a price list <span>&rarr;</span></a>
+
+<footer>
+    <div class="fl" role="img" aria-label="Tailored Tools"></div>
+    <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
+    <p>Tailored Tools is the trading name of James Edwards (sole trader) &middot; <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    <p>&copy; 2026 Tailored Tools &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p>
+</footer>
+
+<script>
+(function () {
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hidden = false;
+    document.addEventListener('visibilitychange', function () { hidden = document.hidden; });
+
+    /* ── Cards on the board ── */
+    var FS = '︎';
+    var CARDS = [
+        { rank: 'A', suit: '♠', red: false, cap: 'The league', sub: 'Ace of spades' },
+        { rank: 'J', suit: '♥', red: true, cap: "Amy's season", sub: 'Jack of hearts' },
+        { rank: 'J', suit: '♣', red: false, cap: 'The public site', sub: 'Jack of clubs' },
+        { rank: 'A', suit: '♦', red: true, cap: 'Season 16, moved', sub: 'Two pair: aces and jacks' },
+        { river: true, cap: 'The river', sub: 'Face down until 30 November' }
+    ];
+    function cardHTML(c, i) {
+        var face = c.river ? '' : '<span class="ix">' + c.rank + '<span class="s">' + c.suit + FS + '</span></span><span class="pip s">' + c.suit + FS + '</span><span class="ix br">' + c.rank + '<span class="s">' + c.suit + FS + '</span></span>';
+        return '<div class="bc' + (c.red ? ' red' : '') + '" style="--rot:' + [-2, 1.5, -1, 2, 0][i] + 'deg"><div class="flip"><div class="face">' + face + '</div><div class="back"></div></div>' +
+            (c.river ? '<span class="river-mark">30 Nov</span>' : '') + '</div>';
+    }
+    function build(layout) {
+        layout.innerHTML = CARDS.map(function (c, i) { return '<div class="slot">' + cardHTML(c, i) + '</div>'; }).join('');
+        return Array.prototype.slice.call(layout.querySelectorAll('.bc'));
+    }
+    var boardCards = build(document.getElementById('boardLayout'));
+    var miniCards = build(document.getElementById('miniLayout'));
+    var board = document.getElementById('board'), mini = document.getElementById('mini');
+    var cap = document.getElementById('boardCap'), sub = document.getElementById('boardSub'), count = document.getElementById('boardCount'), miniCap = document.getElementById('miniCap');
+
+    // hero pair for phones: an ace and a jack
+    var pair = document.getElementById('pair');
+    pair.innerHTML = cardHTML(CARDS[0], 0) + cardHTML(CARDS[1], 1);
+    var pairCards = Array.prototype.slice.call(pair.querySelectorAll('.bc'));
+
+    var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-deal]'));
+    var screens = document.getElementById('screens');
+    var dealtN = -1, miniTimer = null, firstRun = true;
+
+    function setDealt(cards, n) {
+        cards.forEach(function (el, i) {
+            var on = i < n;
+            el.classList.toggle('dealt', on);
+            el.classList.toggle('up', on && !CARDS[i].river);
+        });
+    }
+    function frame() {
+        var n = 1;
+        if (still) n = 5;
+        else triggers.forEach(function (t) { var k = +t.dataset.deal; if (k > 0 && t.getBoundingClientRect().top < innerHeight * 0.62) n = Math.max(n, k + 1); });
+        if (n !== dealtN) {
+            var grew = n > dealtN;
+            dealtN = n;
+            setDealt(boardCards, n); setDealt(miniCards, n);
+            var c = CARDS[n - 1];
+            cap.textContent = c.cap; sub.textContent = c.sub; count.textContent = n + ' of 5';
+            miniCap.textContent = n === 5 ? 'River: 30 Nov' : (n === 4 ? 'Aces and jacks' : c.cap);
+            if (grew && !still && innerWidth < 1160 && !firstRun) {
+                mini.classList.add('show'); clearTimeout(miniTimer);
+                miniTimer = setTimeout(function () { mini.classList.remove('show'); }, 2800);
+            }
+        }
+        board.classList.toggle('cleared', screens.getBoundingClientRect().top < innerHeight * 0.75);
+        foldFrame();
+    }
+    var ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; frame(); }); } }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+
+    /* ── The bad hand: dealt in, folded as you leave it ── */
+    var hand = document.getElementById('badHand'), foldBtn = document.getElementById('foldBtn'), foldNote = document.getElementById('foldNote');
+    var hcs = Array.prototype.slice.call(hand.querySelectorAll('.hc'));
+    var manual = null, folded = false;
+    function setFold(f) {
+        if (f === folded) return;
+        folded = f;
+        if (f) {
+            // every card slides to the muck, the middle of the spread
+            var mx = hand.clientWidth / 2, my = hand.clientHeight * 0.55;
+            hcs.forEach(function (el, i) {
+                var cx = el.offsetLeft + el.offsetWidth / 2, cy = el.offsetTop + el.offsetHeight / 2;
+                el.style.setProperty('--fx', (mx - cx + (i - 3) * 3) + 'px');
+                el.style.setProperty('--fy', (my - cy - el.offsetHeight * 0.15 + (i % 2) * 4) + 'px');
+                el.style.setProperty('--fr', ((i - 3) * 5 + 8) + 'deg');
+            });
+        }
+        hand.classList.toggle('folded', f);
+        foldBtn.textContent = f ? 'Deal it again' : 'Fold this hand';
+    }
+    function foldFrame() {
+        if (still) return;
+        var r = hand.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) { manual = null; }
+        if (manual !== null) return;
+        setFold(r.top + r.height * 0.5 < innerHeight * 0.26);
+    }
+    foldBtn.addEventListener('click', function () { manual = !folded; setFold(manual); });
+    if (still) { hand.classList.add('in'); foldNote.textContent = 'Seven cards, none of them playable.'; }
+
+    /* ── Visibility: only animate what's on screen ── */
+    var visible = new Set();
+    var vo = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id); }); }, { threshold: 0.2 });
+    ['chores', 'pts', 'fit', 'riverSec'].forEach(function (id) { vo.observe(document.getElementById(id)); });
+    function live(id) { return !still && !hidden && visible.has(id); }
+
+    /* ── Reveals ── */
+    var ro = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var el = e.target; el.classList.add(el.id === 'badHand' ? 'in' : 'on'); ro.unobserve(el);
+            if (el.id === 'tally') countUp(el);
+            if (el.id === 'pegrow') el.firstElementChild.classList.add('on');
+        });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('#badHand, .fc, #rack, #tally, #pegrow, .crib li').forEach(function (el) { if (still) { el.classList.add('on'); } else ro.observe(el); });
+    if (still) document.getElementById('pegrow').firstElementChild.classList.add('on');
+
+    function countUp(t) {
+        if (still) return;
+        t.querySelectorAll('dd[data-n]').forEach(function (dd) {
+            var n = +dd.dataset.n, t0 = performance.now();
+            (function step(now) {
+                var k = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - k, 3);
+                dd.textContent = Math.round(n * e).toLocaleString('en-GB');
+                if (k < 1) requestAnimationFrame(step);
+            })(t0);
+        });
+    }
+
+    /* ── The rack: sixteen stacks ── */
+    var rack = document.getElementById('rack'), html = '';
+    for (var s = 1; s <= 16; s++) {
+        var chips = '';
+        for (var k = 0; k < 11; k++) chips += '<i style="--k:' + k + '"></i>';
+        html += '<div class="stack ' + (s === 16 ? 'solid' : 'ghost') + '"><div class="chips">' + chips + '</div><span>' + s + '</span></div>';
+    }
+    rack.innerHTML = html;
+
+    /* ── Chores specimen: the season rebuild, then one step ── */
+    var chores = document.getElementById('chores'), cells = Array.prototype.slice.call(chores.querySelectorAll('.ch-row b'));
+    var chBtn = document.getElementById('chBtn'), chMeta = document.getElementById('chMeta');
+    // tick venue by venue: down each column, then the next venue
+    var order = []; for (var v = 0; v < 6; v++) for (var row = 0; row < 4; row++) order.push(row * 6 + v);
+    var chStep = 0, chPhase = 'tick', chWait = 0;
+    function chReset() { cells.forEach(function (c) { c.classList.remove('t'); }); chores.classList.remove('done'); chStep = 0; chPhase = 'tick'; chMeta.textContent = 'The old way, venue by venue'; }
+    function chOneStep() { chPhase = 'done'; chBtn.classList.add('press'); setTimeout(function () { chBtn.classList.remove('press'); }, 160); chores.classList.add('done'); chWait = 22; }
+    chBtn.addEventListener('click', function () { if (chPhase === 'done') chReset(); else chOneStep(); });
+    function chTick() {
+        if (live('chores')) {
+            if (chPhase === 'tick') {
+                if (chStep < order.length) { cells[order[chStep]].classList.add('t'); chStep++; chMeta.textContent = 'Venue ' + Math.min(6, Math.floor((chStep - 1) / 4) + 1) + ' of 6, by hand'; }
+                else { chPhase = 'pause'; chWait = 5; }
+            } else if (chPhase === 'pause') { if (--chWait <= 0) chOneStep(); }
+            else if (chPhase === 'done') { if (--chWait <= 0) chReset(); }
+        }
+        setTimeout(chTick, 190);
+    }
+    if (still) { cells.forEach(function (c) { c.classList.add('t'); }); chMeta.textContent = 'The old way, venue by venue'; }
+    else setTimeout(chTick, 400);
+
+    /* ── Points specimen: Amy's chart, top ten places (from her paper chart) ── */
+    var BANDS = [
+        [8, 16, [108, 86, 72, 65, 61, 57, 54, 50, 47, 43]],
+        [17, 24, [150, 120, 100, 90, 85, 80, 75, 70, 65, 60]],
+        [25, 32, [202, 162, 135, 121, 114, 108, 101, 94, 87, 81]],
+        [33, 40, [251, 201, 167, 151, 142, 134, 126, 117, 109, 100]],
+        [41, 48, [298, 238, 198, 179, 169, 159, 149, 139, 129, 119]]
+    ];
+    var ORD = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th'];
+    var list = document.getElementById('ptsList'), out = document.getElementById('ptsN'), ptsNote = document.getElementById('ptsNote');
+    list.innerHTML = ORD.map(function (o) { return '<li><span class="p">' + o + '</span><span class="bar"><i></i></span><b>0</b></li>'; }).join('');
+    var rows = Array.prototype.slice.call(list.children), shown = rows.map(function () { return 0; });
+    var nPlayers = 24, touched = false;
+    function band(n) { for (var i = 0; i < BANDS.length; i++) if (n >= BANDS[i][0] && n <= BANDS[i][1]) return BANDS[i]; return BANDS[0]; }
+    function renderPts(animate) {
+        var b = band(nPlayers), from = shown.slice(), t0 = performance.now();
+        out.textContent = nPlayers;
+        ptsNote.textContent = "Amy's chart: the " + b[0] + ' to ' + b[1] + ' player column, top ten places';
+        rows.forEach(function (li, i) {
+            li.classList.toggle('off', i + 1 > nPlayers);
+            li.querySelector('i').style.setProperty('--w', (b[2][i] / 298 * 100).toFixed(1) + '%');
+        });
+        var target = b[2];
+        if (!animate) { rows.forEach(function (li, i) { li.querySelector('b').textContent = target[i]; shown[i] = target[i]; }); return; }
+        (function step(now) {
+            var k = Math.min(1, (now - t0) / 550), e = 1 - Math.pow(1 - k, 3);
+            rows.forEach(function (li, i) { shown[i] = Math.round(from[i] + (target[i] - from[i]) * e); li.querySelector('b').textContent = shown[i]; });
+            if (k < 1) requestAnimationFrame(step);
+        })(t0);
+    }
+    function setN(n) { nPlayers = Math.max(8, Math.min(48, n)); renderPts(!still); }
+    document.getElementById('ptsLess').addEventListener('click', function () { touched = true; setN(nPlayers - 1); });
+    document.getElementById('ptsMore').addEventListener('click', function () { touched = true; setN(nPlayers + 1); });
+    renderPts(false);
+    var cycle = [12, 20, 28, 36, 44, 24], ci = 0;
+    setInterval(function () { if (!touched && live('pts')) { setN(cycle[ci]); ci = (ci + 1) % cycle.length; } }, 2400);
+
+    /* ── Phone-fit specimen: the old table hangs off, the new one is dealt ── */
+    var fit = document.getElementById('fit'), fitLabel = document.getElementById('fitLabel'), fitNote = document.getElementById('fitNote');
+    function setFit(isNew) {
+        fit.classList.toggle('new', isNew);
+        fitLabel.textContent = isNew ? 'New site' : 'Old site';
+        fitNote.textContent = isNew ? 'Dealt as cards that fit' : '426px table, 375px screen';
+    }
+    if (still) setFit(true);
+    else setInterval(function () { if (live('fit')) setFit(!fit.classList.contains('new')); }, 3200);
+
+    /* ── Countdown to Season 17 (30 Nov 2026, UK time is GMT then) ── */
+    var target = Date.UTC(2026, 10, 30, 0, 0, 0);
+    var dEl = document.getElementById('cdD'), hEl = document.getElementById('cdH'), mEl = document.getElementById('cdM');
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function tickCd() {
+        var ms = Math.max(0, target - Date.now()), m = Math.floor(ms / 60000);
+        dEl.textContent = Math.floor(m / 1440); hEl.textContent = pad(Math.floor(m / 60) % 24); mEl.textContent = pad(m % 60);
+        return ms;
+    }
+    var left = tickCd();
+    var days = Math.ceil(left / 86400000);
+    if (left > 0) document.getElementById('daysLeft').textContent = '(' + days + (days === 1 ? ' day' : ' days') + ' to go)';
+    setInterval(function () { if (!hidden && visible.has('riverSec')) tickCd(); }, 1000);
+    var rv = document.getElementById('rv');
+    rv.addEventListener('click', function () { rv.classList.toggle('peek'); });
+
+    /* ── Lamp motes: dust drifting through the light over the table ── */
+    var cv = document.getElementById('motes'), ctx = cv.getContext('2d'), dpr = Math.min(1.5, devicePixelRatio || 1), motes = [];
+    function size() {
+        cv.width = innerWidth * dpr; cv.height = innerHeight * 1.2 * dpr;
+        var n = Math.round(Math.min(60, innerWidth * innerHeight / 22000));
+        motes = []; for (var i = 0; i < n; i++) motes.push({ x: Math.random(), y: Math.random(), r: 0.6 + Math.random() * 1.6, vx: (Math.random() - 0.5) * 0.00006, vy: -0.00002 - Math.random() * 0.00005, ph: Math.random() * 6.3 });
+    }
+    var lastT = 0;
+    function draw(t) {
+        var dt = Math.min(50, t - lastT || 16); lastT = t;
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        var lx = 0.62, ly = 0.18;
+        for (var i = 0; i < motes.length; i++) {
+            var m = motes[i];
+            if (!still) {
+                m.x += m.vx * dt + Math.sin(t / 3000 + m.ph) * 0.00002 * dt; m.y += m.vy * dt;
+                if (m.y < -0.02) { m.y = 1.02; m.x = Math.random(); }
+                if (m.x < -0.02) m.x = 1.02; if (m.x > 1.02) m.x = -0.02;
+            }
+            // brighter inside the lamp's pool, a faint brass glint now and then
+            var d = Math.hypot((m.x - lx) * innerWidth / innerHeight, m.y - ly);
+            var a = Math.max(0.05, 0.55 - d * 0.6) * (0.6 + 0.4 * Math.sin(t / 900 + m.ph));
+            ctx.globalAlpha = a;
+            ctx.fillStyle = (i % 5 === 0) ? '#e8c27a' : '#f5efe1';
+            ctx.beginPath(); ctx.arc(m.x * cv.width, m.y * cv.height, m.r * dpr, 0, 6.283); ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+    }
+    function loop(t) { if (!hidden) draw(t); requestAnimationFrame(loop); }
+    size(); addEventListener('resize', size);
+    if (still) draw(1000); else requestAnimationFrame(loop);
+
+    /* ── Start: deal the first card (and the hero pair on phones) ── */
+    if (still) { frame(); firstRun = false; }
+    else { void board.offsetWidth; setTimeout(function () { frame(); firstRun = false; }, 200); }
+    if (still) pairCards.forEach(function (c) { c.classList.add('dealt', 'up'); });
+    else setTimeout(function () { pairCards.forEach(function (c, i) { setTimeout(function () { c.classList.add('dealt', 'up'); }, i * 220); }); }, 250);
+})();
+</script>
+</body>
+</html>

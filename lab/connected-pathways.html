@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#e9e3df">
+<title>Connected Pathways, Case Study | Tailored Tools</title>
+<meta name="description" content="How a Kent systemic practitioner and education consultant got one calm website for two services, with booking, payment, intake forms and secure video running underneath, and privacy designed in from the start.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://tailored-tools.com/projects/connected-pathways">
+<link rel="icon" href="/favicon.png?v=3" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Connected Pathways: two doors, one way of thinking | Tailored Tools">
+<meta property="og:description" content="Two services on one calm site, a booking that runs itself, and the things I chose not to keep.">
+<meta property="og:image" content="https://tailored-tools.com/images/projects/connected-pathways-desktop.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --cream: #f8f6f0; --paper: #ffffff; --navy: #132f4d; --slate: #3d5e7a; --sage: #82967a; --sage-deep: #5d7050;
+    --tan: #c6bea3; --teal: #5f8b8e; --ink: #26303a; --muted: #5a6677; --line: #e6e3d8;
+    --display: Georgia, 'Gelasio', 'Times New Roman', serif; --body: Tahoma, Verdana, Geneva, 'Segoe UI', sans-serif;
+    --shadow: 0 18px 44px -22px rgba(19,47,77,0.32);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #efebe5; scroll-behavior: smooth; }
+body { font-family: var(--body); color: var(--ink); line-height: 1.65; overflow-x: hidden; background: transparent; position: relative; -webkit-font-smoothing: antialiased; }
+a { color: var(--slate); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── Ambient layers (fixed) ───────────────────────────────────── */
+/* Extends past the screen so iOS never shows a bare strip behind its toolbars */
+.wash { position: fixed; top: -25vh; bottom: -25vh; left: 0; right: 0; z-index: -3;
+    background: radial-gradient(1100px 760px at 84% 18%, rgba(218,205,208,0.6) 0%, transparent 62%),
+                radial-gradient(900px 700px at 6% 86%, rgba(190,202,180,0.38) 0%, transparent 66%),
+                linear-gradient(180deg, #e9e3df 0%, #f0ece6 28%, #f8f6f0 58%, #f2f2ea 100%); }
+#silk { position: fixed; left: 0; top: -10vh; width: 100%; height: 120vh; z-index: -2; pointer-events: none; }
+
+/* ── The two paths (drawn down the whole page) ────────────────── */
+.threads { position: absolute; left: 0; top: 0; width: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
+.threads svg { display: block; overflow: visible; }
+.threads path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.threads .t-a { stroke: var(--navy); stroke-opacity: 0.5; stroke-width: 1.7; }
+.threads .t-b { stroke: var(--sage-deep); stroke-opacity: 0.75; stroke-width: 1.7; }
+.bead { transition: opacity 0.8s ease; }
+.bead .halo { opacity: 0.22; animation: halo 4.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.bead.b .halo { animation-delay: -2.4s; }
+@keyframes halo { 0%,100% { transform: scale(0.7); opacity: 0.12; } 50% { transform: scale(1.25); opacity: 0.3; } }
+main { position: relative; z-index: 1; }
+
+/* ── TT bar ───────────────────────────────────────────────────── */
+.tt-bar { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1100px, calc(100% - 24px));
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 10px 9px 16px; border-radius: 999px; background: rgba(19,47,77,0.8);
+    border: 1px solid rgba(248,246,240,0.14); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.tt-bar .logo { display: block; width: 118px; height: 32px; background: url('/tt-logo-light.png') left center / contain no-repeat; }
+.tt-bar nav { display: flex; align-items: center; gap: 16px; }
+.tt-bar nav a { color: rgba(248,246,240,0.8); text-decoration: none; font-size: 14px; font-weight: 500; }
+.tt-bar nav a:hover { color: #e9e1c8; }
+.tt-bar nav a.cta { background: #ff6f20; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 700; }
+
+/* ── Layout ───────────────────────────────────────────────────── */
+.col { width: min(620px, calc(100% - 40px)); margin-left: max(20px, calc((100vw - 1100px) / 2)); }
+.wide { width: min(1060px, calc(100% - 40px)); margin-left: auto; margin-right: auto; }
+section { position: relative; padding: 18vh 0; }
+.eyebrow { font-family: var(--body); font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); display: block; margin-bottom: 18px; }
+h1, h2, h3 { font-family: var(--display); color: var(--navy); line-height: 1.12; letter-spacing: -0.005em; }
+h1 { font-size: clamp(40px, 6.4vw, 80px); font-weight: 700; margin-bottom: 26px; }
+h1 em { font-style: italic; }
+h2 { font-size: clamp(31px, 4.6vw, 54px); font-weight: 400; margin-bottom: 22px; }
+h2 em { font-style: italic; color: var(--sage-deep); }
+p.lead { font-size: clamp(17.5px, 2vw, 20px); color: #4a5666; max-width: 560px; margin-bottom: 18px; }
+p { font-size: 17px; color: #3b4654; margin-bottom: 16px; }
+p strong { color: var(--navy); }
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+.back { font-size: 13px; letter-spacing: 0.04em; color: var(--muted); text-decoration: none; margin-bottom: 28px; display: inline-block; }
+.back:hover { color: var(--navy); }
+.facts { display: flex; gap: 14px 30px; flex-wrap: wrap; margin-top: 30px; border-top: 1px solid rgba(19,47,77,0.14); padding-top: 22px; }
+.facts div { font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); }
+.facts b { display: block; font-family: var(--display); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 21px; color: var(--navy); margin-top: 4px; }
+.visit { display: inline-flex; gap: 8px; align-items: center; margin-top: 26px; color: var(--navy); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--sage); padding-bottom: 2px; }
+.scroll-hint { position: absolute; bottom: 5vh; left: max(20px, calc((100vw - 1100px) / 2)); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(19,47,77,0.45); }
+
+.hero-art { margin-top: 44px; text-align: center; }
+.wordmark { display: none; }
+.wordmark img { width: 76px; height: auto; display: block; margin: 0 auto 10px; }
+.wordmark b { display: block; font-family: var(--display); font-weight: 400; font-size: 16px; letter-spacing: 0.32em; color: var(--navy); }
+.wordmark i { display: block; font-style: normal; font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--sage-deep); margin-top: 8px; }
+.doors { display: flex; justify-content: center; gap: 34px; }
+.door-wrap { width: 98px; }
+.door-wrap .lbl { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.35; min-height: 30px; margin-bottom: 8px; }
+.door-wrap.a .lbl { color: var(--navy); }
+.door-wrap.b .lbl { color: var(--sage-deep); }
+.door { display: block; width: 100%; height: auto; overflow: visible; }
+.door .frame { fill: none; stroke-width: 1.6; }
+.door-wrap.a .frame { stroke: var(--navy); stroke-opacity: 0.7; }
+.door-wrap.b .frame { stroke: var(--sage-deep); }
+.door .leaf { fill: var(--navy); fill-opacity: 0.08; }
+.door-wrap.b .leaf { fill: var(--sage-deep); fill-opacity: 0.12; }
+.door .light { animation: light 7s ease-in-out infinite; }
+.door-wrap.b .light { animation-delay: -3.5s; }
+@keyframes light { 0%,100% { opacity: 0.55; } 50% { opacity: 1; } }
+.door .sill { stroke: var(--tan); stroke-width: 1.4; }
+.hero-art .idea { font-family: var(--display); font-style: italic; font-size: 16px; color: var(--slate); margin: 0 auto 24px; max-width: 280px; line-height: 1.4; }
+
+/* ── Noticed → made ───────────────────────────────────────────── */
+.noticed { display: grid; gap: 22px; margin-top: 40px; }
+.notice { display: grid; grid-template-columns: 1fr; border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+    background: #fff; box-shadow: var(--shadow); }
+.notice > div { padding: 22px 24px; }
+.notice .saw { border-bottom: 1px dashed rgba(19,47,77,0.16); }
+.notice .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--slate); display: block; margin-bottom: 6px; }
+.notice .made .tag { color: var(--sage-deep); }
+.notice h3 { font-size: 25px; font-weight: 400; margin-bottom: 6px; }
+.notice p { font-size: 15.5px; margin: 0; }
+.specimen { margin-top: 18px; border-radius: 16px; background: var(--cream); border: 1px solid var(--line); position: relative; overflow: hidden; }
+.specimen small { position: absolute; bottom: 9px; left: 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(19,47,77,0.45); }
+
+/* venn */
+.venn { height: 236px; }
+.venn .stage-v { position: absolute; left: 50%; top: 18px; width: 0; height: 120px; }
+.venn .c { position: absolute; top: 0; left: -60px; width: 120px; height: 120px; border-radius: 50%; will-change: transform; }
+.venn .c.a { border: 1.5px solid rgba(19,47,77,0.65); background: rgba(19,47,77,0.07); }
+.venn .c.b { border: 1.5px solid var(--sage-deep); background: rgba(130,150,122,0.16); }
+.venn .c span { position: absolute; top: 24px; font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.venn .c.a span { left: 16px; color: var(--navy); }
+.venn .c.b span { right: 13px; color: var(--sage-deep); }
+.venn .mid { position: absolute; left: -28px; width: 56px; top: 46px; text-align: center; font-family: var(--display); font-style: italic; font-size: 13px; line-height: 1.15; color: var(--navy); opacity: var(--o, 0.6); }
+.venn .who { position: absolute; left: 12px; right: 12px; top: 150px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 11.5px; line-height: 1.4; color: var(--muted); }
+.venn .who b { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+.venn .who div:first-child b { color: var(--navy); }
+.venn .who div:last-child { text-align: right; }
+.venn .who div:last-child b { color: var(--sage-deep); }
+
+/* shop front door */
+.shop { height: 210px; perspective: 900px; }
+.shop .back-room { position: absolute; inset: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.shop .back-room div { border-radius: 10px; background: #fff; border: 1px solid var(--line); padding: 10px 11px; font-size: 11px; line-height: 1.3; color: var(--muted); }
+.shop .back-room b { display: block; font-family: var(--display); font-weight: 400; font-size: 15px; color: var(--navy); margin-bottom: 2px; }
+.shop .front { position: absolute; inset: 10px; border-radius: 12px; background: linear-gradient(160deg, #ece6e2, #f6f3ec 60%, #eef0e6); border: 1px solid rgba(19,47,77,0.14);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; transform-origin: left center;
+    box-shadow: 8px 0 24px -12px rgba(19,47,77,0.35); animation: swing 9s ease-in-out infinite; backface-visibility: hidden; }
+.shop .front img { width: 46px; height: auto; }
+.shop .front b { font-family: var(--display); font-weight: 400; font-size: 12px; letter-spacing: 0.26em; color: var(--navy); }
+.shop .front span { font-size: 11px; font-weight: 700; color: #fff; background: var(--navy); padding: 6px 12px; border-radius: 999px; }
+@keyframes swing { 0%, 30% { transform: rotateY(0deg); } 45%, 80% { transform: rotateY(-72deg); } 95%, 100% { transform: rotateY(0deg); } }
+
+/* clock */
+.clock { height: 196px; display: grid; place-items: center; }
+.clock svg { width: 132px; height: 132px; transform: rotate(-90deg); }
+.clock .track { fill: none; stroke: var(--line); stroke-width: 7; }
+.clock .arc { fill: none; stroke: var(--sage-deep); stroke-width: 7; stroke-linecap: round; }
+.clock .num { position: absolute; left: 0; right: 0; top: 50%; margin-top: -30px; text-align: center; font-family: var(--display); font-size: 34px; color: var(--navy); line-height: 1; }
+.clock .num i { display: block; font-family: var(--body); font-style: normal; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); margin-top: 6px; }
+
+/* approvals */
+.approve { padding: 16px 16px 34px; display: grid; gap: 7px; }
+.approve div { display: grid; grid-template-columns: 1fr 22px; align-items: center; gap: 10px; font-size: 12.5px; color: var(--navy); }
+.approve div span { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.approve div span::after { content: ''; flex: 1; height: 5px; border-radius: 3px; background: var(--line); }
+.approve i { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; transition: background 0.5s ease, border-color 0.5s ease; }
+.approve i svg { width: 11px; height: 11px; stroke: #fff; stroke-width: 2.4; fill: none; stroke-dasharray: 14; stroke-dashoffset: 14; transition: stroke-dashoffset 0.5s ease 0.15s; }
+.approve div.ok i { background: var(--sage-deep); border-color: var(--sage-deep); }
+.approve div.ok i svg { stroke-dashoffset: 0; }
+
+/* ── Quote band with a living weave ───────────────────────────── */
+.between { text-align: center; padding: 20vh 20px; }
+.between blockquote { font-family: var(--display); font-size: clamp(28px, 4.4vw, 52px); line-height: 1.22; color: var(--navy); max-width: 860px; margin: 0 auto; }
+.between blockquote em { font-style: italic; color: var(--sage-deep); }
+.weave { display: block; width: min(860px, 100%); height: 70px; margin: 26px auto 26px; overflow: visible; }
+.weave path { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+.between p { max-width: 520px; margin: 0 auto; font-size: 16.5px; }
+
+/* ── Journey: one booking, start to finish ────────────────────── */
+.journey { display: grid; gap: 28px; margin-top: 44px; }
+.device { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+.device .bar { height: 40px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #f2efe7; border-bottom: 1px solid var(--line); }
+.device .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(19,47,77,0.16); }
+.device .bar span { margin-left: 8px; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.screen { position: relative; height: 318px; }
+.stage { position: absolute; inset: 0; padding: 22px 22px 18px; opacity: 0; transform: translateY(10px); transition: opacity 0.8s ease, transform 0.8s ease; pointer-events: none; }
+.stage.on { opacity: 1; transform: none; }
+.device .foot { border-top: 1px solid var(--line); padding: 11px 16px; font-size: 12.5px; color: var(--muted); display: flex; gap: 9px; align-items: center; background: #fbfaf6; }
+.device .foot svg { width: 14px; height: 14px; flex: none; stroke: var(--sage-deep); fill: none; stroke-width: 1.8; }
+.device .foot b { color: var(--navy); }
+.mini-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; font-family: var(--display); color: var(--navy); font-size: 15px; }
+.mini-brand img { width: 30px; height: auto; }
+.mini-h { font-family: var(--display); font-size: 21px; color: var(--navy); margin-bottom: 4px; line-height: 1.2; }
+.mini-s { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; }
+.pw { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; font-size: 13.5px; color: var(--navy); background: #fff; }
+.pw b { font-family: var(--display); font-weight: 400; font-size: 15px; white-space: nowrap; }
+.stage.on .pw.pick { animation: pick 0.6s ease 1.3s forwards; }
+@keyframes pick { to { background: var(--navy); color: #fff; border-color: var(--navy); } }
+.slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 6px 0 16px; }
+.slots i { height: 30px; border-radius: 8px; border: 1px solid var(--line); background: #fbfaf6; }
+.slots i:nth-child(3n) { opacity: 0.45; }
+.stage.on .slots i.pick { animation: slot 0.6s ease 1.2s forwards; }
+@keyframes slot { to { background: var(--sage-deep); border-color: var(--sage-deep); } }
+.mini-btn { display: inline-block; padding: 10px 18px; border-radius: 999px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; }
+.terms-box { border-radius: 12px; background: var(--cream); padding: 14px 16px; font-size: 13.5px; color: var(--ink); margin: 10px 0 16px; line-height: 1.5; }
+.check { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--navy); }
+.check i { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--slate); display: grid; place-items: center; flex: none; }
+.check i svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 2.4; fill: none; stroke-dasharray: 16; stroke-dashoffset: 16; }
+.stage.on .check i { animation: box 0.4s ease 1.1s forwards; }
+.stage.on .check i svg { animation: tick 0.5s ease 1.3s forwards; }
+@keyframes box { to { background: var(--sage-deep); border-color: var(--sage-deep); } }
+@keyframes tick { to { stroke-dashoffset: 0; } }
+.card-field { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 14px; letter-spacing: 0.12em; color: var(--muted); margin: 10px 0 12px; background: #fbfaf6; }
+.pay { position: relative; display: block; text-align: center; padding: 12px; border-radius: 999px; background: var(--navy); color: #fff; font-weight: 700; font-size: 14px; overflow: hidden; }
+.pay .done { position: absolute; inset: 0; display: grid; place-items: center; background: var(--sage-deep); opacity: 0; }
+.stage.on .pay .done { animation: fadein 0.6s ease 1.5s forwards; }
+@keyframes fadein { to { opacity: 1; } }
+.via { font-size: 11.5px; color: var(--muted); margin-top: 12px; text-align: center; }
+.mail { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; }
+.stage.on .mail { animation: rise 1s ease both; }
+@keyframes rise { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+.mail .mh { text-align: center; padding: 14px 10px 10px; border-bottom: 1px solid var(--line); }
+.mail .mh b { display: block; font-family: var(--display); font-style: italic; font-weight: 400; font-size: 21px; color: var(--navy); line-height: 1.1; }
+.mail .mh i { display: block; width: 40px; height: 1.5px; background: var(--sage); margin: 7px auto; }
+.mail .mh span { font-family: var(--display); font-size: 9.5px; letter-spacing: 0.3em; color: var(--navy); }
+.mail .mb { padding: 12px 16px; }
+.mail .mb .mini-h { font-size: 17px; margin-bottom: 8px; }
+.mail .rows { background: var(--cream); border-radius: 9px; padding: 8px 12px; font-size: 12px; color: var(--navy); font-weight: 700; display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; }
+.mail .rows span { font-weight: 400; font-size: 9.5px; letter-spacing: 0.1em; color: var(--sage-deep); padding-top: 2px; }
+.mail .mf { background: var(--navy); height: 22px; }
+.panel { border-left: 3px solid var(--sage); background: #f3f4ef; border-radius: 0 12px 12px 0; padding: 12px 14px; margin-top: 12px; }
+.panel.tan { border-left-color: var(--tan); }
+.panel b { display: block; font-family: var(--display); font-weight: 400; font-size: 16px; color: var(--navy); margin-bottom: 4px; }
+.panel p { font-size: 12.5px; margin: 0 0 6px; color: var(--ink); }
+.panel u { font-size: 13px; color: var(--slate); font-weight: 700; }
+.lines { display: grid; gap: 8px; margin-top: 12px; }
+.lines div { font-size: 11px; color: var(--muted); }
+.lines div::after { content: ''; display: block; height: 26px; margin-top: 3px; border-radius: 7px; border: 1px solid var(--line); background: linear-gradient(90deg, rgba(130,150,122,0.22) 0 0) no-repeat left / 0% 100%, #fff; }
+.stage.on .lines div::after { animation: fill 1.2s ease forwards; }
+.stage.on .lines div:nth-child(1)::after { animation-delay: 0.9s; }
+.stage.on .lines div:nth-child(2)::after { animation-delay: 1.7s; }
+.stage.on .lines div:nth-child(3)::after { animation-delay: 2.5s; }
+@keyframes fill { to { background-size: 100% 100%, auto; } }
+.join { display: inline-flex; align-items: center; gap: 9px; margin-top: 14px; padding: 12px 20px; border-radius: 999px; background: var(--navy); color: #fff; font-weight: 700; font-size: 14px; }
+.join svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 1.8; }
+.stage.on .join { animation: glow 2.6s ease-in-out 0.6s infinite; }
+@keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(93,112,80,0); } 50% { box-shadow: 0 0 0 9px rgba(93,112,80,0.18); } }
+
+.rail { list-style: none; position: relative; }
+.rail::before { content: ''; position: absolute; left: 13px; top: 16px; bottom: 16px; width: 1.5px; background: linear-gradient(var(--navy), var(--sage)); opacity: 0.22; }
+.rail .bead-r { position: absolute; left: 7px; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--sage-deep); box-shadow: 0 0 0 5px rgba(93,112,80,0.16); transition: transform 1.1s cubic-bezier(.45,0,.25,1); z-index: 1; }
+.station { display: grid; grid-template-columns: 28px 1fr; gap: 14px; width: 100%; text-align: left; background: none; border: 0; cursor: pointer; padding: 7px 0; font: inherit; color: inherit; }
+.station .dot { width: 12px; height: 12px; margin: 8px 0 0 8px; border-radius: 50%; border: 1.5px solid rgba(19,47,77,0.3); background: var(--cream); transition: border-color 0.6s ease, background 0.6s ease; }
+.station.done .dot { background: var(--sage); border-color: var(--sage); }
+.station b { display: block; font-family: var(--display); font-weight: 400; font-size: 19px; color: rgba(19,47,77,0.62); line-height: 1.3; transition: color 0.6s ease; }
+.station span { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.station.on b { color: var(--navy); }
+.station:focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; border-radius: 8px; }
+.jctl { margin-top: 12px; background: none; border: 1px solid rgba(19,47,77,0.25); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 12.5px; color: var(--navy); cursor: pointer; }
+
+/* ── Privacy band: what I chose not to keep ───────────────────── */
+.keep { background: var(--navy); color: #e9edf2; }
+.keep .eyebrow { color: #b9c8a9; }
+.keep h2 { color: #fff; }
+.keep h2 em { color: #c9d3b8; }
+.keep p { color: #c9d4df; }
+.keep p.lead { color: #dbe3ea; }
+.keep-grid { display: grid; gap: 40px; margin-top: 46px; }
+.lets { list-style: none; }
+.let { padding: 18px 0 20px; border-bottom: 1px dashed rgba(248,246,240,0.18); }
+.let .thing { display: block; font-family: var(--display); font-size: clamp(22px, 3vw, 28px); color: #fff; line-height: 1.2; min-height: 1.2em; }
+.let .letters span { display: inline-block; transition: opacity 1.4s ease, filter 1.4s ease, transform 1.6s ease; transition-delay: calc(var(--i) * 40ms + 150ms); white-space: pre; }
+.let.gone .letters span { opacity: 0.3; filter: blur(1.2px); transform: translateY(calc(var(--d) * 1px)) translateX(calc(var(--x) * 1px)); }
+.let .kept { margin: 8px 0 0; font-size: 15.5px; color: #d5dee7; opacity: 0; transform: translateY(6px); transition: opacity 1s ease 1.1s, transform 1s ease 1.1s; }
+.let.gone .kept { opacity: 1; transform: none; }
+.let .kept b { color: #c9d3b8; font-weight: 700; }
+.keep-cards { display: grid; gap: 20px; align-content: start; }
+.kc { border-radius: 20px; background: rgba(248,246,240,0.06); border: 1px solid rgba(248,246,240,0.12); padding: 22px 22px 24px; }
+.kc h3 { color: #fff; font-weight: 400; font-size: 23px; margin-bottom: 6px; }
+.kc p { font-size: 15px; margin-bottom: 0; }
+.kc .specimen { background: #0e253e; border-color: rgba(248,246,240,0.1); }
+.bell-box { height: 178px; }
+.bell { position: absolute; left: 18px; top: 22px; width: 34px; height: 34px; stroke: #c9d3b8; fill: none; stroke-width: 1.6; transform-origin: 50% 10%; animation: ring 8s ease-in-out infinite; }
+@keyframes ring { 0%, 6% { transform: rotate(0); } 8% { transform: rotate(14deg); } 10% { transform: rotate(-12deg); } 12% { transform: rotate(8deg); } 14% { transform: rotate(-4deg); } 16%, 100% { transform: rotate(0); } }
+.toast { position: absolute; left: 64px; right: 14px; top: 16px; background: #fff; border-radius: 14px; padding: 11px 13px 12px; box-shadow: 0 14px 30px -14px rgba(0,0,0,0.5); animation: toast 8s ease-in-out infinite; }
+@keyframes toast { 0%, 7% { opacity: 0; transform: translateY(-10px); } 12%, 74% { opacity: 1; transform: none; } 84%, 100% { opacity: 0; transform: translateY(-6px); } }
+.toast b { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); }
+.toast p { font-size: 13.5px; color: var(--navy); margin: 2px 0 8px; font-weight: 700; }
+.toast i { display: block; height: 6px; border-radius: 3px; background: repeating-linear-gradient(90deg, #e6e3d8 0 10px, transparent 10px 14px); margin-bottom: 5px; }
+.toast i:nth-of-type(2) { width: 82%; } .toast i:nth-of-type(3) { width: 56%; }
+.toast span { display: block; font-size: 10.5px; color: var(--muted); margin-top: 6px; }
+.cal-box { padding: 14px 14px 32px; }
+.cal { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.cal b { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(233,237,242,0.5); text-align: center; padding-bottom: 2px; }
+.cal i { height: 22px; border-radius: 5px; background: rgba(248,246,240,0.04); font-style: normal; font-size: 9.5px; letter-spacing: 0.06em; color: transparent; display: grid; place-items: center; }
+.cal i.bz { animation: busy 12s ease-in-out infinite; animation-delay: var(--dl); }
+@keyframes busy { 0%, 4% { background: rgba(248,246,240,0.04); color: transparent; } 10%, 82% { background: rgba(130,150,122,0.55); color: #fff; } 92%, 100% { background: rgba(248,246,240,0.04); color: transparent; } }
+.kc small { color: rgba(233,237,242,0.45); }
+
+/* ── Roots: feature map ───────────────────────────────────────── */
+.map { position: relative; margin-top: 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; width: min(1060px, calc(100% - 40px)); margin-left: auto; margin-right: auto; }
+.map svg.links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.map svg.links path { fill: none; stroke: var(--sage-deep); stroke-opacity: 0.55; stroke-width: 1.3; transition: stroke-dashoffset 1.6s ease; }
+.feat { position: relative; padding: 22px 22px 22px 60px; border-radius: 18px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow);
+    opacity: 0; transform: translateY(16px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.feat.on { opacity: 1; transform: none; }
+.feat:nth-child(odd) { margin-top: 56px; }
+.feat .lf { position: absolute; left: 22px; top: 24px; width: 22px; height: 22px; }
+.feat .lf path { fill: var(--sage); transform-box: fill-box; transform-origin: 0 100%; transform: scale(0); transition: transform 0.9s cubic-bezier(.3,1.4,.5,1) 0.4s; }
+.feat.on .lf path { transform: scale(1); }
+.feat h3 { font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+.feat p { font-size: 15px; margin: 0; }
+
+/* ── Screens ──────────────────────────────────────────────────── */
+.shots { width: min(980px, calc(100% - 40px)); margin: 50px auto 0; position: relative; padding-right: 22%; }
+.browser { border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(19,47,77,0.45); border: 1px solid rgba(19,47,77,0.12); }
+.browser .bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #ebe7de; }
+.browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(19,47,77,0.2); }
+.browser .bar span { margin-left: 12px; font-size: 11.5px; color: var(--muted); }
+.browser img, .phone img { display: block; width: 100%; height: auto; }
+.phone { position: absolute; right: 0; bottom: -36px; width: 26%; border: 6px solid #0c1726; background: #0c1726; border-radius: 15% / 7%; overflow: hidden;
+    container-type: inline-size; box-shadow: 0 30px 70px -20px rgba(19,47,77,0.55); }
+.phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 var(--body); color: #fff; }
+.phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; }
+.phone img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+.caption { width: min(980px, calc(100% - 40px)); margin: 64px auto 0; font-size: 13px; color: var(--muted); }
+
+/* ── Growth timeline ──────────────────────────────────────────── */
+.growth { list-style: none; margin-top: 40px; position: relative; }
+.growth::before { content: ''; position: absolute; left: 23px; top: 12px; bottom: 12px; width: 1.5px; background: linear-gradient(var(--sage), transparent); opacity: 0.5; }
+.growth li { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start; padding-bottom: 30px; }
+.sprout { width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; position: relative; overflow: hidden; }
+.sprout svg { width: 34px; height: 34px; overflow: visible; }
+.sprout path, .sprout ellipse, .sprout line { fill: none; stroke: var(--sage-deep); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 60; stroke-dashoffset: 60; transition: stroke-dashoffset 1.6s ease 0.2s; }
+.sprout .fl { fill: var(--sage); stroke: none; opacity: 0; transition: opacity 1s ease 1.2s; }
+.sprout img { width: 40px; height: auto; opacity: 0; transform: scale(0.7); transition: opacity 1.2s ease 0.3s, transform 1.4s ease 0.3s; }
+.growth li.on .sprout path, .growth li.on .sprout ellipse, .growth li.on .sprout line { stroke-dashoffset: 0; }
+.growth li.on .sprout .fl { opacity: 1; }
+.growth li.on .sprout img { opacity: 1; transform: none; }
+.growth .when { font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); display: block; margin: 3px 0 4px; }
+.growth p { margin: 0; font-size: 16.5px; }
+
+/* ── CTA with the tree ────────────────────────────────────────── */
+.cta { text-align: center; padding: 16vh 20px 14vh; }
+.tree-wrap { width: min(440px, 100%); margin: 0 auto 34px; }
+#tree { display: block; width: 100%; height: auto; overflow: visible; }
+#tree .br { fill: none; stroke-linecap: round; stroke-dasharray: var(--L); stroke-dashoffset: var(--L); }
+#tree.grow .br { stroke-dashoffset: 0; transition: stroke-dashoffset var(--du, 1s) ease var(--dl, 0s); }
+#tree .trunk { fill: var(--navy); opacity: 0; }
+#tree.grow .trunk { opacity: 1; transition: opacity 1.2s ease 1.6s; }
+#tree .lfp { transform-box: view-box; transform-origin: 0 0; transform: scale(0); }
+#tree.grow .lfp { transform: scale(1); transition: transform 1.1s cubic-bezier(.3,1.35,.5,1) var(--dl); }
+.cta h2 { max-width: 760px; margin: 0 auto 20px; }
+.cta p { max-width: 520px; margin: 0 auto 32px; }
+.btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; }
+.btn.primary { background: var(--navy); color: #fff; box-shadow: 0 14px 30px -12px rgba(19,47,77,0.55); }
+.btn.ghost { border: 1.5px solid var(--navy); color: var(--navy); }
+.cta .values { margin: 56px auto 0; font-family: var(--display); font-style: italic; font-size: 17px; color: var(--sage-deep); }
+.next { display: block; position: relative; z-index: 1; text-align: center; padding: 34px 20px; border-top: 1px solid rgba(19,47,77,0.12); color: var(--navy); text-decoration: none; font-weight: 700; background: rgba(255,255,255,0.6); }
+.next span { color: var(--sage-deep); }
+
+footer { position: relative; z-index: 1; background: #0D1B2A; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-family: 'Karla', sans-serif; font-size: 13px; }
+footer .fl { width: 200px; height: 70px; background: url('/tt-logo-light.png') center / contain no-repeat; margin: 0 auto 14px; }
+footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+
+/* CSS loops only run while their box is on screen */
+[data-live]:not(.vis) *, [data-live]:not(.vis) { animation-play-state: paused !important; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (min-width: 900px) {
+    .notice { grid-template-columns: 0.9fr 1.1fr; }
+    .notice .saw { border-bottom: 0; border-right: 1px dashed rgba(19,47,77,0.16); }
+    .journey { grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; }
+    .journey .device { order: 2; }
+    .keep-grid { grid-template-columns: 1.1fr 0.9fr; gap: 56px; }
+}
+@media (min-width: 1000px) {
+    .hero-art { position: absolute; margin: 0; right: max(20px, calc((100vw - 1100px) / 2)); top: 50%; transform: translateY(-46%); width: min(440px, calc(100vw - 720px)); }
+    .wordmark { display: block; margin-bottom: 14px; }
+    .doors { gap: 18%; }
+    .door-wrap { width: 34%; }
+    .door-wrap .lbl { font-size: 11.5px; }
+}
+@media (max-width: 899px) {
+    .map { grid-template-columns: 1fr; }
+    .feat:nth-child(odd) { margin-top: 0; }
+    section { padding: 12vh 0; }
+    .between { padding: 13vh 20px; }
+    .journey .device { order: -1; }
+}
+@media (max-width: 640px) {
+    .tt-bar nav a:not(.cta) { display: none; }
+    .shots { padding-right: 28%; }
+    .phone { width: 32%; bottom: -22px; }
+    .col { width: calc(100% - 40px); margin-left: 20px; }
+    .scroll-hint { display: none; }
+    .notice > div { padding: 20px 18px; }
+    .screen { height: 322px; }
+    .stage { padding: 18px 16px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .feat { opacity: 1; transform: none; }
+    .feat .lf path { transform: none; }
+    .growth li .sprout path, .growth li .sprout ellipse, .growth li .sprout line { stroke-dashoffset: 0; }
+    .growth li .sprout .fl, .growth li .sprout img { opacity: 1; transform: none; }
+    .let.gone .letters span, .let .letters span { opacity: 0.4; filter: none; transform: none; text-decoration: line-through; text-decoration-color: rgba(201,211,184,0.7); text-decoration-thickness: 1px; }
+    .let .kept { opacity: 1; transform: none; }
+    .shop .front { display: none; }
+    .toast { opacity: 1; }
+    .cal i.bz { background: rgba(130,150,122,0.55); color: #fff; }
+    .door .light { opacity: 0.85; }
+}
+</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Article", "headline": "Connected Pathways: two doors, one way of thinking",
+  "author": { "@type": "Person", "name": "James Edwards" },
+  "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+  "image": "https://tailored-tools.com/images/projects/connected-pathways-desktop.jpg" }
+</script>
+</head>
+<body>
+
+<div class="wash" aria-hidden="true"></div>
+<canvas id="silk" aria-hidden="true"></canvas>
+<div class="threads" id="threads" aria-hidden="true">
+    <svg id="threadSvg" xmlns="http://www.w3.org/2000/svg">
+        <path class="t-a" id="tA"/>
+        <path class="t-b" id="tB"/>
+        <g class="bead a" id="beadA"><circle class="halo" r="11" fill="#132f4d"/><circle r="3.6" fill="#132f4d"/></g>
+        <g class="bead b" id="beadB"><circle class="halo" r="11" fill="#5d7050"/><circle r="3.6" fill="#5d7050"/></g>
+    </svg>
+</div>
+
+<header class="tt-bar">
+    <a href="/" class="logo" aria-label="Tailored Tools home"></a>
+    <nav>
+        <a href="/projects">All work</a>
+        <a href="/pricing">Prices</a>
+        <a href="/brief/" class="cta">Start your brief</a>
+    </nav>
+</header>
+
+<main>
+<section class="hero" id="hero">
+    <div class="col">
+        <a href="/projects" class="back">&larr; All work</a>
+        <span class="eyebrow">Case study &middot; Systemic therapy &amp; education consulting &middot; Kent</span>
+        <h1>Two doors, <em>one way</em> of thinking.</h1>
+        <p class="lead">Velma Bennett runs Connected Pathways. She's a systemic practitioner registered with the AFSP, and an education consultant with an MA in Education. She'd used a website builder before, found it clunky, and felt she never got the best out of it.</p>
+        <div class="facts">
+            <div>Launched<b>7 September 2026</b></div>
+            <div>Online booking<b>29 September</b></div>
+            <div>The words<b>All approved by Velma</b></div>
+        </div>
+        <a class="visit" href="https://velmabennett.co.uk" target="_blank" rel="noopener">Visit velmabennett.co.uk &rarr;</a>
+    </div>
+    <div class="hero-art" data-live>
+        <div class="wordmark"><img src="/images/projects/connected-pathways-tree.png" alt="" width="220" height="202"><b>CONNECTED PATHWAYS</b></div>
+        <p class="idea">Two services, one idea: people make sense in context.</p>
+        <div class="doors">
+            <div class="door-wrap a"><span class="lbl">Systemic therapy</span>
+                <svg class="door" id="doorA" viewBox="0 0 120 180" aria-hidden="true"><defs><radialGradient id="lgA" cx="50%" cy="78%" r="75%"><stop offset="0" stop-color="#fffdf5"/><stop offset="0.6" stop-color="#f4efe2" stop-opacity="0.8"/><stop offset="1" stop-color="#e9e3d6" stop-opacity="0"/></radialGradient></defs>
+                    <path class="light" d="M18 176V62A42 42 0 0 1 102 62V176Z" fill="url(#lgA)"/><path class="leaf" d="M18 64L42 76V168L18 176Z"/><path class="frame" d="M10 176V60A50 50 0 0 1 110 60V176"/><line class="sill" x1="2" y1="176" x2="118" y2="176"/></svg></div>
+            <div class="door-wrap b"><span class="lbl">Education consulting</span>
+                <svg class="door" id="doorB" viewBox="0 0 120 180" aria-hidden="true"><defs><radialGradient id="lgB" cx="50%" cy="78%" r="75%"><stop offset="0" stop-color="#fffdf5"/><stop offset="0.6" stop-color="#eef0e4" stop-opacity="0.8"/><stop offset="1" stop-color="#e2e6d8" stop-opacity="0"/></radialGradient></defs>
+                    <path class="light" d="M18 176V62A42 42 0 0 1 102 62V176Z" fill="url(#lgB)"/><path class="leaf" d="M102 64L78 76V168L102 176Z"/><path class="frame" d="M10 176V60A50 50 0 0 1 110 60V176"/><line class="sill" x1="2" y1="176" x2="118" y2="176"/></svg></div>
+        </div>
+    </div>
+    <span class="scroll-hint" aria-hidden="true">Scroll, and follow the two paths</span>
+</section>
+
+<section id="noticed">
+    <div class="col">
+        <span class="eyebrow">Before any code</span>
+        <h2>I started with how <em>she</em> thinks.</h2>
+        <p class="lead">Her two services are connected by one idea: people make sense in context. I wanted every part of her website to make sense next to the others, in the same way.</p>
+
+        <div class="noticed">
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Two services, one practitioner.</h3><p>Systemic therapy for individuals, couples, families and young people. Education consulting for students, parents, carers, schools and organisations.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>Two doors, side by side, held together by one idea. The two lines drawing themselves down this page are those doors, finding their way to each other.</p>
+                    <div class="specimen venn" data-live id="venn">
+                        <div class="stage-v"><div class="c a" id="vA"><span>Therapy</span></div><div class="c b" id="vB"><span>Education</span></div><div class="mid" id="vMid">in context</div></div>
+                        <div class="who"><div><b>Therapy</b>Individuals, couples, families, young people</div><div><b>Education</b>Students, parents, carers, schools, organisations</div></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>A shop front is no use on its own.</h3><p>Without a backend behind it, her site could only ever say hello.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A back room behind the door. Bookings run on Cliniko, a practice system in her own account, with payment through Stripe connected inside it.</p>
+                    <div class="specimen shop" data-live>
+                        <div class="back-room">
+                            <div><b>Cliniko</b>Bookings, in her own account</div>
+                            <div><b>Stripe</b>Payment, taken at booking</div>
+                            <div><b>Intake forms</b>Sent with the confirmation</div>
+                            <div><b>Secure video</b>Link in every reminder</div>
+                        </div>
+                        <div class="front"><img src="/images/projects/connected-pathways-tree.png" alt="" width="220" height="202"><b>CONNECTED PATHWAYS</b><span>Book a free consult</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>The first conversation grew.</h3><p>After her supervision, the free consultation went from 15 minutes to 30.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>Room for it. The site and its booking page offer 30 minutes now. It's the first door most people walk through, so it shouldn't feel rushed.</p>
+                    <div class="specimen clock" data-live id="clock">
+                        <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="48"/><circle class="arc" id="clockArc" cx="60" cy="60" r="48" stroke-dasharray="301.6" stroke-dashoffset="150.8"/></svg>
+                        <div class="num"><span id="clockNum">30</span><i>minutes, free</i></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>These are her words.</h3><p>Her site speaks for her before she's met anyone.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>Nothing went live until she'd approved it. Every word of the site, and both intake forms, line by line.</p>
+                    <div class="specimen approve" data-live id="approve">
+                        <div><span>Therapy</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <div><span>Education</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <div><span>Fees</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <div><span>About</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <div><span>FAQ</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <div><span>Therapy intake form</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <div><span>Education intake form</span><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i></div>
+                        <small>Approved by Velma, line by line</small>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="between" aria-label="Her opening line">
+    <span class="eyebrow">The line her homepage opens with</span>
+    <blockquote>Most problems don't live inside one person. They live <em>between</em> people.</blockquote>
+    <svg class="weave" id="weave" viewBox="0 0 860 70" preserveAspectRatio="none" aria-hidden="true" data-live><path id="wA" stroke="#132f4d" stroke-opacity="0.5"/><path id="wB" stroke="#5d7050" stroke-opacity="0.75"/></svg>
+    <p>It's why the two paths on this page never stay apart for long.</p>
+</section>
+
+<section id="journey">
+    <div class="col">
+        <span class="eyebrow">Behind the shop front</span>
+        <h2>One booking, all the way <em>through</em>.</h2>
+        <p class="lead">Here's what happens when someone books with Velma. Each step hands over to the next by itself, and her address doesn't appear once.</p>
+    </div>
+    <div class="wide journey" id="jWrap" data-live>
+        <div class="device">
+            <div class="bar"><i></i><i></i><i></i><span id="jUrl">velmabennett.co.uk</span></div>
+            <div class="screen">
+                <div class="stage on" data-url="velmabennett.co.uk">
+                    <div class="mini-brand"><img src="/images/projects/connected-pathways-tree.png" alt="" width="220" height="202">Connected Pathways</div>
+                    <p class="mini-h">Three pathways</p>
+                    <p class="mini-s">Each opens straight onto the right booking page.</p>
+                    <div class="pw">Free consultation<b>30 min</b></div>
+                    <div class="pw pick">Systemic therapy<b>£60</b></div>
+                    <div class="pw">Education consulting<b>£60</b></div>
+                </div>
+                <div class="stage" data-url="Cliniko &middot; her booking page">
+                    <p class="mini-h">Systemic therapy</p>
+                    <p class="mini-s">50 minutes &middot; £60 &middot; online by secure video</p>
+                    <p class="mini-s" style="margin-bottom:4px">Choose a time</p>
+                    <div class="slots"><i></i><i></i><i></i><i></i><i></i><i class="pick"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <span class="mini-btn">Continue</span>
+                </div>
+                <div class="stage" data-url="Cliniko &middot; her terms">
+                    <p class="mini-h">Before you book</p>
+                    <div class="terms-box">Please give at least 48 hours' notice if you need to change or cancel.</div>
+                    <div class="check"><i><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></i>I accept the cancellation terms</div>
+                </div>
+                <div class="stage" data-url="Stripe, inside Cliniko">
+                    <p class="mini-h">Payment</p>
+                    <p class="mini-s">Taken at the moment of booking.</p>
+                    <div class="card-field">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
+                    <span class="pay">Pay £60<span class="done">Paid &#10003;</span></span>
+                    <p class="via">Stripe, connected inside Cliniko</p>
+                </div>
+                <div class="stage" data-url="Email &middot; confirmation">
+                    <div class="mail">
+                        <div class="mh"><b>Velma Bennett</b><i></i><span>CONNECTED PATHWAYS</span></div>
+                        <div class="mb"><p class="mini-h">Your session is confirmed</p>
+                            <div class="rows"><span>SESSION</span>Therapy session<span>WHEN</span>The time you chose</div></div>
+                        <div class="mf"></div>
+                    </div>
+                    <p class="via">In her navy, sage and cream</p>
+                </div>
+                <div class="stage" data-url="Email &middot; intake form">
+                    <div class="panel tan"><b>Before your first session</b><p>Sent automatically with the confirmation.</p><u>Therapy intake</u></div>
+                    <div class="lines"><div>About you</div><div>What brings you here</div><div>Consent</div></div>
+                </div>
+                <div class="stage" data-url="Email &middot; reminder">
+                    <div class="panel"><b>How we'll meet</b><p>Online, by secure video. Cliniko's own telehealth, built in. It replaced Zoom.</p></div>
+                    <span class="join"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.5l5-3v9l-5-3z"/></svg>Join appointment</span>
+                    <p class="via" style="text-align:left">The link is in her confirmation and her reminder.</p>
+                </div>
+            </div>
+            <div class="foot"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Her address on this step: <b>none</b></span></div>
+        </div>
+        <div>
+            <ol class="rail" id="rail">
+                <li class="bead-r" id="railBead" aria-hidden="true"></li>
+                <li><button class="station on" type="button"><span class="dot"></span><span><b>Her site</b><span>Pick one of three pathways.</span></span></button></li>
+                <li><button class="station" type="button"><span class="dot"></span><span><b>Cliniko</b><span>The right booking page opens. Pick a time.</span></span></button></li>
+                <li><button class="station" type="button"><span class="dot"></span><span><b>Her terms</b><span>Accept the 48-hour cancellation terms.</span></span></button></li>
+                <li><button class="station" type="button"><span class="dot"></span><span><b>Stripe</b><span>Payment taken at booking, inside Cliniko.</span></span></button></li>
+                <li><button class="station" type="button"><span class="dot"></span><span><b>Confirmation</b><span>Arrives in her navy, sage and cream.</span></span></button></li>
+                <li><button class="station" type="button"><span class="dot"></span><span><b>Intake form</b><span>Therapy or education, sent with it.</span></span></button></li>
+                <li><button class="station" type="button"><span class="dot"></span><span><b>Video link</b><span>Secure, built into Cliniko.</span></span></button></li>
+            </ol>
+            <button class="jctl" id="jCtl" type="button">Pause</button>
+        </div>
+    </div>
+</section>
+
+<section class="keep" id="keep">
+    <div class="wide">
+        <span class="eyebrow">Privacy by design</span>
+        <h2>What I chose <em>not</em> to keep.</h2>
+        <p class="lead">Her work depends on trust. So I built the systems around her to know as little as possible, starting with me.</p>
+        <div class="keep-grid">
+            <ul class="lets">
+                <li class="let"><span class="thing" data-text="Her address"></span><p class="kept"><b>Nowhere.</b> Not on the site, the booking page or any email.</p></li>
+                <li class="let"><span class="thing" data-text="A copy of her enquiries"></span><p class="kept"><b>Switched off.</b> Enquiries go only to her inbox.</p></li>
+                <li class="let"><span class="thing" data-text="Her mailbox password"></span><p class="kept"><b>Not kept.</b> I hold no copy once she's set her own.</p></li>
+                <li class="let"><span class="thing" data-text="Client names in her calendar"></span><p class="kept"><b>Never there.</b> Her diary feeds her calendar as busy, and nothing else.</p></li>
+                <li class="let"><span class="thing" data-text="Her registration number"></span><p class="kept"><b>Not shown,</b> on AFSP's own advice.</p></li>
+            </ul>
+            <div class="keep-cards">
+                <div class="kc">
+                    <h3>A doorbell, not a copy</h3>
+                    <p>An early copy of her enquiries to me was switched off. In its place, a doorbell: it tells me an enquiry arrived, without showing me a word of it.</p>
+                    <div class="specimen bell-box" data-live>
+                        <svg class="bell" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                        <div class="toast"><b>Doorbell</b><p>An enquiry has arrived.</p><i></i><i></i><i></i><span>What it says stays in her inbox.</span></div>
+                        <small>Live: what I see</small>
+                    </div>
+                </div>
+                <div class="kc">
+                    <h3>Busy, and nothing else</h3>
+                    <p>Bookings reach her calendar as busy time only, so client names never appear there.</p>
+                    <div class="specimen cal-box" data-live>
+                        <div class="cal" id="cal"><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b></div>
+                        <small>Illustration: her calendar's view</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="roots">
+    <div class="col">
+        <span class="eyebrow">The roots</span>
+        <h2>The parts you <em>don't</em> see.</h2>
+        <p class="lead">Underneath the calm front, these hold everything up. They join up as you scroll, like roots.</p>
+    </div>
+    <div class="map" id="map">
+        <svg class="links" id="links" aria-hidden="true"></svg>
+        <div class="feat"><svg class="lf" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 19C3 10 9 4 19 3C18 13 12 19 3 19Z"/></svg><h3>Two intake forms</h3><p>One for therapy, one for education. Written with her, approved line by line, built into Cliniko and sent automatically with the booking confirmation.</p></div>
+        <div class="feat"><svg class="lf" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 19C3 10 9 4 19 3C18 13 12 19 3 19Z"/></svg><h3>Secure video, built in</h3><p>Confirmations and reminders carry a secure video link from Cliniko's own telehealth, which replaced Zoom.</p></div>
+        <div class="feat"><svg class="lf" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 19C3 10 9 4 19 3C18 13 12 19 3 19Z"/></svg><h3>Emails in her colours</h3><p>Confirmation, reminder and cancellation emails in her navy, sage and cream. They're generated from a script, so they can be rebuilt exactly.</p></div>
+        <div class="feat"><svg class="lf" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 19C3 10 9 4 19 3C18 13 12 19 3 19Z"/></svg><h3>Terms, agreed as they book</h3><p>Clients accept her 48-hour cancellation terms before the booking goes through.</p></div>
+        <div class="feat"><svg class="lf" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 19C3 10 9 4 19 3C18 13 12 19 3 19Z"/></svg><h3>Her own professional email</h3><p>An address on her own domain, set up and handed over in person.</p></div>
+        <div class="feat"><svg class="lf" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 19C3 10 9 4 19 3C18 13 12 19 3 19Z"/></svg><h3>Everything in her name</h3><p>The domain, the mailbox, Cliniko and Stripe. Everything that holds her data or her money belongs to her.</p></div>
+    </div>
+</section>
+
+<section id="screens">
+    <div class="col">
+        <span class="eyebrow">The live site</span>
+        <h2>velmabennett.co.uk</h2>
+    </div>
+    <div class="shots">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><span>velmabennett.co.uk</span></div><img src="/images/projects/connected-pathways-desktop.jpg" alt="Connected Pathways homepage on a laptop: the headline 'Most problems don't live inside one person. They live between people.' beside Velma Bennett's tree logo" width="1600" height="1000" loading="lazy"></div>
+        <div class="phone"><img src="/images/projects/connected-pathways-mobile.jpg" alt="Connected Pathways homepage on a phone, with the headline and a button to book a free 30-minute consult" width="780" height="1688" loading="lazy"></div>
+    </div>
+    <p class="caption">Her tree, her colours, her opening line. A free 30-minute consult is one tap away.</p>
+</section>
+
+<section id="timeline">
+    <div class="col">
+        <span class="eyebrow">How it grew</span>
+        <h2>From seed to <em>canopy</em>.</h2>
+        <ol class="growth">
+            <li><span class="sprout"><svg viewBox="0 0 34 34" aria-hidden="true"><ellipse cx="17" cy="24" rx="5" ry="3.4"/><line x1="4" y1="29" x2="30" y2="29"/></svg></span><div><span class="when">Before</span><p>A website builder she found clunky. She felt she never got the best out of it.</p></div></li>
+            <li><span class="sprout"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 29V17"/><path class="fl" d="M17 19C12 19 9 16 9 12C13 12 17 14 17 19Z"/><line x1="4" y1="29" x2="30" y2="29"/></svg></span><div><span class="when">Before launch</span><p>Every word of the copy, read and approved by Velma.</p></div></li>
+            <li><span class="sprout"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 29V11"/><path class="fl" d="M17 19C12 19 9 16 9 12C13 12 17 14 17 19Z"/><path class="fl" d="M17 15C22 15 25 12 25 8C21 8 17 10 17 15Z"/><line x1="4" y1="29" x2="30" y2="29"/></svg></span><div><span class="when">7 September</span><p><strong>velmabennett.co.uk goes live.</strong> Two doors, open.</p></div></li>
+            <li><span class="sprout"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 29V9M17 18L11 12M17 14L23 9"/><path class="fl" d="M11 12C7 12 5 9 5 6C8 6 11 8 11 12Z"/><path class="fl" d="M23 9C27 9 29 6 29 3C26 3 23 5 23 9Z"/><path class="fl" d="M17 9C14 7 14 4 17 1C20 4 20 7 17 9Z"/><line x1="4" y1="29" x2="30" y2="29"/></svg></span><div><span class="when">Then, the back room</span><p>Cliniko in her own account, two intake forms approved line by line, and emails in her colours.</p></div></li>
+            <li><span class="sprout"><img src="/images/projects/connected-pathways-tree.png" alt="" width="220" height="202"></span><div><span class="when">29 September</span><p><strong>Online booking with payment goes live.</strong> Three pathways, each opening straight onto its booking page.</p></div></li>
+        </ol>
+    </div>
+</section>
+
+<!-- Client quote: add once Velma's words are in. Keep it verbatim. -->
+
+<section class="cta" id="cta">
+    <div class="tree-wrap"><svg id="tree" viewBox="0 0 400 380" aria-hidden="true"><defs><linearGradient id="arcG" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#82967a"/><stop offset="1" stop-color="#5f8b8e"/></linearGradient></defs><g id="treeG"></g></svg></div>
+    <h2>Tried a website builder and <em>never quite</em> got there?</h2>
+    <p>Velma had. Twelve questions, ten minutes, and you'll see a live version of yours before you pay anything.</p>
+    <div class="btns">
+        <a href="/brief/" class="btn primary">Start your brief &rarr;</a>
+        <a href="/pricing" class="btn ghost">See prices</a>
+    </div>
+    <p class="values">Warm &middot; Thoughtful &middot; Empowering</p>
+</section>
+</main>
+
+<a class="next" href="/projects/good-knight-yoga">Next: Good Knight Yoga, a website that breathes <span>&rarr;</span></a>
+
+<footer>
+    <div class="fl" role="img" aria-label="Tailored Tools"></div>
+    <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
+    <p>Tailored Tools is the trading name of James Edwards (sole trader) &middot; <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    <p>&copy; 2026 Tailored Tools &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p>
+</footer>
+
+<script>
+(function () {
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var NS = 'http://www.w3.org/2000/svg';
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+    function smooth(u) { u = Math.min(1, Math.max(0, u)); return u * u * (3 - 2 * u); }
+    function f1(n) { return Math.round(n * 10) / 10; }
+
+    /* ── Visibility: live things only move while on screen ── */
+    var vis = new Set(), hidden = document.hidden;
+    var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+            if (e.isIntersecting) { vis.add(e.target); e.target.classList.add('vis'); }
+            else { vis.delete(e.target); e.target.classList.remove('vis'); }
+        });
+    }, { rootMargin: '40px' });
+    $$('[data-live]').forEach(function (el) { io.observe(el); });
+    document.addEventListener('visibilitychange', function () { hidden = document.hidden; });
+    var anims = [];
+    function live(el, fn) { anims.push({ el: el, fn: fn, last: 0 }); }
+    function tick(t) {
+        if (!hidden) anims.forEach(function (a) {
+            if (!vis.has(a.el)) { a.last = 0; return; }
+            var dt = a.last ? Math.min(100, t - a.last) : 0; a.last = t; a.fn(t, dt);
+        });
+        requestAnimationFrame(tick);
+    }
+
+    /* ── The two paths: built from the page's own sections ── */
+    var wrap = $('#threads'), tsvg = $('#threadSvg'), pA = $('#tA'), pB = $('#tB'), bA = $('#beadA'), bB = $('#beadB');
+    var main = $('main'), tree = $('#tree');
+    var TA = null, TB = null, endY = 0, startY = 0, introT0 = performance.now(), grown = false;
+    function docBox(el) { var r = el.getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height }; }
+    function build() {
+        var W = document.documentElement.clientWidth, H = main.offsetTop + main.offsetHeight;
+        wrap.style.height = H + 'px';
+        tsvg.setAttribute('width', W); tsvg.setAttribute('height', H); tsvg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        var wide = W >= 1000;
+        var da = docBox($('#doorA')), db = docBox($('#doorB'));
+        var ax = da.x + da.w / 2, bx = db.x + db.w / 2, sy = da.y + da.h * 176 / 180;
+        var cx = wide ? (ax + bx) / 2 : W / 2, d = wide ? (bx - ax) / 2 : W / 2 - 9;
+        // a crossing in the quiet gap between every pair of sections
+        var secs = Array.prototype.slice.call(main.children).filter(function (n) { return n.tagName === 'SECTION'; });
+        var cross = [];
+        for (var i = 1; i < secs.length; i++) {
+            var pb = parseFloat(getComputedStyle(secs[i - 1]).paddingBottom), pt = parseFloat(getComputedStyle(secs[i]).paddingTop);
+            cross.push({ b: secs[i].offsetTop + main.offsetTop, g: Math.max(40, Math.min(pb, pt) * 0.85) });
+        }
+        cross.pop(); // the last gap is where they head for the tree instead
+        function phase(y) {
+            var ph = 0;
+            for (var k = 0; k < cross.length; k++) {
+                var c = cross[k];
+                if (y >= c.b + c.g) ph += Math.PI;
+                else { if (y > c.b - c.g) ph += Math.PI * smooth((y - (c.b - c.g)) / (2 * c.g)); break; }
+            }
+            return ph;
+        }
+        var sw = wide ? 18 : 2.5;
+        function lane(y, s) { var c = Math.cos(phase(y)); return cx + s * d * c + sw * Math.sin(y / (s < 0 ? 290 : 250) + (s < 0 ? 1 : 4)); }
+        // the tree's roots
+        var tb = docBox(tree), sc = tb.w / 400;
+        var rootL = { x: tb.x, y: tb.y + 352 * sc }, rootR = { x: tb.x + tb.w, y: tb.y + 352 * sc };
+        var cta = secs[secs.length - 1], ctaTop = cta.offsetTop + main.offsetTop;
+        var eStart = Math.max(ctaTop - 60, rootL.y - (wide ? 420 : 300));
+        function path(s, ox) {
+            var pts = [], blendIn = wide ? 150 : 120;
+            var endLeft = (s * Math.cos(phase(eStart))) < 0;
+            var end = endLeft ? rootL : rootR;
+            for (var y = sy; y < end.y; y += 6) {
+                var x = lane(y, s);
+                if (y < sy + blendIn) x = ox + (x - ox) * smooth((y - sy) / blendIn);
+                if (y > eStart) x = x + (end.x - x) * smooth((y - eStart) / (end.y - eStart));
+                pts.push([x, y]);
+            }
+            pts.push([end.x, end.y]);
+            var dstr = '', cum = [0], L = 0;
+            for (var j = 0; j < pts.length; j++) {
+                if (j) L += Math.hypot(pts[j][0] - pts[j - 1][0], pts[j][1] - pts[j - 1][1]);
+                cum.push(L); dstr += (j ? 'L' : 'M') + f1(pts[j][0]) + ' ' + f1(pts[j][1]);
+            }
+            cum.shift();
+            return { pts: pts, cum: cum, L: L, d: dstr, left: endLeft };
+        }
+        TA = path(-1, ax); TB = path(1, bx);
+        pA.setAttribute('d', TA.d); pB.setAttribute('d', TB.d);
+        pA.style.strokeDasharray = TA.L; pB.style.strokeDasharray = TB.L;
+        startY = sy; endY = rootL.y;
+        // the ribbons inside the tree continue whichever path arrived on that side
+        var lc = TA.left ? '#132f4d' : '#5d7050', rc = TA.left ? '#5d7050' : '#132f4d';
+        var rl = document.getElementById('ribL'), rr = document.getElementById('ribR');
+        if (rl) { rl.setAttribute('stroke', lc); rr.setAttribute('stroke', rc); rl.setAttribute('stroke-opacity', TA.left ? 0.6 : 0.85); rr.setAttribute('stroke-opacity', TA.left ? 0.85 : 0.6); }
+        draw();
+    }
+    function at(T, tip) {
+        var p = T.pts, lo = 0, hi = p.length - 1;
+        if (tip <= p[0][1]) return { len: 0, x: p[0][0], y: p[0][1] };
+        if (tip >= p[hi][1]) return { len: T.L, x: p[hi][0], y: p[hi][1] };
+        while (hi - lo > 1) { var m = (lo + hi) >> 1; if (p[m][1] <= tip) lo = m; else hi = m; }
+        return { len: T.cum[lo], x: p[lo][0], y: p[lo][1] };
+    }
+    function draw() {
+        if (!TA) return;
+        var tip = Math.max(scrollY + innerHeight * 0.62, startY + innerHeight * 0.28);
+        if (!still) { var k = smooth((performance.now() - introT0) / 2200); tip = startY + (tip - startY) * k; }
+        else tip = Infinity;
+        [[TA, pA, bA], [TB, pB, bB]].forEach(function (o) {
+            var r = at(o[0], tip);
+            o[1].style.strokeDashoffset = o[0].L - r.len;
+            o[2].setAttribute('transform', 'translate(' + f1(r.x) + ' ' + f1(r.y) + ')');
+            o[2].style.opacity = (r.len > 2 && r.len < o[0].L - 2) ? 1 : 0;
+        });
+        if (!grown && tip >= endY - 2) { grown = true; tree.classList.add('grow'); }
+    }
+    var ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; draw(); }); } }
+    addEventListener('scroll', onScroll, { passive: true });
+    if (!still) { (function intro() { draw(); if (performance.now() - introT0 < 2300) requestAnimationFrame(intro); })(); }
+
+    /* ── Her tree, grown from a seed so it's the same every time ── */
+    (function buildTree() {
+        var g = $('#treeG'), R = rng(11), out = '', leaves = '';
+        var LEAF = 'M0 0C4 -4.6 10 -4.6 14 0C10 4.6 4 4.6 0 0Z';
+        var cols = ['#82967a', '#5d7050', '#6e9089', '#4f7383', '#9aab8c', '#82967a', '#3d5e7a'];
+        function br(d, w, col, dl, du, extra) { out += '<path class="br" d="' + d + '" stroke="' + col + '" stroke-width="' + w + '" style="--dl:' + dl + 's;--du:' + du + 's"' + (extra || '') + '/>'; }
+        // the two paths arriving as ribbons, like the ones under her tree
+        br('M0 352C60 352 92 334 128 337C160 340 178 322 194 300', 2.4, '#132f4d', 0, 1.2, ' id="ribL"');
+        br('M400 352C340 352 308 334 272 337C240 340 222 322 206 300', 2.4, '#5d7050', 0, 1.2, ' id="ribR"');
+        br('M48 304Q200 280 352 304', 1.2, '#c6bea3', 0.5, 1.4);
+        out += '<path class="trunk" d="M180 305C191 293 194 262 196 210L204 210C206 262 209 293 220 305Q200 297 180 305Z"/>';
+        br('M194 300C188 278 207 262 199 244C192 228 206 220 200 206', 2, '#132f4d', 0.9, 1.1);
+        br('M206 300C212 278 193 262 201 244C208 228 194 220 200 206', 2, '#132f4d', 0.9, 1.1);
+        function limb(x, y, a, len, depth) {
+            var ex = x + Math.cos(a) * len, ey = y + Math.sin(a) * len;
+            var dx = ex - 200, dy = ey - 150, dist = Math.hypot(dx, dy);
+            if (dist > 124) { ex = 200 + dx * 124 / dist; ey = 150 + dy * 124 / dist; }
+            var bend = (R() - 0.5) * len * 0.4, mx = (x + ex) / 2 + Math.cos(a + Math.PI / 2) * bend, my = (y + ey) / 2 + Math.sin(a + Math.PI / 2) * bend;
+            br('M' + f1(x) + ' ' + f1(y) + 'Q' + f1(mx) + ' ' + f1(my) + ' ' + f1(ex) + ' ' + f1(ey), f1(Math.max(0.8, 4.4 * Math.pow(0.64, depth))), '#132f4d', f1(1.8 + depth * 0.4), 0.8);
+            if (depth >= 2) {
+                var n = depth === 2 ? 1 : 2;
+                for (var i = 0; i < n; i++) {
+                    var lx = i ? mx : ex, ly = i ? my : ey, la = a * 180 / Math.PI + (R() - 0.5) * 130, s = 0.8 + R() * 0.45;
+                    leaves += '<g transform="translate(' + f1(lx) + ' ' + f1(ly) + ') rotate(' + f1(la) + ') scale(' + f1(s) + ')"><path class="lfp" d="' + LEAF + '" fill="' + cols[Math.floor(R() * cols.length)] + '" style="--dl:' + f1(2.8 + depth * 0.4 + R() * 1.4) + 's"/></g>';
+                }
+            }
+            if (depth < 4) {
+                var kids = depth < 1 ? 3 : 2, spread = 0.45 + R() * 0.25;
+                for (var k = 0; k < kids; k++) {
+                    var t = kids === 1 ? 0 : k / (kids - 1) * 2 - 1, na = a + t * spread + (R() - 0.5) * 0.25;
+                    na = na * 0.88 + (-Math.PI / 2) * 0.12;
+                    limb(ex, ey, na, len * (0.7 + R() * 0.1), depth + 1);
+                }
+            }
+        }
+        [-0.78, 0, 0.78].forEach(function (o, i) { limb(200, 208 - i % 2 * 4, -Math.PI / 2 + o, i % 2 ? 50 : 54, 0); });
+        br('M59 219A150 150 0 1 1 341 219', 2.4, 'url(#arcG)', 4.2, 2.4);
+        g.innerHTML = out + leaves;
+        Array.prototype.forEach.call(g.querySelectorAll('.br'), function (p) { p.style.setProperty('--L', Math.ceil(p.getTotalLength()) + 1); });
+        if (still) tree.classList.add('grow');
+    })();
+
+    /* ── Ambient silk: faint threads drifting, like the light on her homepage ── */
+    var cv = $('#silk'), ctx = cv.getContext('2d'), dpr = Math.min(1.5, devicePixelRatio || 1), strands = [], SW = 0, SH = 0, lastSilk = 0;
+    function sizeSilk() {
+        SW = innerWidth; SH = innerHeight * 1.2; cv.width = SW * dpr; cv.height = SH * dpr;
+        var R = rng(5), n = SW < 640 ? 5 : 8; strands = [];
+        for (var i = 0; i < n; i++) strands.push({ y0: 0.02 + R() * 0.5, y1: 0.4 + R() * 0.6, a: 0.15 + R() * 0.6, b: 0.25 + R() * 0.6, ph: R() * 6.28, sp: 0.00005 + R() * 0.00005,
+            col: i % 3 === 0 ? '93,112,80' : (i % 3 === 1 ? '176,160,120' : '61,94,122'), al: 0.05 + R() * 0.06, glow: i % 2 === 0 });
+    }
+    function bez(p0, p1, p2, p3, u) { var v = 1 - u; return v * v * v * p0 + 3 * v * v * u * p1 + 3 * v * u * u * p2 + u * u * u * p3; }
+    function silk(t) {
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        var w = cv.width, h = cv.height, sc = scrollY * 0.0005;
+        for (var i = 0; i < strands.length; i++) {
+            var s = strands[i], q = t * s.sp + s.ph + sc;
+            var x0 = -0.08 * w, y0 = s.y0 * h, x1 = 0.36 * w, y1 = (s.a + 0.14 * Math.sin(q)) * h, x2 = 0.7 * w, y2 = (s.b + 0.14 * Math.cos(q * 1.3)) * h, x3 = 1.08 * w, y3 = s.y1 * h;
+            for (var k = 0; k < 2; k++) {
+                var o = k * 5 * dpr;
+                ctx.strokeStyle = 'rgba(' + s.col + ',' + (k ? s.al * 0.5 : s.al) + ')'; ctx.lineWidth = dpr * (k ? 0.7 : 1);
+                ctx.beginPath(); ctx.moveTo(x0, y0 + o); ctx.bezierCurveTo(x1, y1 + o * 1.6, x2, y2 - o, x3, y3 + o); ctx.stroke();
+            }
+            if (s.glow) {
+                var u = 0.5 + 0.32 * Math.sin(q * 1.7), gx = bez(x0, x1, x2, x3, u), gy = bez(y0, y1, y2, y3, u), r = 20 * dpr;
+                var gr = ctx.createRadialGradient(gx, gy, 0, gx, gy, r);
+                gr.addColorStop(0, 'rgba(255,252,240,0.95)'); gr.addColorStop(0.25, 'rgba(240,228,196,0.45)'); gr.addColorStop(1, 'rgba(240,228,196,0)');
+                ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(gx, gy, r, 0, 6.283); ctx.fill();
+            }
+        }
+    }
+    function silkLoop(t) { if (!hidden && t - lastSilk > 33) { lastSilk = t; silk(t); } requestAnimationFrame(silkLoop); }
+    sizeSilk();
+    if (still) silk(0); else requestAnimationFrame(silkLoop);
+
+    /* ── Specimen: two circles breathing towards each other ── */
+    var vA = $('#vA'), vB = $('#vB'), vMid = $('#vMid');
+    function venn(t) {
+        var s = 0.5 + 0.5 * Math.sin(t / 2600), off = 30 + 26 * (1 - s);
+        vA.style.transform = 'translateX(' + (-off) + 'px)'; vB.style.transform = 'translateX(' + off + 'px)';
+        vMid.style.setProperty('--o', (0.25 + 0.75 * s).toFixed(2));
+    }
+    if (still) venn(Math.PI / 2 * 2600); else live($('#venn'), venn);
+
+    /* ── Specimen: 15 minutes becoming 30 ── */
+    var arc = $('#clockArc'), num = $('#clockNum'), C = 301.6;
+    function clock(t) {
+        var c = (t / 1000) % 8, f;
+        if (c < 1.6) f = 0.25; else if (c < 4.2) f = 0.25 + 0.25 * smooth((c - 1.6) / 2.6); else if (c < 7.2) f = 0.5; else f = 0.5 - 0.25 * smooth((c - 7.2) / 0.8);
+        arc.setAttribute('stroke-dashoffset', (C * (1 - f)).toFixed(1));
+        var m = String(Math.round(f * 60)); if (num.textContent !== m) num.textContent = m;
+    }
+    if (!still) live($('#clock'), clock);
+
+    /* ── Specimen: approvals ticking through ── */
+    var rows = $$('#approve > div'), apAcc = 0;
+    function approve(t, dt) {
+        apAcc += dt; var step = Math.floor(apAcc / 650), n = rows.length;
+        if (step > n + 4) { apAcc = 0; step = 0; }
+        rows.forEach(function (r, i) { r.classList.toggle('ok', i < step); });
+    }
+    if (still) rows.forEach(function (r) { r.classList.add('ok'); }); else live($('#approve'), approve);
+
+    /* ── The weave under her opening line ── */
+    var wA = $('#wA'), wB = $('#wB');
+    function weave(t) {
+        var a = '', b = '', ph = t / 4200;
+        for (var x = 0; x <= 860; x += 10) {
+            var y = 35 + 22 * Math.sin(x / 86 + ph) * (0.6 + 0.4 * Math.sin(x / 300 - ph * 0.5));
+            a += (x ? 'L' : 'M') + x + ' ' + f1(y); b += (x ? 'L' : 'M') + x + ' ' + f1(70 - y);
+        }
+        wA.setAttribute('d', a); wB.setAttribute('d', b);
+    }
+    weave(0); if (!still) live($('#weave'), weave);
+
+    /* ── Journey: one booking travelling through her systems ── */
+    var stages = $$('.stage'), stations = $$('.station'), jUrl = $('#jUrl'), railBead = $('#railBead'), jCtl = $('#jCtl');
+    var cur = 0, jAcc = 0, playing = !still, DUR = [3600, 3600, 3400, 3600, 4400, 4200, 4200];
+    function setStage(i) {
+        cur = i; jAcc = 0;
+        stages.forEach(function (s, k) { s.classList.toggle('on', k === i); });
+        stations.forEach(function (s, k) { s.classList.toggle('on', k === i); s.classList.toggle('done', k <= i); s.setAttribute('aria-current', k === i ? 'step' : 'false'); });
+        jUrl.innerHTML = stages[i].getAttribute('data-url');
+        placeBead();
+    }
+    function placeBead() { var b = stations[cur]; railBead.style.transform = 'translateY(' + (b.parentNode.offsetTop + 12) + 'px)'; }
+    stations.forEach(function (s, i) { s.addEventListener('click', function () { setStage(i); }); });
+    jCtl.addEventListener('click', function () { playing = !playing; jCtl.textContent = playing ? 'Pause' : 'Play'; });
+    live($('#jWrap'), function (t, dt) { if (!playing) return; jAcc += dt; if (jAcc > DUR[cur]) setStage((cur + 1) % stages.length); });
+    if (still) { setStage(4); stations.forEach(function (s) { s.classList.add('done'); }); jCtl.style.display = 'none'; } else setStage(0);
+
+    /* ── What I chose not to keep: each one lets go as you reach it ── */
+    $$('.let .thing').forEach(function (el) {
+        var txt = el.getAttribute('data-text'), R = rng(txt.length * 7), html = '';
+        for (var i = 0; i < txt.length; i++) html += '<span style="--i:' + i + ';--d:' + f1((R() - 0.4) * 6) + ';--x:' + f1((R() - 0.5) * 4) + '">' + txt[i] + '</span>';
+        el.innerHTML = '<span class="sr">' + txt + '</span><span class="letters" aria-hidden="true">' + html + '</span>';
+    });
+    var lo = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { var el = e.target; setTimeout(function () { el.classList.add('gone'); }, 250); lo.unobserve(el); } });
+    }, { threshold: 1, rootMargin: '0px 0px -18% 0px' });
+    $$('.let').forEach(function (el) { if (still) el.classList.add('gone'); else lo.observe(el); });
+
+    /* Calendar: busy blocks only */
+    var cal = $('#cal'), busy = [1, 3, 7, 8, 11, 14, 17, 19, 22, 26, 28], ch = '';
+    for (var i = 0; i < 30; i++) { var on = busy.indexOf(i) > -1; ch += '<i' + (on ? ' class="bz" style="--dl:' + (busy.indexOf(i) * 0.45).toFixed(2) + 's"' : '') + '>' + (on ? 'Busy' : '') + '</i>'; }
+    cal.insertAdjacentHTML('beforeend', ch);
+
+    /* ── Reveal: roots map and growth timeline ── */
+    var map = $('#map'), links = $('#links');
+    var ro = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); if (e.target.classList.contains('feat')) setTimeout(drawLinks, 350); } });
+    }, { threshold: 0.35 });
+    $$('.feat, .growth li').forEach(function (el) { if (still) el.classList.add('on'); else ro.observe(el); });
+    function drawLinks() {
+        var mr = map.getBoundingClientRect(), on = map.querySelectorAll('.feat.on'), out = '';
+        for (var i = 1; i < on.length; i++) {
+            var a = on[i - 1].querySelector('.lf').getBoundingClientRect(), b = on[i].querySelector('.lf').getBoundingClientRect();
+            var x1 = a.left - mr.left + 11, y1 = a.top - mr.top + 11, x2 = b.left - mr.left + 11, y2 = b.top - mr.top + 11, dy = (y2 - y1) * 0.5;
+            out += '<path d="M' + f1(x1) + ' ' + f1(y1) + 'C' + f1(x1 - 26) + ' ' + f1(y1 + dy) + ' ' + f1(x2 - 26) + ' ' + f1(y2 - dy) + ' ' + f1(x2) + ' ' + f1(y2) + '"/>';
+        }
+        var old = links.querySelectorAll('path').length;
+        links.innerHTML = out;
+        Array.prototype.forEach.call(links.querySelectorAll('path'), function (p, i) {
+            var L = Math.ceil(p.getTotalLength()); p.style.strokeDasharray = L;
+            if (i >= old && !still) { p.style.strokeDashoffset = L; p.getBoundingClientRect(); p.style.strokeDashoffset = 0; }
+        });
+    }
+
+    /* ── Keep the paths true to the layout ── */
+    var rt = 0;
+    function rebuild() { clearTimeout(rt); rt = setTimeout(function () { sizeSilk(); if (still) silk(0); build(); placeBead(); if (map.querySelector('.feat.on')) drawLinks(); }, 120); }
+    addEventListener('resize', rebuild);
+    if (window.ResizeObserver) new ResizeObserver(rebuild).observe(main);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+    addEventListener('load', rebuild);
+    build();
+    requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

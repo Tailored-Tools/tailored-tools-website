@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prices - Tailored Tools</title>
+    <meta name="description" content="Three starting points: Foundation from £750 + £45/month, Studio from £1,950 + £75/month, Platform from £4,500 + £150/month. Price agreed before anything is built, live prototype before you pay, no contract.">
+    <link rel="canonical" href="https://tailored-tools.com/pricing">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/pricing">
+    <meta property="og:title" content="Prices - Tailored Tools">
+    <meta property="og:description" content="Websites from £750 + £45/month. Booking and payments from £1,950 + £75/month. Full business systems from £4,500 + £150/month. No contract.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=15">
+    <style>
+        .hero { background: #0D1B2A; color: var(--white); padding: 80px 24px 88px; }
+        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+        .hero .hero-label {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 20px;
+        }
+        .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.15; color: var(--white); margin-bottom: 20px; max-width: 680px; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 580px; line-height: 1.65; }
+
+        section { padding: 72px 24px; }
+        .section-inner { max-width: var(--max-width); margin: 0 auto; }
+
+        /* tiers */
+        .tiers { background: #F3EEE4; padding-top: 64px; }
+        .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+        .tier {
+            background: #fff; border: 1px solid #e3e7ed; border-radius: 14px;
+            padding: 30px 26px 28px; display: flex; flex-direction: column;
+        }
+        .tier.featured { border: 2px solid var(--accent); box-shadow: 0 16px 40px rgba(13,27,42,0.08); }
+        .tier-name { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+        .tier h2 { font-size: 20px; font-weight: 800; color: #0D1B2A; line-height: 1.3; margin-bottom: 18px; }
+        .tier-price { border-top: 1px solid #edf0f4; border-bottom: 1px solid #edf0f4; padding: 16px 0; margin-bottom: 18px; }
+        .tier-price .from { font-size: 13px; font-weight: 600; color: #8b93a5; }
+        .tier-price .setup { font-size: 34px; font-weight: 800; color: #0D1B2A; line-height: 1.1; }
+        .tier-price .monthly { font-size: 15px; font-weight: 600; color: #38415a; margin-top: 4px; }
+        .tier ul { list-style: none; margin: 0 0 20px; padding: 0; flex: 1; }
+        .tier li { position: relative; padding-left: 24px; font-size: 14.5px; color: #38415a; line-height: 1.55; margin-bottom: 10px; }
+        .tier li::before { content: '\2713'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+        .tier li.plus { font-weight: 700; color: #0D1B2A; padding-left: 0; }
+        .tier li.plus::before { content: none; }
+        .tier-fit { font-size: 13.5px; color: #55607a; line-height: 1.55; background: #f6f7f9; border-radius: 8px; padding: 12px 14px; }
+        .tier-fit strong { color: #0D1B2A; }
+        .tier-name, .tier-price .from { font-family: 'DM Mono', ui-monospace, Menlo, monospace; }
+        .tier-price .setup { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; letter-spacing: -0.02em; }
+        .tiers-note { font-size: 14.5px; color: #55607a; margin-top: 26px; max-width: 720px; line-height: 1.65; }
+
+        /* care plan */
+        .care { background: #fff; }
+        .care h2, .faq h2 { font-size: 30px; font-weight: 800; color: #0D1B2A; margin-bottom: 10px; }
+        .care .lede, .faq .lede { font-size: 17px; color: #55607a; max-width: 660px; margin-bottom: 36px; line-height: 1.65; }
+        .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        .care-card { border: 1px solid #e3e7ed; border-radius: 12px; padding: 24px 24px 20px; }
+        .care-card h3 { font-size: 16px; font-weight: 700; color: #0D1B2A; margin-bottom: 12px; }
+        .care-card ul { margin: 0 0 0 18px; }
+        .care-card li { font-size: 14.5px; color: #38415a; line-height: 1.6; margin-bottom: 6px; }
+        .care-card.new { background: #fff7f2; border-color: #ffe3d1; }
+        .care-promise { margin-top: 26px; font-size: 15.5px; color: #38415a; line-height: 1.65; max-width: 720px; }
+        .care-promise strong { color: #0D1B2A; }
+
+        /* faq */
+        .faq { background: #f6f7f9; }
+        .faq-list { max-width: 760px; }
+        .faq details { background: #fff; border: 1px solid #e3e7ed; border-radius: 10px; margin-bottom: 12px; }
+        .faq summary {
+            cursor: pointer; list-style: none; padding: 18px 22px; font-size: 16px; font-weight: 700; color: #0D1B2A;
+            display: flex; justify-content: space-between; gap: 16px; align-items: center;
+        }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: '+'; color: var(--accent); font-size: 22px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+        .faq details[open] summary::after { content: '\2212'; }
+        .faq details p { padding: 0 22px 18px; font-size: 15px; color: #55607a; line-height: 1.7; }
+        .faq details p a { color: var(--accent); font-weight: 600; }
+
+        .final-cta { background: #0D1B2A; color: var(--white); text-align: center; padding: 84px 24px; }
+        .final-cta h2 { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
+        .final-cta p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .btn-outline {
+            display: inline-block; border: 2px solid var(--accent); color: var(--accent);
+            padding: 12px 24px; border-radius: 6px; text-decoration: none;
+            font-weight: 700; font-size: 15px; transition: background 0.2s, color 0.2s;
+        }
+        .btn-outline:hover { background: var(--accent); color: var(--white); }
+
+        @media (max-width: 860px) {
+            .tier-grid { grid-template-columns: 1fr; max-width: 520px; }
+            .care-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .hero { padding: 56px 20px 64px; }
+            .hero h1 { font-size: 32px; }
+            section { padding: 56px 20px; }
+            .tier { padding: 26px 20px 22px; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "OfferCatalog",
+        "name": "Tailored Tools prices",
+        "url": "https://tailored-tools.com/pricing",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "name": "Foundation",
+                "description": "Bespoke website with copy, forms, mailing list and monthly care plan.",
+                "priceSpecification": [
+                    { "@type": "PriceSpecification", "minPrice": 750, "priceCurrency": "GBP", "description": "Setup, from" },
+                    { "@type": "UnitPriceSpecification", "price": 45, "priceCurrency": "GBP", "unitText": "MONTH", "description": "Care plan" }
+                ]
+            },
+            {
+                "@type": "Offer",
+                "name": "Studio",
+                "description": "Everything in Foundation plus online booking, payments and light admin tools.",
+                "priceSpecification": [
+                    { "@type": "PriceSpecification", "minPrice": 1950, "priceCurrency": "GBP", "description": "Setup, from" },
+                    { "@type": "UnitPriceSpecification", "price": 75, "priceCurrency": "GBP", "unitText": "MONTH", "description": "Care plan" }
+                ]
+            },
+            {
+                "@type": "Offer",
+                "name": "Platform",
+                "description": "Apps, portals, back-office systems, automation and AI features.",
+                "priceSpecification": [
+                    { "@type": "PriceSpecification", "minPrice": 4500, "priceCurrency": "GBP", "description": "Setup, from" },
+                    { "@type": "UnitPriceSpecification", "minPrice": 150, "priceCurrency": "GBP", "unitText": "MONTH", "description": "Care plan, from" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/how-i-work">How I Work</a></li>
+            <li><a href="/projects">Work</a></li>
+            <li><a href="/pricing" class="active">Pricing</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@tailored-tools.com?subject=I%27d%20like%20to%20book%20a%20free%20chat" class="nav-cta">Get in Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-label">Prices</span>
+        <h1>You know the price <span>before</span> anything gets built</h1>
+        <p>Three starting points. Your quote starts from one of them and adds only what your business needs, line by line. You still see a live prototype before you pay anything.</p>
+    </div>
+</section>
+
+<section class="tiers" data-nav-bg="light">
+    <div class="section-inner">
+        <div class="tier-grid">
+
+            <div class="tier">
+                <p class="tier-name">Foundation</p>
+                <h2>A website that earns trust</h2>
+                <div class="tier-price">
+                    <div class="from">from</div>
+                    <div class="setup">&pound;750</div>
+                    <div class="monthly">then &pound;45 a month</div>
+                </div>
+                <ul>
+                    <li>A bespoke design, never a template</li>
+                    <li>Your words, written with you</li>
+                    <li>Enquiry forms and a mailing list</li>
+                    <li>Fast on phones, set up to be found on Google</li>
+                    <li>Your domain, registered in your name</li>
+                    <li>Monthly care plan included</li>
+                </ul>
+                <p class="tier-fit"><strong>Good for:</strong> practitioners, teachers and studios starting out, or replacing a site that's let them down.</p>
+            </div>
+
+            <div class="tier featured">
+                <p class="tier-name">Studio</p>
+                <h2>A website that takes bookings and payments</h2>
+                <div class="tier-price">
+                    <div class="from">from</div>
+                    <div class="setup">&pound;1,950</div>
+                    <div class="monthly">then &pound;75 a month</div>
+                </div>
+                <ul>
+                    <li class="plus">Everything in Foundation, plus:</li>
+                    <li>Online booking and payment, connected to the system you use (or a new one, set up for you)</li>
+                    <li>Interactive service menus and price builders</li>
+                    <li>Intake forms, confirmations and reminders that send themselves</li>
+                    <li>Simple tools so you can update things yourself</li>
+                </ul>
+                <p class="tier-fit"><strong>Good for:</strong> therapists, salons and studios, anyone whose diary is the business.</p>
+            </div>
+
+            <div class="tier">
+                <p class="tier-name">Platform</p>
+                <h2>The system your business runs on</h2>
+                <div class="tier-price">
+                    <div class="from">from</div>
+                    <div class="setup">&pound;4,500</div>
+                    <div class="monthly">then from &pound;150 a month</div>
+                </div>
+                <ul>
+                    <li class="plus">Everything in Studio, plus:</li>
+                    <li>Apps, client portals and back-office tools</li>
+                    <li>Automation across WhatsApp, email and payments</li>
+                    <li>AI features, only where they save real time</li>
+                    <li>Designed after watching how you actually work</li>
+                </ul>
+                <p class="tier-fit"><strong>Good for:</strong> agencies, leagues, teams and businesses with real admin to tame.</p>
+            </div>
+
+        </div>
+        <p class="tiers-note">Third-party costs like your domain, booking software or email are paid by you, directly, at cost. Every one of them is listed in writing before you commit, including the renewal prices nobody mentions.</p>
+    </div>
+</section>
+
+<section class="care" data-nav-bg="light">
+    <div class="section-inner">
+        <h2>The monthly is the point</h2>
+        <p class="lede">A website is never finished. Prices change, staff change, offers come and go. The care plan means you never have to chase a developer or learn a dashboard to keep it right.</p>
+        <div class="care-grid">
+            <div class="care-card">
+                <h3>Included, as often as you like</h3>
+                <ul>
+                    <li>Price changes, new photos, opening hours, wording</li>
+                    <li>This month's offer, team changes, news</li>
+                    <li>Hosting, security and backups</li>
+                    <li>Keeping an eye on it, and fixing anything that breaks</li>
+                </ul>
+            </div>
+            <div class="care-card new">
+                <h3>Brand new things</h3>
+                <ul>
+                    <li>A new page, a new section, or something the site doesn't do yet is a small new build</li>
+                    <li>You get the price first and decide</li>
+                    <li>Nothing extra is ever charged without your yes</li>
+                </ul>
+            </div>
+        </div>
+        <p class="care-promise">Send a change by WhatsApp and it's usually live the same day. <strong>No contract: stop whenever you like</strong>, and you keep everything, because the domain and accounts were yours from day one. Prefer to commit for two years? Foundation drops to &pound;40 a month. Entirely your choice, never required.</p>
+    </div>
+</section>
+
+<section class="faq" data-nav-bg="light">
+    <div class="section-inner">
+        <h2>Questions people ask</h2>
+        <p class="lede">If yours isn't here, ask. You'll get a straight answer.</p>
+        <div class="faq-list">
+            <details>
+                <summary>Why "from"?</summary>
+                <p>Because no two businesses need the same thing. The tier is the starting point. Your quote adds only what you need, each item with its own line, so you can see exactly what you're paying for and drop anything you don't want.</p>
+            </details>
+            <details>
+                <summary>Do I have to pay before I see anything?</summary>
+                <p>No. You answer a short <a href="/brief/">brief</a>, and within days you get a live website with your name on it. If it doesn't feel right, walk away. No invoice. <a href="/how-i-work">How that works</a>.</p>
+            </details>
+            <details>
+                <summary>What if I only need something small?</summary>
+                <p>Say so. Sometimes the honest answer is a smaller job, and I'll tell you. Sometimes the small ask turns out to be the visible end of a bigger problem: <a href="/projects/mane-london">Mane London</a> came to me for printed price lists. Either way, you decide with the price in front of you.</p>
+            </details>
+            <details>
+                <summary>Who owns the website?</summary>
+                <p>You do. Your domain, your accounts and your payments are registered to you and paid by you. If we ever part ways, you lose nothing.</p>
+            </details>
+            <details>
+                <summary>Can I spread the setup cost?</summary>
+                <p>Ask. Splitting the setup into a few payments is often possible, agreed in writing before the build starts.</p>
+            </details>
+            <details>
+                <summary>What happens if I stop the care plan?</summary>
+                <p>Everything stays yours. I'll help you move the site wherever you want it, with a plain-English handover so you or anyone else can look after it.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <h2>Want to see yours?</h2>
+    <p>Twelve questions, ten minutes, nothing to pay. You'll see a live version before we talk money.</p>
+    <div class="hero-ctas">
+        <a href="/brief/" class="btn-accent">Start your brief</a>
+        <a href="/projects" class="btn-outline">See the work</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
+    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p class="footer-meta">
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+        &middot; <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot; <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+</footer>
+
+<script src="/js/nav.js"></script>
+<script>
+var hb = document.getElementById('hamburger');
+if (hb) hb.addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

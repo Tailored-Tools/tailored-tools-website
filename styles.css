@@ -175,6 +175,8 @@ section    { padding: 80px 24px; }
 }
 
 /* ── Common headings ────────────────────────────────────────── */
+/* Bricolage is only loaded on the redesigned pages; elsewhere this falls back to Inter. */
+h1, h2 { font-family: 'Bricolage Grotesque', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; }
 h2 {
     font-size: 28px;
     font-weight: 800;

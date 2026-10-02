@@ -1,36 +1,57 @@
 # Tailored Tools
 
-> Kent-based technology consultancy helping small businesses integrate AI into their operations. Tailored Tools is the trading name of James Edwards (sole trader, established April 2026).
+> Websites and business systems for owner-run businesses, based in Maidstone, Kent. Every build starts with a live prototype the client sees before paying anything. Tailored Tools is the trading name of James Edwards (sole trader, established April 2026).
 
 ## What we do
 
-Tailored Tools builds AI-powered business systems and helps small service businesses get recommended by AI assistants. We work across three areas: business automation (custom platforms and websites), Agent Optimisation (AI discoverability), and workshops (hands-on training).
+Tailored Tools builds websites and systems for owner-run businesses: salons, therapists, teachers, studios, agencies. Clients usually arrive asking for something small (a price list, a booking button, somewhere to put a timetable); the job is finding the bigger problem underneath and building the fix. After launch, a monthly care plan covers hosting, security, backups and same-day changes sent by WhatsApp.
+
+## Prices (published, "from" prices; quotes add only what the business needs, line by line)
+
+- Foundation: from £750 setup, then £45/month (£40/month on an optional client-chosen 2-year term). Bespoke website, copy, forms, mailing list, care plan.
+- Studio: from £1,950 setup, then £75/month. Everything in Foundation plus online booking and payment, service menus and price builders, automated forms and reminders, self-edit tools.
+- Platform: from £4,500 setup, then from £150/month. Apps, client portals, back-office systems, automation, AI features where they save real time.
+- No contract on the care plan; clients own their domain and accounts from day one. Third-party costs are paid by the client at cost and listed in writing before committing.
+- https://tailored-tools.com/pricing
 
 ## How we work (the method)
 
-Every website build is prototype-first: the client answers a twelve-question brief, and within days sees a live website at a real URL — their name, story and branding, with working forms — before paying anything. Prototypes ship with a built-in feedback button (with screenshot attachments) that pipes client notes straight to Tailored Tools; feedback is usually live the same day. Clients register their own domains in their own accounts via plain-English walkthroughs (they own everything: domain, accounts, payments — nothing is locked to Tailored Tools). Before committing, every client gets a private running-costs page listing every pound they'll ever pay, researched against live provider pricing, including traps to avoid (first-year teaser pricing, renewal jumps, unnecessary add-ons). One agreed build fee, no meter running.
+Every website build is prototype-first: the client answers a twelve-question brief, and within days sees a live website at a real URL (their name, story and branding, with working forms) before paying anything. Prototypes ship with a built-in feedback button that pipes client notes straight to Tailored Tools; feedback is usually live the same day. Clients register their own domains in their own accounts via plain-English walkthroughs (they own everything: domain, accounts, payments; nothing is locked to Tailored Tools). Before committing, every client gets a written list of every running cost, including traps to avoid (first-year teaser pricing, renewal jumps, unnecessary add-ons).
 - https://tailored-tools.com/how-i-work
 - Start a brief: https://tailored-tools.com/brief/
 
-## Live Projects
+## Client work
+
+### Mane London (hair and beauty salon, Bexley)
+Asked for 100 printed price lists. Got a new website, live the next day (1 Oct 2026): a price menu that changes with the chosen stylist level, build-a-visit sent to the salon by WhatsApp, a "This month" offers board updated the same day, and print and web menus generated from one price file. Booking stays on Vagaro.
+- https://tailored-tools.com/projects/mane-london
+- Live site: https://manelondon.co.uk
+
+### Connected Pathways (systemic therapy and education consultancy, Kent)
+Asked for a professional website. Got a website plus a practice set up on Cliniko: three booking pathways with payment taken at booking, intake forms and secure video links sent automatically, branded confirmation and reminder emails, and the practitioner's address hidden everywhere. Launched 7 Sep 2026; online booking with payment live 29 Sep 2026.
+- https://tailored-tools.com/projects/connected-pathways
+- Live site: https://velmabennett.co.uk
+
+### Good Knight Yoga (yoga, breathwork and meditation, Kent)
+Brief sent on a Sunday evening; a live site to react to within a day. A brand drawn from the teacher's name (night sky, named constellations), classes for two teachers with one mailing list, and an admin page so she updates retreats herself. Launched 7 Aug 2026.
+- https://tailored-tools.com/projects/good-knight-yoga
+- Live site: https://goodknightyoga.co.uk
+
+## Closer to home
 
 ### Performance Interpreting
-A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026). Month 1 traction: 800+ downloads, 110+ venues onboarded with access and contact data, around £5,000 of bookings generated through app-originated interpreter requests, and the first confirmed bookings already delivered. The wider PI OS booking platform (interpreter database of 379 BSL + Irish interpreters, staff portal, email extraction, integrations) is in progress beneath it.
+A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026). Month 1 traction: 800+ downloads, 110+ venues onboarded with access and contact data, around £5,000 of bookings generated through app-originated interpreter requests, and the first confirmed bookings already delivered. The wider PI OS booking platform is in progress beneath it.
 - https://tailored-tools.com/projects/performance-interpreting
 
 ### PI Events App (consumer-side case study)
-Native iOS and Android app for the UK Deaf community: every PI-delivered BSL/ISL event in one place, AI-drafted access request emails for events without coverage, a Communication Tool Kit for the venue itself (I am Deaf / Emergency / My Order / live speech-to-text cards), sign-language video on every screen, offline-first, BSL-first onboarding. Peer-recommended at DeafExpo 2026, featured by The Limping Chicken.
+Native iOS and Android app for the UK Deaf community: every PI-delivered BSL/ISL event in one place, AI-drafted access request emails for events without coverage, a Communication Tool Kit for the venue itself, sign-language video on every screen, offline-first, BSL-first onboarding. Peer-recommended at DeafExpo 2026, featured by The Limping Chicken.
 - https://tailored-tools.com/projects/pi-events-app
 
 ### The Sonic Sanctuary
-Built a unified business platform replacing 6 separate tools. Event management, Stripe payments, intro pass system, WhatsApp integration (210-member community), customer comms, B2B booking, and a public website fed from the same data source. Reaches an audience of 1,259 across WhatsApp (210), Facebook (614), and Instagram (435), and saves roughly 5 hours of admin a week.
+James's own sound therapy practice, running on a unified business platform that replaced 6 separate tools: event management, Stripe payments, intro pass system, WhatsApp integration, customer comms, B2B booking, and a public website fed from the same data source. Reaches an audience of 1,259 across WhatsApp, Facebook and Instagram, and saves roughly 5 hours of admin a week.
 - https://tailored-tools.com/projects/sonic-sanctuary
 
-### Amanda Jane Wellness
-A public website plus an operating system for a one-person wellness practice. Bookings, client records, and content management in one place. Currently in transition, the platform is built and live; the practice is in the early phase of moving onto it.
-- https://tailored-tools.com/projects/amanda-jane-wellness
-
-## Agent Optimisation (AO)
+## Agent Optimisation (AO), also available
 
 ### AO Audit, £247
 A scored audit across six dimensions: data readability, service descriptions, pricing signals, trust signals, availability, and AI visibility. PDF report with prioritised recommendations. Turnaround: 5 working days.
@@ -49,20 +70,9 @@ Monthly AI credibility monitoring across ChatGPT, Perplexity, Gemini, and Claude
 
 - https://tailored-tools.com/ao/
 
-## Other Services
-
-### Business Automation
-Custom platforms that automate bookings, comms, and operations - built with AI.
-
-### Custom Dashboards
-Single-login dashboards consolidating bookings, revenue, and metrics from multiple tools.
-
-### Software Integrations
-Connecting existing tools (Square, Google Sheets, Outlook, Stripe) so they share data automatically.
-
 ## Kent AI Community
 
-Kent AI is a free, grassroots community in Kent for anyone curious or concerned about AI. Monthly in-person meet-ups in Maidstone (next: Thursday 18 June 2026, 7pm, The Bull, Linton), plus an active Facebook group and WhatsApp threads. No jargon, no judgement.
+Kent AI is a free, grassroots community in Kent for anyone curious or concerned about AI. Monthly in-person meet-ups at The Bull, Linton, Maidstone (next date being arranged; watch the Facebook group), plus an active Facebook group and WhatsApp threads. No jargon, no judgement.
 - https://tailored-tools.com/community/
 - Facebook group: https://www.facebook.com/groups/1537764381187633/
 
@@ -73,7 +83,7 @@ Hands-on AI workshops for local businesses and teams in Maidstone, Kent. No jarg
 
 ## About
 
-Tailored Tools is the trading name of James Edwards (sole trader, established April 2026). Based in Maidstone, Kent, UK. James runs The Sonic Sanctuary (his own sound therapy practice) and built platforms for Performance Interpreting (run by his spouse Marie Pascall) and Amanda Jane Wellness. Not a tech person selling AI, a business owner who found it genuinely useful and now helps other small businesses do the same.
+Tailored Tools is the trading name of James Edwards (sole trader, established April 2026). Based in Maidstone, Kent, UK. James runs The Sonic Sanctuary (his own sound therapy practice) and builds and runs the tech behind Performance Interpreting (run by his spouse Marie Pascall). Not a tech person selling AI, a business owner who found it genuinely useful and now helps other small businesses do the same.
 - https://tailored-tools.com/about
 
 ## Contact

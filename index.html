@@ -75,7 +75,7 @@
         .hero { padding: 72px 24px 96px; overflow: hidden; }
         .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
         .hero .wrap > * { min-width: 0; }
-        .changes .wrap > *, .home .wrap > *, .asks-grid > * { min-width: 0; }
+        .changes .wrap > *, .asks-grid > * { min-width: 0; }
         .hero h1 { font-size: clamp(50px, 7.6vw, 104px); color: var(--ink); margin-bottom: 30px; }
         .hero h1 .u { position: relative; white-space: nowrap; }
         .hero h1 .u svg { position: absolute; left: -2%; bottom: -0.12em; width: 104%; height: 0.3em; overflow: visible; }
@@ -170,7 +170,7 @@
         .ch-shot { display: none; }
 
         .stage { position: sticky; top: 96px; height: calc(100vh - 136px); display: flex; align-items: center; }
-        .stage-inner { position: relative; width: 100%; padding-right: 90px; }
+        .stage-inner { position: relative; width: 100%; padding-right: 22%; }
         .browser { border-radius: 12px; overflow: hidden; background: #1b2a3a; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
         .browser-bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #24364a; }
         .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.22); }
@@ -178,9 +178,15 @@
         .screens { position: relative; aspect-ratio: 16 / 10; }
         .screens img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.03); transition: opacity 0.6s ease, transform 0.9s cubic-bezier(.2,.9,.3,1); }
         .screens img.on { opacity: 1; transform: scale(1); }
-        .phone { position: absolute; right: 0; bottom: -34px; width: 30%; max-width: 200px; border-radius: 26px; border: 7px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+        .phone { position: absolute; right: 0; bottom: -34px; width: 26%; max-width: 200px; border-radius: 26px; border: 7px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
         .phone .screens { aspect-ratio: 9 / 19.5; }
-        .phone img { border-radius: 19px; }
+        .phone .screens img { border-radius: 0 0 11cqw 11cqw; }
+        /* Phone frame: status bar so curved corners never clip the site */
+        .phone { container-type: inline-size; background: #0b1622; border-color: #060e17; border-radius: 15% / 7%; }
+        .phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
+        .phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 2; }
+        .phone > img, .phone > .screens { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+
         .stage-dots { position: absolute; left: 0; bottom: -64px; display: flex; gap: 8px; }
         .stage-dots span { width: 26px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18); transition: background 0.3s, width 0.3s; }
         .stage-dots span.on { background: #ff6f20; width: 44px; }
@@ -236,18 +242,28 @@
         .prices-foot { margin-top: 38px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
         .prices-foot p { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
 
-        /* ── Closer to home ───────────────────────────────────────── */
-        .home { background: var(--ink); color: #fff; padding: 110px 24px; }
-        .home .wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; }
-        .home h2 { font-size: clamp(36px, 4.6vw, 58px); color: #fff; margin-bottom: 22px; }
-        .home p { font-size: 17.5px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 16px; max-width: 480px; }
-        .home p a { color: #ff6f20; font-weight: 600; text-decoration: none; }
-        .figures { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; overflow: hidden; }
-        .figure { background: var(--ink); padding: 28px 26px; text-decoration: none; display: block; transition: background 0.2s; }
-        .figure:hover { background: #12253a; }
-        .figure strong { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(40px, 4.4vw, 56px); letter-spacing: -0.03em; color: #ff6f20; line-height: 1; margin-bottom: 12px; }
-        .figure span { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.5; display: block; }
-        .figure small { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 10px; }
+        /* ── The bigger builds ─────────────────────────────────────── */
+        .big { background: var(--ink); color: #fff; padding: 110px 24px 90px; }
+        .big-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 30px; }
+        .big h2 { font-size: clamp(38px, 5.4vw, 70px); color: #fff; }
+        .big h2 span { color: #ff6f20; }
+        .big-head p { font-size: 18px; color: rgba(255,255,255,0.68); line-height: 1.6; max-width: 440px; }
+        .big-row { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; padding: 64px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        .big-row > * { min-width: 0; }
+        .big-row.flip { grid-template-columns: 0.85fr 1.15fr; }
+        .big-row.flip .big-shot { order: 2; }
+        .big-shot { position: relative; padding-right: 22%; margin-bottom: 24px; }
+        .big-shot .browser img, .big-shot .phone img { display: block; width: 100%; height: auto; }
+        .big-tier { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #ff6f20; display: block; margin-bottom: 12px; }
+        .big h3 { font-family: var(--display); font-size: clamp(30px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #fff; margin-bottom: 16px; }
+        .big-row p { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.72); margin-bottom: 24px; }
+        .big-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+        .big-stats div { background: var(--ink); padding: 18px 18px 16px; }
+        .big-stats strong { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(32px, 3.4vw, 44px); letter-spacing: -0.03em; color: #ff6f20; line-height: 1; margin-bottom: 8px; }
+        .big-stats span { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.45; display: block; }
+        .big-links { display: flex; gap: 22px; flex-wrap: wrap; }
+        .big-links a { color: #ff6f20; font-weight: 700; text-decoration: none; font-size: 16px; }
+        .big-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
         /* ── About ────────────────────────────────────────────────── */
         .me { padding: 100px 24px; }
@@ -274,14 +290,16 @@
 
         /* ── Responsive ───────────────────────────────────────────── */
         @media (max-width: 960px) {
-            .hero .wrap, .changes .wrap, .home .wrap { grid-template-columns: 1fr; }
+            .hero .wrap, .changes .wrap { grid-template-columns: 1fr; }
+            .big-row, .big-row.flip { grid-template-columns: 1fr; gap: 28px; padding: 48px 0; }
+            .big-row.flip .big-shot { order: 0; }
             .stack-holder { max-width: 540px; margin: 10px auto 0; }
             .asks-grid { grid-template-columns: 1fr; gap: 0; }
             .stage { display: none; }
             .chapter { min-height: 0; padding: 56px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-            .ch-shot { display: block; position: relative; margin: 6px 0 26px; padding-right: 22%; }
+            .ch-shot { display: block; position: relative; margin: 6px 0 26px; padding-right: 28%; }
             .ch-shot .browser img { display: block; width: 100%; height: auto; }
-            .ch-shot .phone { width: 34%; bottom: -22px; }
+            .ch-shot .phone { width: 32%; bottom: -22px; }
             .ch-shot .phone img { display: block; width: 100%; height: auto; }
             .chat { margin: 0 auto; }
             .changes .chat-note { margin: 12px auto 0; text-align: center; }
@@ -293,14 +311,12 @@
             .hero-sub { font-size: 18px; }
             .ticket-ask p { font-size: 19px; }
             .asks { padding: 80px 20px 20px; }
-            .changes, .method, .prices, .home { padding: 80px 20px; }
+            .changes, .method, .prices, .big { padding: 80px 20px; }
             .me { padding: 72px 20px; }
             .me .wrap { grid-template-columns: 1fr; gap: 28px; }
             .me img { width: 120px; height: 120px; }
             .beats { grid-template-columns: 1fr; border-top: 0; }
             .beat, .beat + .beat { padding: 22px 0; border-right: 0; border-top: 2px solid var(--ink); }
-            .figures { grid-template-columns: 1fr 1fr; }
-            .figure { padding: 22px 18px; }
             .final { padding: 96px 20px 120px; }
             .dock {
                 display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 90;
@@ -681,21 +697,50 @@
     </div>
 </section>
 
-<!-- ── Closer to home ─────────────────────────────────────────────── -->
-<section class="home dark">
+<!-- ── The bigger builds ──────────────────────────────────────────── -->
+<section class="big dark">
     <div class="wrap">
-        <div class="rv">
-            <span class="eyebrow">Closer to home</span>
-            <h2 class="display">I run businesses on this too.</h2>
-            <p><a href="/projects/sonic-sanctuary">The Sonic Sanctuary</a> is my own sound therapy practice. I build and run the tech behind <a href="/projects/performance-interpreting">Performance Interpreting</a>, a national BSL interpretation agency.</p>
-            <p>Everything I build for clients gets lived with here first. When something's awkward, I feel it before you do.</p>
+        <div class="big-head rv">
+            <div>
+                <span class="eyebrow">The bigger builds</span>
+                <h2 class="display">When it's the whole business.<br><span>I run these too.</span></h2>
+            </div>
+            <p>Apps, booking platforms, the systems a business runs on day to day. These two are in use every day, and I live with both, so anything awkward gets fixed before a client ever meets it.</p>
         </div>
-        <div class="figures rv">
-            <a class="figure" href="/projects/pi-events-app"><strong>800+</strong><span>PI Events App downloads in its first month</span><small>Performance Interpreting</small></a>
-            <a class="figure" href="/projects/performance-interpreting"><strong>&pound;5k</strong><span>of interpreter bookings through the app, month one</span><small>Performance Interpreting</small></a>
-            <a class="figure" href="/projects/sonic-sanctuary"><strong>6&rarr;1</strong><span>separate tools replaced by one system, run from a phone</span><small>The Sonic Sanctuary</small></a>
-            <a class="figure" href="/projects/sonic-sanctuary"><strong>5h+</strong><span>of admin saved every week</span><small>The Sonic Sanctuary</small></a>
-        </div>
+
+        <article class="big-row rv">
+            <div class="big-shot">
+                <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>performanceinterpreting.co.uk</span></div><img src="/images/projects/performance-interpreting-desktop.jpg" alt="Performance Interpreting website on a laptop: a BSL interpreter performing at a festival" width="1600" height="1000" loading="lazy"></div>
+                <div class="phone"><img src="/images/projects/performance-interpreting-mobile.jpg" alt="Performance Interpreting interpreted events listing on a phone" width="780" height="1688" loading="lazy"></div>
+            </div>
+            <div>
+                <span class="big-tier">BSL interpretation &middot; UK &amp; Ireland</span>
+                <h3>Performance Interpreting</h3>
+                <p>The UK and Ireland's largest performance interpreting provider. I build and run its whole digital side: the main website, the PI Academy training platform, a live listing of every interpreted event that updates itself, and the PI Events App for iOS and Android.</p>
+                <div class="big-stats">
+                    <div><strong>800+</strong><span>app downloads in the first month</span></div>
+                    <div><strong>&pound;5k</strong><span>of interpreter bookings through the app, month one</span></div>
+                </div>
+                <div class="big-links"><a href="/projects/performance-interpreting">The platform &rarr;</a><a href="/projects/pi-events-app">The app &rarr;</a></div>
+            </div>
+        </article>
+
+        <article class="big-row flip rv">
+            <div class="big-shot">
+                <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>thesonicsanctuary.uk</span></div><img src="/images/projects/sonic-sanctuary-desktop.jpg" alt="The Sonic Sanctuary website on a laptop" width="1600" height="1000" loading="lazy"></div>
+                <div class="phone"><img src="/images/projects/sonic-sanctuary-mobile.jpg" alt="The Sonic Sanctuary website on a phone" width="780" height="1688" loading="lazy"></div>
+            </div>
+            <div>
+                <span class="big-tier">Sound therapy &middot; Maidstone</span>
+                <h3>The Sonic Sanctuary</h3>
+                <p>My own practice, run entirely from a phone. Bookings, Stripe payments, intro passes, events and automated WhatsApp messages all live in one system, and the public website reads from the same place, so nothing is ever typed twice.</p>
+                <div class="big-stats">
+                    <div><strong>6&rarr;1</strong><span>separate tools replaced by one system</span></div>
+                    <div><strong>5h+</strong><span>of admin saved every week</span></div>
+                </div>
+                <div class="big-links"><a href="/projects/sonic-sanctuary">How it works &rarr;</a></div>
+            </div>
+        </article>
     </div>
 </section>
 

@@ -35,14 +35,20 @@
 
 /* Screenshots: desktop in a browser frame, phone overlapping */
 .cs-shots { background: var(--dark); padding: 64px 24px 72px; }
-.cs-shots-stage { position: relative; max-width: 880px; margin: 0 auto; padding-right: 120px; }
+.cs-shots-stage { position: relative; max-width: 880px; margin: 0 auto; padding-right: 170px; }
 .cs-browser { border-radius: 10px; overflow: hidden; background: #1b2a3a; box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
 .cs-browser-bar { height: 28px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #24364a; }
 .cs-browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.25); }
 .cs-browser-bar span { margin-left: 12px; font-size: 11px; color: rgba(255,255,255,0.55); font-family: ui-monospace, Menlo, monospace; }
 .cs-browser img { display: block; width: 100%; height: auto; }
 .cs-phone { position: absolute; right: 0; bottom: -28px; width: 210px; border-radius: 28px; overflow: hidden; border: 7px solid #0a1520; background: #0a1520; box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
-.cs-phone img { display: block; width: 100%; height: auto; border-radius: 21px; }
+.cs-phone img { display: block; width: 100%; height: auto; }
+        /* Phone frame: status bar so curved corners never clip the site */
+        .cs-phone { container-type: inline-size; background: #0b1622; border-color: #060e17; border-radius: 15% / 7%; }
+        .cs-phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
+        .cs-phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 2; }
+        .cs-phone > img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+
 .cs-shots-caption { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: rgba(255,255,255,0.5); }
 
 /* What was built */
@@ -85,7 +91,7 @@
     .cs-ask, .cs-built { grid-template-columns: 1fr; }
     .cs-shots { padding: 44px 20px 56px; }
     .cs-shots-stage { padding-right: 0; padding-bottom: 0; }
-    .cs-phone { position: relative; right: auto; bottom: auto; width: 62%; max-width: 240px; margin: -60px 0 0 auto; }
+    .cs-phone { position: relative; right: auto; bottom: auto; width: 46%; max-width: 220px; margin: -60px 0 0 auto; }
     .cs-shots-caption { margin-top: 24px; }
 }
 

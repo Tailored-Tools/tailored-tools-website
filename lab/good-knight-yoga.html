@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1c1330">
 <title>Good Knight Yoga, Case Study | Tailored Tools</title>
 <meta name="description" content="How a Kent yoga teacher's website became a night sky: her emblem as a constellation, a breathing ring that slows you down, health forms done properly, and pages she edits herself.">
 <meta name="robots" content="noindex">
@@ -23,16 +24,17 @@
     --mono: 'DM Mono', ui-monospace, Menlo, monospace;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { background: var(--night-deep); scroll-behavior: smooth; }
+html { background: #1c1330; scroll-behavior: smooth; }
 body { font-family: var(--body); color: var(--starlight); line-height: 1.65; overflow-x: hidden; background: transparent; }
 a { color: var(--honey); }
 
 /* ── The sky (fixed layers) ───────────────────────────────────── */
-.sky { position: fixed; inset: 0; z-index: -3;
+/* Extends past the screen so iOS never shows a bare strip behind its toolbars */
+.sky { position: fixed; top: -25vh; bottom: -25vh; left: 0; right: 0; z-index: -3;
     background: radial-gradient(1200px 800px at 75% 15%, #3a2a5e 0%, transparent 60%),
                 radial-gradient(900px 700px at 10% 90%, #2c1f47 0%, transparent 65%),
                 linear-gradient(180deg, #140d22 0%, #241839 45%, #2a1c44 100%); }
-#stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
+#stars { position: fixed; left: 0; top: -10vh; width: 100%; height: 120vh; z-index: -2; pointer-events: none; }
 
 .moon {
     position: fixed; z-index: -1; width: 74px; height: 74px; border-radius: 50%;
@@ -438,8 +440,8 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
     /* ── Starfield with the odd shooting star ── */
     var cv = document.getElementById('stars'), ctx = cv.getContext('2d'), pts = [], dpr = Math.min(1.5, devicePixelRatio || 1), shoot = null, nextShoot = 0;
     function size() {
-        cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
-        var n = Math.round(innerWidth * innerHeight / 9000);
+        cv.width = innerWidth * dpr; cv.height = innerHeight * 1.2 * dpr;
+        var n = Math.round(innerWidth * innerHeight * 1.2 / 9000);
         pts = []; for (var i = 0; i < n; i++) pts.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.2 + 0.3, ph: Math.random() * 6.3, sp: 0.4 + Math.random() * 1.2 });
     }
     function draw(t) {

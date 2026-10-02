@@ -34,14 +34,20 @@
         .case:last-child { border-bottom: 0; }
         .case:nth-child(even) { grid-template-columns: 0.85fr 1.15fr; }
         .case:nth-child(even) .case-shot { order: 2; }
-        .case-shot { position: relative; padding-right: 18%; }
+        .case-shot { position: relative; padding-right: 22%; }
         .case-browser { border-radius: 10px; overflow: hidden; background: #1b2a3a; box-shadow: 0 30px 60px rgba(13,27,42,0.22); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
         .case-browser .bar { height: 26px; display: flex; align-items: center; gap: 6px; padding: 0 11px; background: #24364a; }
         .case-browser .bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.22); }
         .case-browser .bar span { margin-left: 10px; font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); }
         .case-browser img { display: block; width: 100%; height: auto; }
-        .case-phone { position: absolute; right: 0; bottom: -24px; width: 30%; border-radius: 22px; border: 6px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 24px 48px rgba(13,27,42,0.3); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
-        .case-phone img { display: block; width: 100%; height: auto; border-radius: 16px; }
+        .case-phone { position: absolute; right: 0; bottom: -24px; width: 26%; border-radius: 22px; border: 6px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 24px 48px rgba(13,27,42,0.3); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
+        .case-phone img { display: block; width: 100%; height: auto; }
+        /* Phone frame: status bar so curved corners never clip the site */
+        .case-phone { container-type: inline-size; background: #0b1622; border-color: #060e17; border-radius: 15% / 7%; }
+        .case-phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
+        .case-phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 2; }
+        .case-phone > img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+
         .case:hover .case-browser { transform: translateY(-6px); }
         .case:hover .case-phone { transform: translateY(-12px) rotate(2deg); }
         .case-sector { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #c94d0c; margin-bottom: 12px; display: block; }
@@ -53,17 +59,20 @@
         .case-more { font-weight: 700; color: #c94d0c; font-size: 16px; }
         .case:hover .case-more { text-decoration: underline; text-underline-offset: 4px; }
 
-        .home-work { background: var(--ink); color: #fff; padding: 96px 24px; }
+        .home-work { background: var(--ink); color: #fff; padding: 96px 24px 56px; }
         .home-work h2 { font-size: clamp(34px, 4.6vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; color: #fff; margin-bottom: 18px; }
-        .home-work > .w-inner > p { font-size: 18px; color: rgba(255,255,255,0.68); line-height: 1.6; max-width: 620px; margin-bottom: 44px; }
-        .hw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .hw-card { display: block; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 26px 24px; transition: border-color 0.2s, background 0.2s, transform 0.25s; }
-        .hw-card:hover { border-color: #ff6f20; background: rgba(255,255,255,0.03); transform: translateY(-4px); }
-        .hw-card .case-sector { color: #ff6f20; }
-        .hw-card h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 10px; }
-        .hw-card p { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.6; margin-bottom: 18px; }
-        .hw-card strong { display: block; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; color: #ff6f20; line-height: 1; margin-bottom: 4px; font-family: 'Bricolage Grotesque', sans-serif; }
-        .hw-card small { font-size: 13px; color: rgba(255,255,255,0.55); }
+        .home-work .lede { font-size: 18px; color: rgba(255,255,255,0.68); line-height: 1.6; max-width: 640px; margin-bottom: 8px; }
+        .home-work .case { border-bottom-color: rgba(255,255,255,0.12); }
+        .home-work .case h2 { color: #fff; font-size: clamp(30px, 3.6vw, 44px); margin-bottom: 14px; }
+        .home-work .case-sector { color: #ff6f20; }
+        .home-work .case p { font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,0.72); margin-bottom: 18px; }
+        .home-work .case-browser { box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .hw-stats { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 18px; }
+        .hw-stats strong { display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; letter-spacing: -0.03em; color: #ff6f20; line-height: 1; margin-bottom: 4px; }
+        .hw-stats small { font-size: 13px; color: rgba(255,255,255,0.6); }
+        .home-work .case-more { color: #ff6f20; }
+        .hw-also { font-size: 15px; color: rgba(255,255,255,0.6); padding: 28px 0 0; }
+        .hw-also a { color: #ff6f20; font-weight: 700; text-decoration: none; }
 
         .w-cta { padding: 100px 24px; text-align: center; }
         .w-cta h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.035em; line-height: 1; color: var(--ink); margin-bottom: 18px; }
@@ -75,12 +84,12 @@
         @media (max-width: 860px) {
             .case, .case:nth-child(even) { grid-template-columns: 1fr; gap: 36px; }
             .case:nth-child(even) .case-shot { order: 0; }
-            .hw-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .w-hero { padding: 56px 20px 52px; }
             .clients { padding: 48px 20px 20px; }
             .home-work, .w-cta { padding: 72px 20px; }
+            .home-work { padding-bottom: 40px; }
         }
     </style>
 </head>
@@ -169,29 +178,45 @@
 
 <section class="home-work">
     <div class="w-inner">
-        <span class="eyebrow">Closer to home</span>
-        <h2>Where everything gets tested first</h2>
-        <p>The Sonic Sanctuary is my own practice, and I build and run the tech behind Performance Interpreting. These are the bigger systems: the ones that run whole businesses day to day.</p>
-        <div class="hw-grid">
-            <a class="hw-card" href="/projects/performance-interpreting">
+        <span class="eyebrow">The bigger builds</span>
+        <h2>When it's the whole business</h2>
+        <p class="lede">Platforms, apps and the systems a business runs on day to day. I build and run both of these, so everything gets lived with before a client meets it.</p>
+
+        <a class="case" href="/projects/performance-interpreting">
+            <div class="case-shot">
+                <div class="case-browser"><div class="bar"><i></i><i></i><i></i><span>performanceinterpreting.co.uk</span></div><img src="/images/projects/performance-interpreting-desktop.jpg" alt="Performance Interpreting website on a laptop" width="1600" height="1000" loading="lazy"></div>
+                <div class="case-phone"><img src="/images/projects/performance-interpreting-mobile.jpg" alt="Performance Interpreting interpreted events listing on a phone" width="780" height="1688" loading="lazy"></div>
+            </div>
+            <div>
                 <span class="case-sector">BSL interpretation &middot; UK &amp; Ireland</span>
-                <h3>Performance Interpreting</h3>
-                <p>The agency's main website, the PI Academy training platform and the PI Events App, all built and run in-house.</p>
-                <strong>&pound;5k+</strong><small>bookings through the app, month one</small>
-            </a>
-            <a class="hw-card" href="/projects/pi-events-app">
-                <span class="case-sector">iOS &amp; Android app</span>
-                <h3>PI Events App</h3>
-                <p>Every PI-delivered BSL and ISL event in one place, with AI-drafted access requests and BSL-first onboarding.</p>
-                <strong>800+</strong><small>downloads in the first month</small>
-            </a>
-            <a class="hw-card" href="/projects/sonic-sanctuary">
+                <h2>Performance Interpreting</h2>
+                <p>The main website, the PI Academy training platform, a self-updating listing of every interpreted event, and the PI Events App for iOS and Android.</p>
+                <div class="hw-stats">
+                    <div><strong>800+</strong><small>app downloads, month one</small></div>
+                    <div><strong>&pound;5k+</strong><small>bookings through the app, month one</small></div>
+                </div>
+                <span class="case-more">Read the story &rarr;</span>
+            </div>
+        </a>
+
+        <a class="case" href="/projects/sonic-sanctuary">
+            <div class="case-shot">
+                <div class="case-browser"><div class="bar"><i></i><i></i><i></i><span>thesonicsanctuary.uk</span></div><img src="/images/projects/sonic-sanctuary-desktop.jpg" alt="The Sonic Sanctuary website on a laptop" width="1600" height="1000" loading="lazy"></div>
+                <div class="case-phone"><img src="/images/projects/sonic-sanctuary-mobile.jpg" alt="The Sonic Sanctuary website on a phone" width="780" height="1688" loading="lazy"></div>
+            </div>
+            <div>
                 <span class="case-sector">Sound therapy &middot; Maidstone</span>
-                <h3>The Sonic Sanctuary</h3>
-                <p>One operating system for bookings, payments, events, WhatsApp comms and the public site, run from a phone.</p>
-                <strong>6&rarr;1</strong><small>tools replaced by one system</small>
-            </a>
-        </div>
+                <h2>The Sonic Sanctuary</h2>
+                <p>My own practice, run from a phone: bookings, payments, intro passes, events and WhatsApp messages in one system that also feeds the public website.</p>
+                <div class="hw-stats">
+                    <div><strong>6&rarr;1</strong><small>tools replaced by one system</small></div>
+                    <div><strong>5h+</strong><small>admin saved every week</small></div>
+                </div>
+                <span class="case-more">Read the story &rarr;</span>
+            </div>
+        </a>
+
+        <p class="hw-also">Also: the <a href="/projects/pi-events-app">PI Events App</a>, every BSL and ISL event in one place, with AI-drafted access requests.</p>
     </div>
 </section>
 

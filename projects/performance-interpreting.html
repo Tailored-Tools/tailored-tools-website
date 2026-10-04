@@ -1,280 +1,1376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Performance Interpreting - Client Portfolio | Tailored Tools</title>
-    <meta name="description" content="A family-run BSL interpretation agency in the UK and Ireland. We build the platforms PI runs on, main website, PI Academy training platform, and the PI Events App with 800+ downloads in its first month.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060F2E">
+<title>Performance Interpreting, Case Study | Tailored Tools</title>
+<meta name="description" content="How a request for social posts became the tech behind the UK and Ireland's largest performance interpreting provider: a website with a path for every visitor, the PI Events App, a night crew of automations, and PI OS.">
+<link rel="canonical" href="https://tailored-tools.com/projects/performance-interpreting">
+<link rel="icon" href="/favicon.png?v=3" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Performance Interpreting: the crew behind the show | Tailored Tools">
+<meta property="og:description" content="A website with a door for every visitor, an app for the Deaf community, and a crew of automations that works through the night.">
+<meta property="og:image" content="https://tailored-tools.com/images/projects/performance-interpreting-desktop.jpg">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --navy: #020142; --deep: #060F2E; --dark: #0A1A4F; --blue: #0078C4; --sky: #4DB1F0;
+    --gold: #EAB308; --gold-soft: #F7D774; --warm: #E07A3C; --canvas: #FAF8F3; --ink: #0A1A4F;
+    --green: #22C55E; --red: #EF4444; --white: #ffffff;
+    --display: 'DM Serif Display', Georgia, serif; --body: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --cond: 'Barlow Condensed', 'Arial Narrow', sans-serif; --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #050a33; scroll-behavior: smooth; }
+body { font-family: var(--body); color: var(--white); line-height: 1.65; overflow-x: hidden; background: transparent; }
+a { color: var(--gold-soft); }
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 6px; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--gold); color: var(--navy); padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+.skip:focus { top: 70px; }
 
-    <link rel="canonical" href="https://tailored-tools.com/projects/performance-interpreting">
+/* ── The venue (fixed layers) ─────────────────────────────────── */
+/* Extends past the screen so iOS never shows a bare strip behind its toolbars */
+.venue { position: fixed; top: -25vh; bottom: -25vh; left: 0; right: 0; z-index: -3;
+    background: radial-gradient(900px 520px at 68% 22%, rgba(0,120,196,0.30) 0%, transparent 70%),
+                radial-gradient(1400px 420px at 50% 96%, rgba(224,122,60,0.13) 0%, transparent 70%),
+                linear-gradient(180deg, #060F2E 0%, #04073a 30%, #020142 62%, #03022c 100%); }
+#show { position: fixed; left: 0; top: -10vh; width: 100%; height: 120vh; z-index: -2; pointer-events: none; }
 
-    <link rel="icon" href="/favicon.png?v=3" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+/* The emblem, hung over the stage in marquee bulbs */
+.rig { position: fixed; z-index: -1; right: 3.5vw; top: 46%; width: min(38vw, 540px); height: auto; transform: translateY(-50%); pointer-events: none; overflow: visible; opacity: calc(var(--o, 1) * var(--dim, 1)); transition: opacity 0.6s ease; }
+.rig .tube { fill: none; stroke: rgba(77,177,240,0.55); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.rig .tubes { filter: blur(4px); opacity: 0.55; }
+.rig .wire { fill: none; stroke: rgba(77,177,240,0.35); stroke-width: 0.8; stroke-linecap: round; }
+.rig .b { fill: rgba(160,200,240,0.14); transition: fill 0.5s ease; }
+.rig .b.on { fill: #fff3d2; animation: chase 3.2s linear infinite; animation-delay: calc(var(--i) * -55ms); }
+@keyframes chase { 0%, 100% { opacity: 1; } 50% { opacity: 0.38; } }
 
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tailored-tools.com/projects/performance-interpreting">
-    <meta property="og:title" content="Performance Interpreting - Client Portfolio | Tailored Tools">
-    <meta property="og:description" content="A family-run BSL interpretation agency in the UK and Ireland. We build the platforms PI runs on, main website, PI Academy training platform, and the PI Events App with 800+ downloads in its first month.">
-    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
-    <meta property="og:locale" content="en_GB">
+/* ── TT bar ───────────────────────────────────────────────────── */
+.tt-bar { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1100px, calc(100% - 24px));
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 10px 9px 16px; border-radius: 999px; background: rgba(6,15,46,0.66);
+    border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.tt-bar .logo { display: block; width: 118px; height: 32px; background: url('/tt-logo-light.png') left center / contain no-repeat; }
+.tt-bar nav { display: flex; align-items: center; gap: 16px; }
+.tt-bar nav a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px; font-weight: 500; }
+.tt-bar nav a:hover { color: var(--gold-soft); }
+.tt-bar nav a.cta { background: #ff6f20; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 700; }
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Performance Interpreting - Client Portfolio | Tailored Tools">
-    <meta name="twitter:description" content="A family-run BSL interpretation agency in the UK and Ireland. We build the platforms PI runs on, main website, PI Academy training platform, and the PI Events App with 800+ downloads in its first month.">
-    <meta name="twitter:image" content="https://tailored-tools.com/og-image.png">
+/* ── Layout ───────────────────────────────────────────────────── */
+.col { width: min(620px, calc(100% - 40px)); margin-left: max(20px, calc((100vw - 1100px) / 2)); }
+.wide { width: min(1100px, calc(100% - 40px)); margin-left: auto; margin-right: auto; }
+section { position: relative; padding: 18vh 0; }
+.eyebrow { font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sky); display: block; margin-bottom: 16px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; letter-spacing: -0.005em; }
+h1 { font-size: clamp(40px, 6.1vw, 78px); margin-bottom: 26px; }
+h1 em, h2 em { font-style: italic; color: var(--gold); }
+h2 { font-size: clamp(34px, 5vw, 60px); margin-bottom: 22px; }
+p.lead { font-size: clamp(18px, 2.1vw, 21px); color: rgba(255,255,255,0.88); max-width: 580px; margin-bottom: 18px; }
+p { font-size: 17.5px; color: rgba(255,255,255,0.84); margin-bottom: 16px; }
+p strong { color: var(--white); }
+main p, main h1, main h2 { text-shadow: 0 1px 14px rgba(2,1,66,0.7); }
+.setlist *, .er *, .pass *, .draft * { text-shadow: none !important; }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=15">
-    <style>
-        :root {
-            --primary: #203a4c;
-            --accent: #ff6f20;
-            --dark: #0D1B2A;
-            --white: #FFFFFF;
-            --light: #f4f5f7;
-            --text: #203a4c;
-            --text-light: #5a6a7a;
-            --max-width: 880px;
-            --green: #16A34A;
-            --amber: #c9831c;
-        }
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+.toprow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 28px; }
+.back { font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; margin-right: 6px; }
+.back:hover { color: var(--gold-soft); }
+.pill { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; min-height: 44px; padding: 0 16px; border-radius: 999px; font: 700 14.5px/1 var(--body);
+    cursor: pointer; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); color: #fff; }
+.pill:hover { border-color: rgba(255,255,255,0.6); }
+.pill.white { background: #fff; color: var(--ink); border-color: #fff; }
+.pill svg { width: 18px; height: 18px; flex: none; }
+.pill[aria-pressed="true"] { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.facts { display: flex; gap: 22px 30px; flex-wrap: wrap; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 22px; }
+.facts div { font-family: var(--cond); font-weight: 600; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.62); }
+.facts b { display: block; font-family: var(--display); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 24px; color: var(--white); margin-top: 2px; }
+.facts b i { font-style: normal; color: var(--gold); }
+.visit { display: inline-flex; gap: 8px; align-items: center; margin-top: 26px; color: var(--gold-soft); font-weight: 700; text-decoration: none; }
+.visit:hover { text-decoration: underline; }
+.scroll-hint { position: absolute; bottom: 5vh; left: max(20px, calc((100vw - 1100px) / 2)); font-family: var(--cond); font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ── Line-up poster ───────────────────────────────────────────── */
+.poster { margin-top: 44px; border-radius: 20px; padding: 30px 22px 26px; text-align: center; position: relative; overflow: hidden;
+    background: radial-gradient(500px 220px at 50% 0%, rgba(234,179,8,0.16), transparent 70%), rgba(6,15,46,0.82);
+    border: 1px solid rgba(234,179,8,0.32); box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.poster .pres { font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+.poster ol { list-style: none; }
+.poster li { font-family: var(--cond); font-weight: 700; text-transform: uppercase; line-height: 1.02; letter-spacing: 0.02em; padding: 8px 0; }
+.poster li + li { border-top: 1px dashed rgba(255,255,255,0.14); }
+.poster li a { color: inherit; text-decoration: none; }
+.poster li a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.poster .l1 { font-size: clamp(38px, 9vw, 66px); color: var(--gold); }
+.poster .l2 { font-size: clamp(25px, 5.4vw, 38px); color: #fff; }
+.poster .l3 { font-size: clamp(22px, 4.6vw, 32px); color: var(--sky); }
+.poster .l4 { font-size: clamp(19px, 3.6vw, 25px); color: rgba(255,255,255,0.86); }
+.poster .l4 small { display: inline-block; margin-left: 8px; font-size: 0.62em; letter-spacing: 0.16em; padding: 3px 9px 2px; border-radius: 4px; background: var(--gold); color: var(--navy); vertical-align: 0.25em; }
+.poster .sep { color: var(--gold); padding: 0 0.3em; }
+.js .poster li { opacity: 0.18; transition: opacity 0.7s ease, text-shadow 0.7s ease; }
+.js .poster.on li { opacity: 1; }
+.js .poster.on .l1 { text-shadow: 0 0 28px rgba(234,179,8,0.45); }
+.poster.on li:nth-child(2) { transition-delay: 0.35s; }
+.poster.on li:nth-child(3) { transition-delay: 0.7s; }
+.poster.on li:nth-child(4) { transition-delay: 1.05s; }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--text);
-            line-height: 1.7;
-            background: var(--white);
-        }
+/* ── Doors ────────────────────────────────────────────────────── */
+.doors { display: grid; grid-template-columns: 1fr; gap: 34px 20px; margin-top: 46px; }
+.door { position: relative; }
+.door .sign { display: block; width: max-content; max-width: 100%; margin: 0 auto 12px; padding: 7px 14px 6px; border-radius: 6px; background: var(--blue);
+    font-family: var(--cond); font-weight: 700; font-size: 17px; letter-spacing: 0.16em; text-transform: uppercase; color: #fff;
+    box-shadow: 0 0 22px rgba(0,120,196,0.55), inset 0 0 0 1px rgba(255,255,255,0.25); }
+.door .frame { position: relative; perspective: 900px; border: 6px solid #0d1650; border-bottom: 0; border-radius: 10px 10px 0 0; min-height: 250px;
+    background: radial-gradient(140% 90% at 50% 0%, rgba(234,179,8,0.26), rgba(234,179,8,0.05) 55%, transparent 80%), #0a1146; }
+.door .inside { position: relative; padding: 26px 46px 28px; }
+.door h3 { font-size: 26px; margin-bottom: 8px; }
+.door p { font-size: 16px; margin: 0; color: rgba(255,255,255,0.88); }
+.door .leaf { position: absolute; top: 0; bottom: 0; width: 50%; transition: transform 1.5s cubic-bezier(.2,.75,.2,1); backface-visibility: visible;
+    background: linear-gradient(180deg, #1b3b8f, #0f2563); border: 1px solid rgba(255,255,255,0.12); }
+.door .leaf::before { content: ''; position: absolute; left: 50%; top: 16%; width: 34%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(255,236,190,0.65), rgba(234,179,8,0.25)); border: 3px solid #0b1a4a; }
+.door .leaf::after { content: ''; position: absolute; left: 10%; right: 10%; top: 54%; height: 9px; border-radius: 5px; background: linear-gradient(#cfd8e6, #8995aa); }
+.door .leaf.l { left: 0; transform-origin: left center; }
+.door .leaf.r { right: 0; transform-origin: right center; }
+.door .floor { height: 22px; margin: 0 -10px; background: radial-gradient(60% 100% at 50% 0%, rgba(234,179,8,0.28), transparent 75%); border-top: 2px solid #0d1650; opacity: 0.15; transition: opacity 1.5s ease; }
+.js .door .leaf.l { transform: rotateY(0deg); }
+.js .door .leaf.r { transform: rotateY(0deg); }
+.door.open .leaf.l, html:not(.js) .door .leaf.l { transform: rotateY(84deg); }
+.door.open .leaf.r, html:not(.js) .door .leaf.r { transform: rotateY(-84deg); }
+.door.open .floor, html:not(.js) .door .floor { opacity: 1; }
+.doors .door:nth-child(2) .leaf, .doors .door:nth-child(2) .floor { transition-delay: 0.15s; }
+.doors .door:nth-child(3) .leaf, .doors .door:nth-child(3) .floor { transition-delay: 0.3s; }
+.doors .door:nth-child(4) .leaf, .doors .door:nth-child(4) .floor { transition-delay: 0.45s; }
+.easy-note { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 18px 20px; border-radius: 16px; background: rgba(6,15,46,0.8); border: 1px solid rgba(255,255,255,0.14); }
+.easy-note p { margin: 0; flex: 1 1 260px; font-size: 16.5px; }
 
-        /* ── Nav ─────────────────────────────────────────────────── */
-        nav { padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
-        .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { display: block; width: 170px; height: 48px; background: url('/tt-logo-light.png') left center / contain no-repeat; flex-shrink: 0; }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .nav-cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
-        .nav-cta:hover { background: #e55e10; }
-        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
+/* ── Noticed → made ───────────────────────────────────────────── */
+.noticed { display: grid; gap: 22px; margin-top: 40px; }
+.notice { display: grid; grid-template-columns: 1fr; border: 1px solid rgba(77,177,240,0.2); border-radius: 22px; overflow: hidden;
+    background: rgba(6,15,46,0.84); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.notice > div { padding: 22px 24px; min-width: 0; }
+.notice .saw { border-bottom: 1px dashed rgba(255,255,255,0.18); }
+.notice .tag { font-family: var(--cond); font-weight: 700; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sky); display: block; margin-bottom: 6px; }
+.notice .made .tag { color: var(--gold); }
+.notice h3 { font-size: 27px; margin-bottom: 6px; }
+.notice p { font-size: 16.5px; margin: 0 0 10px; text-shadow: none; }
+.specimen { margin-top: 16px; border-radius: 16px; background: #050b2e; border: 1px solid rgba(255,255,255,0.12); position: relative; overflow: hidden; }
+.specimen .cap { display: block; padding: 0 14px 12px; font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
 
-        /* ── Hero ────────────────────────────────────────────────── */
-        .project-hero { background: var(--dark); padding: 56px 24px 48px; color: var(--white); border-bottom: 3px solid var(--accent); }
-        .hero-inner { max-width: var(--max-width); margin: 0 auto; }
-        .back-link { display: inline-block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 24px; }
-        .back-link:hover { color: var(--accent); }
-        .project-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-        .project-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
-        .project-hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
-        .project-hero .lead { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 640px; line-height: 1.7; }
+/* flip board */
+.board { padding: 14px 12px 6px; }
+.board .bh { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: var(--cond); font-weight: 700; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.board .bh span:last-child { color: rgba(255,255,255,0.6); font-weight: 600; }
+.board .bar { height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+.board .bar i { display: block; height: 100%; width: 100%; background: var(--sky); transform-origin: left; transform: scaleX(var(--k, 1)); }
+.board .row { display: flex; align-items: center; gap: 2px; margin-bottom: 4px; }
+.board .c { width: var(--cw, 13px); height: calc(var(--cw, 13px) * 1.55); display: inline-grid; place-items: center; flex: none;
+    background: linear-gradient(180deg, #141c45 0 49%, #0b1238 51% 100%); border-radius: 2px; font: 500 calc(var(--cw, 13px) * 0.92)/1 var(--mono); color: #f4efe0; }
+.board .c.fl { animation: flap 0.26s ease-in-out both; }
+@keyframes flap { 0% { transform: rotateX(0); } 50% { transform: rotateX(-90deg); filter: brightness(1.6); } 100% { transform: rotateX(0); } }
+.board .st { margin-left: auto; width: calc(var(--cw, 13px) * 1.1); height: calc(var(--cw, 13px) * 1.1); flex: none; }
+.st.ok { background: var(--green); border-radius: 50%; }
+.st.out { background: var(--red); border-radius: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 4px 14px 12px; font-size: 13.5px; color: rgba(255,255,255,0.78); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { display: inline-block; width: 11px; height: 11px; }
 
-        /* ── Section base ────────────────────────────────────────── */
-        .section { padding: 72px 24px; }
-        .section:nth-child(even) { background: var(--light); }
-        .inner { max-width: var(--max-width); margin: 0 auto; }
-        .section h2 { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 14px; }
-        .section p { font-size: 16px; color: var(--text); margin-bottom: 18px; line-height: 1.8; }
-        .section p:last-child { margin-bottom: 0; }
-        .section ul { margin: 0 0 18px 22px; }
-        .section li { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 6px; }
-        .section a.inline { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
-        .section a.inline:hover { border-bottom-color: var(--accent); }
+/* drafted request */
+.draft { padding: 14px 14px 12px; }
+.draft .mail { background: var(--canvas); color: var(--ink); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; line-height: 1.5; }
+.draft .mh { font-size: 12.5px; color: #4a5578; border-bottom: 1px solid rgba(10,26,79,0.12); padding-bottom: 7px; margin-bottom: 8px; }
+.draft .mh b { color: var(--ink); }
+.draft .body { white-space: pre-wrap; min-height: 9.2em; }
+.draft .caret { display: inline-block; width: 2px; height: 1.05em; background: var(--blue); vertical-align: -0.15em; margin-left: 1px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.draft .acts { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); }
+.send { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: #1d2a5c; color: rgba(255,255,255,0.65); font-weight: 700; font-size: 14px; transition: background 0.4s, color 0.4s, box-shadow 0.4s; }
+.send.ready { background: var(--blue); color: #fff; box-shadow: 0 0 0 4px rgba(77,177,240,0.25); }
+.send small { font-weight: 500; font-size: 12px; opacity: 0.9; }
 
-        /* ── Status pill ─────────────────────────────────────────── */
-        .status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
-        .status-pill.live { background: rgba(22,163,74,0.12); color: var(--green); }
-        .status-pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-        .status-pill.dev { background: rgba(201,131,28,0.14); color: var(--amber); }
-        .status-pill.dev::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+/* tool kit */
+.kit { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px; }
+.card { position: relative; aspect-ratio: 1 / 1.08; perspective: 700px; }
+.card .in { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(.3,.7,.2,1); }
+.card.flip .in { transform: rotateY(180deg); }
+.card .f, .card .k { position: absolute; inset: 0; border-radius: 12px; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px; }
+.card .f { background: #fff; border: 3px solid var(--c); color: var(--ink); gap: 6px; }
+.card .f svg { width: 40%; height: auto; color: var(--c); }
+.card .f b { font-family: var(--body); font-weight: 700; font-size: clamp(14px, 3.6vw, 17px); line-height: 1.1; }
+.card .k { transform: rotateY(180deg); background: var(--c); color: #fff; }
+.card .k b { font-family: var(--cond); font-weight: 700; font-size: clamp(22px, 6vw, 30px); line-height: 0.95; letter-spacing: 0.02em; text-transform: uppercase; }
+.card .k span { font-size: 13px; font-weight: 700; margin-top: 6px; line-height: 1.35; }
+.card.deaf { --c: #1d4ed8; } .card.emer { --c: #c81e1e; } .card.order { --c: #0e7490; } .card.speech { --c: #6d28d9; }
 
-        /* ── Stat tiles ──────────────────────────────────────────── */
-        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0 28px; }
-        .stat-tile { background: var(--white); border: 1px solid #e8ecf0; border-radius: 10px; padding: 22px 20px; text-align: left; }
-        .section:nth-child(even) .stat-tile { background: var(--white); }
-        .stat-num { font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1.1; margin-bottom: 6px; }
-        .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+/* deafblind theme */
+.theme { padding: 14px; }
+.theme .rows { margin-top: 12px; display: grid; gap: 8px; transition: none; }
+.theme .ev { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; background: #fff; color: var(--ink); border: 1px solid rgba(10,26,79,0.14); font-size: 15px; transition: all 0.35s ease; }
+.theme .ev b { font-weight: 700; display: block; line-height: 1.25; }
+.theme .ev small { font-size: 13px; color: #47506d; display: block; transition: color 0.35s ease; }
+.theme .ev .st { width: 14px; height: 14px; flex: none; transition: all 0.35s ease; }
+.theme.db .ev { background: #0a0a0a; color: #fff; border: 3px solid #fff; font-size: 17px; padding: 12px 14px; }
+.theme.db .ev small { color: #fff; font-size: 15px; }
+.theme.db .ev .st { width: 22px; height: 22px; box-shadow: 0 0 0 3px #fff; }
+.toggle { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px 0 6px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.26); color: #fff; font: 700 14px/1.2 var(--body); cursor: pointer; text-align: left; }
+.toggle .sw { width: 42px; height: 26px; border-radius: 999px; background: #33406e; position: relative; flex: none; transition: background 0.3s; }
+.toggle .sw::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform 0.3s; }
+.toggle[aria-pressed="true"] .sw { background: var(--gold); }
+.toggle[aria-pressed="true"] .sw::after { transform: translateX(16px); }
 
-        /* ── CTA section ─────────────────────────────────────────── */
-        .section-cta { background: var(--dark); text-align: center; }
-        .section-cta h2 { color: var(--white); margin-bottom: 12px; }
-        .section-cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; }
-        .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
-        .btn-primary:hover { background: #e55e10; }
+/* ── App band: passes ─────────────────────────────────────────── */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.chips span { font-family: var(--cond); font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 14px 7px; border-radius: 999px;
+    background: rgba(0,120,196,0.22); border: 1px solid rgba(77,177,240,0.45); color: #fff; }
+.passes { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 34px 16px; margin-top: 56px; padding-top: 6px; }
+.pass::before { content: ''; position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; transform: translateX(-50%); border-radius: 50%; border: 3px solid #8e98ab; }
+.passes::before { content: ''; position: absolute; left: -10px; right: -10px; top: 0; height: 6px; border-radius: 3px; background: linear-gradient(#5b6688, #262f52); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+.pass { position: relative; padding-top: 70px; transform-origin: 50% 0; }
+.pass.live { animation: swing var(--sw, 4.6s) ease-in-out infinite alternate; }
+@keyframes swing { from { transform: rotate(-2.2deg); } to { transform: rotate(2.2deg); } }
+.pass .strap { position: absolute; top: 0; left: 50%; width: 16px; height: 78px; transform: translateX(-50%); border-radius: 3px;
+    background: repeating-linear-gradient(180deg, var(--blue) 0 14px, #0a5d98 14px 16px); }
+.pass .strap::after { content: ''; position: absolute; bottom: -6px; left: 50%; width: 22px; height: 12px; transform: translateX(-50%); border-radius: 4px; background: linear-gradient(#d7dde8, #8e98ab); }
+.pass .lam { position: relative; background: var(--canvas); color: var(--ink); border-radius: 12px; overflow: hidden; box-shadow: 0 22px 50px rgba(0,0,0,0.5); text-align: center; padding-bottom: 16px; }
+.pass .lam::before { content: ''; position: absolute; top: 8px; left: 50%; width: 30px; height: 7px; transform: translateX(-50%); border-radius: 4px; background: #c9ccd6; }
+.pass .band { background: var(--navy); color: var(--gold); font-family: var(--cond); font-weight: 700; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 24px 8px 8px; }
+.pass .big { display: block; font-family: var(--display); font-size: clamp(30px, 6vw, 44px); line-height: 1; margin: 14px 10px 6px; color: var(--ink); }
+.pass .big.sm { font-size: clamp(22px, 4.2vw, 30px); line-height: 1.08; }
+.pass .what { display: block; font-size: 14.5px; line-height: 1.35; padding: 0 12px; color: #2c3763; }
 
-        /* ── Footer ──────────────────────────────────────────────── */
-        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
-        .footer-logo-wrap { width: 220px; height: 80px; background: url('/tt-logo-light.png') center center / contain no-repeat; margin: 0 auto 16px; }
-        footer p { font-size: 13px; }
-        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-        footer a:hover { color: var(--accent); }
+/* ── PIPA ─────────────────────────────────────────────────────── */
+.say { font-family: var(--cond); font-weight: 600; font-size: 0.8em; letter-spacing: 0.12em; color: var(--sky); white-space: nowrap; }
+.pipa-grid { display: grid; grid-template-columns: 1fr; gap: 26px; margin-top: 44px; }
+.pcard { border-radius: 22px; padding: 24px 22px; background: rgba(6,15,46,0.88); border: 1px solid rgba(77,177,240,0.22); min-width: 0; }
+.pcard .tag { font-family: var(--cond); font-weight: 700; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 6px; }
+.pcard h3 { font-size: 28px; margin-bottom: 8px; }
+.pcard p { font-size: 16.5px; margin: 0 0 10px; text-shadow: none; }
+.pcard ul.ticks { list-style: none; margin: 4px 0 6px; display: grid; gap: 7px; }
+.pcard ul.ticks li { position: relative; padding-left: 24px; font-size: 15.5px; color: rgba(255,255,255,0.86); line-height: 1.45; }
+.pcard ul.ticks li::before { content: ''; position: absolute; left: 2px; top: 6px; width: 10px; height: 10px; border-radius: 50%; border: 2.5px solid var(--sky); }
+.chat { margin-top: 18px; border-radius: 18px; overflow: hidden; background: #fff; color: var(--ink); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+.chat .ch { display: flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; padding: 11px 14px; }
+.chat .ch svg { width: 30px; height: 26px; flex: none; }
+.chat .ch b { font-family: var(--display); font-weight: 400; font-size: 18px; display: block; line-height: 1.1; }
+.chat .ch small { font-size: 11.5px; color: rgba(255,255,255,0.72); display: block; line-height: 1.2; }
+.chat .msgs { height: 360px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 12px; overflow: hidden; }
+.chat .m { max-width: 86%; padding: 8px 12px; border-radius: 16px; font-size: 14.5px; line-height: 1.4; animation: pop 0.35s ease both; }
+.chat .m.u { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 5px; }
+.chat .m.p { align-self: flex-start; background: #F2EEE5; color: var(--ink); border-bottom-left-radius: 5px; }
+.chat .m.tool { align-self: flex-start; background: none; padding: 0 4px; font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #0a5d98; }
+.chat .m.tool::before { content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--green); margin-right: 7px; vertical-align: 0.05em; }
+.chat .m.dots { align-self: flex-start; background: #F2EEE5; display: flex; gap: 4px; padding: 11px 12px; }
+.chat .m.dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(10,26,79,0.45); animation: dot 1s ease-in-out infinite; }
+.chat .m.dots i:nth-child(2) { animation-delay: 0.15s; } .chat .m.dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.chat .vid { display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: center; margin-top: 6px; padding: 6px; border-radius: 10px; background: #0b1238; color: #fff; }
+.chat .vid span { position: relative; height: 44px; border-radius: 7px; background: linear-gradient(135deg, #1b3b8f, #020142); }
+.chat .vid span::after { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-35%, -50%); border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent #fff; }
+.chat .vid small { font-size: 12px; line-height: 1.3; color: rgba(255,255,255,0.85); }
+.chat .vid small b { display: block; font-size: 13px; color: #fff; }
+.chat .lk { display: inline-block; margin-top: 6px; padding: 5px 11px; border-radius: 999px; border: 1.5px solid var(--blue); color: var(--blue); font-weight: 700; font-size: 13px; background: #fff; }
+.chat .hand { display: block; margin-top: 6px; padding: 7px 10px; border-radius: 10px; border: 1.5px dashed #9C4814; color: #7a3810; font-size: 12.5px; font-weight: 600; line-height: 1.35; }
+.insight { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 12px; }
+.ins { border-radius: 16px; background: #fff; color: var(--ink); padding: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+.ins .ih { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; padding-bottom: 9px; border-bottom: 1px solid rgba(10,26,79,0.12); margin-bottom: 8px; }
+.ins .ih b { font-family: var(--display); font-weight: 400; font-size: 19px; }
+.ins .badge { font-family: var(--cond); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px 2px; border-radius: 4px; background: #FDF0D5; color: #8C5F03; border: 1px solid #e9c97a; }
+.ins .sec { display: grid; grid-template-columns: 1fr; gap: 5px; padding: 7px 0; border-bottom: 1px dashed rgba(10,26,79,0.12); }
+.ins .sec:last-of-type { border-bottom: 0; }
+.ins .sec em { font-style: normal; font-family: var(--cond); font-weight: 700; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #0a5d98; }
+.ins .sk, .notes .sk { display: block; }
+.ins .sk { height: 7px; border-radius: 4px; background: #dfe4ef; width: var(--w, 80%); }
+.js .ins .sec { opacity: 0.12; transition: opacity 0.5s ease; }
+.js .ins .sec.on { opacity: 1; }
+.ins .foot { margin-top: 8px; font-size: 12.5px; color: #47506d; line-height: 1.4; min-height: 2.8em; }
+.notes { border-radius: 16px; background: #FFF9E6; color: var(--ink); padding: 14px; border: 1px solid #ecd9a0; }
+.notes b { display: flex; align-items: center; gap: 7px; font-family: var(--cond); font-weight: 700; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: #8C5F03; margin-bottom: 8px; }
+.notes b svg { width: 14px; height: 14px; }
+.notes .sk { height: 7px; border-radius: 4px; background: #eadfbd; width: var(--w, 80%); margin: 9px 0; }
+.pipa-rule { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: baseline; padding: 18px 22px; border-radius: 18px; border: 1px solid rgba(234,179,8,0.35); background: rgba(6,15,46,0.85); }
+.pipa-rule p { margin: 0; font-size: 17px; text-shadow: none; }
+.pipa-rule p b { font-family: var(--display); font-weight: 400; font-size: 23px; color: var(--gold); }
+html.still .chat .msgs { height: auto; }
+html.still .ins .sec { opacity: 1; }
+@media (min-width: 900px) {
+    .pipa-grid { grid-template-columns: 1fr 1fr; }
+    .insight { grid-template-columns: 1.5fr 1fr; align-items: start; }
+}
 
-        /* ── Mobile ──────────────────────────────────────────────── */
-        @media (max-width: 768px) {
-            .project-hero { padding: 44px 20px 36px; }
-            .section { padding: 56px 20px; }
-            .stat-grid { grid-template-columns: 1fr; gap: 12px; }
-            .stat-tile { padding: 18px 18px; }
-            .stat-num { font-size: 30px; }
-            .hamburger { display: block; }
-            .nav-links { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 16px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
-            .nav-links.open { display: flex; }
-        }
-    </style>
+/* ── Night crew: clock + call sheet ───────────────────────────── */
+.crew { display: grid; grid-template-columns: 1fr; gap: 34px; margin-top: 44px; align-items: start; }
+.clockwrap { position: relative; width: min(340px, 100%); margin: 0 auto; }
+.clock { position: relative; width: 100%; aspect-ratio: 1; }
+.clock svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.clock .sweep { position: absolute; inset: 9%; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 300deg, rgba(77,177,240,0.32) 360deg); transform: rotate(var(--a, 0deg)); }
+.clock .face { fill: rgba(6,15,46,0.9); stroke: rgba(255,255,255,0.14); stroke-width: 1; }
+.clock .night { fill: none; stroke: rgba(2,1,66,0.95); stroke-width: 16; }
+.clock .tk { stroke: rgba(255,255,255,0.28); stroke-width: 2; stroke-linecap: round; transition: stroke 0.9s ease; }
+.clock .tk.big { stroke: rgba(77,177,240,0.6); stroke-width: 3.5; }
+.clock .tk.hit { stroke: #fff; transition: none; }
+.clock .tk.big.hit { stroke: var(--sky); }
+.clock .hl { font: 600 13px var(--cond); letter-spacing: 0.1em; fill: rgba(255,255,255,0.62); text-anchor: middle; dominant-baseline: middle; }
+.clock .bk { fill: var(--gold); }
+.clock .bkt { font: 700 12px var(--cond); letter-spacing: 0.1em; fill: var(--gold); }
+.clock .hand { stroke: var(--gold-soft); stroke-width: 3; stroke-linecap: round; }
+.clock .tip { fill: var(--gold); }
+.clock .hub { fill: var(--gold); }
+.clock .read { position: absolute; left: 0; right: 0; top: 58%; text-align: center; }
+.clock .read b { display: block; font: 500 clamp(28px, 7vw, 36px)/1 var(--mono); color: #fff; letter-spacing: 0.04em; }
+.clock .read span { font-family: var(--cond); font-weight: 600; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.log { list-style: none; margin: 18px auto 0; width: min(340px, 100%); font: 400 13.5px/1.5 var(--mono); color: rgba(255,255,255,0.75); min-height: 6.2em; }
+.log li { display: flex; gap: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.log li:first-child { color: #fff; }
+.log li i { font-style: normal; color: var(--gold); flex: none; width: 5.2ch; }
+.callsheet { list-style: none; display: grid; gap: 10px; }
+.callsheet li { display: grid; grid-template-columns: 16px 1fr; gap: 0 14px; padding: 14px 16px; border-radius: 14px; background: rgba(6,15,46,0.84); border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.6s ease, background 0.6s ease; }
+.callsheet .lamp { width: 12px; height: 12px; border-radius: 50%; margin-top: 7px; background: #26325e; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18); transition: background 0.8s ease, box-shadow 0.8s ease; }
+.callsheet .lamp.sq { border-radius: 2px; }
+.callsheet li.fire { border-color: rgba(77,177,240,0.6); background: rgba(10,26,79,0.92); transition: none; }
+.callsheet li.fire .lamp { background: var(--sky); box-shadow: 0 0 14px var(--sky); transition: none; }
+.callsheet .when { font-family: var(--cond); font-weight: 700; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: block; }
+.callsheet h3 { font-family: var(--body); font-weight: 700; font-size: 17px; line-height: 1.3; margin: 1px 0 3px; letter-spacing: 0; }
+.callsheet p { font-size: 15px; margin: 0; text-shadow: none; }
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "Performance Interpreting",
-      "description": "A family-run BSL interpretation agency in the UK and Ireland. Tailored Tools builds the digital platforms PI runs on, main website, PI Academy training platform, and the PI Events App with 800+ downloads in its first month.",
-      "url": "https://tailored-tools.com/projects/performance-interpreting",
-      "creator": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
-      "about": { "@type": "Organization", "name": "Performance Interpreting", "url": "https://performanceinterpreting.co.uk" }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://tailored-tools.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://tailored-tools.com/projects" },
-        { "@type": "ListItem", "position": 3, "name": "Performance Interpreting", "item": "https://tailored-tools.com/projects/performance-interpreting" }
-      ]
-    }
-    </script>
+/* ── PI OS: the stage manager ─────────────────────────────────── */
+.tape { display: inline-block; transform: rotate(-2deg); background: var(--gold); color: var(--navy); font-family: var(--cond); font-weight: 700; font-size: 16px; letter-spacing: 0.22em; text-transform: uppercase; padding: 6px 14px 5px; margin-bottom: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+.counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 30px; max-width: 620px; }
+.counters div { background: #050b2e; border: 1px solid rgba(77,177,240,0.3); border-radius: 14px; padding: 14px 10px 12px; text-align: center; }
+.counters b { display: block; font: 500 clamp(24px, 5.4vw, 40px)/1 var(--mono); color: var(--sky); }
+.counters span { display: block; margin-top: 6px; font-family: var(--cond); font-weight: 600; font-size: 13.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+.counters-note { font-size: 15px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+.cue { margin-top: 40px; display: grid; grid-template-columns: 1fr; gap: 18px; align-items: center; padding: 22px; border-radius: 22px; background: rgba(6,15,46,0.88); border: 1px solid rgba(255,255,255,0.14); max-width: 760px; }
+.cue h3 { font-size: 28px; margin-bottom: 6px; }
+.cue p { font-size: 16px; margin: 0 0 6px; text-shadow: none; }
+.lights { display: flex; gap: 14px; align-items: flex-start; justify-content: center; }
+.light { text-align: center; width: 104px; }
+.light .bulb { width: 64px; height: 64px; margin: 0 auto 8px; border-radius: 50%; border: 4px solid #1c264f; background: #141b3e; transition: background 0.35s ease, box-shadow 0.35s ease; }
+.light.go .bulb { border-radius: 14px; }
+.light b { display: block; font-family: var(--cond); font-weight: 700; font-size: 20px; letter-spacing: 0.16em; }
+.light span { display: block; font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.3; }
+.light.stby.lit .bulb { background: var(--gold); box-shadow: 0 0 30px rgba(234,179,8,0.7); }
+.light.go.lit .bulb { background: var(--green); box-shadow: 0 0 30px rgba(34,197,94,0.7); }
+.cue .go-btn { margin-top: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; border: 0; background: var(--green); color: #052e14; font: 700 16px/1 var(--body); cursor: pointer; }
+.cue .go-btn:disabled { background: #2b3561; color: rgba(255,255,255,0.7); cursor: default; }
+.cue .status { font-size: 14.5px; color: rgba(255,255,255,0.82); margin-top: 10px; min-height: 1.5em; }
+
+.map { position: relative; margin-top: 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 26px; }
+.map svg.links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.map svg.links path { fill: none; stroke: rgba(77,177,240,0.55); stroke-width: 1.6; stroke-dasharray: 2 7; stroke-linecap: round; animation: flow 1.4s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -18; } }
+.feat { position: relative; padding: 20px 20px 20px 54px; border-radius: 16px; background: rgba(6,15,46,0.9); border: 1px solid rgba(255,255,255,0.12); }
+.js .feat { opacity: 0; transform: translateY(16px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js .feat.on { opacity: 1; transform: none; }
+.feat:nth-child(even) { margin-top: 48px; }
+.feat .pt { position: absolute; left: 20px; top: 24px; width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--sky); background: var(--deep); }
+.feat.on .pt { box-shadow: 0 0 12px rgba(77,177,240,0.8); }
+.feat h3 { font-family: var(--body); font-weight: 700; font-size: 18px; letter-spacing: 0; margin-bottom: 5px; color: #fff; }
+.feat p { font-size: 15.5px; margin: 0; text-shadow: none; }
+
+/* ── Screens ──────────────────────────────────────────────────── */
+.shots { width: min(980px, calc(100% - 40px)); margin: 50px auto 0; position: relative; padding-right: 22%; }
+.browser { border-radius: 12px; overflow: hidden; background: #0b1238; box-shadow: 0 40px 90px rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); }
+.browser .bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #141d4a; }
+.browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.22); }
+.browser .bar span { margin-left: 12px; font-family: var(--mono); font-size: 11.5px; color: rgba(255,255,255,0.65); }
+.browser img, .phone img { display: block; width: 100%; height: auto; }
+.phone { position: relative; border: 6px solid #03021a; background: #060a24; border-radius: 15% / 7%; overflow: hidden;
+    container-type: inline-size; box-shadow: 0 30px 70px rgba(0,0,0,0.6); }
+.phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 var(--body); color: #fff; }
+.phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 3; }
+.phone img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+.phone.native::before { content: none; }
+.phone.native img { margin-top: 0; }
+.shots .phone { position: absolute; right: 0; bottom: -36px; width: 26%; }
+.caption { width: min(980px, calc(100% - 40px)); margin: 64px auto 0; font-family: var(--cond); font-weight: 500; font-size: 16px; letter-spacing: 0.04em; color: rgba(255,255,255,0.7); }
+.approw { width: min(860px, calc(100% - 40px)); margin: 70px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 3vw, 36px); align-items: start; }
+.approw figure:nth-child(2) { margin-top: 40px; }
+.approw figcaption { margin-top: 12px; text-align: center; font-family: var(--cond); font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
+
+/* ── Setlist ──────────────────────────────────────────────────── */
+#timeline { overflow-x: clip; }
+.setlist { position: relative; margin-top: 44px; max-width: 560px; background: var(--canvas); color: var(--ink); padding: 34px 26px 26px; border-radius: 3px; transform: rotate(-1.2deg);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.55); background-image: linear-gradient(transparent 0 97%, rgba(10,26,79,0.05) 97%); background-size: 100% 44px; }
+.setlist::before, .setlist::after { content: ''; position: absolute; top: -12px; width: 96px; height: 30px; background: rgba(170,176,190,0.82); box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+.setlist::before { left: -18px; transform: rotate(-24deg); }
+.setlist::after { right: -18px; transform: rotate(22deg); }
+.setlist .sh { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px solid var(--ink); padding-bottom: 8px; margin-bottom: 8px; font-family: var(--cond); font-weight: 700; text-transform: uppercase; }
+.setlist .sh b { font-size: 30px; letter-spacing: 0.06em; }
+.setlist .sh span { font-size: 14px; letter-spacing: 0.14em; color: #47506d; }
+.setlist ol { list-style: none; counter-reset: s; }
+.setlist li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr 46px; gap: 6px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(10,26,79,0.12); }
+.setlist li::before { content: counter(s); font-family: var(--cond); font-weight: 700; font-size: 26px; line-height: 1; color: var(--blue); }
+.setlist li b { display: block; font-family: var(--cond); font-weight: 700; font-size: 25px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; }
+.setlist li span { display: block; font-size: 15.5px; line-height: 1.4; color: #2c3763; margin-top: 4px; }
+.setlist li svg { width: 30px; height: 30px; justify-self: end; }
+.setlist li svg path { fill: none; stroke: var(--blue); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 0; }
+.js .setlist li svg path { stroke-dashoffset: 40; transition: stroke-dashoffset 0.6s ease 0.25s; }
+.js .setlist li.on svg path { stroke-dashoffset: 0; }
+.setlist li.nextup b { color: #9C4814; }
+.setlist li.nextup .nx { font-family: var(--cond); font-weight: 700; font-size: 14px; letter-spacing: 0.1em; color: #9C4814; border: 2.5px solid #9C4814; border-radius: 999px; padding: 7px 4px 6px; font-size: 13px; text-align: center; transform: rotate(-8deg); line-height: 1; align-self: center; justify-self: end; }
+.setlist .enc { margin-top: 16px; font-family: var(--cond); font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; color: #47506d; }
+.setlist .enc b { display: block; font-family: var(--display); font-weight: 400; font-style: italic; font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--ink); margin-top: 4px; line-height: 1.2; }
+
+/* ── CTA ──────────────────────────────────────────────────────── */
+.cta { text-align: center; padding: 22vh 20px 14vh; }
+.cta h2 { max-width: 780px; margin: 0 auto 20px; }
+.cta p { max-width: 540px; margin: 0 auto 32px; }
+.btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; }
+.btn.primary { background: var(--blue); color: #fff; box-shadow: 0 0 34px rgba(0,120,196,0.55); }
+.btn.primary:hover { background: #0a86d6; }
+.btn.ghost { border: 1.5px solid rgba(255,255,255,0.45); color: #fff; }
+.cta .signoff { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--gold-soft); margin-top: 60px; }
+.next { display: block; text-align: center; padding: 34px 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-weight: 700; background: rgba(6,15,46,0.7); }
+.next span { color: var(--gold); }
+
+footer { background: #0D1B2A; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-family: 'Karla', 'DM Sans', sans-serif; font-size: 13px; }
+footer .fl { width: 200px; height: 70px; background: url('/tt-logo-light.png') center / contain no-repeat; margin: 0 auto 14px; }
+footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+
+/* ── Easy Read ────────────────────────────────────────────────── */
+.er-only { display: none; }
+html[data-er="on"] .er-only { display: block; }
+html[data-er="on"] .er-hide { display: none !important; }
+.er { padding: 130px 20px 12vh; }
+.er .sheet { max-width: 680px; margin: 0 auto; background: var(--canvas); color: var(--ink); border-radius: 22px; padding: 30px 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+.er h1 { font-size: clamp(32px, 6vw, 44px); color: var(--ink); text-shadow: none; margin-bottom: 18px; }
+.er ul { list-style: none; display: grid; gap: 14px; margin: 0 0 26px; }
+.er li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: center; font-size: 20px; line-height: 1.45; }
+.er li svg { width: 40px; height: 40px; color: var(--blue); }
+.er .btns { justify-content: flex-start; }
+.er .btn.ghost { border-color: var(--ink); color: var(--ink); }
+
+[hidden] { display: none !important; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 559px) { .passes::before { display: none; } }
+@media (min-width: 560px) {
+    .pass::before { display: none; }
+    .doors { grid-template-columns: 1fr 1fr; }
+    .passes { grid-template-columns: repeat(4, 1fr); }
+    .cue { grid-template-columns: 1.2fr 1fr; }
+}
+@media (min-width: 900px) {
+    .notice { grid-template-columns: 0.85fr 1.15fr; }
+    .notice .saw { border-bottom: 0; border-right: 1px dashed rgba(255,255,255,0.18); }
+    .crew { grid-template-columns: 0.9fr 1.1fr; }
+    .clockwrap { position: sticky; top: 110px; }
+    .board { --cw: 22px; }
+}
+@media (min-width: 1000px) {
+    .doors { grid-template-columns: repeat(4, 1fr); }
+    .door .frame { min-height: 300px; }
+}
+@media (max-width: 899px) {
+    .rig { right: 50%; top: 40%; transform: translate(50%, -50%); width: 88vw; --o: 0.24; }
+    .map { grid-template-columns: 1fr; }
+    .feat:nth-child(even) { margin-top: 0; }
+    section { padding: 12vh 0; }
+}
+@media (max-width: 640px) {
+    .tt-bar nav a:not(.cta) { display: none; }
+    .shots { padding-right: 28%; }
+    .shots .phone { width: 32%; bottom: -22px; }
+    .col { width: calc(100% - 40px); margin-left: 20px; }
+    .notice > div { padding: 20px 18px; }
+    .kit { gap: 8px; padding: 12px; }
+}
+@media (max-width: 360px) {
+    .board { --cw: 12px; padding: 12px 8px 6px; }
+    .board .row { gap: 1.5px; }
+    .counters span { font-size: 12px; letter-spacing: 0.06em; }
+    .light { width: 92px; }
+    .setlist { padding: 30px 18px 22px; }
+}
+/* Still version: reduced motion, or the visitor pressed "Pause motion" */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+html.still { scroll-behavior: auto; }
+html.still *, html.still *::before, html.still *::after { animation: none !important; transition: none !important; }
+html.still .feat, html.still .poster li { opacity: 1; transform: none; }
+html.still .door .leaf.l { transform: rotateY(84deg); }
+html.still .door .leaf.r { transform: rotateY(-84deg); }
+html.still .door .floor { opacity: 1; }
+html.still .setlist li svg path { stroke-dashoffset: 0; }
+html.still .draft .caret { display: none; }
+</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Article", "headline": "Performance Interpreting: the crew behind the show",
+  "author": { "@type": "Person", "name": "James Edwards" },
+  "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+  "image": "https://tailored-tools.com/images/projects/performance-interpreting-desktop.jpg" }
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the story</a>
 
-<nav>
-    <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="Tailored Tools home"></a>
-        <button class="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/how-i-work">How I Work</a></li>
-            <li><a href="/projects" class="active">Work</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/ao/blog/">Blog</a></li>
-            <li><a href="/community/">Community</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
-        </ul>
-    </div>
-</nav>
+<div class="venue" aria-hidden="true"></div>
+<canvas id="show" aria-hidden="true"></canvas>
+<svg class="rig" id="rig" viewBox="176 52 248 196" aria-hidden="true"></svg>
 
-<header class="project-hero">
-    <div class="hero-inner">
-        <a href="/projects" class="back-link">&larr; All projects</a>
-        <div class="project-label"><span class="dot"></span>Client Portfolio</div>
-        <h1>Performance Interpreting</h1>
-        <p class="lead">A family-run BSL interpretation agency providing communication access for the Deaf community across the UK and Ireland. We build the digital platforms PI runs on, three live properties serving clients, training the next wave of interpreters, and putting paid work directly into interpreters' hands.</p>
-    </div>
+<header class="tt-bar">
+    <a href="/" class="logo" aria-label="Tailored Tools home"></a>
+    <nav>
+        <a href="/projects">All work</a>
+        <a href="/pricing">Prices</a>
+        <a href="/brief/" class="cta">Start your brief</a>
+    </nav>
 </header>
 
-<section class="section">
-    <div class="inner">
-        <div class="status-pill live">Live &middot; Shipped May 2026</div>
-        <h2>The PI Events App</h2>
-        <p>A mobile app for venues, event organisers, festivals, and producers to request British Sign Language interpreter coverage for upcoming events. A few taps to submit a request. No spreadsheets, no email back-and-forth, no missed details.</p>
+<main id="main">
 
-        <div class="stat-grid">
-            <div class="stat-tile">
-                <div class="stat-num">800+</div>
-                <div class="stat-label">Downloads in the first month</div>
+<!-- ── Easy Read version (hidden until switched on) ── -->
+<section class="er er-only" aria-labelledby="er-title">
+    <div class="sheet">
+        <h1 id="er-title" tabindex="-1">Easy Read: Performance Interpreting</h1>
+        <ul>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 30 8 34M20 6v20M14 26h12"/><rect x="15" y="4" width="10" height="16" rx="5"/></svg>Performance Interpreting brings BSL and ISL to live events. We call them PI.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="20" cy="13" r="7"/><path d="M7 36c1-8 6-12 13-12s12 4 13 12"/></svg>PI was started by Marie. Marie is Deaf.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M8 10h24v16H8zM15 32h10M20 26v6"/></svg>I am James. I build PI's technology.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 8h28v24H6zM6 15h28"/></svg>I made PI a new website. It has an Easy Read mode, like this page.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><rect x="12" y="4" width="16" height="32" rx="4"/><path d="M18 31h4"/></svg>I made an app for Deaf people who love live events. 800+ people downloaded it in the first month.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 10h30v20H5zM5 10l15 11 15-11"/></svg>The app helps you ask a venue for an interpreter.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><rect x="6" y="8" width="13" height="16" rx="2"/><rect x="21" y="16" width="13" height="16" rx="2"/></svg>The app has cards you can show to staff at the venue.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="20" cy="20" r="14"/><path d="M20 11v9l6 4"/></svg>Computers do the boring jobs, even at night.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m9 21 7 7 15-16"/></svg>A person always checks before anything goes to a client.</li>
+            <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 8h28v18H18l-8 6v-6H6z"/></svg>You can chat with PIPA on PI&rsquo;s website. PIPA is a computer helper. If PIPA can&rsquo;t help, a person will.</li>
+        </ul>
+        <div class="btns">
+            <a href="/brief/" class="btn primary">Start your brief</a>
+            <button type="button" class="pill white er-off" data-er-toggle style="border:1.5px solid #0A1A4F">Back to the full page</button>
+        </div>
+    </div>
+</section>
+
+<div class="er-hide">
+<section class="hero">
+    <div class="col">
+        <div class="toprow">
+            <a href="/projects" class="back">&larr; All work</a>
+            <button type="button" class="pill white" data-er-toggle aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Easy Read
+            </button>
+            <button type="button" class="pill" id="motionBtn" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span>Pause motion</span>
+            </button>
+        </div>
+        <span class="eyebrow">Case study &middot; BSL &amp; ISL access &middot; UK &amp; Ireland</span>
+        <h1>It began as social posts. Now it&rsquo;s <em>the crew behind the show</em>.</h1>
+        <p class="lead">Performance Interpreting is the UK and Ireland&rsquo;s largest, award-winning performance interpreting provider: BSL and ISL access across festivals, sport, arenas, broadcast and more. It was founded by Marie, who is Deaf. I build and run its technology.</p>
+        <div class="facts">
+            <div>First ask<b>October 2025</b></div>
+            <div>App downloads, first month<b>800<i>+</i></b></div>
+            <div>Bookings from app requests, month one<b>Around &pound;5,000</b></div>
+        </div>
+        <a class="visit" href="https://performanceinterpreting.co.uk" target="_blank" rel="noopener">Visit performanceinterpreting.co.uk &rarr;</a>
+    </div>
+    <span class="scroll-hint" aria-hidden="true">Scroll. The house lights are going down.</span>
+</section>
+
+<section id="ask">
+    <div class="col">
+        <span class="eyebrow">Soundcheck</span>
+        <h2>The ask was small. <em>The work wasn&rsquo;t.</em></h2>
+        <p class="lead">In October 2025, PI asked me to automate social media awareness of their bookings. A tidy little job.</p>
+        <p>Then I saw how the team actually worked. So much of it was manual and repetitive, with plenty of room for human error. So the job grew: into a redesigned website, a customer app, and a new operating system.</p>
+        <p>Here&rsquo;s the line-up.</p>
+
+        <nav class="poster" id="poster" aria-label="What it grew into">
+            <p class="pres">October 2025 to now</p>
+            <ol>
+                <li class="l1"><a href="#app">The PI Events App</a></li>
+                <li class="l2"><a href="#website">The website</a><span class="sep" aria-hidden="true">&#10022;</span><a href="#website">PI Academy</a></li>
+                <li class="l3"><a href="#pipa">PIPA</a><span class="sep" aria-hidden="true">&#10022;</span><a href="#crew">The night crew</a></li>
+                <li class="l4"><a href="#os">PI OS</a><small>In pilot</small></li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section id="website">
+    <div class="wide">
+        <span class="eyebrow">Front of house</span>
+        <h2>Everyone gets <em>their own door</em>.</h2>
+        <p class="lead">Different visitors come to PI for different reasons, so each one gets their own path through the website.</p>
+        <div class="doors">
+            <div class="door">
+                <span class="sign" aria-hidden="true">Organisers</span>
+                <div class="frame">
+                    <div class="inside"><h3>Event organisers</h3><p>A path of their own, for the people booking access for an event.</p></div>
+                    <span class="leaf l" aria-hidden="true"></span><span class="leaf r" aria-hidden="true"></span>
+                </div>
+                <div class="floor" aria-hidden="true"></div>
             </div>
-            <div class="stat-tile">
-                <div class="stat-num">110+</div>
-                <div class="stat-label">Venues with access &amp; contact data on file</div>
+            <div class="door">
+                <span class="sign" aria-hidden="true">Deaf community</span>
+                <div class="frame">
+                    <div class="inside"><h3>The Deaf community</h3><p>The interpreted-events listing. It refreshes itself every two hours, from the same feed as the app.</p></div>
+                    <span class="leaf l" aria-hidden="true"></span><span class="leaf r" aria-hidden="true"></span>
+                </div>
+                <div class="floor" aria-hidden="true"></div>
             </div>
-            <div class="stat-tile">
-                <div class="stat-num">&pound;5k+</div>
-                <div class="stat-label">Bookings revenue from Month 1 requests</div>
+            <div class="door">
+                <span class="sign" aria-hidden="true">Interpreters</span>
+                <div class="frame">
+                    <div class="inside"><h3>Interpreters</h3><p>Their own way in, separate from the people booking them and the people watching them.</p></div>
+                    <span class="leaf l" aria-hidden="true"></span><span class="leaf r" aria-hidden="true"></span>
+                </div>
+                <div class="floor" aria-hidden="true"></div>
+            </div>
+            <div class="door">
+                <span class="sign" aria-hidden="true">PI Academy</span>
+                <div class="frame">
+                    <div class="inside"><h3>PI Academy</h3><p>CPD and training. The course catalogue pulls live from Ticket Tailor, so course pages never go stale. Tally forms handle Pathways, Volunteer and Mentor sign-ups.</p></div>
+                    <span class="leaf l" aria-hidden="true"></span><span class="leaf r" aria-hidden="true"></span>
+                </div>
+                <div class="floor" aria-hidden="true"></div>
             </div>
         </div>
-
-        <p><a class="inline" href="/projects/pi-events-app">Read the full PI Events App case study &rarr;</a> &nbsp;&middot;&nbsp; <a class="inline" href="/ao/blog/pi-events-app-two-weeks-in.html">Launch story</a></p>
+        <div class="easy-note">
+            <p><strong>And an Easy Read mode</strong>, for anyone who wants it plainer. This page has one too.</p>
+            <button type="button" class="pill white" data-er-toggle aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Try Easy Read
+            </button>
+        </div>
     </div>
 </section>
 
-<section class="section">
-    <div class="inner">
-        <h2>The wider PI estate</h2>
-        <p>The Events App sits alongside the agency's other live properties, each one supporting a different part of how PI runs:</p>
-        <ul>
-            <li><strong>Main website</strong>, <a class="inline" href="https://www.performanceinterpreting.co.uk" target="_blank" rel="noopener">performanceinterpreting.co.uk</a>, the agency's primary client-facing site for booking enquiries, services, and case studies.</li>
-            <li><strong>PI Academy</strong>, <a class="inline" href="https://academy.performanceinterpreting.co.uk" target="_blank" rel="noopener">academy.performanceinterpreting.co.uk</a>, CPD and training platform for working BSL interpreters.</li>
-            <li><strong>PI Events App</strong>, native iOS and Android (see the breakdown above).</li>
-        </ul>
+<section id="noticed">
+    <div class="col">
+        <span class="eyebrow">Before any code</span>
+        <h2>I didn&rsquo;t start with features. I started with <em>the night out</em>.</h2>
+        <p class="lead">Each of these came from watching how PI&rsquo;s team and audience actually work. The demos are running live.</p>
+    </div>
+    <div class="wide">
+        <div class="noticed">
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>The same jobs, by hand, every day.</h3><p>A lot of the team&rsquo;s week was manual and repetitive, with plenty of room for human error.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>Events that auto-publish every day, and a website listing that refreshes itself every two hours from the same feed as the app.</p>
+                    <div class="specimen" id="boardBox">
+                        <p class="sr-only">An example departures-style board of interpreted events, with rows flipping over as the listing refreshes. Each row shows a day, an event type, BSL or ISL, and a status shown by colour and shape.</p>
+                        <div class="board" aria-hidden="true">
+                            <div class="bh"><span>Interpreted events</span><span>Every 2 hrs</span></div>
+                            <div class="bar"><i id="boardBar"></i></div>
+                            <div id="boardRows"></div>
+                        </div>
+                        <div class="legend" aria-hidden="true"><span><i class="st ok"></i>Interpreter booked</span><span><i class="st out"></i>Sold out</span></div>
+                        <small class="cap">Example rows, sped up</small>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Not every event has an interpreter booked.</h3><p>For the ones without coverage, someone has to ask the venue.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>Request an Interpreter, in the app. It drafts the access request to the venue with AI, for a person to send. AI never sends anything on its own.</p>
+                    <div class="specimen">
+                        <p class="sr-only">A demo of an email drafting itself: Hello, I'm Deaf and I use BSL. I'd love to come to your event. Will there be a BSL interpreter? If not, could you arrange one? Thank you. The send button waits for a person.</p>
+                        <div class="draft" id="draftBox" aria-hidden="true">
+                            <div class="mail">
+                                <div class="mh"><b>To:</b> the venue&rsquo;s access team<br><b>Subject:</b> BSL interpreter request</div>
+                                <div class="body"><span id="draftText"></span><span class="caret"></span></div>
+                            </div>
+                            <div class="acts"><span class="chip">&#10022; Drafted with AI</span><span class="send" id="sendBtn">Send <small>a person presses this</small></span></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>The night happens at the venue.</h3><p>Not on a website. At the bar, at the gate, in the crowd.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A Communication Tool Kit for the venue itself: I am Deaf, Emergency, My Order and live speech-to-text cards. Hold the phone up, and the card does the talking.</p>
+                    <div class="specimen" id="kitBox">
+                        <p class="sr-only">Four cards turning over in turn: I am Deaf, Emergency, My Order, and Speech to text.</p>
+                        <div class="kit" aria-hidden="true">
+                            <div class="card deaf"><div class="in"><div class="f"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 26V10a3 3 0 0 1 6 0v12M23 20V7a3 3 0 0 1 6 0v15M29 21V10a3 3 0 0 1 6 0v16c0 9-5 15-13 15-6 0-9-3-12-8l-4-7a3 3 0 0 1 5-3l3 4"/></svg><b>I am Deaf</b></div><div class="k"><b>I am Deaf</b><span>I use BSL</span></div></div></div>
+                            <div class="card emer"><div class="in"><div class="f"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 38V26a12 12 0 0 1 24 0v12M8 38h32M24 6v5M10 12l3 3M38 12l-3 3"/></svg><b>Emergency</b></div><div class="k"><b>Emergency</b></div></div></div>
+                            <div class="card order"><div class="in"><div class="f"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 16h22l-3 26H16zM11 16h26M28 16l4-11 5 1"/></svg><b>My Order</b></div><div class="k"><b>My Order</b><span>Lemonade<br>Still water</span></div></div></div>
+                            <div class="card speech"><div class="in"><div class="f"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h32v22H22l-9 7v-7H8z"/><path d="M17 21h.01M24 21h.01M31 21h.01" stroke-width="5"/></svg><b>Speech to text</b></div><div class="k"><b>Live text</b><span>&ldquo;What can I get you?&rdquo;</span></div></div></div>
+                        </div>
+                        <small class="cap">Live, turning now</small>
+                    </div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Some people can&rsquo;t rely on one kind of signal.</h3><p>A word on its own, or a colour on its own, isn&rsquo;t enough for everyone.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A deafblind-friendly theme. And across the app, status is always shown by colour plus shape, never by text alone.</p>
+                    <div class="specimen theme" id="themeBox">
+                        <button type="button" class="toggle" id="themeBtn" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span id="themeLbl">Theme: standard</span></button>
+                        <div class="rows">
+                            <div class="ev"><span class="st ok" aria-hidden="true"></span><div><b>Arena concert</b><small>Interpreter booked</small></div></div>
+                            <div class="ev"><span class="st out" aria-hidden="true"></span><div><b>Stadium football</b><small>Sold out</small></div></div>
+                        </div>
+                        <small class="cap" style="padding:10px 0 0">Example statuses. Circle and square, as well as colour</small>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
 </section>
 
-<section class="section">
-    <div class="inner">
-        <h2>About the agency</h2>
-        <p><strong>Performance Interpreting</strong> was founded by Marie Edwards. It is a BSL interpretation agency providing communication access for the Deaf community, at festivals, football matches, theatre, live music, conferences, and workplaces, across the UK and Ireland.</p>
-        <ul>
-            <li>A network of 379 interpreters (346 BSL + 33 Irish)</li>
-            <li>Coverage across the UK and Ireland</li>
-            <li>Working with festivals, football clubs, live music tours, theatre, and corporate clients</li>
-        </ul>
+<section id="app">
+    <div class="col">
+        <span class="eyebrow">The headliner</span>
+        <h2>The PI Events App. <em>Web, iOS and Android.</em></h2>
+        <p class="lead">Built for the Deaf community first. Sign-language video throughout, BSL-first onboarding, and it works offline.</p>
+        <div class="chips"><span>Sign-language video</span><span>BSL-first onboarding</span><span>Works offline</span><span>Deafblind-friendly theme</span></div>
+    </div>
+    <div class="wide">
+        <div class="passes" id="passes">
+            <div class="pass" style="--sw:4.4s"><span class="strap" aria-hidden="true"></span><div class="lam"><div class="band">Access all areas</div><span class="big">800+</span><span class="what">downloads in its first month</span></div></div>
+            <div class="pass" style="--sw:5.1s"><span class="strap" aria-hidden="true"></span><div class="lam"><div class="band">Access all areas</div><span class="big">~&pound;5,000</span><span class="what">of interpreter bookings through app requests, month one</span></div></div>
+            <div class="pass" style="--sw:4.8s"><span class="strap" aria-hidden="true"></span><div class="lam"><div class="band">Access all areas</div><span class="big sm">DeafExpo 2026</span><span class="what">peer-recommended</span></div></div>
+            <div class="pass" style="--sw:5.4s"><span class="strap" aria-hidden="true"></span><div class="lam"><div class="band">Access all areas</div><span class="big sm">The Limping Chicken</span><span class="what">featured the app</span></div></div>
+        </div>
     </div>
 </section>
 
-<section class="section">
-    <div class="inner">
-        <div class="status-pill dev">In development</div>
-        <h2>The platform underneath: PI OS</h2>
-        <p>The Events App sits on top of a booking platform we are building for the agency, what we call PI OS. The interpreter database, the booking lifecycle, the staff portal, and the integrations live there. Parts of it are running in production today. Other parts are still being built.</p>
-        <p>We will write about PI OS properly when it is finished. For now, the app is the thing that is in customers' hands and earning its keep.</p>
+<section id="pipa">
+    <div class="col">
+        <span class="eyebrow">A voice in the wings</span>
+        <h2>Meet PIPA. <em>Say it <span style="white-space:nowrap">&ldquo;PEE&#8209;pa&rdquo;.</span></em></h2>
+        <p class="lead">PIPA is the Performance Interpreting Personal Assistant, an AI assistant I built for PI. It carries a name the way a person does, not like a brand stamp. It works in two places, for two kinds of people.</p>
+        <p><strong>PIPA helps people. It never replaces interpreters.</strong></p>
+    </div>
+    <div class="wide">
+        <div class="pipa-grid">
+            <article class="pcard">
+                <span class="tag">For customers &middot; on the website since May 2026</span>
+                <h3>Ask, and it goes and looks.</h3>
+                <p>A chat assistant grounded in PI&rsquo;s own site content, with live tools of its own.</p>
+                <ul class="ticks">
+                    <li>Searches upcoming interpreted events.</li>
+                    <li>Looks up a venue&rsquo;s access details.</li>
+                    <li>Finds PI&rsquo;s own signed explainer videos and plays them right in the chat. Only from PI&rsquo;s own library, never a random link.</li>
+                    <li>Builds a ready-made interpreter-request link.</li>
+                    <li>When it can&rsquo;t answer, it hands over to a person with a tidy summary of what was asked and what it already tried, and can pre-fill the contact form with the right enquiry type.</li>
+                    <li>Rate-limited, and hardened against misuse.</li>
+                </ul>
+                <p class="sr-only">A demo conversation with PIPA. Someone asks about interpreted comedy coming up, and PIPA searches upcoming interpreted events. They ask about step-free access, and PIPA looks up the venue's access details. They ask how booking works, and PIPA plays one of PI's own signed explainer videos in the chat. They say their event has no interpreter, and PIPA builds a ready-made request link. Finally they ask something PIPA can't answer, and PIPA hands over to a person with a summary and a pre-filled contact form.</p>
+                <div class="chat" id="chatBox" aria-hidden="true">
+                    <div class="ch"><svg viewBox="176 52 248 196" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" aria-hidden="true"><rect x="280.4" y="64.2" width="34.4" height="69" rx="17.2"/><path d="M261.8,99 V117 C261.8,137 277.8,152 297.6,152 C317.4,152 333.4,137 333.4,117 V99 M297.6,152 V233.5 M264.8,233.5 H330.4 M208.6,126.9 L254.6,172.9 A17,17 0 0 1 230.6,196.9 L184.6,150.9 M386.7,126.9 L340.7,172.9 A17,17 0 0 0 364.7,196.9 L410.7,150.9"/></svg><div><b>PIPA</b><small>Performance Interpreting Personal Assistant</small></div></div>
+                    <div class="msgs" id="msgs"></div>
+                </div>
+            </article>
+            <article class="pcard">
+                <span class="tag">For PI&rsquo;s interpreters &middot; since 27 August 2026</span>
+                <h3>Help with the prep, not the performance.</h3>
+                <p>Inside PI&rsquo;s setlist and lyrics tool, &ldquo;Ask PIPA&rdquo; sits on every page, grounded in the tool&rsquo;s own guide. Every question it can&rsquo;t answer is logged, so the gaps become a to-do list.</p>
+                <p>For an interpreter preparing a song, it writes <strong>Song insights</strong>: themes, register, figurative language, cultural references, ambiguous lines with possible readings, and quality flags on the lyrics.</p>
+                <ul class="ticks">
+                    <li>Works only from the stored lyrics. No outside claims.</li>
+                    <li>Clearly labelled as AI-generated and unverified.</li>
+                    <li>Cached, so it only regenerates when the lyrics change.</li>
+                    <li>Interpreters keep their own private prep notes beside it.</li>
+                </ul>
+                <p class="sr-only">A demo of a Song insights panel filling in, section by section: themes, register, figurative language, cultural references, ambiguous lines, and quality flags. It is labelled AI-generated and unverified. Beside it is a private prep notes card.</p>
+                <div class="insight" id="insBox" aria-hidden="true">
+                    <div class="ins">
+                        <div class="ih"><b>Song insights</b><span class="badge">AI-generated &middot; unverified</span></div>
+                        <div class="sec"><em>Themes</em><i class="sk" style="--w:86%"></i><i class="sk" style="--w:58%"></i></div>
+                        <div class="sec"><em>Register</em><i class="sk" style="--w:64%"></i></div>
+                        <div class="sec"><em>Figurative language</em><i class="sk" style="--w:90%"></i><i class="sk" style="--w:72%"></i></div>
+                        <div class="sec"><em>Cultural references</em><i class="sk" style="--w:70%"></i></div>
+                        <div class="sec"><em>Ambiguous lines</em><i class="sk" style="--w:82%"></i><i class="sk" style="--w:46%"></i></div>
+                        <div class="sec"><em>Quality flags</em><i class="sk" style="--w:52%"></i></div>
+                        <p class="foot" id="insFoot">From the stored lyrics only. Cached until the lyrics change.</p>
+                    </div>
+                    <div class="notes"><b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>My prep notes &middot; private</b><i class="sk" style="--w:92%"></i><i class="sk" style="--w:70%"></i><i class="sk" style="--w:84%"></i><i class="sk" style="--w:40%"></i></div>
+                </div>
+            </article>
+        </div>
+        <div class="pipa-rule"><p><b>AI proposes. A named person confirms.</b></p><p>PIPA answers and suggests. People decide, and interpreters interpret.</p></div>
     </div>
 </section>
 
-<section class="section section-cta">
-    <div class="inner">
-        <h2>Want something like this for your business?</h2>
-        <p>We build custom systems and AI-assisted tools for small businesses. No templates, no bloat, just what you actually need.</p>
-        <a href="mailto:hello@tailored-tools.com" class="btn-primary">Get in touch &rarr;</a>
+<section id="crew">
+    <div class="wide">
+        <span class="eyebrow">After the show</span>
+        <h2>The crew that <em>works through the night</em>.</h2>
+        <p class="lead">When the team goes home, the systems keep going. Here&rsquo;s the night shift, sped up so a whole day goes round in about half a minute.</p>
+        <div class="crew">
+            <div class="clockwrap" id="clockBox">
+                <p class="sr-only">A 24-hour clock running fast. Small marks light every 30 minutes as app alerts are checked, bigger marks every two hours for image enrichment and the website listing refresh, and a gold marker at 2am for the nightly backup.</p>
+                <div class="clock" aria-hidden="true">
+                    <div class="sweep" id="sweep"></div>
+                    <svg viewBox="0 0 300 300" id="clockSvg">
+                        <circle class="face" cx="150" cy="150" r="146"/>
+                        <g id="ticks"></g>
+                        <g id="hourLabels"></g>
+                        <circle class="bk" id="bkDot" r="5"/>
+                        <text class="bkt" id="bkTxt">02:00 BACKUP</text>
+                        <line class="hand" id="hand" x1="150" y1="150" x2="150" y2="34"/>
+                        <circle class="tip" id="tip" cx="150" cy="34" r="4.5"/>
+                        <circle class="hub" cx="150" cy="150" r="6"/>
+                    </svg>
+                    <div class="read"><b id="clockTime">02:00</b><span>Sped up</span></div>
+                </div>
+                <ul class="log" id="log" aria-hidden="true"></ul>
+            </div>
+            <ul class="callsheet" id="callsheet">
+                <li data-job="backup"><span class="lamp" aria-hidden="true"></span><div><span class="when">02:00</span><h3>The backup</h3><p>Every night at 2am, everything is copied somewhere safe.</p></div></li>
+                <li data-job="alerts"><span class="lamp" aria-hidden="true"></span><div><span class="when">Every 30 minutes</span><h3>App alerts checked</h3><p>The app&rsquo;s alerts are checked round the clock, every half hour.</p></div></li>
+                <li data-job="enrich"><span class="lamp" aria-hidden="true"></span><div><span class="when">Every 2 hours</span><h3>Image enrichment, and the website listing</h3><p>Events get their images, and the website&rsquo;s interpreted-events listing refreshes itself from the same feed as the app.</p></div></li>
+                <li data-job="publish"><span class="lamp sq" aria-hidden="true"></span><div><span class="when">Daily</span><h3>Events auto-publish</h3><p>New events go live every day without anyone copying them across.</p></div></li>
+                <li data-job="o2"><span class="lamp sq" aria-hidden="true"></span><div><span class="when">Date by date</span><h3>The O2 sold-out scanner</h3><p>Listing tiles can show a Buy button on sold-out nights, so it checks each date&rsquo;s own page. It only ever marks a date sold out. It never clears one: a person does that.</p></div></li>
+                <li data-job="story"><span class="lamp sq" aria-hidden="true"></span><div><span class="when">Each new booking</span><h3>Instagram Story images</h3><p>Made automatically and emailed to a person to post, because Instagram&rsquo;s API can&rsquo;t add the link sticker. Everything is automated except one tap.</p></div></li>
+            </ul>
+        </div>
     </div>
 </section>
+
+<section id="os">
+    <div class="col">
+        <span class="eyebrow">Next on the bill</span>
+        <span class="tape">In pilot</span>
+        <h2>PI OS: the <em>stage manager</em>.</h2>
+        <p class="lead">A bespoke operations system, built for exactly PI&rsquo;s workflow. The alternative was shoehorning it into an off-the-shelf product: paying for features they wouldn&rsquo;t use, and missing the ones they needed.</p>
+        <p><strong>It&rsquo;s in pilot now, rolling out with staff this autumn.</strong> This is the next chapter, not the daily routine yet. The history is already in:</p>
+        <div class="counters" id="counters">
+            <div><b data-to="387">387</b><span>Interpreters</span></div>
+            <div><b data-to="2616">2,616</b><span>Bookings</span></div>
+            <div><b data-to="954">954</b><span>Clients</span></div>
+        </div>
+
+        <div class="cue" id="cue">
+            <div>
+                <span class="eyebrow" style="margin-bottom:8px">The rule built into every system</span>
+                <h3>AI proposes. A named person confirms.</h3>
+                <p>A stage manager calls &ldquo;standby&rdquo;, and nothing moves until &ldquo;go&rdquo;. Same here: AI never sends anything to a client on its own.</p>
+            </div>
+            <div style="text-align:center">
+                <div class="lights" aria-hidden="true">
+                    <div class="light stby lit" id="lStby"><div class="bulb"></div><b>Standby</b><span>AI has a draft ready</span></div>
+                    <div class="light go" id="lGo"><div class="bulb"></div><b>Go</b><span>A person confirms</span></div>
+                </div>
+                <button type="button" class="go-btn" id="goBtn">Say go</button>
+                <p class="status" id="cueStatus" aria-live="polite">Standing by. Nothing goes until a person says so.</p>
+            </div>
+        </div>
+    </div>
+    <div class="wide">
+        <div class="map" id="map">
+            <svg class="links" id="links" aria-hidden="true"></svg>
+            <div class="feat"><span class="pt"></span><h3>Booking pipeline</h3><p>Every booking in one pipeline, wherever it&rsquo;s up to.</p></div>
+            <div class="feat"><span class="pt"></span><h3>Interpreter database</h3><p>387 interpreters, brought in from the old way of working.</p></div>
+            <div class="feat"><span class="pt"></span><h3>Booking confirmations</h3><p>Booking confirmation documents, made by the system.</p></div>
+            <div class="feat"><span class="pt"></span><h3>Microsoft 365 email</h3><p>Email sending through PI&rsquo;s own Microsoft 365.</p></div>
+            <div class="feat"><span class="pt"></span><h3>FreeAgent contact sync</h3><p>Contacts kept in step with FreeAgent.</p></div>
+            <div class="feat"><span class="pt"></span><h3>Role-based permissions</h3><p>People see what their role needs.</p></div>
+            <div class="feat"><span class="pt"></span><h3>Audit log</h3><p>A record of who did what, and when.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="screens">
+    <div class="col">
+        <span class="eyebrow">The live work</span>
+        <h2>performance<wbr>interpreting<wbr>.co.uk</h2>
+    </div>
+    <div class="shots">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><span>performanceinterpreting.co.uk</span></div><img src="/images/projects/performance-interpreting-desktop.jpg" alt="Performance Interpreting homepage on a laptop: the headline Connecting Deaf audiences to unforgettable live experiences, over a photo of an interpreter signing to a festival crowd" width="1600" height="1000" loading="lazy"></div>
+        <div class="phone"><img src="/images/projects/performance-interpreting-mobile.jpg" alt="The Find interpreted events page on a phone, noting the listing is updated every two hours, with a Request an Interpreter button" width="780" height="1688" loading="lazy"></div>
+    </div>
+    <p class="caption">The homepage, and the interpreted-events listing that refreshes itself every two hours.</p>
+    <div class="approw">
+        <figure><div class="phone native"><img src="/images/projects/performance-interpreting-app-browse.jpg" alt="PI Events App: browsing events by category, with a BSL video button" width="600" height="1280" loading="lazy"></div><figcaption>Browse</figcaption></figure>
+        <figure><div class="phone native"><img src="/images/projects/performance-interpreting-app-toolkit.jpg" alt="PI Events App: the Communication Tool Kit, with I am Deaf, Emergency, Order and Speech to Text cards" width="600" height="1280" loading="lazy"></div><figcaption>Tool Kit</figcaption></figure>
+        <figure><div class="phone native"><img src="/images/projects/performance-interpreting-app-videos.jpg" alt="PI Events App: BSL and ISL videos explaining how to use the app" width="600" height="1280" loading="lazy"></div><figcaption>BSL &amp; ISL videos</figcaption></figure>
+    </div>
+</section>
+
+<section id="timeline">
+    <div class="col">
+        <span class="eyebrow">How it went</span>
+        <h2>The setlist <em>so far</em>.</h2>
+        <div class="setlist">
+            <div class="sh"><b>PI</b><span>Running order</span></div>
+            <ol>
+                <li><div><b>The ask</b><span>October 2025. Automate social media awareness of bookings.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li><div><b>Look around</b><span>Manual, repetitive work, with plenty of room for human error.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li><div><b>The website</b><span>A path for every visitor, Easy Read, and a listing that refreshes itself.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li><div><b>PI Academy</b><span>Courses live from Ticket Tailor. Sign-ups through Tally.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li><div><b>The app</b><span>Web, iOS and Android. 800+ downloads in its first month.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li><div><b>PIPA</b><span>May 2026 on the website for customers. August 2026 for PI&rsquo;s interpreters.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li><div><b>The night crew</b><span>Publishing, backups, images, alerts, the O2 scanner and Story images.</span></div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 16l6 7L25 6"/></svg></li>
+                <li class="nextup"><div><b>PI OS</b><span>In pilot. Rolling out with staff this autumn.</span></div><span class="nx">Next</span></li>
+            </ol>
+            <p class="enc">Encore, every night<b>AI proposes. A named person confirms.</b></p>
+        </div>
+    </div>
+</section>
+
+<!-- Client quote: add once Marie's words are in. Keep it verbatim. -->
+
+<section class="cta">
+    <h2>Is your team doing the <em>same job by hand</em>, every day?</h2>
+    <p>PI&rsquo;s started as a request for some social posts. Tell me about yours, and you&rsquo;ll see something real before you pay anything.</p>
+    <div class="btns">
+        <a href="/brief/" class="btn primary">Start your brief &rarr;</a>
+        <a href="/pricing" class="btn ghost">See prices</a>
+    </div>
+    <p class="signoff">House lights up. Thanks for coming.</p>
+</section>
+</div>
+</main>
+
+<a class="next" href="/projects/sonic-sanctuary">Next: The Sonic Sanctuary, run from a phone <span>&rarr;</span></a>
 
 <footer>
-    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <div class="fl" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
-    <div class="footer-disclosure">
-        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
-        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
-        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
-    </div>
-    <p class="footer-meta">
-        &copy; 2026 Tailored Tools. All rights reserved.
-        &middot; <a href="/privacy.html">Privacy</a>
-        &middot; <a href="/terms.html">Terms</a>
-        &middot; <a href="/ethics.html">Ethics</a>
-        &middot; <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
-        &middot; <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
+    <p>Tailored Tools is the trading name of James Edwards (sole trader) &middot; <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    <p>&copy; 2026 Tailored Tools &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p>
 </footer>
 
 <script>
-document.querySelector('.hamburger').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.querySelector('.nav-links').classList.toggle('open');
-});
-document.querySelectorAll('.nav-links a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        document.querySelector('.hamburger').classList.remove('active');
-        document.querySelector('.nav-links').classList.remove('open');
+(function () {
+    var root = document.documentElement;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var paused = false;
+    try { paused = localStorage.getItem('tt-pi-motion') === 'off'; } catch (e) {}
+    function still() { return reduce || paused; }
+    var NS = 'http://www.w3.org/2000/svg';
+    var stillHooks = [];
+    function onStill(fn) { stillHooks.push(fn); }
+
+    /* ── Easy Read toggle ── */
+    var erBtns = document.querySelectorAll('[data-er-toggle]');
+    function setER(on, focus) {
+        if (on) root.setAttribute('data-er', 'on'); else root.removeAttribute('data-er');
+        erBtns.forEach(function (b) { if (b.hasAttribute('aria-pressed')) b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+        try { localStorage.setItem('tt-pi-er', on ? 'on' : 'off'); } catch (e) {}
+        if (focus) {
+            window.scrollTo(0, 0);
+            if (on) document.getElementById('er-title').focus();
+            else erBtns[1].focus();
+        }
+        onScroll();
+    }
+    erBtns.forEach(function (b) { b.addEventListener('click', function () { setER(root.getAttribute('data-er') !== 'on', true); }); });
+    try { if (localStorage.getItem('tt-pi-er') === 'on') setER(true, false); } catch (e) {}
+
+    /* ── Rig: the PI emblem in marquee bulbs, lit by scroll ── */
+    var rig = document.getElementById('rig');
+    var PATHS = [
+        // [d, start, end, mirrored]
+        ['M264.8,233.5 H330.4', 0.00, 0.07, 0],
+        ['M297.6,233.5 V152', 0.07, 0.17, 0],
+        ['M268,99 H261.8 V117 C261.8,137 277.8,152 297.6,152 C317.4,152 333.4,137 333.4,117 V99 H327.2', 0.17, 0.33, 0],
+        ['M297.6,133.2 C288,133.2 280.4,125.6 280.4,116 V81.4 C280.4,71.9 288.1,64.2 297.6,64.2 C307.1,64.2 314.8,71.9 314.8,81.4 V116 C314.8,125.6 307.2,133.2 297.6,133.2', 0.33, 0.48, 0],
+        ['M242.6,184.9 L190.7,132.9', 0.48, 0.6, 0], ['M242.6,184.9 L190.7,132.9', 0.48, 0.6, 1],
+        ['M208.6,126.9 L254.6,172.9 A17,17 0 0 1 230.6,196.9 L184.6,150.9', 0.6, 0.78, 0], ['M208.6,126.9 L254.6,172.9 A17,17 0 0 1 230.6,196.9 L184.6,150.9', 0.6, 0.78, 1],
+        ['M249.3,140 L268.4,159.1 A36.5,36.5 0 0 1 216.8,210.7 L187.1,181', 0.78, 0.97, 0], ['M249.3,140 L268.4,159.1 A36.5,36.5 0 0 1 216.8,210.7 L187.1,181', 0.78, 0.97, 1]
+    ];
+    var gTubes = document.createElementNS(NS, 'g'); gTubes.setAttribute('class', 'tubes');
+    var gWire = document.createElementNS(NS, 'g');
+    var gBulbs = document.createElementNS(NS, 'g');
+    rig.appendChild(gTubes); rig.appendChild(gWire); rig.appendChild(gBulbs);
+    var segs = [], bulbs = [];
+    PATHS.forEach(function (P) {
+        var mirror = P[3] ? 'translate(595.3 0) scale(-1 1)' : null;
+        function mk(cls, parent) {
+            var el = document.createElementNS(NS, 'path'); el.setAttribute('d', P[0]); el.setAttribute('class', cls);
+            if (mirror) el.setAttribute('transform', mirror);
+            parent.appendChild(el); return el;
+        }
+        var tube = mk('tube', gTubes), wire = mk('wire', gWire);
+        var len = tube.getTotalLength();
+        [tube, wire].forEach(function (el) { el.style.strokeDasharray = len; el.style.strokeDashoffset = len; });
+        segs.push({ els: [tube, wire], len: len, a: P[1], b: P[2] });
+        var n = Math.max(2, Math.round(len / 7));
+        for (var i = 0; i <= n; i++) {
+            var pt = tube.getPointAtLength(len * i / n);
+            var x = P[3] ? 595.3 - pt.x : pt.x;
+            var c = document.createElementNS(NS, 'circle');
+            c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1)); c.setAttribute('r', 2.1); c.setAttribute('class', 'b');
+            gBulbs.appendChild(c);
+            bulbs.push({ el: c, t: P[1] + (P[2] - P[1]) * (i / n), on: false });
+        }
     });
-});
+    bulbs.sort(function (a, b) { return a.t - b.t; });
+    bulbs.forEach(function (b, i) { b.el.style.setProperty('--i', i); });
+
+    var progress = 0;
+    function frame() {
+        var max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+        progress = Math.min(1, Math.max(0, scrollY / max));
+        var drawn = still() ? 1 : Math.min(1, 0.06 + progress * 1.25);
+        segs.forEach(function (s) {
+            var local = Math.min(1, Math.max(0, (drawn - s.a) / (s.b - s.a)));
+            var off = s.len * (1 - local);
+            s.els.forEach(function (el) { el.style.strokeDashoffset = off; });
+        });
+        for (var i = 0; i < bulbs.length; i++) {
+            var on = drawn >= bulbs[i].t;
+            if (on !== bulbs[i].on) { bulbs[i].on = on; bulbs[i].el.classList.toggle('on', on); }
+        }
+        rig.style.setProperty('--dim', progress > 0.9 ? 0.4 : 1);
+        if (still()) drawShow(0);
+    }
+    var ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; frame(); }); } }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+
+    /* ── The show: stage beams + a crowd of phone lights ── */
+    var cv = document.getElementById('show'), ctx = cv.getContext('2d'), dpr = Math.min(1.5, window.devicePixelRatio || 1);
+    var W = 0, H = 0, crowd = [], beams = [];
+    var PAL = [
+        [[77,177,240],[0,120,196],[77,177,240],[0,120,196]],
+        [[234,179,8],[77,177,240],[234,179,8],[77,177,240]],
+        [[224,122,60],[234,179,8],[224,122,60],[77,177,240]]
+    ];
+    function sizeShow() {
+        W = cv.width = Math.round(innerWidth * dpr); H = cv.height = Math.round(innerHeight * 1.2 * dpr);
+        var narrow = innerWidth < 700;
+        beams = (narrow ? [0.12, 0.5, 0.88] : [0.14, 0.38, 0.62, 0.86]).map(function (x, i) {
+            return { x: x, base: (i % 2 ? -1 : 1) * 0.28, amp: 0.3 + (i % 3) * 0.06, sp: 0.00016 + i * 0.00003, ph: i * 1.7, ci: narrow ? [0, 1, 3][i] : i };
+        });
+        crowd = [];
+        var rows = narrow ? 6 : 8;
+        for (var r = 0; r < rows; r++) {
+            var d = r / (rows - 1);
+            var y = (0.76 + 0.155 * Math.pow(d, 1.15)) * H;
+            var spacing = (narrow ? 12 : 10) + (narrow ? 18 : 16) * d;
+            var n = Math.ceil(innerWidth / spacing);
+            for (var i = 0; i < n; i++) {
+                if (Math.random() < 0.25) continue;
+                crowd.push({ x: (i + Math.random()) * spacing * dpr, y: y + (Math.random() - 0.5) * 10 * dpr - (Math.random() < 0.12 ? 14 * dpr * (0.5 + d) : 0),
+                    d: d, r: (0.7 + 1.8 * d) * dpr, th: Math.random(), ph: Math.random() * 6.28, sp: 0.6 + Math.random(), warm: Math.random() < 0.72 });
+            }
+        }
+        if (still()) drawShow(0);
+    }
+    function lerp(a, b, k) { return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k]; }
+    function drawShow(t) {
+        var s = still();
+        ctx.clearRect(0, 0, W, H);
+        ctx.globalCompositeOperation = 'lighter';
+        var p = s ? 0.5 : progress;
+        var k = p < 0.5 ? p * 2 : (p - 0.5) * 2, A = p < 0.5 ? PAL[0] : PAL[1], B = p < 0.5 ? PAL[1] : PAL[2];
+        var oy = H * 0.085, L = H * 0.98;
+        for (var i = 0; i < beams.length; i++) {
+            var bm = beams[i];
+            var a = bm.base + (s ? 0 : bm.amp * Math.sin(t * bm.sp + bm.ph));
+            var ox = bm.x * W, spread = 0.085;
+            var c = lerp(A[bm.ci], B[bm.ci], k).map(Math.round);
+            var ex = ox + Math.sin(a) * L, ey = oy + Math.cos(a) * L;
+            var g = ctx.createLinearGradient(ox, oy, ex, ey);
+            g.addColorStop(0, 'rgba(' + c + ',0.20)'); g.addColorStop(0.55, 'rgba(' + c + ',0.06)'); g.addColorStop(1, 'rgba(' + c + ',0)');
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.moveTo(ox - 3 * dpr, oy);
+            ctx.lineTo(ox + Math.sin(a - spread) * L, oy + Math.cos(a - spread) * L);
+            ctx.lineTo(ox + Math.sin(a + spread) * L, oy + Math.cos(a + spread) * L);
+            ctx.lineTo(ox + 3 * dpr, oy); ctx.closePath(); ctx.fill();
+            ctx.fillStyle = 'rgba(' + c + ',0.9)';
+            ctx.beginPath(); ctx.arc(ox, oy, 3 * dpr, 0, 6.283); ctx.fill();
+        }
+        ctx.globalCompositeOperation = 'source-over';
+        var show = s ? 1 : 0.5 + 0.5 * p;
+        for (var j = 0; j < crowd.length; j++) {
+            var q = crowd[j];
+            if (q.th > show) continue;
+            var sway = s ? 0 : Math.sin(t * 0.0011 + q.d * 1.4 + q.x * 0.0025 / dpr) * (2 + 7 * q.d) * dpr;
+            var tw = s ? 0.85 : 0.72 + 0.28 * Math.sin(t * 0.003 * q.sp + q.ph);
+            var alpha = (0.32 + 0.5 * q.d) * tw;
+            var col = q.warm ? '255,236,200' : '214,236,255';
+            if (q.d > 0.7) { ctx.fillStyle = 'rgba(' + col + ',' + (alpha * 0.12) + ')'; ctx.beginPath(); ctx.arc(q.x + sway, q.y, q.r * 3.4, 0, 6.283); ctx.fill(); }
+            ctx.fillStyle = 'rgba(' + col + ',' + alpha + ')';
+            if (q.r < 1.4) ctx.fillRect(q.x + sway, q.y, q.r * 1.5, q.r * 1.5);
+            else { ctx.beginPath(); ctx.arc(q.x + sway, q.y, q.r, 0, 6.283); ctx.fill(); }
+        }
+    }
+    sizeShow();
+    var rz; addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(sizeShow, 150); });
+
+    /* ── Visible-only modules, one master loop ── */
+    var mods = [];
+    var vio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target._mod.vis = e.isIntersecting; }); }, { rootMargin: '60px' });
+    function mod(el, tick) { var m = { el: el, tick: tick, vis: false }; el._mod = m; mods.push(m); vio.observe(el); return m; }
+    var running = false;
+    function loop(t) {
+        if (still()) { running = false; return; }
+        if (!document.hidden) {
+            drawShow(t);
+            for (var i = 0; i < mods.length; i++) if (mods[i].vis) mods[i].tick(t);
+        }
+        requestAnimationFrame(loop);
+    }
+    function start() { if (!running && !still()) { running = true; requestAnimationFrame(loop); } }
+
+    /* Flip board */
+    var DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+    var TYPES = ['CONCERT', 'FESTIVAL', 'SPORT', 'COMEDY', 'THEATRE', 'PRIDE', 'FAMILY', 'DANCE'];
+    function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+    function rowData() { return { s: pick(DAYS) + ' ' + (pick(TYPES) + '        ').slice(0, 8) + ' ' + (Math.random() < 0.72 ? 'BSL' : 'ISL'), st: Math.random() < 0.8 ? 'ok' : 'out' }; }
+    var rowsEl = document.getElementById('boardRows'), boardRows = [];
+    var SEED = [['SAT CONCERT  BSL', 'ok'], ['SUN FESTIVAL ISL', 'ok'], ['FRI SPORT    BSL', 'out'], ['THU COMEDY   BSL', 'ok'], ['SAT THEATRE  ISL', 'ok']];
+    SEED.forEach(function (sd) {
+        var row = document.createElement('div'); row.className = 'row';
+        var cells = [];
+        for (var i = 0; i < 16; i++) { var c = document.createElement('span'); c.className = 'c'; c.textContent = sd[0][i] === ' ' ? ' ' : sd[0][i]; row.appendChild(c); cells.push(c); }
+        var st = document.createElement('span'); st.className = 'st ' + sd[1]; row.appendChild(st);
+        rowsEl.appendChild(row); boardRows.push({ cells: cells, st: st, s: sd[0] });
+    });
+    function flipRow(r) {
+        var d = rowData();
+        r.cells.forEach(function (c, i) {
+            var ch = d.s[i] === ' ' ? ' ' : d.s[i];
+            if (c.textContent === ch) return;
+            var delay = i * 28;
+            setTimeout(function () { c.classList.remove('fl'); void c.offsetWidth; c.classList.add('fl'); }, delay);
+            setTimeout(function () { c.textContent = ch; }, delay + 130);
+        });
+        setTimeout(function () { r.st.className = 'st ' + d.st; }, 16 * 28 + 130);
+        r.s = d.s;
+    }
+    var boardBar = document.getElementById('boardBar'), boardNext = 0, CYCLE = 4200;
+    mod(document.getElementById('boardBox'), function (t) {
+        if (!boardNext) boardNext = t + CYCLE;
+        if (t >= boardNext) {
+            boardNext = t + CYCLE;
+            var a = Math.floor(Math.random() * boardRows.length), b = (a + 1 + Math.floor(Math.random() * (boardRows.length - 1))) % boardRows.length;
+            flipRow(boardRows[a]); setTimeout(function () { flipRow(boardRows[b]); }, 260);
+        }
+        boardBar.style.setProperty('--k', (1 - (boardNext - t) / CYCLE).toFixed(3));
+    });
+
+    /* Drafted request */
+    var FULL = "Hello,\n\nI'm Deaf and I use BSL. I'd love to come to your event.\n\nWill there be a BSL interpreter? If not, could you arrange one?\n\nThank you.";
+    var dText = document.getElementById('draftText'), sendBtn = document.getElementById('sendBtn'), d0 = 0, dShown = -1;
+    function draftAt(n) {
+        if (n === dShown) return; dShown = n;
+        dText.textContent = FULL.slice(0, n);
+        sendBtn.classList.toggle('ready', n >= FULL.length);
+    }
+    mod(document.getElementById('draftBox'), function (t) {
+        if (!d0) d0 = t;
+        var n = Math.floor((t - d0) / 1000 * 30);
+        if (n > FULL.length + 30 * 4.5) { d0 = t; n = 0; }
+        draftAt(Math.min(n, FULL.length));
+    });
+
+    /* Tool kit cards */
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.kit .card'));
+    var lastStep = -1;
+    mod(document.getElementById('kitBox'), function (t) {
+        var step = Math.floor(t / 1500);
+        if (step === lastStep) return; lastStep = step;
+        var k = Math.floor(step / 2) % 4, show = step % 2 === 0;
+        cards.forEach(function (c, i) { c.classList.toggle('flip', show && i === k); });
+    });
+
+    /* Deafblind-friendly theme */
+    var themeBox = document.getElementById('themeBox'), themeBtn = document.getElementById('themeBtn'), themeLbl = document.getElementById('themeLbl');
+    var themeAuto = true, themeNext = 0;
+    function setTheme(on) {
+        themeBox.classList.toggle('db', on); themeBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        themeLbl.textContent = on ? 'Theme: deafblind-friendly' : 'Theme: standard';
+    }
+    themeBtn.addEventListener('click', function () { themeAuto = false; setTheme(!themeBox.classList.contains('db')); });
+    mod(themeBox, function (t) {
+        if (!themeAuto) return;
+        if (!themeNext) themeNext = t + 2600;
+        if (t >= themeNext) { themeNext = t + 3200; setTheme(!themeBox.classList.contains('db')); }
+    });
+
+    /* Night-shift clock */
+    var ticksG = document.getElementById('ticks'), ticks = [];
+    function polar(r, deg) { var a = (deg - 90) * Math.PI / 180; return [150 + r * Math.cos(a), 150 + r * Math.sin(a)]; }
+    for (var i = 0; i < 48; i++) {
+        var big = i % 4 === 0, deg = i * 7.5, p1 = polar(big ? 124 : 129, deg), p2 = polar(138, deg);
+        var ln = document.createElementNS(NS, 'line');
+        ln.setAttribute('x1', p1[0].toFixed(1)); ln.setAttribute('y1', p1[1].toFixed(1)); ln.setAttribute('x2', p2[0].toFixed(1)); ln.setAttribute('y2', p2[1].toFixed(1));
+        ln.setAttribute('class', 'tk' + (big ? ' big' : ''));
+        ticksG.appendChild(ln); ticks.push(ln);
+    }
+    var hl = document.getElementById('hourLabels');
+    [['00', 0], ['06', 90], ['12', 180], ['18', 270]].forEach(function (h) {
+        var pp = polar(106, h[1]), tx = document.createElementNS(NS, 'text');
+        tx.setAttribute('x', pp[0].toFixed(1)); tx.setAttribute('y', pp[1].toFixed(1)); tx.setAttribute('class', 'hl'); tx.textContent = h[0];
+        hl.appendChild(tx);
+    });
+    var bk = polar(116, 30); document.getElementById('bkDot').setAttribute('cx', bk[0]); document.getElementById('bkDot').setAttribute('cy', bk[1]);
+    var bkT = document.getElementById('bkTxt'), bkp = polar(150, 30); bkT.setAttribute('x', (bkp[0] + 2).toFixed(1)); bkT.setAttribute('y', (bkp[1] - 6).toFixed(1));
+    var hand = document.getElementById('hand'), tip = document.getElementById('tip'), sweep = document.getElementById('sweep'), clockTime = document.getElementById('clockTime');
+    var logEl = document.getElementById('log'), sheet = {};
+    document.querySelectorAll('#callsheet li').forEach(function (li) { sheet[li.getAttribute('data-job')] = li; });
+    function fire(job) { var li = sheet[job]; li.classList.remove('fire'); void li.offsetWidth; li.classList.add('fire'); setTimeout(function () { li.classList.remove('fire'); }, 900); }
+    function logLine(time, txt) {
+        var li = document.createElement('li'); li.innerHTML = '<i>' + time + '</i><span></span>'; li.lastChild.textContent = txt;
+        logEl.insertBefore(li, logEl.firstChild);
+        while (logEl.children.length > 4) logEl.removeChild(logEl.lastChild);
+    }
+    function hhmm(m) { m = Math.floor(m) % 1440; var h = Math.floor(m / 60), mm = m % 60; return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm; }
+    function setHand(m) {
+        var deg = m / 1440 * 360, pt = polar(116, deg);
+        hand.setAttribute('x2', pt[0].toFixed(1)); hand.setAttribute('y2', pt[1].toFixed(1));
+        tip.setAttribute('cx', pt[0].toFixed(1)); tip.setAttribute('cy', pt[1].toFixed(1));
+        sweep.style.setProperty('--a', deg.toFixed(1) + 'deg');
+        clockTime.textContent = hhmm(m);
+    }
+    // Untimed jobs (daily, per date, per booking) fire at loose points in the sped-up day; only 2am is a real fixed time.
+    var LOOSE = { 1230: ['story', 'Story image emailed to a person'], 330: ['publish', 'Events auto-published'], 690: ['o2', 'O2 dates checked, page by page'], 930: ['story', 'Story image emailed to a person'] };
+    var c0 = 0, START = 22 * 60, prevM = START;
+    mod(document.getElementById('clockBox'), function (t) {
+        if (!c0) { c0 = t; prevM = START; }
+        var m = START + (t - c0) / 1000 * 40;
+        if (m - prevM > 120) prevM = m - 1; // resumed after being offscreen: skip ahead quietly
+        for (var b = Math.floor(prevM / 30) + 1; b * 30 <= m; b++) {
+            var mm = (b * 30) % 1440, idx = mm / 30;
+            var tk = ticks[idx]; tk.classList.add('hit'); (function (el) { setTimeout(function () { el.classList.remove('hit'); }, 650); })(tk);
+            if (mm === 120) { fire('backup'); logLine(hhmm(mm), 'Backup complete'); }
+            else if (mm % 120 === 0) { fire('enrich'); logLine(hhmm(mm), 'Images enriched, listing refreshed'); }
+            else { fire('alerts'); if (b % 3 === 0) logLine(hhmm(mm), 'App alerts checked'); }
+            var lo = LOOSE[mm];
+            if (lo) { fire(lo[0]); logLine('', lo[1]); }
+        }
+        prevM = m;
+        setHand(m % 1440);
+    });
+
+    /* PIPA chat: plays itself while visible */
+    var CHAT = [
+        [0, 'p', 'Hi, I\u2019m PIPA, Performance Interpreting\u2019s Personal Assistant. What can I help with?'],
+        [1200, 'u', 'Any BSL interpreted comedy coming up?'], [1900, 'dots'], [2700, 'tool', 'Searched upcoming interpreted events'], [3200, 'p', 'Here’s what’s coming up. Tap one for the details.'],
+        [4900, 'u', 'Is the venue step-free?'], [5600, 'dots'], [6300, 'tool', 'Looked up the venue’s access details'], [6800, 'p', 'Here are the venue’s access details.'],
+        [8500, 'u', 'How does booking an interpreter work?'], [9200, 'dots'], [9900, 'tool', 'Found one of PI’s signed videos'], [10400, 'vid', 'This one’s signed. It plays right here.'],
+        [12300, 'u', 'My event has no interpreter.'], [13000, 'dots'], [13800, 'link', 'I’ve made you a ready-made request.'],
+        [15600, 'u', 'I need help with something specific to my booking.'], [16300, 'dots'], [17200, 'hand', 'That one needs a person, so I’ve handed it over.']
+    ];
+    var CHAT_LEN = 22500;
+    var msgsEl = document.getElementById('msgs'), chatStep = 0, chat0 = 0;
+    function chatAdd(item) {
+        var last = msgsEl.lastElementChild;
+        if (last && last.classList.contains('dots')) msgsEl.removeChild(last);
+        var el = document.createElement('div'), kind = item[1];
+        if (kind === 'dots') { el.className = 'm dots'; el.innerHTML = '<i></i><i></i><i></i>'; }
+        else if (kind === 'u' || kind === 'tool') { el.className = 'm ' + kind; el.textContent = item[2]; }
+        else {
+            el.className = 'm p'; el.appendChild(document.createTextNode(item[2]));
+            if (kind === 'vid') { var v = document.createElement('div'); v.className = 'vid'; v.innerHTML = '<span></span><small><b>PI’s signed explainer</b>From PI’s own video library</small>'; el.appendChild(v); }
+            if (kind === 'link') { var l = document.createElement('span'); l.className = 'lk'; l.textContent = 'Request an interpreter →'; el.appendChild(l); }
+            if (kind === 'hand') { var h = document.createElement('span'); h.className = 'hand'; h.textContent = 'To a person: a summary of what you asked and what I tried. Contact form pre-filled with the right enquiry type.'; el.appendChild(h); }
+        }
+        msgsEl.appendChild(el);
+        while (msgsEl.children.length > 14) msgsEl.removeChild(msgsEl.firstElementChild);
+    }
+    function chatAll() { msgsEl.innerHTML = ''; CHAT.forEach(function (it) { if (it[1] !== 'dots') chatAdd(it); }); }
+    mod(document.getElementById('chatBox'), function (t) {
+        if (!chat0 || t - chat0 > CHAT_LEN) { chat0 = t; chatStep = 0; msgsEl.innerHTML = ''; }
+        while (chatStep < CHAT.length && t - chat0 >= CHAT[chatStep][0]) chatAdd(CHAT[chatStep++]);
+    });
+
+    /* Song insights: fills in section by section */
+    var secs = Array.prototype.slice.call(document.querySelectorAll('#insBox .sec')), insFoot = document.getElementById('insFoot'), ins0 = 0, insState = '';
+    var FOOT_GEN = 'Reading the stored lyrics only…', FOOT_DONE = 'Done. From the stored lyrics only, and cached until the lyrics change.';
+    mod(document.getElementById('insBox'), function (t) {
+        if (!ins0 || t - ins0 > 11000) ins0 = t;
+        var e = t - ins0, n = Math.max(0, Math.min(secs.length, Math.floor((e - 300) / 650) + 1));
+        secs.forEach(function (sc, i) { sc.classList.toggle('on', i < n); });
+        var st = n < secs.length ? FOOT_GEN : FOOT_DONE;
+        if (st !== insState) { insState = st; insFoot.textContent = st; }
+    });
+
+    /* Passes swing only while on screen */
+    var passIO = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.querySelectorAll('.pass').forEach(function (p) { p.classList.toggle('live', e.isIntersecting && !still()); }); }); });
+    passIO.observe(document.getElementById('passes'));
+
+    /* Counters */
+    var counted = false;
+    function runCounters() {
+        if (counted) return; counted = true;
+        var els = document.querySelectorAll('#counters b'), t0 = performance.now();
+        if (still()) return;
+        (function step(now) {
+            var k = Math.min(1, (now - t0) / 1600), e = 1 - Math.pow(1 - k, 3);
+            els.forEach(function (el) { el.textContent = Math.round(+el.getAttribute('data-to') * e).toLocaleString('en-GB'); });
+            if (k < 1) requestAnimationFrame(step);
+        })(t0);
+    }
+
+    /* Cue lights: nothing goes until a person says go */
+    var goBtn = document.getElementById('goBtn'), lStby = document.getElementById('lStby'), lGo = document.getElementById('lGo'), cueStatus = document.getElementById('cueStatus');
+    goBtn.addEventListener('click', function () {
+        lStby.classList.remove('lit'); lGo.classList.add('lit'); goBtn.disabled = true;
+        cueStatus.textContent = 'Go. Confirmed by a named person: you.';
+        setTimeout(function () {
+            lGo.classList.remove('lit'); lStby.classList.add('lit'); goBtn.disabled = false;
+            cueStatus.textContent = 'A new draft is standing by. It waits for you.';
+        }, 3800);
+    });
+
+    /* Reveals: poster, doors, feature map, setlist, counters */
+    var ro = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var el = e.target; ro.unobserve(el);
+            if (el.id === 'counters') { runCounters(); return; }
+            el.classList.add(el.classList.contains('door') ? 'open' : 'on');
+            if (el.classList.contains('feat')) { drawLinks(); setTimeout(drawLinks, 900); }
+        });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('#poster, .door, .feat, .setlist li, #counters').forEach(function (el) { ro.observe(el); });
+
+    var map = document.getElementById('map'), links = document.getElementById('links');
+    function drawLinks() {
+        var mr = map.getBoundingClientRect(), on = map.querySelectorAll('.feat.on'), out = '';
+        for (var i = 1; i < on.length; i++) {
+            var a = on[i - 1].querySelector('.pt').getBoundingClientRect(), b = on[i].querySelector('.pt').getBoundingClientRect();
+            var x1 = a.left - mr.left + 8, y1 = a.top - mr.top + 8, x2 = b.left - mr.left + 8, y2 = b.top - mr.top + 8;
+            var mx = (x1 + x2) / 2, my = Math.max(y1, y2) + 24;
+            out += '<path d="M' + x1 + ',' + y1 + ' Q' + mx + ',' + my + ' ' + x2 + ',' + y2 + '"/>';
+        }
+        links.innerHTML = out;
+    }
+    addEventListener('resize', drawLinks);
+
+    /* ── Still version: everything visible, fully drawn ── */
+    function applyStill() {
+        root.classList.toggle('still', still());
+        var btn = document.getElementById('motionBtn');
+        btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        btn.querySelector('span').textContent = paused ? 'Play motion' : 'Pause motion';
+        btn.querySelector('svg').innerHTML = paused ? '<path d="M7 4.5v15l13-7.5z"/>' : '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
+        if (reduce) btn.hidden = true;
+        if (still()) {
+            document.querySelectorAll('.door').forEach(function (d) { d.classList.add('open'); });
+            document.querySelectorAll('.feat, .setlist li, #poster').forEach(function (el) { el.classList.add('on'); });
+            document.querySelectorAll('.pass').forEach(function (p) { p.classList.remove('live'); });
+            cards.forEach(function (c) { c.classList.remove('flip'); });
+            draftAt(FULL.length);
+            chatAll(); secs.forEach(function (sc) { sc.classList.add('on'); }); insFoot.textContent = FOOT_DONE;
+            setHand(120); boardBar.style.setProperty('--k', 1);
+            if (!logEl.children.length) { logLine('02:00', 'Backup complete'); logLine('02:30', 'App alerts checked'); }
+            document.querySelectorAll('#counters b').forEach(function (el) { el.textContent = (+el.getAttribute('data-to')).toLocaleString('en-GB'); });
+            counted = true;
+            drawLinks();
+        } else {
+            document.querySelectorAll('#passes .pass').forEach(function (p) { p.classList.add('live'); });
+            chat0 = 0; ins0 = 0;
+            start();
+        }
+        frame(); drawShow(0);
+    }
+    document.getElementById('motionBtn').addEventListener('click', function () {
+        paused = !paused;
+        try { localStorage.setItem('tt-pi-motion', paused ? 'off' : 'on'); } catch (e) {}
+        applyStill();
+    });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) start(); });
+    if (!still()) { document.querySelectorAll('.counters b').forEach(function (el) { el.textContent = '0'; }); }
+    applyStill();
+})();
 </script>
-<script src="/js/nav.js?v=2" defer></script>
 </body>
 </html>

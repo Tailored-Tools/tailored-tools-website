@@ -1,217 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Knight Yoga, Case Study | Tailored Tools</title>
-    <meta name="description" content="A yoga teacher in Kent sent twelve answers on a Sunday evening and had a live site to react to within a day: a brand drawn from her name, classes for two teachers, and pages she edits herself.">
-    <link rel="canonical" href="https://tailored-tools.com/projects/good-knight-yoga">
-    <link rel="icon" href="/favicon.png?v=3" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tailored-tools.com/projects/good-knight-yoga">
-    <meta property="og:title" content="Good Knight Yoga: brief to live site within a day | Tailored Tools">
-    <meta property="og:description" content="Twelve answers on a Sunday evening. A live site with her name on it within a day. Classes she updates herself.">
-    <meta property="og:image" content="https://tailored-tools.com/images/projects/good-knight-yoga-desktop.jpg">
-    <meta property="og:locale" content="en_GB">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=15">
-    <link rel="stylesheet" href="/case-study.css?v=3">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Good Knight Yoga: brief to live site within a day",
-      "description": "Case study: a yoga, breathwork and meditation website for a Kent teacher, from brief to live prototype within a day.",
-      "image": "https://tailored-tools.com/images/projects/good-knight-yoga-desktop.jpg",
-      "author": { "@type": "Person", "name": "James Edwards", "url": "https://tailored-tools.com/about" },
-      "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com", "logo": "https://tailored-tools.com/tt-logo-dark.svg" },
-      "datePublished": "2026-10-02",
-      "mainEntityOfPage": "https://tailored-tools.com/projects/good-knight-yoga"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tailored-tools.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://tailored-tools.com/projects" },
-        { "@type": "ListItem", "position": 3, "name": "Good Knight Yoga", "item": "https://tailored-tools.com/projects/good-knight-yoga" }
-      ]
-    }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1c1330">
+<title>Good Knight Yoga, Case Study | Tailored Tools</title>
+<meta name="description" content="How a Kent yoga teacher's website became a night sky: her emblem as a constellation, a breathing ring that slows you down, health forms done properly, and pages she edits herself.">
+<link rel="canonical" href="https://tailored-tools.com/projects/good-knight-yoga">
+<link rel="icon" href="/favicon.png?v=3" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Good Knight Yoga: a website that breathes | Tailored Tools">
+<meta property="og:description" content="Her emblem as a constellation, a breathing ring, and the practical work underneath the calm.">
+<meta property="og:image" content="https://tailored-tools.com/images/projects/good-knight-yoga-desktop.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --night: #241839; --night-deep: #140d22; --twilight: #43306b; --lilac: #b9a7d9;
+    --starlight: #ece7f6; --silver: #cfc8de; --honey: #e9b45c; --honey-soft: #f6dfae;
+    --sage: #7d9b76; --display: 'Fraunces', Georgia, serif; --body: 'Karla', -apple-system, sans-serif;
+    --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #1c1330; scroll-behavior: smooth; }
+body { font-family: var(--body); color: var(--starlight); line-height: 1.65; overflow-x: hidden; background: transparent; }
+a { color: var(--honey); }
+
+/* ── The sky (fixed layers) ───────────────────────────────────── */
+/* Extends past the screen so iOS never shows a bare strip behind its toolbars */
+.sky { position: fixed; top: -25vh; bottom: -25vh; left: 0; right: 0; z-index: -3;
+    background: radial-gradient(1200px 800px at 75% 15%, #3a2a5e 0%, transparent 60%),
+                radial-gradient(900px 700px at 10% 90%, #2c1f47 0%, transparent 65%),
+                linear-gradient(180deg, #140d22 0%, #241839 45%, #2a1c44 100%); }
+#stars { position: fixed; left: 0; top: -10vh; width: 100%; height: 120vh; z-index: -2; pointer-events: none; }
+
+.moon {
+    position: fixed; z-index: -1; width: 74px; height: 74px; border-radius: 50%;
+    left: 0; top: 0; pointer-events: none; will-change: transform;
+    background: radial-gradient(circle at 38% 38%, #fff6dc 0%, var(--honey-soft) 55%, #e8c886 100%);
+    -webkit-mask: radial-gradient(circle at 74% 34%, transparent 0 41%, #000 42%);
+            mask: radial-gradient(circle at 74% 34%, transparent 0 41%, #000 42%);
+    filter: drop-shadow(0 0 18px rgba(246,223,174,0.45));
+}
+
+.knight { position: fixed; z-index: -1; right: 3vw; top: 50%; height: min(78vh, 760px); width: auto;
+    transform: translateY(-50%); pointer-events: none; opacity: 0.95; }
+.knight polyline { fill: none; stroke: var(--starlight); stroke-opacity: 0.42; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.knight .st { opacity: 0; transition: opacity 0.8s ease; }
+.knight .st.lit { opacity: 1; }
+.knight .st circle { fill: var(--starlight); }
+.knight .st.bright circle { fill: var(--honey-soft); }
+.knight .st.bright line { stroke: var(--honey); stroke-width: 1; stroke-opacity: 0.7; }
+.knight .st.lit circle { animation: twinkle var(--tw, 4s) ease-in-out infinite; }
+@keyframes twinkle { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ── TT bar ───────────────────────────────────────────────────── */
+.tt-bar { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1100px, calc(100% - 24px));
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 10px 9px 16px; border-radius: 999px; background: rgba(20,13,34,0.62);
+    border: 1px solid rgba(236,231,246,0.12); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.tt-bar .logo { display: block; width: 118px; height: 32px; background: url('/tt-logo-light.png') left center / contain no-repeat; }
+.tt-bar nav { display: flex; align-items: center; gap: 16px; }
+.tt-bar nav a { color: rgba(236,231,246,0.75); text-decoration: none; font-size: 14px; font-weight: 500; }
+.tt-bar nav a:hover { color: var(--honey); }
+.tt-bar nav a.cta { background: #ff6f20; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 700; }
+
+/* ── Layout ───────────────────────────────────────────────────── */
+.col { width: min(620px, calc(100% - 40px)); margin-left: max(20px, calc((100vw - 1100px) / 2)); }
+section { position: relative; padding: 18vh 0; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lilac); display: block; margin-bottom: 18px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
+h1 { font-size: clamp(44px, 7.4vw, 92px); margin-bottom: 26px; font-variation-settings: 'opsz' 144; }
+h1 em, h2 em { font-style: italic; color: var(--honey-soft); }
+h2 { font-size: clamp(34px, 5vw, 60px); margin-bottom: 22px; font-variation-settings: 'opsz' 120; }
+p.lead { font-size: clamp(18px, 2.1vw, 21px); color: rgba(236,231,246,0.82); max-width: 560px; margin-bottom: 18px; }
+p { font-size: 17.5px; color: rgba(236,231,246,0.78); margin-bottom: 16px; }
+p strong { color: var(--starlight); }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+.back { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.06em; color: rgba(236,231,246,0.55); text-decoration: none; margin-bottom: 28px; display: inline-block; }
+.back:hover { color: var(--honey); }
+.facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 30px; border-top: 1px solid rgba(236,231,246,0.14); padding-top: 22px; }
+.facts div { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(236,231,246,0.5); }
+.facts b { display: block; font-family: var(--display); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 22px; color: var(--starlight); margin-top: 4px; }
+.visit { display: inline-flex; gap: 8px; align-items: center; margin-top: 26px; color: var(--honey); font-weight: 700; text-decoration: none; }
+.scroll-hint { position: absolute; bottom: 5vh; left: max(20px, calc((100vw - 1100px) / 2)); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(236,231,246,0.4); }
+
+/* ── Noticed → made ───────────────────────────────────────────── */
+.noticed { display: grid; gap: 22px; margin-top: 40px; }
+.notice { display: grid; grid-template-columns: 1fr; border: 1px solid rgba(236,231,246,0.12); border-radius: 22px; overflow: hidden;
+    background: rgba(20,13,34,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.notice > div { padding: 22px 24px; }
+.notice .saw { border-bottom: 1px dashed rgba(236,231,246,0.16); }
+.notice .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lilac); display: block; margin-bottom: 6px; }
+.notice .made .tag { color: var(--honey); }
+.notice h3 { font-size: 26px; margin-bottom: 6px; }
+.notice p { font-size: 16px; margin: 0; }
+.specimen { margin-top: 18px; border-radius: 16px; background: rgba(36,24,57,0.7); border: 1px solid rgba(236,231,246,0.1); position: relative; overflow: hidden; }
+
+/* moon specimen */
+.moon-box { height: 170px; }
+.moon-box .m { position: absolute; width: 54px; height: 54px; left: 50%; top: 50%; margin: -27px 0 0 -27px; border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #fff6dc, var(--honey-soft) 55%, #e8c886);
+    -webkit-mask: radial-gradient(circle at var(--mx, 72%) var(--my, 32%), transparent 0 40%, #000 41%);
+            mask: radial-gradient(circle at var(--mx, 72%) var(--my, 32%), transparent 0 40%, #000 41%);
+    filter: drop-shadow(0 0 var(--glow, 10px) rgba(246,223,174,0.5)); will-change: transform; }
+.moon-box small, .ring-box small, .give-box small { position: absolute; bottom: 10px; left: 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236,231,246,0.45); }
+
+/* ring specimen + band */
+.ring-box { height: 190px; display: grid; place-items: center; }
+.ring { width: 88px; height: 88px; border-radius: 50%; border: 2px solid var(--lilac); position: relative; display: grid; place-items: center;
+    box-shadow: 0 0 30px rgba(185,167,217,0.25), inset 0 0 22px rgba(185,167,217,0.18); transform: scale(var(--b, 0.72)); transition: transform 0.2s linear; }
+.ring span { font-family: var(--display); font-style: italic; font-size: 15px; color: var(--starlight); transform: scale(calc(1 / var(--b, 0.72))); }
+
+/* give specimen */
+.give-box { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 10px; padding: 20px 14px 38px; }
+.give-box figure { text-align: center; }
+.give-box svg { width: 100%; height: auto; max-width: 120px; }
+.give-box svg line { stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset 1.4s ease; }
+.give-box.on svg line { stroke-dashoffset: 0; }
+.give-box figcaption { font-family: var(--display); font-style: italic; font-size: 14px; color: var(--starlight); line-height: 1.2; }
+.give-box figcaption span { display: block; font-family: var(--mono); font-style: normal; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(236,231,246,0.5); margin-top: 3px; }
+
+/* breathing band */
+.breathe { text-align: center; padding: 22vh 20px; }
+.breathe .big-ring { width: min(56vw, 260px); height: min(56vw, 260px); margin: 0 auto 34px; border-radius: 50%; border: 2px solid var(--lilac);
+    display: grid; place-items: center; transform: scale(var(--b, 0.72)); transition: transform 0.2s linear;
+    box-shadow: 0 0 80px rgba(185,167,217,0.28), inset 0 0 60px rgba(185,167,217,0.2); background: radial-gradient(circle, rgba(185,167,217,0.12), transparent 70%); }
+.breathe .big-ring span { font-family: var(--display); font-style: italic; font-size: clamp(22px, 4vw, 32px); transform: scale(calc(1 / var(--b, 0.72))); }
+.breathe p { max-width: 520px; margin: 0 auto; }
+.breathe .eyebrow { margin-bottom: 26px; }
+
+/* ── Underneath: feature constellation ────────────────────────── */
+.map { position: relative; margin-top: 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 26px; width: min(1100px, calc(100% - 40px)); margin-left: auto; margin-right: auto; }
+.map svg.links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.map svg.links line { stroke: var(--honey); stroke-opacity: 0.35; stroke-width: 1.2; stroke-dasharray: 4 6; }
+.feat { position: relative; padding: 22px 22px 22px 58px; border-radius: 18px; background: rgba(20,13,34,0.84); border: 1px solid rgba(236,231,246,0.1);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transform: translateY(16px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.feat.on { opacity: 1; transform: none; }
+.feat:nth-child(even) { margin-top: 56px; }
+.feat .pt { position: absolute; left: 22px; top: 25px; width: 18px; height: 18px; }
+.feat .pt::before, .feat .pt::after { content: ''; position: absolute; background: var(--honey); border-radius: 2px; }
+.feat .pt::before { left: 8px; top: 0; width: 2px; height: 18px; }
+.feat .pt::after { top: 8px; left: 0; height: 2px; width: 18px; }
+.feat.on .pt { animation: twinkle 3.6s ease-in-out infinite; }
+.feat h3 { font-size: 23px; margin-bottom: 8px; color: var(--starlight); }
+.feat p { font-size: 15.5px; margin: 0; }
+
+/* ── Screens ──────────────────────────────────────────────────── */
+.shots { width: min(980px, calc(100% - 40px)); margin: 50px auto 0; position: relative; padding-right: 22%; }
+.browser { border-radius: 12px; overflow: hidden; background: #1b1430; box-shadow: 0 40px 90px rgba(0,0,0,0.55); border: 1px solid rgba(236,231,246,0.1); }
+.browser .bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #2a1f42; }
+.browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(236,231,246,0.22); }
+.browser .bar span { margin-left: 12px; font-family: var(--mono); font-size: 11.5px; color: rgba(236,231,246,0.6); }
+.browser img, .phone img { display: block; width: 100%; height: auto; }
+.phone { position: absolute; right: 0; bottom: -36px; width: 26%; border: 6px solid #090511; background: #0f0a1c; border-radius: 15% / 7%; overflow: hidden;
+    container-type: inline-size; box-shadow: 0 30px 70px rgba(0,0,0,0.6); }
+.phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 var(--body); color: #fff; }
+.phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; }
+.phone img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+.caption { width: min(980px, calc(100% - 40px)); margin: 64px auto 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: rgba(236,231,246,0.5); }
+
+/* ── Moon-phase timeline ──────────────────────────────────────── */
+.phases { list-style: none; margin-top: 40px; position: relative; }
+.phases::before { content: ''; position: absolute; left: 21px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(var(--lilac), transparent); opacity: 0.4; }
+.phases li { display: grid; grid-template-columns: 44px 1fr; gap: 18px; align-items: start; padding-bottom: 30px; }
+.phase { width: 44px; height: 44px; border-radius: 50%; background: #0f0a1c; border: 1px solid rgba(236,231,246,0.18); position: relative; overflow: hidden; }
+.phase::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--honey-soft);
+    -webkit-mask: radial-gradient(circle at var(--px) 50%, transparent 0 49%, #000 50%);
+            mask: radial-gradient(circle at var(--px) 50%, transparent 0 49%, #000 50%);
+    opacity: 0; transition: opacity 1s ease; }
+.phases li.on .phase::after { opacity: 1; }
+.phases .when { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lilac); display: block; margin: 2px 0 4px; }
+.phases p { margin: 0; font-size: 16.5px; }
+
+/* ── CTA ──────────────────────────────────────────────────────── */
+.cta { text-align: center; padding: 22vh 20px 14vh; }
+.cta h2 { max-width: 760px; margin: 0 auto 20px; }
+.cta p { max-width: 520px; margin: 0 auto 32px; }
+.btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; }
+.btn.primary { background: var(--honey); color: #241839; box-shadow: 0 0 30px rgba(233,180,92,0.35); }
+.btn.ghost { border: 1.5px solid rgba(236,231,246,0.4); color: var(--starlight); }
+.goodnight { font-family: var(--display); font-style: italic; font-size: 20px; color: var(--lilac); margin-top: 60px; }
+.next { display: block; text-align: center; padding: 34px 20px; border-top: 1px solid rgba(236,231,246,0.1); color: var(--starlight); text-decoration: none; font-weight: 700; background: rgba(20,13,34,0.6); }
+.next span { color: var(--honey); }
+
+footer { background: #0D1B2A; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-family: 'Karla', sans-serif; font-size: 13px; }
+footer .fl { width: 200px; height: 70px; background: url('/tt-logo-light.png') center / contain no-repeat; margin: 0 auto 14px; }
+footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (min-width: 900px) {
+    .notice { grid-template-columns: 0.9fr 1.1fr; }
+    .notice .saw { border-bottom: 0; border-right: 1px dashed rgba(236,231,246,0.16); }
+}
+@media (max-width: 899px) {
+    .knight { right: 50%; transform: translate(50%, -50%); height: 70vh; opacity: 0.32; }
+    .map { grid-template-columns: 1fr; }
+    .feat:nth-child(even) { margin-top: 0; }
+    section { padding: 12vh 0; }
+}
+@media (max-width: 640px) {
+    .tt-bar nav a:not(.cta) { display: none; }
+    .moon { width: 50px; height: 50px; opacity: 0.75; }
+    .shots { padding-right: 28%; }
+    .phone { width: 32%; bottom: -22px; }
+    .col { width: calc(100% - 40px); margin-left: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .feat { opacity: 1; transform: none; }
+    .phases li .phase::after { opacity: 1; }
+}
+</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Article", "headline": "Good Knight Yoga: a website that breathes",
+  "author": { "@type": "Person", "name": "James Edwards" },
+  "publisher": { "@type": "Organization", "name": "Tailored Tools", "url": "https://tailored-tools.com" },
+  "image": "https://tailored-tools.com/images/projects/good-knight-yoga-desktop.jpg" }
+</script>
 </head>
 <body>
 
-<nav>
-    <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="/">Home</a></li>
-            <li><a href="/how-i-work">How I Work</a></li>
-            <li><a href="/projects" class="active">Work</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/ao/blog/">Blog</a></li>
-            <li><a href="/community/">Community</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="mailto:hello@tailored-tools.com" class="nav-cta">Get in Touch</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-</nav>
+<div class="sky" aria-hidden="true"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="moon" id="moon" aria-hidden="true"></div>
+<svg class="knight" id="knight" viewBox="0 0 572 724" aria-hidden="true"></svg>
 
-<section class="cs-hero">
-    <div class="cs-inner">
-        <a href="/projects" class="cs-back">&larr; All work</a><br>
-        <span class="cs-pill">Live</span>
-        <p class="cs-label">Yoga, Breathwork &amp; Meditation &middot; Kent</p>
-        <h1>Twelve answers on a Sunday. A live site within a day.</h1>
-        <p class="lead">Jasmine Knight teaches yoga for the people who look after everyone else. She sent her brief on a Sunday evening, and had a working website with her name on it to react to within a day.</p>
-        <a href="https://goodknightyoga.co.uk" class="cs-visit" target="_blank" rel="noopener">Visit goodknightyoga.co.uk &rarr;</a>
+<header class="tt-bar">
+    <a href="/" class="logo" aria-label="Tailored Tools home"></a>
+    <nav>
+        <a href="/projects">All work</a>
+        <a href="/pricing">Prices</a>
+        <a href="/brief/" class="cta">Start your brief</a>
+    </nav>
+</header>
+
+<main>
+<section class="hero">
+    <div class="col">
+        <a href="/projects" class="back">&larr; All work</a>
+        <span class="eyebrow">Case study &middot; Yoga, breathwork &amp; meditation &middot; Kent</span>
+        <h1>A website that <em>breathes</em> like her class.</h1>
+        <p class="lead">Jasmine Knight teaches yoga, breathwork and meditation for the people who look after everyone else. She'd been wary of website builders, but workplaces were starting to ask about her sessions, and she needed somewhere that felt like her to send them.</p>
+        <div class="facts">
+            <div>Brief<b>A Sunday evening</b></div>
+            <div>First live site<b>Within a day</b></div>
+            <div>Launched<b>7 August 2026</b></div>
+        </div>
+        <a class="visit" href="https://goodknightyoga.co.uk" target="_blank" rel="noopener">Visit goodknightyoga.co.uk &rarr;</a>
     </div>
+    <span class="scroll-hint" aria-hidden="true">Scroll, and watch the sky</span>
 </section>
 
-<section class="cs-section" data-nav-bg="light">
-    <div class="cs-inner">
-        <h2>The ask, and what was underneath it</h2>
-        <div class="cs-ask">
-            <div class="cs-ask-card asked">
-                <span class="tag">What she asked for</span>
-                <p>A website for her classes, 1:1s, corporate sessions and retreats.</p>
-            </div>
-            <div class="cs-ask-card found">
-                <span class="tag">What was really going on</span>
-                <ul>
-                    <li>Her people are caregivers, mums and teachers. The site had to feel like her classes: calm, warm and a little playful.</li>
-                    <li>Lots of ways in, each with different times, places and prices, plus a second teacher with classes of her own.</li>
-                    <li>Timetables and retreat details change often. Waiting on someone else for every update would kill the momentum.</li>
-                </ul>
-            </div>
-        </div>
-        <p class="cs-diagnosis">She needed a site that felt like stepping onto her mat, and that she could keep up to date herself.</p>
-    </div>
-</section>
+<section id="noticed">
+    <div class="col">
+        <span class="eyebrow">Before any code</span>
+        <h2>I didn't start with a template. I started with <em>her</em>.</h2>
+        <p class="lead">Every touch on her site comes from something I noticed about Jasmine, her name, and the people she teaches.</p>
 
-<div class="cs-shots">
-    <div class="cs-shots-stage">
-        <div class="cs-browser">
-            <div class="cs-browser-bar"><i></i><i></i><i></i><span>goodknightyoga.co.uk</span></div>
-            <img src="/images/projects/good-knight-yoga-desktop.jpg" alt="Good Knight Yoga homepage on a laptop: a night sky with a knight constellation and a crescent moon" width="1600" height="1000" loading="lazy">
-        </div>
-        <div class="cs-phone">
-            <img src="/images/projects/good-knight-yoga-mobile.jpg" alt="Good Knight Yoga homepage on a phone" width="780" height="1688" loading="lazy">
-        </div>
-    </div>
-    <p class="cs-shots-caption">Her logo, redrawn as a constellation in a night sky. Knight, goodnight: the name was the brief.</p>
-</div>
+        <div class="noticed">
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Her name is a bedtime.</h3><p>Knight. Goodnight. She'd always loved the pun.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>The whole site a night sky, with her emblem redrawn as a constellation. It's the one drawing itself behind these words as you scroll.</p></div>
+            </article>
 
-<section class="cs-section alt" data-nav-bg="light">
-    <div class="cs-inner">
-        <h2>What I built</h2>
-        <p>A soft, nocturnal website built from her own story and words, with the practical parts quietly doing their job underneath.</p>
-        <div class="cs-built">
-            <div class="cs-feature">
-                <h3>A brand drawn from her name</h3>
-                <p>Night sky, moon and candlelight, with a real named constellation for each of the people she teaches: the Crown, the Great Bear, the North Star, the Cup.</p>
-            </div>
-            <div class="cs-feature">
-                <h3>Every way in, clearly laid out</h3>
-                <p>Classes, 1:1s and breathwork, corporate sessions and retreats, each with its own page, times and prices.</p>
-            </div>
-            <div class="cs-feature">
-                <h3>Two teachers, one mailing list</h3>
-                <p>Jasmine's classes and Hazel's sit side by side, with enquiries routed through one place so contact details stay private.</p>
-            </div>
-            <div class="cs-feature">
-                <h3>She edits it herself</h3>
-                <p>A simple admin page for retreats and class details. Jasmine updated a retreat's venue and deposit herself, no developer needed.</p>
-            </div>
-            <div class="cs-feature">
-                <h3>Forms that go straight to her</h3>
-                <p>Enquiries, a 1:1 intake form and the mailing list all land in her own inbox.</p>
-            </div>
-            <div class="cs-feature">
-                <h3>Her domain, her account</h3>
-                <p>She registered goodknightyoga.co.uk herself, with her own card, following a step-by-step walkthrough written just for her.</p>
-            </div>
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>She notices you.</h3><p>Meeting Jasmine, you feel looked after before she's said a word.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A moon that leans towards your cursor as you explore, glowing a little as you get close. On a phone, it drifts by itself.</p>
+                    <div class="specimen moon-box" id="moonBox"><div class="m" id="miniMoon"></div><small id="moonHint">Try it: move your cursor here</small></div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>She teaches stillness.</h3><p>Her classes slow people down. A busy website would undo that.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>A breathing ring that paces you to four in, four held, six out, the same rhythm as her guided breathwork. It only breathes while you can see it.</p>
+                    <div class="specimen ring-box"><div class="ring breath"><span class="breath-word">in</span></div><small>Live, running now</small></div>
+                </div>
+            </article>
+
+            <article class="notice">
+                <div class="saw"><span class="tag">I noticed</span><h3>Her people give more than they get.</h3><p>Caregivers, mums, teachers, the ones who pour.</p></div>
+                <div class="made"><span class="tag">So I made</span><p>Each of them a constellation of their own. Real ones, chosen for meaning.</p>
+                    <div class="specimen give-box" id="giveBox">
+                        <figure style="color:#b9a7d9"><svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="7" y1="12" x2="12" y2="22" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="12" y1="22" x2="21" y2="29" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="21" y1="29" x2="32" y2="31" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="32" y1="31" x2="43" y2="29" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="43" y1="29" x2="52" y2="22" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="52" y1="22" x2="57" y2="12" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><circle cx="7" cy="12" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="12" cy="22" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="21" cy="29" r="1.6" fill="currentColor" fill-opacity=".85"/><path d="M32 26.8Q32.9 30.1 36.2 31Q32.9 31.9 32 35.2Q31.1 31.9 27.8 31Q31.1 30.1 32 26.8Z" fill="currentColor"/><circle cx="43" cy="29" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="52" cy="22" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="57" cy="12" r="1.6" fill="currentColor" fill-opacity=".85"/></svg><figcaption>The Crown<span>Caregivers</span></figcaption></figure>
+                        <figure style="color:#e9b45c"><svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="24" x2="14" y2="18" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="14" y1="18" x2="23" y2="20" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="23" y1="20" x2="32" y2="15" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="32" y1="15" x2="50" y2="11" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="50" y1="11" x2="56" y2="26" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="56" y1="26" x2="37" y2="29" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="37" y1="29" x2="32" y2="15" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><circle cx="5" cy="24" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="14" cy="18" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="23" cy="20" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="32" cy="15" r="1.6" fill="currentColor" fill-opacity=".85"/><path d="M50 6.8Q50.9 10.1 54.2 11Q50.9 11.9 50 15.2Q49.1 11.9 45.8 11Q49.1 10.1 50 6.8Z" fill="currentColor"/><circle cx="56" cy="26" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="37" cy="29" r="1.6" fill="currentColor" fill-opacity=".85"/></svg><figcaption>The Great Bear<span>Mums</span></figcaption></figure>
+                        <figure style="color:#a9c4a2"><svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="57" y1="9" x2="47" y2="13" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="47" y1="13" x2="39" y2="19" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="39" y1="19" x2="30" y2="24" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="30" y1="24" x2="19" y2="22" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="19" y1="22" x2="13" y2="31" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="13" y1="31" x2="25" y2="34" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="25" y1="34" x2="30" y2="24" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><path d="M57 4.8Q57.9 8.1 61.2 9Q57.9 9.9 57 13.2Q56.1 9.9 52.8 9Q56.1 8.1 57 4.8Z" fill="currentColor"/><circle cx="47" cy="13" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="39" cy="19" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="30" cy="24" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="19" cy="22" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="13" cy="31" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="25" cy="34" r="1.6" fill="currentColor" fill-opacity=".85"/></svg><figcaption>The North Star<span>Teachers</span></figcaption></figure>
+                        <figure style="color:#f6dfae"><svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="16" y1="8" x2="20" y2="16" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="20" y1="16" x2="28" y2="21" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="28" y1="21" x2="38" y2="20" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="38" y1="20" x2="44" y2="13" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="44" y1="13" x2="46" y2="7" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="28" y1="21" x2="33" y2="28" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="38" y1="20" x2="33" y2="28" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="33" y1="28" x2="24" y2="33" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><line x1="33" y1="28" x2="42" y2="33" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/><circle cx="16" cy="8" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="20" cy="16" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="28" cy="21" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="38" cy="20" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="44" cy="13" r="1.6" fill="currentColor" fill-opacity=".85"/><path d="M46 2.8Q46.9 6.1 50.2 7Q46.9 7.9 46 11.2Q45.1 7.9 41.8 7Q45.1 6.1 46 2.8Z" fill="currentColor"/><circle cx="33" cy="28" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="24" cy="33" r="1.6" fill="currentColor" fill-opacity=".85"/><circle cx="42" cy="33" r="1.6" fill="currentColor" fill-opacity=".85"/></svg><figcaption>The Cup<span>The ones who pour</span></figcaption></figure>
+                        <small>Her four constellations</small>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 </section>
 
-<section class="cs-section" data-nav-bg="light">
-    <div class="cs-inner">
-        <h2>How it went</h2>
-        <div class="cs-tl">
-            <div class="cs-tl-item">
-                <span class="cs-tl-when">Sunday evening</span>
-                <p>Twelve answers: her services, her story, "calm, warm and playful", and a couple of websites she loves.</p>
-            </div>
-            <div class="cs-tl-item">
-                <span class="cs-tl-when">Within a day</span>
-                <p><strong>A live site with her name on it</strong>: her story near-verbatim, her logo as a constellation, working forms, and clearly marked spaces for everything still to come.</p>
-            </div>
-            <div class="cs-tl-item">
-                <span class="cs-tl-when">The next morning</span>
-                <p>Her first notes arrive through the site's own feedback button. All of it is live by that evening.</p>
-            </div>
-            <div class="cs-tl-item">
-                <span class="cs-tl-when">7 August</span>
-                <p><strong>goodknightyoga.co.uk launches</strong>, with privacy and terms pages, a class interest list and her intake form.</p>
-            </div>
-        </div>
+<section class="breathe" aria-label="A pause">
+    <span class="eyebrow">A pause, the way her site does it</span>
+    <div class="big-ring breath"><span class="breath-word">in</span></div>
+    <p class="lead">Most websites shout. Hers asks you to breathe first. Visitors arrive at a class already a little calmer than they were.</p>
+</section>
+
+<section id="underneath">
+    <div class="col">
+        <span class="eyebrow">Underneath the calm</span>
+        <h2>It does the <em>practical</em> work too.</h2>
+        <p class="lead">A beautiful sky is no use if booking is a faff. Each of these joins up as you scroll, like the stars they sit on.</p>
+    </div>
+    <div class="map" id="map">
+        <svg class="links" id="links" aria-hidden="true"></svg>
+        <div class="feat"><span class="pt"></span><h3>Every way in</h3><p>Classes, 1:1s and breathwork, corporate sessions and retreats, each with its own page, times and prices.</p></div>
+        <div class="feat"><span class="pt"></span><h3>Health forms, done properly</h3><p>A proper pre-class health questionnaire, with GP consent only when it's needed. A QR code with her emblem at the centre takes people straight to it.</p></div>
+        <div class="feat"><span class="pt"></span><h3>Consent before anything personal</h3><p>The 1:1 enquiry asks permission before it asks about anyone's health, the way it should.</p></div>
+        <div class="feat"><span class="pt"></span><h3>She edits it herself</h3><p>Retreat details, class prices and times, and a homepage announcement: fifteen things she can change in seconds. The design stays safe, and every save pings me so I can check it.</p></div>
+        <div class="feat"><span class="pt"></span><h3>Two teachers, one list</h3><p>Classes with Hazel, her nan, sit beside her own. Every enquiry routes through one mailing list, so nobody's personal number goes public.</p></div>
+        <div class="feat"><span class="pt"></span><h3>Everything in her name</h3><p>She registered goodknightyoga.co.uk herself, in her own account, with a step-by-step guide written just for her.</p></div>
     </div>
 </section>
 
-<!-- Client quote: add once Jasmine's words are in. Keep it verbatim.
-<section class="cs-quote">
-    <blockquote>
-        <p>"QUOTE"</p>
-        <cite>Jasmine Knight &middot; Good Knight Yoga</cite>
-    </blockquote>
+<section id="screens">
+    <div class="col">
+        <span class="eyebrow">The live site</span>
+        <h2>goodknightyoga.co.uk</h2>
+    </div>
+    <div class="shots">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><span>goodknightyoga.co.uk</span></div><img src="/images/projects/good-knight-yoga-desktop.jpg" alt="Good Knight Yoga homepage on a laptop: a night sky with her knight emblem drawn as a constellation beside a crescent moon" width="1600" height="1001" loading="lazy"></div>
+        <div class="phone"><img src="/images/projects/good-knight-yoga-mobile.jpg" alt="Good Knight Yoga homepage on a phone, with the knight constellation above the title" width="780" height="1688" loading="lazy"></div>
+    </div>
+    <p class="caption">Her knight, drawn in stars. The moon follows your cursor on a laptop.</p>
 </section>
--->
 
-<section class="cs-cta">
-    <h2>Been putting it off for years?</h2>
-    <p>Twelve questions, ten minutes. You'll see a live version of yours before you pay anything.</p>
-    <div class="cs-cta-row">
-        <a href="/brief/" class="btn-accent">Start your brief</a>
-        <a href="/pricing" class="btn-ghost">See prices</a>
+<section id="timeline">
+    <div class="col">
+        <span class="eyebrow">How it went</span>
+        <h2>From new moon to <em>full</em>.</h2>
+        <ol class="phases">
+            <li><span class="phase" style="--px: 50%"></span><div><span class="when">Sunday evening</span><p>Twelve answers: her services, her story, "calm, warm and playful", and a couple of websites she loved.</p></div></li>
+            <li><span class="phase" style="--px: 30%"></span><div><span class="when">Within a day</span><p><strong>A live site with her name on it.</strong> Her story near word for word, her emblem as a constellation, working forms, and clearly marked spaces for everything still to come.</p></div></li>
+            <li><span class="phase" style="--px: 10%"></span><div><span class="when">The next morning</span><p>Her first notes arrive through the site's own feedback button. All of them live by that evening.</p></div></li>
+            <li><span class="phase" style="--px: -20%"></span><div><span class="when">Seventeen days</span><p>Five rounds of her feedback, each one live the same day: Hazel's classes, retreats, the corporate page, the health form.</p></div></li>
+            <li><span class="phase" style="--px: -100%"></span><div><span class="when">7 August</span><p><strong>goodknightyoga.co.uk goes public.</strong> A full moon.</p></div></li>
+        </ol>
     </div>
 </section>
 
-<div class="cs-next" data-nav-bg="light">
-    <a href="/projects/mane-london">Next: Mane London, who came in for a price list <span>&rarr;</span></a>
-</div>
+<!-- Client quote: add once Jasmine's words are in. Keep it verbatim. -->
+
+<section class="cta">
+    <h2>Been putting it off <em>for years</em>?</h2>
+    <p>Jasmine had. Twelve questions, ten minutes, and you'll see a live version of yours before you pay anything.</p>
+    <div class="btns">
+        <a href="/brief/" class="btn primary">Start your brief &rarr;</a>
+        <a href="/pricing" class="btn ghost">See prices</a>
+    </div>
+    <p class="goodnight">Good night. Good knight.</p>
+</section>
+</main>
+
+<a class="next" href="/projects/performance-interpreting">Next: Performance Interpreting, from one request to a whole platform <span>&rarr;</span></a>
 
 <footer>
-    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <div class="fl" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
-    <div class="footer-disclosure">
-        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
-        <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>
-        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
-        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
-    </div>
-    <p class="footer-meta">
-        &copy; 2026 Tailored Tools. All rights reserved.
-        &middot; <a href="/privacy.html">Privacy</a>
-        &middot; <a href="/terms.html">Terms</a>
-        &middot; <a href="/ethics.html">Ethics</a>
-    </p>
+    <p>Tailored Tools is the trading name of James Edwards (sole trader) &middot; <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    <p>&copy; 2026 Tailored Tools &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p>
 </footer>
 
 <script>
-document.getElementById('hamburger').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('navLinks').classList.toggle('open');
-});
+(function () {
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine = window.matchMedia('(pointer: fine)').matches;
+    var KNIGHT = {"lines": [[[271, 178], [250, 224], [188, 249], [152, 288], [127, 289], [110, 267], [112, 243], [170, 127], [215, 81], [207, 21], [237, 37], [262, 69], [336, 90], [381, 129], [417, 205], [424, 284], [402, 363], [337, 486], [335, 560]], [[329, 354], [351, 332], [344, 291], [362, 236], [355, 186], [330, 145]], [[328, 355], [309, 387], [253, 380], [238, 408], [244, 438]], [[335, 605], [292, 638]], [[296, 107], [324, 145]], [[342, 604], [431, 558], [512, 563], [539, 585], [552, 623], [546, 658], [524, 686], [479, 703], [414, 700], [349, 676], [292, 639]], [[305, 289], [323, 295]], [[284, 639], [196, 688], [111, 704], [51, 686], [22, 638], [36, 586], [63, 564], [99, 554], [182, 570], [284, 638]], [[335, 604], [239, 516], [206, 463], [193, 416], [198, 372], [219, 333], [294, 269], [321, 231], [331, 190], [324, 147]], [[399, 628], [342, 605]], [[188, 166], [218, 157]]], "stars": [[22.0, 638.0, 3.4, 1], [36.0, 586.0, 2.1, 0], [51.0, 686.0, 3.4, 1], [63.0, 564.0, 1.7, 0], [99.0, 554.0, 2.2, 0], [110.0, 267.0, 3.4, 1], [111.0, 704.0, 1.8, 0], [112.0, 243.0, 2.3, 0], [127.0, 289.0, 3.4, 1], [152.0, 288.0, 3.4, 1], [170.0, 127.0, 2.4, 0], [182.0, 570.0, 1.5, 0], [188.0, 166.0, 2.0, 0], [188.0, 249.0, 2.5, 0], [193.0, 416.0, 1.6, 0], [196.0, 688.0, 2.1, 0], [198.0, 372.0, 2.6, 0], [206.0, 463.0, 1.7, 0], [207.0, 21.0, 3.4, 1], [215.0, 81.0, 3.4, 1], [218.0, 157.0, 1.8, 0], [219.0, 333.0, 2.3, 0], [237.0, 37.0, 2.8, 0], [238.0, 408.0, 3.4, 1], [239.0, 516.0, 2.4, 0], [244.0, 438.0, 1.5, 0], [250.0, 224.0, 3.4, 1], [253.0, 380.0, 3.4, 1], [262.0, 69.0, 3.4, 1], [271.0, 178.0, 2.1, 0], [284.0, 638.0, 2.6, 0], [284.0, 639.0, 1.7, 0], [292.0, 638.0, 2.2, 0], [292.0, 639.0, 2.7, 0], [294.0, 269.0, 1.8, 0], [296.0, 107.0, 2.3, 0], [305.0, 289.0, 2.8, 0], [309.0, 387.0, 3.4, 1], [321.0, 231.0, 2.4, 0], [323.0, 295.0, 1.5, 0], [324.0, 145.0, 2.0, 0], [324.0, 147.0, 2.5, 0], [328.0, 355.0, 1.6, 0], [329.0, 354.0, 2.1, 0], [330.0, 145.0, 2.6, 0], [331.0, 190.0, 1.7, 0], [335.0, 560.0, 2.2, 0], [335.0, 604.0, 2.7, 0], [335.0, 605.0, 1.8, 0], [336.0, 90.0, 2.3, 0], [337.0, 486.0, 2.8, 0], [342.0, 604.0, 1.9, 0], [342.0, 605.0, 2.4, 0], [344.0, 291.0, 1.5, 0], [349.0, 676.0, 2.0, 0], [351.0, 332.0, 3.4, 1], [355.0, 186.0, 1.6, 0], [362.0, 236.0, 2.1, 0], [381.0, 129.0, 2.6, 0], [399.0, 628.0, 1.7, 0], [402.0, 363.0, 2.2, 0], [414.0, 700.0, 2.7, 0], [417.0, 205.0, 1.8, 0], [424.0, 284.0, 2.3, 0], [431.0, 558.0, 2.8, 0], [479.0, 703.0, 1.9, 0], [512.0, 563.0, 2.4, 0], [524.0, 686.0, 1.5, 0], [539.0, 585.0, 2.0, 0], [546.0, 658.0, 2.5, 0], [552.0, 623.0, 1.6, 0]]};
+
+    /* ── Knight constellation: draws with page progress ── */
+    var svg = document.getElementById('knight'), NS = 'http://www.w3.org/2000/svg';
+    var segs = [], total = 0, vertexAt = [];
+    KNIGHT.lines.forEach(function (pts) {
+        var pl = document.createElementNS(NS, 'polyline');
+        pl.setAttribute('points', pts.map(function (p) { return p.join(','); }).join(' '));
+        svg.appendChild(pl);
+        var len = 0;
+        for (var i = 0; i < pts.length; i++) {
+            if (i) len += Math.hypot(pts[i][0] - pts[i-1][0], pts[i][1] - pts[i-1][1]);
+            vertexAt.push({ x: pts[i][0], y: pts[i][1], t: total + len });
+        }
+        segs.push({ el: pl, start: total, len: len });
+        pl.style.strokeDasharray = len; pl.style.strokeDashoffset = len;
+        total += len;
+    });
+    var stars = KNIGHT.stars.map(function (s) {
+        var g = document.createElementNS(NS, 'g');
+        g.setAttribute('class', 'st' + (s[3] ? ' bright' : ''));
+        if (s[3]) g.innerHTML = '<line x1="' + (s[0]-8) + '" y1="' + s[1] + '" x2="' + (s[0]+8) + '" y2="' + s[1] + '"/><line x1="' + s[0] + '" y1="' + (s[1]-8) + '" x2="' + s[0] + '" y2="' + (s[1]+8) + '"/>';
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', s[0]); c.setAttribute('cy', s[1]); c.setAttribute('r', s[2] * 1.3);
+        g.appendChild(c);
+        g.style.setProperty('--tw', (3 + Math.random() * 3).toFixed(2) + 's');
+        svg.appendChild(g);
+        var best = Infinity, t = total;
+        vertexAt.forEach(function (v) { var d = Math.hypot(v.x - s[0], v.y - s[1]); if (d < best) { best = d; t = v.t; } });
+        return { el: g, t: t };
+    });
+
+    var moon = document.getElementById('moon');
+    var mx = 0, my = 0;
+    function frame() {
+        var max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+        var p = Math.min(1, Math.max(0, scrollY / max));
+        var drawn = still ? total : total * Math.min(1, 0.04 + p * 1.3);
+        segs.forEach(function (s) {
+            var local = Math.min(1, Math.max(0, (drawn - s.start) / s.len));
+            s.el.style.strokeDashoffset = s.len * (1 - local);
+        });
+        stars.forEach(function (s) { s.el.classList.toggle('lit', drawn >= s.t - 1); });
+        // Moon rises from the lower left, crosses the top, sets lower right
+        var w = innerWidth, h = innerHeight, size = moon.offsetWidth;
+        // Desktop: the arc stays over the sky on the right, clear of the text.
+        // Phones: a low arc across the top band.
+        var wide = w >= 900;
+        var x = ((wide ? 0.54 : 0.6) + (wide ? 0.4 : 0.32) * p) * w - size / 2;
+        var y = (wide ? 0.62 - 0.5 * Math.sin(Math.PI * p) : 0.2 - 0.1 * Math.sin(Math.PI * p)) * h - size / 2;
+        if (still) { x = w * 0.84; y = h * 0.12; }
+        moon.style.transform = 'translate(' + (x + mx) + 'px,' + (y + my) + 'px)';
+    }
+    var ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; frame(); }); } }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    if (fine && !still) addEventListener('pointermove', function (e) {
+        mx = (e.clientX / innerWidth - 0.5) * 30; my = (e.clientY / innerHeight - 0.5) * 20; onScroll();
+    });
+    frame();
+
+    /* ── Starfield with the odd shooting star ── */
+    var cv = document.getElementById('stars'), ctx = cv.getContext('2d'), pts = [], dpr = Math.min(1.5, devicePixelRatio || 1), shoot = null, nextShoot = 0;
+    function size() {
+        cv.width = innerWidth * dpr; cv.height = innerHeight * 1.2 * dpr;
+        var n = Math.round(innerWidth * innerHeight * 1.2 / 9000);
+        pts = []; for (var i = 0; i < n; i++) pts.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.2 + 0.3, ph: Math.random() * 6.3, sp: 0.4 + Math.random() * 1.2 });
+    }
+    function draw(t) {
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        for (var i = 0; i < pts.length; i++) {
+            var s = pts[i], a = still ? 0.6 : 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(s.ph + t / 1000 * s.sp));
+            ctx.globalAlpha = a; ctx.fillStyle = '#ece7f6';
+            ctx.beginPath(); ctx.arc(s.x * cv.width, s.y * cv.height, s.r * dpr, 0, 6.283); ctx.fill();
+        }
+        if (!still) {
+            if (!shoot && t > nextShoot) shoot = { x: Math.random() * 0.6 + 0.2, y: Math.random() * 0.3, t0: t };
+            if (shoot) {
+                var k = (t - shoot.t0) / 900;
+                if (k > 1) { shoot = null; nextShoot = t + 6000 + Math.random() * 6000; }
+                else {
+                    var sx = (shoot.x + k * 0.22) * cv.width, sy = (shoot.y + k * 0.12) * cv.height;
+                    var g = ctx.createLinearGradient(sx, sy, sx - 120 * dpr, sy - 65 * dpr);
+                    g.addColorStop(0, 'rgba(246,223,174,' + (1 - k) + ')'); g.addColorStop(1, 'rgba(246,223,174,0)');
+                    ctx.globalAlpha = 1; ctx.strokeStyle = g; ctx.lineWidth = 1.6 * dpr;
+                    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx - 120 * dpr, sy - 65 * dpr); ctx.stroke();
+                }
+            }
+        }
+        ctx.globalAlpha = 1;
+    }
+    var running = true;
+    function loop(t) { if (running) draw(t); if (!still) requestAnimationFrame(loop); }
+    size(); nextShoot = 2500;
+    addEventListener('resize', size);
+    document.addEventListener('visibilitychange', function () { running = !document.hidden; });
+    if (still) draw(0); else requestAnimationFrame(loop);
+
+    /* ── Breathing engine: 4 in, 4 hold, 6 out (same as hers) ── */
+    var breaths = Array.prototype.slice.call(document.querySelectorAll('.breath'));
+    var visible = new Set();
+    var bo = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? visible.add(e.target) : visible.delete(e.target); }); });
+    breaths.forEach(function (b) { bo.observe(b); });
+    var t0 = performance.now();
+    function breathe(now) {
+        var c = ((now - t0) / 1000) % 14, b, word;
+        if (c < 4) { b = 0.72 + 0.28 * (c / 4); word = 'in'; }
+        else if (c < 8) { b = 1; word = 'hold'; }
+        else { b = 1 - 0.28 * ((c - 8) / 6); word = 'out'; }
+        visible.forEach(function (el) {
+            el.style.setProperty('--b', b.toFixed(3));
+            var w = el.querySelector('.breath-word'); if (w.textContent !== word) w.textContent = word;
+        });
+        requestAnimationFrame(breathe);
+    }
+    if (!still) requestAnimationFrame(breathe);
+    else breaths.forEach(function (el) { el.style.setProperty('--b', 1); el.querySelector('.breath-word').textContent = 'breathe'; });
+
+    /* ── Mini moon specimen: follows the cursor, drifts on touch ── */
+    var box = document.getElementById('moonBox'), mm = document.getElementById('miniMoon');
+    var tx = 0, ty = 0, cx = 0, cy = 0, inside = false;
+    if (!fine) document.getElementById('moonHint').textContent = still ? 'Her moon' : 'On a phone, it drifts by itself';
+    box.addEventListener('pointermove', function (e) {
+        var r = box.getBoundingClientRect(); inside = true;
+        tx = e.clientX - r.left - r.width / 2; ty = e.clientY - r.top - r.height / 2;
+    });
+    box.addEventListener('pointerleave', function () { inside = false; });
+    function moonLoop(t) {
+        if (!inside) { tx = Math.cos(t / 2400) * box.clientWidth * 0.28; ty = Math.sin(t / 1700) * 40; }
+        cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
+        mm.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+        // the hollow of the crescent cups towards where you are
+        var ang = Math.atan2(cy, cx);
+        mm.style.setProperty('--mx', (50 - Math.cos(ang) * 22).toFixed(1) + '%');
+        mm.style.setProperty('--my', (50 - Math.sin(ang) * 22).toFixed(1) + '%');
+        mm.style.setProperty('--glow', inside ? '22px' : '10px');
+        requestAnimationFrame(moonLoop);
+    }
+    if (!still) requestAnimationFrame(moonLoop);
+
+    /* ── Reveal: give constellations, feature map, moon phases ── */
+    var ro = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); if (e.target.classList.contains('feat')) drawLinks(); } });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('.feat, #giveBox, .phases li').forEach(function (el) { ro.observe(el); });
+
+    /* Feature cards join up like stars */
+    var map = document.getElementById('map'), links = document.getElementById('links');
+    function drawLinks() {
+        var mr = map.getBoundingClientRect(), on = map.querySelectorAll('.feat.on'), out = '';
+        for (var i = 1; i < on.length; i++) {
+            var a = on[i-1].querySelector('.pt').getBoundingClientRect(), b = on[i].querySelector('.pt').getBoundingClientRect();
+            out += '<line x1="' + (a.left - mr.left + 9) + '" y1="' + (a.top - mr.top + 9) + '" x2="' + (b.left - mr.left + 9) + '" y2="' + (b.top - mr.top + 9) + '"/>';
+        }
+        links.innerHTML = out;
+    }
+    addEventListener('resize', drawLinks);
+})();
 </script>
-<script src="/js/nav.js?v=2" defer></script>
 </body>
 </html>

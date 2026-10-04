@@ -37,11 +37,17 @@ Brief sent on a Sunday evening; a live site to react to within a day. A brand dr
 - https://tailored-tools.com/projects/good-knight-yoga
 - Live site: https://goodknightyoga.co.uk
 
+### Ace & Jacks Poker League (weekly pub poker, Watford, Hemel and Dunstable) - in build
+Sixteen seasons ran on a football-league WordPress plugin. New phone-first public site built in a day; a back office designed around the administrator's three jobs (enter results, manage players, start a season in one step) is being built. Season 16 already migrated and checked with zero problems (41 nights, 197 players, 1,116 results). Live for Season 17 on 30 November 2026.
+- https://tailored-tools.com/projects/ace-jacks
+
 ## Closer to home
 
 ### Performance Interpreting
 A family-run BSL interpretation agency in the UK and Ireland (run by Marie Pascall). Built the PI Events App (launched May 2026). Month 1 traction: 800+ downloads, 110+ venues onboarded with access and contact data, around £5,000 of bookings generated through app-originated interpreter requests, and the first confirmed bookings already delivered. The wider PI OS booking platform is in progress beneath it.
 - https://tailored-tools.com/projects/performance-interpreting
+
+PIPA (Performance Interpreting Personal Assistant): an AI assistant on performanceinterpreting.co.uk that searches interpreted events, looks up venue access, plays PI's own signed videos and builds interpreter-request links, handing over to a person when it can't help. In PI's setlist tool it answers interpreters' questions and writes "Song insights" (themes, register, figurative language, ambiguous lines) from stored lyrics, clearly labelled as AI-generated. PIPA helps people; it never replaces interpreters.
 
 ### PI Events App (consumer-side case study)
 Native iOS and Android app for the UK Deaf community: every PI-delivered BSL/ISL event in one place, AI-drafted access request emails for events without coverage, a Communication Tool Kit for the venue itself, sign-language video on every screen, offline-first, BSL-first onboarding. Peer-recommended at DeafExpo 2026, featured by The Limping Chicken.

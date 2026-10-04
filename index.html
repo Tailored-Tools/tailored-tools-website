@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0D1B2A">
     <title>Tailored Tools - It's never just a website</title>
     <meta name="description" content="Websites and systems for owner-run businesses in Kent and beyond. You ask for a price list or a booking button; within days you see what your business actually needs, live, before you pay. From £750, no contract.">
 
@@ -22,6 +23,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Each client world's own type. Browsers only fetch the files a panel actually uses. -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Josefin+Sans:wght@400;600&family=Gelasio:ital,wght@0,400;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Karla:wght@400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Space+Grotesk:wght@300..600&family=Space+Mono&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/styles.css?v=15">
 
@@ -38,8 +41,9 @@
             --stamp:   #E4521B;
             --display: 'Bricolage Grotesque', 'Inter', sans-serif;
             --mono:    'DM Mono', ui-monospace, Menlo, monospace;
+            --suit:    'Apple Symbols', 'Segoe UI Symbol', 'DejaVu Sans', 'Bodoni Moda', serif;
         }
-        body { background: var(--paper); color: var(--ink); }
+        body { background: var(--paper); color: var(--ink); overflow-x: hidden; }
 
         /* Paper grain over the light sections, static so it costs nothing */
         .grain { position: relative; isolation: isolate; }
@@ -63,7 +67,7 @@
             font-weight: 700; font-size: 16px; padding: 15px 24px; border-radius: 8px;
             transition: transform 0.2s ease, background 0.2s, color 0.2s, box-shadow 0.2s;
         }
-        .btn-primary { background: var(--orange, #ff6f20); background: #ff6f20; color: #fff; box-shadow: 0 6px 0 #c94d0c; }
+        .btn-primary { background: #ff6f20; color: #fff; box-shadow: 0 6px 0 #c94d0c; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #c94d0c; }
         .btn-primary:active { transform: translateY(4px); box-shadow: 0 2px 0 #c94d0c; }
         .btn-line { color: var(--ink); border: 2px solid var(--ink); }
@@ -74,8 +78,7 @@
         /* ── Hero ─────────────────────────────────────────────────── */
         .hero { padding: 72px 24px 96px; overflow: hidden; }
         .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
-        .hero .wrap > * { min-width: 0; }
-        .changes .wrap > *, .asks-grid > * { min-width: 0; }
+        .hero .wrap > *, .changes .wrap > * { min-width: 0; }
         .hero h1 { font-size: clamp(50px, 7.6vw, 104px); color: var(--ink); margin-bottom: 30px; }
         .hero h1 .u { position: relative; white-space: nowrap; }
         .hero h1 .u svg { position: absolute; left: -2%; bottom: -0.12em; width: 104%; height: 0.3em; overflow: visible; }
@@ -97,7 +100,7 @@
                     mask: linear-gradient(#000 0 0) top / 100% calc(100% - 8px) no-repeat,
                           radial-gradient(circle at 50% 100%, transparent 5.5px, #000 6px) bottom / 15px 8px repeat-x;
         }
-        .ticket-head { display: flex; justify-content: space-between; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding-bottom: 12px; border-bottom: 1.5px dashed var(--rule); margin-bottom: 12px; }
+        .ticket-head { display: flex; justify-content: space-between; gap: 10px; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding-bottom: 12px; border-bottom: 1.5px dashed var(--rule); margin-bottom: 12px; }
         .ticket-row { display: grid; grid-template-columns: 62px 1fr; gap: 8px; font-size: 12.5px; margin-bottom: 4px; }
         .ticket-row b { font-weight: 400; color: var(--muted); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 2px; }
         .ticket-ask { margin: 14px 0 16px; padding-top: 12px; border-top: 1.5px dashed var(--rule); }
@@ -124,22 +127,24 @@
         .ticket-wrap.hit { animation: jolt 0.32s ease-out; }
         @keyframes jolt { 0%,100% { translate: 0 0; } 30% { translate: 0 3px; } 60% { translate: 0 -1px; } }
 
-        /* Hero ticket stack */
+        /* Hero ticket stack: three slots, five tickets taking turns at the front */
         .stack-holder { width: 100%; height: calc(600px * var(--s, 1)); }
         .stack { position: relative; width: 540px; height: 600px; transform: scale(var(--s, 1)); transform-origin: top left; }
-        .stack a { position: absolute; width: 258px; text-decoration: none; transition: transform 0.35s cubic-bezier(.2,.9,.3,1); }
-        .stack .t-velma { top: 0;     left: 0;     transform: rotate(-5deg); }
-        .stack .t-gky   { top: 44px;  left: 282px; transform: rotate(5deg); }
-        .stack .t-mane  { top: 322px; left: 140px; transform: rotate(-1.5deg); z-index: 2; }
-        .stack a:hover { transform: rotate(0deg) translateY(-10px); z-index: 5; }
-        .stack .ticket-wrap { opacity: 0; translate: 0 40px; animation: dealIn 0.7s cubic-bezier(.2,.9,.3,1) forwards; }
-        .stack .t-gky .ticket-wrap   { animation-delay: 0.15s; }
-        .stack .t-velma .ticket-wrap { animation-delay: 0.3s; }
-        .stack .t-mane .ticket-wrap  { animation-delay: 0.45s; }
-        @keyframes dealIn { to { opacity: 1; translate: 0 0; } }
+        .tk { position: absolute; top: 0; left: 0; width: 258px; text-decoration: none;
+              --x: 140px; --y: 322px; --r: -1.5deg; --dy: 0px;
+              transform: translate(var(--x), calc(var(--y) + var(--dy))) rotate(var(--r));
+              transition: transform 0.7s cubic-bezier(.2,.9,.3,1), opacity 0.45s ease; }
+        .tk.s-L { --x: 0px;   --y: 0px;  --r: -5deg; z-index: 1; }
+        .tk.s-R { --x: 282px; --y: 44px; --r: 5deg;  z-index: 1; }
+        .tk.s-F { z-index: 3; }
+        .tk.s-off { opacity: 0; visibility: hidden; pointer-events: none; }
+        .tk.pre { --dy: 40px; opacity: 0; transition: none; }
+        .tk.gone { opacity: 0; pointer-events: none; }
+        .tk .ticket-wrap { transition: translate 0.3s ease; }
+        .tk:hover .ticket-wrap, .tk:focus-visible .ticket-wrap { translate: 0 -10px; }
 
         /* ── Live ticker ──────────────────────────────────────────── */
-        .ticker { background: var(--ink); color: #fff; overflow: hidden; padding: 16px 0; border-top: 3px solid #ff6f20; }
+        .ticker { background: var(--ink); color: #fff; overflow: hidden; padding: 16px 0; border-top: 3px solid #ff6f20; position: relative; z-index: 2; }
         .ticker-track { display: flex; gap: 48px; width: max-content; animation: tick 38s linear infinite; }
         .ticker:hover .ticker-track { animation-play-state: paused; }
         .ticker a { font-family: var(--mono); font-size: 13.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.82); text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; }
@@ -148,48 +153,212 @@
         .ticker .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #ff6f20; white-space: nowrap; }
         @keyframes tick { to { transform: translateX(-50%); } }
 
-        /* ── The asks (sticky stage) ──────────────────────────────── */
-        .asks { background: var(--ink); color: #fff; padding: 110px 24px 40px; }
-        .asks-intro { max-width: 760px; margin-bottom: 30px; }
-        .asks-intro h2 { font-size: clamp(40px, 6vw, 76px); color: #fff; margin-bottom: 20px; }
-        .asks-intro h2 span { color: #ff6f20; }
-        .asks-intro p { font-size: 19px; color: rgba(255,255,255,0.66); line-height: 1.6; max-width: 600px; }
-        .asks-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
-        .chapter { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 8vh 0; }
-        .chapter .ticket-wrap { max-width: 340px; margin-bottom: 30px; transform: rotate(-1.5deg); }
-        .chapter:nth-child(2) .ticket-wrap { transform: rotate(1.2deg); }
-        .ch-under { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.7); margin-bottom: 18px; max-width: 480px; }
-        .ch-under strong { color: #fff; }
-        .ch-got { list-style: none; margin: 0 0 22px; padding: 0; max-width: 480px; }
-        .ch-got li { position: relative; padding-left: 28px; font-size: 16px; line-height: 1.5; color: #fff; margin-bottom: 10px; }
-        .ch-got li::before { content: ''; position: absolute; left: 0; top: 7px; width: 14px; height: 8px; border-left: 2.5px solid #ff6f20; border-bottom: 2.5px solid #ff6f20; transform: rotate(-45deg); }
-        .ch-time { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .ch-time i { font-style: normal; color: #ff6f20; }
-        .ch-link { color: #ff6f20; font-weight: 700; text-decoration: none; font-size: 16px; }
-        .ch-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-        .ch-shot { display: none; }
+        /* ── The worlds sampler ───────────────────────────────────────
+           One sticky backdrop holds a layer per client world. As each panel
+           crosses the middle of the screen its layer cross-fades in and only
+           that world's motion runs. Without JS (or with reduced motion) each
+           panel carries its own background instead. */
+        .worlds { position: relative; padding: 0; background: var(--ink); color: #fff; }
+        .wbg { display: none; }
+        .worlds.live .wbg { display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+        .wbg-pin { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; }
+        .wl { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s cubic-bezier(.4,0,.2,1); background: var(--w-bg); overflow: hidden; pointer-events: none; }
+        .wl.on { opacity: 1; }
+        .wl canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+        .wl:not(.on) *, .worlds.live .w:not(.on) * { animation-play-state: paused !important; }
 
-        .stage { position: sticky; top: 96px; height: calc(100vh - 136px); display: flex; align-items: center; }
-        .stage-inner { position: relative; width: 100%; padding-right: 22%; }
-        .browser { border-radius: 12px; overflow: hidden; background: #1b2a3a; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
-        .browser-bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #24364a; }
-        .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.22); }
-        .browser-bar span { margin-left: 12px; font-family: var(--mono); font-size: 11.5px; color: rgba(255,255,255,0.6); transition: opacity 0.3s; }
-        .screens { position: relative; aspect-ratio: 16 / 10; }
-        .screens img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.03); transition: opacity 0.6s ease, transform 0.9s cubic-bezier(.2,.9,.3,1); }
-        .screens img.on { opacity: 1; transform: scale(1); }
-        .phone { position: absolute; right: 0; bottom: -34px; width: 26%; max-width: 200px; border-radius: 26px; border: 7px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-        .phone .screens { aspect-ratio: 9 / 19.5; }
-        .phone .screens img { border-radius: 0 0 11cqw 11cqw; }
-        /* Phone frame: status bar so curved corners never clip the site */
-        .phone { container-type: inline-size; background: #0b1622; border-color: #060e17; border-radius: 15% / 7%; }
-        .phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
-        .phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 2; }
-        .phone > img, .phone > .screens { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+        /* World palettes (backdrop layer and panel share them) */
+        .k-ink  { --w-bg: radial-gradient(900px 600px at 80% 110%, rgba(255,111,32,0.16), transparent 70%), #0D1B2A; }
+        .k-mane { --w-bg: radial-gradient(900px 640px at 80% 22%, #FFFEF8 0%, transparent 62%), radial-gradient(800px 600px at 8% 92%, #F3E8CF 0%, transparent 66%), linear-gradient(180deg, #FCF8EE 0%, #FBF5E8 55%, #F8F0DF 100%);
+                  --w-ink: #5B5346; --w-head: #1E1A14; --w-acc: #8C6A2B; --w-btn: #1E1A14; --w-btn-ink: #F1E2B0; --w-bar: #2B241B; --w-frame: #1F1A14;
+                  --w-display: 'Bodoni Moda', Didot, Georgia, serif; --w-body: 'Josefin Sans', 'Avenir Next', sans-serif; --w-mark: '\2726\FE0E'; }
+        .k-cp   { --w-bg: radial-gradient(1100px 760px at 84% 18%, rgba(218,205,208,0.6) 0%, transparent 62%), radial-gradient(900px 700px at 6% 86%, rgba(190,202,180,0.38) 0%, transparent 66%), linear-gradient(180deg, #e9e3df 0%, #f0ece6 28%, #f8f6f0 58%, #f2f2ea 100%);
+                  --w-ink: #3b4654; --w-head: #132f4d; --w-acc: #5d7050; --w-btn: #132f4d; --w-btn-ink: #fff; --w-bar: #1d3a58; --w-frame: #0e2238;
+                  --w-display: Georgia, 'Gelasio', 'Times New Roman', serif; --w-body: Tahoma, Verdana, Geneva, 'Segoe UI', sans-serif; --w-mark: ''; }
+        .k-gky  { --w-bg: radial-gradient(1200px 800px at 75% 15%, #3a2a5e 0%, transparent 60%), radial-gradient(900px 700px at 10% 90%, #2c1f47 0%, transparent 65%), linear-gradient(180deg, #140d22 0%, #241839 45%, #2a1c44 100%);
+                  --w-ink: rgba(236,231,246,0.8); --w-head: #ece7f6; --w-acc: #e9b45c; --w-btn: #e9b45c; --w-btn-ink: #241839; --w-bar: #2a1f42; --w-frame: #090511;
+                  --w-display: 'Fraunces', Georgia, serif; --w-body: 'Karla', -apple-system, sans-serif; --w-mark: '\2727\FE0E'; }
+        .k-aj   { --w-bg: radial-gradient(1100px 700px at 62% 22%, rgba(245,239,225,0.085) 0%, transparent 62%), radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(4,16,11,0.55) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"), #0f3526;
+                  --w-ink: rgba(245,239,225,0.82); --w-head: #f5efe1; --w-acc: #b3905a; --w-btn: #f5efe1; --w-btn-ink: #0a271c; --w-bar: #0a271c; --w-frame: #07160f;
+                  --w-display: 'Bodoni Moda', Georgia, serif; --w-body: 'Barlow', -apple-system, sans-serif; --w-mark: '\2660\FE0E'; }
+        .k-pi   { --w-bg: radial-gradient(900px 520px at 68% 22%, rgba(0,120,196,0.30) 0%, transparent 70%), radial-gradient(1400px 420px at 50% 96%, rgba(224,122,60,0.13) 0%, transparent 70%), linear-gradient(180deg, #060F2E 0%, #04073a 30%, #020142 62%, #03022c 100%);
+                  --w-ink: rgba(255,255,255,0.84); --w-head: #fff; --w-acc: #EAB308; --w-btn: #EAB308; --w-btn-ink: #020142; --w-bar: #0b1238; --w-frame: #03061f;
+                  --w-display: 'DM Serif Display', Georgia, serif; --w-body: 'DM Sans', system-ui, sans-serif; --w-mark: ''; }
+        .k-ss   { --w-bg: radial-gradient(900px 700px at 78% 38%, rgba(201,169,106,0.13) 0%, transparent 60%), radial-gradient(1000px 800px at 8% 92%, #1f4434 0%, transparent 62%), linear-gradient(170deg, #0d1f16 0%, #132A1F 40%, #173528 75%, #1a3a2e 100%);
+                  --w-ink: rgba(242,237,227,0.8); --w-head: #F2EDE3; --w-acc: #c9a96a; --w-btn: #c9a96a; --w-btn-ink: #0d1f16; --w-bar: #1a3a2e; --w-frame: #07120d;
+                  --w-display: 'Newsreader', Georgia, serif; --w-body: 'Space Grotesk', -apple-system, sans-serif; --w-mark: ''; }
 
-        .stage-dots { position: absolute; left: 0; bottom: -64px; display: flex; gap: 8px; }
-        .stage-dots span { width: 26px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18); transition: background 0.3s, width 0.3s; }
-        .stage-dots span.on { background: #ff6f20; width: 44px; }
+        /* Intro and the bigger-builds divider sit on TT ink */
+        .w-intro, .w-div { position: relative; z-index: 1; padding: 110px 24px 40px; color: #fff; background: #0D1B2A; }
+        .w-div { background: linear-gradient(180deg, rgba(13,27,42,0) 0, #0D1B2A 140px); }
+        .w-intro { padding-bottom: 10px; }
+        .w-intro .wrap, .w-div .wrap { width: 100%; }
+        .w-intro h2 { font-size: clamp(40px, 6vw, 76px); color: #fff; margin-bottom: 20px; max-width: 800px; }
+        .w-intro h2 span, .w-div h2 span { color: #ff6f20; }
+        .w-intro p, .w-div p { font-size: 19px; color: rgba(255,255,255,0.66); line-height: 1.6; max-width: 600px; }
+        .w-intro .hint { margin-top: 28px; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+        .w-intro .hint i { font-style: normal; color: #ff6f20; padding-left: 6px; }
+        .w-div { min-height: 64vh; display: flex; align-items: center; padding: 110px 24px 60px; }
+        .w-div h2 { font-size: clamp(38px, 5.4vw, 70px); color: #fff; margin-bottom: 22px; }
+
+        /* A client panel */
+        .w { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 118px 24px 110px; color: var(--w-ink); font-family: var(--w-body); }
+        .worlds:not(.live) .w { background: var(--w-bg); overflow: hidden; }
+        .w-in { position: relative; z-index: 1; width: 100%; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
+        .w.flip .w-copy { order: 2; }
+        .worlds.live .w-in { opacity: 0.25; translate: 0 22px; transition: opacity 0.9s cubic-bezier(.2,.9,.3,1), translate 0.9s cubic-bezier(.2,.9,.3,1); }
+        .worlds.live .on > .w-in { opacity: 1; translate: 0 0; }
+
+        .w-name { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; color: var(--w-acc); font-family: var(--w-display); font-size: 15px; letter-spacing: 0.3em; text-transform: uppercase; line-height: 1.2; }
+        .w-copy .ticket-wrap { max-width: 330px; transform: rotate(-1.5deg); margin-bottom: 30px; }
+        .w.flip .w-copy .ticket-wrap { transform: rotate(1.2deg); }
+        .w-got { font-family: var(--w-display); font-weight: 400; font-size: clamp(29px, 3.1vw, 42px); line-height: 1.1; letter-spacing: -0.01em; color: var(--w-head); margin-bottom: 22px; }
+        .w-got b { display: block; font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--w-acc); margin-bottom: 12px; line-height: 1.2; }
+        .w-got em { font-style: italic; }
+        .w-pts { list-style: none; margin: 0 0 28px; padding: 0; max-width: 470px; }
+        .w-pts li { position: relative; padding-left: 26px; font-size: 16.5px; line-height: 1.5; color: var(--w-ink); margin-bottom: 9px; }
+        .w-pts li::before { content: var(--w-mark); position: absolute; left: 0; top: 0; color: var(--w-acc); font-family: var(--suit); }
+        .w-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+        .w-link { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; background: var(--w-btn); color: var(--w-btn-ink); font-family: var(--w-body); font-weight: 700; font-size: 16px; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .w-link span { display: inline-block; transition: translate 0.25s ease; }
+        .w-link:hover { transform: translateY(-2px); }
+        .w-link:hover span { translate: 4px 0; }
+        .w-sub { color: var(--w-acc); font-weight: 700; text-decoration: none; font-size: 15.5px; }
+        .w-sub:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+        /* Screens: the worlds' laptop + phone frame */
+        .w-art { position: relative; }
+        .w-shot { position: relative; padding-right: 22%; }
+        .w-browser { border-radius: 12px; overflow: hidden; background: var(--w-bar); box-shadow: 0 40px 80px rgba(0,0,0,0.38); border: 1px solid rgba(255,255,255,0.08); }
+        .w-browser .bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: var(--w-bar); }
+        .w-browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.22); }
+        .w-browser .bar span { margin-left: 12px; font-family: var(--mono); font-size: 11.5px; color: rgba(255,255,255,0.62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .w-browser img, .w-phone img { display: block; width: 100%; height: auto; }
+        .w-phone { position: absolute; right: 0; bottom: -34px; width: 26%; border: 6px solid var(--w-frame); background: var(--w-frame); border-radius: 15% / 7%; overflow: hidden; container-type: inline-size; box-shadow: 0 30px 60px rgba(0,0,0,0.45); }
+        .w-phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
+        .w-phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 2; }
+        .w-phone img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+
+        /* The live specimen lifted from each world, floating on the screens */
+        .w-chip { position: absolute; left: -28px; bottom: -46px; z-index: 3; }
+        .w-chip small { position: absolute; left: 12px; bottom: 9px; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; }
+
+        /* Mane: stylist levels reprice the menu */
+        .k-mane .w-name { font-size: 16px; letter-spacing: 0.34em; }
+        .k-mane .w-pts li::before { font-size: 13px; top: 2px; }
+        .foil { color: #8F6E2B; background: linear-gradient(100deg,#8F6E2B 0 30%,#9A7832 38%,#B8923F 45%,#E9D49A 50%,#B8923F 55%,#9A7832 62%,#8F6E2B 70% 100%);
+            background-size: 300% 100%; background-position: 100% 0; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: glint 9s cubic-bezier(.37,0,.63,1) infinite; padding-right: 0.06em; }
+        @keyframes glint { 0% { background-position: 100% 0; } 45% { background-position: 0% 0; } 100% { background-position: 0% 0; } }
+        .chip-mane { width: 256px; background: #FFFDF7; border: 1px solid #E8DCBC; border-radius: 14px; padding: 12px 12px 32px; box-shadow: 0 26px 50px -22px rgba(30,26,20,0.5); font-family: 'Josefin Sans', sans-serif; color: #1E1A14; position: relative; }
+        .chip-mane .pills { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #E8DCBC; border-radius: 999px; padding: 3px; background: #FCF8EE; }
+        .chip-mane .slider { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / 3); border-radius: 999px; background: #1E1A14; transform: translateX(calc(var(--lv, 0) * 100%)); transition: transform 0.55s cubic-bezier(.22,.8,.24,1); }
+        .chip-mane .pills b { position: relative; z-index: 1; text-align: center; font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 0 6px; transition: color 0.35s; }
+        .chip-mane .pills b.on { color: #F1E2B0; }
+        .chip-mane .note { text-align: center; font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-size: 13.5px; color: #5B5346; margin: 8px 0 2px; }
+        .chip-mane ul { list-style: none; margin: 0; padding: 0; }
+        .chip-mane li { display: flex; align-items: baseline; gap: 6px; padding: 7px 2px; border-bottom: 1px solid #E8DCBC; font-size: 12.5px; }
+        .chip-mane li::after { content: ''; order: 1; flex: 1; border-bottom: 1px dotted #D9C99E; transform: translateY(-3px); }
+        .chip-mane li b { order: 2; font-family: 'Bodoni Moda', Georgia, serif; font-weight: 400; font-size: 17px; min-width: 46px; text-align: right; font-variant-numeric: lining-nums tabular-nums; }
+        .chip-mane li b.flash { animation: flash 0.7s ease; }
+        @keyframes flash { 0% { color: #B8923F; text-shadow: 0 0 14px rgba(233,212,154,0.9); } 100% { color: #1E1A14; text-shadow: none; } }
+        .chip-mane small { color: #8C8372; font-weight: 600; }
+
+        /* Connected Pathways: two services breathing towards each other */
+        .k-cp .w-name { font-size: 13px; letter-spacing: 0.3em; color: #132f4d; }
+        .k-cp .w-name img { width: 40px; height: auto; flex: none; }
+        .k-cp .w-got em { color: #5d7050; }
+        .k-cp .w-pts li::before { content: ''; top: 8px; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #5d7050; background: rgba(93,112,80,0.18); }
+        .k-cp .w-pts li:nth-child(even)::before { border-color: #132f4d; background: rgba(19,47,77,0.12); }
+        .k-cp .w-link { border-radius: 6px; }
+        .chip-cp { width: 236px; height: 168px; background: #fff; border: 1px solid #e6e3d8; border-radius: 16px; box-shadow: 0 18px 44px -18px rgba(19,47,77,0.4); position: relative; overflow: hidden; }
+        .chip-cp .c { position: absolute; top: 16px; left: 50%; width: 88px; height: 88px; margin-left: -44px; border-radius: 50%; display: grid; place-items: center; font-family: Georgia, 'Gelasio', serif; font-size: 12px; }
+        .chip-cp .c.a { background: rgba(19,47,77,0.1); border: 1.5px solid rgba(19,47,77,0.5); color: #132f4d; transform: translateX(calc(var(--off, 30px) * -1)); }
+        .chip-cp .c.b { background: rgba(93,112,80,0.13); border: 1.5px solid rgba(93,112,80,0.65); color: #5d7050; transform: translateX(var(--off, 30px)); }
+        .chip-cp .c.a span { translate: -12px 0; } .chip-cp .c.b span { translate: 12px 0; }
+        .chip-cp .mid { position: absolute; top: 112px; left: 0; right: 0; text-align: center; font-family: Georgia, serif; font-style: italic; font-size: 11px; color: #3d5e7a; opacity: var(--o, 1); }
+        .chip-cp small { color: #5a6677; font-family: Tahoma, Verdana, sans-serif; font-weight: 700; letter-spacing: 0.12em; }
+
+        /* Good Knight Yoga: her breathing ring, four in, four held, six out */
+        .k-gky .w-name { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 24px; letter-spacing: 0; text-transform: none; color: #f6dfae; }
+        .k-gky .w-got { font-variation-settings: 'opsz' 120; }
+        .k-gky .w-got em { color: #f6dfae; }
+        .k-gky .w-pts li::before { font-size: 15px; top: 0; }
+        .chip-gky { width: 172px; height: 172px; border-radius: 22px; background: rgba(20,13,34,0.84); border: 1px solid rgba(236,231,246,0.14); display: grid; place-items: center; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.45); }
+        .chip-gky .ring { width: 86px; height: 86px; margin-top: -16px; border-radius: 50%; border: 2px solid #b9a7d9; display: grid; place-items: center; box-shadow: 0 0 30px rgba(185,167,217,0.25), inset 0 0 22px rgba(185,167,217,0.18); background: radial-gradient(circle, rgba(185,167,217,0.12), transparent 70%); transform: scale(var(--b, 0.72)); }
+        .chip-gky .ring span { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 16px; color: #ece7f6; transform: scale(calc(1 / var(--b, 0.72))); }
+        .chip-gky small { color: rgba(236,231,246,0.5); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; left: 0; right: 0; text-align: center; }
+        .wl .moon { position: absolute; right: 7%; top: 13%; width: 66px; height: 66px; border-radius: 50%;
+            background: radial-gradient(circle at 38% 38%, #fff6dc 0%, #f6dfae 55%, #e8c886 100%);
+            -webkit-mask: radial-gradient(circle at 74% 34%, transparent 0 41%, #000 42%); mask: radial-gradient(circle at 74% 34%, transparent 0 41%, #000 42%);
+            filter: drop-shadow(0 0 18px rgba(246,223,174,0.45)); animation: bob 12s ease-in-out infinite; }
+        @keyframes bob { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-14px,8px); } }
+        .wl .knight { position: absolute; top: 50%; left: max(0px, calc((100% - 1160px) / 2 - 40px)); height: min(84%, 720px); width: auto; transform: translateY(-50%); opacity: 0.5; overflow: visible; }
+        .knight polyline { fill: none; stroke: #ece7f6; stroke-opacity: 0.42; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+        .knight .st { opacity: 0; transition: opacity 0.8s ease; }
+        .knight .st.lit { opacity: 1; }
+        .knight .st circle { fill: #ece7f6; }
+        .knight .st.bright circle { fill: #f6dfae; }
+        .knight .st.bright line { stroke: #e9b45c; stroke-width: 1; stroke-opacity: 0.7; }
+        .knight .st.lit circle { animation: twinkle var(--tw, 4s) ease-in-out infinite; }
+        @keyframes twinkle { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+        /* Performance Interpreting: the listing board flipping over */
+        .k-pi .w-name { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.2em; color: #4DB1F0; }
+        .k-pi .w-got em { color: #EAB308; }
+        .k-pi .w-pts li::before { content: ''; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 3px rgba(34,197,94,0.18); }
+        .k-pi .w-got, .k-pi .w-pts { text-shadow: 0 1px 14px rgba(2,1,66,0.7); }
+        .chip-pi { width: 274px; background: #050b2e; border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 12px 12px 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .chip-pi .bh { display: flex; justify-content: space-between; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #EAB308; margin-bottom: 8px; }
+        .chip-pi .bh span:last-child { color: rgba(255,255,255,0.6); }
+        .chip-pi .pbar { height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 9px; overflow: hidden; }
+        .chip-pi .pbar i { display: block; height: 100%; width: 100%; background: #4DB1F0; transform-origin: left; transform: scaleX(var(--k, 1)); }
+        .chip-pi .row { display: flex; align-items: center; gap: 2px; margin-bottom: 4px; }
+        .chip-pi .c { width: 12.5px; height: 19px; display: inline-grid; place-items: center; flex: none; background: linear-gradient(180deg, #141c45 0 49%, #0b1238 51% 100%); border-radius: 2px; font: 500 11.5px/1 'DM Mono', monospace; color: #f4efe0; }
+        .chip-pi .c.fl { animation: flap 0.26s ease-in-out both; }
+        @keyframes flap { 0% { transform: rotateX(0); } 50% { transform: rotateX(-90deg); filter: brightness(1.6); } 100% { transform: rotateX(0); } }
+        .chip-pi .st { margin-left: auto; width: 12px; height: 12px; flex: none; }
+        .chip-pi .st.ok { background: #22C55E; border-radius: 50%; }
+        .chip-pi .st.out { background: #EF4444; border-radius: 2px; }
+
+        /* The Sonic Sanctuary: the bowl and the breath */
+        .k-ss .w-name { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 24px; letter-spacing: 0; text-transform: none; }
+        .k-ss .w-got { font-weight: 300; }
+        .k-ss .w-got em { color: #c9a96a; }
+        .k-ss .w-pts li { font-weight: 300; }
+        .k-ss .w-pts li::before { content: ''; top: 6px; width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid #c9a96a; box-shadow: 0 0 0 4px rgba(201,169,106,0.12); }
+        .chip-ss { width: 196px; padding: 22px 16px 16px; background: rgba(13,31,22,0.88); border: 1px solid rgba(242,237,227,0.14); border-radius: 18px; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.45); position: relative; overflow: hidden; }
+        .chip-ss .glow { position: absolute; left: 50%; top: 40%; width: 160px; height: 160px; margin: -80px 0 0 -80px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,106,0.34), transparent 65%); transform: scale(var(--b, 0.8)); }
+        .chip-ss svg { position: relative; width: 124px; height: auto; display: block; margin: 0 auto 12px; overflow: visible; }
+        .chip-ss .rim { fill: none; stroke: #ead8a8; stroke-width: 1.4; }
+        .chip-ss .inner { fill: none; stroke: #c9a96a; stroke-width: 1; opacity: 0.55; }
+        .chip-ss .body { fill: url(#bowlFill); stroke: #c9a96a; stroke-width: 1.4; }
+        .chip-ss .mallet { stroke: #ead8a8; stroke-width: 3; stroke-linecap: round; opacity: 0.85; }
+        .chip-ss .shine { fill: none; stroke: rgba(255,247,222,0.5); stroke-width: 1.2; stroke-linecap: round; }
+        .chip-ss .cap { position: relative; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,237,227,0.6); }
+
+        /* Ace & Jacks: cards dealt onto the felt */
+        .k-aj .w-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.18em; color: #f5efe1; }
+        .k-aj .w-got { font-weight: 600; font-optical-sizing: none; }
+        .k-aj .w-got em { color: #e0474f; }
+        .k-aj .w-pts li::before { top: 0; }
+        .k-aj .w-link { border-radius: 2px; }
+        .aj-badge { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-bottom: 22px; padding: 8px 14px 8px 12px; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.05em; color: #f5efe1; box-shadow: inset 0 0 0 1px #b3905a; background: rgba(10,39,28,0.5); }
+        .aj-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #e0474f; animation: blink 1.4s steps(2, start) infinite; }
+        .aj-badge .sep { color: #b3905a; }
+        @keyframes blink { to { visibility: hidden; } }
+                .wl .table { position: absolute; left: 3%; right: 3%; top: 15%; bottom: 7%; border-radius: 50%; border: 1px solid rgba(179,144,90,0.4); }
+        .wl .table::after { content: ''; position: absolute; inset: 9px; border-radius: 50%; border: 1px solid rgba(179,144,90,0.18); }
+        .chip-aj { width: 176px; height: 150px; position: relative; perspective: 700px; }
+        .chip-aj .pc { position: absolute; top: 12px; width: 80px; height: 112px; border-radius: 7px; background: #fbf9f3; color: #16140f; box-shadow: 0 1px 1px rgba(0,0,0,0.25), 0 10px 22px rgba(0,0,0,0.4); opacity: 0; transform: translate(140px, -180px) rotate(150deg); transition: transform 0.65s cubic-bezier(.18,.84,.28,1), opacity 0.3s ease; font-family: 'Bodoni Moda', Georgia, serif; }
+        .chip-aj .pc:nth-child(1) { left: 8px; }
+        .chip-aj .pc:nth-child(2) { left: 74px; top: 20px; transition-delay: 0.28s; }
+        .chip-aj.dealt .pc:nth-child(1) { opacity: 1; transform: rotate(-9deg); }
+        .chip-aj.dealt .pc:nth-child(2) { opacity: 1; transform: rotate(7deg); }
+        .chip-aj .pc.red { color: #8c1c21; }
+        .chip-aj .ix { position: absolute; top: 7%; left: 9%; display: flex; flex-direction: column; align-items: center; font-weight: 600; font-size: 17px; line-height: 0.95; }
+        .chip-aj .pip { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 40px; line-height: 1; }
+        .chip-aj .s { font-family: var(--suit); font-style: normal; }
 
         /* ── Changes by text ──────────────────────────────────────── */
         .changes { padding: 120px 24px; }
@@ -242,29 +411,6 @@
         .prices-foot { margin-top: 38px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
         .prices-foot p { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
 
-        /* ── The bigger builds ─────────────────────────────────────── */
-        .big { background: var(--ink); color: #fff; padding: 110px 24px 90px; }
-        .big-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 30px; }
-        .big h2 { font-size: clamp(38px, 5.4vw, 70px); color: #fff; }
-        .big h2 span { color: #ff6f20; }
-        .big-head p { font-size: 18px; color: rgba(255,255,255,0.68); line-height: 1.6; max-width: 440px; }
-        .big-row { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; padding: 64px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-        .big-row > * { min-width: 0; }
-        .big-row.flip { grid-template-columns: 0.85fr 1.15fr; }
-        .big-row.flip .big-shot { order: 2; }
-        .big-shot { position: relative; padding-right: 22%; margin-bottom: 24px; }
-        .big-shot .browser img, .big-shot .phone img { display: block; width: 100%; height: auto; }
-        .big-tier { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #ff6f20; display: block; margin-bottom: 12px; }
-        .big h3 { font-family: var(--display); font-size: clamp(30px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #fff; margin-bottom: 16px; }
-        .big-row p { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.72); margin-bottom: 24px; }
-        .big-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
-        .big-stats div { background: var(--ink); padding: 18px 18px 16px; }
-        .big-stats strong { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(32px, 3.4vw, 44px); letter-spacing: -0.03em; color: #ff6f20; line-height: 1; margin-bottom: 8px; }
-        .big-stats span { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.45; display: block; }
-        .big-links { display: flex; gap: 22px; flex-wrap: wrap; }
-        .big-links a { color: #ff6f20; font-weight: 700; text-decoration: none; font-size: 16px; }
-        .big-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
-
         /* ── About ────────────────────────────────────────────────── */
         .me { padding: 100px 24px; }
         .me .wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; max-width: 920px; }
@@ -291,16 +437,17 @@
         /* ── Responsive ───────────────────────────────────────────── */
         @media (max-width: 960px) {
             .hero .wrap, .changes .wrap { grid-template-columns: 1fr; }
-            .big-row, .big-row.flip { grid-template-columns: 1fr; gap: 28px; padding: 48px 0; }
-            .big-row.flip .big-shot { order: 0; }
             .stack-holder { max-width: 540px; margin: 10px auto 0; }
-            .asks-grid { grid-template-columns: 1fr; gap: 0; }
-            .stage { display: none; }
-            .chapter { min-height: 0; padding: 56px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-            .ch-shot { display: block; position: relative; margin: 6px 0 26px; padding-right: 28%; }
-            .ch-shot .browser img { display: block; width: 100%; height: auto; }
-            .ch-shot .phone { width: 32%; bottom: -22px; }
-            .ch-shot .phone img { display: block; width: 100%; height: auto; }
+            .w { padding: 96px 20px 88px; }
+            .w-in { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+            .w.flip .w-copy { order: 0; }
+            .w-art { max-width: 600px; }
+            .w-shot { padding-right: 28%; }
+            .w-phone { width: 32%; bottom: -22px; }
+            .w-chip { position: relative; left: auto; bottom: auto; margin: 54px auto 0; }
+            .wl .knight { left: 50%; transform: translate(-50%, -50%); opacity: 0.24; height: min(80%, 640px); }
+            .wl .table { left: -30%; right: -30%; top: 9%; bottom: 4%; }
+            .wl .moon { width: 48px; height: 48px; top: 9%; right: 8%; opacity: 0.8; }
             .chat { margin: 0 auto; }
             .changes .chat-note { margin: 12px auto 0; text-align: center; }
             .receipts { grid-template-columns: 1fr; max-width: 440px; }
@@ -310,8 +457,11 @@
             .hero { padding: 48px 20px 64px; }
             .hero-sub { font-size: 18px; }
             .ticket-ask p { font-size: 19px; }
-            .asks { padding: 80px 20px 20px; }
-            .changes, .method, .prices, .big { padding: 80px 20px; }
+            .w-intro { padding: 80px 20px 20px; min-height: 0; }
+            .w-intro p, .w-div p { font-size: 17.5px; }
+            .w-div { padding: 80px 20px; min-height: 70vh; }
+            .w-pts li { font-size: 16px; }
+            .changes, .method, .prices { padding: 80px 20px; }
             .me { padding: 72px 20px; }
             .me .wrap { grid-template-columns: 1fr; gap: 28px; }
             .me img { width: 120px; height: 120px; }
@@ -331,18 +481,23 @@
         }
         @media (max-width: 360px) {
             .hero h1 { font-size: 46px; }
+            .w { padding-left: 16px; padding-right: 16px; }
+            .w-name { letter-spacing: 0.22em; }
+            .chip-pi { width: 266px; }
+            .chip-pi .c { width: 12px; }
         }
 
         /* ── Reduced motion: a still version that still reads well ── */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; }
             .stamp { opacity: 0.94; }
-            .stack .ticket-wrap { opacity: 1; translate: 0 0; }
             .hero h1 .u path { stroke-dashoffset: 0; }
             .rv { opacity: 1; translate: 0 0; }
             .bubble, .chat-day { opacity: 1; translate: 0 0; }
             .ticker-track { width: auto; flex-wrap: wrap; justify-content: center; gap: 14px 32px; padding: 0 20px; }
             .ticker-track .dupe { display: none; }
+            .foil { background-position: 50% 0; }
+            .knight .st { opacity: 1; }
         }
     </style>
 
@@ -432,19 +587,19 @@
             <p class="hero-micro">From &pound;750<span>/</span>No contract<span>/</span>Everything in your name</p>
         </div>
 
-        <div class="stack-holder"><div class="stack" aria-label="Three real job tickets, each stamped live">
-            <a href="#ask-gky" class="t-gky">
+        <div class="stack-holder"><div class="stack" id="stack" aria-label="Real job tickets, each stamped live">
+            <a href="#w-mane" class="tk s-F" data-k="mane">
                 <div class="ticket-wrap">
                     <div class="ticket">
                         <div class="ticket-head"><span>Tailored Tools</span><span>Job ticket</span></div>
-                        <div class="ticket-row"><b>Client</b><span>Good Knight Yoga</span></div>
-                        <div class="ticket-row"><b>Trade</b><span>Yoga teacher, Kent</span></div>
-                        <div class="ticket-ask"><b>Asked for</b><p>A website for classes and retreats</p></div>
-                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>07.08.26</small></span></div>
+                        <div class="ticket-row"><b>Client</b><span>Mane London</span></div>
+                        <div class="ticket-row"><b>Trade</b><span>Hair salon, Bexley</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>100 printed price lists</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>01.10.26</small></span></div>
                     </div>
                 </div>
             </a>
-            <a href="#ask-velma" class="t-velma">
+            <a href="#w-cp" class="tk s-L" data-k="cp">
                 <div class="ticket-wrap">
                     <div class="ticket">
                         <div class="ticket-head"><span>Tailored Tools</span><span>Job ticket</span></div>
@@ -455,14 +610,47 @@
                     </div>
                 </div>
             </a>
-            <a href="#ask-mane" class="t-mane">
+            <a href="#w-gky" class="tk s-R" data-k="gky">
                 <div class="ticket-wrap">
                     <div class="ticket">
                         <div class="ticket-head"><span>Tailored Tools</span><span>Job ticket</span></div>
-                        <div class="ticket-row"><b>Client</b><span>Mane London</span></div>
-                        <div class="ticket-row"><b>Trade</b><span>Hair salon, Bexley</span></div>
-                        <div class="ticket-ask"><b>Asked for</b><p>100 printed price lists</p></div>
-                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>01.10.26</small></span></div>
+                        <div class="ticket-row"><b>Client</b><span>Good Knight Yoga</span></div>
+                        <div class="ticket-row"><b>Trade</b><span>Yoga teacher, Kent</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>A website for classes and retreats</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>07.08.26</small></span></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#w-pi" class="tk s-off" data-k="pi">
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Tailored Tools</span><span>Job ticket</span></div>
+                        <div class="ticket-row"><b>Client</b><span>Performance Interpreting</span></div>
+                        <div class="ticket-row"><b>Trade</b><span>BSL &amp; ISL access</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>Automated social posts about bookings</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>In use</small></span></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#w-aj" class="tk s-off" data-k="aj">
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Tailored Tools</span><span>Job ticket</span></div>
+                        <div class="ticket-row"><b>Client</b><span>Ace &amp; Jacks</span></div>
+                        <div class="ticket-row"><b>Trade</b><span>Pub poker league</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>A website that wasn't built for football</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">In build<small>30.11.26</small></span></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#w-ss" class="tk s-off" data-k="ss">
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Tailored Tools</span><span>Job ticket</span></div>
+                        <div class="ticket-row"><b>Client</b><span>The Sonic Sanctuary</span></div>
+                        <div class="ticket-row"><b>Trade</b><span>Sound therapy, Maidstone</span></div>
+                        <div class="ticket-ask"><b>Asked for (by me)</b><p>A way off Square</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>In use</small></span></div>
                     </div>
                 </div>
             </a>
@@ -490,111 +678,259 @@
     </div>
 </div>
 
-<!-- ── The asks ───────────────────────────────────────────────────── -->
-<section class="asks dark" id="asks">
-    <div class="wrap">
-        <div class="asks-intro rv">
-            <span class="eyebrow">Three recent jobs</span>
+<!-- ── The worlds: each client's job, in their own brand ──────────── -->
+<section class="worlds" id="asks">
+
+    <!-- One layer per world. Only the layer for the panel in view is shown, and only it moves. -->
+    <div class="wbg" id="wbg" aria-hidden="true"><div class="wbg-pin" id="wbgPin">
+        <div class="wl k-ink on" data-layer="ink"></div>
+        <div class="wl k-mane" data-layer="mane"><canvas></canvas></div>
+        <div class="wl k-cp" data-layer="cp"><canvas></canvas></div>
+        <div class="wl k-gky" data-layer="gky"><canvas></canvas><div class="moon"></div><svg class="knight" viewBox="0 0 572 724"></svg></div>
+        <div class="wl k-aj" data-layer="aj"><div class="table"></div><canvas></canvas></div>
+        <div class="wl k-pi" data-layer="pi"><canvas></canvas></div>
+        <div class="wl k-ss" data-layer="ss"><canvas></canvas></div>
+    </div></div>
+
+    <div class="w-intro dark k-ink" data-world="ink">
+        <div class="wrap">
+            <span class="eyebrow">Recent jobs</span>
             <h2 class="display">What they asked for. <span>What they got.</span></h2>
             <p>The small ask is usually the visible end of a bigger problem. Finding that problem is the job. Building the fix is the easy bit.</p>
+            <p class="hint">Scroll on, and each one takes over the page in its own colours<i>&darr;</i></p>
         </div>
+    </div>
 
-        <div class="asks-grid">
-            <div class="chapters">
-
-                <article class="chapter" id="ask-mane" data-shot="0" data-url="manelondon.co.uk">
-                    <div class="ticket-wrap">
-                        <div class="ticket">
-                            <div class="ticket-head"><span>Mane London</span><span>Hair &amp; beauty &middot; Bexley</span></div>
-                            <div class="ticket-ask" style="border-top:0;margin-top:0;padding-top:0"><b>Asked for</b><p>100 printed price lists, at the new prices</p></div>
-                            <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>01.10.26</small></span></div>
-                        </div>
+    <!-- Mane London -->
+    <article class="w k-mane" id="w-mane" data-world="mane" data-nav-bg="light">
+        <div class="w-in">
+            <div class="w-copy">
+                <span class="w-name">Mane London</span>
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Job ticket</span><span>Hair &amp; beauty</span></div>
+                        <div class="ticket-row"><b>When</b><span>Asked Wed, live Thu</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>100 printed price lists, at the new prices</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>01.10.26</small></span></div>
                     </div>
-                    <div class="ch-shot">
-                        <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>manelondon.co.uk</span></div><img src="/images/projects/mane-london-desktop.jpg" alt="Mane London website on a laptop" width="1600" height="1000" loading="lazy"></div>
-                        <div class="phone"><img src="/images/projects/mane-london-mobile.jpg" alt="Mane London website on a phone" width="780" height="1688" loading="lazy"></div>
-                    </div>
-                    <p class="ch-under"><strong>Underneath:</strong> her website was down, every change meant waiting on someone else, and prices depend on which stylist level you book. A printed list goes out of date the day it arrives.</p>
-                    <ul class="ch-got">
-                        <li>A price menu that changes with your stylist</li>
-                        <li>Build a visit, send it to the salon by WhatsApp</li>
-                        <li>A "This month" offers board, updated the same day</li>
-                        <li>Paper menu and website from one price file</li>
-                    </ul>
-                    <p class="ch-time">Asked on a Wednesday <i>&rarr;</i> Live on the Thursday</p>
-                    <a class="ch-link" href="/projects/mane-london">Read the Mane London story &rarr;</a>
-                </article>
-
-                <article class="chapter" id="ask-velma" data-shot="1" data-url="velmabennett.co.uk">
-                    <div class="ticket-wrap">
-                        <div class="ticket">
-                            <div class="ticket-head"><span>Connected Pathways</span><span>Therapy &middot; Kent</span></div>
-                            <div class="ticket-ask" style="border-top:0;margin-top:0;padding-top:0"><b>Asked for</b><p>A professional website for her practice</p></div>
-                            <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>07.09.26</small></span></div>
-                        </div>
-                    </div>
-                    <div class="ch-shot">
-                        <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>velmabennett.co.uk</span></div><img src="/images/projects/connected-pathways-desktop.jpg" alt="Connected Pathways website on a laptop" width="1600" height="1000" loading="lazy"></div>
-                        <div class="phone"><img src="/images/projects/connected-pathways-mobile.jpg" alt="Connected Pathways website on a phone" width="780" height="1688" loading="lazy"></div>
-                    </div>
-                    <p class="ch-under"><strong>Underneath:</strong> two audiences under one name, families and schools. Every booking meant back-and-forth over times, payment, forms and video links. And her address could never appear anywhere.</p>
-                    <ul class="ch-got">
-                        <li>Three pathways to book and pay online, in one go</li>
-                        <li>Intake forms and video links that send themselves</li>
-                        <li>Branded confirmation and reminder emails</li>
-                        <li>Her address hidden everywhere, by design</li>
-                    </ul>
-                    <p class="ch-time">Launched 7 September <i>&rarr;</i> Booking with payment by the 29th</p>
-                    <a class="ch-link" href="/projects/connected-pathways">Read the Connected Pathways story &rarr;</a>
-                </article>
-
-                <article class="chapter" id="ask-gky" data-shot="2" data-url="goodknightyoga.co.uk">
-                    <div class="ticket-wrap">
-                        <div class="ticket">
-                            <div class="ticket-head"><span>Good Knight Yoga</span><span>Yoga &middot; Kent</span></div>
-                            <div class="ticket-ask" style="border-top:0;margin-top:0;padding-top:0"><b>Asked for</b><p>A website for classes, 1:1s and retreats</p></div>
-                            <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>07.08.26</small></span></div>
-                        </div>
-                    </div>
-                    <div class="ch-shot">
-                        <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>goodknightyoga.co.uk</span></div><img src="/images/projects/good-knight-yoga-desktop.jpg" alt="Good Knight Yoga website on a laptop" width="1600" height="1000" loading="lazy"></div>
-                        <div class="phone"><img src="/images/projects/good-knight-yoga-mobile.jpg" alt="Good Knight Yoga website on a phone" width="780" height="1688" loading="lazy"></div>
-                    </div>
-                    <p class="ch-under"><strong>Underneath:</strong> lots of ways in, each with its own times and prices, a second teacher, and a timetable that keeps changing. Waiting on a developer for every update would have killed the momentum.</p>
-                    <ul class="ch-got">
-                        <li>A brand drawn from her name: night sky, real constellations</li>
-                        <li>Classes for two teachers, one mailing list</li>
-                        <li>An admin page so she updates retreats herself</li>
-                        <li>Her domain, in her own account</li>
-                    </ul>
-                    <p class="ch-time">Brief on a Sunday evening <i>&rarr;</i> Live site to react to within a day</p>
-                    <a class="ch-link" href="/projects/good-knight-yoga">Read the Good Knight Yoga story &rarr;</a>
-                </article>
-
+                </div>
+                <p class="w-got"><b>Got</b>A new website, live in <em class="foil">about 20 hours</em> from the first line of code.</p>
+                <ul class="w-pts">
+                    <li>A price menu that changes with your stylist</li>
+                    <li>Build a visit, send it to the salon by WhatsApp</li>
+                    <li>Paper menu and website from one price file</li>
+                </ul>
+                <div class="w-links"><a class="w-link" href="/projects/mane-london">Step into their world <span>&rarr;</span></a></div>
             </div>
-
-            <div class="stage" aria-hidden="true">
-                <div class="stage-inner">
-                    <div class="browser">
-                        <div class="browser-bar"><i></i><i></i><i></i><span id="stageUrl">manelondon.co.uk</span></div>
-                        <div class="screens">
-                            <img class="on" src="/images/projects/mane-london-desktop.jpg" alt="" loading="lazy">
-                            <img src="/images/projects/connected-pathways-desktop.jpg" alt="" loading="lazy">
-                            <img src="/images/projects/good-knight-yoga-desktop.jpg" alt="" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="phone">
-                        <div class="screens">
-                            <img class="on" src="/images/projects/mane-london-mobile.jpg" alt="" loading="lazy">
-                            <img src="/images/projects/connected-pathways-mobile.jpg" alt="" loading="lazy">
-                            <img src="/images/projects/good-knight-yoga-mobile.jpg" alt="" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="stage-dots"><span class="on"></span><span></span><span></span></div>
+            <div class="w-art">
+                <div class="w-shot">
+                    <div class="w-browser"><div class="bar"><i></i><i></i><i></i><span>manelondon.co.uk</span></div><img src="/images/projects/mane-london-desktop.jpg" alt="Mane London website on a laptop" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                    <div class="w-phone"><img src="/images/projects/mane-london-mobile.jpg" alt="Mane London website on a phone" width="780" height="1688" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="w-chip chip-mane" id="chipMane" aria-hidden="true">
+                    <div class="pills"><span class="slider"></span><b class="on">Stylist</b><b>Senior</b><b>Specialist</b></div>
+                    <p class="note">Prices with a stylist</p>
+                    <ul>
+                        <li><span>Half head highlights</span><b data-p="85,100,105">&pound;85</b></li>
+                        <li><span>Full head tint</span><b data-p="70,75,80">&pound;70</b></li>
+                        <li><span>Cut &amp; blow</span><b data-p="38,43,45">&pound;38</b></li>
+                    </ul>
+                    <small>A few rows from her menu</small>
                 </div>
             </div>
         </div>
+    </article>
+
+    <!-- Connected Pathways -->
+    <article class="w k-cp flip" id="w-cp" data-world="cp" data-nav-bg="light">
+        <div class="w-in">
+            <div class="w-copy">
+                <span class="w-name"><img src="/images/projects/connected-pathways-tree.png" alt="" width="220" height="202">Connected Pathways</span>
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Job ticket</span><span>Therapy</span></div>
+                        <div class="ticket-row"><b>When</b><span>Live 7 Sep, booking by the 29th</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>A professional website for her practice</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>07.09.26</small></span></div>
+                    </div>
+                </div>
+                <p class="w-got"><b>Got</b>One site for <em>families and schools</em>, with booking and payment built in.</p>
+                <ul class="w-pts">
+                    <li>Three pathways to book and pay online, in one go</li>
+                    <li>Intake forms and video links that send themselves</li>
+                    <li>Her address hidden everywhere, by design</li>
+                </ul>
+                <div class="w-links"><a class="w-link" href="/projects/connected-pathways">Step into their world <span>&rarr;</span></a></div>
+            </div>
+            <div class="w-art">
+                <div class="w-shot">
+                    <div class="w-browser"><div class="bar"><i></i><i></i><i></i><span>velmabennett.co.uk</span></div><img src="/images/projects/connected-pathways-desktop.jpg" alt="Connected Pathways website on a laptop" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                    <div class="w-phone"><img src="/images/projects/connected-pathways-mobile.jpg" alt="Connected Pathways website on a phone" width="780" height="1688" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="w-chip chip-cp" id="chipCp" aria-hidden="true">
+                    <div class="c a"><span>Therapy</span></div>
+                    <div class="c b"><span>Education</span></div>
+                    <div class="mid">in context</div>
+                    <small>Two services, one idea</small>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Good Knight Yoga -->
+    <article class="w k-gky" id="w-gky" data-world="gky">
+        <div class="w-in">
+            <div class="w-copy">
+                <span class="w-name">Good Knight Yoga</span>
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Job ticket</span><span>Yoga</span></div>
+                        <div class="ticket-row"><b>When</b><span>Sunday brief, live site in a day</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>A website for classes, 1:1s and retreats</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>07.08.26</small></span></div>
+                    </div>
+                </div>
+                <p class="w-got"><b>Got</b>A website that <em>breathes</em> like her class.</p>
+                <ul class="w-pts">
+                    <li>A brand drawn from her name: night sky, real constellations</li>
+                    <li>Classes for two teachers, one mailing list</li>
+                    <li>An admin page so she updates retreats herself</li>
+                </ul>
+                <div class="w-links"><a class="w-link" href="/projects/good-knight-yoga">Step into their world <span>&rarr;</span></a></div>
+            </div>
+            <div class="w-art">
+                <div class="w-shot">
+                    <div class="w-browser"><div class="bar"><i></i><i></i><i></i><span>goodknightyoga.co.uk</span></div><img src="/images/projects/good-knight-yoga-desktop.jpg" alt="Good Knight Yoga website on a laptop" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                    <div class="w-phone"><img src="/images/projects/good-knight-yoga-mobile.jpg" alt="Good Knight Yoga website on a phone" width="780" height="1688" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="w-chip chip-gky" id="chipGky" aria-hidden="true">
+                    <div class="ring"><span>in</span></div>
+                    <small>4 in &middot; 4 hold &middot; 6 out</small>
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <div class="w-div dark k-ink" data-world="ink">
+        <div class="wrap">
+            <span class="eyebrow">The bigger builds</span>
+            <h2 class="display">When it's the whole business.<br><span>I run these too.</span></h2>
+            <p>Apps, booking platforms, the systems a business runs on day to day. The first two are in use every day, and I live with both, so anything awkward gets fixed before a client ever meets it. The third is being built now.</p>
+        </div>
     </div>
+
+    <!-- Performance Interpreting -->
+    <article class="w k-pi flip" id="w-pi" data-world="pi">
+        <div class="w-in">
+            <div class="w-copy">
+                <span class="w-name">Performance Interpreting</span>
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Job ticket</span><span>BSL &amp; ISL access</span></div>
+                        <div class="ticket-row"><b>Asked</b><span>October 2025</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>Automated social posts about bookings</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>In use</small></span></div>
+                    </div>
+                </div>
+                <p class="w-got"><b>Got</b>A redesigned website, a customer app, and <em>a new operating system</em>, now in pilot.</p>
+                <ul class="w-pts">
+                    <li>800+ app downloads in the first month</li>
+                    <li>&pound;5k of interpreter bookings through the app, month one</li>
+                    <li>A live listing of every interpreted event that updates itself</li>
+                </ul>
+                <div class="w-links"><a class="w-link" href="/projects/performance-interpreting">Step into their world <span>&rarr;</span></a><a class="w-sub" href="/projects/pi-events-app">The app &rarr;</a></div>
+            </div>
+            <div class="w-art">
+                <div class="w-shot">
+                    <div class="w-browser"><div class="bar"><i></i><i></i><i></i><span>performanceinterpreting.co.uk</span></div><img src="/images/projects/performance-interpreting-desktop.jpg" alt="Performance Interpreting website on a laptop: a BSL interpreter performing at a festival" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                    <div class="w-phone"><img src="/images/projects/performance-interpreting-mobile.jpg" alt="Performance Interpreting interpreted events listing on a phone" width="780" height="1688" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="w-chip chip-pi" id="chipPi" aria-hidden="true">
+                    <div class="bh"><span>Interpreted events</span><span>Live listing</span></div>
+                    <div class="pbar"><i id="piBar"></i></div>
+                    <div id="piRows"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- The Sonic Sanctuary -->
+    <article class="w k-ss" id="w-ss" data-world="ss">
+        <div class="w-in">
+            <div class="w-copy">
+                <span class="w-name">The Sonic Sanctuary</span>
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Job ticket</span><span>Sound therapy</span></div>
+                        <div class="ticket-row"><b>Commits</b><span>464 since Feb 2026</span></div>
+                        <div class="ticket-ask"><b>Asked for (by me)</b><p>A way off Square</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">Live<small>In use</small></span></div>
+                    </div>
+                </div>
+                <p class="w-got"><b>Got</b><em>One system</em>, on my phone and on the website.</p>
+                <ul class="w-pts">
+                    <li>Six tools down to one: Square, Weebly, Carrd, spreadsheets and hand-typed messages</li>
+                    <li>Bookings, Stripe payments, intro passes, events and WhatsApp messages in one place</li>
+                    <li>About five hours of admin back every week, by my own estimate</li>
+                </ul>
+                <div class="w-links"><a class="w-link" href="/projects/sonic-sanctuary">Step into my world <span>&rarr;</span></a></div>
+            </div>
+            <div class="w-art">
+                <div class="w-shot">
+                    <div class="w-browser"><div class="bar"><i></i><i></i><i></i><span>thesonicsanctuary.uk</span></div><img src="/images/projects/sonic-sanctuary-desktop.jpg" alt="The Sonic Sanctuary website on a laptop" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                    <div class="w-phone"><img src="/images/projects/sonic-sanctuary-mobile.jpg" alt="The Sonic Sanctuary website on a phone" width="780" height="1688" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="w-chip chip-ss" id="chipSs" aria-hidden="true">
+                    <div class="glow"></div>
+                    <svg viewBox="0 0 200 124">
+                        <defs><linearGradient id="bowlFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a6650"/><stop offset="0.55" stop-color="#1f4434"/><stop offset="1" stop-color="#132A1F"/></linearGradient></defs>
+                        <path class="body" d="M20 44 C22 92 56 112 100 112 C144 112 178 92 180 44 Z"/>
+                        <ellipse class="rim" cx="100" cy="44" rx="80" ry="15"/>
+                        <ellipse class="inner" cx="100" cy="44" rx="68" ry="10"/>
+                        <path class="shine" d="M38 62 C44 82 60 96 80 102"/>
+                        <line class="mallet" x1="132" y1="104" x2="192" y2="80"/>
+                    </svg>
+                    <div class="cap" id="ssCap">breathe in</div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Ace & Jacks: in build, live for Season 17 on 30 November -->
+    <article class="w k-aj flip" id="w-aj" data-world="aj">
+        <div class="w-in">
+            <div class="w-copy">
+                <span class="w-name">Ace &amp; Jacks Poker League</span>
+                <span class="aj-badge"><span class="dot" aria-hidden="true"></span>In build <span class="sep" aria-hidden="true">&middot;</span> Live for Season 17 on 30 November</span>
+                <div class="ticket-wrap">
+                    <div class="ticket">
+                        <div class="ticket-head"><span>Job ticket</span><span>Poker league</span></div>
+                        <div class="ticket-row"><b>Where</b><span>Watford, Hemel &amp; Dunstable</span></div>
+                        <div class="ticket-ask"><b>Asked for</b><p>A website that wasn't built for football</p></div>
+                        <div class="ticket-status"><b>Status</b><span class="stamp">In build<small>30.11.26</small></span></div>
+                    </div>
+                </div>
+                <p class="w-got"><b>Getting</b>Sixteen seasons on a football plugin. Season 17 gets a <em>proper table</em>.</p>
+                <ul class="w-pts">
+                    <li>A phone-first site, styled like card-room stationery</li>
+                    <li>A points engine that reproduces Amy's chart exactly</li>
+                    <li>Season 16 moved into the new database and checked</li>
+                </ul>
+                <div class="w-links"><a class="w-link" href="/projects/ace-jacks">Step into their world <span>&rarr;</span></a></div>
+            </div>
+            <div class="w-art">
+                <div class="w-shot">
+                    <div class="w-browser"><div class="bar"><i></i><i></i><i></i><span>Ace &amp; Jacks Poker League</span></div><img src="/images/projects/ace-jacks-desktop.jpg" alt="The new Ace &amp; Jacks homepage on a laptop: baize green, and the week's games dealt as playing cards" width="1600" height="1000" loading="lazy" decoding="async"></div>
+                    <div class="w-phone"><img src="/images/projects/ace-jacks-mobile.jpg" alt="The new Ace &amp; Jacks homepage on a phone, with tonight's game as the top card of a hand" width="780" height="1688" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="w-chip chip-aj" id="chipAj" aria-hidden="true">
+                    <div class="pc"><span class="ix">A<span class="s">&#9824;&#xFE0E;</span></span><span class="pip s">&#9824;&#xFE0E;</span></div>
+                    <div class="pc red"><span class="ix">J<span class="s">&#9829;&#xFE0E;</span></span><span class="pip s">&#9829;&#xFE0E;</span></div>
+                </div>
+            </div>
+        </div>
+    </article>
 </section>
 
 <!-- ── Changes by text ────────────────────────────────────────────── -->
@@ -697,53 +1033,6 @@
     </div>
 </section>
 
-<!-- ── The bigger builds ──────────────────────────────────────────── -->
-<section class="big dark">
-    <div class="wrap">
-        <div class="big-head rv">
-            <div>
-                <span class="eyebrow">The bigger builds</span>
-                <h2 class="display">When it's the whole business.<br><span>I run these too.</span></h2>
-            </div>
-            <p>Apps, booking platforms, the systems a business runs on day to day. These two are in use every day, and I live with both, so anything awkward gets fixed before a client ever meets it.</p>
-        </div>
-
-        <article class="big-row rv">
-            <div class="big-shot">
-                <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>performanceinterpreting.co.uk</span></div><img src="/images/projects/performance-interpreting-desktop.jpg" alt="Performance Interpreting website on a laptop: a BSL interpreter performing at a festival" width="1600" height="1000" loading="lazy"></div>
-                <div class="phone"><img src="/images/projects/performance-interpreting-mobile.jpg" alt="Performance Interpreting interpreted events listing on a phone" width="780" height="1688" loading="lazy"></div>
-            </div>
-            <div>
-                <span class="big-tier">BSL interpretation &middot; UK &amp; Ireland</span>
-                <h3>Performance Interpreting</h3>
-                <p>The UK and Ireland's largest performance interpreting provider. I build and run its whole digital side: the main website, the PI Academy training platform, a live listing of every interpreted event that updates itself, and the PI Events App for iOS and Android.</p>
-                <div class="big-stats">
-                    <div><strong>800+</strong><span>app downloads in the first month</span></div>
-                    <div><strong>&pound;5k</strong><span>of interpreter bookings through the app, month one</span></div>
-                </div>
-                <div class="big-links"><a href="/projects/performance-interpreting">The platform &rarr;</a><a href="/projects/pi-events-app">The app &rarr;</a></div>
-            </div>
-        </article>
-
-        <article class="big-row flip rv">
-            <div class="big-shot">
-                <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>thesonicsanctuary.uk</span></div><img src="/images/projects/sonic-sanctuary-desktop.jpg" alt="The Sonic Sanctuary website on a laptop" width="1600" height="1000" loading="lazy"></div>
-                <div class="phone"><img src="/images/projects/sonic-sanctuary-mobile.jpg" alt="The Sonic Sanctuary website on a phone" width="780" height="1688" loading="lazy"></div>
-            </div>
-            <div>
-                <span class="big-tier">Sound therapy &middot; Maidstone</span>
-                <h3>The Sonic Sanctuary</h3>
-                <p>My own practice, run entirely from a phone. Bookings, Stripe payments, intro passes, events and automated WhatsApp messages all live in one system, and the public website reads from the same place, so nothing is ever typed twice.</p>
-                <div class="big-stats">
-                    <div><strong>6&rarr;1</strong><span>separate tools replaced by one system</span></div>
-                    <div><strong>5h+</strong><span>of admin saved every week</span></div>
-                </div>
-                <div class="big-links"><a href="/projects/sonic-sanctuary">How it works &rarr;</a></div>
-            </div>
-        </article>
-    </div>
-</section>
-
 <!-- ── About ──────────────────────────────────────────────────────── -->
 <section class="me grain" data-nav-bg="light">
     <div class="wrap rv">
@@ -807,30 +1096,86 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
 
 (function () {
     var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var DPR = Math.min(1.5, window.devicePixelRatio || 1);
+    function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+    function smooth(u) { u = clamp(u, 0, 1); return u * u * (3 - 2 * u); }
+    function ease(x) { return 0.5 - 0.5 * Math.cos(Math.PI * clamp(x, 0, 1)); }
+    function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+    function $(id) { return document.getElementById(id); }
+    function each(list, fn) { Array.prototype.forEach.call(list, fn); }
 
     function stampIn(stamp, delay) {
-        if (still) return;
+        if (still || !stamp) return;
         setTimeout(function () {
+            stamp.classList.remove('in'); void stamp.offsetWidth;
             stamp.classList.add('in');
             var wrap = stamp.closest('.ticket-wrap');
-            if (wrap) {
-                wrap.classList.remove('hit');
-                void wrap.offsetWidth;
-                wrap.classList.add('hit');
-            }
+            if (wrap) { wrap.classList.remove('hit'); void wrap.offsetWidth; wrap.classList.add('hit'); }
         }, delay);
     }
 
-    // Hero stack is laid out at 540px wide; scale it to whatever room it has
-    var holder = document.querySelector('.stack-holder');
+    /* ── Hero: a stack of job tickets that deals itself ─────────────
+       Three slots (back left, back right, front). Every six seconds the next
+       client's ticket is dealt to the front and stamped; the old front ticket
+       steps back into whichever back slot has been there longest. */
+    var holder = document.querySelector('.stack-holder'), stack = $('stack');
     function fitStack() { holder.style.setProperty('--s', Math.min(1, holder.clientWidth / 540)); }
     fitStack();
     window.addEventListener('resize', fitStack);
 
-    // Hero: tickets deal in, then each gets stamped, back to front
-    ['.t-gky', '.t-velma', '.t-mane'].forEach(function (sel, i) {
-        stampIn(document.querySelector(sel + ' .stamp'), 1000 + i * 380);
-    });
+    var ORDER = ['mane', 'cp', 'gky', 'pi', 'ss', 'aj'];
+    var tk = {};
+    each(stack.querySelectorAll('.tk'), function (el) { tk[el.dataset.k] = el; });
+    var slot = { F: 'mane', L: 'cp', R: 'gky' }, age = { L: 1, R: 2 }, gen = 2, idx = 0;
+    function place(k, s) {
+        var el = tk[k];
+        el.classList.remove('s-L', 's-R', 's-F', 's-off', 'gone', 'pre');
+        el.classList.add('s-' + s);
+        if (s === 'off') { el.setAttribute('aria-hidden', 'true'); el.tabIndex = -1; }
+        else { el.removeAttribute('aria-hidden'); el.removeAttribute('tabindex'); }
+    }
+    place('pi', 'off'); place('ss', 'off'); place('aj', 'off');
+    function stampOf(k) { return tk[k].querySelector('.stamp'); }
+
+    if (!still) {
+        // first deal: back right, back left, then the front ticket, then the stamps
+        ['gky', 'cp', 'mane'].forEach(function (k) { tk[k].classList.add('pre'); });
+        void stack.offsetWidth;
+        ['gky', 'cp', 'mane'].forEach(function (k, i) {
+            setTimeout(function () { tk[k].classList.remove('pre'); }, 150 + i * 150);
+            stampIn(stampOf(k), 1000 + i * 380);
+        });
+    }
+
+    function step() {
+        idx = (idx + 1) % ORDER.length;
+        var k = ORDER[idx], oldF = slot.F, vac;
+        if (slot.L === k) vac = 'L'; else if (slot.R === k) vac = 'R'; else vac = age.L <= age.R ? 'L' : 'R';
+        var out = slot[vac];
+        tk[out].classList.add('gone');
+        place(oldF, vac); slot[vac] = oldF; age[vac] = ++gen;
+        slot.F = k;
+        setTimeout(function () {
+            if (out !== k) place(out, 'off');
+            var el = tk[k], st = stampOf(k);
+            st.classList.remove('in');
+            place(k, 'F'); el.classList.add('pre');
+            void el.offsetWidth;
+            el.classList.remove('pre');
+            stampIn(st, 620);
+        }, 460);
+    }
+    var heroTimer = 0, heroSeen = true, heroHover = false;
+    function heroCan() { return !still && heroSeen && !heroHover && !document.hidden; }
+    function heroSchedule() {
+        clearTimeout(heroTimer); heroTimer = 0;
+        if (heroCan()) heroTimer = setTimeout(function () { heroTimer = 0; if (heroCan()) step(); heroSchedule(); }, 6000);
+    }
+    new IntersectionObserver(function (e) { heroSeen = e[0].isIntersecting; heroSchedule(); }, { threshold: 0.25 }).observe(holder);
+    stack.addEventListener('mouseenter', function () { heroHover = true; heroSchedule(); });
+    stack.addEventListener('mouseleave', function () { heroHover = false; heroSchedule(); });
+    stack.addEventListener('focusin', function () { heroHover = true; heroSchedule(); });
+    stack.addEventListener('focusout', function () { heroHover = false; heroSchedule(); });
 
     // Scroll reveals
     var rv = new IntersectionObserver(function (entries) {
@@ -840,39 +1185,550 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
     }, { threshold: 0.12 });
     document.querySelectorAll('.rv').forEach(function (el) { rv.observe(el); });
 
-    // Chapters: stamp each ticket as it arrives, swap the sticky stage
-    var stageImgs = document.querySelectorAll('.stage .browser .screens img');
-    var phoneImgs = document.querySelectorAll('.stage .phone .screens img');
-    var dots = document.querySelectorAll('.stage-dots span');
-    var stageUrl = document.getElementById('stageUrl');
-    function show(i, url) {
-        [stageImgs, phoneImgs, dots].forEach(function (list) {
-            list.forEach(function (el, j) { el.classList.toggle('on', j === i); });
-        });
-        if (stageUrl) stageUrl.textContent = url;
+    /* ── The worlds ───────────────────────────────────────────────── */
+    var section = $('asks'), wbg = $('wbg'), pin = $('wbgPin');
+    var scenes = Array.prototype.slice.call(section.querySelectorAll('[data-world]'));
+    var layers = {};
+    each(wbg.querySelectorAll('.wl'), function (l) { layers[l.dataset.layer] = l; });
+    var mods = {};
+    function world(key, m) {
+        var panel = section.querySelector('.w[data-world="' + key + '"]');
+        if (!panel) return; // a panel switched off in the HTML simply isn't animated
+        m.key = key; m.panel = panel; m.layer = layers[key]; m.dirty = true; m.lastDraw = 0;
+        var cv = m.layer.querySelector('canvas');
+        if (cv) { m.cv = cv; m.ctx = cv.getContext('2d'); }
+        mods[key] = m;
     }
-    var ch = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-            if (!e.isIntersecting) return;
-            var el = e.target;
-            show(parseInt(el.dataset.shot, 10), el.dataset.url);
-            var stamp = el.querySelector('.stamp');
-            if (stamp && !stamp.classList.contains('in')) stampIn(stamp, 250);
+    function fitCanvas(m, w, h) {
+        m.w = w; m.h = h;
+        if (!m.cv) return;
+        m.cv.width = Math.round(w * DPR); m.cv.height = Math.round(h * DPR);
+        m.ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    // 0 as the panel's top edge enters at the bottom, 1 as its bottom edge leaves the top
+    function progress(panel) {
+        var r = panel.getBoundingClientRect();
+        return clamp((innerHeight - r.top) / (r.height + innerHeight), 0, 1);
+    }
+    function rel(el, layer) {
+        var a = el.getBoundingClientRect(), b = layer.getBoundingClientRect();
+        return { x: a.left - b.left, y: a.top - b.top, w: a.width, h: a.height };
+    }
+
+    /* Mane London: her gold arched mirror, balayage strands catching the light,
+       and the menu repricing itself across stylist levels */
+    world('mane', {
+        size: function (w, h) {
+            fitCanvas(this, w, h);
+            var G = this.G = {}, copy = rel(this.panel.querySelector('.w-copy'), this.layer), wide = w > 960;
+            if (wide) { G.aw = Math.min(copy.w * 0.95, 430); G.cx = copy.x + copy.w / 2; G.alpha = 0.34; }
+            else { G.aw = Math.min(w * 0.84, 400); G.cx = w / 2; G.alpha = 0.16; }
+            G.ah = Math.min(h * 0.8, 720); G.r = G.aw / 2;
+            G.top = Math.max(60, (Math.min(h, innerHeight) - G.ah) / 2 + 20); G.bottom = G.top + G.ah;
+            var DEEP = ['#4E3912', '#7A5A22', '#B8923F', '#E3CB86'], MID = ['#6B4E1C', '#9A7832', '#D9BC74', '#F3E4B3'], LIGHT = ['#8C6A2B', '#B8923F', '#ECD79C', '#FFF3D0'];
+            var n = wide ? 22 : 16; this.strands = [];
+            for (var i = 0; i < n; i++) this.strands.push({ o: (i / (n - 1) - 0.5) * 2, len: 0.86 + ((i * 7) % 11) / 75, ph: i * 1.7, w: 0.7 + ((i * 7) % 5) * 0.28, a: 0.55 + ((i * 3) % 4) * 0.12, c: [DEEP, MID, LIGHT][(i * 5) % 3] });
+        },
+        arch: function (r, inset) {
+            var G = this.G, ctx = this.ctx, l = G.cx - r, rt = G.cx + r, b = G.bottom - inset, s = G.top + inset + r;
+            ctx.beginPath(); ctx.moveTo(l, b); ctx.lineTo(l, s); ctx.arc(G.cx, s, r, Math.PI, 0); ctx.lineTo(rt, b);
+        },
+        draw: function (t, p, isStill) {
+            var ctx = this.ctx, G = this.G, self = this;
+            ctx.clearRect(0, 0, this.w, this.h);
+            ctx.globalAlpha = G.alpha;
+            this.arch(G.r - 10, 10);
+            var gl = ctx.createLinearGradient(G.cx - G.r, G.top, G.cx + G.r * 0.6, G.bottom);
+            gl.addColorStop(0, 'rgba(255,253,244,0.95)'); gl.addColorStop(0.45, 'rgba(248,238,214,0.75)'); gl.addColorStop(1, 'rgba(238,224,188,0.55)');
+            ctx.fillStyle = gl; ctx.fill();
+            ctx.save(); ctx.clip();
+            var drift = isStill ? 0 : Math.sin(t * 0.00022) * G.r * 0.3;
+            [[-0.75, 0.42, 0.62], [-0.05, 0.16, 0.38]].forEach(function (b) {
+                var sx = G.cx + G.r * b[0] + drift, sw = G.r * b[1];
+                var sh = ctx.createLinearGradient(sx, G.top, sx + sw, G.top + sw * 0.55);
+                sh.addColorStop(0, 'rgba(255,252,240,0)'); sh.addColorStop(0.5, 'rgba(255,252,240,' + b[2] + ')'); sh.addColorStop(1, 'rgba(255,252,240,0)');
+                ctx.fillStyle = sh; ctx.fillRect(G.cx - G.r, G.top, G.r * 2, G.ah);
+            });
+            ctx.restore();
+            [[G.r, 0, 1.8, 0.9], [G.r - 10, 10, 1, 0.55]].forEach(function (f) {
+                self.arch(f[0], f[1]); ctx.strokeStyle = 'rgba(140,106,43,' + f[3] + ')'; ctx.lineWidth = f[2]; ctx.stroke();
+            });
+            ctx.beginPath(); ctx.moveTo(G.cx - G.r - 30, G.bottom + 0.5); ctx.lineTo(G.cx + G.r + 30, G.bottom + 0.5);
+            ctx.strokeStyle = 'rgba(140,106,43,0.75)'; ctx.lineWidth = 1.8; ctx.stroke();
+            // the lock of hair: dark at the root, light at the ends, a glint running down it
+            var y0 = G.top + G.r * 0.3, yEnd = G.bottom - 16, span = yEnd - y0;
+            var tt = isStill ? 0 : t, gp = isStill ? -1 : ((t % 9000) / 4500) * 1.4 - 0.2;
+            for (var i = 0; i < this.strands.length; i++) {
+                var s = this.strands[i];
+                var grad = ctx.createLinearGradient(0, y0, 0, yEnd);
+                var stops = [[0, s.c[0]], [0.3, s.c[1]], [0.7, s.c[2]], [1, s.c[3]]];
+                if (gp > 0.04 && gp < 0.96) {
+                    stops = stops.filter(function (st) { return st[0] < gp - 0.08 || st[0] > gp + 0.08; });
+                    stops.push([Math.max(0, gp - 0.08), s.c[1]], [gp, '#FFF8E2'], [Math.min(1, gp + 0.08), s.c[2]]);
+                    stops.sort(function (m, n) { return m[0] - n[0]; });
+                }
+                stops.forEach(function (st) { grad.addColorStop(st[0], st[1]); });
+                ctx.strokeStyle = grad; ctx.lineWidth = s.w; ctx.globalAlpha = G.alpha * s.a;
+                ctx.beginPath();
+                var myEnd = y0 + span * s.len;
+                for (var y = y0; y <= myEnd + 0.1; y += 6) {
+                    var k2 = (y - y0) / span;
+                    var half = G.r * (0.14 + 0.5 * Math.sqrt(Math.min(1, k2 * 1.6)));
+                    var amp = G.r * (0.05 + 0.3 * k2);
+                    var centre = G.cx - G.r * 0.06 + amp * Math.sin(k2 * 9.5 - tt * 0.0006 + s.o * 0.7);
+                    var x = centre + half * s.o + G.r * 0.025 * Math.sin(k2 * 14 + s.ph + tt * 0.0009);
+                    if (y === y0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+            ctx.globalAlpha = 1;
+        },
+        init: function () {
+            var chip = $('chipMane'), self = this;
+            this.chip = chip; this.pills = chip.querySelectorAll('.pills b'); this.note = chip.querySelector('.note');
+            this.rows = Array.prototype.map.call(chip.querySelectorAll('li b'), function (b) {
+                var p = b.dataset.p.split(',').map(Number); return { el: b, p: p, cur: p[0], from: p[0], to: p[0], t0: 0 };
+            });
+            this.lv = 0; this.next = 0;
+            this.NOTES = ['Prices with a stylist', 'Prices with a senior stylist', 'Prices with a specialist'];
+            // each foil line gets its own start so they never flash together
+            each(this.panel.querySelectorAll('.foil'), function (el, i) { el.style.animationDelay = (-(i * 2.3) % 9).toFixed(2) + 's'; });
+        },
+        tick: function (t) {
+            var self = this;
+            if (!this.next) this.next = t + 1400;
+            if (t > this.next) {
+                this.next = t + 2300; this.lv = (this.lv + 1) % 3;
+                this.chip.style.setProperty('--lv', this.lv);
+                each(this.pills, function (b, j) { b.classList.toggle('on', j === self.lv); });
+                this.note.textContent = this.NOTES[this.lv];
+                this.rows.forEach(function (r) {
+                    r.from = r.cur; r.to = r.p[self.lv]; r.t0 = t;
+                    r.el.classList.remove('flash'); void r.el.offsetWidth; r.el.classList.add('flash');
+                });
+            }
+            this.rows.forEach(function (r) {
+                if (!r.t0) return;
+                var k = Math.min(1, (t - r.t0) / 520), e = 1 - Math.pow(1 - k, 3), v = Math.round(r.from + (r.to - r.from) * e);
+                r.el.textContent = '£' + v;
+                if (k >= 1) { r.cur = r.to; r.t0 = 0; }
+            });
+        }
+    });
+
+    /* Connected Pathways: faint silk drifting, and her two paths weaving
+       across the page, never apart for long */
+    world('cp', {
+        size: function (w, h) {
+            fitCanvas(this, w, h);
+            var R = rng(5), n = w < 640 ? 5 : 8; this.strands = [];
+            for (var i = 0; i < n; i++) this.strands.push({ y0: 0.02 + R() * 0.5, y1: 0.4 + R() * 0.6, a: 0.15 + R() * 0.6, b: 0.25 + R() * 0.6, ph: R() * 6.28, sp: 0.00005 + R() * 0.00005,
+                col: i % 3 === 0 ? '93,112,80' : (i % 3 === 1 ? '176,160,120' : '61,94,122'), al: 0.06 + R() * 0.07, glow: i % 2 === 0 });
+            // her two paths run down the quiet gutter between the words and the screens
+            var c = rel(this.panel.querySelector('.w-copy'), this.layer), a = rel(this.panel.querySelector('.w-art'), this.layer);
+            if (w > 960) {
+                var L = c.x < a.x ? c : a, Rt = c.x < a.x ? a : c, gap = Rt.x - (L.x + L.w);
+                this.gx = L.x + L.w + gap / 2; this.amp = Math.min(24, gap * 0.34);
+            } else { this.gx = 9; this.amp = 5; }
+        },
+        lane: function (y, s, ph) {
+            return this.gx + s * this.amp * Math.sin(y / 95 + ph) * (0.62 + 0.38 * Math.sin(y / 310 - ph * 0.5));
+        },
+        draw: function (t, p, isStill) {
+            var ctx = this.ctx, w = this.w, h = this.h;
+            ctx.clearRect(0, 0, w, h);
+            function bez(p0, p1, p2, p3, u) { var v = 1 - u; return v * v * v * p0 + 3 * v * v * u * p1 + 3 * v * u * u * p2 + u * u * u * p3; }
+            for (var i = 0; i < this.strands.length; i++) {
+                var s = this.strands[i], q = (isStill ? 0 : t * s.sp) + s.ph;
+                var x0 = -0.08 * w, y0 = s.y0 * h, x1 = 0.36 * w, y1 = (s.a + 0.14 * Math.sin(q)) * h, x2 = 0.7 * w, y2 = (s.b + 0.14 * Math.cos(q * 1.3)) * h, x3 = 1.08 * w, y3 = s.y1 * h;
+                for (var k = 0; k < 2; k++) {
+                    var o = k * 5;
+                    ctx.strokeStyle = 'rgba(' + s.col + ',' + (k ? s.al * 0.5 : s.al) + ')'; ctx.lineWidth = k ? 0.7 : 1;
+                    ctx.beginPath(); ctx.moveTo(x0, y0 + o); ctx.bezierCurveTo(x1, y1 + o * 1.6, x2, y2 - o, x3, y3 + o); ctx.stroke();
+                }
+                if (s.glow) {
+                    var u = 0.5 + 0.32 * Math.sin(q * 1.7), gx = bez(x0, x1, x2, x3, u), gy = bez(y0, y1, y2, y3, u);
+                    var gr = ctx.createRadialGradient(gx, gy, 0, gx, gy, 20);
+                    gr.addColorStop(0, 'rgba(255,252,240,0.95)'); gr.addColorStop(0.25, 'rgba(240,228,196,0.45)'); gr.addColorStop(1, 'rgba(240,228,196,0)');
+                    ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(gx, gy, 20, 0, 6.283); ctx.fill();
+                }
+            }
+            // the two paths
+            var ph = isStill ? 0.6 : t / 4200, self = this;
+            [[-1, 'rgba(19,47,77,0.55)'], [1, 'rgba(93,112,80,0.8)']].forEach(function (L) {
+                ctx.strokeStyle = L[1]; ctx.lineWidth = 1.7; ctx.lineCap = 'round';
+                ctx.beginPath();
+                for (var y = -10; y <= h + 10; y += 8) { var x = self.lane(y, L[0], ph); if (y < 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+                ctx.stroke();
+            });
+            // a bead walking down each path
+            [[-1, '19,47,77', 0], [1, '93,112,80', 0.5]].forEach(function (B) {
+                var by = isStill ? (0.3 + B[2] * 0.4) * h : (((t * 0.024) / h + B[2]) % 1) * (h + 60) - 30;
+                var bx = self.lane(by, B[0], ph), pulse = isStill ? 0.5 : 0.5 + 0.5 * Math.sin(t / 760 + B[2] * 6);
+                ctx.fillStyle = 'rgba(' + B[1] + ',' + (0.12 + 0.16 * pulse) + ')';
+                ctx.beginPath(); ctx.arc(bx, by, 8 + 5 * pulse, 0, 6.283); ctx.fill();
+                ctx.fillStyle = 'rgb(' + B[1] + ')';
+                ctx.beginPath(); ctx.arc(bx, by, 3.6, 0, 6.283); ctx.fill();
+            });
+        },
+        init: function () { this.chip = $('chipCp'); },
+        tick: function (t) {
+            var s = 0.5 + 0.5 * Math.sin(t / 2600);
+            this.chip.style.setProperty('--off', (26 + 14 * (1 - s)).toFixed(1) + 'px');
+            this.chip.style.setProperty('--o', (0.25 + 0.75 * s).toFixed(2));
+        },
+        still: function () { this.chip.style.setProperty('--off', '26px'); this.chip.style.setProperty('--o', '1'); }
+    });
+
+    /* Good Knight Yoga: a night sky with the odd shooting star, her knight
+       emblem drawing itself in stars as you scroll, and her breathing ring */
+    var KNIGHT = {"lines": [[[271, 178], [250, 224], [188, 249], [152, 288], [127, 289], [110, 267], [112, 243], [170, 127], [215, 81], [207, 21], [237, 37], [262, 69], [336, 90], [381, 129], [417, 205], [424, 284], [402, 363], [337, 486], [335, 560]], [[329, 354], [351, 332], [344, 291], [362, 236], [355, 186], [330, 145]], [[328, 355], [309, 387], [253, 380], [238, 408], [244, 438]], [[335, 605], [292, 638]], [[296, 107], [324, 145]], [[342, 604], [431, 558], [512, 563], [539, 585], [552, 623], [546, 658], [524, 686], [479, 703], [414, 700], [349, 676], [292, 639]], [[305, 289], [323, 295]], [[284, 639], [196, 688], [111, 704], [51, 686], [22, 638], [36, 586], [63, 564], [99, 554], [182, 570], [284, 638]], [[335, 604], [239, 516], [206, 463], [193, 416], [198, 372], [219, 333], [294, 269], [321, 231], [331, 190], [324, 147]], [[399, 628], [342, 605]], [[188, 166], [218, 157]]], "stars": [[22.0, 638.0, 3.4, 1], [36.0, 586.0, 2.1, 0], [51.0, 686.0, 3.4, 1], [63.0, 564.0, 1.7, 0], [99.0, 554.0, 2.2, 0], [110.0, 267.0, 3.4, 1], [111.0, 704.0, 1.8, 0], [112.0, 243.0, 2.3, 0], [127.0, 289.0, 3.4, 1], [152.0, 288.0, 3.4, 1], [170.0, 127.0, 2.4, 0], [182.0, 570.0, 1.5, 0], [188.0, 166.0, 2.0, 0], [188.0, 249.0, 2.5, 0], [193.0, 416.0, 1.6, 0], [196.0, 688.0, 2.1, 0], [198.0, 372.0, 2.6, 0], [206.0, 463.0, 1.7, 0], [207.0, 21.0, 3.4, 1], [215.0, 81.0, 3.4, 1], [218.0, 157.0, 1.8, 0], [219.0, 333.0, 2.3, 0], [237.0, 37.0, 2.8, 0], [238.0, 408.0, 3.4, 1], [239.0, 516.0, 2.4, 0], [244.0, 438.0, 1.5, 0], [250.0, 224.0, 3.4, 1], [253.0, 380.0, 3.4, 1], [262.0, 69.0, 3.4, 1], [271.0, 178.0, 2.1, 0], [284.0, 638.0, 2.6, 0], [284.0, 639.0, 1.7, 0], [292.0, 638.0, 2.2, 0], [292.0, 639.0, 2.7, 0], [294.0, 269.0, 1.8, 0], [296.0, 107.0, 2.3, 0], [305.0, 289.0, 2.8, 0], [309.0, 387.0, 3.4, 1], [321.0, 231.0, 2.4, 0], [323.0, 295.0, 1.5, 0], [324.0, 145.0, 2.0, 0], [324.0, 147.0, 2.5, 0], [328.0, 355.0, 1.6, 0], [329.0, 354.0, 2.1, 0], [330.0, 145.0, 2.6, 0], [331.0, 190.0, 1.7, 0], [335.0, 560.0, 2.2, 0], [335.0, 604.0, 2.7, 0], [335.0, 605.0, 1.8, 0], [336.0, 90.0, 2.3, 0], [337.0, 486.0, 2.8, 0], [342.0, 604.0, 1.9, 0], [342.0, 605.0, 2.4, 0], [344.0, 291.0, 1.5, 0], [349.0, 676.0, 2.0, 0], [351.0, 332.0, 3.4, 1], [355.0, 186.0, 1.6, 0], [362.0, 236.0, 2.1, 0], [381.0, 129.0, 2.6, 0], [399.0, 628.0, 1.7, 0], [402.0, 363.0, 2.2, 0], [414.0, 700.0, 2.7, 0], [417.0, 205.0, 1.8, 0], [424.0, 284.0, 2.3, 0], [431.0, 558.0, 2.8, 0], [479.0, 703.0, 1.9, 0], [512.0, 563.0, 2.4, 0], [524.0, 686.0, 1.5, 0], [539.0, 585.0, 2.0, 0], [546.0, 658.0, 2.5, 0], [552.0, 623.0, 1.6, 0]]};
+    world('gky', {
+        size: function (w, h) {
+            fitCanvas(this, w, h);
+            var n = Math.round(w * h / 9000), R = rng(11); this.pts = [];
+            for (var i = 0; i < n; i++) this.pts.push({ x: R(), y: R(), r: R() * 1.2 + 0.3, ph: R() * 6.3, sp: 0.4 + R() * 1.2 });
+            if (!this.nextShoot) this.nextShoot = 2000;
+        },
+        draw: function (t, p, isStill) {
+            var ctx = this.ctx, w = this.w, h = this.h;
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = '#ece7f6';
+            for (var i = 0; i < this.pts.length; i++) {
+                var s = this.pts[i];
+                ctx.globalAlpha = isStill ? 0.6 : 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(s.ph + t / 1000 * s.sp));
+                ctx.beginPath(); ctx.arc(s.x * w, s.y * h, s.r, 0, 6.283); ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+            if (isStill) return;
+            if (!this.shoot && t > this.nextShoot) this.shoot = { x: Math.random() * 0.6 + 0.2, y: Math.random() * 0.3, t0: t };
+            if (this.shoot) {
+                var k = (t - this.shoot.t0) / 900;
+                if (k > 1) { this.shoot = null; this.nextShoot = t + 5000 + Math.random() * 5000; }
+                else {
+                    var sx = (this.shoot.x + k * 0.22) * w, sy = (this.shoot.y + k * 0.12) * h;
+                    var g = ctx.createLinearGradient(sx, sy, sx - 120, sy - 65);
+                    g.addColorStop(0, 'rgba(246,223,174,' + (1 - k) + ')'); g.addColorStop(1, 'rgba(246,223,174,0)');
+                    ctx.strokeStyle = g; ctx.lineWidth = 1.6;
+                    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx - 120, sy - 65); ctx.stroke();
+                }
+            }
+        },
+        init: function () {
+            var svg = this.layer.querySelector('.knight'), NS = 'http://www.w3.org/2000/svg', segs = [], total = 0, vertexAt = [];
+            KNIGHT.lines.forEach(function (pts) {
+                var pl = document.createElementNS(NS, 'polyline');
+                pl.setAttribute('points', pts.map(function (q) { return q.join(','); }).join(' '));
+                svg.appendChild(pl);
+                var len = 0;
+                for (var i = 0; i < pts.length; i++) {
+                    if (i) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+                    vertexAt.push({ x: pts[i][0], y: pts[i][1], t: total + len });
+                }
+                segs.push({ el: pl, start: total, len: len });
+                pl.style.strokeDasharray = len; pl.style.strokeDashoffset = len;
+                total += len;
+            });
+            var R = rng(3);
+            this.stars = KNIGHT.stars.map(function (s) {
+                var g = document.createElementNS(NS, 'g');
+                g.setAttribute('class', 'st' + (s[3] ? ' bright' : ''));
+                if (s[3]) g.innerHTML = '<line x1="' + (s[0] - 8) + '" y1="' + s[1] + '" x2="' + (s[0] + 8) + '" y2="' + s[1] + '"/><line x1="' + s[0] + '" y1="' + (s[1] - 8) + '" x2="' + s[0] + '" y2="' + (s[1] + 8) + '"/>';
+                var c = document.createElementNS(NS, 'circle');
+                c.setAttribute('cx', s[0]); c.setAttribute('cy', s[1]); c.setAttribute('r', s[2] * 1.3);
+                g.appendChild(c);
+                g.style.setProperty('--tw', (3 + R() * 3).toFixed(2) + 's');
+                svg.appendChild(g);
+                var best = Infinity, tt = total;
+                vertexAt.forEach(function (v) { var d = Math.hypot(v.x - s[0], v.y - s[1]); if (d < best) { best = d; tt = v.t; } });
+                return { el: g, t: tt, lit: false };
+            });
+            this.segs = segs; this.total = total; this.drawn = -1;
+            this.ring = $('chipGky').querySelector('.ring'); this.word = this.ring.querySelector('span');
+        },
+        knight: function (k) {
+            var drawn = this.total * k;
+            if (Math.abs(drawn - this.drawn) < 2) return;
+            this.drawn = drawn;
+            this.segs.forEach(function (s) { s.el.style.strokeDashoffset = s.len * (1 - clamp((drawn - s.start) / s.len, 0, 1)); });
+            this.stars.forEach(function (s) { var on = drawn >= s.t - 1; if (on !== s.lit) { s.lit = on; s.el.classList.toggle('lit', on); } });
+        },
+        tick: function (t, p) {
+            this.knight(clamp(0.06 + (p - 0.12) * 1.9, 0.06, 1));
+            var c = (t / 1000) % 14, b, word;
+            if (c < 4) { b = 0.72 + 0.28 * (c / 4); word = 'in'; }
+            else if (c < 8) { b = 1; word = 'hold'; }
+            else { b = 1 - 0.28 * ((c - 8) / 6); word = 'out'; }
+            this.ring.style.setProperty('--b', b.toFixed(3));
+            if (this.word.textContent !== word) this.word.textContent = word;
+        },
+        still: function () { this.knight(1); this.ring.style.setProperty('--b', 1); this.word.textContent = 'breathe'; }
+    });
+
+    /* Performance Interpreting: stage beams sweeping over a crowd of phone
+       lights, and the listing board flipping as events refresh */
+    world('pi', {
+        PAL: [[[77,177,240],[0,120,196],[77,177,240],[0,120,196]], [[234,179,8],[77,177,240],[234,179,8],[77,177,240]], [[224,122,60],[234,179,8],[224,122,60],[77,177,240]]],
+        size: function (w, h) {
+            fitCanvas(this, w, h);
+            var narrow = w < 700, R = rng(7), vh = Math.min(h, innerHeight * 1.05);
+            this.vh = vh;
+            this.beams = (narrow ? [0.12, 0.5, 0.88] : [0.14, 0.38, 0.62, 0.86]).map(function (x, i) {
+                return { x: x, base: (i % 2 ? -1 : 1) * 0.28, amp: 0.3 + (i % 3) * 0.06, sp: 0.00016 + i * 0.00003, ph: i * 1.7, ci: narrow ? [0, 1, 3][i] : i };
+            });
+            this.crowd = [];
+            var rows = narrow ? 6 : 8, top = h - vh;
+            for (var r = 0; r < rows; r++) {
+                var d = r / (rows - 1), y = top + (0.78 + 0.16 * Math.pow(d, 1.15)) * vh;
+                var spacing = (narrow ? 12 : 10) + (narrow ? 18 : 16) * d, n = Math.ceil(w / spacing);
+                for (var i = 0; i < n; i++) {
+                    if (R() < 0.3) continue;
+                    this.crowd.push({ x: (i + R()) * spacing, y: y + (R() - 0.5) * 10 - (R() < 0.12 ? 14 * (0.5 + d) : 0), d: d, r: 0.7 + 1.8 * d, ph: R() * 6.28, sp: 0.6 + R(), warm: R() < 0.72 });
+                }
+            }
+        },
+        draw: function (t, p, isStill) {
+            var ctx = this.ctx, W = this.w, H = this.h;
+            ctx.clearRect(0, 0, W, H);
+            ctx.globalCompositeOperation = 'lighter';
+            var ph = isStill ? 0.5 : 0.5 + 0.5 * Math.sin(t / 9000);
+            var k = ph < 0.5 ? ph * 2 : (ph - 0.5) * 2, A = ph < 0.5 ? this.PAL[0] : this.PAL[1], B = ph < 0.5 ? this.PAL[1] : this.PAL[2];
+            var oy = H * 0.04, L = H * 0.98;
+            for (var i = 0; i < this.beams.length; i++) {
+                var bm = this.beams[i], a = bm.base + (isStill ? 0 : bm.amp * Math.sin(t * bm.sp + bm.ph));
+                var ox = bm.x * W, spread = 0.085, ca = A[bm.ci], cb = B[bm.ci];
+                var c = [Math.round(ca[0] + (cb[0] - ca[0]) * k), Math.round(ca[1] + (cb[1] - ca[1]) * k), Math.round(ca[2] + (cb[2] - ca[2]) * k)];
+                var ex = ox + Math.sin(a) * L, ey = oy + Math.cos(a) * L;
+                var g = ctx.createLinearGradient(ox, oy, ex, ey);
+                g.addColorStop(0, 'rgba(' + c + ',0.22)'); g.addColorStop(0.55, 'rgba(' + c + ',0.06)'); g.addColorStop(1, 'rgba(' + c + ',0)');
+                ctx.fillStyle = g;
+                ctx.beginPath(); ctx.moveTo(ox - 3, oy);
+                ctx.lineTo(ox + Math.sin(a - spread) * L, oy + Math.cos(a - spread) * L);
+                ctx.lineTo(ox + Math.sin(a + spread) * L, oy + Math.cos(a + spread) * L);
+                ctx.lineTo(ox + 3, oy); ctx.closePath(); ctx.fill();
+                ctx.fillStyle = 'rgba(' + c + ',0.9)';
+                ctx.beginPath(); ctx.arc(ox, oy, 3, 0, 6.283); ctx.fill();
+            }
+            ctx.globalCompositeOperation = 'source-over';
+            for (var j = 0; j < this.crowd.length; j++) {
+                var q = this.crowd[j];
+                var sway = isStill ? 0 : Math.sin(t * 0.0011 + q.d * 1.4 + q.x * 0.0025) * (2 + 7 * q.d);
+                var tw = isStill ? 0.85 : 0.72 + 0.28 * Math.sin(t * 0.003 * q.sp + q.ph);
+                var alpha = (0.32 + 0.5 * q.d) * tw, col = q.warm ? '255,236,200' : '214,236,255';
+                if (q.d > 0.7) { ctx.fillStyle = 'rgba(' + col + ',' + (alpha * 0.12) + ')'; ctx.beginPath(); ctx.arc(q.x + sway, q.y, q.r * 3.4, 0, 6.283); ctx.fill(); }
+                ctx.fillStyle = 'rgba(' + col + ',' + alpha + ')';
+                if (q.r < 1.4) ctx.fillRect(q.x + sway, q.y, q.r * 1.5, q.r * 1.5);
+                else { ctx.beginPath(); ctx.arc(q.x + sway, q.y, q.r, 0, 6.283); ctx.fill(); }
+            }
+        },
+        init: function () {
+            var host = $('piRows'), self = this;
+            this.DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+            this.TYPES = ['CONCERT', 'FESTIVAL', 'SPORT', 'COMEDY', 'THEATRE', 'PRIDE', 'FAMILY', 'DANCE'];
+            this.rows = [];
+            [['SAT CONCERT  BSL', 'ok'], ['SUN FESTIVAL ISL', 'ok'], ['FRI SPORT    BSL', 'out'], ['THU COMEDY   BSL', 'ok']].forEach(function (sd) {
+                var row = document.createElement('div'); row.className = 'row';
+                var cells = [];
+                for (var i = 0; i < 16; i++) { var c = document.createElement('span'); c.className = 'c'; c.textContent = sd[0][i]; row.appendChild(c); cells.push(c); }
+                var st = document.createElement('span'); st.className = 'st ' + sd[1]; row.appendChild(st);
+                host.appendChild(row); self.rows.push({ cells: cells, st: st });
+            });
+            this.bar = $('piBar'); this.next = 0;
+        },
+        flip: function (r) {
+            function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+            var s = pick(this.DAYS) + ' ' + (pick(this.TYPES) + '        ').slice(0, 8) + ' ' + (Math.random() < 0.72 ? 'BSL' : 'ISL'), st = Math.random() < 0.8 ? 'ok' : 'out';
+            r.cells.forEach(function (c, i) {
+                if (c.textContent === s[i]) return;
+                var delay = i * 28;
+                setTimeout(function () { c.classList.remove('fl'); void c.offsetWidth; c.classList.add('fl'); }, delay);
+                setTimeout(function () { c.textContent = s[i]; }, delay + 130);
+            });
+            setTimeout(function () { r.st.className = 'st ' + st; }, 16 * 28 + 130);
+        },
+        tick: function (t) {
+            var CYCLE = 4200, self = this;
+            if (!this.next) this.next = t + CYCLE;
+            if (t >= this.next) {
+                this.next = t + CYCLE;
+                var a = Math.floor(Math.random() * this.rows.length), b = (a + 1 + Math.floor(Math.random() * (this.rows.length - 1))) % this.rows.length;
+                this.flip(this.rows[a]); setTimeout(function () { self.flip(self.rows[b]); }, 260);
+            }
+            this.bar.style.setProperty('--k', (1 - (this.next - t) / CYCLE).toFixed(3));
+        }
+    });
+
+    /* The Sonic Sanctuary: sound rings rippling out from the site itself,
+       and a waveform that is busy as you arrive and settles as you read */
+    world('ss', {
+        size: function (w, h) { fitCanvas(this, w, h); },
+        draw: function (t, p, isStill) {
+            var ctx = this.ctx, W = this.w, H = this.h;
+            ctx.clearRect(0, 0, W, H);
+            var o = this.origin || { x: W * 0.6, y: H * 0.45 }, maxR = Math.hypot(W, Math.min(H, innerHeight)) * 0.7;
+            var b = isStill ? 1 : this.breath;
+            ctx.lineWidth = 1.2;
+            if (isStill) {
+                for (var s = 1; s <= 4; s++) { ctx.strokeStyle = 'rgba(201,169,106,' + (0.22 - s * 0.04) + ')'; ctx.beginPath(); ctx.arc(o.x, o.y, s * 110, 0, 6.283); ctx.stroke(); }
+            } else {
+                var period = 2750, life = 11000;
+                for (var kk = Math.floor(t / period); kk * period > t - life; kk--) {
+                    var age = (t - kk * period) / life; if (age < 0 || age > 1) continue;
+                    ctx.strokeStyle = 'rgba(201,169,106,' + (Math.pow(1 - age, 1.8) * (0.22 + 0.18 * b)).toFixed(3) + ')';
+                    ctx.beginPath(); ctx.arc(o.x, o.y, 40 + age * maxR, 0, 6.283); ctx.stroke();
+                }
+            }
+            // busy on arrival, a slow sine by the time you've read the panel
+            var noise = isStill ? 0 : Math.pow(1 - smooth((p - 0.2) / 0.45), 1.25);
+            var vh = Math.min(H, innerHeight), base = (H - vh) + vh * 0.93, sec = t / 1000, steps = Math.max(80, Math.round(W / 8));
+            var LAY = [[0.4, 1.5, 0], [0.2, 1, 2.1], [0.11, 1, 4.2]];
+            for (var L = 0; L < LAY.length; L++) {
+                var lay = LAY[L];
+                ctx.strokeStyle = L === 0 ? 'rgba(201,169,106,' + lay[0] + ')' : 'rgba(242,237,227,' + lay[0] + ')';
+                ctx.lineWidth = lay[1];
+                ctx.beginPath();
+                for (var i = 0; i <= steps; i++) {
+                    var u = i / steps, x = u * W, env = Math.sin(Math.PI * u);
+                    var calm = (6 + 14 * b) * Math.sin(u * 6.283 * 1.15 + sec * 0.35 + lay[2]);
+                    var busy = noise * 0.8 * (13 * Math.sin(u * 57 + sec * 5.3 + lay[2]) + 9 * Math.sin(u * 131 - sec * 8.1) + 6 * Math.sin(u * 263 + sec * 11.7 + lay[2] * 2));
+                    var y = base + (calm + busy) * env + L * 5;
+                    if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+                }
+                ctx.stroke();
+            }
+        },
+        init: function () { this.chip = $('chipSs'); this.glow = this.chip.querySelector('.glow'); this.cap = $('ssCap'); this.shot = this.panel.querySelector('.w-shot'); this.breath = 0; },
+        locate: function () { var r = rel(this.shot, this.layer); this.origin = { x: r.x + r.w * 0.42, y: r.y + r.h * 0.45 }; },
+        tick: function (t) {
+            var BREATH = 11, c = (t / 1000) % BREATH;
+            this.breath = c < BREATH / 2 ? ease(c / (BREATH / 2)) : 1 - ease((c - BREATH / 2) / (BREATH / 2));
+            this.glow.style.setProperty('--b', (0.75 + 0.3 * this.breath).toFixed(3));
+            var word = c < BREATH / 2 ? 'breathe in' : 'breathe out';
+            if (this.cap.textContent !== word) this.cap.textContent = word;
+            this.locate();
+        },
+        still: function () { this.locate(); this.cap.textContent = 'breathe'; }
+    });
+
+    /* Ace & Jacks: the card table under a lamp, dust drifting through the
+       light, and an ace and a jack dealt onto the felt */
+    world('aj', {
+        size: function (w, h) {
+            fitCanvas(this, w, h);
+            var n = Math.round(Math.min(60, w * Math.min(h, innerHeight) / 22000)), R = rng(9); this.motes = [];
+            for (var i = 0; i < n; i++) this.motes.push({ x: R(), y: R(), r: 0.6 + R() * 1.6, vx: (R() - 0.5) * 0.00006, vy: -0.00002 - R() * 0.00005, ph: R() * 6.3 });
+        },
+        draw: function (t, p, isStill) {
+            var ctx = this.ctx, w = this.w, h = this.h, dt = this.lastT ? Math.min(50, t - this.lastT) : 16;
+            this.lastT = t;
+            ctx.clearRect(0, 0, w, h);
+            for (var i = 0; i < this.motes.length; i++) {
+                var m = this.motes[i];
+                if (!isStill) {
+                    m.x += m.vx * dt + Math.sin(t / 3000 + m.ph) * 0.00002 * dt; m.y += m.vy * dt;
+                    if (m.y < -0.02) { m.y = 1.02; m.x = Math.random(); }
+                    if (m.x < -0.02) m.x = 1.02; if (m.x > 1.02) m.x = -0.02;
+                }
+                var d = Math.hypot((m.x - 0.62) * w / h, m.y - 0.18);
+                ctx.globalAlpha = Math.max(0.05, 0.55 - d * 0.6) * (isStill ? 0.8 : 0.6 + 0.4 * Math.sin(t / 900 + m.ph));
+                ctx.fillStyle = (i % 5 === 0) ? '#e8c27a' : '#f5efe1';
+                ctx.beginPath(); ctx.arc(m.x * w, m.y * h, m.r, 0, 6.283); ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        },
+        init: function () { this.chip = $('chipAj'); },
+        enter: function () { this.chip.classList.add('dealt'); },
+        still: function () { this.chip.classList.add('dealt'); }
+    });
+
+    Object.keys(mods).forEach(function (k) { if (mods[k].init) mods[k].init(); });
+
+    function sizeMod(m) {
+        if (!m.size) { m.dirty = false; return; }
+        var host = still ? m.panel : pin;
+        m.size(host.clientWidth, host.clientHeight);
+        m.dirty = false;
+    }
+
+    if (still) {
+        /* Reduced motion: each world's layer moves inside its own panel and is
+           drawn once, fully formed. Nothing moves. */
+        Object.keys(mods).forEach(function (k) {
+            var m = mods[k];
+            m.panel.insertBefore(m.layer, m.panel.firstChild);
+            m.layer.classList.add('on');
         });
-    }, { rootMargin: '-40% 0px -40% 0px' });
-    document.querySelectorAll('.chapter').forEach(function (el) { ch.observe(el); });
+        var paintStill = function () {
+            Object.keys(mods).forEach(function (k) {
+                var m = mods[k];
+                sizeMod(m);
+                if (m.still) m.still();
+                if (m.draw) m.draw(0, 1, true);
+            });
+        };
+        paintStill();
+        var rs; addEventListener('resize', function () { clearTimeout(rs); rs = setTimeout(paintStill, 200); });
+    } else {
+        section.classList.add('live');
+
+        var cur = null, raf = 0, lastT = 0, stamped = new Set();
+        function setActive(scene) {
+            if (scene === cur) return;
+            if (cur) cur.classList.remove('on');
+            cur = scene; scene.classList.add('on');
+            var key = scene.dataset.world;
+            Object.keys(layers).forEach(function (k) { layers[k].classList.toggle('on', k === key); });
+            var m = mods[key];
+            if (m) { m.next = 0; if (m.enter) m.enter(); }
+            var stamp = scene.querySelector('.stamp');
+            if (stamp && !stamped.has(stamp)) { stamped.add(stamp); stampIn(stamp, 350); }
+            kick();
+        }
+        // one loop for the whole sampler, dispatching only to the world in view
+        function loop(t) {
+            raf = 0;
+            if (document.hidden || !cur) return;
+            var m = mods[cur.dataset.world];
+            if (!m || (!m.tick && !m.draw)) return;
+            if (m.dirty) sizeMod(m);
+            var p = progress(m.panel);
+            if (m.tick) m.tick(t, p);
+            if (m.draw && t - m.lastDraw >= 32) { m.lastDraw = t; m.draw(t, p, false); }
+            raf = requestAnimationFrame(loop);
+        }
+        function kick() { if (!raf && !document.hidden) raf = requestAnimationFrame(loop); }
+
+        var crossing = new Set();
+        var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) crossing.add(e.target); else crossing.delete(e.target); });
+            var next = null;
+            scenes.forEach(function (s) { if (crossing.has(s)) next = s; });
+            if (next) setActive(next);
+        }, { rootMargin: '-56% 0px -43% 0px' });
+        scenes.forEach(function (s) { io.observe(s); });
+        // stop the loop entirely once the sampler is off screen
+        new IntersectionObserver(function (e) {
+            if (!e[0].isIntersecting && cur) { cur.classList.remove('on'); cur = null; }
+        }).observe(section);
+
+        document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); heroSchedule(); });
+        var rz; addEventListener('resize', function () {
+            clearTimeout(rz);
+            rz = setTimeout(function () { Object.keys(mods).forEach(function (k) { mods[k].dirty = true; }); kick(); }, 150);
+        });
+    }
 
     // Chat plays once when it scrolls into view
-    var chat = document.getElementById('chat');
+    var chat = $('chat');
     var co = new IntersectionObserver(function (entries) {
         if (entries[0].isIntersecting) { chat.classList.add('play'); co.disconnect(); }
     }, { threshold: 0.4 });
     if (chat) co.observe(chat);
 
     // Mobile dock: after the hero, hidden again at the final CTA
-    var dock = document.getElementById('dock');
+    var dock = $('dock');
     var hero = document.querySelector('.hero');
-    var fin = document.getElementById('final');
+    var fin = $('final');
     var pastHero = false, atFinal = false;
     function syncDock() { dock.classList.toggle('show', pastHero && !atFinal); }
     new IntersectionObserver(function (e) { pastHero = !e[0].isIntersecting; syncDock(); }).observe(hero);

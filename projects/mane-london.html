@@ -657,12 +657,11 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
     /* Foil glint: each heading gets its own start, so they never flash together */
     document.querySelectorAll('.foil').forEach(function (el, i) { el.style.setProperty('--gd', (-(i * 2.3) % 9).toFixed(2) + 's'); });
 
-    /* ── The mirror and the mane: a gold mirror frame draws itself with the page,
-          balayage strands grow inside it, sway, and catch a glint of light ── */
+    /* ── The mirror: a gilded arch with a slow sheen, and her own balayage work in the glass ── */
     var cv = document.getElementById('mirror'), ctx = cv.getContext('2d');
     var dpr = Math.min(1.5, window.devicePixelRatio || 1);
-    var W, H, G = {}, strands = [], px = -9999, py = -9999, pAmt = 0;
-    var COLS = ['#8C6A2B', '#B8923F', '#D9BC74', '#C9A659', '#F1E2B0', '#A9863E', '#E3CB86', '#9A7832'];
+    var W, H, G = {};
+    var photo = new Image(); photo.src = '/images/projects/mane-mirror.jpg'; photo.onload = function () { if (still) draw(0); };
     function geom() {
         W = innerWidth; H = innerHeight;
         cv.width = Math.round(W * dpr); cv.height = Math.round(H * 1.2 * dpr);
@@ -672,17 +671,10 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
             G.cx = Math.min(W * 0.79, W - G.aw / 2 - 36); G.alpha = 1;
         } else {
             G.aw = Math.min(W * 0.84, 420); G.ah = Math.min(H * 0.8, 700);
-            G.cx = W / 2; G.alpha = 0.2;
+            G.cx = W / 2; G.alpha = 0.1;
         }
         G.r = G.aw / 2; G.top = off + (H - G.ah) / 2 + (wide ? 24 : 36);
         G.spring = G.top + G.r; G.bottom = G.top + G.ah;
-        var n = wide ? 34 : 24;
-        var DEEP = ['#4E3912', '#7A5A22', '#B8923F', '#E3CB86'], MID = ['#6B4E1C', '#9A7832', '#D9BC74', '#F3E4B3'], LIGHT = ['#8C6A2B', '#B8923F', '#ECD79C', '#FFF3D0'];
-        strands = [];
-        for (var i = 0; i < n; i++) {
-            var o = (i / (n - 1) - 0.5) * 2;
-            strands.push({ o: o, len: 0.86 + ((i * 7) % 11) / 75, ph: i * 1.7, w: 0.7 + ((i * 7) % 5) * 0.28, a: 0.55 + ((i * 3) % 4) * 0.12, c: [DEEP, MID, LIGHT][(i * 5) % 3] });
-        }
     }
     function archPath(r, inset) {
         var l = G.cx - r, rt = G.cx + r, b = G.bottom - inset, s = G.top + inset + r;
@@ -725,49 +717,26 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
             ctx.beginPath(); ctx.moveTo(G.cx - (G.r + 30) * k, G.bottom + 0.5); ctx.lineTo(G.cx + (G.r + 30) * k, G.bottom + 0.5);
             ctx.strokeStyle = 'rgba(140,106,43,0.75)'; ctx.lineWidth = 1.8; ctx.stroke();
         }
-        // the lock of hair: balayage strands, dark at the root and light at the ends,
-        // falling in a slow twisting wave that grows with the page and parts around a cursor
-        var y0 = G.top + G.r * 0.3, yEnd = G.bottom - 16, span = yEnd - y0;
-        var grow = still ? 1 : Math.min(1, 0.74 + p * 0.8);
-        var yStop = y0 + span * grow;
-        var tt = still ? 0 : t;
-        var gp = still ? -1 : ((t % 9000) / 4500) * 1.4 - 0.2; // glint runs down, then rests
-        var pyC = py + H * 0.1;
-        for (var i = 0; i < strands.length; i++) {
-            var s = strands[i];
-            var grad = ctx.createLinearGradient(0, y0, 0, yEnd);
-            var stops = [[0, s.c[0]], [0.3, s.c[1]], [0.7, s.c[2]], [1, s.c[3]]];
-            if (gp > 0.04 && gp < 0.96) {
-                stops = stops.filter(function (st) { return st[0] < gp - 0.08 || st[0] > gp + 0.08; });
-                stops.push([Math.max(0, gp - 0.08), s.c[1]], [gp, '#FFF8E2'], [Math.min(1, gp + 0.08), s.c[2]]);
-                stops.sort(function (m, n) { return m[0] - n[0]; });
-            }
-            stops.forEach(function (st) { grad.addColorStop(st[0], st[1]); });
-            ctx.strokeStyle = grad; ctx.lineWidth = s.w; ctx.globalAlpha = G.alpha * s.a;
-            ctx.beginPath();
-            var myEnd = y0 + (yStop - y0) * s.len;
-            for (var y = y0; y <= myEnd + 0.1; y += 5) {
-                var k2 = (y - y0) / span;
-                var half = G.r * (0.14 + 0.5 * Math.sqrt(Math.min(1, k2 * 1.6)));
-                var amp = G.r * (0.05 + 0.3 * k2);
-                var centre = G.cx - G.r * 0.06 + amp * Math.sin(k2 * 9.5 - tt * 0.0006 + s.o * 0.7);
-                var x = centre + half * s.o + G.r * 0.025 * Math.sin(k2 * 14 + s.ph + tt * 0.0009);
-                if (pAmt > 0.01) {
-                    var dx = x - px, dy = y - pyC, d2 = dx * dx + dy * dy;
-                    if (d2 < 26000) x += (dx >= 0 ? 1 : -1) * 40 * pAmt * Math.exp(-d2 / 6000);
-                }
-                if (y === y0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
+        // her own work in the glass: a real balayage photo, breathing slowly, drifting with the page
+        if (photo.complete && photo.naturalWidth) {
+            ctx.save(); archPath(G.r - 10, 10); ctx.clip();
+            var gw = (G.r - 10) * 2, gh = G.ah - 20;
+            var zoom = still ? 1.06 : 1.06 + 0.025 * Math.sin(t * 0.00018);
+            var sc = Math.max(gw / photo.naturalWidth, gh / photo.naturalHeight) * zoom;
+            var iw = photo.naturalWidth * sc, ih = photo.naturalHeight * sc;
+            var ix = G.cx - iw / 2, iy = G.top + 10 + (gh - ih) * (still ? 0.35 : 0.2 + p * 0.3);
+            ctx.globalAlpha = G.alpha; ctx.drawImage(photo, ix, iy, iw, ih);
+            // warm the photo into the cream and gold of the page
+            ctx.globalAlpha = G.alpha * 0.22; ctx.fillStyle = '#F3E4B3'; ctx.fillRect(G.cx - G.r, G.top, G.r * 2, G.ah);
+            // the mirror sheen passes over her work
+            var sx2 = G.cx - G.r * 1.4 + ((still ? 0.4 : (t % 11000) / 11000) * G.r * 2.8);
+            var sh2 = ctx.createLinearGradient(sx2, G.top, sx2 + G.r * 0.5, G.top + G.r * 0.3);
+            sh2.addColorStop(0, 'rgba(255,250,235,0)'); sh2.addColorStop(0.5, 'rgba(255,250,235,0.32)'); sh2.addColorStop(1, 'rgba(255,250,235,0)');
+            ctx.globalAlpha = G.alpha; ctx.fillStyle = sh2; ctx.fillRect(G.cx - G.r, G.top, G.r * 2, G.ah);
+            ctx.restore();
+            // redraw the inner frame line over the photo edge
+            archPath(G.r - 10, 10); ctx.strokeStyle = 'rgba(140,106,43,0.7)'; ctx.lineWidth = 1.2; ctx.stroke();
         }
-        // a gold hair tie where the lock is gathered
-        ctx.globalAlpha = G.alpha;
-        var tieW = G.r * 0.36, tieX = G.cx - G.r * 0.06 + G.r * 0.05 * Math.sin(-tt * 0.0006);
-        var tg = ctx.createLinearGradient(tieX - tieW / 2, 0, tieX + tieW / 2, 0);
-        tg.addColorStop(0, '#7d5d22'); tg.addColorStop(0.3, '#f3e4b3'); tg.addColorStop(0.55, '#b48e3e'); tg.addColorStop(0.8, '#ecd79c'); tg.addColorStop(1, '#8c6a2b');
-        ctx.fillStyle = tg; ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(tieX - tieW / 2, y0 - 5, tieW, 10, 5); else ctx.rect(tieX - tieW / 2, y0 - 5, tieW, 10);
-        ctx.fill();
         // the keystone sparkle, once the frame is whole
         if (q >= 1) {
             ctx.globalAlpha = G.alpha * (still ? 1 : 0.65 + 0.35 * Math.sin(t / 700));
@@ -782,10 +751,6 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
     }
     geom();
     addEventListener('resize', function () { geom(); if (still) draw(0); });
-    if (fine && !still) {
-        addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; pAmt = 1; });
-        document.addEventListener('pointerleave', function () { pAmt = 0; });
-    }
 
     /* ── One rAF loop for everything that moves; it sleeps when the tab is hidden ── */
     var looping = false, last = 0;

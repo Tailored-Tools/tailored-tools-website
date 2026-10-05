@@ -499,6 +499,22 @@
             .foil { background-position: 50% 0; }
             .knight .st { opacity: 1; }
         }
+
+        .wl { overflow: hidden; }
+        /* Nothing may widen the page on phones (cards deal in from off-screen) */
+        html, body { overflow-x: clip; }
+        .chip-aj { overflow: hidden; }
+        /* Phones: tickets straight after the headline, shorter intro */
+        .hero-sub-short { display: none; }
+        @media (max-width: 720px) {
+            .hero .wrap > div:first-child { display: contents; }
+            .hero .eyebrow { order: 1; } .hero h1 { order: 2; margin-bottom: 18px; }
+            .hero .stack-holder { order: 3; max-width: 310px; margin: 0 auto 26px; }
+            .hero-sub-long { display: none; }
+            .hero-sub-short { display: block; order: 4; margin-bottom: 26px; }
+            .hero .hero-ctas { order: 5; } .hero .hero-micro { order: 6; }
+            .hero .wrap { gap: 0; }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -579,7 +595,8 @@
         <div>
             <span class="eyebrow">Websites &amp; systems &middot; Maidstone, Kent</span>
             <h1 class="display">It's never just <span class="u">a website.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 140 4, 297 11"/></svg></span></h1>
-            <p class="hero-sub">Owner-run businesses come to me asking for one thing: <em>a price list</em>, <em>a booking button</em>, somewhere to put the timetable. Within days they're looking at what they actually needed, live, with their name on it. Before they've paid a penny.</p>
+            <p class="hero-sub hero-sub-long">Owner-run businesses come to me asking for one thing: <em>a price list</em>, <em>a booking button</em>, somewhere to put the timetable. Within days they're looking at what they actually needed, live, with their name on it. Before they've paid a penny.</p>
+            <p class="hero-sub hero-sub-short">People ask me for <em>a price list</em> or <em>a booking button</em>. Within days they see what they actually needed, live, before paying a penny.</p>
             <div class="hero-ctas">
                 <a href="/brief/" class="btn btn-primary">Start your brief &rarr;</a>
                 <a href="#asks" class="btn btn-line">See what they asked for</a>
@@ -1215,7 +1232,7 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
         return { x: a.left - b.left, y: a.top - b.top, w: a.width, h: a.height };
     }
 
-    /* Mane London: her gold arched mirror, balayage strands catching the light,
+    /* Mane London: her gold arched mirror with her own balayage work in the glass,
        and the menu repricing itself across stylist levels */
     world('mane', {
         size: function (w, h) {
@@ -1225,9 +1242,7 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
             else { G.aw = Math.min(w * 0.84, 400); G.cx = w / 2; G.alpha = 0.16; }
             G.ah = Math.min(h * 0.8, 720); G.r = G.aw / 2;
             G.top = Math.max(60, (Math.min(h, innerHeight) - G.ah) / 2 + 20); G.bottom = G.top + G.ah;
-            var DEEP = ['#4E3912', '#7A5A22', '#B8923F', '#E3CB86'], MID = ['#6B4E1C', '#9A7832', '#D9BC74', '#F3E4B3'], LIGHT = ['#8C6A2B', '#B8923F', '#ECD79C', '#FFF3D0'];
-            var n = wide ? 22 : 16; this.strands = [];
-            for (var i = 0; i < n; i++) this.strands.push({ o: (i / (n - 1) - 0.5) * 2, len: 0.86 + ((i * 7) % 11) / 75, ph: i * 1.7, w: 0.7 + ((i * 7) % 5) * 0.28, a: 0.55 + ((i * 3) % 4) * 0.12, c: [DEEP, MID, LIGHT][(i * 5) % 3] });
+            if (!this.photo) { var self = this; this.photo = new Image(); this.photo.src = '/images/projects/mane-mirror.jpg'; this.photo.onload = function () { if (matchMedia('(prefers-reduced-motion: reduce)').matches && self.ctx) self.draw(0, 0, true); }; }
         },
         arch: function (r, inset) {
             var G = this.G, ctx = this.ctx, l = G.cx - r, rt = G.cx + r, b = G.bottom - inset, s = G.top + inset + r;
@@ -1255,31 +1270,19 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
             });
             ctx.beginPath(); ctx.moveTo(G.cx - G.r - 30, G.bottom + 0.5); ctx.lineTo(G.cx + G.r + 30, G.bottom + 0.5);
             ctx.strokeStyle = 'rgba(140,106,43,0.75)'; ctx.lineWidth = 1.8; ctx.stroke();
-            // the lock of hair: dark at the root, light at the ends, a glint running down it
-            var y0 = G.top + G.r * 0.3, yEnd = G.bottom - 16, span = yEnd - y0;
-            var tt = isStill ? 0 : t, gp = isStill ? -1 : ((t % 9000) / 4500) * 1.4 - 0.2;
-            for (var i = 0; i < this.strands.length; i++) {
-                var s = this.strands[i];
-                var grad = ctx.createLinearGradient(0, y0, 0, yEnd);
-                var stops = [[0, s.c[0]], [0.3, s.c[1]], [0.7, s.c[2]], [1, s.c[3]]];
-                if (gp > 0.04 && gp < 0.96) {
-                    stops = stops.filter(function (st) { return st[0] < gp - 0.08 || st[0] > gp + 0.08; });
-                    stops.push([Math.max(0, gp - 0.08), s.c[1]], [gp, '#FFF8E2'], [Math.min(1, gp + 0.08), s.c[2]]);
-                    stops.sort(function (m, n) { return m[0] - n[0]; });
-                }
-                stops.forEach(function (st) { grad.addColorStop(st[0], st[1]); });
-                ctx.strokeStyle = grad; ctx.lineWidth = s.w; ctx.globalAlpha = G.alpha * s.a;
-                ctx.beginPath();
-                var myEnd = y0 + span * s.len;
-                for (var y = y0; y <= myEnd + 0.1; y += 6) {
-                    var k2 = (y - y0) / span;
-                    var half = G.r * (0.14 + 0.5 * Math.sqrt(Math.min(1, k2 * 1.6)));
-                    var amp = G.r * (0.05 + 0.3 * k2);
-                    var centre = G.cx - G.r * 0.06 + amp * Math.sin(k2 * 9.5 - tt * 0.0006 + s.o * 0.7);
-                    var x = centre + half * s.o + G.r * 0.025 * Math.sin(k2 * 14 + s.ph + tt * 0.0009);
-                    if (y === y0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                }
-                ctx.stroke();
+            // her own balayage work in the glass, breathing slowly, with the mirror sheen passing over
+            var ph = this.photo;
+            if (ph && ph.complete && ph.naturalWidth) {
+                ctx.save(); this.arch(G.r - 10, 10); ctx.clip();
+                var gw = (G.r - 10) * 2, gh = G.ah - 20, zoom = isStill ? 1.06 : 1.06 + 0.025 * Math.sin(t * 0.00018);
+                var sc = Math.max(gw / ph.naturalWidth, gh / ph.naturalHeight) * zoom, iw = ph.naturalWidth * sc, ih = ph.naturalHeight * sc;
+                ctx.globalAlpha = G.alpha * 0.95; ctx.drawImage(ph, G.cx - iw / 2, G.top + 10 + (gh - ih) * 0.3, iw, ih);
+                ctx.globalAlpha = G.alpha * 0.9; ctx.fillStyle = "#F7EDD2"; ctx.fillRect(G.cx - G.r, G.top, G.r * 2, G.ah);
+                var sx2 = G.cx - G.r * 1.4 + ((isStill ? 0.4 : (t % 11000) / 11000) * G.r * 2.8);
+                var sh2 = ctx.createLinearGradient(sx2, G.top, sx2 + G.r * 0.5, G.top + G.r * 0.3);
+                sh2.addColorStop(0, 'rgba(255,250,235,0)'); sh2.addColorStop(0.5, 'rgba(255,250,235,0.35)'); sh2.addColorStop(1, 'rgba(255,250,235,0)');
+                ctx.globalAlpha = G.alpha * 2.2; ctx.fillStyle = sh2; ctx.fillRect(G.cx - G.r, G.top, G.r * 2, G.ah);
+                ctx.restore();
             }
             ctx.globalAlpha = 1;
         },

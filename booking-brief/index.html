@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your Booking System Brief · Tailored Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F5F0; --card:#FFFFFF; --ink:#2C3A33; --ink-soft:#5C6B62;
+    --moss:#7C9885; --moss-deep:#4E6B58; --line:#DDE4DC; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:'Karla',system-ui,sans-serif;font-size:17px;line-height:1.6;padding:0 16px 120px}
+  .wrap{max-width:620px;margin:0 auto}
+  header{padding:48px 0 12px;text-align:center}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--moss-deep);font-weight:700;margin-bottom:14px}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,7vw,42px);line-height:1.15;margin-bottom:16px}
+  .intro{color:var(--ink-soft);max-width:46ch;margin:0 auto}
+  .intro strong{color:var(--ink)}
+  section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 20px;margin-top:22px}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:23px;line-height:1.25;margin-bottom:4px}
+  .sub{color:var(--ink-soft);font-size:15px;margin-bottom:18px}
+  .q{margin-top:20px}
+  .q:first-of-type{margin-top:6px}
+  label.lbl{display:block;font-weight:700;margin-bottom:4px}
+  .hint{display:block;color:var(--ink-soft);font-size:14.5px;margin-bottom:8px}
+  textarea,input[type=text]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;resize:vertical}
+  textarea{min-height:96px}
+  textarea:focus,input:focus{outline:2px solid var(--moss);outline-offset:1px;background:#fff}
+  .feat{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding:12px 0;border-top:1px solid var(--line)}
+  .feat:first-of-type{border-top:0}
+  .feat span{flex:1 1 200px}
+  .chips{display:flex;gap:6px}
+  .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px}
+  .chips button[aria-pressed=true]{background:var(--moss-deep);border-color:var(--moss-deep);color:#fff}
+  .send{text-align:center}
+  .send p{color:var(--ink-soft);margin-bottom:16px}
+  .btn{display:block;width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:12px;padding:15px 18px;cursor:pointer;margin-top:10px;text-decoration:none;text-align:center}
+  .btn.main{background:var(--moss-deep);color:#fff}
+  .btn.ghost{background:transparent;color:var(--moss-deep);border:1.5px solid var(--moss)}
+  .saved{font-size:13.5px;color:var(--ink-soft);margin-top:14px;min-height:1.4em}
+  footer{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Tailored Tools · Booking system brief</p>
+    <h1>The booking system that fits how you work</h1>
+    <p class="intro">Before anyone talks about building anything, this tells me <strong>how your days actually run</strong> and what gets in the way. Short answers are fine. Skip anything you're not sure about, and voice notes on WhatsApp work just as well. It saves as you go, so you can come back to it.</p>
+  </header>
+
+  <form id="brief" autocomplete="off">
+
+  <section>
+    <h2>1. A normal week</h2>
+    <p class="sub">How bookings happen now.</p>
+    <div class="q"><label class="lbl" for="q_channels">How do bookings come in?</label><span class="hint">Online, phone, WhatsApp, Instagram, walk-ins. Roughly how much of each?</span><textarea id="q_channels" name="How bookings come in"></textarea></div>
+    <div class="q"><label class="lbl" for="q_who">Who makes the bookings?</label><span class="hint">You, each stylist for their own clients, whoever's free?</span><textarea id="q_who" name="Who makes bookings"></textarea></div>
+    <div class="q"><label class="lbl" for="q_diaries">Who needs their own diary?</label><span class="hint">Names or just a number, and anyone on set days only.</span><textarea id="q_diaries" name="Diaries and working days"></textarea></div>
+  </section>
+
+  <section>
+    <h2>2. What gets in the way</h2>
+    <p class="sub">Be as blunt as you like. Screenshots on WhatsApp are gold.</p>
+    <div class="q"><label class="lbl" for="q_pain">Your top frustrations with the system you use now</label><span class="hint">The things that waste time or annoy clients. One per line.</span><textarea id="q_pain" name="Top frustrations now" style="min-height:140px"></textarea></div>
+    <div class="q"><label class="lbl" for="q_loved">Anything you loved about a system you used before?</label><textarea id="q_loved" name="Loved before"></textarea></div>
+    <div class="q"><label class="lbl" for="q_unused">What do you pay for but never use?</label><textarea id="q_unused" name="Paid for, never used"></textarea></div>
+  </section>
+
+  <section>
+    <h2>3. What it needs to do</h2>
+    <p class="sub">Tap one for each. "No" is as useful as "Must".</p>
+    <div id="features"></div>
+    <div class="q"><label class="lbl" for="q_other">Anything missing from that list?</label><textarea id="q_other" name="Other needs"></textarea></div>
+  </section>
+
+  <section>
+    <h2>4. Money today</h2>
+    <p class="sub">So any comparison is honest.</p>
+    <div class="q"><label class="lbl" for="q_cost">What do you pay each month now, and for what?</label><span class="hint">A screenshot of the bill is perfect.</span><textarea id="q_cost" name="Monthly cost now"></textarea></div>
+    <div class="q"><label class="lbl" for="q_plans">How do monthly plans or memberships get paid?</label><span class="hint">Direct Debit, card, through the booking system?</span><textarea id="q_plans" name="How plans are paid"></textarea></div>
+    <div class="q"><label class="lbl" for="q_pay">How do clients pay on the day?</label><textarea id="q_pay" name="Paying on the day"></textarea></div>
+  </section>
+
+  <section>
+    <h2>5. The team</h2>
+    <div class="q"><label class="lbl" for="q_employed">Are your stylists employed, self-employed or renting a chair?</label><textarea id="q_employed" name="Stylists employed or self-employed"></textarea></div>
+    <div class="q"><label class="lbl" for="q_see">Who should see what?</label><span class="hint">Should stylists see only their own clients and takings, or everything?</span><textarea id="q_see" name="Who sees what"></textarea></div>
+    <div class="q"><label class="lbl" for="q_leave">If a stylist leaves, what happens to their client notes?</label><textarea id="q_leave" name="Client notes when a stylist leaves"></textarea></div>
+  </section>
+
+  <section>
+    <h2>6. If it were perfect</h2>
+    <div class="q"><label class="lbl" for="q_perfect">Describe booking a regular client in a perfect world</label><span class="hint">A few steps, start to finish.</span><textarea id="q_perfect" name="Perfect booking" style="min-height:120px"></textarea></div>
+    <div class="q"><label class="lbl" for="q_when">Timing</label><span class="hint">Is there a date that matters, like a contract renewal or a busy season to avoid?</span><textarea id="q_when" name="Timing"></textarea></div>
+    <div class="q"><label class="lbl" for="q_else">Anything else?</label><textarea id="q_else" name="Anything else"></textarea></div>
+  </section>
+
+  <section class="send">
+    <h2>Send it over</h2>
+    <p>Send it however suits. I'll come back with honest options, which might be fixing what you've got rather than building something new.</p>
+    <button type="button" class="btn main" id="wa">Send on WhatsApp</button>
+    <button type="button" class="btn ghost" id="copy">Copy my answers</button>
+    <a class="btn ghost" id="mail" href="#">Email them instead</a>
+    <p class="saved" id="saved" aria-live="polite"></p>
+  </section>
+
+  </form>
+  <footer>Tailored Tools · hello@tailored-tools.com</footer>
+</div>
+
+<script>
+const FEATURES = [
+  'Clients book online themselves',
+  'Deposits taken when booking',
+  'Card payments in the salon',
+  'Reminders by text or WhatsApp',
+  'Client notes and colour formulas',
+  'Skin test dates and reminders',
+  'Monthly plans or memberships billed automatically',
+  'Gift vouchers',
+  'Waiting list for cancellations',
+  'Each stylist sees their own diary on their phone',
+  'Stylist takings or commission reports',
+  'Stock and retail products',
+  'Marketing messages to clients',
+  'Asking happy clients for Google reviews',
+];
+const KEY = 'tt-booking-brief-v1';
+const form = document.getElementById('brief');
+const featBox = document.getElementById('features');
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { state = {}; }
+
+FEATURES.forEach((f, i) => {
+  const row = document.createElement('div');
+  row.className = 'feat';
+  row.innerHTML = `<span id="f${i}">${f}</span><div class="chips" role="group" aria-labelledby="f${i}">` +
+    ['Must', 'Nice', 'No'].map(c => `<button type="button" data-f="${i}" data-v="${c}" aria-pressed="false">${c}</button>`).join('') + '</div>';
+  featBox.appendChild(row);
+});
+
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); document.getElementById('saved').textContent = 'Saved on this phone.'; }
+  catch (e) { document.getElementById('saved').textContent = "Couldn't save on this device, so send it before closing the page."; }
+}
+function paintChips() {
+  featBox.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String((state['feat' + b.dataset.f]) === b.dataset.v)));
+}
+form.querySelectorAll('textarea').forEach(t => {
+  if (state[t.id]) t.value = state[t.id];
+  t.addEventListener('input', () => { state[t.id] = t.value; save(); });
+});
+featBox.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const k = 'feat' + b.dataset.f;
+  state[k] = state[k] === b.dataset.v ? '' : b.dataset.v;
+  paintChips(); save();
+});
+paintChips();
+
+function answers() {
+  const out = ['Booking system brief', ''];
+  form.querySelectorAll('section').forEach(sec => {
+    const h = sec.querySelector('h2');
+    if (!h || sec.classList.contains('send')) return;
+    const lines = [];
+    if (sec.contains(featBox)) {
+      FEATURES.forEach((f, i) => { const v = state['feat' + i]; if (v) lines.push(`- ${f}: ${v}`); });
+    }
+    sec.querySelectorAll('textarea').forEach(t => { if (t.value.trim()) lines.push(`${t.name}: ${t.value.trim()}`); });
+    if (lines.length) out.push('*' + h.textContent + '*', ...lines, '');
+  });
+  return out.join('\n').trim();
+}
+document.getElementById('wa').addEventListener('click', () => {
+  window.location.href = 'https://wa.me/?text=' + encodeURIComponent(answers());
+});
+document.getElementById('copy').addEventListener('click', async () => {
+  const msg = document.getElementById('saved');
+  try { await navigator.clipboard.writeText(answers()); msg.textContent = 'Copied. Paste it into a message to me.'; }
+  catch (e) { msg.textContent = "Your phone wouldn't let me copy, so use WhatsApp or email instead."; }
+});
+document.getElementById('mail').addEventListener('click', e => {
+  e.preventDefault();
+  window.location.href = 'mailto:hello@tailored-tools.com?subject=' + encodeURIComponent('Booking system brief') + '&body=' + encodeURIComponent(answers());
+});
+</script>
+</body>
+</html>

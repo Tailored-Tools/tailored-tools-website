@@ -42,6 +42,10 @@
   .btn{display:block;width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:12px;padding:15px 18px;cursor:pointer;margin-top:10px;text-decoration:none;text-align:center}
   .btn.main{background:var(--moss-deep);color:#fff}
   .btn.ghost{background:transparent;color:var(--moss-deep);border:1.5px solid var(--moss)}
+  .voice{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:15px;font-weight:700;color:var(--moss-deep);text-decoration:none;border:1.5px solid var(--moss);border-radius:999px;padding:8px 14px;min-height:40px}
+  .voice{background:transparent;font-family:inherit;cursor:pointer}
+  .voice svg{width:18px;height:18px;flex:none}
+  .voice.on{background:var(--moss-deep);border-color:var(--moss-deep);color:#fff}
   .saved{font-size:13.5px;color:var(--ink-soft);margin-top:14px;min-height:1.4em}
   footer{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:36px}
 </style>
@@ -51,7 +55,7 @@
   <header>
     <p class="eyebrow">Tailored Tools · Booking system brief</p>
     <h1>The booking system that fits how you work</h1>
-    <p class="intro">Before anyone talks about building anything, this tells me <strong>how your days actually run</strong> and what gets in the way. Short answers are fine. Skip anything you're not sure about, and voice notes on WhatsApp work just as well. It saves as you go, so you can come back to it.</p>
+    <p class="intro">Before anyone talks about building anything, this tells me <strong>how your days actually run</strong> and what gets in the way. Short answers are fine. Prefer talking? Tap <strong>Speak your answer</strong> under any question and just talk: your words appear in the box. Everything saves as you go, so you can come back to it.</p>
   </header>
 
   <form id="brief" autocomplete="off">
@@ -103,7 +107,7 @@
 
   <section class="send">
     <h2>Send it over</h2>
-    <p>Send it however suits. I'll come back with honest options, which might be fixing what you've got rather than building something new.</p>
+    <p>When you're done, send it over. I'll come back with honest options, which might be fixing what you've got rather than building something new.</p>
     <button type="button" class="btn main" id="wa">Send on WhatsApp</button>
     <button type="button" class="btn ghost" id="copy">Copy my answers</button>
     <a class="btn ghost" id="mail" href="#">Email them instead</a>
@@ -131,7 +135,50 @@ const FEATURES = [
   'Marketing messages to clients',
   'Asking happy clients for Google reviews',
 ];
+const WA = '447356070265';   // James's WhatsApp: the Send button opens this chat
 const KEY = 'tt-booking-brief-v1';
+const MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+let live = null;   // the one recognition session running, if any
+function stopLive() { if (live) { live.rec.stop(); } }
+document.querySelectorAll('.q').forEach(q => {
+  const t = q.querySelector('textarea'); if (!t) return;
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'voice';
+  if (!Speech) {   // no speech-to-text in this browser: point at the keyboard mic instead
+    const h = document.createElement('span');
+    h.className = 'hint'; h.style.marginTop = '6px';
+    h.textContent = 'Tip: tap the microphone on your keyboard to talk instead of typing.';
+    q.appendChild(h); return;
+  }
+  b.innerHTML = MIC + '<span>Speak your answer</span>';
+  b.addEventListener('click', () => {
+    if (live && live.btn === b) { stopLive(); return; }
+    stopLive();
+    const rec = new Speech();
+    rec.lang = 'en-GB'; rec.continuous = true; rec.interimResults = true;
+    const before = t.value ? t.value.replace(/\s*$/, '') + ' ' : '';
+    let done = '';
+    rec.onresult = e => {
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i];
+        if (r.isFinal) done += r[0].transcript.trim() + ' '; else interim += r[0].transcript;
+      }
+      t.value = before + done + interim;
+      t.dispatchEvent(new Event('input'));
+    };
+    rec.onerror = e => {
+      if (e.error === 'not-allowed' || e.error === 'service-not-allowed') document.getElementById('saved').textContent = "Your phone said no to the microphone. Allow it in settings, or use the mic on your keyboard.";
+    };
+    rec.onend = () => { b.classList.remove('on'); b.querySelector('span').textContent = 'Speak your answer'; if (live && live.btn === b) live = null; t.value = t.value.trim(); t.dispatchEvent(new Event('input')); };
+    live = { rec, btn: b };
+    b.classList.add('on'); b.querySelector('span').textContent = 'Listening… tap to stop';
+    rec.start();
+  });
+  q.appendChild(b);
+});
 const form = document.getElementById('brief');
 const featBox = document.getElementById('features');
 let state = {};
@@ -179,7 +226,7 @@ function answers() {
   return out.join('\n').trim();
 }
 document.getElementById('wa').addEventListener('click', () => {
-  window.location.href = 'https://wa.me/?text=' + encodeURIComponent(answers());
+  window.location.href = `https://wa.me/${WA}?text=` + encodeURIComponent(answers());
 });
 document.getElementById('copy').addEventListener('click', async () => {
   const msg = document.getElementById('saved');

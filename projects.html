@@ -40,13 +40,13 @@
         .case-browser .bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.22); }
         .case-browser .bar span { margin-left: 10px; font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); }
         .case-browser img { display: block; width: 100%; height: auto; }
-        .case-phone { position: absolute; right: 0; bottom: -24px; width: 26%; border-radius: 22px; border: 6px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 24px 48px rgba(13,27,42,0.3); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
+        .case-phone { position: absolute; right: 0; bottom: -24px; width: 26%; border-radius: 22px; border: 2px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 24px 48px rgba(13,27,42,0.3); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
         .case-phone img { display: block; width: 100%; height: auto; }
         /* Phone frame: status bar so curved corners never clip the site */
-        .case-phone { container-type: inline-size; background: #0b1622; border-color: #060e17; border-radius: 15% / 7%; }
-        .case-phone::before { content: '9:41'; position: absolute; top: 3.4cqw; left: 10cqw; z-index: 2; font: 600 5.2cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
-        .case-phone::after { content: ''; position: absolute; top: 2.6cqw; left: 50%; transform: translateX(-50%); width: 30cqw; height: 7cqw; border-radius: 7cqw; background: #000; z-index: 2; }
-        .case-phone > img { margin-top: 12%; border-radius: 0 0 11cqw 11cqw; }
+        .case-phone { container-type: inline-size; background: #0b1622; border-color: #060e17; border-radius: 13% / 6%; }
+        .case-phone::before { content: '9:41'; position: absolute; top: 2.4cqw; left: 9cqw; z-index: 2; font: 600 4.4cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
+        .case-phone::after { content: ''; position: absolute; top: 1.9cqw; left: 50%; transform: translateX(-50%); width: 26cqw; height: 5.4cqw; border-radius: 5.4cqw; background: #000; z-index: 2; }
+        .case-phone > img { margin-top: 8.5%; border-radius: 0 0 12cqw 12cqw; }
 
         .case:hover .case-browser { transform: translateY(-6px); }
         .case:hover .case-phone { transform: translateY(-12px) rotate(2deg); }

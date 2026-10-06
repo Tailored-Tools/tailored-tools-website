@@ -341,11 +341,20 @@ h3 {
 }
 .ao-form ~ .form-consent a { color: var(--accent); }
 
+/* WhatsApp in the nav (injected by js/nav.js) */
+.nav-wa { display: none; }
+.nav-links .nav-wa-desk { display: inline-flex; align-items: center; gap: 6px; color: #4ade80; font-weight: 600; }
+.nav-links .nav-wa-desk svg { width: 22px; height: 22px; fill: currentColor; }
+.nav-links a { white-space: nowrap; }
+.nav-links .nav-wa-desk:hover { color: #86efac; }
+
 /* ── Mobile responsive ──────────────────────────────────────── */
 @media (max-width: 768px) {
     /* Nav: hide CTA, show hamburger, open mobile menu */
     .nav-cta { display: none; }
-    .hamburger { display: block; }
+    .hamburger { display: block; order: 3; }
+    .nav-wa { display: grid; place-items: center; order: 2; margin-left: auto; margin-right: 14px; width: 38px; height: 38px; border-radius: 50%; background: #25D366; color: #0D1B2A; }
+    .nav-wa svg { width: 21px; height: 21px; fill: currentColor; }
     .nav-links {
         display: none;
         position: fixed;

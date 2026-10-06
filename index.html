@@ -167,10 +167,24 @@
         .ticker { background: var(--ink); color: #fff; overflow: hidden; padding: 16px 0; border-top: 3px solid #ff6f20; position: relative; z-index: 2; }
         .ticker-track { display: flex; gap: 48px; width: max-content; animation: tick 38s linear infinite; }
         .ticker:hover .ticker-track { animation-play-state: paused; }
-        .ticker a { font-family: var(--mono); font-size: 13.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.82); text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; }
-        .ticker a:hover { color: #ff6f20; }
-        .ticker a::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.18); }
-        .ticker .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #ff6f20; white-space: nowrap; }
+        .ticker .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #ff6f20; white-space: nowrap; display: flex; flex-direction: column; gap: 5px; }
+        .ticker .lbl small { font-size: 10.5px; letter-spacing: 0.08em; text-transform: none; color: rgba(255,255,255,0.55); }
+        .ticker .tip-tap { display: none; }
+        @media (hover: none) { .ticker .tip-click { display: none; } .ticker .tip-tap { display: inline; } }
+        /* Client logos: white until hovered, focused or pressed, then their own colours */
+        .ticker a.lg { display: inline-flex; align-items: center; gap: 9px; height: 56px; text-decoration: none; white-space: nowrap; }
+        .ticker a.lg img { height: 40px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.9; transition: filter 0.3s, opacity 0.3s; }
+        .ticker a.lg img.app { height: 34px; border-radius: 8px; filter: grayscale(1); opacity: 0.9; }
+        .ticker a.m-ss img { height: 56px; } .ticker a.m-pi img { height: 38px; }
+        .ticker .nm { color: #fff; opacity: 0.9; transition: color 0.3s, opacity 0.3s; }
+        .ticker .nm-cp { font: 700 17px Tahoma, Verdana, sans-serif; letter-spacing: 0.2px; }
+        .ticker .nm-gky { font: italic 400 19px 'Fraunces', serif; }
+        .ticker .nm-app { font: 600 15px Inter, sans-serif; }
+        .ticker a.lg:hover img, .ticker a.lg:focus-visible img, .ticker a.lg:active img { filter: none; opacity: 1; }
+        .ticker a.lg:hover .nm, .ticker a.lg:focus-visible .nm, .ticker a.lg:active .nm { opacity: 1; }
+        .ticker a.lg:hover .nm-cp, .ticker a.lg:focus-visible .nm-cp, .ticker a.lg:active .nm-cp { color: #F4EDE0; }
+        .ticker a.lg:hover .nm-gky, .ticker a.lg:focus-visible .nm-gky, .ticker a.lg:active .nm-gky { color: #ECE7F6; }
+        .ticker a.lg:focus-visible { outline: 2px solid #ff6f20; outline-offset: 6px; border-radius: 6px; }
         @keyframes tick { to { transform: translateX(-50%); } }
 
         /* ── The worlds sampler ───────────────────────────────────────
@@ -536,16 +550,27 @@
 
         /* ── Reduced motion: a still version that still reads well ── */
         @media (prefers-reduced-motion: reduce) {
+            .ticker-track { width: auto; flex-wrap: wrap; justify-content: center; gap: 18px 44px; padding: 0 24px; }
+            .ticker-track .dupe { display: none !important; }
             .disc-card { animation: none; }
             *, *::before, *::after { animation: none !important; transition: none !important; }
             .stamp { opacity: 0.94; }
             .hero h1 .u path { stroke-dashoffset: 0; }
             .rv { opacity: 1; translate: 0 0; }
             .bubble, .chat-day { opacity: 1; translate: 0 0; }
-            .ticker-track { width: auto; flex-wrap: wrap; justify-content: center; gap: 14px 32px; padding: 0 20px; }
-            .ticker-track .dupe { display: none; }
             .foil { background-position: 50% 0; }
             .knight .st { opacity: 1; }
+        }
+        /* Phones: client logos as a two-column grid, no scrolling */
+        @media (max-width: 720px) {
+            .ticker-track { animation: none; }
+            .ticker { padding: 20px 0 22px; }
+            .ticker-track { width: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 10px; padding: 0 16px; justify-items: center; }
+            .ticker-track .dupe { display: none !important; }
+            .ticker .lbl { grid-column: 1 / -1; align-items: center; text-align: center; }
+            .ticker a.lg { height: 46px; max-width: 100%; white-space: normal; }
+            .ticker a.lg img { height: 34px; } .ticker a.m-ss img { height: 46px; } .ticker a.m-pi img { height: 30px; } .ticker a.lg img.app { height: 30px; }
+            .ticker .nm { line-height: 1.15; } .ticker .nm-cp { font-size: 13.5px; } .ticker .nm-gky { font-size: 15px; } .ticker .nm-app { font-size: 13px; }
         }
 
         .wl { overflow: hidden; }
@@ -749,20 +774,20 @@
 <!-- ── Live ticker ────────────────────────────────────────────────── -->
 <div class="ticker" aria-label="Sites live right now">
     <div class="ticker-track">
-        <span class="lbl">Live right now</span>
-        <a href="https://manelondon.co.uk" target="_blank" rel="noopener">manelondon.co.uk</a>
-        <a href="https://velmabennett.co.uk" target="_blank" rel="noopener">velmabennett.co.uk</a>
-        <a href="https://goodknightyoga.co.uk" target="_blank" rel="noopener">goodknightyoga.co.uk</a>
-        <a href="https://thesonicsanctuary.uk" target="_blank" rel="noopener">thesonicsanctuary.uk</a>
-        <a href="https://performanceinterpreting.co.uk" target="_blank" rel="noopener">performanceinterpreting.co.uk</a>
-        <a href="/projects/pi-events-app">PI Events App &middot; iOS &amp; Android</a>
-        <span class="lbl dupe" aria-hidden="true">Live right now</span>
-        <a class="dupe" href="https://manelondon.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">manelondon.co.uk</a>
-        <a class="dupe" href="https://velmabennett.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">velmabennett.co.uk</a>
-        <a class="dupe" href="https://goodknightyoga.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">goodknightyoga.co.uk</a>
-        <a class="dupe" href="https://thesonicsanctuary.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">thesonicsanctuary.uk</a>
-        <a class="dupe" href="https://performanceinterpreting.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">performanceinterpreting.co.uk</a>
-        <a class="dupe" href="/projects/pi-events-app" aria-hidden="true" tabindex="-1">PI Events App &middot; iOS &amp; Android</a>
+        <span class="lbl">Live right now<small><span class="tip-click">Click a logo to visit the live site</span><span class="tip-tap">Tap a logo to visit the live site</span></small></span>
+        <a class="lg m-mane" href="https://manelondon.co.uk" target="_blank" rel="noopener" aria-label="Mane London, live site"><img src="/images/logos/mane.png" alt="" width="346" height="120"></a>
+        <a class="lg" href="https://velmabennett.co.uk" target="_blank" rel="noopener" aria-label="Connected Pathways, live site"><img src="/images/logos/cp-tree.png" alt="" width="130" height="120"><span class="nm nm-cp">Connected Pathways</span></a>
+        <a class="lg" href="https://goodknightyoga.co.uk" target="_blank" rel="noopener" aria-label="Good Knight Yoga, live site"><img src="/images/logos/gky-mark.png" alt="" width="94" height="120"><span class="nm nm-gky">Good Knight Yoga</span></a>
+        <a class="lg m-ss" href="https://thesonicsanctuary.uk" target="_blank" rel="noopener" aria-label="The Sonic Sanctuary, live site"><img src="/images/logos/ss.png" alt="" width="420" height="168"></a>
+        <a class="lg m-pi" href="https://performanceinterpreting.co.uk" target="_blank" rel="noopener" aria-label="Performance Interpreting, live site"><img src="/images/logos/pi.svg" alt="" width="160" height="48"></a>
+        <a class="lg" href="/projects/pi-events-app" aria-label="PI Events App, iOS and Android"><img class="app" src="/images/logos/pi-app.png" alt="" width="102" height="102"><span class="nm nm-app">PI Events App</span></a>
+        <span class="lbl dupe" aria-hidden="true">Live right now<small><span class="tip-click">Click a logo to visit the live site</span><span class="tip-tap">Tap a logo to visit the live site</span></small></span>
+        <a class="lg m-mane dupe" href="https://manelondon.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="/images/logos/mane.png" alt="" width="346" height="120"></a>
+        <a class="lg dupe" href="https://velmabennett.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="/images/logos/cp-tree.png" alt="" width="130" height="120"><span class="nm nm-cp">Connected Pathways</span></a>
+        <a class="lg dupe" href="https://goodknightyoga.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="/images/logos/gky-mark.png" alt="" width="94" height="120"><span class="nm nm-gky">Good Knight Yoga</span></a>
+        <a class="lg m-ss dupe" href="https://thesonicsanctuary.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="/images/logos/ss.png" alt="" width="420" height="168"></a>
+        <a class="lg m-pi dupe" href="https://performanceinterpreting.co.uk" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="/images/logos/pi.svg" alt="" width="160" height="48"></a>
+        <a class="lg dupe" href="/projects/pi-events-app" aria-hidden="true" tabindex="-1"><img class="app" src="/images/logos/pi-app.png" alt="" width="102" height="102"><span class="nm nm-app">PI Events App</span></a>
     </div>
 </div>
 

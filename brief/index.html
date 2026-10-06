@@ -235,7 +235,8 @@
     <h2>All done?</h2>
     <p>Send your answers over to James, whichever way is easiest.</p>
     <div class="btn-row">
-      <button class="btn-primary" id="emailBtn" type="button">Email my answers</button>
+      <button class="btn-primary" id="waBtn" type="button">Send on WhatsApp</button>
+      <button class="btn-secondary" id="emailBtn" type="button">Email my answers</button>
       <button class="btn-secondary" id="copyBtn" type="button">Copy my answers</button>
       <button class="btn-secondary" id="downloadBtn" type="button">Download as text</button>
     </div>
@@ -252,6 +253,7 @@
 (function(){
   // ====== CONFIG — change this to your email ======
   var TO_EMAIL = "hello@tailored-tools.com";
+  var WA_NUMBER = "447356264673";
   // ================================================
 
   var STORAGE_KEY = "tt-wellness-brief-v1";
@@ -363,6 +365,23 @@
     catch(e){ showToast("Couldn’t copy automatically. Try the download button instead."); }
     document.body.removeChild(ta);
   }
+
+  document.getElementById("waBtn").addEventListener("click", function(){
+    save();
+    var text = "Hi James, here are my website brief answers.\n\n" + compile();
+    var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+    if(url.length > 4000){
+      // very long answers can get cut off in a WhatsApp link, so copy them and open a short message to paste under
+      var note = "Answers copied. Paste them into the WhatsApp chat that just opened.";
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ showToast(note); }, function(){ fallbackCopy(text, note); });
+      } else {
+        fallbackCopy(text, note);
+      }
+      url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Hi James, here are my website brief answers (pasted below):\n\n");
+    }
+    window.open(url, "_blank", "noopener");
+  });
 
   document.getElementById("copyBtn").addEventListener("click", function(){ copyAnswers(false); });
 

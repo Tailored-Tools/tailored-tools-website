@@ -4,7 +4,7 @@
 
 ## What we do
 
-Tailored Tools builds websites and systems for owner-run businesses: salons, therapists, teachers, studios, agencies. Clients usually arrive asking for something small (a price list, a booking button, somewhere to put a timetable); the job is finding the bigger problem underneath and building the fix. After launch, a monthly care plan covers hosting, security, backups and same-day changes sent by WhatsApp.
+Tailored Tools builds websites and systems for owner-run businesses: salons, therapists, teachers, studios, agencies. Clients usually arrive asking for something small (a price list, a booking button, somewhere to put a timetable), often because their website just sits there. The website is where it starts: fixed first, for one agreed price, live before they pay. That can open a wider conversation about how the rest of the business runs; anything further is the client's choice, priced in writing before it starts. After launch, a monthly care plan covers hosting, security, backups and same-day changes sent by WhatsApp.
 
 ## Prices (published, "from" prices; quotes add only what the business needs, line by line)
 
@@ -23,12 +23,12 @@ Every website build is prototype-first: the client answers a twelve-question bri
 ## Client work
 
 ### Mane London (hair and beauty salon, Bexley)
-Asked for 100 printed price lists. Got a new website, live the next day (1 Oct 2026): a price menu that changes with the chosen stylist level, build-a-visit sent to the salon by WhatsApp, a "This month" offers board updated the same day, and print and web menus generated from one price file. Booking stays on Vagaro.
+Asked for 100 printed price lists. Led to a new website, live the next day (1 Oct 2026): a price menu that changes with the chosen stylist level, build-a-visit sent to the salon by WhatsApp, a "This month" offers board updated the same day, and print and web menus generated from one price file. Booking stays on Vagaro.
 - https://tailored-tools.com/projects/mane-london
 - Live site: https://manelondon.co.uk
 
 ### Connected Pathways (systemic therapy and education consultancy, Kent)
-Asked for a professional website. Got a website plus a practice set up on Cliniko: three booking pathways with payment taken at booking, intake forms and secure video links sent automatically, branded confirmation and reminder emails, and the practitioner's address hidden everywhere. Launched 7 Sep 2026; online booking with payment live 29 Sep 2026.
+Asked for a professional website. Led to a website plus a practice set up on Cliniko: three booking pathways with payment taken at booking, intake forms and secure video links sent automatically, branded confirmation and reminder emails, and the practitioner's address hidden everywhere. Launched 7 Sep 2026; online booking with payment live 29 Sep 2026.
 - https://tailored-tools.com/projects/connected-pathways
 - Live site: https://velmabennett.co.uk
 

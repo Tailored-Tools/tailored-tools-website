@@ -84,7 +84,28 @@
         .hero h1 .u svg { position: absolute; left: -2%; bottom: -0.12em; width: 104%; height: 0.3em; overflow: visible; }
         .hero h1 .u path { stroke: #ff6f20; stroke-width: 7; fill: none; stroke-linecap: round; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 0.9s 0.5s cubic-bezier(.6,.1,.3,1) forwards; }
         @keyframes draw { to { stroke-dashoffset: 0; } }
-        .hero-sub { font-size: 20px; line-height: 1.6; color: var(--ink-2); max-width: 560px; margin-bottom: 34px; }
+        .disc { max-width: 560px; margin-bottom: 30px; }
+        .disc [hidden] { display: none !important; }
+        .disc-q { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 14px; }
+        .disc-chips { display: flex; flex-wrap: wrap; gap: 9px; }
+        .disc-chips button { font: inherit; font-size: 15.5px; line-height: 1.35; text-align: left; padding: 11px 16px; border-radius: 10px; border: 1.5px solid var(--ink); background: var(--ticket); color: var(--ink); cursor: pointer; box-shadow: 0 3px 0 var(--ink); transition: transform 0.15s, box-shadow 0.15s; }
+        .disc-chips button:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--ink); }
+        .disc-chips button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+        .disc-chips button:focus-visible, .disc-back:focus-visible { outline: 2px solid #ff6f20; outline-offset: 3px; }
+        .disc-card { background: var(--ticket); border: 1.5px solid var(--ink); border-radius: 14px; padding: 16px; box-shadow: 0 6px 0 var(--ink); animation: discIn 0.35s ease; }
+        @keyframes discIn { from { opacity: 0; transform: translateY(8px); } }
+        .disc-back { font: inherit; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 4px 0; margin-bottom: 12px; }
+        .disc-proof { display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: start; margin-bottom: 16px; }
+        .disc-shot { width: 72px; height: auto; aspect-ratio: 780 / 1688; object-fit: cover; border-radius: 10px; border: 2px solid var(--ink); background: var(--paper-2); display: block; }
+        .disc-who { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+        .disc-line { font-size: 17px; line-height: 1.4; font-weight: 600; color: var(--ink); margin-bottom: 6px; outline: none; }
+        .disc-line2 { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin-bottom: 8px; }
+        .disc-more { font-size: 14.5px; font-weight: 600; color: #c94d0c; }
+        .disc-go { width: 100%; justify-content: center; }
+        @media (max-width: 360px) { .disc-go { padding: 14px 12px; font-size: 15px; gap: 8px; white-space: nowrap; } .disc-card { padding: 14px; } }
+        .disc-fine { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin-top: 14px; }
+        .disc-fine a { color: #c94d0c; font-weight: 600; }
+        .disc-skip { display: inline-block; margin-top: 14px; font-size: 15px; color: var(--ink-2); }
         .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 26px; }
         .hero-micro { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.06em; color: var(--muted); }
         .hero-micro span { color: #ff6f20; padding: 0 6px; }
@@ -478,7 +499,6 @@
         }
         @media (max-width: 720px) {
             .hero { padding: 48px 20px 64px; }
-            .hero-sub { font-size: 18px; }
             .ticket-ask p { font-size: 19px; }
             .w-intro { padding: 80px 20px 20px; min-height: 0; }
             .w-intro p, .w-div p { font-size: 17.5px; }
@@ -516,6 +536,7 @@
 
         /* ── Reduced motion: a still version that still reads well ── */
         @media (prefers-reduced-motion: reduce) {
+            .disc-card { animation: none; }
             *, *::before, *::after { animation: none !important; transition: none !important; }
             .stamp { opacity: 0.94; }
             .hero h1 .u path { stroke-dashoffset: 0; }
@@ -532,14 +553,14 @@
         html, body { overflow-x: clip; }
         .chip-aj { overflow: hidden; }
         /* Phones: tickets straight after the headline, shorter intro */
-        .hero-sub-short { display: none; }
         @media (max-width: 720px) {
             .hero .wrap > div:first-child { display: contents; }
             .hero .eyebrow { order: 1; } .hero h1 { order: 2; margin-bottom: 18px; }
-            .hero .stack-holder { order: 3; max-width: 310px; margin: 0 auto 26px; }
-            .hero-sub-long { display: none; }
-            .hero-sub-short { display: block; order: 4; margin-bottom: 26px; }
-            .hero .hero-ctas { order: 5; } .hero .hero-micro { order: 6; }
+            .hero .disc { order: 3; margin-bottom: 26px; }
+            .disc-chips { flex-direction: column; }
+            .disc-chips button { width: 100%; padding: 13px 16px; }
+            .hero .hero-ctas { order: 5; } .hero .hero-micro { order: 6; margin-bottom: 30px; }
+            .hero .stack-holder { order: 7; max-width: 310px; margin: 0 auto; }
             .hero .wrap { gap: 0; }
         }
     </style>
@@ -622,8 +643,31 @@
         <div>
             <span class="eyebrow">Websites &amp; systems &middot; Maidstone, Kent</span>
             <h1 class="display">Start with the website. See where <span class="u">it leads.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 140 4, 297 11"/></svg></span></h1>
-            <p class="hero-sub hero-sub-long">Most owner-run businesses have a website that just sits there. I fix that first, for one agreed price, and you see it live with your name on it before you pay a penny. If it opens up a better conversation about how the rest of the business runs, we have it then. Your call, every step.</p>
-            <p class="hero-sub hero-sub-short">Most small-business websites just sit there. I fix yours first, live before you pay a penny. Where it goes next is your call.</p>
+            <div class="disc" id="disc" aria-live="polite">
+                <p class="disc-q">What's not working right now?</p>
+                <div class="disc-chips" id="discChips" role="group" aria-label="What's not working right now?">
+                    <button type="button" data-k="site">My website just sits there</button>
+                    <button type="button" data-k="wa">Too much back and forth on WhatsApp to get a booking</button>
+                    <button type="button" data-k="start">I don't know where to start</button>
+                    <button type="button" data-k="admin">We spend hours a week on the same tasks at the computer</button>
+                    <button type="button" data-k="apps">I'm juggling too many apps</button>
+                </div>
+                <div class="disc-card" id="discCard" hidden>
+                    <button type="button" class="disc-back" id="discBack">&larr; Change answer</button>
+                    <div class="disc-proof">
+                        <img class="disc-shot" id="discShot" alt="" width="780" height="1688">
+                        <div>
+                            <span class="disc-who" id="discWho"></span>
+                            <p class="disc-line" id="discLine" tabindex="-1"></p>
+                            <p class="disc-line2" id="discLine2"></p>
+                            <a class="disc-more" id="discMore" href="/projects">See how it works &rarr;</a>
+                        </div>
+                    </div>
+                    <a class="btn btn-wa disc-go" id="discGo" href="https://wa.me/447356264673?text=Hi%20James%2C%20I%20found%20you%20on%20tailored-tools.com.%0A%0AI%27d%20like%20help%20with%3A%20%0A%0AMy%20business%20is%3A%20%0AWhat%20it%20does%3A%20%0AMy%20website%20%28if%20I%20have%20one%29%3A%20%0A%0AMy%20name%20is%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>Message me about this</a>
+                    <p class="disc-fine">One agreed price, live before you pay a penny. <a href="/brief/">Or answer all twelve questions &rarr;</a></p>
+                </div>
+                <a class="disc-skip" id="discSkip" href="https://wa.me/447356264673?text=Hi%20James%2C%20I%20found%20you%20on%20tailored-tools.com.%0A%0AI%27d%20like%20help%20with%3A%20%0A%0AMy%20business%20is%3A%20%0AWhat%20it%20does%3A%20%0AMy%20website%20%28if%20I%20have%20one%29%3A%20%0A%0AMy%20name%20is%20" target="_blank" rel="noopener">Or just say hello on WhatsApp</a>
+            </div>
             <div class="hero-ctas">
                 <a href="/brief/" class="btn btn-primary">Start your brief &rarr;</a>
                 <a href="https://wa.me/447356264673?text=Hi%20James%2C%20I%20found%20you%20on%20tailored-tools.com.%0A%0AI%27d%20like%20help%20with%3A%20%0A%0AMy%20business%20is%3A%20%0AWhat%20it%20does%3A%20%0AMy%20website%20%28if%20I%20have%20one%29%3A%20%0A%0AMy%20name%20is%20" class="btn btn-line btn-line-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>Say hello on WhatsApp</a>
@@ -1791,6 +1835,48 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
         });
     }, { threshold: 0.4 });
     document.querySelectorAll('.chat').forEach(function (c) { co.observe(c); });
+
+    // Discovery hero: pick what's not working, see the client it was fixed for, message with both filled in
+    var DISC = {
+        site:  { who: 'Connected Pathways &middot; Therapist, Kent', img: 'connected-pathways', href: '/projects/connected-pathways', saw: 'Connected Pathways',
+                 line: "She'd tried a website builder, found it clunky, and never got the best out of it.",
+                 line2: 'Now one calm site for two services, with online booking, payment, intake forms and video links that send themselves.' },
+        wa:    { who: 'Mane London &middot; Hair salon, Bexley', img: 'mane-london', href: '/projects/mane-london', saw: 'Mane London',
+                 line: 'Visitors tap their services and the site writes the WhatsApp booking request for them.',
+                 line2: 'Far less back and forth before a booking. Prices change once, and the website and printed menu both follow.' },
+        start: { who: 'Good Knight Yoga &middot; Yoga teacher, Kent', img: 'good-knight-yoga', href: '/projects/good-knight-yoga', saw: 'Good Knight Yoga',
+                 line: 'Jasmine had put it off for years.',
+                 line2: "She'd been wary of website builders. She had a live site within a day of her brief, with pages she edits herself." },
+        admin: { who: 'Ace &amp; Jacks &middot; Poker league &middot; In build', img: 'ace-jacks', href: '/projects/ace-jacks', saw: 'Ace & Jacks',
+                 line: "I started with Amy's week, not the website.",
+                 line2: 'A back office designed around how Amy works, and Season 16 already moved across with zero problems. Live for Season 17 on 30 November.' },
+        apps:  { who: 'The Sonic Sanctuary &middot; My own practice', img: 'sonic-sanctuary', href: '/projects/sonic-sanctuary', saw: 'The Sonic Sanctuary',
+                 line: 'Six tools down to one.',
+                 line2: 'Bookings, payments, events and WhatsApp messages in one system, run from my phone. 5h+ of admin saved every week.' }
+    };
+    var dChips = $('discChips'), dCard = $('discCard'), dSkip = $('discSkip'), dPicked = null;
+    if (dChips && dCard) {
+        dChips.addEventListener('click', function (e) {
+            var b = e.target.closest('button'); if (!b) return;
+            var d = DISC[b.dataset.k]; if (!d) return;
+            dPicked = b;
+            $('discWho').innerHTML = d.who;
+            $('discLine').textContent = d.line;
+            $('discLine2').textContent = d.line2;
+            $('discMore').href = d.href;
+            $('discShot').src = '/images/projects/' + d.img + '-mobile.jpg';
+            $('discShot').alt = d.saw + ' website on a phone';
+            var msg = "Hi James, I found you on tailored-tools.com.\n\nWhat's not working: " + b.textContent.trim() +
+                '\nI saw: ' + d.saw + '\n\nMy business is: \nWhat it does: \nMy website (if I have one): \n\nMy name is ';
+            $('discGo').href = 'https://wa.me/447356264673?text=' + encodeURIComponent(msg);
+            dChips.hidden = true; dSkip.hidden = true; dCard.hidden = false;
+            $('discLine').focus({ preventScroll: true });
+        });
+        $('discBack').addEventListener('click', function () {
+            dCard.hidden = true; dChips.hidden = false; dSkip.hidden = false;
+            if (dPicked) dPicked.focus();
+        });
+    }
 
     // WhatsApp composer: the chip picked goes into the prefilled message
     var waChips = $('waChips'), waGo = $('waGo');

@@ -417,6 +417,12 @@ html.still .ins .sec { opacity: 1; }
 .setlist .enc b { display: block; font-family: var(--display); font-weight: 400; font-style: italic; font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--ink); margin-top: 4px; line-height: 1.2; }
 
 /* ── CTA ──────────────────────────────────────────────────────── */
+.said { padding: 8vh 0 0; }
+.said blockquote { border-left: 3px solid var(--gold); padding-left: 24px; }
+.said blockquote p { font-family: var(--display); font-size: clamp(24px, 3.2vw, 36px); line-height: 1.3; color: var(--white); }
+.said .who { margin-top: 22px; padding-left: 27px; font-size: 16px; color: rgba(255,255,255,0.75); }
+.said .who b { color: var(--gold-soft); font-weight: 600; }
+.said .who span { display: block; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); margin-top: 6px; }
 .cta { text-align: center; padding: 22vh 20px 14vh; }
 .cta h2 { max-width: 780px; margin: 0 auto 20px; }
 .cta p { max-width: 540px; margin: 0 auto 32px; }
@@ -915,7 +921,16 @@ html.still .draft .caret { display: none; }
     </div>
 </section>
 
-<!-- Client quote: add once Marie's words are in. Keep it verbatim. -->
+<!-- Marie's words, verbatim (OK'd for reuse 6 Oct 2026). Figures are as of May 2026, so keep the date line. -->
+<section class="said">
+    <div class="col">
+        <span class="eyebrow">From the founder</span>
+        <blockquote>
+            <p>&ldquo;Asking a venue for a BSL interpreter has always been the hard bit: knowing who to email, what to say, whether anyone will reply. The Events App gives people the words and the confidence to ask. 750 downloads and 50+ requests in two weeks, first bookings confirmed, and several from people who&rsquo;d never asked before.&rdquo;</p>
+        </blockquote>
+        <p class="who"><b>Marie Pascall</b>, Founder, Performance Interpreting<span>Two weeks after the app launched, May 2026</span></p>
+    </div>
+</section>
 
 <section class="cta">
     <h2>Is your team doing the <em>same job by hand</em>, every day?</h2>

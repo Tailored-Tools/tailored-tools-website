@@ -251,6 +251,22 @@ p strong { color: var(--ink); font-weight: 600; }
 .stop h3 { font-size: 24px; margin-bottom: 8px; }
 .stop p { font-size: 15.5px; margin: 0; }
 
+.tune { width: min(1100px, calc(100% - 40px)); margin: 70px auto 0; background: var(--espresso); color: var(--cream); border-radius: 18px; overflow: hidden; }
+.tune-in { display: flex; gap: 22px; align-items: center; padding: 24px 26px; }
+.tune-btn { flex: none; width: 64px; height: 64px; border-radius: 50%; border: 1px solid #C9A659; background: transparent; color: #E3CB86; display: grid; place-items: center; cursor: pointer; }
+.tune-btn svg { width: 24px; height: 24px; fill: currentColor; margin-left: 3px; }
+.tune-btn .bars { display: none; align-items: flex-end; gap: 3px; height: 18px; }
+.tune-btn .bars i { width: 3px; height: 40%; border-radius: 1px; background: currentColor; animation: tuneEq .9s ease-in-out infinite alternate; }
+.tune-btn .bars i:nth-child(2) { animation-delay: -.35s; } .tune-btn .bars i:nth-child(3) { animation-delay: -.7s; }
+@keyframes tuneEq { to { height: 100%; } }
+.tune-btn[aria-pressed="true"] { background: var(--foil); background-size: 200% 100%; color: var(--ink); border-color: transparent; }
+.tune-btn[aria-pressed="true"] svg { display: none; }
+.tune-btn[aria-pressed="true"] .bars { display: flex; }
+.tune-btn:focus-visible { outline: 2px solid #E3CB86; outline-offset: 3px; }
+.tune .k { font-size: 11px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: #E3CB86; display: block; margin-bottom: 8px; }
+.tune h3 { font-size: 25px; color: #F6EBD0; margin-bottom: 8px; }
+.tune p { font-size: 15.5px; color: rgba(252,248,238,0.74); margin: 0; }
+@media (max-width: 480px) { .tune-in { align-items: flex-start; gap: 16px; padding: 20px 18px; } .tune-btn { width: 52px; height: 52px; } .tune h3 { font-size: 22px; } }
 .counter { width: min(1100px, calc(100% - 40px)); margin: 70px auto 0; }
 .counter > p.lead { margin-bottom: 26px; }
 .counter-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
@@ -562,6 +578,18 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
         <div class="stop"><span class="mk" aria-hidden="true">&#x2726;&#xFE0E;</span><span class="no">06</span><h3>In the chair</h3><p>A strip of their work.</p></div>
         <div class="stop"><span class="mk" aria-hidden="true">&#x2726;&#xFE0E;</span><span class="no">07</span><h3>Reviews</h3><p>What clients say, before you book.</p></div>
         <div class="stop"><span class="mk" aria-hidden="true">&#x2726;&#xFE0E;</span><span class="no">08</span><h3>Find us</h3><p>RingGo parking codes you tap to copy, and a live open or closed status.</p></div>
+    </div>
+
+    <div class="tune">
+        <div class="foil-bar"></div>
+        <div class="tune-in">
+            <button class="tune-btn" id="tuneBtn" type="button" aria-pressed="false" aria-label="Play I See You, Mane London's own track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+            <div>
+                <span class="k">Hear the salon</span>
+                <h3>Her site has its own track.</h3>
+                <p>I made &ldquo;I See You&rdquo; for Holly&rsquo;s launch, with AI music tools, as a gift. On her site, a gold note in the corner plays it while you browse. It only ever plays when someone taps it. Tap here to hear it.</p>
+            </div>
+        </div>
     </div>
 
     <div class="counter">
@@ -970,6 +998,23 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
         draw(0); setLevel(0, 0); chips.forEach(function (c) { c.classList.add('on'); });
         qrBox.classList.add('flip', 'land'); domState(2); visitState(17000);
     } else kick();
+})();
+</script>
+<script>
+// Mane's track: loads and plays only when tapped
+(function () {
+    var btn = document.getElementById('tuneBtn'), audio = null;
+    if (!btn) return;
+    function set(on) {
+        btn.setAttribute('aria-pressed', on);
+        btn.setAttribute('aria-label', on ? 'Pause I See You' : "Play I See You, Mane London's own track");
+    }
+    btn.addEventListener('click', function () {
+        if (!audio) { audio = new Audio('/audio/mane-i-see-you.mp3'); audio.addEventListener('ended', function () { set(false); }); }
+        if (audio.paused) {
+            audio.play().then(function () { set(true); }).catch(function (e) { console.error('Mane track failed to play:', e); set(false); });
+        } else { audio.pause(); set(false); }
+    });
 })();
 </script>
 </body>

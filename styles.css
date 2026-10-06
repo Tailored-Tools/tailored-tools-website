@@ -95,7 +95,7 @@ nav.nav-at-top {
 }
 .nav-links a:hover  { color: var(--accent); }
 .nav-links a.active { color: var(--white); font-weight: 700; }
-/* Nav CTA, default "Get in Touch" mailto link.
+/* Nav CTA, default "Get in Touch" link to the TT WhatsApp (prefilled message).
    AO page overrides to "Get AO Audit" with Stripe link in page CSS. */
 .nav-cta {
     display: inline-block;

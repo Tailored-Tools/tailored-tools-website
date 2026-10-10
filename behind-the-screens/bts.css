@@ -137,7 +137,6 @@ section.bts-play { background: var(--bts-paper); padding: 36px 16px 56px; }
 .bts-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--bts-ink); }
 .bts-btn:disabled { opacity: 0.45; cursor: default; transform: none; }
 .bts-btn-primary { background: var(--bts-orange); }
-.bts-other { display: block; margin: 16px auto 0; }
 
 /* What it takes: a job ticket */
 .bts-takes {

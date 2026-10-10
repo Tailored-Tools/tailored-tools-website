@@ -110,7 +110,7 @@ section.bts-play { background: var(--bts-paper); padding: 36px 16px 56px; }
     border-radius: 999px; background: var(--bts-ink);
 }
 /* Shorter screen below 900px so the phone and its caption fit on a small phone together */
-.bts-screen { position: relative; aspect-ratio: 3 / 5; overflow: hidden; }
+.bts-screen { position: relative; aspect-ratio: 2 / 3; overflow: hidden; }
 
 .bts-caption { margin-top: 12px; min-height: 5.9em; font-size: 15.5px; line-height: 1.45; color: var(--bts-ink); }
 .bts-outcome {
@@ -227,7 +227,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     section.bts-cta { padding: 84px 24px; }
     .bts-layout { grid-template-columns: minmax(0, 1fr) 300px; align-items: start; gap: 36px; }
     .bts-phones { grid-template-columns: 1fr 1fr; align-items: start; }
-    .bts-screen { aspect-ratio: 9 / 16; }
+    .bts-screen { aspect-ratio: 2 / 3; }
     .bts-takes { max-width: none; }
     .bts-side-title { margin-top: 20px; }
     .bts-proof-list { grid-template-columns: 1fr 1fr; }

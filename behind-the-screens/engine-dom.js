@@ -57,6 +57,27 @@
         '<ul class="bts-chip-list" aria-labelledby="bts-group-' + g[0] + '">' + items + '</ul></div>';
     }).join('');
   }
+  // Phones only: the Pick a problem sheet, four tabs of big buttons.
+  function sheet() {
+    var tabs = E.TABS.map(function (t) {
+      return '<button type="button" role="tab" class="bts-tab" id="bts-tab-' + t[0] + '" data-tab="' + t[0] + '" aria-controls="bts-panel-' + t[0] + '" aria-selected="false" tabindex="-1">' + t[1] + '</button>';
+    }).join('');
+    var panels = E.TABS.map(function (t) {
+      var items = SCENARIOS.map(function (s, i) {
+        return s.group !== t[0] ? '' : '<li><button type="button" class="bts-pick" data-id="' + esc(s.id) + '">' +
+          '<span class="bts-pick-n">' + (i + 1) + '</span><span class="bts-pick-chip">' + esc(s.chip) + '</span><span class="bts-pick-tag"></span></button></li>';
+      }).join('');
+      return '<div class="bts-panel" role="tabpanel" id="bts-panel-' + t[0] + '" aria-labelledby="bts-tab-' + t[0] + '" hidden><ul class="bts-pick-list">' + items + '</ul></div>';
+    }).join('');
+    return '<div class="bts-sheet" role="dialog" aria-modal="true" aria-labelledby="bts-sheet-title" hidden>' +
+      '<div class="bts-sheet-backdrop" data-action="sheet-close"></div>' +
+      '<div class="bts-sheet-panel">' +
+      '<div class="bts-sheet-head"><h2 id="bts-sheet-title">Pick a problem</h2>' +
+      '<button type="button" class="bts-btn bts-btn-small" data-action="sheet-close">Close</button></div>' +
+      '<div class="bts-tabs" role="tablist" aria-label="Kinds of problem">' + tabs + '</div>' +
+      '<div class="bts-panels">' + panels + '</div>' +
+      '</div></div>';
+  }
   function skeleton() {
     return '<p class="bts-madeup is-stage">Made-up business. Nothing here is real.</p>' +
       '<div class="bts-layout">' +
@@ -96,6 +117,7 @@
       chips() +
       '</div>' +
       '</div>' +
+      sheet() +
       '<p class="bts-sr" id="bts-live" aria-live="polite"></p>';
   }
 
@@ -142,6 +164,11 @@
     var takes = q('.bts-takes');
     var live = q('#bts-live');
     var nav = document.querySelector('nav');
+    var layout = q('.bts-layout');
+    var sheetEl = q('.bts-sheet');
+    var sheetBtn = q('[data-action="sheet"]');
+    var openDialog = null;   // the sheet (or later the offer card) while it is open
+    var returnTo = null;     // where focus goes back to when it closes
 
     function framesHtml(beats) {
       return beats.map(function (beat, i) {
@@ -285,10 +312,63 @@
       holdBtn.classList.toggle('is-held', s.held);
       holdBtn.querySelector('.bts-sr').textContent = s.held ? 'Play' : 'Pause';
 
+      renderSheet(s);
+      syncDialogs(s);
+
       announce(s.takes
         ? 'What it takes to build it properly: ' + sc.takes.line + ' Size: ' + sc.takes.size + '.'
         : (s.beat === 0 && s.build === 'demo' ? 'Problem ' + s.number + ' of ' + s.total + ': ' + sc.chip + '. ' : '') +
           LABEL[s.build] + ', step ' + (s.beat + 1) + ' of ' + s.beats + '. ' + caption);
+    }
+
+    function renderSheet(s) {
+      sheetEl.hidden = !s.sheet;
+      if (!s.sheet) return;
+      Array.prototype.forEach.call(sheetEl.querySelectorAll('[role="tab"]'), function (t) {
+        var on = t.getAttribute('data-tab') === s.tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+      });
+      Array.prototype.forEach.call(sheetEl.querySelectorAll('[role="tabpanel"]'), function (p) {
+        p.hidden = p.id !== 'bts-panel-' + s.tab;
+      });
+      Array.prototype.forEach.call(sheetEl.querySelectorAll('.bts-pick'), function (b) {
+        var id = b.getAttribute('data-id');
+        var tag = id === s.id ? 'Playing' : ctl.isPlayed(id) ? 'Seen' : '';
+        if (id === s.id) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+        b.querySelector('.bts-pick-tag').textContent = tag;
+      });
+    }
+    // Focus moves into a dialog when it opens, stays inside while it is open (see onKey) and goes
+    // back where it came from when it closes. The stage behind it is inert meanwhile.
+    function focusables(el) {
+      return Array.prototype.filter.call(el.querySelectorAll('a[href], button, summary, [tabindex]'), function (f) {
+        return !f.disabled && f.tabIndex >= 0 && f.getClientRects().length > 0;
+      });
+    }
+    function syncDialogs(s) {
+      var want = s.sheet ? sheetEl : null;
+      layout.inert = !!want;
+      if (want === openDialog) {
+        var a = document.activeElement;
+        if (want === sheetEl && a && a.getAttribute('role') === 'tab') sheetEl.querySelector('[role="tab"][aria-selected="true"]').focus();
+        return;
+      }
+      var was = openDialog;
+      openDialog = want;
+      if (want) {
+        if (!was) returnTo = document.activeElement;
+        sheetEl.querySelector('[role="tab"][aria-selected="true"]').focus();
+      } else {
+        var back = returnTo;
+        returnTo = null;
+        if (back && back !== document.body && document.contains(back) && back.getClientRects().length) back.focus();
+        else sheetBtn.focus();
+      }
+    }
+    function closeDialogs() {
+      var s = story.state();
+      if (s.sheet) story.closeSheet();
     }
 
     function render() {
@@ -335,6 +415,9 @@
       ctl.setMode(desktop ? 'both' : 'single');
       var st = ctl.state();
       if (desktop) {
+        closeDialogs();
+        layout.inert = false;
+        openDialog = null;
         if (still && st.id && !st.ended) ctl.finish();
       } else if (!st.id) {
         story.start(SCENARIOS[0].id);
@@ -347,51 +430,80 @@
     ctl.subscribe(function () { if (desktop) { render(); schedule(); } });
     story.subscribe(function () { if (!desktop) { render(); schedule(); } });
 
-    // Swipe the phone sideways to flip builds (Pointer Events). touch-action: pan-y in bts.css leaves
-    // up-and-down scrolling to the browser, so a vertical drag ends in pointercancel and never flips.
-    var drag = null;
-    var dragged = false;   // the last press moved: the click that follows is not a tap
-    track.addEventListener('pointerdown', function (e) {
-      dragged = false;
-      if (desktop || (e.pointerType === 'mouse' && e.button !== 0)) return;
-      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, axis: '' };
-    });
-    track.addEventListener('pointermove', function (e) {
-      if (!drag || e.pointerId !== drag.id) return;
-      var dx = e.clientX - drag.x;
-      var dy = e.clientY - drag.y;
-      if (!drag.axis) {
-        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-        drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
-        dragged = true;
-        if (drag.axis === 'x') {
-          if (track.setPointerCapture) track.setPointerCapture(e.pointerId);
-          phonesEl.classList.add('is-dragging');
+    // Sideways swipes (Pointer Events), for the phone and the sheet's tabs. touch-action: pan-y in bts.css
+    // leaves up-and-down scrolling to the browser, so a vertical drag ends in pointercancel and does nothing.
+    var dragged = false;   // the last press moved: the click that follows is not a tap or a pick
+    function swipe(el, onMove, onSwipe) {
+      var d = null;
+      el.addEventListener('pointerdown', function (e) {
+        dragged = false;
+        if (desktop || (e.pointerType === 'mouse' && e.button !== 0)) return;
+        d = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, axis: '' };
+      });
+      el.addEventListener('pointermove', function (e) {
+        if (!d || e.pointerId !== d.id) return;
+        var dx = e.clientX - d.x;
+        var dy = e.clientY - d.y;
+        if (!d.axis) {
+          if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+          d.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+          dragged = true;
+          if (d.axis === 'x' && el.setPointerCapture) el.setPointerCapture(e.pointerId);
         }
+        if (d.axis !== 'x') return;
+        d.dx = dx;
+        if (onMove) onMove(dx);
+      });
+      function end(e, cancelled) {
+        if (!d || e.pointerId !== d.id) return;
+        var done = d;
+        d = null;
+        if (done.axis !== 'x') return;
+        if (onMove) onMove(null);
+        if (!cancelled && Math.abs(done.dx) >= SWIPE) onSwipe(done.dx < 0 ? 1 : -1);
       }
-      if (drag.axis !== 'x') return;
-      drag.dx = dx;
+      el.addEventListener('pointerup', function (e) { end(e, false); });
+      el.addEventListener('pointercancel', function (e) { end(e, true); });
+    }
+    // The phone follows the finger (resisting past either end); a swipe left brings in built properly.
+    swipe(track, function (dx) {
+      phonesEl.classList.toggle('is-dragging', dx !== null);
+      if (dx === null) { phonesEl.style.removeProperty('--drag'); return; }
       var build = story.state().build;
       var pastEnd = (build === 'demo' && dx > 0) || (build === 'proper' && dx < 0);
       phonesEl.style.setProperty('--drag', (pastEnd ? dx / 4 : dx) + 'px');
+    }, function (dir) { story.flip(dir > 0 ? 'proper' : 'demo'); });
+    swipe(q('.bts-panels'), null, function (dir) { story.shiftTab(dir); });
+
+    root.addEventListener('keydown', function (e) {
+      if (e.target.getAttribute('role') !== 'tab') return;
+      var k = e.key;
+      if (k === 'ArrowRight') story.shiftTab(1);
+      else if (k === 'ArrowLeft') story.shiftTab(-1);
+      else if (k === 'Home') story.setTab(E.TABS[0][0]);
+      else if (k === 'End') story.setTab(E.TABS[E.TABS.length - 1][0]);
+      else return;
+      e.preventDefault();
     });
-    function endDrag(e, cancelled) {
-      if (!drag || e.pointerId !== drag.id) return;
-      var d = drag;
-      drag = null;
-      if (d.axis !== 'x') return;
-      phonesEl.classList.remove('is-dragging');
-      phonesEl.style.removeProperty('--drag');
-      if (cancelled) return;
-      if (d.dx <= -SWIPE) story.flip('proper');
-      else if (d.dx >= SWIPE) story.flip('demo');
-    }
-    track.addEventListener('pointerup', function (e) { endDrag(e, false); });
-    track.addEventListener('pointercancel', function (e) { endDrag(e, true); });
+    document.addEventListener('keydown', function (e) {
+      if (desktop || !openDialog) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeDialogs(); return; }
+      if (e.key !== 'Tab') return;
+      var list = focusables(openDialog);
+      if (!list.length) return;
+      var i = list.indexOf(document.activeElement);
+      var last = list.length - 1;
+      list[e.shiftKey ? (i <= 0 ? last : i - 1) : (i === -1 || i === last ? 0 : i + 1)].focus();
+      e.preventDefault();
+    });
 
     root.addEventListener('click', function (e) {
       var chip = e.target.closest('.bts-chip');
       if (chip) { if (choose(chip.getAttribute('data-id'))) bringIntoView(); return; }
+      var tabBtn = e.target.closest('[role="tab"]');
+      if (tabBtn) { story.setTab(tabBtn.getAttribute('data-tab')); return; }
+      var pick = e.target.closest('.bts-pick');
+      if (pick) { if (!dragged && story.pick(pick.getAttribute('data-id'))) setHash(pick.getAttribute('data-id')); return; }
       var swBtn = e.target.closest('[data-switch]');
       if (swBtn) { story.flip(swBtn.getAttribute('data-switch')); return; }
       var action = e.target.closest('[data-action]');
@@ -401,6 +513,8 @@
         else if (a === 'next') ctl.next();
         else if (a === 'replay') ctl.replay();
         else if (a === 'hold') story.toggle();
+        else if (a === 'sheet') story.openSheet();
+        else if (a === 'sheet-close') story.closeSheet();
         else if (a === 'primary') {
           var was = story.state().id;
           story.act();

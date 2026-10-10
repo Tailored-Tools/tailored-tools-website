@@ -176,7 +176,8 @@ section.bts-play { background: var(--bts-paper); padding: 36px 16px 56px; }
 .bts-chip[aria-pressed="true"] { background: var(--bts-ink); color: #fff; }
 
 /* Visible focus everywhere on the page (ink on light sections, white on dark ones) */
-.bts-chip:focus-visible, .bts-btn:focus-visible, .bts-switch button:focus-visible, .bts-link:focus-visible {
+.bts-chip:focus-visible, .bts-btn:focus-visible, .bts-switch button:focus-visible, .bts-link:focus-visible,
+.bts-tab:focus-visible, .bts-pick:focus-visible {
     outline: 3px solid var(--bts-ink); outline-offset: 3px;
 }
 .bts-cta .bts-btn:focus-visible { outline-color: #fff; }
@@ -239,7 +240,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
    phone track (active phone centred, the other build peeking at the edge), the caption card,
    the controls, the made-up label. The phone is sized from the space left, keeping its 2:3 screen. */
 @media (min-width: 900px) {
-    .bts-top, .bts-card, .bts-story-controls { display: none !important; }
+    .bts-top, .bts-card, .bts-story-controls, .bts-sheet { display: none !important; }
 }
 @media (max-width: 899.98px) {
     .bts-app main { display: flex; flex-direction: column; }
@@ -329,8 +330,44 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     .bts-hold .bts-icon-play, .bts-hold.is-held .bts-icon-pause { display: none; }
     .bts-hold.is-held .bts-icon-play { display: block; }
 }
+@media (max-width: 899.98px) {
+    /* Pick a problem: a bottom sheet with four big tabs. One height for every tab, so it never jumps. */
+    .bts-sheet { position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; justify-content: flex-end; }
+    .bts-sheet-backdrop { position: absolute; inset: 0; background: rgba(13, 27, 42, 0.5); }
+    .bts-sheet-panel {
+        position: relative; display: flex; flex-direction: column; height: min(90vh, 580px); height: min(90dvh, 580px);
+        padding: 14px 16px max(16px, env(safe-area-inset-bottom)); background: var(--bts-paper);
+        border-top: 1.5px solid var(--bts-ink); border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px rgba(13, 27, 42, 0.25);
+        animation: bts-rise 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    @keyframes bts-rise { from { transform: translateY(100%); } }
+    .bts-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .bts-sheet-head h2 { font-size: 22px; line-height: 1.1; color: var(--bts-ink); }
+    .bts-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .bts-tab {
+        min-height: 48px; padding: 0 10px; font: inherit; font-size: 15.5px; font-weight: 700; color: var(--bts-ink);
+        background: var(--bts-ticket); border: 1.5px solid var(--bts-ink); border-radius: 12px; cursor: pointer;
+    }
+    .bts-tab[aria-selected="true"] { color: #fff; background: var(--bts-ink); }
+    .bts-panels { flex: 1 1 auto; min-height: 0; margin-top: 14px; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
+    .bts-panel { animation: bts-fade 0.2s ease-out; }
+    @keyframes bts-fade { from { opacity: 0; } }
+    .bts-pick-list { list-style: none; display: grid; gap: 8px; padding-bottom: 4px; }
+    .bts-pick {
+        display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 8px 14px;
+        font: inherit; font-size: 16px; font-weight: 600; line-height: 1.25; text-align: left; color: var(--bts-ink);
+        background: var(--bts-ticket); border: 1.5px solid var(--bts-ink); border-radius: 12px; box-shadow: 0 3px 0 var(--bts-ink); cursor: pointer;
+    }
+    .bts-pick:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--bts-ink); }
+    .bts-pick-n { flex: none; min-width: 1.6em; font-family: var(--bts-mono); font-size: 12.5px; font-weight: 500; color: var(--bts-muted); }
+    .bts-pick-tag { flex: none; margin-left: auto; font-family: var(--bts-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bts-muted); }
+    .bts-pick-tag:empty { display: none; }
+    .bts-pick[aria-current="true"] { color: #fff; background: var(--bts-ink); }
+    .bts-pick[aria-current="true"] .bts-pick-n, .bts-pick[aria-current="true"] .bts-pick-tag { color: rgba(255, 255, 255, 0.82); }
+}
 @media (max-width: 899.98px) and (prefers-reduced-motion: reduce) {
     .bts-app .bts-phones, .bts-app .bts-phone { transition: none; }
+    .bts-sheet-panel, .bts-panel { animation: none; }
 }
 
 /* ── Part 2: Juniper Studio's app, inside the phone ──────────── */

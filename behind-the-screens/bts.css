@@ -233,6 +233,106 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     .bts-proof-list { grid-template-columns: 1fr 1fr; }
 }
 
+/* Below 900px with JavaScript on: the one-screen story stage (spec section 14).
+   The stage is the first thing under the nav and fills the rest of the screen; the intro and
+   everything else sit below it. Rows: progress and Pick a problem, the two build buttons, the
+   phone track (active phone centred, the other build peeking at the edge), the caption card,
+   the controls, the made-up label. The phone is sized from the space left, keeping its 2:3 screen. */
+@media (min-width: 900px) {
+    .bts-top, .bts-card, .bts-story-controls { display: none !important; }
+}
+@media (max-width: 899.98px) {
+    .bts-app main { display: flex; flex-direction: column; }
+    .bts-app section.bts-play { order: -1; padding: 0 16px; }
+    .bts-app .bts {
+        display: flex; flex-direction: column;
+        height: calc(100vh - var(--bts-nav, 72px));
+        height: calc(100dvh - var(--bts-nav, 72px));
+        min-height: 520px;
+        padding: 6px 0 max(6px, env(safe-area-inset-bottom));
+    }
+    .bts-app .bts-side, .bts-app .bts-controls, .bts-app .bts-takes,
+    .bts-app .bts-phone-label, .bts-app .bts-live-view .bts-caption { display: none !important; }
+    .bts-app .bts-layout { order: 1; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+    .bts-app .bts-main { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+    .bts-app .bts-madeup.is-stage {
+        order: 2; align-self: center; margin: 6px 0 0; padding: 1px 7px; border-width: 1px;
+        font-size: 10px; line-height: 1.2; letter-spacing: 0.05em; white-space: nowrap;
+    }
+
+    .bts-top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 44px; }
+    .bts-progress { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .bts-progress-n { font-family: var(--bts-mono); font-size: 11px; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bts-muted); }
+    .bts-progress-title {
+        font-family: var(--bts-display); font-size: 15.5px; font-weight: 700; line-height: 1.2; color: var(--bts-ink);
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .bts-btn-small { flex: none; min-height: 44px; padding: 0 14px; font-size: 14.5px; box-shadow: 0 3px 0 var(--bts-ink); }
+
+    .bts-app .bts-switch { flex: none; max-width: 360px; margin: 0 auto; padding: 1px; }
+    .bts-app .bts-switch button { min-height: 44px; padding: 0 8px; font-size: 15px; }
+
+    /* The phone track: --pw is the phone's width, from whichever is tighter, the width or the height left */
+    .bts-app .bts-track {
+        position: relative; flex: 1 1 0; min-height: 0; margin: 0 -16px; overflow: hidden;
+        container-type: size; touch-action: pan-y;
+    }
+    .bts-app .bts-phones {
+        --pw: min(300px, 100cqw - 88px, (100cqh - 21px) / 1.5);
+        --gap: 14px;
+        display: flex; align-items: center; gap: var(--gap); width: max-content; height: 100%;
+        transform: translateX(calc((100cqw - var(--pw)) / 2 - var(--i, 0) * (var(--pw) + var(--gap)) + var(--drag, 0px)));
+        transition: transform 0.34s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .bts-app .bts[data-build="proper"] .bts-phones { --i: 1; }
+    .bts-app .bts-phones.is-dragging { transition: none; }
+    .bts-app .bts-phone { position: relative; flex: none; width: var(--pw); max-width: none; transition: opacity 0.34s; }
+    .bts-app .bts-phone[data-active="false"] { opacity: 0.5; }
+    .bts-app .bts-phone[data-active="false"] .bts-device { box-shadow: none; }
+    .bts-app .bts-device { padding: 5px; border-radius: 28px; }
+    .bts-app .bts-glass { border-radius: 23px; }
+    .bts-app .bts-status { height: 26px; padding: 0 14px 0 18px; font-size: 11.5px; }
+    .bts-app .bts-island { top: 6px; height: 15px; }
+    /* The stamp sits low on the phone (where screens are mostly empty), so it costs no height */
+    .bts-app .bts-outcome {
+        position: absolute; bottom: 9%; left: 50%; z-index: 2; margin: 0; pointer-events: none;
+        transform: translateX(-50%) rotate(-6deg); white-space: nowrap;
+        padding: 6px 12px 5px; font-size: 16px; background: var(--bts-ticket);
+        box-shadow: 0 8px 18px rgba(13, 27, 42, 0.28);
+    }
+
+    /* The caption card always holds three lines, so the phone never changes size between steps.
+       Text too long for that gets a smaller size; a caption that still needs four lines drops its step
+       line for that beat (.is-long and .is-full, set by engine-dom.js). */
+    .bts-card {
+        flex: none; height: 106px; padding: 10px 14px 12px; overflow: hidden; background: var(--bts-ticket);
+        border: 1.5px solid var(--bts-ink); border-radius: 14px; box-shadow: 0 4px 0 var(--bts-ink);
+    }
+    .bts-card-step, .bts-card-kicker {
+        font-family: var(--bts-mono); font-size: 11px; line-height: 1.3; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--bts-muted); margin-bottom: 3px;
+    }
+    .bts-card-caption { font-size: 14.5px; line-height: 20px; color: var(--bts-ink); }
+    .bts-card-caption.is-long, .bts-card-takes-line.is-long { font-size: 13px; }
+    .bts-card.is-full .bts-card-step { display: none; }
+    .bts-card-takes-line { font-size: 14.5px; font-weight: 700; line-height: 20px; color: var(--bts-ink); }
+    .bts-card-size {
+        display: inline-block; margin-left: 6px; padding: 0 6px; border: 1.5px solid var(--bts-ink); border-radius: 5px;
+        font-size: 10.5px; line-height: 1.2; color: var(--bts-ink); letter-spacing: 0.06em; white-space: nowrap; transform: rotate(-2deg);
+    }
+
+    .bts-story-controls { flex: none; display: flex; gap: 8px; }
+    .bts-story-controls .bts-btn { min-height: 48px; }
+    .bts-primary { flex: 1 1 auto; min-width: 0; padding: 0 12px; }
+    .bts-primary.is-next { background: var(--bts-orange); }
+    .bts-hold { flex: none; width: 48px; padding: 0; display: grid; place-items: center; }
+    .bts-hold .bts-icon-play, .bts-hold.is-held .bts-icon-pause { display: none; }
+    .bts-hold.is-held .bts-icon-play { display: block; }
+}
+@media (max-width: 899.98px) and (prefers-reduced-motion: reduce) {
+    .bts-app .bts-phones, .bts-app .bts-phone { transition: none; }
+}
+
 /* ── Part 2: Juniper Studio's app, inside the phone ──────────── */
 
 .jn {

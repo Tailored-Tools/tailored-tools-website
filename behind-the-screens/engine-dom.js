@@ -78,6 +78,39 @@
       '<div class="bts-panels">' + panels + '</div>' +
       '</div></div>';
   }
+  // Phones only: the offer card. Its words, link, proof and questions are taken from the page's own
+  // static sections, so there is one copy of each.
+  function offer() {
+    var el = document.createElement('div');
+    el.className = 'bts-offer';
+    el.hidden = true;
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-labelledby', 'bts-offer-title');
+    var ctaTitle = document.querySelector('.bts-cta h2');
+    var ctaText = document.querySelector('.bts-cta p');
+    var wa = document.getElementById('bts-cta-wa');
+    el.innerHTML = '<div class="bts-sheet-backdrop" data-action="offer-close"></div>' +
+      '<div class="bts-offer-panel" tabindex="-1">' +
+      '<div class="bts-offer-head"><h2 id="bts-offer-title"></h2>' +
+      '<button type="button" class="bts-btn bts-btn-small" data-action="offer-close">Close</button></div>' +
+      '<p class="bts-offer-lede"></p>' +
+      '<a class="bts-btn bts-btn-primary bts-offer-wa" target="_blank" rel="noopener">Send it on WhatsApp</a>' +
+      '<details class="bts-more" data-more="proof"><summary>How every Tailored Tools build works</summary></details>' +
+      '<details class="bts-more" data-more="questions"><summary>Questions to ask anyone quoting</summary><div class="bts-ticket"></div></details>' +
+      '<button type="button" class="bts-btn bts-offer-keep" data-action="offer-close">Keep watching</button>' +
+      '</div>';
+    el.querySelector('h2').textContent = ctaTitle.textContent;
+    el.querySelector('.bts-offer-lede').textContent = ctaText.textContent;
+    el.querySelector('.bts-offer-wa').href = wa.href;
+    var proof = el.querySelector('[data-more="proof"]');
+    proof.appendChild(document.querySelector('.bts-proof-list').cloneNode(true));
+    proof.appendChild(document.querySelector('.bts-proof .bts-link').cloneNode(true));
+    var questions = document.getElementById('bts-questions-list').cloneNode(true);
+    questions.removeAttribute('id');
+    el.querySelector('[data-more="questions"] .bts-ticket').appendChild(questions);
+    return el;
+  }
   function skeleton() {
     return '<p class="bts-madeup is-stage">Made-up business. Nothing here is real.</p>' +
       '<div class="bts-layout">' +
@@ -100,6 +133,7 @@
       '</div>' +
       '<div class="bts-story-controls">' +
       '<button type="button" class="bts-btn bts-hold" data-action="hold">' + HOLD_ICON + '<span class="bts-sr">Pause</span></button>' +
+      '<button type="button" class="bts-btn bts-btn-small bts-again" data-action="offer" aria-haspopup="dialog" hidden>Got a quote?</button>' +
       '<button type="button" class="bts-btn bts-primary" data-action="primary"></button>' +
       '</div>' +
       // Desktop only: controls under the two phones
@@ -123,6 +157,7 @@
 
   function mount(root) {
     root.innerHTML = skeleton();
+    root.insertBefore(offer(), root.querySelector('#bts-live'));
     root.hidden = false;
     document.documentElement.classList.add('bts-app');
 
@@ -167,7 +202,9 @@
     var layout = q('.bts-layout');
     var sheetEl = q('.bts-sheet');
     var sheetBtn = q('[data-action="sheet"]');
-    var openDialog = null;   // the sheet (or later the offer card) while it is open
+    var offerEl = q('.bts-offer');
+    var offerBtn = q('[data-action="offer"]');
+    var openDialog = null;   // the sheet or the offer card while it is open
     var returnTo = null;     // where focus goes back to when it closes
 
     function framesHtml(beats) {
@@ -311,6 +348,8 @@
       holdBtn.hidden = s.manual || s.step === 'next';
       holdBtn.classList.toggle('is-held', s.held);
       holdBtn.querySelector('.bts-sr').textContent = s.held ? 'Play' : 'Pause';
+      offerBtn.hidden = !(s.offerShown && !s.offer && s.step === 'next');
+      offerEl.hidden = !s.offer;
 
       renderSheet(s);
       syncDialogs(s);
@@ -347,7 +386,7 @@
       });
     }
     function syncDialogs(s) {
-      var want = s.sheet ? sheetEl : null;
+      var want = s.sheet ? sheetEl : s.offer ? offerEl : null;
       layout.inert = !!want;
       if (want === openDialog) {
         var a = document.activeElement;
@@ -358,17 +397,20 @@
       openDialog = want;
       if (want) {
         if (!was) returnTo = document.activeElement;
-        sheetEl.querySelector('[role="tab"][aria-selected="true"]').focus();
+        if (want === sheetEl) sheetEl.querySelector('[role="tab"][aria-selected="true"]').focus();
+        else offerEl.querySelector('.bts-offer-panel').focus();
       } else {
         var back = returnTo;
         returnTo = null;
         if (back && back !== document.body && document.contains(back) && back.getClientRects().length) back.focus();
-        else sheetBtn.focus();
+        else if (was === sheetEl) sheetBtn.focus();
+        else (offerBtn.hidden ? primaryBtn : offerBtn).focus();
       }
     }
     function closeDialogs() {
       var s = story.state();
       if (s.sheet) story.closeSheet();
+      if (s.offer) story.closeOffer();
     }
 
     function render() {
@@ -515,6 +557,8 @@
         else if (a === 'hold') story.toggle();
         else if (a === 'sheet') story.openSheet();
         else if (a === 'sheet-close') story.closeSheet();
+        else if (a === 'offer') story.openOffer();
+        else if (a === 'offer-close') story.closeOffer();
         else if (a === 'primary') {
           var was = story.state().id;
           story.act();

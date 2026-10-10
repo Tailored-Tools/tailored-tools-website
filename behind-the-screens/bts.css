@@ -240,7 +240,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
    phone track (active phone centred, the other build peeking at the edge), the caption card,
    the controls, the made-up label. The phone is sized from the space left, keeping its 2:3 screen. */
 @media (min-width: 900px) {
-    .bts-top, .bts-card, .bts-story-controls, .bts-sheet { display: none !important; }
+    .bts-top, .bts-card, .bts-story-controls, .bts-sheet, .bts-offer { display: none !important; }
 }
 @media (max-width: 899.98px) {
     .bts-app main { display: flex; flex-direction: column; }
@@ -365,9 +365,42 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     .bts-pick[aria-current="true"] { color: #fff; background: var(--bts-ink); }
     .bts-pick[aria-current="true"] .bts-pick-n, .bts-pick[aria-current="true"] .bts-pick-tag { color: rgba(255, 255, 255, 0.82); }
 }
+@media (max-width: 899.98px) {
+    /* The offer card: the page's call to action, sliding up after the third problem */
+    .bts-again { padding: 0 12px; }
+    .bts-offer { position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; justify-content: flex-end; }
+    .bts-offer-panel {
+        position: relative; max-height: 92vh; max-height: 92dvh; overflow-y: auto; overscroll-behavior: contain;
+        padding: 16px 16px max(18px, env(safe-area-inset-bottom)); color: #fff; background: var(--bts-ink);
+        border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px rgba(13, 27, 42, 0.3); outline: none;
+        animation: bts-rise 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .bts-offer-head { display: flex; align-items: flex-start; gap: 12px; }
+    .bts-offer-head h2 { flex: 1; font-size: 22px; line-height: 1.15; color: #fff; }
+    .bts-offer-lede { margin: 10px 0 16px; font-size: 15.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.86); }
+    .bts-offer-wa {
+        display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px;
+        font-size: 17px; border-color: var(--bts-orange); box-shadow: 0 4px 0 #c94d0c;
+    }
+    .bts-more { margin-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.25); }
+    .bts-more summary {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px;
+        font-weight: 700; font-size: 16px; color: #fff; list-style: none; cursor: pointer;
+    }
+    .bts-more summary::-webkit-details-marker { display: none; }
+    .bts-more summary::after { content: '+'; flex: none; font-family: var(--bts-mono); font-size: 20px; line-height: 1; }
+    .bts-more[open] summary::after { content: '\2212'; }
+    .bts-more .bts-proof-list { margin: 4px 0 12px; }
+    .bts-more .bts-proof-list li { font-size: 15px; }
+    .bts-more .bts-link { display: inline-block; margin-bottom: 12px; color: #fff; }
+    .bts-more .bts-ticket { margin-bottom: 14px; padding: 10px 12px; box-shadow: none; }
+    .bts-more .bts-qlist li { font-size: 15px; }
+    .bts-offer-keep { display: block; width: 100%; min-height: 48px; margin-top: 16px; }
+    .bts-offer .bts-btn:focus-visible, .bts-offer summary:focus-visible, .bts-offer .bts-link:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+}
 @media (max-width: 899.98px) and (prefers-reduced-motion: reduce) {
     .bts-app .bts-phones, .bts-app .bts-phone { transition: none; }
-    .bts-sheet-panel, .bts-panel { animation: none; }
+    .bts-sheet-panel, .bts-panel, .bts-offer-panel { animation: none; }
 }
 
 /* ── Part 2: Juniper Studio's app, inside the phone ──────────── */

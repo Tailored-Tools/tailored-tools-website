@@ -283,6 +283,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
 }
 .jn-spin-big { display: block; width: 2.6em; height: 2.6em; margin: 0 auto 1em; color: var(--jn-berry); }
 @keyframes jn-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .jn-spin { animation: none; } }
 .jn-big-icon {
     display: grid; place-items: center; width: 2.8em; height: 2.8em; margin: 0 auto 0.8em; border-radius: 50%;
     font-size: 1.3em; font-weight: 800; color: #fff; background: var(--tone);

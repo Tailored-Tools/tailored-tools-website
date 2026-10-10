@@ -13,7 +13,7 @@
       demo: [
         { screen: "book", state: { practitioner: "Ava", session: "60-minute session", day: "Sat 24 Oct", slots: ["10:00", "12:00", "14:00", "16:00"], taken: ["10:00", "14:00"], selected: "16:00" }, caption: "Priya picks Saturday at 4pm with Ava." },
         { screen: "pay", state: { amount: "£18.00 deposit", card: "Visa •••• 4242", status: "declined" }, caption: "Her bank declines the card." },
-        { screen: "confirmed", state: { title: "You're booked!", lines: ["Sat 24 Oct, 4pm with Ava", "Deposit: £18.00"], tone: "ok" }, caption: "The demo says \"You're booked!\" anyway. It never checked whether the payment worked." },
+        { screen: "confirmed", state: { title: "You're booked!", lines: ["Sat 24 Oct, 4pm with Ava", "Deposit: £18.00"], tone: "ok" }, caption: "The quick build says \"You're booked!\" anyway. It never checked whether the payment worked." },
         { screen: "owner", state: { title: "Saturday", rows: [{ label: "4pm, Priya with Ava", value: "No-show", tone: "bad" }, { label: "Deposit collected", value: "£0 of £18", tone: "bad" }] }, caption: "Saturday comes. Priya doesn't show, and there's no deposit to keep." }
       ],
       proper: [
@@ -37,7 +37,7 @@
       demo: [
         { screen: "pay", state: { amount: "£18.00 deposit", card: "Visa •••• 1881", status: "processing" }, caption: "Priya taps Pay. Her bank wants to check it's really her." },
         { screen: "bank-check", state: { status: "asking" }, caption: "UK rules need this check (3D Secure) for most online card payments." },
-        { screen: "error", state: { kind: "spinner", title: "Processing...", lines: ["Please don't close this page."] }, caption: "The demo wasn't built for the check. It spins forever." },
+        { screen: "error", state: { kind: "spinner", title: "Processing...", lines: ["Please don't close this page."] }, caption: "The quick build wasn't built for the check. It spins forever." },
         { screen: "owner", state: { title: "Today", rows: [{ label: "Online bookings", value: "0", tone: "bad" }, { label: "People who gave up paying", value: "Not recorded", tone: "bad" }] }, caption: "Clients give up halfway. The owner sees a quiet day and never knows why." }
       ],
       proper: [
@@ -63,7 +63,7 @@
     beats: {
       demo: [
         { screen: "my-booking", state: { url: "juniperstudio.example/booking/1042", name: "Priya", when: "Sat 24 Oct, 4pm with Ava", lines: ["Deposit paid: £18.00", "Need to cancel?"], tone: "ok" }, caption: "Friday, 8pm. Priya opens her booking and taps Cancel." },
-        { screen: "confirmed", state: { title: "Booking cancelled", lines: ["Your £18.00 deposit has been refunded."], tone: "ok" }, caption: "The demo refunds the lot. It never checked the 24-hour rule." },
+        { screen: "confirmed", state: { title: "Booking cancelled", lines: ["Your £18.00 deposit has been refunded."], tone: "ok" }, caption: "The quick build refunds the lot. It never checked the 24-hour rule." },
         { screen: "diary", state: { day: "Sat 24 Oct", columns: [{ who: "Ava", items: [{ time: "14:00", name: "Tom" }, { time: "16:00", name: "Empty", flag: "cancelled" }] }] }, caption: "Ava's 4pm sits empty, and the deposit that should have covered it has gone." }
       ],
       proper: [
@@ -132,7 +132,7 @@
       demo: [
         { screen: "pay", state: { amount: "£18.00 deposit", card: "Visa •••• 4242", status: "processing" }, caption: "Priya pays on the bus. Her signal drops just as it goes through." },
         { screen: "error", state: { kind: "offline", title: "No connection", lines: ["Check your signal and try again."] }, caption: "Her money has gone, but her phone never heard back." },
-        { screen: "pay", state: { amount: "£18.00 deposit", card: "Visa •••• 4242", status: "idle", note: "No booking found. Please try again." }, caption: "Back online, the demo has no booking for her. So she pays again." },
+        { screen: "pay", state: { amount: "£18.00 deposit", card: "Visa •••• 4242", status: "idle", note: "No booking found. Please try again." }, caption: "Back online, the quick build has no booking for her. So she pays again." },
         { screen: "owner", state: { title: "Priya", rows: [{ label: "Deposits taken", value: "£18.00 twice", tone: "bad" }, { label: "Bookings", value: "None", tone: "bad" }] }, caption: "She's charged twice and still has no booking. Sorting it out falls to the owner." }
       ],
       proper: [
@@ -182,7 +182,7 @@
       demo: [
         { screen: "book", state: { practitioner: "Sam", session: "60-minute session", day: "Tue 27 Oct", slots: ["09:00", "10:00", "11:00"], selected: "10:00" }, caption: "On 20 October, Priya books Tuesday 27th at 10am with Sam." },
         { screen: "confirmed", state: { title: "You're booked", lines: ["Tue 27 Oct, 10am with Sam"], tone: "ok" }, caption: "Her confirmation says 10am. The clocks go back on Sunday 25 October." },
-        { screen: "diary", state: { day: "Tue 27 Oct", columns: [{ who: "Sam", items: [{ time: "09:00", name: "Priya", flag: "moved" }] }] }, caption: "After the change, the demo shows her at 9am. It saved the time the wrong way." },
+        { screen: "diary", state: { day: "Tue 27 Oct", columns: [{ who: "Sam", items: [{ time: "09:00", name: "Priya", flag: "moved" }] }] }, caption: "After the change, the quick build shows her at 9am. It saved the time the wrong way." },
         { screen: "message", state: { channel: "text", to: "Priya", bubbles: [{ text: "Reminder: your appointment is tomorrow at 9:00am with Sam.", status: "delivered" }] }, caption: "Her reminder says 9am, Sam expects 9am, she planned for 10. Every booking after the change is out." }
       ],
       proper: [
@@ -205,7 +205,7 @@
     beats: {
       demo: [
         { screen: "diary", state: { day: "Fri 23 Oct", columns: [{ who: "Kit", off: true, items: [{ time: "09:00", name: "Tom" }, { time: "10:00", name: "Priya" }, { time: "12:00", name: "Jo" }, { time: "14:00", name: "Dev" }, { time: "16:00", name: "Mia" }] }], note: "Kit is off sick today." }, caption: "7am. Kit is ill, with five bookings today." },
-        { screen: "diary", state: { day: "Fri 23 Oct", columns: [{ who: "Kit", off: true, items: [{ time: "09:00", name: "Tom" }, { time: "10:00", name: "Priya" }, { time: "12:00", name: "Jo" }, { time: "14:00", name: "Dev" }, { time: "16:00", name: "Mia" }] }], note: "No way to move bookings. Call each client." }, caption: "The demo can't move anyone. The owner has to ring all five before 9am." },
+        { screen: "diary", state: { day: "Fri 23 Oct", columns: [{ who: "Kit", off: true, items: [{ time: "09:00", name: "Tom" }, { time: "10:00", name: "Priya" }, { time: "12:00", name: "Jo" }, { time: "14:00", name: "Dev" }, { time: "16:00", name: "Mia" }] }], note: "No way to move bookings. Call each client." }, caption: "The quick build can't move anyone. The owner has to ring all five before 9am." },
         { screen: "owner", state: { title: "Kit off sick", rows: [{ label: "Clients reached", value: "3 of 5" }, { label: "Turned up anyway", value: "2 clients", tone: "bad" }] }, caption: "Two can't be reached and turn up anyway. That's two unhappy clients." }
       ],
       proper: [
@@ -227,7 +227,7 @@
     beats: {
       demo: [
         { screen: "message", state: { channel: "whatsapp", to: "Priya", bubbles: [{ text: "Reminder: Sat 24 Oct, 4pm with Ava. Reply C to cancel.", status: "sent" }] }, caption: "Friday, 4pm. Saturday's reminders are due to go out." },
-        { screen: "message", state: { channel: "whatsapp", to: "Priya", bubbles: [{ text: "Reminder: Sat 24 Oct, 4pm with Ava. Reply C to cancel.", status: "not-sent" }] }, caption: "Nothing goes. The demo's reminders were a screen, with no WhatsApp business account behind them." },
+        { screen: "message", state: { channel: "whatsapp", to: "Priya", bubbles: [{ text: "Reminder: Sat 24 Oct, 4pm with Ava. Reply C to cancel.", status: "not-sent" }] }, caption: "Nothing goes. The quick build's reminders were a screen, with no WhatsApp business account behind them." },
         { screen: "diary", state: { day: "Sat 24 Oct", columns: [{ who: "Ava", items: [{ time: "10:00", name: "Jo" }, { time: "16:00", name: "Priya" }] }, { who: "Sam", items: [{ time: "12:00", name: "Dev" }] }], note: "3 no-shows today." }, caption: "Saturday has three no-shows. Nobody knows the reminders never went." },
         { screen: "owner", state: { title: "This month", rows: [{ label: "Reminders sent", value: "0", tone: "bad" }, { label: "Message costs", value: "Nobody planned for them", tone: "bad" }] }, caption: "And nobody planned for the cost. WhatsApp charges businesses for each reminder." }
       ],
@@ -300,7 +300,7 @@
     beats: {
       demo: [
         { screen: "email", state: { from: "Priya", to: "Juniper Studio", subject: "My data", lines: ["Please send me a copy of everything you hold about me, then delete it."], tone: "ok" }, caption: "Priya asks for her data. By law, Juniper has one month to reply." },
-        { screen: "data-request", state: { from: "Priya", asks: "copy", rows: [{ label: "Bookings", status: "found" }, { label: "Notes and messages", status: "missing" }, { label: "Payments", status: "missing" }], due: "Reply due by 24 Nov" }, caption: "The demo has no way to gather it. The owner digs through screens and messages by hand." },
+        { screen: "data-request", state: { from: "Priya", asks: "copy", rows: [{ label: "Bookings", status: "found" }, { label: "Notes and messages", status: "missing" }, { label: "Payments", status: "missing" }], due: "Reply due by 24 Nov" }, caption: "The quick build has no way to gather it. The owner digs through screens and messages by hand." },
         { screen: "data-request", state: { from: "Priya", asks: "delete", rows: [{ label: "Her account", status: "removed" }, { label: "Old messages", status: "kept" }, { label: "Backups", status: "kept" }], due: "Reply due by 24 Nov" }, caption: "Deleting removes her account, but copies stay in old messages and backups." }
       ],
       proper: [
@@ -325,7 +325,7 @@
     beats: {
       demo: [
         { screen: "my-booking", state: { url: "juniperstudio.example/booking/1042", name: "Priya", when: "Sat 24 Oct, 4pm with Ava", lines: ["Anything we should know?", "I'm allergic to latex."], tone: "ok" }, caption: "Priya adds a note: she's allergic to latex. That's health information." },
-        { screen: "owner", state: { title: "Client notes", rows: [{ label: "Who can read them", value: "Everyone with a login", tone: "bad" }, { label: "Where they're kept", value: "With everything else", tone: "bad" }] }, caption: "In the demo, everyone with a login can read every health note." },
+        { screen: "owner", state: { title: "Client notes", rows: [{ label: "Who can read them", value: "Everyone with a login", tone: "bad" }, { label: "Where they're kept", value: "With everything else", tone: "bad" }] }, caption: "In the quick build, everyone with a login can read every health note." },
         { screen: "email", state: { from: "Juniper Studio", to: "Kit", subject: "Client list", lines: ["Attached: all clients and notes.csv"], tone: "bad" }, caption: "When someone exports the client list, the health notes go out with it." }
       ],
       proper: [
@@ -393,7 +393,7 @@
     beats: {
       demo: [
         { screen: "owner", state: { title: "Moving over", rows: [{ label: "Clients", value: "1,240" }, { label: "Future bookings", value: "312" }, { label: "Deposits already paid", value: "£4,380" }, { label: "Client notes", value: "2,105" }] }, caption: "Juniper has years of clients, notes and future bookings in its old system." },
-        { screen: "owner", state: { title: "Moving over", rows: [{ label: "Clients", value: "1,240 moved", tone: "ok" }, { label: "Future bookings", value: "Not moved", tone: "bad" }, { label: "Deposits already paid", value: "Not moved", tone: "bad" }, { label: "Client notes", value: "Not moved", tone: "bad" }] }, caption: "The demo brings in the client list. Bookings, deposits and notes stay behind." },
+        { screen: "owner", state: { title: "Moving over", rows: [{ label: "Clients", value: "1,240 moved", tone: "ok" }, { label: "Future bookings", value: "Not moved", tone: "bad" }, { label: "Deposits already paid", value: "Not moved", tone: "bad" }, { label: "Client notes", value: "Not moved", tone: "bad" }] }, caption: "The quick build brings in the client list. Bookings, deposits and notes stay behind." },
         { screen: "email", state: { from: "Tom", to: "Juniper Studio", subject: "My booking?", lines: ["I booked and paid for Saturday in the summer, but your new app says I have nothing booked."], tone: "bad" }, caption: "Clients who booked months ago find nothing, and their deposits are stuck in the old system." }
       ],
       proper: [

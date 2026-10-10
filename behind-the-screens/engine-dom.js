@@ -1,6 +1,6 @@
 // Behind the screens: the page layer. Builds the stage inside #bts, drives the controller from
 // engine-core.js with a 1.5 s timer and draws screens.js into the phone(s).
-// 900px and up: two phones in step. Below: one phone and a Demo build / Built properly switch.
+// 900px and up: two phones in step. Below: one phone and a Quick build / Built properly switch.
 // Reduced motion: no playback; each build's beats show as a numbered list of still frames.
 // No network calls, no storage, no cookies.
 (function () {
@@ -10,7 +10,7 @@
   var SCREENS = window.BTS_SCREENS;
   var SCENARIOS = window.BTS_SCENARIOS;
   var BUILDS = ['demo', 'proper'];
-  var LABEL = { demo: 'Demo build', proper: 'Built properly' };
+  var LABEL = { demo: 'Quick build', proper: 'Built properly' };
   var GROUPS = [['money', 'Money'], ['bookings', 'Bookings'], ['data', 'Data and security'], ['running', 'Running it']];
   var PROMPT = 'Pick something that goes wrong.';
   var REST = { practitioner: 'Ava', session: '60-minute session', day: 'Sat 24 Oct', slots: ['10:00', '12:00', '14:00', '16:00'], taken: ['10:00', '14:00'], selected: null };
@@ -55,8 +55,8 @@
       '<div class="bts-layout">' +
       '<div class="bts-main">' +
       '<div class="bts-switch" role="group" aria-label="Which build to watch">' +
-      '<button type="button" data-switch="demo" aria-pressed="true">Demo build</button>' +
-      '<button type="button" data-switch="proper" aria-pressed="false">Built properly</button>' +
+      '<button type="button" data-switch="demo" aria-pressed="true">' + LABEL.demo + '</button>' +
+      '<button type="button" data-switch="proper" aria-pressed="false">' + LABEL.proper + '</button>' +
       '</div>' +
       '<div class="bts-phones">' + phone('demo') + phone('proper') + '</div>' +
       '<div class="bts-controls">' +
@@ -163,7 +163,7 @@
       replayBtn.disabled = !sc;
 
       otherBtn.hidden = !(sc && st.ended && !both);
-      otherBtn.textContent = st.build === 'demo' ? 'Now see it built properly' : 'Now see it as a demo';
+      otherBtn.textContent = st.build === 'demo' ? 'Now see it built properly' : 'Now see it as a quick build';
 
       takes.hidden = !(sc && st.ended);
       if (sc) {
@@ -174,8 +174,8 @@
 
       var t = ctl.tally();
       q('.bts-tally-played').textContent = 'Played so far: ' + t.played + ' of ' + t.total;
-      q('[data-tally="demo"]').textContent = 'Demo build: ' + t.demo.survived + ' of ' + t.total + ' survived';
-      q('[data-tally="proper"]').textContent = 'Built properly: ' + t.proper.survived + ' of ' + t.total + ' survived';
+      q('[data-tally="demo"]').textContent = LABEL.demo + ': ' + t.demo.survived + ' of ' + t.total + ' survived';
+      q('[data-tally="proper"]').textContent = LABEL.proper + ': ' + t.proper.survived + ' of ' + t.total + ' survived';
 
       Array.prototype.forEach.call(root.querySelectorAll('.bts-chip'), function (chip) {
         chip.setAttribute('aria-pressed', chip.getAttribute('data-id') === st.id ? 'true' : 'false');

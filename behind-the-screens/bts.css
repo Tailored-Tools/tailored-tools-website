@@ -1,0 +1,397 @@
+/* Behind the screens: page and phone styles.
+   Part 1 is the TT page (homepage paper, ink and job-ticket feel; tokens from /styles.css).
+   Part 2 is Juniper Studio's own app inside the phone: a made-up client, so it has its own look.
+   The two-phone layout starts at 900px (wider than the site's 768px on purpose: see the spec). */
+
+:root {
+    --bts-paper:   #F3EEE4;
+    --bts-ticket:  #FFFDF8;
+    --bts-ink:     #0D1B2A;
+    --bts-ink-2:   #203a4c;
+    --bts-muted:   #5d6673;
+    --bts-rule:    rgba(13, 27, 42, 0.14);
+    --bts-orange:  #ff6f20;
+    --bts-ok:      #1D6B3A;
+    --bts-bad:     #A3261C;
+    --bts-display: 'Bricolage Grotesque', 'Inter', sans-serif;
+    --bts-mono:    'DM Mono', ui-monospace, Menlo, monospace;
+
+    /* Juniper Studio: juniper green and berry blue, its own font stack */
+    --jn-bg:      #F4F7F5;
+    --jn-card:    #FFFFFF;
+    --jn-ink:     #17251F;
+    --jn-muted:   #4A5C53;
+    --jn-line:    #D5DED9;
+    --jn-green:   #24543F;
+    --jn-berry:   #4B4F9E;
+    --jn-ok:      #1D6B3A;  --jn-ok-bg:   #E2F1E6;
+    --jn-warn:    #8A4B00;  --jn-warn-bg: #FCEFD6;
+    --jn-bad:     #A3261C;  --jn-bad-bg:  #FBE3E0;
+    --jn-info:    #2E4A8C;  --jn-info-bg: #E5EAF7;
+    --jn-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── Part 1: the TT page ─────────────────────────────────────── */
+
+/* Elements the script hides must stay hidden, whatever display rule they have */
+.bts [hidden], .bts-copy-row [hidden] { display: none !important; }
+
+.bts-wrap { max-width: 1160px; margin: 0 auto; }
+.bts-narrow { max-width: 760px; }
+.bts-sr {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+section.bts-intro { background: var(--bts-ink); color: #fff; padding: 64px 16px 56px; }
+.bts-eyebrow {
+    display: block; font-family: var(--bts-mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255, 255, 255, 0.72); margin-bottom: 16px;
+}
+.bts-intro h1 {
+    font-size: clamp(38px, 8vw, 72px); font-weight: 800; line-height: 1.02; letter-spacing: -0.035em;
+    color: #fff; margin-bottom: 18px;
+}
+.bts-intro h1 span { color: var(--bts-orange); }
+.bts-lede { font-size: 19px; line-height: 1.55; color: rgba(255, 255, 255, 0.85); max-width: 620px; }
+.bts-madeup {
+    display: inline-block; margin-top: 22px; padding: 6px 10px; border-radius: 6px;
+    font-family: var(--bts-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--bts-ink); background: var(--bts-ticket);
+}
+.bts-madeup.is-stage { margin: 0 0 16px; background: transparent; border: 1.5px dashed var(--bts-ink); }
+
+section.bts-play { background: var(--bts-paper); padding: 36px 16px 56px; }
+.bts { scroll-margin-top: 84px; }
+.bts-noscript {
+    font-size: 17px; font-weight: 600; color: var(--bts-ink); background: var(--bts-ticket);
+    border: 1.5px solid var(--bts-ink); border-radius: 12px; padding: 16px;
+}
+
+.bts-layout { display: grid; gap: 28px; }
+.bts-main, .bts-side { min-width: 0; }
+
+/* Switch: two real buttons with aria-pressed; each state has its own visible label */
+.bts-switch {
+    display: flex; width: 100%; max-width: 320px; margin: 0 auto 16px; padding: 4px;
+    border: 1.5px solid var(--bts-ink); border-radius: 999px; background: var(--bts-ticket);
+}
+.bts-switch button {
+    flex: 1; font: inherit; font-size: 14.5px; font-weight: 700; padding: 9px 10px; border: 0;
+    border-radius: 999px; background: transparent; color: var(--bts-ink); cursor: pointer;
+}
+.bts-switch button[aria-pressed="true"] { background: var(--bts-ink); color: #fff; }
+
+/* Phones */
+.bts-phones { display: grid; gap: 24px; justify-items: center; }
+.bts-phone { width: 100%; max-width: 300px; margin: 0; }
+.bts-phone-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; min-height: 30px; }
+.bts-tag {
+    font-family: var(--bts-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 9px; border-radius: 6px; color: var(--bts-ink);
+}
+.bts-tag[data-build="demo"] { border: 1.5px dashed var(--bts-ink); }
+.bts-tag[data-build="proper"] { border: 1.5px solid var(--bts-ink); background: var(--bts-ticket); }
+.bts-step { font-family: var(--bts-mono); font-size: 12px; color: var(--bts-muted); }
+
+.bts-device {
+    padding: 8px; border-radius: 36px; background: var(--bts-ink);
+    box-shadow: 0 18px 30px rgba(13, 27, 42, 0.18), 0 2px 4px rgba(13, 27, 42, 0.12);
+}
+.bts-device.is-tappable { cursor: pointer; }
+.bts-glass { border-radius: 29px; overflow: hidden; background: var(--jn-bg); container-type: inline-size; }
+.bts-status {
+    position: relative; display: flex; justify-content: space-between; align-items: center;
+    height: 30px; padding: 0 18px 0 22px; color: var(--jn-ink); background: var(--jn-bg);
+    font: 600 12.5px/1 var(--jn-font);
+}
+.bts-island {
+    position: absolute; top: 7px; left: 50%; width: 31%; height: 17px; margin-left: -15.5%;
+    border-radius: 999px; background: var(--bts-ink);
+}
+/* Shorter screen below 900px so the phone and its caption fit on a small phone together */
+.bts-screen { position: relative; aspect-ratio: 3 / 5; overflow: hidden; }
+
+.bts-caption { margin-top: 12px; min-height: 5.9em; font-size: 15.5px; line-height: 1.45; color: var(--bts-ink); }
+.bts-outcome {
+    display: inline-block; margin-top: 4px; padding: 5px 11px 4px; border: 2.5px solid currentColor; border-radius: 6px;
+    font-family: var(--bts-mono); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    transform: rotate(-4deg);
+}
+.bts-outcome[data-outcome="broke"] { color: var(--bts-bad); }
+.bts-outcome[data-outcome="survived"] { color: var(--bts-ok); }
+
+/* Reduced motion: numbered still frames */
+.bts-frames { list-style: none; display: grid; gap: 18px; }
+.bts-frame { max-width: 300px; margin: 0 auto; }
+.bts-frame-n { font-family: var(--bts-mono); font-size: 12px; color: var(--bts-muted); margin-bottom: 6px; }
+.bts-frame .bts-caption { min-height: 0; font-size: 14.5px; }
+
+/* Buttons (ticket style, like the homepage chips) */
+.bts-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+.bts-btn {
+    font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; padding: 10px 18px; border-radius: 10px;
+    border: 1.5px solid var(--bts-ink); background: var(--bts-ticket); color: var(--bts-ink); cursor: pointer;
+    box-shadow: 0 3px 0 var(--bts-ink); text-decoration: none; display: inline-block;
+}
+.bts-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--bts-ink); }
+.bts-btn:disabled { opacity: 0.45; cursor: default; transform: none; }
+.bts-btn-primary { background: var(--bts-orange); }
+.bts-other { display: block; margin: 16px auto 0; }
+
+/* What it takes: a job ticket */
+.bts-takes {
+    margin: 22px auto 0; max-width: 520px; padding: 16px 18px 18px; background: var(--bts-ticket);
+    border: 1.5px solid var(--bts-ink); border-radius: 12px; box-shadow: 0 6px 0 var(--bts-ink);
+}
+.bts-takes-label {
+    font-family: var(--bts-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bts-muted); padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1.5px dashed var(--bts-rule);
+}
+.bts-takes-line { font-family: var(--bts-display); font-size: 21px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--bts-ink); }
+.bts-takes-size { margin-top: 12px; font-family: var(--bts-mono); font-size: 13px; color: var(--bts-muted); }
+.bts-size {
+    display: inline-block; margin-left: 4px; padding: 3px 9px 2px; border: 2px solid var(--bts-ink); border-radius: 6px;
+    color: var(--bts-ink); text-transform: uppercase; letter-spacing: 0.1em; transform: rotate(-3deg);
+}
+
+/* Tally and chips */
+.bts-tally {
+    font-family: var(--bts-mono); font-size: 14px; line-height: 1.6; color: var(--bts-ink);
+    background: var(--bts-ticket); border: 1.5px solid var(--bts-ink); border-radius: 12px; padding: 12px 14px;
+}
+.bts-tally-played { color: var(--bts-muted); font-size: 12.5px; }
+.bts-side-title { font-size: 22px; margin: 24px 0 2px; color: var(--bts-ink); }
+.bts-group h3 {
+    font-family: var(--bts-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bts-muted); margin: 18px 0 8px;
+}
+.bts-chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.bts-chip {
+    font: inherit; font-size: 14.5px; line-height: 1.3; text-align: left; padding: 9px 13px; border-radius: 10px;
+    border: 1.5px solid var(--bts-ink); background: var(--bts-ticket); color: var(--bts-ink); cursor: pointer;
+    box-shadow: 0 3px 0 var(--bts-ink);
+}
+.bts-chip:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--bts-ink); }
+.bts-chip[aria-pressed="true"] { background: var(--bts-ink); color: #fff; }
+
+/* Visible focus everywhere on the page (ink on light sections, white on dark ones) */
+.bts-chip:focus-visible, .bts-btn:focus-visible, .bts-switch button:focus-visible, .bts-link:focus-visible {
+    outline: 3px solid var(--bts-ink); outline-offset: 3px;
+}
+.bts-cta .bts-btn:focus-visible { outline-color: #fff; }
+
+/* How every TT build works (proof block) */
+section.bts-proof { background: var(--bts-paper); padding: 8px 16px 56px; }
+.bts-proof h2, .bts-questions h2, .bts-cta h2 { font-size: clamp(26px, 5vw, 36px); line-height: 1.1; }
+.bts-proof h2, .bts-questions h2 { color: var(--bts-ink); }
+.bts-proof-list { list-style: none; display: grid; gap: 12px; margin: 18px 0 20px; }
+.bts-proof-list li {
+    position: relative; padding: 14px 16px 14px 46px; background: var(--bts-ticket); border: 1.5px solid var(--bts-ink);
+    border-radius: 12px; font-size: 16.5px; line-height: 1.45; color: var(--bts-ink);
+}
+.bts-proof-list li::before {
+    content: '\2713'; position: absolute; left: 16px; top: 13px; font-weight: 800; color: var(--bts-ok);
+}
+.bts-link { font-weight: 700; color: var(--bts-ink); text-decoration-color: var(--bts-orange); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+
+/* Questions */
+section.bts-questions { background: #fff; padding: 56px 16px; }
+.bts-section-lede { font-size: 17px; line-height: 1.6; color: var(--bts-muted); margin: 6px 0 22px; }
+.bts-ticket {
+    background: var(--bts-ticket); border: 1.5px solid var(--bts-ink); border-radius: 14px; padding: 16px 18px 18px;
+    box-shadow: 0 6px 0 var(--bts-ink);
+}
+.bts-ticket-head {
+    display: flex; justify-content: space-between; gap: 10px; font-family: var(--bts-mono); font-size: 11.5px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--bts-muted);
+    padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1.5px dashed var(--bts-rule);
+}
+.bts-qlist { padding-left: 24px; }
+.bts-qlist li { font-size: 16px; line-height: 1.5; color: var(--bts-ink); padding: 5px 0 5px 4px; }
+.bts-copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 22px; }
+.bts-copy-status { font-size: 14.5px; color: var(--bts-muted); }
+
+/* Call to action */
+section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; padding: 64px 16px 72px; }
+.bts-cta h2 { color: #fff; margin-bottom: 12px; }
+.bts-cta p { font-size: 17px; line-height: 1.6; color: rgba(255, 255, 255, 0.85); max-width: 520px; margin: 0 auto 26px; }
+.bts-cta .bts-btn { border-color: var(--bts-orange); box-shadow: 0 4px 0 #c94d0c; }
+
+/* 900px and up: two phones side by side, scenario list in a column beside them */
+@media (min-width: 900px) {
+    section.bts-intro { padding: 80px 24px 72px; }
+    section.bts-play { padding: 56px 24px 72px; }
+    section.bts-proof { padding: 16px 24px 72px; }
+    section.bts-questions { padding: 72px 24px; }
+    section.bts-cta { padding: 84px 24px; }
+    .bts-layout { grid-template-columns: minmax(0, 1fr) 300px; align-items: start; gap: 36px; }
+    .bts-phones { grid-template-columns: 1fr 1fr; align-items: start; }
+    .bts-screen { aspect-ratio: 9 / 16; }
+    .bts-takes { max-width: none; }
+    .bts-side-title { margin-top: 20px; }
+    .bts-proof-list { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Part 2: Juniper Studio's app, inside the phone ──────────── */
+
+.jn {
+    --tone: var(--jn-ink); --tone-bg: transparent;
+    height: 100%; display: flex; flex-direction: column;
+    font-family: var(--jn-font); font-size: 13px; font-size: 4.6cqw; line-height: 1.35;
+    color: var(--jn-ink); background: var(--jn-bg); text-align: left;
+}
+.jn ul { list-style: none; }
+.jn b { font-weight: 700; }
+.jn small { display: block; }
+.jn-tone-ok   { --tone: var(--jn-ok);   --tone-bg: var(--jn-ok-bg); }
+.jn-tone-warn { --tone: var(--jn-warn); --tone-bg: var(--jn-warn-bg); }
+.jn-tone-bad  { --tone: var(--jn-bad);  --tone-bg: var(--jn-bad-bg); }
+.jn-tone-info { --tone: var(--jn-info); --tone-bg: var(--jn-info-bg); }
+
+.jn-bar { display: flex; align-items: center; gap: 0.4em; padding: 0.65em 0.9em; background: var(--jn-green); color: #fff; }
+.jn-mark { width: 1.55em; height: 1.55em; flex: none; color: #CFE6D8; }
+.jn-berry { fill: #B9BDF4; }
+.jn-brand { font-weight: 700; letter-spacing: 0.01em; }
+.jn-bar-title { margin-left: auto; font-size: 0.85em; }
+.jn-body { flex: 1 0 auto; padding: 0.9em; }
+.jn-h { font-size: 1.15em; font-weight: 700; line-height: 1.25; margin-bottom: 0.5em; }
+.jn-line { margin: 0.25em 0; }
+.jn-note { margin-top: 0.8em; font-size: 0.85em; color: var(--jn-muted); }
+.jn-label { margin: 0.8em 0 0.4em; font-size: 0.8em; font-weight: 700; color: var(--jn-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.jn-empty { font-size: 0.85em; color: var(--jn-muted); }
+.jn-lock { width: 1em; height: 1em; flex: none; vertical-align: -0.12em; }
+
+.jn-banner {
+    display: flex; gap: 0.5em; align-items: flex-start; padding: 0.6em 0.9em; font-size: 0.85em; font-weight: 600;
+    color: var(--tone); background: var(--tone-bg); border-bottom: 1.5px solid var(--tone);
+}
+.jn-tag {
+    display: inline-flex; align-items: center; gap: 0.2em; padding: 0.15em 0.55em; border-radius: 999px;
+    font-size: 0.78em; font-weight: 700; color: var(--tone); background: var(--tone-bg); white-space: nowrap;
+}
+.jn-cta {
+    display: block; margin-top: 0.9em; padding: 0.75em; border-radius: 0.7em; text-align: center;
+    font-weight: 700; color: #fff; background: var(--jn-berry);
+}
+.jn-cta.is-off { color: var(--jn-muted); background: var(--jn-line); }
+.jn-cta.is-busy { background: var(--jn-muted); }
+.jn-spin {
+    display: inline-block; width: 1em; height: 1em; margin-right: 0.45em; vertical-align: -0.15em;
+    border: 0.18em solid currentColor; border-right-color: transparent; border-radius: 50%;
+    animation: jn-spin 0.8s linear infinite;
+}
+.jn-spin-big { display: block; width: 2.6em; height: 2.6em; margin: 0 auto 1em; color: var(--jn-berry); }
+@keyframes jn-spin { to { transform: rotate(360deg); } }
+.jn-big-icon {
+    display: grid; place-items: center; width: 2.8em; height: 2.8em; margin: 0 auto 0.8em; border-radius: 50%;
+    font-size: 1.3em; font-weight: 800; color: #fff; background: var(--tone);
+}
+.jn-big-icon svg { width: 1.3em; height: 1.3em; }
+
+/* book */
+.jn-facts > div { display: flex; justify-content: space-between; gap: 0.8em; padding: 0.35em 0; border-bottom: 1px solid var(--jn-line); }
+.jn-facts dt { color: var(--jn-muted); }
+.jn-facts dd { font-weight: 700; text-align: right; }
+.jn-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; }
+.jn-slot { padding: 0.5em 0.6em; border: 1.5px solid var(--jn-line); border-radius: 0.6em; background: var(--jn-card); }
+.jn-slot small { font-size: 0.75em; color: var(--jn-muted); }
+.jn-slot.is-taken { background: var(--jn-bg); }
+.jn-slot.is-taken b { text-decoration: line-through; color: var(--jn-muted); }
+.jn-slot.is-selected { border-color: var(--jn-berry); background: #ECEDFB; box-shadow: inset 0 0 0 1.5px var(--jn-berry); }
+.jn-slot.is-held { border-style: dashed; border-color: var(--jn-warn); background: var(--jn-warn-bg); }
+
+/* pay */
+.jn-sum, .jn-card {
+    display: flex; align-items: center; gap: 0.6em; padding: 0.7em 0.8em; margin-bottom: 0.6em;
+    background: var(--jn-card); border: 1px solid var(--jn-line); border-radius: 0.6em;
+}
+.jn-sum { justify-content: space-between; }
+.jn-card-icon { width: 2em; height: 1.3em; flex: none; border-radius: 0.25em; background: linear-gradient(135deg, var(--jn-berry), var(--jn-green)); }
+.jn-check { display: flex; gap: 0.6em; font-size: 0.82em; }
+.jn-check small { margin-top: 0.2em; color: var(--jn-muted); }
+.jn-box { display: grid; place-items: center; width: 1.3em; height: 1.3em; flex: none; border-radius: 0.3em; color: #fff; background: var(--jn-green); font-weight: 800; }
+.jn-pay-result { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5em; margin-top: 0.9em; }
+.jn-pay-result .jn-cta { align-self: stretch; margin-top: 0; }
+
+/* bank-check: the bank's own sheet over a dimmed screen */
+.jn-bank-check { background: #39443F; }
+.jn-bank-check .jn-body { display: flex; flex-direction: column; justify-content: flex-end; padding: 0.6em; }
+.jn-sheet { padding: 1.1em; border-radius: 1em; background: #fff; }
+.jn-sheet-from { display: flex; align-items: center; gap: 0.4em; margin-bottom: 0.8em; font-weight: 700; color: #1E3A5F; }
+.jn-sheet-kicker { margin-bottom: 0.4em; font-size: 0.75em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jn-muted); }
+.jn-sheet-status { display: flex; align-items: center; margin-top: 1em; color: var(--jn-info); }
+
+/* confirmed */
+.jn-result { padding-top: 1.6em; text-align: center; }
+
+/* my-booking */
+.jn-address {
+    display: flex; align-items: center; gap: 0.4em; margin: 0.4em 0.6em 0.5em; padding: 0.45em 0.7em;
+    border-radius: 0.6em; background: #E6EBE8; color: var(--jn-ink);
+    font-family: ui-monospace, Menlo, monospace; font-size: 0.76em; overflow-wrap: anywhere;
+}
+.jn-booking {
+    position: relative; padding: 0.9em; background: var(--jn-card); border: 1.5px solid var(--jn-line);
+    border-left: 0.35em solid var(--tone); border-radius: 0.7em;
+}
+.jn-my-booking[data-tone="ok"] .jn-booking { border-left-color: var(--jn-green); }
+.jn-flag {
+    position: absolute; top: 0.7em; right: 0.7em; display: grid; place-items: center; width: 1.6em; height: 1.6em;
+    border-radius: 50%; font-weight: 800; color: #fff; background: var(--tone);
+}
+.jn-when { margin-bottom: 0.5em; font-weight: 600; color: var(--jn-muted); }
+
+/* message */
+.jn-chat-head { display: flex; align-items: center; gap: 0.6em; padding: 0.7em 0.9em; background: var(--jn-card); border-bottom: 1px solid var(--jn-line); }
+.jn-chat-head small { font-size: 0.8em; color: var(--jn-muted); }
+.jn-avatar { display: grid; place-items: center; width: 2.2em; height: 2.2em; flex: none; border-radius: 50%; font-weight: 700; color: #fff; background: var(--jn-berry); }
+.jn-message[data-channel="whatsapp"] .jn-body { background: #EFEAE2; }
+.jn-message[data-channel="text"] .jn-body { background: var(--jn-card); }
+.jn-msg { margin: 0 0 0.8em 14%; text-align: right; }
+.jn-bubble { padding: 0.6em 0.75em; text-align: left; border-radius: 0.9em 0.9em 0.25em 0.9em; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08); }
+.jn-message[data-channel="whatsapp"] .jn-bubble { background: #D9F7C9; color: var(--jn-ink); }
+.jn-message[data-channel="text"] .jn-bubble { background: #2F5BD3; color: #fff; }
+.jn-tick { display: inline-block; margin-top: 0.25em; font-size: 0.75em; font-weight: 600; color: var(--jn-muted); }
+.jn-msg.is-read .jn-tick { color: #1C5FB8; }
+.jn-msg.is-failed .jn-tick, .jn-msg.is-not-sent .jn-tick { color: var(--jn-bad); }
+.jn-cost { font-size: 0.8em; color: var(--jn-muted); text-align: center; }
+
+/* email */
+.jn-mail-bar { padding: 0.7em 0.9em; font-weight: 700; color: var(--jn-berry); background: var(--jn-card); border-bottom: 1px solid var(--jn-line); }
+.jn-email .jn-body { background: var(--jn-card); }
+.jn-mail { padding-left: 0.8em; border-left: 0.3em solid var(--tone); }
+.jn-email[data-tone="ok"] .jn-mail { border-left-color: var(--jn-line); }
+.jn-meta { font-size: 0.82em; color: var(--jn-muted); }
+.jn-meta span { display: inline-block; width: 2.6em; font-weight: 700; }
+.jn-mail-body { margin-top: 0.8em; padding-top: 0.8em; border-top: 1px solid var(--jn-line); }
+
+/* diary */
+.jn-cols { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0.4em; }
+.jn-col { min-width: 0; padding: 0.5em; background: var(--jn-card); border: 1px solid var(--jn-line); border-radius: 0.6em; }
+.jn-col.is-off { background: var(--jn-warn-bg); }
+.jn-who { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3em; margin-bottom: 0.3em; font-weight: 700; font-size: 0.92em; }
+.jn-col li { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1em; padding: 0.35em 0; border-top: 1px solid var(--jn-line); font-size: 0.85em; overflow-wrap: anywhere; }
+.jn-col li b { font-size: 0.9em; color: var(--jn-muted); }
+
+/* owner and data-request rows */
+.jn-rows > li { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8em; padding: 0.6em 0; border-bottom: 1px solid var(--jn-line); font-size: 0.92em; }
+.jn-rows > li > b { text-align: right; color: var(--tone); }
+.jn-due { margin-top: 0.8em; font-size: 0.85em; font-weight: 700; color: var(--jn-warn); }
+
+/* team */
+.jn-people > li { display: flex; align-items: center; gap: 0.6em; padding: 0.6em 0; border-bottom: 1px solid var(--jn-line); }
+.jn-people > li > div { flex: 1; min-width: 0; }
+.jn-people small { font-size: 0.8em; color: var(--jn-muted); }
+.jn-switch { display: inline-flex; align-items: center; gap: 0.35em; font-size: 0.75em; font-weight: 700; white-space: nowrap; }
+.jn-knob { position: relative; width: 2.2em; height: 1.3em; border-radius: 999px; background: #B5C2BB; }
+.jn-knob::after { content: ''; position: absolute; top: 0.15em; left: 0.15em; width: 1em; height: 1em; border-radius: 50%; background: #fff; }
+.is-on .jn-knob { background: var(--jn-green); }
+.is-on .jn-knob::after { left: 1.05em; }
+
+/* error */
+.jn-error .jn-body { display: flex; flex-direction: column; }
+.jn-error[data-kind="blank"] { background: #fff; }
+.jn-error[data-kind="blank"] .jn-h { font-size: 1em; font-weight: 600; color: var(--jn-muted); }
+.jn-error-main { margin: auto 0; padding-bottom: 2em; text-align: center; }
+.jn-clock { align-self: center; padding: 0.2em 0.7em; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff; background: var(--jn-ink); }

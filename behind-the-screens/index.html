@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the screens - Tailored Tools</title>
+    <meta name="description" content="Two booking apps that look exactly the same. One's a demo, one's built properly. Pick something that goes wrong and watch what each one does, then take the questions to ask anyone quoting.">
+    <link rel="canonical" href="https://tailored-tools.com/behind-the-screens/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tailored-tools.com/behind-the-screens/">
+    <meta property="og:title" content="Behind the screens - Tailored Tools">
+    <meta property="og:description" content="Same screens, two builds. Pick something that goes wrong and see which booking app survives.">
+    <meta property="og:image" content="https://tailored-tools.com/og-image.png">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="bts.css?v=1">
+    <script src="scenarios.js?v=1" defer></script>
+    <script src="screens.js?v=1" defer></script>
+    <script src="engine-core.js?v=1" defer></script>
+    <script src="engine-dom.js?v=1" defer></script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Tailored Tools"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/how-i-work">How I Work</a></li>
+            <li><a href="/projects">Work</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/ao/blog/">Blog</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="https://wa.me/447356264673?text=Hi%20James%2C%20I%20found%20you%20on%20tailored-tools.com.%0A%0AI%27d%20like%20help%20with%3A%20%0A%0AMy%20business%20is%3A%20%0AWhat%20it%20does%3A%20%0AMy%20website%20%28if%20I%20have%20one%29%3A%20%0A%0AMy%20name%20is%20" class="nav-cta" target="_blank" rel="noopener">Get in Touch</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main>
+
+<section class="bts-intro">
+    <div class="bts-wrap">
+        <span class="bts-eyebrow">Behind the screens</span>
+        <h1>Same screens, <span>two builds</span></h1>
+        <p class="bts-lede">Two booking apps that look exactly the same. One's a demo, one's built properly. Pick something that goes wrong.</p>
+        <p class="bts-madeup">Made-up business. Nothing here is real.</p>
+    </div>
+</section>
+
+<section class="bts-play" id="play" data-nav-bg="light" aria-label="The two booking apps">
+    <div class="bts-wrap">
+        <div id="bts" class="bts" hidden></div>
+        <noscript><p class="bts-noscript">Turn on JavaScript to play the scenarios.</p></noscript>
+    </div>
+</section>
+
+<section class="bts-proof" data-nav-bg="light">
+    <div class="bts-wrap bts-narrow">
+        <h2>How every Tailored Tools build works</h2>
+        <ul class="bts-proof-list">
+            <li>The code, the accounts and the web address are in your name.</li>
+            <li>Every running cost is written down before we start.</li>
+            <li>Small changes go live the same day on the care plan.</li>
+            <li>No lock-in. You can leave and take everything with you.</li>
+        </ul>
+        <a class="bts-link" href="/projects">See them running now</a>
+    </div>
+</section>
+
+<section class="bts-questions" data-nav-bg="light">
+    <div class="bts-wrap bts-narrow">
+        <h2>Questions to ask anyone quoting, including us.</h2>
+        <p class="bts-section-lede">Whoever builds it, ask these before you pay. Get the answers in writing.</p>
+        <div class="bts-ticket">
+            <div class="bts-ticket-head"><span>Before you sign</span><span>12 questions</span></div>
+            <ol class="bts-qlist" id="bts-questions-list">
+                <li>Is the price fixed? What isn't included?</li>
+                <li>What will it cost each month to run, including hosting, support and updates?</li>
+                <li>If it breaks on a Saturday, who fixes it, and how fast?</li>
+                <li>Where are card details kept? They should sit with the payment provider, not on the website's own server.</li>
+                <li>Who owns the code and the data, and can I take them with me?</li>
+                <li>Is everything backed up every night, and has anyone practised restoring it?</li>
+                <li>How do my clients, notes, future bookings and deposits move over from my old system?</li>
+                <li>Will it hold health or other sensitive notes, and who can see them?</li>
+                <li>Can I talk to a business like mine that you've built this for?</li>
+                <li>Am I buying it or renting it? What happens if I stop paying?</li>
+                <li>Who pays for each text and WhatsApp message, and roughly how much a month?</li>
+                <li>What's the total over three years: setup plus every monthly cost?</li>
+            </ol>
+        </div>
+        <div class="bts-copy-row">
+            <button type="button" class="bts-btn bts-btn-primary" id="bts-copy" hidden>Copy the list</button>
+            <p class="bts-copy-status" id="bts-copy-status" aria-live="polite"></p>
+        </div>
+    </div>
+</section>
+
+<section class="bts-cta">
+    <div class="bts-wrap">
+        <h2>Got a quote? We'll check it against these 20, free.</h2>
+        <p>Send it on WhatsApp. You'll get a plain answer on what it covers and what it leaves out.</p>
+        <a class="bts-btn bts-btn-primary" id="bts-cta-wa" href="https://wa.me/447356264673?text=Hi%20James%2C%20I%20found%20you%20on%20tailored-tools.com.%0A%0AI%27ve%20got%20a%20quote%20for%20a%20booking%20system.%20Could%20you%20check%20it%20against%20your%2020%3F%0A%0AWhat%20it%27s%20for%3A%20%0AWhat%20they%27re%20charging%3A%20%0A%0AMy%20business%20is%3A%20%0AMy%20name%20is%20" target="_blank" rel="noopener">Send it on WhatsApp</a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
+    <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
+    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <div class="footer-disclosure">
+        <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
+        <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>
+        <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>
+        <p>Contact: <a href="mailto:hello@tailored-tools.com">hello@tailored-tools.com</a></p>
+    </div>
+    <p class="footer-meta">
+        &copy; 2026 Tailored Tools. All rights reserved.
+        &middot; <a href="/privacy.html">Privacy</a>
+        &middot; <a href="/terms.html">Terms</a>
+        &middot; <a href="/ethics.html">Ethics</a>
+        &middot; <a href="https://instagram.com/tailored.tools" target="_blank" rel="noopener">Instagram</a>
+        &middot; <a href="https://www.linkedin.com/in/jamesedwards7" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+</footer>
+
+<script src="/js/nav.js?v=3"></script>
+<script>
+var hb = document.getElementById('hamburger');
+if (hb) hb.addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@
     --bts-ticket:  #FFFDF8;
     --bts-ink:     #0D1B2A;
     --bts-ink-2:   #203a4c;
-    --bts-muted:   #5d6673;
+    --bts-muted:   #3f4854;
     --bts-rule:    rgba(13, 27, 42, 0.14);
     --bts-orange:  #ff6f20;
     --bts-ok:      #1D6B3A;
@@ -144,7 +144,7 @@ section.bts-play { background: var(--bts-paper); padding: 36px 16px 56px; }
     border: 1.5px solid var(--bts-ink); border-radius: 12px; box-shadow: 0 6px 0 var(--bts-ink);
 }
 .bts-takes-label {
-    font-family: var(--bts-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--bts-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--bts-muted); padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1.5px dashed var(--bts-rule);
 }
 .bts-takes-line { font-family: var(--bts-display); font-size: 21px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--bts-ink); }
@@ -203,8 +203,8 @@ section.bts-questions { background: #fff; padding: 56px 16px; }
     box-shadow: 0 6px 0 var(--bts-ink);
 }
 .bts-ticket-head {
-    display: flex; justify-content: space-between; gap: 10px; font-family: var(--bts-mono); font-size: 11.5px;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--bts-muted);
+    display: flex; justify-content: space-between; gap: 10px; font-family: var(--bts-mono); font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--bts-muted);
     padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1.5px dashed var(--bts-rule);
 }
 .bts-qlist { padding-left: 24px; }
@@ -257,12 +257,12 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     .bts-app .bts-main { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
     .bts-app .bts-madeup.is-stage {
         order: 2; align-self: center; margin: 6px 0 0; padding: 1px 7px; border-width: 1px;
-        font-size: 10px; line-height: 1.2; letter-spacing: 0.05em; white-space: nowrap;
+        font-size: 12px; line-height: 1.2; letter-spacing: 0.02em; text-transform: none;
     }
 
     .bts-top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 44px; }
     .bts-progress { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-    .bts-progress-n { font-family: var(--bts-mono); font-size: 11px; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bts-muted); }
+    .bts-progress-n { font-family: var(--bts-mono); font-size: 12px; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bts-muted); }
     .bts-progress-title {
         font-family: var(--bts-display); font-size: 15.5px; font-weight: 700; line-height: 1.2; color: var(--bts-ink);
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -291,7 +291,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     .bts-app .bts-phone[data-active="false"] .bts-device { box-shadow: none; }
     .bts-app .bts-device { padding: 5px; border-radius: 28px; }
     .bts-app .bts-glass { border-radius: 23px; }
-    .bts-app .bts-status { height: 26px; padding: 0 14px 0 18px; font-size: 11.5px; }
+    .bts-app .bts-status { height: 26px; padding: 0 14px 0 18px; font-size: 12px; }
     .bts-app .bts-island { top: 6px; height: 15px; }
     /* The stamp sits low on the phone (where screens are mostly empty), so it costs no height */
     .bts-app .bts-outcome {
@@ -309,7 +309,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
         border: 1.5px solid var(--bts-ink); border-radius: 14px; box-shadow: 0 4px 0 var(--bts-ink);
     }
     .bts-card-step, .bts-card-kicker {
-        font-family: var(--bts-mono); font-size: 11px; line-height: 1.3; letter-spacing: 0.1em; text-transform: uppercase;
+        font-family: var(--bts-mono); font-size: 12px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase;
         color: var(--bts-muted); margin-bottom: 3px;
     }
     .bts-card-caption { font-size: 14.5px; line-height: 20px; color: var(--bts-ink); }
@@ -318,7 +318,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     .bts-card-takes-line { font-size: 14.5px; font-weight: 700; line-height: 20px; color: var(--bts-ink); }
     .bts-card-size {
         display: inline-block; margin-left: 6px; padding: 0 6px; border: 1.5px solid var(--bts-ink); border-radius: 5px;
-        font-size: 10.5px; line-height: 1.2; color: var(--bts-ink); letter-spacing: 0.06em; white-space: nowrap; transform: rotate(-2deg);
+        font-size: 12px; line-height: 1.2; color: var(--bts-ink); letter-spacing: 0.04em; white-space: nowrap; transform: rotate(-2deg);
     }
 
     .bts-story-controls { flex: none; display: flex; gap: 8px; }
@@ -359,7 +359,7 @@ section.bts-cta { background: var(--bts-ink); color: #fff; text-align: center; p
     }
     .bts-pick:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--bts-ink); }
     .bts-pick-n { flex: none; min-width: 1.6em; font-family: var(--bts-mono); font-size: 12.5px; font-weight: 500; color: var(--bts-muted); }
-    .bts-pick-tag { flex: none; margin-left: auto; font-family: var(--bts-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bts-muted); }
+    .bts-pick-tag { flex: none; margin-left: auto; font-family: var(--bts-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bts-muted); }
     .bts-pick-tag:empty { display: none; }
     .bts-pick[aria-current="true"] { color: #fff; background: var(--bts-ink); }
     .bts-pick[aria-current="true"] .bts-pick-n, .bts-pick[aria-current="true"] .bts-pick-tag { color: rgba(255, 255, 255, 0.82); }

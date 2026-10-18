@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="/styles.css?v=17">
 
     <style>
         .hero {
@@ -88,7 +88,7 @@
             text-decoration: none;
             transition: all 0.2s;
         }
-        .hero-quick .btn-primary { background: var(--accent); color: #fff; }
+        .hero-quick .btn-primary { background: var(--accent); color: #0d1b2a; }
         .hero-quick .btn-primary:hover { opacity: 0.88; }
         .hero-quick .btn-ghost { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.18); }
         .hero-quick .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
@@ -106,8 +106,8 @@
         .event-tag {
             display: inline-block;
             background: var(--accent);
-            color: #fff;
-            font-size: 11px;
+            color: #0d1b2a;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 1.2px;
             text-transform: uppercase;
@@ -118,10 +118,10 @@
         .event-card h2 { font-size: 30px; font-weight: 800; color: var(--primary); margin-bottom: 22px; line-height: 1.2; }
         .event-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 26px; }
         .event-meta-item { display: flex; flex-direction: column; gap: 2px; }
-        .event-meta-label { font-size: 11px; color: #5a6a7a; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .event-meta-label { font-size: 12px; color: #414c5e; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
         .event-meta-value { font-size: 16px; color: var(--primary); font-weight: 600; line-height: 1.4; }
         .event-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-        .event-btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 12px 22px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; }
+        .event-btn-primary { display: inline-block; background: var(--accent); color: #0d1b2a; padding: 12px 22px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; }
         .event-btn-primary:hover { opacity: 0.88; }
         .event-btn-secondary { display: inline-block; background: var(--white); color: var(--primary); border: 1px solid #d8dde3; padding: 12px 22px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color 0.2s; }
         .event-btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
@@ -144,25 +144,25 @@
             display: flex;
             flex-direction: column;
         }
-        .channel-eyebrow { font-size: 11px; color: var(--accent); font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px; }
+        .channel-eyebrow { font-size: 12px; color: #c2410c; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
         .channel h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
-        .channel p { font-size: 14px; color: #5a6a7a; line-height: 1.7; margin-bottom: 14px; flex: 1; }
-        .channel a { display: inline-block; color: var(--accent); font-size: 14px; font-weight: 700; text-decoration: none; }
+        .channel p { font-size: 15px; color: #414c5e; line-height: 1.7; margin-bottom: 14px; flex: 1; }
+        .channel a { display: inline-block; color: #c2410c; font-size: 14px; font-weight: 700; text-decoration: none; }
         .channel a:hover { text-decoration: underline; }
 
         .expect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
         .expect-item { background: var(--white); border: 1px solid #e0e4e8; border-radius: 8px; padding: 22px; }
         .expect-item h3 { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-        .expect-item p { font-size: 14px; color: #5a6a7a; line-height: 1.65; margin: 0; }
+        .expect-item p { font-size: 15px; color: #414c5e; line-height: 1.65; margin: 0; }
 
         .past-list { list-style: none; padding: 0; margin: 24px 0 0; }
         .past-item { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid #e0e4e8; align-items: baseline; }
         .past-item:last-child { border-bottom: none; }
-        .past-date { font-size: 13px; color: #5a6a7a; font-weight: 600; min-width: 120px; }
+        .past-date { font-size: 13px; color: #414c5e; font-weight: 600; min-width: 120px; }
         .past-summary { font-size: 15px; color: var(--primary); }
 
-        .area-line { font-size: 14px; color: #5a6a7a; margin-top: 18px; }
-        .area-line a { color: #5a6a7a; text-decoration: none; }
+        .area-line { font-size: 15px; color: #414c5e; margin-top: 18px; }
+        .area-line a { color: #414c5e; text-decoration: none; }
         .area-line a:hover { color: var(--accent); }
 
         .cta-section { background: var(--dark); color: #fff; text-align: center; }
@@ -170,7 +170,7 @@
         .cta-section p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 26px; max-width: 520px; margin-left: auto; margin-right: auto; }
         .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .cta-group a { display: inline-block; padding: 12px 22px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; }
-        .cta-group .btn-fb { background: var(--accent); color: #fff; }
+        .cta-group .btn-fb { background: var(--accent); color: #0d1b2a; }
         .cta-group .btn-fb:hover { opacity: 0.88; }
         .cta-group .btn-email { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.25); }
         .cta-group .btn-email:hover { border-color: var(--accent); color: var(--accent); }
@@ -385,7 +385,7 @@
     <div class="section-inner">
         <h2>Who runs Kent AI</h2>
         <p>James Edwards, Tailored Tools. Based in Maidstone, runs a couple of small businesses, and spends a lot of time building with AI for them. Kent AI exists because nobody local was running anything like it, and AI conversations are far too useful to leave entirely to LinkedIn.</p>
-        <p>If you've a question before the night, drop a line to <a href="mailto:hello@tailored-tools.com" style="color: var(--accent); font-weight: 600; text-decoration: none;">hello@tailored-tools.com</a>.</p>
+        <p>If you've a question before the night, drop a line to <a href="mailto:hello@tailored-tools.com" style="color: #c2410c; font-weight: 600; text-decoration: none;">hello@tailored-tools.com</a>.</p>
         <p class="area-line">Members come from across Kent, Maidstone, Tonbridge, Tunbridge Wells, Sevenoaks, Ashford, Canterbury, Medway, and beyond. If you're anywhere in the county and curious about AI, you'll fit in fine.</p>
     </div>
 </section>
@@ -433,7 +433,7 @@
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <p style="color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
     <div class="footer-disclosure">
         <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
         <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>

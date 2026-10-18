@@ -26,7 +26,7 @@
     <!-- Each client world's own type. Browsers only fetch the files a panel actually uses. -->
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Josefin+Sans:wght@400;600&family=Gelasio:ital,wght@0,400;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Karla:wght@400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Space+Grotesk:wght@300..600&family=Space+Mono&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="/styles.css?v=17">
 
     <style>
         /* ── Homepage tokens: print-shop paper, TT ink, TT orange ───── */
@@ -36,7 +36,7 @@
             --ticket:  #FFFDF8;
             --ink:     #0D1B2A;
             --ink-2:   #203a4c;
-            --muted:   #5d6673;
+            --muted:   #3f4854;
             --rule:    rgba(13,27,42,0.14);
             --stamp:   #E4521B;
             --display: 'Bricolage Grotesque', 'Inter', sans-serif;
@@ -54,10 +54,10 @@
 
         .wrap { max-width: 1160px; margin: 0 auto; }
         .eyebrow {
-            font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.14em;
+            font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
             text-transform: uppercase; color: var(--muted); margin-bottom: 22px; display: block;
         }
-        .dark .eyebrow { color: rgba(255,255,255,0.5); }
+        .dark .eyebrow { color: rgba(255,255,255,0.8); }
         .display {
             font-family: var(--display); font-weight: 800; letter-spacing: -0.035em;
             line-height: 0.98; font-variation-settings: 'opsz' 96;
@@ -67,7 +67,7 @@
             font-weight: 700; font-size: 16px; padding: 15px 24px; border-radius: 8px;
             transition: transform 0.2s ease, background 0.2s, color 0.2s, box-shadow 0.2s;
         }
-        .btn-primary { background: #ff6f20; color: #fff; box-shadow: 0 6px 0 #c94d0c; }
+        .btn-primary { background: #ff6f20; color: var(--on-orange); box-shadow: 0 6px 0 #c94d0c; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #c94d0c; }
         .btn-primary:active { transform: translateY(4px); box-shadow: 0 2px 0 #c94d0c; }
         .btn-line { color: var(--ink); border: 2px solid var(--ink); }
@@ -88,27 +88,27 @@
         .disc [hidden] { display: none !important; }
         .disc-q { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 14px; }
         .disc-chips { display: flex; flex-wrap: wrap; gap: 9px; }
-        .disc-chips button { font: inherit; font-size: 15.5px; line-height: 1.35; text-align: left; padding: 11px 16px; border-radius: 10px; border: 1.5px solid var(--ink); background: var(--ticket); color: var(--ink); cursor: pointer; box-shadow: 0 3px 0 var(--ink); transition: transform 0.15s, box-shadow 0.15s; }
+        .disc-chips button { font: inherit; font-size: 15.5px; font-weight: 600; line-height: 1.35; text-align: left; padding: 11px 16px; border-radius: 10px; border: 1.5px solid var(--ink); background: var(--ticket); color: var(--ink); cursor: pointer; box-shadow: 0 3px 0 var(--ink); transition: transform 0.15s, box-shadow 0.15s; }
         .disc-chips button:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--ink); }
         .disc-chips button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
         .disc-chips button:focus-visible, .disc-back:focus-visible { outline: 2px solid #ff6f20; outline-offset: 3px; }
         .disc-card { background: var(--ticket); border: 1.5px solid var(--ink); border-radius: 14px; padding: 16px; box-shadow: 0 6px 0 var(--ink); animation: discIn 0.35s ease; }
         @keyframes discIn { from { opacity: 0; transform: translateY(8px); } }
-        .disc-back { font: inherit; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 4px 0; margin-bottom: 12px; }
+        .disc-back { font: inherit; font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 4px 0; margin-bottom: 12px; }
         .disc-proof { display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: start; margin-bottom: 16px; }
         .disc-shot { width: 72px; height: auto; aspect-ratio: 780 / 1688; object-fit: cover; border-radius: 10px; border: 2px solid var(--ink); background: var(--paper-2); display: block; }
-        .disc-who { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+        .disc-who { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
         .disc-line { font-size: 17px; line-height: 1.4; font-weight: 600; color: var(--ink); margin-bottom: 6px; outline: none; }
         .disc-line2 { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin-bottom: 8px; }
-        .disc-more { font-size: 14.5px; font-weight: 600; color: #c94d0c; }
+        .disc-more { font-size: 14.5px; font-weight: 600; color: var(--orange-ink-cream); }
         .disc-go { width: 100%; justify-content: center; }
         @media (max-width: 360px) { .disc-go { padding: 14px 12px; font-size: 15px; gap: 8px; white-space: nowrap; } .disc-card { padding: 14px; } }
-        .disc-fine { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin-top: 14px; }
-        .disc-fine a { color: #c94d0c; font-weight: 600; }
-        .disc-skip { display: inline-block; margin-top: 14px; font-size: 15px; color: var(--ink-2); }
+        .disc-fine { font-size: 14px; line-height: 1.5; color: var(--muted); margin-top: 14px; }
+        .disc-fine a { color: var(--orange-ink-cream); font-weight: 600; }
+        .disc-skip { display: inline-block; margin-top: 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
         .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 26px; }
-        .hero-micro { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.06em; color: var(--muted); }
-        .hero-micro span { color: #ff6f20; padding: 0 6px; }
+        .hero-micro { font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em; color: var(--muted); }
+        .hero-micro span { color: var(--orange-ink-cream); padding: 0 6px; }
 
         /* ── Job tickets ──────────────────────────────────────────── */
         .ticket-wrap { filter: drop-shadow(0 18px 28px rgba(13,27,42,0.16)) drop-shadow(0 2px 4px rgba(13,27,42,0.1)); }
@@ -120,14 +120,14 @@
                     mask: linear-gradient(#000 0 0) top / 100% calc(100% - 8px) no-repeat,
                           radial-gradient(circle at 50% 100%, transparent 5.5px, #000 6px) bottom / 15px 8px repeat-x;
         }
-        .ticket-head { display: flex; justify-content: space-between; gap: 10px; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding-bottom: 12px; border-bottom: 1.5px dashed var(--rule); margin-bottom: 12px; }
-        .ticket-row { display: grid; grid-template-columns: 62px 1fr; gap: 8px; font-size: 12.5px; margin-bottom: 4px; }
-        .ticket-row b { font-weight: 400; color: var(--muted); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 2px; }
+        .ticket-head { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-bottom: 12px; border-bottom: 1.5px dashed var(--rule); margin-bottom: 12px; }
+        .ticket-row { display: grid; grid-template-columns: 64px 1fr; gap: 8px; font-size: 13px; margin-bottom: 4px; }
+        .ticket-row b { font-weight: 400; color: var(--muted); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 2px; }
         .ticket-ask { margin: 14px 0 16px; padding-top: 12px; border-top: 1.5px dashed var(--rule); }
-        .ticket-ask b { display: block; font-weight: 400; color: var(--muted); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+        .ticket-ask b { display: block; font-weight: 400; color: var(--muted); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
         .ticket-ask p { font-family: var(--display); font-weight: 700; font-size: 21px; line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
         .ticket-status { display: flex; align-items: center; justify-content: space-between; min-height: 46px; }
-        .ticket-status > b { font-weight: 400; color: var(--muted); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; }
+        .ticket-status > b { font-weight: 400; color: var(--muted); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
 
         .stamp {
             display: inline-block; font-family: var(--mono); font-weight: 500; color: var(--stamp);
@@ -167,8 +167,8 @@
         .ticker { background: var(--ink); color: #fff; overflow: hidden; padding: 16px 0; border-top: 3px solid #ff6f20; position: relative; z-index: 2; }
         .ticker-track { display: flex; gap: 48px; width: max-content; animation: tick 38s linear infinite; }
         .ticker:hover .ticker-track { animation-play-state: paused; }
-        .ticker .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #ff6f20; white-space: nowrap; display: flex; flex-direction: column; gap: 5px; }
-        .ticker .lbl small { font-size: 10.5px; letter-spacing: 0.08em; text-transform: none; color: rgba(255,255,255,0.55); }
+        .ticker .lbl { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #ff6f20; white-space: nowrap; display: flex; flex-direction: column; gap: 5px; }
+        .ticker .lbl small { font-size: 12px; letter-spacing: 0.02em; text-transform: none; color: rgba(255,255,255,0.8); }
         .ticker .tip-tap { display: none; }
         @media (hover: none) { .ticker .tip-click { display: none; } .ticker .tip-tap { display: inline; } }
         /* Client logos: white until hovered, focused or pressed, then their own colours */
@@ -230,7 +230,7 @@
         .w-intro h2 { font-size: clamp(40px, 6vw, 76px); color: #fff; margin-bottom: 20px; max-width: 800px; }
         .w-intro h2 span, .w-div h2 span { color: #ff6f20; }
         .w-intro p, .w-div p { font-size: 19px; color: rgba(255,255,255,0.66); line-height: 1.6; max-width: 600px; }
-        .w-intro .hint { margin-top: 28px; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+        .w-intro .hint { margin-top: 28px; font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
         .w-intro .hint i { font-style: normal; color: #ff6f20; padding-left: 6px; }
         .w-div { min-height: 64vh; display: flex; align-items: center; padding: 110px 24px 60px; }
         .w-div h2 { font-size: clamp(38px, 5.4vw, 70px); color: #fff; margin-bottom: 22px; }
@@ -266,7 +266,7 @@
         .w-browser { border-radius: 12px; overflow: hidden; background: var(--w-bar); box-shadow: 0 40px 80px rgba(0,0,0,0.38); border: 1px solid rgba(255,255,255,0.08); }
         .w-browser .bar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: var(--w-bar); }
         .w-browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.22); }
-        .w-browser .bar span { margin-left: 12px; font-family: var(--mono); font-size: 11.5px; color: rgba(255,255,255,0.62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .w-browser .bar span { margin-left: 12px; font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .w-browser img, .w-phone img { display: block; width: 100%; height: auto; }
         .w-phone { position: absolute; right: 0; bottom: -34px; width: 26%; border: 2px solid var(--w-frame); background: var(--w-frame); border-radius: 13% / 6%; overflow: hidden; container-type: inline-size; box-shadow: 0 30px 60px rgba(0,0,0,0.45); }
         .w-phone::before { content: '9:41'; position: absolute; top: 2.4cqw; left: 9cqw; z-index: 2; font: 600 4.4cqw/1 'Inter', sans-serif; color: #fff; letter-spacing: 0.02em; }
@@ -275,7 +275,7 @@
 
         /* The live specimen lifted from each world, floating on the screens */
         .w-chip { position: absolute; left: -28px; bottom: -46px; z-index: 3; }
-        .w-chip small { position: absolute; left: 12px; bottom: 9px; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; }
+        .w-chip small { position: absolute; left: 12px; bottom: 9px; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
 
         /* Mane: stylist levels reprice the menu */
         .k-mane .w-name { font-size: 16px; letter-spacing: 0.34em; }
@@ -369,7 +369,7 @@
         .chip-ss .body { fill: url(#bowlFill); stroke: #c9a96a; stroke-width: 1.4; }
         .chip-ss .mallet { stroke: #ead8a8; stroke-width: 3; stroke-linecap: round; opacity: 0.85; }
         .chip-ss .shine { fill: none; stroke: rgba(255,247,222,0.5); stroke-width: 1.2; stroke-linecap: round; }
-        .chip-ss .cap { position: relative; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,237,227,0.6); }
+        .chip-ss .cap { position: relative; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,237,227,0.8); }
 
         /* Ace & Jacks: cards dealt onto the felt */
         .k-aj .w-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.18em; color: #f5efe1; }
@@ -398,28 +398,28 @@
         .changes { padding: 120px 24px; }
         .changes .wrap { display: grid; grid-template-columns: 1fr 0.8fr; gap: 72px; align-items: center; }
         .changes h2 { font-size: clamp(40px, 5.4vw, 70px); margin-bottom: 24px; }
-        .changes h2 span { color: #ff6f20; }
+        .changes h2 span { color: var(--orange-ink-cream); }
         .changes p { font-size: 18.5px; line-height: 1.65; color: var(--ink-2); max-width: 540px; margin-bottom: 18px; }
-        .changes .fine { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
-        .changes .fine a { color: #c94d0c; font-weight: 500; }
+        .changes .fine { font-family: var(--mono); font-size: 14px; color: var(--muted); letter-spacing: 0.04em; }
+        .changes .fine a { color: var(--orange-ink-cream); font-weight: 600; }
         .chat { background: #E9E4DA; border-radius: 30px; border: 9px solid var(--ink); padding: 22px 16px 26px; max-width: 360px; margin-left: auto; box-shadow: 0 30px 60px rgba(13,27,42,0.18); }
-        .chat-top { text-align: center; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-        .bubble { max-width: 82%; padding: 10px 13px 18px; border-radius: 14px; font-size: 14.5px; line-height: 1.45; margin-bottom: 10px; position: relative; opacity: 0; translate: 0 12px; transition: opacity 0.4s ease, translate 0.4s ease; }
-        .bubble time { position: absolute; right: 10px; bottom: 4px; font-family: var(--mono); font-size: 9.5px; color: rgba(13,27,42,0.45); }
+        .chat-top { text-align: center; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+        .bubble { max-width: 82%; padding: 10px 13px 24px; border-radius: 14px; font-size: 15px; line-height: 1.45; margin-bottom: 10px; position: relative; opacity: 0; translate: 0 12px; transition: opacity 0.4s ease, translate 0.4s ease; }
+        .bubble time { position: absolute; right: 10px; bottom: 4px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
         .bubble.b-them { background: #fff; color: var(--ink); border-top-left-radius: 4px; }
         .bubble.b-me { background: #FFE2CF; color: var(--ink); margin-left: auto; border-top-right-radius: 4px; }
         .bubble.photo span { display: block; height: 92px; border-radius: 8px; margin-bottom: 6px; background: repeating-linear-gradient(0deg, #f3efe6 0 10px, #e9e2d4 10px 11px); border: 1px solid rgba(13,27,42,0.08); position: relative; }
-        .bubble.photo span::after { content: 'NEW PRICES'; position: absolute; left: 12px; top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: var(--muted); }
+        .bubble.photo span::after { content: 'NEW PRICES'; position: absolute; left: 12px; top: 10px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
         .chat-day { text-align: center; margin: 6px 0 12px; opacity: 0; transition: opacity 0.4s; }
-        .chat-day span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; background: rgba(255,255,255,0.7); color: var(--muted); padding: 3px 9px; border-radius: 6px; }
+        .chat-day span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; background: rgba(255,255,255,0.7); color: var(--muted); padding: 3px 9px; border-radius: 6px; }
         .chat.play .bubble, .chat.play .chat-day { opacity: 1; translate: 0 0; }
         .enquire { padding-bottom: 40px; }
         .enquire .wrap { grid-template-columns: 0.8fr 1fr; }
         .enquire .wrap > div:last-child { order: -1; }
         .enquire .chat, .enquire .chat-note { margin-left: 0; margin-right: auto; }
         .enquire .chat-note { text-align: left; }
-        .bubble.wa-req { font-size: 13.5px; }
-        .changes .chat-note { text-align: right; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 12px; max-width: 360px; margin-left: auto; }
+        .bubble.wa-req { font-size: 14px; }
+        .changes .chat-note { text-align: right; font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 12px; max-width: 360px; margin-left: auto; }
 
         /* ── Method ───────────────────────────────────────────────── */
         .method { background: var(--paper-2); padding: 110px 24px; }
@@ -429,7 +429,7 @@
         .beat { padding: 26px 28px 8px 0; border-right: 1.5px dashed var(--rule); }
         .beat + .beat { padding-left: 28px; }
         .beat:last-child { border-right: 0; }
-        .beat .when { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #c94d0c; margin-bottom: 14px; display: block; }
+        .beat .when { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange-ink-cream); margin-bottom: 14px; display: block; }
         .beat h3 { font-family: var(--display); font-size: 27px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 12px; color: var(--ink); }
         .beat p { font-size: 16px; line-height: 1.6; color: var(--ink-2); }
         .method-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 52px; }
@@ -442,14 +442,14 @@
         .receipts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
         .receipt .ticket { padding: 24px 24px 34px; }
         .receipt:nth-child(2) { translate: 0 -14px; }
-        .receipt .tier { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #c94d0c; margin-bottom: 8px; display: block; }
+        .receipt .tier { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-ink-cream); margin-bottom: 8px; display: block; }
         .receipt h3 { font-family: var(--display); font-weight: 700; font-size: 24px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 16px; color: var(--ink); }
-        .receipt .line { display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px dashed var(--rule); padding: 10px 0; font-size: 13px; color: var(--muted); }
+        .receipt .line { display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px dashed var(--rule); padding: 10px 0; font-size: 14px; color: var(--muted); }
         .receipt .line strong { font-family: var(--display); font-size: 30px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
         .receipt .line em { font-style: normal; font-size: 15px; color: var(--ink); font-weight: 500; }
-        .receipt p { font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin-top: 6px; }
+        .receipt p { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); margin-top: 6px; }
         .prices-foot { margin-top: 38px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-        .prices-foot p { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
+        .prices-foot p { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--muted); }
 
         /* ── About ────────────────────────────────────────────────── */
         .me { padding: 100px 24px; }
@@ -457,21 +457,21 @@
         .me img { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 8px var(--ticket), 0 0 0 10px #ff6f20, 0 20px 40px rgba(13,27,42,0.18); }
         .me h2 { font-size: clamp(32px, 4vw, 46px); margin-bottom: 16px; }
         .me p { font-size: 17px; line-height: 1.7; color: var(--ink-2); margin-bottom: 14px; }
-        .me p a { color: #c94d0c; font-weight: 600; }
+        .me p a { color: var(--orange-ink-cream); font-weight: 600; }
 
         /* ── Final CTA ────────────────────────────────────────────── */
         .final { background: var(--ink); color: #fff; padding: 130px 24px 140px; text-align: center; position: relative; overflow: hidden; }
         .final::before { content: ''; position: absolute; inset: auto -10% -60% -10%; height: 80%; background: radial-gradient(closest-side, rgba(255,111,32,0.26), transparent); pointer-events: none; }
         .final h2 { font-size: clamp(46px, 7.4vw, 104px); color: #fff; margin: 0 auto 26px; max-width: 980px; position: relative; }
         .final h2 span { color: #ff6f20; }
-        .final p { font-size: 19px; color: rgba(255,255,255,0.68); max-width: 560px; margin: 0 auto 38px; line-height: 1.6; position: relative; }
+        .final p { font-size: 19px; color: rgba(255,255,255,0.82); max-width: 560px; margin: 0 auto 38px; line-height: 1.6; position: relative; }
         .final .hero-ctas { justify-content: center; position: relative; }
         .wa-card { position: relative; max-width: 560px; margin: 44px auto 0; padding: 26px 24px 22px; border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; background: rgba(255,255,255,0.04); }
         .final .wa-card p { margin: 0 auto; max-width: none; }
         .final .wa-card .wa-title { font-family: var(--display); font-weight: 700; font-size: 24px; color: #fff; letter-spacing: -0.02em; }
         .final .wa-card .wa-sub { font-size: 16px; margin: 8px auto 18px; }
         .wa-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 22px; }
-        .wa-chips button { font: inherit; font-size: 14.5px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: #fff; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        .wa-chips button { font: inherit; font-size: 14.5px; font-weight: 600; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: #fff; cursor: pointer; transition: background 0.2s, color 0.2s; }
         .wa-chips button[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
         .wa-chips button:focus-visible, .btn-wa:focus-visible { outline: 2px solid #ff6f20; outline-offset: 3px; }
         .btn-wa { background: #25D366; color: var(--ink); box-shadow: 0 6px 0 #1a9e4b; }
@@ -479,7 +479,7 @@
         .btn-wa svg { width: 20px; height: 20px; fill: currentColor; }
         .btn-line-wa svg { width: 20px; height: 20px; fill: #1a9e4b; }
         .btn-line-wa:hover svg { fill: #4ade80; }
-        .final .wa-card .wa-fine { font-size: 13.5px; color: rgba(255,255,255,0.55); margin-top: 20px; line-height: 1.55; }
+        .final .wa-card .wa-fine { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 20px; line-height: 1.55; }
         .wa-fine a { color: #ff9a5c; }
 
         /* ── Mobile sticky CTA ────────────────────────────────────── */
@@ -537,8 +537,8 @@
             .dock a.dock-wa { background: #25D366; color: var(--ink); padding: 9px; display: grid; place-items: center; }
             .dock a.dock-wa svg { width: 20px; height: 20px; fill: currentColor; display: block; }
             @media (max-width: 380px) { .dock span { display: none; } .dock { justify-content: flex-end; } }
-            .dock span { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.7); }
-            .dock a { background: #ff6f20; color: #fff; text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 10px 14px; border-radius: 8px; white-space: nowrap; }
+            .dock span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: rgba(255,255,255,0.85); }
+            .dock a { background: #ff6f20; color: var(--on-orange); text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 10px 14px; border-radius: 8px; white-space: nowrap; }
         }
         @media (max-width: 360px) {
             .hero h1 { font-size: 46px; }
@@ -570,7 +570,7 @@
             .ticker .lbl { grid-column: 1 / -1; align-items: center; text-align: center; }
             .ticker a.lg { height: 46px; max-width: 100%; white-space: normal; }
             .ticker a.lg img { height: 34px; } .ticker a.m-ss img { height: 46px; } .ticker a.m-pi img { height: 30px; } .ticker a.lg img.app { height: 30px; }
-            .ticker .nm { line-height: 1.15; } .ticker .nm-cp { font-size: 13.5px; } .ticker .nm-gky { font-size: 15px; } .ticker .nm-app { font-size: 13px; }
+            .ticker .nm { line-height: 1.15; } .ticker .nm-cp { font-size: 14px; } .ticker .nm-gky { font-size: 15px; } .ticker .nm-app { font-size: 14px; }
         }
 
         .wl { overflow: hidden; }
@@ -1213,7 +1213,7 @@
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <p style="color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
     <div class="footer-disclosure">
         <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
         <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>

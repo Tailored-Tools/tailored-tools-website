@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F3F5F0; --card:#FFFFFF; --ink:#2C3A33; --ink-soft:#5C6B62;
+    --paper:#F3F5F0; --card:#FFFFFF; --ink:#2C3A33; --ink-soft:#3f4d45;
     --moss:#7C9885; --moss-deep:#4E6B58; --line:#DDE4DC; --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -35,7 +35,7 @@
   .feat:first-of-type{border-top:0}
   .feat span{flex:1 1 200px}
   .chips{display:flex;gap:6px}
-  .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px}
+  .chips button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px}
   .chips button[aria-pressed=true]{background:var(--moss-deep);border-color:var(--moss-deep);color:#fff}
   .send{text-align:center}
   .send p{color:var(--ink-soft);margin-bottom:16px}
@@ -46,7 +46,7 @@
   .voice{background:transparent;font-family:inherit;cursor:pointer}
   .voice svg{width:18px;height:18px;flex:none}
   .voice.on{background:var(--moss-deep);border-color:var(--moss-deep);color:#fff}
-  .saved{font-size:13.5px;color:var(--ink-soft);margin-top:14px;min-height:1.4em}
+  .saved{font-size:14px;color:var(--ink-soft);margin-top:14px;min-height:1.4em}
   footer{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:36px}
 </style>
 </head>

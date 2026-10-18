@@ -18,18 +18,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="/styles.css?v=17">
     <style>
         .hero { background: #0D1B2A; color: var(--white); padding: 80px 24px 88px; }
         .hero-inner { max-width: var(--max-width); margin: 0 auto; }
         .hero .hero-label {
-            display: inline-block; font-size: 11px; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
+            display: inline-block; font-size: 12px; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
             color: var(--accent); margin-bottom: 20px;
         }
         .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.15; color: var(--white); margin-bottom: 20px; max-width: 680px; }
         .hero h1 span { color: var(--accent); }
-        .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 580px; line-height: 1.65; }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.82); max-width: 580px; line-height: 1.65; }
 
         section { padding: 72px 24px; }
         .section-inner { max-width: var(--max-width); margin: 0 auto; }
@@ -42,34 +42,34 @@
             padding: 30px 26px 28px; display: flex; flex-direction: column;
         }
         .tier.featured { border: 2px solid var(--accent); box-shadow: 0 16px 40px rgba(13,27,42,0.08); }
-        .tier-name { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+        .tier-name { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange-ink); margin-bottom: 8px; }
         .tier h2 { font-size: 20px; font-weight: 800; color: #0D1B2A; line-height: 1.3; margin-bottom: 18px; }
         .tier-price { border-top: 1px solid #edf0f4; border-bottom: 1px solid #edf0f4; padding: 16px 0; margin-bottom: 18px; }
-        .tier-price .from { font-size: 13px; font-weight: 600; color: #8b93a5; }
+        .tier-price .from { font-size: 14px; font-weight: 600; color: var(--text-light); }
         .tier-price .setup { font-size: 34px; font-weight: 800; color: #0D1B2A; line-height: 1.1; }
-        .tier-price .monthly { font-size: 15px; font-weight: 600; color: #38415a; margin-top: 4px; }
+        .tier-price .monthly { font-size: 16px; font-weight: 600; color: #38415a; margin-top: 4px; }
         .tier ul { list-style: none; margin: 0 0 20px; padding: 0; flex: 1; }
         .tier li { position: relative; padding-left: 24px; font-size: 14.5px; color: #38415a; line-height: 1.55; margin-bottom: 10px; }
-        .tier li::before { content: '\2713'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+        .tier li::before { content: '\2713'; position: absolute; left: 0; top: 0; color: var(--orange-ink); font-weight: 800; }
         .tier li.plus { font-weight: 700; color: #0D1B2A; padding-left: 0; }
         .tier li.plus::before { content: none; }
-        .tier-fit { font-size: 13.5px; color: #55607a; line-height: 1.55; background: #f6f7f9; border-radius: 8px; padding: 12px 14px; }
+        .tier-fit { font-size: 14px; color: var(--text-light); line-height: 1.55; background: #f6f7f9; border-radius: 8px; padding: 12px 14px; }
         .tier-fit strong { color: #0D1B2A; }
         .tier-name, .tier-price .from { font-family: 'DM Mono', ui-monospace, Menlo, monospace; }
         .tier-price .setup { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; letter-spacing: -0.02em; }
-        .tiers-note { font-size: 14.5px; color: #55607a; margin-top: 26px; max-width: 720px; line-height: 1.65; }
+        .tiers-note { font-size: 15px; color: var(--text-light); margin-top: 26px; max-width: 720px; line-height: 1.65; }
 
         /* care plan */
         .care { background: #fff; }
         .care h2, .faq h2 { font-size: 30px; font-weight: 800; color: #0D1B2A; margin-bottom: 10px; }
-        .care .lede, .faq .lede { font-size: 17px; color: #55607a; max-width: 660px; margin-bottom: 36px; line-height: 1.65; }
+        .care .lede, .faq .lede { font-size: 17px; color: var(--text-light); max-width: 660px; margin-bottom: 36px; line-height: 1.65; }
         .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
         .care-card { border: 1px solid #e3e7ed; border-radius: 12px; padding: 24px 24px 20px; }
         .care-card h3 { font-size: 16px; font-weight: 700; color: #0D1B2A; margin-bottom: 12px; }
         .care-card ul { margin: 0 0 0 18px; }
         .care-card li { font-size: 14.5px; color: #38415a; line-height: 1.6; margin-bottom: 6px; }
         .care-card.new { background: #fff7f2; border-color: #ffe3d1; }
-        .care-promise { margin-top: 26px; font-size: 15.5px; color: #38415a; line-height: 1.65; max-width: 720px; }
+        .care-promise { margin-top: 26px; font-size: 16px; color: #38415a; line-height: 1.65; max-width: 720px; }
         .care-promise strong { color: #0D1B2A; }
 
         /* faq */
@@ -81,21 +81,21 @@
             display: flex; justify-content: space-between; gap: 16px; align-items: center;
         }
         .faq summary::-webkit-details-marker { display: none; }
-        .faq summary::after { content: '+'; color: var(--accent); font-size: 22px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+        .faq summary::after { content: '+'; color: var(--orange-ink); font-size: 22px; font-weight: 700; line-height: 1; flex-shrink: 0; }
         .faq details[open] summary::after { content: '\2212'; }
-        .faq details p { padding: 0 22px 18px; font-size: 15px; color: #55607a; line-height: 1.7; }
-        .faq details p a { color: var(--accent); font-weight: 600; }
+        .faq details p { padding: 0 22px 18px; font-size: 15px; color: var(--text-light); line-height: 1.7; }
+        .faq details p a { color: var(--orange-ink); font-weight: 600; }
 
         .final-cta { background: #0D1B2A; color: var(--white); text-align: center; padding: 84px 24px; }
         .final-cta h2 { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
-        .final-cta p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+        .final-cta p { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
         .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
         .btn-outline {
             display: inline-block; border: 2px solid var(--accent); color: var(--accent);
             padding: 12px 24px; border-radius: 6px; text-decoration: none;
             font-weight: 700; font-size: 15px; transition: background 0.2s, color 0.2s;
         }
-        .btn-outline:hover { background: var(--accent); color: var(--white); }
+        .btn-outline:hover { background: var(--accent); color: var(--on-orange); }
 
         @media (max-width: 860px) {
             .tier-grid { grid-template-columns: 1fr; max-width: 520px; }
@@ -106,6 +106,7 @@
             .hero h1 { font-size: 32px; }
             section { padding: 56px 20px; }
             .tier { padding: 26px 20px 22px; }
+            .tier li, .tier-fit, .tiers-note, .care-card li, .faq details p { font-size: 16px; }
         }
     </style>
 
@@ -316,7 +317,7 @@
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <p style="color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
     <div class="footer-disclosure">
         <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
         <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>

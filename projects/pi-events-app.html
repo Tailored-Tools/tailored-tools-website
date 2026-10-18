@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="/styles.css?v=17">
     <style>
         :root {
             --primary: #203a4c;
@@ -35,7 +35,7 @@
             --white: #FFFFFF;
             --light: #f4f5f7;
             --text: #203a4c;
-            --text-light: #5a6a7a;
+            --text-light: #414c5e;
             --max-width: 880px;
             --green: #16A34A;
             --amber: #c9831c;
@@ -57,7 +57,7 @@
         .nav-links { display: flex; gap: 24px; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .nav-cta { display: inline-block; background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
+        .nav-cta { display: inline-block; background: var(--accent); color: #0d1b2a !important; padding: 8px 18px; border-radius: 4px; font-weight: 600; }
         .nav-cta:hover { background: #e55e10; }
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
         .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); margin: 5px 0; }
@@ -65,7 +65,7 @@
         /* ── Hero ────────────────────────────────────────────────── */
         .project-hero { background: var(--dark); padding: 56px 24px 48px; color: var(--white); border-bottom: 3px solid var(--accent); }
         .hero-inner { max-width: var(--max-width); margin: 0 auto; }
-        .back-link { display: inline-block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 24px; }
+        .back-link { display: inline-block; color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 600; text-decoration: none; margin-bottom: 24px; }
         .back-link:hover { color: var(--accent); }
         .project-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
         .project-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
@@ -82,21 +82,21 @@
         .section p:last-child { margin-bottom: 0; }
         .section ul { margin: 0 0 18px 22px; }
         .section li { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 6px; }
-        .section a.inline { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
+        .section a.inline { color: #c2410c; text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; }
         .section a.inline:hover { border-bottom-color: var(--accent); }
 
-        .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+        .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #c2410c; margin-bottom: 10px; }
 
         /* ── Status pill ─────────────────────────────────────────── */
         .status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
-        .status-pill.live { background: rgba(22,163,74,0.12); color: var(--green); }
+        .status-pill.live { background: rgba(22,163,74,0.12); color: #166534; }
         .status-pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 
         /* ── Stat tiles ──────────────────────────────────────────── */
         .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 8px; }
         .stat-tile { background: var(--white); border: 1px solid #e8ecf0; border-radius: 10px; padding: 22px 20px; text-align: left; }
         .section:nth-child(even) .stat-tile { background: var(--white); }
-        .stat-num { font-size: 30px; font-weight: 800; color: var(--accent); line-height: 1.1; margin-bottom: 6px; }
+        .stat-num { font-size: 30px; font-weight: 800; color: #c2410c; line-height: 1.1; margin-bottom: 6px; }
         .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.5; }
 
         /* ── Phone screenshot strip ──────────────────────────────── */
@@ -122,7 +122,7 @@
         .feature img, .feature video { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 4px 14px rgba(13,27,42,0.18); background: #000; }
         .feature .feature-body h3 { margin: 0 0 6px; font-size: 16px; color: var(--primary); line-height: 1.3; }
         .feature .feature-body p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.65; }
-        .feature .feature-body .pill { display: inline-block; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
+        .feature .feature-body .pill { display: inline-block; background: var(--accent); color: #0d1b2a; font-size: 12px; font-weight: 800; letter-spacing: 0.3px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
 
         /* ── Pull quote ──────────────────────────────────────────── */
         .pull-quote { border-left: 4px solid var(--accent); padding: 6px 0 6px 24px; margin: 36px 0; }
@@ -199,14 +199,14 @@
         .section-cta { background: var(--dark); text-align: center; }
         .section-cta h2 { color: var(--white); margin-bottom: 12px; }
         .section-cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; }
-        .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+        .btn-primary { display: inline-block; background: var(--accent); color: #0d1b2a; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; transition: background 0.2s; }
         .btn-primary:hover { background: #e55e10; }
 
         /* ── Footer ──────────────────────────────────────────────── */
-        footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; }
+        footer { background: var(--dark); color: rgba(255,255,255,0.78); padding: 40px 24px; text-align: center; }
         .footer-logo-wrap { width: 220px; height: 80px; background: url('/tt-logo-light.png') center center / contain no-repeat; margin: 0 auto 16px; }
         footer p { font-size: 13px; }
-        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
         footer a:hover { color: var(--accent); }
 
         /* ── Mobile ──────────────────────────────────────────────── */
@@ -520,7 +520,7 @@
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <p style="color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
     <div class="footer-disclosure">
         <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
         <p>Address for service: Orchard House, 16 Pear Tree Lane, Maidstone, Kent, ME15 9QY.</p>

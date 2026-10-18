@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="/styles.css?v=17">
     <style>
         .hero {
             background: #0D1B2A;
@@ -27,8 +27,8 @@
         }
         .hero-inner { max-width: var(--max-width); margin: 0 auto; }
         .hero .hero-label {
-            display: inline-block; font-size: 11px; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
+            display: inline-block; font-size: 12px; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
             color: var(--accent); margin-bottom: 20px;
         }
         .hero h1 {
@@ -37,7 +37,7 @@
         }
         .hero h1 span { color: var(--accent); }
         .hero p {
-            font-size: 18px; color: rgba(255,255,255,0.7);
+            font-size: 18px; color: rgba(255,255,255,0.82);
             max-width: 560px; line-height: 1.65; margin-bottom: 16px;
         }
         .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
@@ -46,13 +46,13 @@
             padding: 12px 24px; border-radius: 6px; text-decoration: none;
             font-weight: 700; font-size: 15px; transition: background 0.2s, color 0.2s;
         }
-        .btn-outline:hover { background: var(--accent); color: var(--white); }
+        .btn-outline:hover { background: var(--accent); color: var(--on-orange); }
 
         section { padding: 72px 24px; }
         .section-inner { max-width: var(--max-width); margin: 0 auto; }
         .light { background: #ffffff; color: var(--ink, #1a2332); }
         .light h2 { font-size: 30px; font-weight: 800; color: #0D1B2A; margin-bottom: 10px; }
-        .light .lede { font-size: 17px; color: #55607a; max-width: 640px; margin-bottom: 40px; line-height: 1.65; }
+        .light .lede { font-size: 17px; color: var(--text-light); max-width: 640px; margin-bottom: 40px; line-height: 1.65; }
 
         /* steps */
         .steps { list-style: none; margin: 0; padding: 0; max-width: 760px; counter-reset: step; }
@@ -72,18 +72,18 @@
             width: 2px; background: #e8ebf1;
         }
         .steps h3 { font-size: 19px; font-weight: 700; color: #0D1B2A; margin-bottom: 6px; }
-        .steps p { font-size: 15.5px; color: #55607a; line-height: 1.65; max-width: 60ch; }
+        .steps p { font-size: 16px; color: var(--text-light); line-height: 1.65; max-width: 60ch; }
         .steps p strong { color: #1a2332; }
         .steps .step-aside {
-            display: inline-block; margin-top: 10px; font-size: 13.5px;
+            display: inline-block; margin-top: 10px; font-size: 14px;
             background: rgba(255,111,32,0.08); border: 1px solid rgba(255,111,32,0.25);
-            color: #b34a00; border-radius: 8px; padding: 8px 14px;
+            color: #853500; border-radius: 8px; padding: 8px 14px;
         }
 
         /* promises band */
         .promises { background: #0D1B2A; color: var(--white); }
         .promises h2 { font-size: 30px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
-        .promises .lede { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 640px; margin-bottom: 40px; line-height: 1.65; }
+        .promises .lede { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 640px; margin-bottom: 40px; line-height: 1.65; }
         .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
         .promise-card {
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
@@ -91,13 +91,14 @@
         }
         .promise-card h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
         .promise-card h3 span { color: var(--accent); margin-right: 8px; }
-        .promise-card p { font-size: 14.5px; color: rgba(255,255,255,0.68); line-height: 1.65; }
+        .promise-card p { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.65; }
+        .promises .lede a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
         @media (max-width: 800px) { .promise-grid { grid-template-columns: 1fr; } }
 
         /* timeline strip */
         .timeline-strip { background: #f6f7f9; }
         .timeline-strip h2 { font-size: 30px; font-weight: 800; color: #0D1B2A; margin-bottom: 10px; }
-        .timeline-strip .lede { font-size: 17px; color: #55607a; max-width: 640px; margin-bottom: 36px; line-height: 1.65; }
+        .timeline-strip .lede { font-size: 17px; color: var(--text-light); max-width: 640px; margin-bottom: 36px; line-height: 1.65; }
         .tl { max-width: 720px; border-left: 2px solid #dde2ea; padding-left: 28px; }
         .tl-item { position: relative; padding-bottom: 26px; }
         .tl-item::before {
@@ -105,14 +106,14 @@
             width: 12px; height: 12px; border-radius: 50%;
             background: var(--accent); box-shadow: 0 0 0 4px rgba(255,111,32,0.18);
         }
-        .tl-item .tl-when { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8b93a5; }
-        .tl-item p { font-size: 15.5px; color: #38415a; line-height: 1.6; max-width: 58ch; margin-top: 3px; }
+        .tl-item .tl-when { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-light); }
+        .tl-item p { font-size: 16px; color: #38415a; line-height: 1.6; max-width: 58ch; margin-top: 3px; }
         .tl-item p strong { color: #0D1B2A; }
 
         /* final cta */
         .final-cta { background: #0D1B2A; color: var(--white); text-align: center; padding: 84px 24px; }
         .final-cta h2 { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
-        .final-cta p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+        .final-cta p { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
         .final-cta .hero-ctas { justify-content: center; }
 
         @media (max-width: 640px) {
@@ -214,7 +215,7 @@
 <section class="timeline-strip" data-nav-bg="light">
     <div class="section-inner">
         <h2>What this looks like in real life</h2>
-        <p class="lede">The <a href="/projects/good-knight-yoga" style="color:var(--accent);font-weight:600">Good Knight Yoga</a> build, exactly as it happened.</p>
+        <p class="lede">The <a href="/projects/good-knight-yoga" style="color:var(--orange-ink);font-weight:600">Good Knight Yoga</a> build, exactly as it happened.</p>
         <div class="tl">
             <div class="tl-item">
                 <span class="tl-when">Sunday evening</span>
@@ -252,7 +253,7 @@
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <p style="color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
     <div class="footer-disclosure">
         <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
         <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>

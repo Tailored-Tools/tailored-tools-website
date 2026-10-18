@@ -18,16 +18,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=16">
+    <link rel="stylesheet" href="/styles.css?v=17">
     <style>
-        :root { --paper: #F3EEE4; --ticket: #FFFDF8; --ink: #0D1B2A; --ink-2: #203a4c; --muted: #5d6673; --rule: rgba(13,27,42,0.14); --mono: 'DM Mono', ui-monospace, Menlo, monospace; }
+        :root { --paper: #F3EEE4; --ticket: #FFFDF8; --ink: #0D1B2A; --ink-2: #203a4c; --muted: #3f4854; --rule: rgba(13,27,42,0.14); --mono: 'DM Mono', ui-monospace, Menlo, monospace; }
         body { background: var(--paper); }
         .w-hero { background: var(--ink); color: #fff; padding: 80px 24px 72px; }
         .w-inner { max-width: 1120px; margin: 0 auto; }
-        .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: block; margin-bottom: 20px; }
+        .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.8); display: block; margin-bottom: 20px; }
         .w-hero h1 { font-size: clamp(44px, 7vw, 92px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; color: #fff; margin-bottom: 22px; max-width: 900px; }
         .w-hero h1 span { color: #ff6f20; }
-        .w-hero p { font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.68); max-width: 620px; }
+        .w-hero p { font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.82); max-width: 620px; }
 
         .clients { padding: 80px 24px 40px; }
         .case { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; padding: 48px 0; border-bottom: 1.5px dashed var(--rule); text-decoration: none; color: inherit; }
@@ -38,7 +38,7 @@
         .case-browser { border-radius: 10px; overflow: hidden; background: #1b2a3a; box-shadow: 0 30px 60px rgba(13,27,42,0.22); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
         .case-browser .bar { height: 26px; display: flex; align-items: center; gap: 6px; padding: 0 11px; background: #24364a; }
         .case-browser .bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.22); }
-        .case-browser .bar span { margin-left: 10px; font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); }
+        .case-browser .bar span { margin-left: 10px; font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.75); }
         .case-browser img { display: block; width: 100%; height: auto; }
         .case-phone { position: absolute; right: 0; bottom: -24px; width: 26%; border-radius: 22px; border: 2px solid #060e17; background: #060e17; overflow: hidden; box-shadow: 0 24px 48px rgba(13,27,42,0.3); transition: transform 0.4s cubic-bezier(.2,.9,.3,1); }
         .case-phone img { display: block; width: 100%; height: auto; }
@@ -50,28 +50,28 @@
 
         .case:hover .case-browser { transform: translateY(-6px); }
         .case:hover .case-phone { transform: translateY(-12px) rotate(2deg); }
-        .case-sector { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #c94d0c; margin-bottom: 12px; display: block; }
+        .case-sector { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange-ink-cream); margin-bottom: 12px; display: block; }
         .case h2 { font-size: clamp(30px, 3.6vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: var(--ink); margin-bottom: 20px; }
         .ask-got { background: var(--ticket); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; box-shadow: 0 10px 24px rgba(13,27,42,0.08); }
-        .ask-got div { display: grid; grid-template-columns: 78px 1fr; gap: 12px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); padding: 6px 0; }
+        .ask-got div { display: grid; grid-template-columns: 84px 1fr; gap: 12px; font-size: 16px; line-height: 1.5; color: var(--ink-2); padding: 6px 0; }
         .ask-got div + div { border-top: 1.5px dashed var(--rule); padding-top: 12px; margin-top: 6px; }
-        .ask-got b { font-family: var(--mono); font-weight: 400; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
-        .case-more { font-weight: 700; color: #c94d0c; font-size: 16px; }
+        .ask-got b { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+        .case-more { font-weight: 700; color: var(--orange-ink-cream); font-size: 16px; }
         .case:hover .case-more { text-decoration: underline; text-underline-offset: 4px; }
 
         .home-work { background: var(--ink); color: #fff; padding: 96px 24px 56px; }
         .home-work h2 { font-size: clamp(34px, 4.6vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; color: #fff; margin-bottom: 18px; }
-        .home-work .lede { font-size: 18px; color: rgba(255,255,255,0.68); line-height: 1.6; max-width: 640px; margin-bottom: 8px; }
+        .home-work .lede { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.6; max-width: 640px; margin-bottom: 8px; }
         .home-work .case { border-bottom-color: rgba(255,255,255,0.12); }
         .home-work .case h2 { color: #fff; font-size: clamp(30px, 3.6vw, 44px); margin-bottom: 14px; }
         .home-work .case-sector { color: #ff6f20; }
-        .home-work .case p { font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,0.72); margin-bottom: 18px; }
+        .home-work .case p { font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 18px; }
         .home-work .case-browser { box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
         .hw-stats { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 18px; }
         .hw-stats strong { display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; letter-spacing: -0.03em; color: #ff6f20; line-height: 1; margin-bottom: 4px; }
-        .hw-stats small { font-size: 13px; color: rgba(255,255,255,0.6); }
+        .hw-stats small { font-size: 14px; color: rgba(255,255,255,0.8); }
         .home-work .case-more { color: #ff6f20; }
-        .hw-also { font-size: 15px; color: rgba(255,255,255,0.6); padding: 28px 0 0; }
+        .hw-also { font-size: 15px; color: rgba(255,255,255,0.8); padding: 28px 0 0; }
         .hw-also a { color: #ff6f20; font-weight: 700; text-decoration: none; }
 
         .w-cta { padding: 100px 24px; text-align: center; }
@@ -249,7 +249,7 @@
 <footer>
     <div class="footer-logo-wrap" role="img" aria-label="Tailored Tools"></div>
     <p>Websites and systems for owner-run businesses. You see it before you pay for it.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
+    <p style="color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px;">Everything we build is registered in your name. You own the lot.</p>
     <div class="footer-disclosure">
         <p>Tailored Tools is the trading name of James Edwards (sole trader).</p>
         <p>Registered with the UK Information Commissioner&rsquo;s Office (ICO).</p>
